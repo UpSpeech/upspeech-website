@@ -1,22 +1,22 @@
 # UpSpeech MVP - Implementation Status
 
-**Last Updated**: October 16, 2025
-**Current Sprint**: Sprint 1 - Report Writing Completion
-**Overall MVP Progress**: 60% Complete
+**Last Updated**: October 17, 2025
+**Current Sprint**: Sprint 1 - Report Writing Completion ✅
+**Overall MVP Progress**: 65% Complete
 
 ---
 
 ## Quick Status Overview
 
-| Phase | Progress | Status | ETA |
-|-------|----------|--------|-----|
-| Phase 1 - Foundation | 90% | 🟢 | Week 3-4 |
-| Phase 2 - Report Writing | 60% | 🟡 **IN PROGRESS** | Week 1-2 |
-| Phase 3 - Speech Analysis | 50% | 🟡 | Week 5-6 |
-| Phase 4 - Exercises | 0% | 🔴 Post-MVP | TBD |
-| Phase 5 - Progress | 40% | 🟡 | Week 7-8 |
-| Phase 6 - Gamification | 0% | 🔴 Post-MVP | TBD |
-| Phase 7 - Therapist Portal | 70% | 🟢 | Week 7-8 |
+| Phase                      | Progress | Status           | ETA         |
+| -------------------------- | -------- | ---------------- | ----------- |
+| Phase 1 - Foundation       | 90%      | 🟢               | Week 3-4    |
+| Phase 2 - Report Writing   | 95%      | 🟢 **COMPLETED** | ✅ Week 1-2 |
+| Phase 3 - Speech Analysis  | 50%      | 🟡               | Week 5-6    |
+| Phase 4 - Exercises        | 0%       | 🔴 Post-MVP      | TBD         |
+| Phase 5 - Progress         | 40%      | 🟡               | Week 7-8    |
+| Phase 6 - Gamification     | 0%       | 🔴 Post-MVP      | TBD         |
+| Phase 7 - Therapist Portal | 70%      | 🟢               | Week 7-8    |
 
 ---
 
@@ -37,6 +37,7 @@
 ### 🔨 In Progress / Todo
 
 - [ ] Therapist-Patient assignment model
+
   - [ ] Create `TherapistPatientAssignment` model + migration
   - [ ] Add API endpoints (POST, DELETE `/api/v1/therapist_assignments`)
   - [ ] Build assignment UI in `ClientsManagementPage.tsx`
@@ -52,7 +53,7 @@
 
 ---
 
-## Phase 2: Automated Report Writing (60% Complete) ⚡ CRITICAL
+## Phase 2: Automated Report Writing (95% Complete) ✅ COMPLETED
 
 ### ✅ Completed Features
 
@@ -63,47 +64,58 @@
 - [x] Draft vs Ready status
 - [x] Markdown rendering
 - [x] Role-based report access
+- [x] **Report viewing workflow** (list → view → edit)
+  - [x] Dedicated `ReportViewPage` with clinical styling
+  - [x] Refactored `ReportsPage` to list-only with enhanced cards
+  - [x] Proper navigation flow
+- [x] **Report editing** (Week 1)
+  - [x] Backend: PATCH endpoint in `reports_controller.rb`
+  - [x] Frontend: Tiptap rich text editor installed
+  - [x] Frontend: `ReportEditPage.tsx` with full toolbar
+  - [x] Autosave functionality (3-second debounce)
+  - [x] Save status indicators
+  - [x] Unsaved changes warning
+- [x] **Template system architecture**
+  - [x] `BaseReportTemplate` component for shared layout
+  - [x] `ReportTemplateRegistry` for type-specific templates
+  - [x] `FluencyAnalysisTemplate` and `DefaultReportTemplate`
+  - [x] Easy extensibility for new report types
+- [x] **PDF Export** (Week 2)
+  - [x] Backend: Grover gem for HTML-to-PDF conversion
+  - [x] Backend: `export_pdf` action in `reports_controller.rb`
+  - [x] Backend: PDF HTML templates with clinical styling
+  - [x] Frontend: Export button with loading state
+  - [x] Frontend: API client method for PDF download
+  - [x] WYSIWYG - view and PDF use same templates
 
-**Files**: `report.rb`, `reports_controller.rb`, `ReportsPage.tsx`, `text_generator.py`
+**Files**:
 
-### 🔨 In Progress / Todo
+- Backend: `report.rb`, `reports_controller.rb`, `app/views/reports/pdf.html.erb`, `app/views/layouts/pdf.html.erb`
+- Frontend: `ReportsPage.tsx`, `ReportViewPage.tsx`, `ReportEditPage.tsx`, `ReportEditor.tsx`, `templates/`
+- AI Service: `text_generator.py`
 
-#### Week 1: Report Editing (Priority: P0)
-- [ ] Backend: Add `update` action to `reports_controller.rb`
-  - [ ] Add PATCH route `/api/v1/reports/:id`
-  - [ ] Add authorization check (`can_edit_report?`)
-  - [ ] Permit params: title, content, status, report_type
-- [ ] Frontend: Install Tiptap rich text editor
-  - [ ] `npm install @tiptap/react @tiptap/starter-kit`
-- [ ] Frontend: Create `ReportEditPage.tsx`
-  - [ ] Build editor with toolbar (bold, italic, headings, lists)
-  - [ ] Implement autosave (debounced every 3 seconds)
-  - [ ] Add save/cancel buttons
-  - [ ] Show last saved timestamp
-- [ ] Frontend: Add "Edit" button in `ReportsPage.tsx`
-- [ ] Test editing workflow end-to-end
+### 🔨 Remaining Tasks
 
-#### Week 2: PDF Export (Priority: P0)
-- [ ] Backend: Add `prawn` gem to Gemfile
-  - [ ] `bundle add prawn prawn-table`
-- [ ] Backend: Create `PdfGeneratorService`
-  - [ ] Design clinical report template
-  - [ ] Add header (clinic branding, logo)
-  - [ ] Add patient info section
-  - [ ] Format report content (headings, paragraphs)
-  - [ ] Add footer (date, therapist signature line)
-- [ ] Backend: Add `export_pdf` action to `reports_controller.rb`
-  - [ ] GET `/api/v1/reports/:id/export_pdf`
-  - [ ] Return PDF as binary download
-- [ ] Frontend: Add "Export PDF" button in `ReportsPage.tsx`
-- [ ] Test PDF generation with various report types
+#### Production Testing (Priority: P0)
 
-#### Future (Priority: P2-P3)
+- [ ] Test PDF generation in production environment
+  - [ ] Verify Grover/Chrome works on Railway
+  - [ ] Add Chrome buildpack if needed
+  - [ ] Test with various report types and sizes
+- [ ] End-to-end testing
+  - [ ] Create report → View → Edit → Save → Export PDF
+  - [ ] Test with all 3 report types
+  - [ ] Verify role-based access controls
+
+#### Future Enhancements (Priority: P2-P3)
+
 - [ ] Report versioning (ReportVersion model)
-- [ ] Report templates (ReportTemplate model)
-- [ ] Smart suggestions (AI-powered)
+- [ ] Report templates library (ReportTemplate model)
+- [ ] Smart AI suggestions while editing
+- [ ] Collaborative editing (real-time for multiple therapists)
 
-**ETA**: End of Week 2 → 100% Complete ✅
+**Completed**: October 17, 2025 ✅
+**ETA for Production Testing**: End of Week 2
 
 ---
 
@@ -127,6 +139,7 @@
 ### 🔨 In Progress / Todo
 
 #### Week 4: Disfluency Detection Foundation (Priority: P0)
+
 - [ ] AI Service: Create `disfluency_detector.py`
   - [ ] Research acoustic detection methods
   - [ ] Implement transcript pattern analysis
@@ -144,6 +157,7 @@
 - [ ] Frontend: Display basic disfluency markers
 
 #### Week 5: Annotation Interface (Priority: P0)
+
 - [ ] Backend: Create `Annotation` model + migration
   - [ ] Fields: disfluency_id, user_id, note, annotation_type
   - [ ] Types: correction, confirmation, comment
@@ -169,6 +183,7 @@
   - [ ] Update `AudioUploadPage.tsx` with context form
 
 #### Week 6: Metrics & Insights (Priority: P1)
+
 - [ ] Backend: Create `DisfluencyMetric` model + migration
   - [ ] Fields: audio_recording_id, disfluencies_per_minute, total_count, type_distribution, average_severity
 - [ ] Backend: Create `DisfluencyMetricsCalculator` service
@@ -224,6 +239,7 @@
 ### 🔨 In Progress / Todo
 
 #### Week 7: Patient Progress Dashboard (Priority: P1)
+
 - [ ] Backend: Create `PatientProgressController`
   - [ ] GET `/api/v1/patients/:id/progress`
   - [ ] Return disfluency trends, recording history, metrics summary
@@ -236,6 +252,7 @@
 - [ ] Add navigation link in patient dashboard
 
 #### Future (Priority: P2)
+
 - [ ] Weekly summaries for therapists
   - [ ] Create `WeeklySummaryJob`
   - [ ] Create `WeeklySummaryMailer`
@@ -282,6 +299,7 @@
 ### 🔨 In Progress / Todo
 
 #### Week 8: Portal Enhancements (Priority: P1)
+
 - [ ] Report notes/feedback system
   - [ ] Create `ReportNote` model + migration
   - [ ] Create `ReportNotesController`
@@ -333,6 +351,7 @@
 ### Launch Criteria
 
 ✅ **Must Have (P0)**:
+
 - [ ] Report editing works end-to-end
 - [ ] PDF export generates professional reports
 - [ ] Disfluency detection runs on all recordings
@@ -340,12 +359,14 @@
 - [ ] Patient progress dashboard shows trends
 
 🟡 **Should Have (P1)**:
+
 - [ ] Therapist-patient assignments
 - [ ] Report notes/feedback
 - [ ] Patient summary export
 - [ ] Disfluency metrics calculation
 
 ⚪ **Nice to Have (P2-P3)**:
+
 - [ ] Report versioning
 - [ ] Weekly email summaries
 - [ ] Goal setting
@@ -355,6 +376,7 @@
 ## Quick Reference - Files to Track
 
 ### Models to Create
+
 - [ ] `therapist_patient_assignment.rb` (Phase 1)
 - [ ] `invite_code.rb` (Phase 1)
 - [ ] `report_version.rb` (Phase 2 - P2)
@@ -366,6 +388,7 @@
 - [ ] `report_note.rb` (Phase 7)
 
 ### Controllers to Create
+
 - [ ] `therapist_assignments_controller.rb` (Phase 1)
 - [ ] `invites_controller.rb` (Phase 1)
 - [ ] `annotations_controller.rb` (Phase 3)
@@ -375,14 +398,30 @@
 - [ ] `patient_summaries_controller.rb` (Phase 7)
 
 ### Frontend Pages to Create
-- [ ] `ReportEditPage.tsx` (Phase 2)
+
+- [x] `ReportEditPage.tsx` (Phase 2) ✅
+- [x] `ReportViewPage.tsx` (Phase 2) ✅
 - [ ] `AnnotationPage.tsx` (Phase 3)
 - [ ] `PatientProgressPage.tsx` (Phase 5)
 - [ ] `GoalsPage.tsx` (Phase 5 - P2)
 - [ ] `TherapistDashboard.tsx` (Phase 7)
 
+### Frontend Components Created
+
+- [x] `ReportEditor.tsx` (Phase 2) ✅
+- [x] `templates/BaseReportTemplate.tsx` (Phase 2) ✅
+- [x] `templates/DefaultReportTemplate.tsx` (Phase 2) ✅
+- [x] `templates/FluencyAnalysisTemplate.tsx` (Phase 2) ✅
+- [x] `templates/ReportTemplateRegistry.tsx` (Phase 2) ✅
+
+### Backend Views Created
+
+- [x] `app/views/layouts/pdf.html.erb` (Phase 2) ✅
+- [x] `app/views/reports/pdf.html.erb` (Phase 2) ✅
+
 ### Services to Create
-- [ ] `pdf_generator_service.rb` (Phase 2)
+
+- [x] PDF generation with Grover (Phase 2) ✅
 - [ ] `disfluency_detector.py` (Phase 3)
 - [ ] `disfluency_metrics_calculator.rb` (Phase 3)
 - [ ] `patient_summary_generator.rb` (Phase 7)
@@ -395,28 +434,35 @@
 ### How to Update This Document
 
 **When starting a feature**:
+
 1. Change ` [ ]` to `🔨 In Progress`
 2. Update "Last Updated" date at top
 
 **When completing a feature**:
+
 1. Change ` [ ]` to `[x]`
 2. Update phase completion percentage
 3. Update "Last Updated" date at top
 4. Move from "In Progress" to "Completed Features" section
 
 **Example**:
+
 ```markdown
 # Before
+
 - [ ] Add report editing endpoint
 
 # In Progress
+
 - 🔨 Add report editing endpoint (started Oct 16)
 
 # Completed
+
 - [x] Add report editing endpoint (completed Oct 18)
 ```
 
 ### Priority Legend
+
 - **P0**: Must have for MVP launch (blocking)
 - **P1**: Should have for MVP launch (important)
 - **P2**: Nice to have for MVP launch (optional)
@@ -424,5 +470,5 @@
 
 ---
 
-**Last Updated**: October 16, 2025
-**Next Update**: End of Week 1 (after report editing complete)
+**Last Updated**: October 17, 2025
+**Next Update**: End of Week 3 (after Phase 1 completion - therapist-patient linking)
