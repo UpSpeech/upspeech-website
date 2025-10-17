@@ -207,7 +207,7 @@ docker exec -it upspeech_redis_dev redis-cli ping
     │   ├── Dockerfile.dev      # React development image
     │   ├── Dockerfile          # React production image
     │   └── nginx.conf          # Production nginx config
-    └── fluently-ai/
+    └── upspeech-ai/
         └── Dockerfile          # Python AI service
 ```
 

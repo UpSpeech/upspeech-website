@@ -92,7 +92,7 @@ services:
   # Python AI Service
   ai-service:
     build:
-      context: ../fluently-ai
+      context: ../upspeech-ai
       dockerfile: Dockerfile
     container_name: upspeech_ai_prod
     environment:

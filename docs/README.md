@@ -2,13 +2,26 @@
 
 Index of architecture & design references.
 
+## MVP Planning & Tracking
+
+- [MVP Roadmap](./MVP_ROADMAP.md) - 7-phase implementation plan with detailed specs
+- [Implementation Status](./IMPLEMENTATION_STATUS.md) - Current feature completion tracking
+- [Claude Context](../../.claude/claude.md) - AI assistant context and current priorities
+
 ## Core Design Docs
 
-- [System Design](SYSTEM_DESIGN.md)
-- [Multi-Tenancy](MULTI_TENANCY.md)
-- [Authentication Flow](AUTH_FLOW.md)
-- [Permissions & Authorization](PERMISSIONS.md)
-- [Jobs & Processing (Queue Decision)](JOBS_AND_PROCESSING.md)
+- [System Design](SYSTEM_DESIGN.md) - Overall architecture and technical decisions
+- [Multi-Tenancy](MULTI_TENANCY.md) - Multi-tenant isolation strategy
+- [Authentication Flow](AUTH_FLOW.md) - Authentication and session management
+- [Permissions & Authorization](PERMISSIONS.md) - Role-based access control
+- [Jobs & Processing (Queue Decision)](JOBS_AND_PROCESSING.md) - Background job strategy
+
+## Deployment & Infrastructure
+
+- [Railway Deployment](RAILWAY_DEPLOYMENT.md) - Deployment configuration and setup
+- [EmailJS Setup](EMAILJS_SETUP.md) - Email integration configuration
+- [Database Indexing Strategy](database-indexing-strategy.md) - Database optimization
+- [AI Service Endpoints](AI_SERVICE_ENDPOINTS.md) - FastAPI service documentation
 
 ## Upcoming / Planned
 

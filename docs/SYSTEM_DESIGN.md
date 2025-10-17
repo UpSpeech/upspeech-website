@@ -9,6 +9,18 @@ Last Updated: 2025-09-12
 - Support multi-tenant SaaS from day one (soft isolation) with a clear upgrade path.
 - Keep operational footprint small (Railway) while enabling gradual hardening: observability, background jobs, object storage (optional Phase 2), billing, analytics.
 
+## 1.1 MVP Implementation Plan
+
+For detailed feature planning, implementation status, and sprint breakdown, see:
+
+- **[MVP Roadmap](./MVP_ROADMAP.md)** - Complete 7-phase MVP plan with user stories, technical specs, and timeline
+- **[Implementation Status](./IMPLEMENTATION_STATUS.md)** - Current feature completion tracking with checklists
+- **[Claude Context](../../.claude/CLAUDE.md)** - AI assistant context file (project overview and current priorities)
+
+**Current Sprint**: Sprint 1 - Report Writing Completion (Weeks 1-2)
+**Current Phase**: Phase 2 - Automated Report Writing (60% → 100%)
+**Overall MVP Progress**: 60% Complete
+
 ## 2. High-Level Architecture
 
 ```mermaid
