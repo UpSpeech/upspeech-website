@@ -1,16 +1,17 @@
 # Testing Strategy & Coverage Plan
 
-**Last Updated**: October 21, 2025
-**Status**: Active - Continuous Improvement
+**Last Updated**: October 22, 2025 (Post-Phase 1 Implementation)
+**Status**: Active - Phase 1 Testing Roadmap Defined
 
 ## Executive Summary
 
-UpSpeech has a **solid backend testing foundation (188 tests)** but **limited frontend coverage**. This document outlines the current testing status, identifies gaps, and provides a prioritized roadmap for achieving 80%+ test coverage across the entire application.
+UpSpeech has a **solid backend testing foundation (188 tests, 35.59% coverage with SimpleCov)** but **limited frontend coverage**. This document outlines the current testing status, identifies gaps from the newly implemented Phase 1 features (therapist-patient linking + invite system), and provides a prioritized 5-phase testing roadmap for achieving 80%+ test coverage.
 
 **Key Metrics:**
-- **Backend**: ~188 test examples, good model/controller coverage, missing service tests
-- **Frontend**: ~177 test cases, but only 15-20% feature coverage
+- **Backend**: 188 test examples, **35.59% coverage (SimpleCov configured)** ✅, missing Phase 1 feature tests
+- **Frontend**: ~177 test cases, but only 15-20% feature coverage, missing Phase 1 UI tests
 - **Target**: 80% overall coverage, 95% for critical paths
+- **Phase 1 Testing Gap**: ~21 hours of testing needed for new features (see Phase 1 Implementation Testing Plan below)
 
 ---
 
@@ -39,13 +40,18 @@ Total:        188 tests
 - API endpoints well covered with permission checks
 - Background job processing tested (success/failure scenarios)
 - Good factory patterns for test data generation
+- **SimpleCov coverage reporting configured** ✅ (35.59% baseline established)
 
 **Gaps:**
-1. ❌ **Services** - No tests for `PatientSummaryGenerator`, future services
-2. ❌ **ReportNote Model** - Test file exists but only has pending placeholder
-3. ❌ **Pundit Policies** - Authorization policies not explicitly tested
-4. ❌ **Mailers** - No mailer tests (if any exist)
-5. ⚠️ **Coverage Reporting** - SimpleCov not configured
+1. ❌ **Phase 1 Models** - `TherapistPatientAssignment`, `InviteCode` (pending stubs only)
+2. ❌ **Phase 1 Controllers** - `TherapistAssignmentsController`, `InvitesController` (no tests)
+3. ❌ **Phase 1 Mailers** - `InviteMailer` (no tests)
+4. ❌ **Phase 1 Auth** - `RegistrationsController` invite token functionality (not tested)
+5. ❌ **Services** - No tests for `PatientSummaryGenerator`, `AudioAnalyzerService`, etc.
+6. ❌ **ReportNote Model** - Test file exists but only has pending placeholder
+7. ❌ **Sprint 2-3 Controllers** - `ReportNotesController`, `PatientProgressController`, `PatientSummariesController` (no tests)
+8. ❌ **Pundit Policies** - Authorization policies not explicitly tested
+9. ✅ **Coverage Reporting** - SimpleCov configured and active (35.59% baseline)
 
 ---
 
@@ -72,12 +78,14 @@ Total:        ~177 tests (15-20% of codebase)
 - Coverage reporting configured (@vitest/coverage-v8)
 
 **Gaps:**
-1. ❌ **Core Feature Pages** - ReportsPage, ReportViewPage, ReportEditPage (Tiptap), AudioUploadPage
-2. ❌ **Management Pages** - AnalyticsPage, ClientsManagementPage, PatientProgressPage
-3. ❌ **Key Components** - ReportNotes, audio recording components, analytics charts
-4. ❌ **Custom Hooks** - useAuth, useDebounce, useLocalStorage (if any)
-5. ❌ **Utilities** - API client helpers, formatters, validators
-6. ⚠️ **Integration Tests** - Limited full-flow testing
+1. ❌ **Phase 1 Components** - `RegisterForm` (invite token logic not tested)
+2. ❌ **Phase 1 Pages** - Invite acceptance flow, therapist assignment UI (in ClientsManagementPage)
+3. ❌ **Core Feature Pages** - ReportsPage, ReportViewPage, ReportEditPage (Tiptap), AudioUploadPage
+4. ❌ **Sprint 2-3 Management Pages** - ClientsManagementPage (assignments + invites), PatientProgressPage
+5. ❌ **Sprint 2 Components** - ReportNotes, audio recording components, analytics charts
+6. ❌ **Custom Hooks** - useAuth, useDebounce, useLocalStorage (if any)
+7. ❌ **Utilities** - API client helpers, formatters, validators
+8. ⚠️ **Integration Tests** - Limited full-flow testing (e.g., invite acceptance e2e)
 
 ---
 
@@ -413,6 +421,458 @@ describe('ReportNotes', () => {
 
 ---
 
+## Phase 1 Implementation Testing Plan
+
+**Context**: Phase 1 (Therapist-Patient Linking + Invite System) was implemented without tests. This section provides a comprehensive 5-phase roadmap to close the testing gap for Phase 1 features and other recent sprint work.
+
+**Total Estimated Time**: ~21 hours
+**Expected Outcome**: Backend coverage 60%+, Frontend coverage 40%+
+
+---
+
+### Phase 1: Critical Backend Tests (New Features) - ~4 hours
+
+**Focus**: Test all Phase 1 models, controllers, and mailers
+
+#### 1.1 TherapistPatientAssignment Model Tests (45 min)
+**File**: `app-backend/spec/models/therapist_patient_assignment_spec.rb`
+**Status**: Pending stub exists
+
+**Required Tests:**
+```ruby
+RSpec.describe TherapistPatientAssignment, type: :model do
+  describe 'validations' do
+    it { should validate_presence_of(:therapist_id) }
+    it { should validate_presence_of(:patient_id) }
+    it { should validate_uniqueness_of(:patient_id).scoped_to(:therapist_id, :tenant_id) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:therapist).class_name('User') }
+    it { should belong_to(:patient).class_name('User') }
+    it { should belong_to(:tenant) }
+  end
+
+  describe 'tenant scoping' do
+    it 'prevents cross-tenant assignments'
+    it 'allows multiple therapists per patient within tenant'
+  end
+
+  describe 'role validation' do
+    it 'requires therapist to have therapist role'
+    it 'requires patient to have client role'
+    it 'prevents assigning admin as patient'
+  end
+end
+```
+
+---
+
+#### 1.2 InviteCode Model Tests (45 min)
+**File**: `app-backend/spec/models/invite_code_spec.rb`
+**Status**: Pending stub exists
+
+**Required Tests:**
+```ruby
+RSpec.describe InviteCode, type: :model do
+  describe 'validations' do
+    it { should validate_presence_of(:code) }
+    it { should validate_presence_of(:role) }
+    it { should validate_uniqueness_of(:code) }
+    it { should validate_inclusion_of(:role).in_array(['therapist', 'client']) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:tenant) }
+    it { should belong_to(:created_by).class_name('User') }
+    it { should belong_to(:used_by).class_name('User').optional }
+  end
+
+  describe 'code generation' do
+    it 'generates unique 8-character code on create'
+    it 'generates URL-safe codes (alphanumeric only)'
+  end
+
+  describe 'expiration' do
+    it 'marks code as expired after 7 days'
+    it 'allows setting custom expiration'
+    it 'prevents using expired codes'
+  end
+
+  describe 'usage' do
+    it 'marks code as used when accepted'
+    it 'records used_by user'
+    it 'prevents reusing used codes'
+  end
+
+  describe 'scopes' do
+    it 'filters active (not expired, not used) codes'
+    it 'filters by role'
+    it 'filters by tenant'
+  end
+end
+```
+
+---
+
+#### 1.3 TherapistAssignmentsController Tests (1 hour)
+**File**: `app-backend/spec/requests/api/v1/therapist_assignments_controller_spec.rb`
+**Status**: Controller exists, no tests
+
+**Required Tests:**
+```ruby
+RSpec.describe "Api::V1::TherapistAssignmentsController", type: :request do
+  let(:tenant) { create(:tenant) }
+  let(:therapist) { create(:user, :therapist, tenant: tenant) }
+  let(:patient) { create(:user, :client, tenant: tenant) }
+
+  describe "GET /api/v1/therapist_assignments" do
+    context "as therapist" do
+      it "returns own patient assignments"
+      it "includes patient details"
+    end
+
+    context "as admin" do
+      it "returns all tenant assignments"
+    end
+
+    context "as client" do
+      it "returns 403 forbidden"
+    end
+  end
+
+  describe "POST /api/v1/therapist_assignments" do
+    context "as therapist" do
+      it "creates assignment to self"
+      it "prevents cross-tenant assignment"
+    end
+
+    context "as admin" do
+      it "creates assignment between any therapist and patient"
+    end
+
+    context "as client" do
+      it "returns 403 forbidden"
+    end
+  end
+
+  describe "DELETE /api/v1/therapist_assignments/:id" do
+    it "allows therapist to unassign own patient"
+    it "allows admin to delete any assignment"
+    it "prevents cross-tenant deletion"
+  end
+end
+```
+
+---
+
+#### 1.4 InvitesController Tests (1 hour)
+**File**: `app-backend/spec/requests/api/v1/invites_controller_spec.rb`
+**Status**: Controller needs rewrite, no tests
+
+**Required Tests:**
+```ruby
+RSpec.describe "Api::V1::InvitesController", type: :request do
+  let(:tenant) { create(:tenant) }
+  let(:admin) { create(:user, :admin, tenant: tenant) }
+  let(:therapist) { create(:user, :therapist, tenant: tenant) }
+
+  describe "GET /api/v1/invites" do
+    context "as admin" do
+      it "returns all tenant invite codes"
+      it "filters active vs expired codes"
+    end
+
+    context "as therapist" do
+      it "returns only own created invites"
+    end
+
+    context "as client" do
+      it "returns 403 forbidden"
+    end
+  end
+
+  describe "POST /api/v1/invites" do
+    context "as admin" do
+      it "creates invite code for therapist role"
+      it "creates invite code for client role"
+      it "generates unique 8-char code"
+    end
+
+    context "as therapist" do
+      it "creates invite code for client role only"
+      it "prevents creating therapist invites"
+    end
+  end
+
+  describe "POST /api/v1/invites/:code/accept" do
+    it "accepts valid invite code during registration"
+    it "marks code as used"
+    it "assigns user to tenant"
+    it "creates therapist-patient assignment for client invites"
+    it "rejects expired codes"
+    it "rejects already-used codes"
+  end
+
+  describe "DELETE /api/v1/invites/:id" do
+    it "allows admin to delete any invite"
+    it "allows therapist to delete own invites"
+    it "prevents deleting used invites"
+  end
+end
+```
+
+---
+
+#### 1.5 InviteMailer Tests (30 min)
+**File**: `app-backend/spec/mailers/invite_mailer_spec.rb`
+**Status**: Mailer exists, no tests
+
+**Required Tests:**
+```ruby
+RSpec.describe InviteMailer, type: :mailer do
+  describe '#invite_email' do
+    let(:tenant) { create(:tenant, name: 'Test Clinic') }
+    let(:therapist) { create(:user, :therapist, tenant: tenant) }
+    let(:invite) { create(:invite_code, tenant: tenant, created_by: therapist, role: 'client') }
+    let(:mail) { described_class.invite_email(invite, 'patient@example.com') }
+
+    it 'renders the subject' do
+      expect(mail.subject).to eq('You've been invited to UpSpeech')
+    end
+
+    it 'sends to the correct email' do
+      expect(mail.to).to eq(['patient@example.com'])
+    end
+
+    it 'includes the invite code' do
+      expect(mail.body.encoded).to include(invite.code)
+    end
+
+    it 'includes the registration link with code' do
+      expect(mail.body.encoded).to include("/register?code=#{invite.code}")
+    end
+
+    it 'includes therapist name for client invites' do
+      expect(mail.body.encoded).to include(therapist.name)
+    end
+  end
+end
+```
+
+---
+
+### Phase 2: Backend Service Tests - ~2 hours
+
+**Focus**: Test service layer that was previously untested
+
+#### 2.1 Create spec/services/ Directory
+```bash
+mkdir -p app-backend/spec/services
+```
+
+---
+
+#### 2.2 PatientSummaryGenerator Tests (1 hour)
+**File**: `app-backend/spec/services/patient_summary_generator_spec.rb`
+**Status**: Service exists (Sprint 2), no tests
+
+*(Detailed tests already documented in Priority 1 section above)*
+
+---
+
+#### 2.3 Additional Service Tests (1 hour)
+- `AudioAnalyzerService` (if exists)
+- `MarkdownProcessor` (if exists)
+- `JwtService` (if exists)
+
+---
+
+### Phase 3: Critical Frontend Tests (New Features) - ~6 hours
+
+**Focus**: Test Phase 1 frontend features and Sprint 2-3 components
+
+#### 3.1 RegisterForm Component Tests - Invite Logic (2 hours)
+**File**: `app-frontend/src/components/RegisterForm.test.tsx`
+**Status**: Component exists, no tests for invite logic
+
+**Required Tests:**
+```typescript
+describe('RegisterForm - Invite Flow', () => {
+  describe('invite code parameter', () => {
+    it('reads invite code from URL query param');
+    it('displays invite code in readonly field');
+    it('validates invite code with backend');
+    it('shows error for expired invite code');
+    it('shows error for invalid invite code');
+  });
+
+  describe('registration with invite', () => {
+    it('submits registration with invite code');
+    it('redirects to dashboard after successful registration');
+    it('assigns user to therapist for client invites');
+    it('marks invite code as used');
+  });
+
+  describe('registration without invite', () => {
+    it('allows registration without invite code');
+    it('creates new tenant for first user');
+  });
+});
+```
+
+---
+
+#### 3.2 ReportNotes Component Tests (2 hours)
+**File**: `app-frontend/src/components/ReportNotes.test.tsx`
+**Status**: Component exists (Sprint 2), no tests
+
+*(Detailed tests already documented in Priority 1 section above)*
+
+---
+
+#### 3.3 ClientsManagementPage Tests - Assignment UI (2 hours)
+**File**: `app-frontend/src/pages/ClientsManagementPage.test.tsx`
+**Status**: Page exists with Sprint 2-3 features, no tests
+
+**Required Tests:**
+```typescript
+describe('ClientsManagementPage - Phase 1 Features', () => {
+  describe('therapist assignments', () => {
+    it('displays list of assigned patients');
+    it('shows assignment status and date');
+    it('allows unassigning patient');
+    it('confirms before unassigning');
+  });
+
+  describe('invite management', () => {
+    it('displays create invite button');
+    it('opens invite modal on button click');
+    it('creates client invite with therapist as creator');
+    it('displays generated invite code');
+    it('copies invite link to clipboard');
+    it('displays list of active invites');
+    it('shows invite status (active, expired, used)');
+    it('allows deleting unused invites');
+  });
+
+  describe('patient summary export', () => {
+    it('displays export button for each patient');
+    it('downloads HTML summary on button click');
+  });
+});
+```
+
+---
+
+### Phase 4: Essential Frontend Page Tests - ~8 hours
+
+**Focus**: Cover critical user-facing pages that were built in Sprints 2-3
+
+#### 4.1 ReportsPage Tests (3 hours)
+*(Detailed tests already documented in Priority 1 section above)*
+
+---
+
+#### 4.2 ReportViewPage Tests (2 hours)
+*(Detailed tests already documented in Priority 1 section above)*
+
+---
+
+#### 4.3 PatientProgressPage Tests (3 hours)
+**File**: `app-frontend/src/pages/PatientProgressPage.test.tsx`
+**Status**: Page exists (Sprint 3), no tests
+
+**Required Tests:**
+```typescript
+describe('PatientProgressPage', () => {
+  describe('initial render', () => {
+    it('fetches patient progress data on mount');
+    it('displays loading state while fetching');
+    it('displays error message on API failure');
+  });
+
+  describe('summary cards', () => {
+    it('displays total recordings count');
+    it('displays total reports count');
+    it('displays consistency score');
+    it('displays average recordings per week');
+  });
+
+  describe('recording frequency chart', () => {
+    it('renders area chart with recharts');
+    it('displays recordings over time');
+    it('filters by time range (7d, 30d, 90d, all)');
+  });
+
+  describe('activity timeline', () => {
+    it('displays combined recordings and reports timeline');
+    it('shows activity bars by date');
+    it('includes tooltips with activity details');
+  });
+
+  describe('insights section', () => {
+    it('displays progress insights based on data');
+    it('shows recent activity list');
+  });
+});
+```
+
+---
+
+### Phase 5: Registration Flow Integration Test - ~1 hour
+
+**Focus**: End-to-end test for invite acceptance flow
+
+#### 5.1 Invite Acceptance E2E Test
+**File**: `app-frontend/src/tests/integration/invite-flow.test.tsx` (CREATE NEW)
+
+**Required Tests:**
+```typescript
+describe('Invite Acceptance Flow (Integration)', () => {
+  it('completes full invite flow', async () => {
+    // 1. Admin creates invite code
+    // 2. Invite code is shared via link
+    // 3. New user visits registration with code
+    // 4. User completes registration
+    // 5. User is assigned to tenant
+    // 6. Client is assigned to therapist (for client invites)
+    // 7. Invite code is marked as used
+    // 8. User can access appropriate dashboard
+  });
+
+  it('handles expired invite gracefully');
+  it('handles invalid invite code gracefully');
+});
+```
+
+---
+
+### Phase 1 Testing Plan Summary
+
+**Total Time Investment**: ~21 hours
+
+| Phase | Focus                           | Time   | Outcome                                   |
+| ----- | ------------------------------- | ------ | ----------------------------------------- |
+| 1     | Critical Backend Tests          | 4h     | Phase 1 models, controllers, mailers      |
+| 2     | Backend Service Tests           | 2h     | Service layer coverage                    |
+| 3     | Critical Frontend Tests         | 6h     | Phase 1 UI + Sprint 2 components          |
+| 4     | Essential Frontend Page Tests   | 8h     | Core user-facing pages                    |
+| 5     | Registration Flow Integration   | 1h     | E2E invite acceptance                     |
+
+**Expected Coverage After Completion:**
+- Backend: 60-65% (up from 35.59%)
+- Frontend: 40-50% (up from 15-20%)
+- Critical paths (auth, invites, assignments): 90%+
+
+**Next Steps After Phase 1 Testing:**
+1. Continue with existing Priority 2/3 tests (AudioUploadPage, AnalyticsPage, etc.)
+2. Add Phase 3 (Disfluency Detection) tests as features are implemented
+3. Implement E2E tests with Playwright/Cypress for critical user journeys
+4. Achieve 80%+ overall coverage target
+
+---
+
 ## Priority 2: Medium Priority Tests
 
 ### Backend Medium Priority
@@ -688,7 +1148,7 @@ jobs:
 
 ## Appendix: Test File Inventory
 
-### Backend Test Files (18)
+### Backend Test Files (18 + Phase 1 Missing)
 ```
 spec/
 ├── models/
@@ -697,22 +1157,28 @@ spec/
 │   ├── audio_recording_spec.rb (20 tests) ✅
 │   ├── tenant_spec.rb (18 tests) ✅
 │   ├── transcription_spec.rb (13 tests) ✅
-│   └── report_note_spec.rb (1 pending) ❌
+│   ├── report_note_spec.rb (1 pending) ❌
+│   ├── therapist_patient_assignment_spec.rb (1 pending) ❌ PHASE 1
+│   └── invite_code_spec.rb (1 pending) ❌ PHASE 1
 ├── requests/api/v1/
 │   ├── reports_controller_spec.rb (21 tests) ✅
 │   ├── analytics_controller_spec.rb (18 tests) ✅
 │   ├── filtering_integration_spec.rb (29 tests) ✅
-│   ├── report_notes_controller_spec.rb ❌ MISSING
-│   ├── patient_progress_controller_spec.rb ❌ MISSING
-│   └── patient_summaries_controller_spec.rb ❌ MISSING
+│   ├── therapist_assignments_controller_spec.rb ❌ MISSING - PHASE 1
+│   ├── invites_controller_spec.rb ❌ MISSING - PHASE 1
+│   ├── report_notes_controller_spec.rb ❌ MISSING - SPRINT 2
+│   ├── patient_progress_controller_spec.rb ❌ MISSING - SPRINT 3
+│   └── patient_summaries_controller_spec.rb ❌ MISSING - SPRINT 2
 ├── jobs/
 │   └── transcription_processor_job_spec.rb (16 tests) ✅
+├── mailers/
+│   └── invite_mailer_spec.rb ❌ MISSING - PHASE 1
 ├── services/
-│   └── patient_summary_generator_spec.rb ❌ MISSING
+│   └── patient_summary_generator_spec.rb ❌ MISSING - SPRINT 2
 └── spec_helper.rb, rails_helper.rb ✅
 ```
 
-### Frontend Test Files (6)
+### Frontend Test Files (6 + Phase 1 Missing)
 ```
 src/
 ├── lib/
@@ -723,22 +1189,25 @@ src/
 │   │   ├── AdminDashboard.test.tsx (10 tests) ✅
 │   │   ├── TherapistDashboard.test.tsx (4 tests) ✅
 │   │   └── ClientDashboard.test.tsx (7 tests) ✅
-│   └── ReportNotes.test.tsx ❌ MISSING
+│   ├── RegisterForm.test.tsx ❌ MISSING - PHASE 1 (invite logic)
+│   └── ReportNotes.test.tsx ❌ MISSING - SPRINT 2
 ├── pages/
 │   ├── TherapistDashboardPage.test.tsx (15 tests) ✅
-│   ├── ReportsPage.test.tsx ❌ MISSING
-│   ├── ReportViewPage.test.tsx ❌ MISSING
+│   ├── ReportsPage.test.tsx ❌ MISSING - SPRINT 2
+│   ├── ReportViewPage.test.tsx ❌ MISSING - SPRINT 2
 │   ├── AudioUploadPage.test.tsx ❌ MISSING
 │   ├── AnalyticsPage.test.tsx ❌ MISSING
-│   ├── ClientsManagementPage.test.tsx ❌ MISSING
-│   └── PatientProgressPage.test.tsx ❌ MISSING
-└── test/
-    ├── setup.ts ✅
-    └── mocks.ts ✅
+│   ├── ClientsManagementPage.test.tsx ❌ MISSING - PHASE 1 + SPRINT 2-3
+│   └── PatientProgressPage.test.tsx ❌ MISSING - SPRINT 3
+├── tests/
+│   ├── setup.ts ✅
+│   ├── mocks.ts ✅
+│   └── integration/
+│       └── invite-flow.test.tsx ❌ MISSING - PHASE 1 E2E
 ```
 
 ---
 
 **Document Owner**: Development Team
 **Review Cadence**: Monthly
-**Next Review**: November 21, 2025
+**Next Review**: November 22, 2025
