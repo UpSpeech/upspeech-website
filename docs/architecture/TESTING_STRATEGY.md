@@ -1,6 +1,6 @@
 # Testing Strategy & Coverage Plan
 
-**Last Updated**: October 22, 2025 (Post-Phase 1 Implementation)
+**Last Updated**: 2025-11-07
 **Status**: Active - Phase 1 Testing Roadmap Defined
 
 ## Executive Summary
@@ -12,6 +12,82 @@ UpSpeech has a **solid backend testing foundation (188 tests, 35.59% coverage wi
 - **Frontend**: ~177 test cases, but only 15-20% feature coverage, missing Phase 1 UI tests
 - **Target**: 80% overall coverage, 95% for critical paths
 - **Phase 1 Testing Gap**: ~21 hours of testing needed for new features (see Phase 1 Implementation Testing Plan below)
+
+---
+
+## Testing Philosophy & Workflow
+
+UpSpeech aims for **sturdy, production-ready code**. All new features and bug fixes MUST include relevant tests.
+
+### Core Principles
+
+**Quality over quantity:**
+- Write **meaningful tests** that verify actual behavior, not just mocks
+- Avoid excessive mocking that makes tests pass without validating real functionality
+- Test edge cases, error scenarios, and happy paths
+- Focus on integration and behavior testing over implementation details
+
+**Required Test Coverage:**
+- **Backend**: All new models, controllers, services, and jobs MUST have tests
+- **Frontend**: All new pages, components (especially with business logic), and utilities MUST have tests
+- **Aim for 80%+ code coverage** across both frontend and backend
+
+### When to Write Tests
+
+**ALWAYS write tests for:**
+
+1. **New features** - Write tests alongside implementation (TDD encouraged)
+2. **Bug fixes** - Write a failing test first, then fix the bug
+3. **Refactoring** - Ensure existing tests pass, add tests for new edge cases
+4. **API endpoints** - Test all CRUD operations and permissions
+5. **Business logic** - Services, utilities, calculations
+6. **User interactions** - Forms, buttons, navigation
+
+**Testing workflow:**
+
+1. **Before coding**: Write failing test (TDD approach)
+2. **During coding**: Implement feature until test passes
+3. **After coding**: Add edge case tests, verify coverage
+4. **Before commit**: Run full test suite
+5. **Before PR**: Ensure all tests pass, coverage meets targets
+
+### Running Tests
+
+**Backend (RSpec):**
+
+```bash
+bundle exec rspec                    # Run all tests
+bundle exec rspec spec/models/       # Run specific folder
+COVERAGE=true bundle exec rspec      # Run with coverage
+```
+
+**Frontend (Vitest):**
+
+```bash
+npm run test              # Run all tests
+npm run test -- --watch   # Watch mode
+npm run test:ui           # UI dashboard
+npm run test -- --coverage # With coverage
+```
+
+### Coverage Requirements
+
+**Check coverage regularly:**
+
+```bash
+# Backend
+COVERAGE=true bundle exec rspec
+
+# Frontend
+npm run test -- --coverage
+```
+
+**Minimum coverage targets:**
+- **Overall**: 80%
+- **Critical paths**: 95% (auth, permissions, payment flows)
+- **New features**: 100% (all new code must have tests)
+
+For detailed testing guidelines, examples, and specific test requirements, see the sections below.
 
 ---
 

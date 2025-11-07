@@ -849,7 +849,60 @@ This phase will be implemented post-MVP.
    **Files to Modify**:
    - `app-frontend/src/pages/ClientsManagementPage.tsx` - Add "Export Summary" button
 
-3. **Therapist Dashboard with Quick Metrics** - **Priority: P2**
+3. **Manual Report Generator (Insurance Templates)** - **Priority: P1** ⭐ **IN PROGRESS**
+   - **What**: UI to generate manual reports from templates (insurance declarations, assessments)
+   - **Why**: Enable therapists to quickly create insurance documentation without manual typing
+   - **Effort**: 3-4 days
+
+   **Implementation**:
+   ```ruby
+   # app/controllers/api/v1/manual_reports_controller.rb
+   class Api::V1::ManualReportsController < ApplicationController
+     # GET /api/v1/manual_reports/templates
+     def templates
+       render json: {
+         templates: [
+           {
+             id: 'insurance_report',
+             name: 'Insurance Declaration (PT)',
+             description: 'Portuguese insurance declaration for stuttering therapy',
+             fields: insurance_report_fields
+           }
+         ]
+       }
+     end
+
+     # POST /api/v1/manual_reports/generate
+     def generate
+       # Calls /insurance-report endpoint in upspeech-ai
+       # Saves report to database
+       # Returns formatted report content
+     end
+   end
+   ```
+
+   **Frontend**:
+   ```typescript
+   // app-frontend/src/pages/ManualReportGeneratorPage.tsx
+   // 3-step flow:
+   // 1. Select template from available options (cards)
+   // 2. Fill form with required fields (dynamic based on template)
+   // 3. Preview report + export as PDF or copy to clipboard
+   ```
+
+   **Files to Create**:
+   - `app/controllers/api/v1/manual_reports_controller.rb`
+   - `app-frontend/src/pages/ManualReportGeneratorPage.tsx`
+
+   **Files to Modify**:
+   - `config/routes.rb` - Add manual reports routes
+   - Navigation component - Add link to manual reports page
+
+   **Existing Integration**:
+   - `POST /insurance-report` endpoint already exists in upspeech-ai (line 487-519 in endpoint.py)
+   - Template already defined in `src/report_writer/templates/report_templates.py`
+
+4. **Therapist Dashboard with Quick Metrics** - **Priority: P2**
    - **What**: Dedicated dashboard showing all assigned patients with key metrics at a glance
    - **Why**: Efficient caseload management, quick identification of at-risk patients
    - **Effort**: 3 days
@@ -876,6 +929,7 @@ This phase will be implemented post-MVP.
 - ✅ As an SLP, I can see all my patients' key info in one place
 - 🔨 As an SLP, I can leave feedback on patient reports
 - 🔨 As an SLP, I can export patient progress summaries as PDF
+- 🔨 **As an SLP, I can generate insurance reports by filling out a template form** ⭐
 - 🔨 As an SLP, I have a dashboard showing patient alerts and quick metrics
 
 ---
