@@ -24,6 +24,7 @@ Current sprint status, roadmap, and task tracking.
 Core technical architecture, patterns, and system design.
 
 - **[architecture/SYSTEM_DESIGN.md](architecture/SYSTEM_DESIGN.md)** - Overall architecture and technical decisions
+- **[architecture/SERVICE_COMMUNICATION.md](architecture/SERVICE_COMMUNICATION.md)** - **⭐ How services communicate & API integration guide**
 - **[architecture/TESTING_STRATEGY.md](architecture/TESTING_STRATEGY.md)** - Testing philosophy, guidelines, and coverage plan
 - **[architecture/MULTI_TENANCY.md](architecture/MULTI_TENANCY.md)** - Multi-tenant isolation strategy
 - **[architecture/AUTH_FLOW.md](architecture/AUTH_FLOW.md)** - Authentication and session management
