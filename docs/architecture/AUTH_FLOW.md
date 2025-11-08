@@ -1,127 +1,124 @@
 # Authentication & Authorization Flow
 
-Status: **Current Implementation v1.0** (Session-based)
-Last Updated: 2025-09-15
+Status: **Current Implementation v1.1** (JWT-based)
+Last Updated: 2025-11-08
 
 ## 1. Goals
 
-- Secure API access with session-based authentication.
-- Multi-tenant aware: tenant context resolved via user associations.
-- Fast implementation for MVP; easy to extend (SSO, magic links).
+- Secure API access with stateless JWT (JSON Web Token) authentication.
+- Multi-tenant aware: tenant context is embedded in the JWT and resolved on the backend.
+- Scalable and ready for microservice communication.
 
-## 2. Current Implementation (Session-Based)
+## 2. Current Implementation (JWT-Based)
 
-**Note**: This differs from the original JWT design for faster MVP delivery. See [Future Improvements](#future-improvements) for JWT migration plan.
+The application uses JWT Bearer tokens for authenticating all API requests. The flow leverages a customized Devise setup on the backend to issue tokens and a client-side implementation that stores the token in `localStorage`.
 
 ## 3. Actors
 
 - End-user (browser SPA).
-- Rails API (Devise controllers).
-- Session Store (Rails built-in session management).
+- Rails API (customized Devise controllers, `JwtService`).
+- Frontend Auth Service (`useAuth` context).
 
 ## 4. Authentication Model
 
-| Component                           | Storage                                | Lifetime      | Purpose                   |
-| ----------------------------------- | -------------------------------------- | ------------- | ------------------------- |
-| Session Cookie                      | HttpOnly Secure SameSite=Strict cookie | Rails default | Maintain user session.    |
-| User Profile                        | localStorage (frontend)                | Session       | Cache user data locally.  |
-| (Optional) Email Verification Token | DB or signed token                     | 24h           | Activate user.            |
-| (Optional) Password Reset Token     | DB or signed token                     | 1h            | Credential recovery.      |
-
-Session Context: User ID, tenant association via `current_user.tenant`.
+| Component | Storage | Lifetime | Purpose |
+|---|---|---|---|
+| **JWT Access Token** | `localStorage` (frontend) | **24 hours** | Authenticate API requests. Contains `user_id`, `tenant_id`. |
+| **User Profile** | `localStorage` (frontend) | Session | Cache user data locally for the UI. |
+| **(Optional) Password Reset Token** | DB or signed token | 1h | Credential recovery. |
 
 ## 5. Login Flow
 
-1. POST `/auth/sign_in` with `{user: {email, password}}`.
-2. Devise validates credentials; ensure user belongs to active tenant.
-3. Rails creates session and sets session cookie.
-4. Return `{status: {code: 200, message: "..."}, data: user_profile}`.
-5. Frontend stores user profile in localStorage (no tokens).
+1.  **POST `/auth/sign_in`** with `{user: {email, password}}`.
+2.  The backend's `Auth::SessionsController` uses Devise to validate credentials.
+3.  If valid, the controller calls `JwtService.encode` to create a new JWT. The payload contains `user_id`, `tenant_id`, and a 24-hour expiry (`exp`).
+4.  The server returns a JSON response:
+    ```json
+    {
+      "status": { "code": 200, "message": "Logged in successfully." },
+      "token": "ey...",
+      "exp": "11-09-2025 14:30",
+      "user": { ... }
+    }
+    ```
+5.  The frontend's `AuthProvider` (`lib/auth.tsx`) receives the response.
+6.  The `token`, expiry `exp`, and `user` data are stored in `localStorage`.
+7.  The user is now authenticated; subsequent API calls will include the token.
 
-## 6. Session Management
+## 6. Token Handling & API Requests
 
-- **Server-side**: Rails manages session state automatically.
-- **Client-side**: Session cookie sent automatically with requests.
-- **Tenant Context**: Resolved via `current_user.tenant` in ApplicationController.
-- **CORS**: Configured to allow credentials for cross-origin requests.
+-   **Storage**: The JWT is stored in the browser's `localStorage`.
+-   **Sending the Token**: A frontend Axios interceptor (`lib/api.ts`) automatically attaches the token to the `Authorization` header for all API requests to the versioned API:
+    `Authorization: Bearer <token>`
+-   **Backend Verification**: On each request, a `before_action` in the `ApplicationController` (using the `JsonWebToken` concern) decodes and validates the token. It uses the token's payload to find the `current_user` and `current_tenant`.
+-   **Unauthorized Requests**: If the token is missing, invalid, or expired, the server returns a `401 Unauthorized` status.
+-   **Frontend 401 Handling**: An Axios response interceptor catches 401 errors, clears the `auth_token` and `user_data` from `localStorage`, and redirects the user to the login page.
 
 ## 7. Logout
 
-- DELETE `/auth/sign_out`: Devise destroys session.
-- Frontend clears localStorage user data.
+1.  Frontend calls the `logout` function in `AuthProvider`.
+2.  An optional **DELETE `/auth/sign_out`** request is made to the backend.
+3.  Crucially, the frontend **deletes** the `auth_token`, `token_expiry`, and `user_data` from `localStorage`.
+4.  The user state is cleared, and they are effectively logged out.
 
 ## 8. Password Reset
 
 1. Request: POST `/auth/password/reset/request` with email.
 2. Send signed token link `https://app/reset?token=...`.
-3. Validate, allow new password set; invalidate existing sessions.
+3. Validate, allow new password set.
 
 ## 9. Registration
 
-- POST `/auth` (Devise registration): creates Tenant + User (owner role).
+- POST `/auth` (Devise registration): creates a new `Tenant` and associated `User` (with `owner` role).
+- Upon successful registration, the backend returns a JWT, logging the user in immediately.
 - Optionally require email verification before enabling login.
-- Seed default settings rows.
 
 ## 10. Roles & Authorization
 
-Initial roles: `owner`, `admin`, `member`.
-
-- Policy layer: Pundit with tenant scoping.
-- Server validates roles on each request via `current_user` session data.
+- **Roles**: `owner`, `admin`, `therapist`, `client`, `member`.
+- **Policy Layer**: Pundit is used for authorization policies.
+- **Verification**: The server validates roles on each request via the `current_user` object, which is authenticated and loaded from the JWT payload.
 
 ## 11. Rate Limiting
 
 - `/auth/sign_in`: 5 attempts / 10 min / IP + email combo.
-- Standard Rails rate limiting on auth endpoints.
+- Standard Rails rate limiting on auth endpoints is in place.
 
 ## 12. CSRF Considerations
 
-- Sessions use Rails built-in CSRF protection.
-- API requests include CSRF token for state-changing operations.
+- Since the application uses stateless JWTs sent in the `Authorization` header and does not rely on cookies for authentication, it is not vulnerable to CSRF attacks.
+- The Rails backend may still have CSRF protection enabled by default, but it does not apply to the API endpoints authenticated via JWT.
 
-## 13. Implementation Gems
+## 13. Implementation Details
 
-- `devise` (email/password, recoverable, confirmable, sessions).
-- `argon2` or `bcrypt` for password hashing.
-- `pundit` for authorization policies.
+### Backend
 
-## 14. Frontend Handling
+-   **Gems**:
+    -   `devise` for handling the user model and authentication logic.
+    -   `jwt` for encoding and decoding tokens.
+    -   `pundit` for authorization policies.
+    -   `argon2` for password hashing.
+-   **`Auth::SessionsController`**: Overrides the default Devise `respond_with` method to generate and return a JWT upon successful login.
+-   **`JwtService`**: A service class (`app/services/jwt_service.rb`) that encapsulates JWT encoding/decoding logic.
+-   **`JsonWebToken` Concern**: A controller concern (`app/controllers/concerns/json_web_token.rb`) that handles decoding the token from the `Authorization` header and setting the `@current_user`.
 
-- Store user profile in localStorage (no sensitive tokens).
-- Session cookie automatically sent with requests.
-- Global Axios interceptor for 401 → redirect to login.
+### Frontend
 
-## 15. Current Session Context
+-   **`lib/api.ts`**: Contains the `ApiClient` with Axios interceptors to add the `Authorization` header to requests and handle 401 responses.
+-   **`lib/auth.tsx`**: The `AuthProvider` component manages the user's authentication state, handles login/logout logic, and interacts with `localStorage`.
 
-```ruby
-# ApplicationController
-def current_tenant
-  @current_tenant ||= current_user&.tenant
-end
+## 14. Auditing
 
-def set_current_tenant
-  Current.tenant = current_user.tenant if current_user
-end
-```
+Log events: login success/failure, password reset request, role change. (Future Implementation)
 
-## 16. Auditing (Phase 2)
+## 15. Future Improvements
 
-Log events: login success/failure, password reset request, role change.
+-   **Refresh Tokens**: To improve security and provide longer-lived sessions without exposing a long-lived access token, a refresh token mechanism could be implemented.
+    -   Access tokens would have a shorter lifetime (e.g., 15 minutes).
+    -   A secure, `HttpOnly` refresh token would be used to obtain a new access token without requiring the user to log in again.
+-   **SSO (SAML / OIDC)**: Map external identity providers to tenant roles.
+-   **WebAuthn**: For phishing-resistant MFA.
 
-## 17. Future Improvements
+## 16. Summary
 
-### JWT Migration (Phase 2)
-- **Goal**: Implement stateless JWT authentication for horizontal scaling
-- **Access Tokens**: 15-minute JWT with `tid` (tenant) claims
-- **Refresh Tokens**: 30-day rotating HttpOnly cookies
-- **Benefits**: Stateless scaling, embedded tenant context, microservice-ready
-- **Migration Path**: Dual authentication support during transition
-
-### Additional Enhancements
-- SSO (SAML / OIDC) maps external identity to tenant role.
-- Magic links (email-based sign-in).
-- WebAuthn for phishing-resistant MFA.
-
-## 18. Summary
-
-Session-based authentication provides secure, simple MVP implementation. Tenant context resolved via user associations. Clear migration path to JWT when horizontal scaling is needed.
+The application uses a **JWT-based authentication** system, which provides a stateless and scalable method for securing the API. The backend leverages Devise for credential validation and a custom `JwtService` for token generation. The frontend manages the token in `localStorage` and uses Axios interceptors to automate adding it to API requests. This approach is secure and well-suited for a modern SPA architecture.

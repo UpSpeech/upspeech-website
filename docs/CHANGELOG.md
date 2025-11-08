@@ -5,6 +5,88 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## Sprint 4 (Week 4) - November 8, 2025
+
+### Phase 1: Foundation (Patient-Therapist Linking) ✅ COMPLETE
+
+#### Added
+
+**Patient-Therapist Assignment System:**
+- Created `TherapistPatientAssignment` model with status management (active/inactive)
+- Built `TherapistAssignmentsController` with full CRUD API
+- Implemented filtered views for therapists to see only their assigned patients
+- Created `MyPatientsPage.tsx` with patient list and assignment management
+- Added assignment controls to `ClientsManagementPage.tsx`
+
+**Invite Code System:**
+- Created `InviteCode` model with secure token generation (SecureRandom.urlsafe_base64)
+- Built `InvitesController` with create/validate endpoints
+- Implemented 7-day expiration system with automatic validation
+- Created `InviteMailer` for email delivery of invite links
+- Integrated invite token support into `RegisterForm.tsx`
+- Auto-assignment of therapist-patient relationship on signup with invite
+
+**Key Files:**
+- Backend: `TherapistPatientAssignment`, `InviteCode` models
+- Controllers: `TherapistAssignmentsController`, `InvitesController`
+- Frontend: `MyPatientsPage.tsx`, `RegisterForm.tsx` (invite integration)
+
+#### Status
+- Phase 1: 100% complete
+
+---
+
+### Phase 4: Manual Exercise Assignment ✅ COMPLETE
+
+#### Added
+
+**Exercise Library:**
+- Created `Exercise` model with 10 categories (fluency_shaping, fluency_modification, cbt, breathing, relaxation, mindfulness, speech_practice, conversation_skills, presentation, other)
+- Difficulty scale 1-5 with validation
+- Built `ExercisesController` with CRUD + categories endpoint
+- Tenant-scoped exercise library
+
+**Exercise Assignment System:**
+- Created `ExerciseAssignment` model with 4 statuses (assigned, in_progress, completed, skipped)
+- Due date tracking with overdue detection
+- Notes fields for therapist and patient communication
+- Built `ExerciseAssignmentsController` with CRUD + complete/in_progress/skip actions
+- Statistics endpoint for completion rates and average completion time
+
+**Therapist Interface:**
+- Created `ExerciseLibraryPage.tsx` for exercise management
+- Exercise creation/editing with category and difficulty selection
+- Assignment modal with patient selection and due date picker
+- Filter by category and difficulty
+- Visual indicators for exercise assignments
+
+**Patient Interface:**
+- Created `MyExercisesPage.tsx` for viewing and completing exercises
+- Statistics dashboard showing total, completed, overdue counts
+- Status filtering (all, assigned, in progress, completed, overdue)
+- Exercise completion with patient notes
+- Visual badges for status and overdue indicators
+
+**API Integration:**
+- Added 17 API client methods to `lib/api.ts`
+- TypeScript types: `Exercise`, `ExerciseAssignment`, `ExerciseAssignmentStatistics`, `ExerciseCategory`
+- Routes: `/dashboard/exercises` (therapists), `/my-exercises` (patients)
+- Navigation integration in `RoleBasedNavigation.tsx`
+
+**Internationalization:**
+- Added translations to `en.json` and `pt.json`
+- Navigation labels: "Exercise Library" / "Biblioteca de Exercícios"
+
+**Key Files:**
+- Backend: `Exercise`, `ExerciseAssignment` models
+- Controllers: `ExercisesController`, `ExerciseAssignmentsController`
+- Frontend: `ExerciseLibraryPage.tsx`, `MyExercisesPage.tsx`
+
+#### Status
+- Phase 4: 100% complete (AI recommendations deferred to post-MVP)
+
+---
+
 ## Sprint 3 (Week 3) - October 17, 2025
 
 ### Phase 5: Progress Dashboard ✅ COMPLETE
@@ -117,4 +199,4 @@ and this project adheres to semantic versioning for sprints.
 
 ---
 
-**Last Updated:** 2025-11-07
+**Last Updated:** 2025-11-08

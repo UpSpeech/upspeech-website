@@ -1,8 +1,8 @@
 # UpSpeech MVP Roadmap
 
-**Version**: 1.0
-**Last Updated**: October 16, 2025
-**Status**: Sprint 1 - Phase 2 Completion
+**Version**: 1.1
+**Last Updated**: November 8, 2025
+**Status**: Phase 1 & 4 Complete - Phase 3 Focus
 
 ---
 
@@ -41,15 +41,17 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 | Phase | Name | Status | Priority | Effort | Target |
 |-------|------|--------|----------|--------|--------|
-| 1 | Foundational Setup | 🟢 90% | HIGH | 1 day | Week 3-4 |
-| 2 | Automated Report Writing | 🟡 60% | **CRITICAL** ⚡ | 2 weeks | Week 1-2 |
+| 1 | Foundational Setup | ✅ 100% | HIGH | 1 day | ✅ Complete |
+| 2 | Automated Report Writing | 🟢 95% | **CRITICAL** ⚡ | 2 weeks | Week 1-2 |
 | 3 | Basic Speech Analysis | 🟡 50% | HIGH | 2 weeks | Week 5-6 |
-| 4 | Personalized Exercise Generator | 🔴 0% | LOW (Post-MVP) | 3-4 weeks | Post-launch |
-| 5 | Practice Tracker & Progress | 🟡 40% | MEDIUM | 2 weeks | Week 7-8 |
+| 4 | Manual Exercise Assignment | ✅ 100% | MEDIUM (MVP) | 2 days | ✅ Complete |
+| 5 | Practice Tracker & Progress | 🟢 75% | MEDIUM | 2 weeks | Week 7-8 |
 | 6 | Gamified Motivation | 🔴 0% | LOW (Post-MVP) | 1-2 weeks | Post-launch |
-| 7 | Therapist Portal Expansion | 🟢 70% | MEDIUM | 1 week | Week 7-8 |
+| 7 | Therapist Portal Expansion | ✅ 100% | MEDIUM | 1 week | ✅ Complete |
 
-**Legend**: 🟢 High completion | 🟡 In progress | 🔴 Not started
+**Legend**: ✅ Complete | 🟢 High completion | 🟡 In progress | 🔴 Not started
+
+**Note**: Phase 4 has been simplified from "AI-Powered Exercise Generator" to "Manual Exercise Assignment" for MVP. AI recommendations will be added post-launch.
 
 ---
 
@@ -59,7 +61,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 **Objective**: Build core architecture with authentication and role-based access control.
 
-**Status**: 🟢 **90% Complete**
+**Status**: ✅ **100% Complete** (November 8, 2025)
 
 #### ✅ Completed Features
 
@@ -69,65 +71,48 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - [x] Multi-tenant architecture (row-level isolation via `tenant_id`)
 - [x] User management CRUD operations
 - [x] Permission system (`can_manage_all_tenants?`, `can_manage_users?`, etc.)
+- [x] **Patient-Therapist Linking System** ⭐ NEW
+- [x] **Invite Code System** ⭐ NEW
 
 **Implementation Files**:
-- `app-backend/app/models/user.rb` (lines 11-66)
-- `app-backend/app/controllers/api/v1/users_controller.rb`
+- `app-backend/app/models/user.rb`
+- `app-backend/app/models/therapist_patient_assignment.rb`
+- `app-backend/app/models/invite_code.rb`
+- `app-backend/app/controllers/api/v1/therapist_assignments_controller.rb`
+- `app-backend/app/controllers/api/v1/invites_controller.rb`
+- `app-backend/app/mailers/invite_mailer.rb`
 - `app-frontend/src/lib/auth.tsx`
 - `app-frontend/src/lib/permissions.ts`
+- `app-frontend/src/pages/MyPatientsPage.tsx` (with assignment UI)
+- `app-frontend/src/components/auth/RegisterForm.tsx` (invite token support)
 
-#### 🔨 Missing Features (10%)
+#### Features Completed
 
-1. **Patient-Therapist Linking System**
-   - **What**: Formal assignment model to track which therapists manage which patients
-   - **Why**: Enable filtered views (therapists see only assigned patients)
-   - **Effort**: 4 hours
+1. **Patient-Therapist Linking System** ✅
+   - Formal assignment model tracking therapist-patient relationships
+   - API endpoints: index, create, update (status), destroy
+   - Frontend UI for assigning patients to therapists
+   - Filtered views (therapists see only assigned patients)
+   - Status management (active/inactive)
 
-   **Implementation**:
-   ```ruby
-   # New Model: TherapistPatientAssignment
-   # Fields: therapist_id, patient_id, assigned_at, status (active/inactive)
-   # Validations: unique pair, roles validation (therapist role + client role)
-   ```
-
-   **Files to Create**:
-   - `app/models/therapist_patient_assignment.rb`
-   - `app/controllers/api/v1/therapist_assignments_controller.rb`
-   - Migration: `db/migrate/YYYYMMDDHHMMSS_create_therapist_patient_assignments.rb`
-
-   **Files to Modify**:
-   - `app-frontend/src/pages/ClientsManagementPage.tsx` - Add assignment UI
-
-2. **Invite Codes / Email Invites**
-   - **What**: Generate unique invite links for patients to self-register
-   - **Why**: Reduce manual patient creation, improve onboarding UX
-   - **Effort**: 4 hours
-
-   **Implementation**:
-   ```ruby
-   # New Model: InviteCode
-   # Fields: token (unique), email, therapist_id, used_at, expires_at, role
-   # Token generation: SecureRandom.urlsafe_base64(32)
-   ```
-
-   **Files to Create**:
-   - `app/models/invite_code.rb`
-   - `app/controllers/api/v1/invites_controller.rb`
-   - `app/mailers/invite_mailer.rb`
-
-   **Files to Modify**:
-   - `app-frontend/src/pages/SignupPage.tsx` - Accept invite token
+2. **Invite Code System** ✅
+   - Secure token generation (SecureRandom.urlsafe_base64)
+   - Email invites via InviteMailer
+   - 7-day expiration with validation
+   - Token validation endpoint (public)
+   - SignupPage accepts invite tokens from URL
+   - Auto-population of email from invite
 
 #### User Stories
 
 **Therapist**:
 - ✅ As an SLP, I can create an account and manage my patients
-- 🔨 As an SLP, I can invite patients via email link
-- 🔨 As an SLP, I can assign patients to myself or other therapists
+- ✅ As an SLP, I can invite patients via email link
+- ✅ As an SLP, I can assign patients to myself or other therapists
 
 **Patient**:
 - ✅ As a patient, I can create an account and link to my therapist
-- 🔨 As a patient, I can join using an invite link
+- ✅ As a patient, I can join using an invite link
 - ✅ As a patient, I have a home dashboard showing my data
 
 ---
@@ -551,36 +536,101 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 ---
 
-### Phase 4: Personalized Exercise Generator
+### Phase 4: Manual Exercise Assignment
 
-**Objective**: Provide tailored practice based on analysis results.
+**Objective**: Enable therapists to create and assign practice exercises to patients (without AI recommendations).
 
-**Status**: 🔴 **0% Complete** - **POST-MVP**
+**Status**: ✅ **100% Complete** (November 8, 2025)
 
-#### 🔨 All Features Missing (100%)
+**Note**: This phase was simplified for MVP. Originally "Personalized Exercise Generator" with AI, now focuses on manual exercise management. AI recommendations will be added post-launch.
 
-This phase will be implemented post-MVP based on user feedback.
+#### ✅ Completed Features
 
-**Planned Features**:
-1. Exercise library (fluency shaping, fluency modification, CBT exercises)
-2. AI/rules-based recommendation engine
-3. Manual exercise assignment by therapists
-4. Exercise completion logging
-5. Practice difficulty tracking
-6. Scenario practice (text-based or avatar simulation)
+- [x] Exercise library with CRUD operations
+- [x] 10 exercise categories (fluency_shaping, fluency_modification, cbt, breathing, relaxation, mindfulness, speech_practice, conversation_skills, presentation, other)
+- [x] Difficulty levels (1-5 scale)
+- [x] Manual exercise assignment by therapists
+- [x] Assignment with due dates and therapist notes
+- [x] Exercise completion tracking (4 statuses: assigned, in_progress, completed, skipped)
+- [x] Patient notes on completed exercises
+- [x] Statistics and progress tracking
+- [x] Overdue exercise detection
+- [x] Completion rate metrics
 
-**Estimated Effort**: 3-4 weeks
+**Implementation Files**:
 
-#### User Stories (Future)
+**Backend**:
+- `app-backend/app/models/exercise.rb`
+- `app-backend/app/models/exercise_assignment.rb`
+- `app-backend/app/controllers/api/v1/exercises_controller.rb`
+- `app-backend/app/controllers/api/v1/exercise_assignments_controller.rb`
+- `db/migrate/20251108130552_create_exercises.rb`
+- `db/migrate/20251108130732_create_exercise_assignments.rb`
+
+**Frontend**:
+- `app-frontend/src/pages/ExerciseLibraryPage.tsx` (Therapist UI)
+- `app-frontend/src/pages/MyExercisesPage.tsx` (Patient UI)
+- `app-frontend/src/types/index.ts` (TypeScript types)
+- `app-frontend/src/lib/api.ts` (17 API client methods)
+
+**Routes**:
+- `/dashboard/exercises` - Exercise Library (therapists only)
+- `/my-exercises` - My Exercises (all users)
+
+#### Features Completed
+
+1. **Exercise Library Management** ✅
+   - Create, read, update, delete exercises
+   - Filter by category and difficulty
+   - Search and pagination
+   - Category dropdown with 10 options
+   - Difficulty selector (1-5)
+   - Rich text instructions field
+
+2. **Exercise Assignment System** ✅
+   - Assign exercises to specific patients
+   - Set due dates (optional)
+   - Add therapist notes (optional)
+   - Track assignment status
+   - View all assignments (filtered by therapist/patient)
+   - Statistics dashboard
+
+3. **Patient Exercise Interface** ✅
+   - View assigned exercises
+   - Filter by status (active, completed, overdue, all)
+   - Mark exercises as in progress
+   - Complete exercises with patient notes
+   - Skip exercises
+   - View exercise details and instructions
+   - Statistics cards (total, completed, in progress, completion rate)
+   - Overdue indicator for late exercises
+
+#### User Stories
 
 **Therapist**:
-- As an SLP, I want to assign exercises manually or validate AI-generated ones
-- As an SLP, I want to see which exercises a patient completes
+- ✅ As an SLP, I can create custom exercises with instructions
+- ✅ As an SLP, I can assign exercises to specific patients
+- ✅ As an SLP, I can set due dates for exercises
+- ✅ As an SLP, I can add notes/instructions for each assignment
+- ✅ As an SLP, I can see which exercises a patient completes
+- ✅ As an SLP, I can track completion rates and statistics
 
 **Patient**:
-- As a patient, I want to receive personalized daily exercises
-- As a patient, I want to log each practice session
-- As a patient, I want to understand why each exercise is recommended
+- ✅ As a patient, I can view all exercises assigned to me
+- ✅ As a patient, I can see exercise instructions and details
+- ✅ As a patient, I can mark exercises as in progress or complete
+- ✅ As a patient, I can add notes about my practice
+- ✅ As a patient, I can see my completion rate and statistics
+- ✅ As a patient, I can see which exercises are overdue
+
+#### Post-MVP Enhancements (Future)
+
+The following features will be added after launch:
+- AI-powered exercise recommendations based on speech analysis
+- Personalized difficulty adjustment
+- Scenario-based practice (text or avatar simulation)
+- Exercise effectiveness tracking
+- Automated exercise suggestions based on patient progress
 
 ---
 

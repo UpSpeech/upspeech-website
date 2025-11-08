@@ -2,7 +2,63 @@
 
 **Last Updated**: November 8, 2025
 
-## ✅ RECENTLY COMPLETED: Tenant Theming & Multi-Template System
+## ✅ RECENTLY COMPLETED: Phase 1 & Phase 4 (November 8, 2025)
+
+### Phase 1: Foundational Setup - 100% Complete ✅
+
+**Completed**: November 8, 2025
+**Priority**: HIGH - MVP Core
+**Effort**: Previously 90% complete, final 10% completed today
+**Status**: ✅ Complete
+
+**What Was Completed**:
+- ✅ **Patient-Therapist Linking System** - Formal assignments, filtered views, status management
+- ✅ **Invite Code System** - Secure tokens, email invites, 7-day expiration, signup integration
+
+**Key Files**:
+- `app-backend/app/models/therapist_patient_assignment.rb`
+- `app-backend/app/models/invite_code.rb`
+- `app-backend/app/controllers/api/v1/therapist_assignments_controller.rb`
+- `app-backend/app/controllers/api/v1/invites_controller.rb`
+- `app-backend/app/mailers/invite_mailer.rb`
+- `app-frontend/src/pages/MyPatientsPage.tsx`
+- `app-frontend/src/components/auth/RegisterForm.tsx`
+
+### Phase 4: Manual Exercise Assignment - 100% Complete ✅
+
+**Completed**: November 8, 2025
+**Priority**: MEDIUM - MVP Enhancement
+**Effort**: 2 days
+**Status**: ✅ Complete
+
+**What Was Built**:
+- ✅ Exercise library with 10 categories (fluency_shaping, cbt, breathing, etc.)
+- ✅ Exercise CRUD for therapists
+- ✅ Manual assignment system with due dates and notes
+- ✅ Patient exercise interface with completion tracking
+- ✅ 4 statuses: assigned, in_progress, completed, skipped
+- ✅ Statistics dashboard (completion rates, overdue detection)
+- ✅ 2 UI pages (ExerciseLibraryPage, MyExercisesPage)
+- ✅ 17 API client methods
+- ✅ Full TypeScript types
+
+**Key Files**:
+- `app-backend/app/models/exercise.rb`
+- `app-backend/app/models/exercise_assignment.rb`
+- `app-backend/app/controllers/api/v1/exercises_controller.rb`
+- `app-backend/app/controllers/api/v1/exercise_assignments_controller.rb`
+- `app-frontend/src/pages/ExerciseLibraryPage.tsx`
+- `app-frontend/src/pages/MyExercisesPage.tsx`
+
+**Routes**:
+- `/dashboard/exercises` - Exercise Library (therapists)
+- `/my-exercises` - My Exercises (patients)
+
+**Note**: AI-powered exercise recommendations deferred to post-MVP.
+
+---
+
+## ✅ PREVIOUSLY COMPLETED: Tenant Theming & Multi-Template System
 
 **Completed**: November 8, 2025
 **Priority**: P1 (High) - Multi-tenant SaaS requirement
