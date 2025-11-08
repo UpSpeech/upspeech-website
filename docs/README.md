@@ -29,7 +29,8 @@ Core technical architecture, patterns, and system design.
 - **[architecture/MULTI_TENANCY.md](architecture/MULTI_TENANCY.md)** - Multi-tenant isolation strategy
 - **[architecture/AUTH_FLOW.md](architecture/AUTH_FLOW.md)** - Authentication and session management
 - **[architecture/PERMISSIONS.md](architecture/PERMISSIONS.md)** - Role-based access control (5 roles)
-- **[architecture/REPORT_TEMPLATES.md](architecture/REPORT_TEMPLATES.md)** - Report template system and how to add new types
+- **[architecture/REPORT_TEMPLATES.md](architecture/REPORT_TEMPLATES.md)** - Report template system, tenant theming, and custom templates
+- **[architecture/I18N_TRANSLATIONS.md](architecture/I18N_TRANSLATIONS.md)** - Multi-language support and translation system (i18next + Rails I18n)
 
 ## Infrastructure & Deployment
 
@@ -86,6 +87,7 @@ Technical decisions and their rationale.
 ### Pull Request Guidelines
 
 PRs that alter design docs should:
+
 - Include a summary of impact in the PR description
 - Update the "Last Updated" date in modified docs
 - Link to related issues or tasks
@@ -101,4 +103,4 @@ PRs that alter design docs should:
 
 **Questions or suggestions?** Open an issue or submit a PR to improve these docs.
 
-**Last Updated**: 2025-11-07
+**Last Updated**: 2025-11-08

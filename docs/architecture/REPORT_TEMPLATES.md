@@ -1,15 +1,17 @@
 # Report Template System
 
-**Last Updated**: October 17, 2025
+**Last Updated**: November 8, 2025
 
 ## Overview
 
-UpSpeech uses a **template-based architecture** for reports that ensures:
+UpSpeech uses a **multi-tenant template architecture** for reports that ensures:
 
 - **WYSIWYG**: Web view and PDF export look identical
-- **Extensibility**: Easy to add new report types with custom layouts
+- **Tenant Customization**: Each tenant can configure their own branding, colors, and template style
+- **Multi-language**: Support for multiple languages (en, pt, es, fr, de)
+- **Extensibility**: Easy to add new report types and tenant-specific templates
 - **Type Safety**: Backend enum ensures consistency across the system
-- **Maintainability**: Single source of truth for report types
+- **Dynamic Theming**: CSS variables allow real-time branding updates
 
 ## Architecture
 
@@ -54,26 +56,142 @@ UpSpeech uses a **template-based architecture** for reports that ensures:
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## Tenant-Based Template Selection
+
+UpSpeech supports **two levels of template customization**:
+
+1. **Report Type Templates**: Different layouts for different clinical reports (fluency_analysis, comprehensive, etc.)
+2. **Tenant Templates**: Completely custom templates for specific organizations (e.g., SpeechCare Portuguese template)
+
+### Template Selection Priority
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  1. Check tenant.report_template_type                        │
+│     ↓                                                         │
+│  2. Use TENANT_TEMPLATES[template_type] if exists            │
+│     ↓                                                         │
+│  3. Fallback to REPORT_TEMPLATES[report.report_type]         │
+│     ↓                                                         │
+│  4. Final fallback: DefaultReportTemplate                    │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### Example: SpeechCare Organization
+
+A tenant with `report_template_type: "speechcare_pt"` will:
+
+- Use `SpeechCarePortugueseTemplate` for ALL reports (regardless of report_type)
+- Display Portuguese labels, Garamond font, blue branding
+- Show SpeechCare contact information in footer
+
+A tenant with `report_template_type: "default"` will:
+
+- Use type-based selection: `FluencyAnalysisTemplate`, `DefaultReportTemplate`, etc.
+- Display branding according to tenant theming (colors, logo, contact info)
+- Respect tenant's language setting for labels
+
+## Dynamic Theming System
+
+Tenants can customize report branding without creating custom templates:
+
+### Tenant Theme Fields
+
+```ruby
+# Database schema (tenants table)
+logo_url:             string    # External URL for organization logo
+primary_color:        string    # Hex color (e.g., #1f2937)
+accent_color:         string    # Hex color (e.g., #10b981)
+language:             string    # ISO code: en, pt, es, fr, de
+contact_email:        string    # Shows in report footer
+contact_phone:        string    # Shows in report footer
+website:              string    # Shows in report footer
+footer_text:          string    # Custom footer message
+report_template_type: string    # default, speechcare_pt, etc.
+```
+
+### How Theming Works
+
+1. **Backend** (`ReportsController#show`):
+
+   ```ruby
+   base_data[:tenant] = {
+     logo_url: report.tenant.logo_url,
+     primary_color: report.tenant.primary_color,
+     accent_color: report.tenant.accent_color,
+     # ... all theme fields
+   }
+   ```
+
+2. **Frontend** (`BaseReportTemplate.tsx`):
+
+   ```tsx
+   // Extract tenant theme or use defaults
+   const primaryColor = tenant?.primary_color || '#1f2937';
+   const accentColor = tenant?.accent_color || '#10b981';
+
+   // Apply CSS variables
+   <div style={{
+     '--primary-color': primaryColor,
+     '--accent-color': accentColor
+   }}>
+   ```
+
+3. **PDF** (`app/views/layouts/pdf.html.erb`):
+   ```erb
+   <% primary_color = tenant&.primary_color || '#1f2937' %>
+   <style>
+     :root {
+       --primary-color: <%= primary_color %>;
+       --accent-color: <%= accent_color %>;
+     }
+   </style>
+   ```
+
+### Admin UI for Tenant Settings
+
+Owners and admins can configure branding at `/dashboard/tenant`:
+
+- **Organization Settings**: Name, slug
+- **Branding & Theme**: Logo URL, colors, language, template type
+- **Contact Information**: Email, phone, website, footer text
+
+Changes are immediately reflected in all new reports.
+
 ## Key Files
 
 ### Backend
 
-| File                                           | Purpose                                     |
-| ---------------------------------------------- | ------------------------------------------- |
-| `app/models/report.rb`                         | **Source of truth** for report types (enum) |
-| `app/controllers/api/v1/reports_controller.rb` | Handles PDF export logic                    |
-| `app/views/layouts/pdf.html.erb`               | PDF layout with print-optimized CSS         |
-| `app/views/reports/pdf.html.erb`               | PDF content template (matches frontend)     |
+| File                                                   | Purpose                                                  |
+| ------------------------------------------------------ | -------------------------------------------------------- |
+| `app/models/report.rb`                                 | **Source of truth** for report types (enum)              |
+| `app/models/tenant.rb`                                 | Tenant model with theme field validations                |
+| `app/controllers/api/v1/reports_controller.rb`         | Handles PDF export logic + includes tenant theme in JSON |
+| `app/controllers/api/v1/tenant_settings_controller.rb` | API for owner/admin to manage tenant branding            |
+| `app/views/layouts/pdf.html.erb`                       | PDF layout with tenant theming variables                 |
+| `app/views/reports/pdf.html.erb`                       | PDF content template with tenant logo/footer             |
+| `config/locales/en.yml`                                | English translations (Rails backend)                     |
+| `config/locales/pt.yml`                                | Portuguese translations (Rails backend)                  |
+| `db/migrate/...add_report_template_type_to_tenants.rb` | Adds report_template_type column                         |
+| `db/migrate/...add_theming_to_tenants.rb`              | Adds 8 theming columns (logo, colors, contact, language) |
 
 ### Frontend
 
-| File                                                           | Purpose                                         |
-| -------------------------------------------------------------- | ----------------------------------------------- |
-| `src/components/reports/templates/ReportTemplateRegistry.tsx`  | Maps report types to templates                  |
-| `src/components/reports/templates/BaseReportTemplate.tsx`      | Shared report layout (header, footer, metadata) |
-| `src/components/reports/templates/FluencyAnalysisTemplate.tsx` | Fluency-specific report template                |
-| `src/components/reports/templates/DefaultReportTemplate.tsx`   | Generic report template                         |
-| `src/pages/ReportViewPage.tsx`                                 | Uses templates for web viewing                  |
+| File                                                                | Purpose                                                          |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `src/components/reports/templates/ReportTemplateRegistry.tsx`       | Maps report types to templates + tenant-based selection logic    |
+| `src/components/reports/templates/reportTemplateUtils.ts`           | Utility: `getReportTemplateForReport()` with tenant support      |
+| `src/components/reports/templates/BaseReportTemplate.tsx`           | Shared report layout with dynamic theming (CSS variables)        |
+| `src/components/reports/templates/FluencyAnalysisTemplate.tsx`      | Fluency-specific report template                                 |
+| `src/components/reports/templates/DefaultReportTemplate.tsx`        | Generic report template                                          |
+| `src/components/reports/templates/SpeechCarePortugueseTemplate.tsx` | SpeechCare-branded Portuguese template (tenant-specific)         |
+| `src/pages/ReportViewPage.tsx`                                      | Uses templates for web viewing                                   |
+| `src/pages/TenantSettingsPage.tsx`                                  | Admin UI for configuring tenant branding                         |
+| `src/lib/api.ts`                                                    | API client with `getTenantSettings()` / `updateTenantSettings()` |
+| `src/types/index.ts`                                                | TypeScript types including Tenant interface with theme fields    |
+| `src/i18n/locales/en.json`                                          | English translations (frontend - i18next)                        |
+| `src/i18n/locales/pt.json`                                          | Portuguese translations (frontend - i18next)                     |
+| `public/images/speechcare-logo.png`                                 | SpeechCare organization logo asset                               |
 
 ## How to Add a New Report Type
 
@@ -224,6 +342,157 @@ If you need custom PDF styling for this report type, update the backend PDF temp
 - **Consistent**: Must match exactly between backend enum and frontend registry
 - **Unique**: No duplicate type names
 
+## How to Add a Tenant-Specific Template
+
+For organizations that need **complete control** over report design (custom branding, language, layout), create a tenant-specific template.
+
+### Example: Adding "Acme Medical" Template
+
+#### Step 1: Create Database Migration
+
+```bash
+cd app-backend
+bundle exec rails generate migration AddAcmeMedicalTemplateType
+```
+
+No migration needed if you're just adding a new value to `report_template_type` (it's a string column). Just update the model validation:
+
+```ruby
+# app/models/tenant.rb
+validates :report_template_type,
+  inclusion: { in: %w[default speechcare_pt acme_medical] },
+  allow_blank: true
+```
+
+#### Step 2: Create Frontend Template Component
+
+**File**: `app-frontend/src/components/reports/templates/AcmeMedicalTemplate.tsx`
+
+```tsx
+import { BaseReportTemplate } from "./BaseReportTemplate";
+import type { ReportData } from "./BaseReportTemplate";
+
+interface AcmeMedicalTemplateProps {
+  report: ReportData;
+  showPatientInfo?: boolean;
+  showTenantInfo?: boolean;
+}
+
+export function AcmeMedicalTemplate({
+  report,
+  showPatientInfo = true,
+  showTenantInfo = true,
+}: AcmeMedicalTemplateProps) {
+  return (
+    <BaseReportTemplate
+      report={report}
+      showPatientInfo={showPatientInfo}
+      showTenantInfo={showTenantInfo}
+    >
+      <div
+        className="p-8 print:p-12"
+        style={{ fontFamily: "Arial, sans-serif" }}
+      >
+        {/* Custom Acme Medical header with logo */}
+        <div className="mb-6 text-center">
+          <img
+            src="https://acme-medical.com/logo.png"
+            alt="Acme Medical"
+            className="h-16 mx-auto mb-2"
+          />
+          <h1 style={{ color: "#003366" }} className="text-2xl font-bold">
+            Clinical Speech Assessment
+          </h1>
+        </div>
+
+        {/* Custom sections specific to Acme Medical workflow */}
+        <section className="mb-6">
+          <h2 className="text-xl font-bold mb-2" style={{ color: "#003366" }}>
+            Assessment Overview
+          </h2>
+          {/* Acme-specific content structure */}
+        </section>
+
+        {/* Main report content */}
+        {report.content_html ? (
+          <div
+            className="prose prose-sm max-w-none print:prose-print"
+            dangerouslySetInnerHTML={{ __html: report.content_html }}
+          />
+        ) : (
+          <div className="prose prose-sm max-w-none whitespace-pre-wrap print:prose-print">
+            {report.content}
+          </div>
+        )}
+
+        {/* Acme Medical footer */}
+        <footer className="mt-8 pt-4 border-t text-sm text-gray-600">
+          <p>Acme Medical Center | www.acme-medical.com | (555) 123-4567</p>
+          <p className="text-xs mt-2">
+            This report is confidential and intended solely for the use of the
+            addressee.
+          </p>
+        </footer>
+      </div>
+    </BaseReportTemplate>
+  );
+}
+```
+
+#### Step 3: Register in Template Utilities
+
+**File**: `app-frontend/src/components/reports/templates/reportTemplateUtils.ts`
+
+```tsx
+import { AcmeMedicalTemplate } from "./AcmeMedicalTemplate";
+
+const TENANT_TEMPLATES: Record<string, ReportTemplateComponent> = {
+  speechcare_pt: SpeechCarePortugueseTemplate,
+  acme_medical: AcmeMedicalTemplate, // NEW
+  default: DefaultReportTemplate,
+};
+```
+
+#### Step 4: Export from Registry
+
+**File**: `app-frontend/src/components/reports/templates/ReportTemplateRegistry.tsx`
+
+```tsx
+export { AcmeMedicalTemplate } from "./AcmeMedicalTemplate";
+```
+
+#### Step 5: Update Tenant Settings Dropdown
+
+**File**: `app-frontend/src/pages/TenantSettingsPage.tsx`
+
+```tsx
+<select value={formData.report_template_type} ...>
+  <option value="default">Default Template</option>
+  <option value="speechcare_pt">SpeechCare (Portuguese)</option>
+  <option value="acme_medical">Acme Medical</option>  {/* NEW */}
+</select>
+```
+
+#### Step 6: Set Tenant Configuration
+
+As an owner/admin, navigate to `/dashboard/tenant` and select "Acme Medical" template.
+
+All reports for this tenant will now use the custom template!
+
+### Tenant-Specific vs Dynamic Theming
+
+| Approach            | When to Use                                          |
+| ------------------- | ---------------------------------------------------- |
+| **Dynamic Theming** | Organization wants custom colors, logo, contact info |
+| (default template)  | Standard report layout is acceptable                 |
+|                     | Just needs branding customization                    |
+| **Tenant-Specific** | Organization requires completely custom layout       |
+| Template            | Different section structure                          |
+|                     | Specific fonts, hard-coded text, unique workflow     |
+|                     | Example: SpeechCare Portuguese template              |
+
+**Best Practice**: Start with dynamic theming. Only create tenant-specific templates when layout customization is required.
+
 ## Common Patterns
 
 ### When to Create a New Template
@@ -295,9 +564,12 @@ export interface ReportData {
    - Loads report data
    - Processes markdown content to HTML
    - Renders ERB template (`app/views/reports/pdf.html.erb`)
-   - Converts HTML to PDF using Grover (Puppeteer/Chrome)
-   - Returns PDF as binary data
-4. Frontend downloads the PDF file
+   - Returns HTML as JSON: `{ html: html, filename: "..." }`
+4. Frontend receives HTML and:
+   - Opens a new browser window
+   - Writes the HTML into the window
+   - Triggers browser's native print dialog (`window.print()`)
+5. User saves as PDF using browser's print-to-PDF feature
 
 ## Consistency Checklist
 

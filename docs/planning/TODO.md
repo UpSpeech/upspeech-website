@@ -1,6 +1,95 @@
 # TODOS
 
-**Last Updated**: November 5, 2025
+**Last Updated**: November 8, 2025
+
+## ✅ RECENTLY COMPLETED: Tenant Theming & Multi-Template System
+
+**Completed**: November 8, 2025
+**Priority**: P1 (High) - Multi-tenant SaaS requirement
+**Effort**: 2 days
+**Status**: ✅ Complete
+
+### What Was Built
+
+Implemented a comprehensive **tenant customization system** that allows each organization to brand their reports with custom:
+
+- Logos, colors, fonts
+- Contact information
+- Languages (en, pt, es, fr, de)
+- Complete custom templates (for organizations with unique requirements)
+
+### Key Features
+
+1. **Dynamic Theming System**
+
+   - Tenants can configure branding without code changes
+   - CSS variable-based theming (colors apply in real-time)
+   - Admin UI at `/dashboard/tenant` for owner/admin users
+   - External logo URLs (no file uploads needed)
+
+2. **Tenant-Specific Templates**
+
+   - Two-tier template selection: report type + tenant preference
+   - Example: SpeechCare Portuguese template with custom branding
+   - Easy to add new tenant-specific templates
+
+3. **Multi-Language Support**
+
+   - Frontend (i18next) + Backend (Rails I18n)
+   - Currently: English, Portuguese
+   - Ready for: Spanish, French, German
+
+4. **Admin Configuration**
+   - Organization settings (name, slug)
+   - Branding (logo URL, primary/accent colors, template type)
+   - Contact info (email, phone, website, custom footer text)
+   - Language preference
+
+### Technical Implementation
+
+#### Backend
+
+- `TenantSettingsController` - API for tenant theming configuration
+- 8 new tenant columns: `logo_url`, `primary_color`, `accent_color`, `language`, `contact_email`, `contact_phone`, `website`, `footer_text`, `report_template_type`
+- Rails I18n with `config/locales/pt.yml` for Portuguese
+- Updated `ReportsController` to include tenant theme in JSON
+- PDF templates use tenant theming variables
+
+#### Frontend
+
+- `TenantSettingsPage.tsx` - Admin UI with color pickers, dropdowns
+- `SpeechCarePortugueseTemplate.tsx` - Example tenant-specific template
+- `reportTemplateUtils.ts` - Tenant-based template selection logic
+- `BaseReportTemplate.tsx` - Dynamic CSS theming support
+- i18next configuration with `en.json` and `pt.json`
+- TypeScript types updated with theme fields
+
+#### Documentation
+
+- **NEW**: `I18N_TRANSLATIONS.md` - Complete guide to translation system
+- **UPDATED**: `REPORT_TEMPLATES.md` - Added tenant theming, template selection, examples
+
+### Routes & Permissions
+
+- `GET /api/v1/tenant/settings` - Fetch tenant settings (owner/admin)
+- `PATCH /api/v1/tenant/settings` - Update tenant settings (owner/admin)
+- Frontend route: `/dashboard/tenant` (already existed)
+
+### Testing Needed
+
+- [ ] Test SpeechCare template rendering with all report types
+- [ ] Test PDF export with custom branding
+- [ ] Test dynamic color changes in real-time
+- [ ] Test all language combinations
+- [ ] Cross-browser testing (Chrome, Firefox, Safari)
+
+### Documentation Created
+
+- ✅ `docs/architecture/I18N_TRANSLATIONS.md` - Translation system guide
+- ✅ `docs/architecture/REPORT_TEMPLATES.md` - Updated with theming docs
+- [ ] `docs/README.md` - Add references to new docs
+
+---
 
 ## Current Sprint Priority
 
@@ -27,6 +116,7 @@ As a therapist, I want to generate manual insurance reports by selecting a templ
 #### Technical Details
 
 **Backend Endpoints**:
+
 - `GET /api/v1/manual_reports/templates` - List available templates
 - `POST /api/v1/manual_reports/generate` - Generate report from template + fields
 
@@ -45,12 +135,14 @@ As a therapist, I want to generate manual insurance reports by selecting a templ
 ### Tasks
 
 - [ ] **Disfluency Detection AI** (2 weeks)
+
   - Create `Disfluency` model (timestamp_start, timestamp_end, disfluency_type, confidence)
   - Build `disfluency_detector.py` in upspeech-ai
   - Integrate acoustic analysis + NLP for detection
   - Store disfluencies in `TranscriptionProcessorJob`
 
 - [ ] **Annotation Interface** (1 week)
+
   - Create `Annotation` model for user corrections/notes
   - Build annotation API endpoints (CRUD)
   - Install WaveSurfer.js for waveform visualization
@@ -69,12 +161,14 @@ As a therapist, I want to generate manual insurance reports by selecting a templ
 ### User Stories
 
 **Patient**:
+
 - As a patient, I can record speech samples and see AI-detected disfluencies
 - As a patient, I can listen again and mark/correct stuttering moments
 - As a patient, I can classify each stutter as repetition, block, or prolongation
 - As a patient, I can add notes to my recordings
 
 **Therapist**:
+
 - As a therapist, I can review patient recordings with AI-detected disfluencies
 - As a therapist, I can correct AI detection and add annotations
 - As a therapist, I can view disfluency metrics and trends over time
@@ -101,15 +195,15 @@ This will be implemented post-launch based on user feedback.
 
 ## Phase Completion Status
 
-| Phase | Feature | Status | Priority |
-|-------|---------|--------|----------|
-| Phase 2 | Automated Report Writing | ✅ 95% | CRITICAL |
-| **Phase 7** | **Manual Report Generator** | 🟡 **In Progress** | **P1** |
-| Phase 1 | Patient-Therapist Linking | 🔴 90% | HIGH |
-| Phase 3 | Disfluency Detection & Annotation | 🟡 50% | P0 |
-| Phase 5 | Progress Dashboard | ✅ 75% | MEDIUM |
-| Phase 7 | Report Notes/Feedback | ✅ 100% | MEDIUM |
-| Phase 7 | Patient Summary Export | ✅ 100% | MEDIUM |
-| Phase 4 | Exercise Assignment | 🔴 0% | Post-MVP |
+| Phase       | Feature                           | Status             | Priority |
+| ----------- | --------------------------------- | ------------------ | -------- |
+| Phase 2     | Automated Report Writing          | ✅ 95%             | CRITICAL |
+| **Phase 7** | **Manual Report Generator**       | 🟡 **In Progress** | **P1**   |
+| Phase 1     | Patient-Therapist Linking         | 🔴 90%             | HIGH     |
+| Phase 3     | Disfluency Detection & Annotation | 🟡 50%             | P0       |
+| Phase 5     | Progress Dashboard                | ✅ 75%             | MEDIUM   |
+| Phase 7     | Report Notes/Feedback             | ✅ 100%            | MEDIUM   |
+| Phase 7     | Patient Summary Export            | ✅ 100%            | MEDIUM   |
+| Phase 4     | Exercise Assignment               | 🔴 0%              | Post-MVP |
 
 **Next Milestone**: Complete Phase 7 (Manual Reports) → Phase 3 (Disfluency) → Phase 1 (Linking) → MVP Launch
