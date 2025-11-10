@@ -60,8 +60,8 @@ const ProblemSection = () => {
           </div>
           <div className="order-1 lg:order-2">
             <h2 className="font-nunito font-bold text-4xl sm:text-5xl text-calm-charcoal mb-6 leading-tight">
-              The <span className="text-calm-navy">Hardest</span> Part of Speech
-              Therapy
+              The <span className="text-calm-lavender">Hardest</span> Part of
+              Speech Therapy
               <br />
               Happens Between Sessions
             </h2>

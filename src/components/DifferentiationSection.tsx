@@ -84,7 +84,7 @@ const DifferentiationSection = () => {
               </span>
             </h2>
             <p className="font-nunito text-xl text-calm-charcoal/80 mb-8">
-              By making speech therapy more efficient, scalable, and impactful
+              By making speech therapy more continuous, engaging, and scalable
               for the professionals who deliver it.
             </p>
           </div>

@@ -48,9 +48,20 @@ const SolutionSection = () => {
           <h2 className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
             The first multidimensional platform that unites
             <br />
-            <span className="text-calm-lavender">speech</span>,
-            <span className="text-calm-lavender"> emotional</span>, and
-            <span className="text-calm-lavender"> social</span> behavior
+            <span className="text-calm-lavender text-4xl sm:text-5xl line-height-tight">
+              speech
+            </span>
+            ,
+            <span className="text-calm-lavender text-4xl sm:text-5xl line-height-tight">
+              {" "}
+              emotional
+            </span>
+            , and
+            <span className="text-calm-lavender text-4xl sm:text-5xl line-height-tight">
+              {" "}
+              social
+            </span>{" "}
+            behavior
           </h2>
         </div>
 
