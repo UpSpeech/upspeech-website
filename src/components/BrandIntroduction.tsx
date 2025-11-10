@@ -12,23 +12,24 @@ const BrandIntroduction = () => {
 
   const audiences = [
     {
-      title: "Patients",
-      icon: Users,
+      title: "Clinics",
+      icon: Building2,
       color: "calm-lavender",
       gradient: "from-calm-lavender/20 to-calm-lavender/5",
       accentColor: "bg-calm-lavender",
       borderColor: "border-calm-lavender/30",
       highlights: [
-        { icon: Sparkles, text: "AI-Powered Feedback" },
-        { icon: CheckCircle2, text: "Daily Practice Habits" },
-        { icon: CheckCircle2, text: "Real-Time Progress" },
+        { icon: Sparkles, text: "Scale Without Extra Staff" },
+        { icon: CheckCircle2, text: "Better Clinical Outcomes" },
+        { icon: CheckCircle2, text: "Reduce Paperwork" },
       ],
       points: [
-        "Interactive scenario simulations and challenging exercises",
-        "Audio and video recording with automated analysis",
-        "Structured guidance from your therapist",
+        "Differentiate your practice with cutting-edge AI tools",
+        "Enhance patient engagement and retention rates",
+        "Increase capacity while maintaining quality care",
       ],
     },
+
     {
       title: "Therapists",
       icon: Stethoscope,
@@ -48,21 +49,21 @@ const BrandIntroduction = () => {
       ],
     },
     {
-      title: "Clinics",
-      icon: Building2,
+      title: "Patients",
+      icon: Users,
       color: "calm-charcoal",
       gradient: "from-calm-charcoal/20 to-calm-charcoal/5",
       accentColor: "bg-calm-charcoal",
       borderColor: "border-calm-charcoal/30",
       highlights: [
-        { icon: Sparkles, text: "Scale Without Extra Staff" },
-        { icon: CheckCircle2, text: "Better Clinical Outcomes" },
-        { icon: CheckCircle2, text: "Reduce Paperwork" },
+        { icon: Sparkles, text: "AI-Powered Feedback" },
+        { icon: CheckCircle2, text: "Daily Practice" },
+        { icon: CheckCircle2, text: "Real-Time Progress" },
       ],
       points: [
-        "Differentiate your practice with cutting-edge AI tools",
-        "Enhance patient engagement and retention rates",
-        "Increase capacity while maintaining quality care",
+        "Interactive scenario simulations and challenging exercises",
+        "Audio and video recording with automated analysis",
+        "Structured guidance from your therapist",
       ],
     },
   ];
@@ -72,10 +73,6 @@ const BrandIntroduction = () => {
 
   return (
     <div className="space-y-6">
-      <h3 className="font-nunito font-bold text-2xl text-calm-charcoal mb-6 text-center lg:text-left">
-        Introducing <span className="text-calm-lavender">UpSpeech</span>
-      </h3>
-
       {/* Tab Navigation */}
       <div className="flex space-x-2 bg-calm-light/30 p-1.5 rounded-xl">
         {audiences.map((audience, index) => {
@@ -158,12 +155,6 @@ const BrandIntroduction = () => {
           ))}
         </div>
       </div>
-
-      <p className="font-nunito text-sm text-calm-charcoal/70 text-center lg:text-left pt-2">
-        Guiding voices with{" "}
-        <span className="text-calm-lavender font-semibold">care</span> and{" "}
-        <span className="text-calm-navy font-semibold">tech</span>
-      </p>
     </div>
   );
 };

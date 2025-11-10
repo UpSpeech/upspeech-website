@@ -160,6 +160,29 @@ const ValueCycle = () => {
           const Icon = node.icon;
           const isHovered = hoveredNode === index;
 
+          // Determine tooltip position based on node location
+          const isTopHalf = pos.y < 50;
+          const isLeftSide = pos.x < 30;
+          const isRightSide = pos.x > 70;
+
+          const tooltipPosition = isTopHalf
+            ? "top-full mt-6 md:mt-8"
+            : "bottom-full mb-6 md:mb-8";
+          const tooltipArrowPosition = isTopHalf
+            ? "-top-2 rotate-180"
+            : "-bottom-2";
+
+          // Adjust horizontal alignment for edge nodes
+          let horizontalAlign = "left-1/2 -translate-x-1/2";
+          let arrowHorizontalAlign = "left-1/2 -translate-x-1/2";
+          if (isLeftSide) {
+            horizontalAlign = "left-0";
+            arrowHorizontalAlign = "left-6";
+          } else if (isRightSide) {
+            horizontalAlign = "right-0";
+            arrowHorizontalAlign = "right-6";
+          }
+
           return (
             <div
               key={index}
@@ -216,10 +239,14 @@ const ValueCycle = () => {
 
                 {/* Tooltip Card - Shows on Hover */}
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 pointer-events-none ${
+                  className={`absolute ${horizontalAlign} transition-all duration-300 pointer-events-none ${
                     isHovered
-                      ? "opacity-100 visible bottom-full mb-6 md:mb-8"
-                      : "opacity-0 invisible bottom-full mb-2 md:mb-2"
+                      ? `opacity-100 visible ${tooltipPosition}`
+                      : `opacity-0 invisible ${
+                          isTopHalf
+                            ? "top-full mt-2 md:mt-2"
+                            : "bottom-full mb-2 md:mb-2"
+                        }`
                   }`}
                   style={{ zIndex: 40 }}
                 >
@@ -236,8 +263,10 @@ const ValueCycle = () => {
                       {node.description}
                     </p>
                   </div>
-                  {/* Arrow pointing down to node */}
-                  <div className="absolute left-1/2 -translate-x-1/2 -bottom-2">
+                  {/* Arrow pointing to node */}
+                  <div
+                    className={`absolute ${arrowHorizontalAlign} ${tooltipArrowPosition}`}
+                  >
                     <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white filter drop-shadow-sm"></div>
                   </div>
                 </div>
