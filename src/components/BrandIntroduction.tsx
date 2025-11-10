@@ -33,10 +33,10 @@ const BrandIntroduction = () => {
     {
       title: "Therapists",
       icon: Stethoscope,
-      color: "calm-navy",
-      gradient: "from-calm-navy/20 to-calm-navy/5",
-      accentColor: "bg-calm-navy",
-      borderColor: "border-calm-navy/30",
+      color: "calm-lavender",
+      gradient: "from-calm-lavender/20 to-calm-lavender/5",
+      accentColor: "bg-calm-lavender",
+      borderColor: "border-calm-lavender/30",
       highlights: [
         { icon: Sparkles, text: "Treatment Plans in Minutes" },
         { icon: CheckCircle2, text: "Clinical Dashboard" },
@@ -51,10 +51,10 @@ const BrandIntroduction = () => {
     {
       title: "Patients",
       icon: Users,
-      color: "calm-charcoal",
-      gradient: "from-calm-charcoal/20 to-calm-charcoal/5",
-      accentColor: "bg-calm-charcoal",
-      borderColor: "border-calm-charcoal/30",
+      color: "calm-lavender",
+      gradient: "from-calm-lavender/20 to-calm-lavender/5",
+      accentColor: "bg-calm-lavender",
+      borderColor: "border-calm-lavender/30",
       highlights: [
         { icon: Sparkles, text: "AI-Powered Feedback" },
         { icon: CheckCircle2, text: "Daily Practice" },

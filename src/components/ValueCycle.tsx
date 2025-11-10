@@ -160,29 +160,6 @@ const ValueCycle = () => {
           const Icon = node.icon;
           const isHovered = hoveredNode === index;
 
-          // Determine tooltip position based on node location
-          const isTopHalf = pos.y < 50;
-          const isLeftSide = pos.x < 30;
-          const isRightSide = pos.x > 70;
-
-          const tooltipPosition = isTopHalf
-            ? "top-full mt-6 md:mt-8"
-            : "bottom-full mb-6 md:mb-8";
-          const tooltipArrowPosition = isTopHalf
-            ? "-top-2 rotate-180"
-            : "-bottom-2";
-
-          // Adjust horizontal alignment for edge nodes
-          let horizontalAlign = "left-1/2 -translate-x-1/2";
-          let arrowHorizontalAlign = "left-1/2 -translate-x-1/2";
-          if (isLeftSide) {
-            horizontalAlign = "left-0";
-            arrowHorizontalAlign = "left-6";
-          } else if (isRightSide) {
-            horizontalAlign = "right-0";
-            arrowHorizontalAlign = "right-6";
-          }
-
           return (
             <div
               key={index}
@@ -236,44 +213,36 @@ const ValueCycle = () => {
                     {node.title}
                   </p>
                 </div>
-
-                {/* Tooltip Card - Shows on Hover */}
-                <div
-                  className={`absolute ${horizontalAlign} transition-all duration-300 pointer-events-none ${
-                    isHovered
-                      ? `opacity-100 visible ${tooltipPosition}`
-                      : `opacity-0 invisible ${
-                          isTopHalf
-                            ? "top-full mt-2 md:mt-2"
-                            : "bottom-full mb-2 md:mb-2"
-                        }`
-                  }`}
-                  style={{ zIndex: 40 }}
-                >
-                  <div className="bg-white rounded-xl shadow-2xl border border-calm-light p-4 w-56 md:w-64">
-                    <div className="flex items-start space-x-3 mb-2">
-                      <div className="w-8 h-8 bg-calm-lavender rounded-lg flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-white" strokeWidth={2} />
-                      </div>
-                      <h4 className="font-nunito font-bold text-base text-calm-charcoal">
-                        {node.title}
-                      </h4>
-                    </div>
-                    <p className="font-nunito text-sm text-calm-charcoal/70 pl-11">
-                      {node.description}
-                    </p>
-                  </div>
-                  {/* Arrow pointing to node */}
-                  <div
-                    className={`absolute ${arrowHorizontalAlign} ${tooltipArrowPosition}`}
-                  >
-                    <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white filter drop-shadow-sm"></div>
-                  </div>
-                </div>
               </div>
             </div>
           );
         })}
+
+        {/* Center Tooltip - Shows on Any Node Hover */}
+        {hoveredNode !== null && (
+          <div
+            className="absolute top-1/2 left-1/2 pointer-events-none transition-all duration-300"
+            style={{
+              transform: "translate(-50%, -50%)",
+              zIndex: 50,
+            }}
+          >
+            <div className="bg-white rounded-full shadow-2xl border border-calm-light p-6 w-40 h-40 md:w-48 md:h-48 flex flex-col items-center justify-center animate-in fade-in zoom-in duration-200">
+              <div className="w-10 h-10 bg-calm-lavender rounded-full flex items-center justify-center mb-2">
+                {React.createElement(cycleNodes[hoveredNode].icon, {
+                  className: "w-6 h-6 text-white",
+                  strokeWidth: 2,
+                })}
+              </div>
+              <h4 className="font-nunito font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
+                {cycleNodes[hoveredNode].title}
+              </h4>
+              <p className="font-nunito text-xs md:text-sm text-calm-charcoal/70 text-center">
+                {cycleNodes[hoveredNode].description}
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Center Logo */}
         <div
