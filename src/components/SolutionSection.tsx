@@ -46,7 +46,11 @@ const SolutionSection = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
-            Meet UpSpeech: Your Smart, Daily Training Companion
+            The first multidimensional platform that unites
+            <br />
+            <span className="text-calm-lavender">speech</span>,
+            <span className="text-calm-lavender"> emotional</span>, and
+            <span className="text-calm-lavender"> social</span> behavior
           </h2>
         </div>
 
