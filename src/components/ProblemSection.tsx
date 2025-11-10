@@ -1,9 +1,10 @@
 import React from "react";
+import { Brain, Search, TrendingUp } from "lucide-react";
 
 const ProblemSection = () => {
   const problems = [
     {
-      icon: "🧠", // spinning stars representing confusion/forgetfulness
+      Icon: Brain,
       title: "Real-life practice is hard",
       description:
         "Without support, structure, or feedback between sessions, patients lose confidence, get emotionally drained and isolated",
@@ -12,7 +13,7 @@ const ProblemSection = () => {
         "border-calm-navy/20 bg-gradient-to-br from-calm-navy/10 to-calm-lavender/10",
     },
     {
-      icon: "🔍", // magnifying glass representing limited visibility/insight
+      Icon: Search,
       title: "Limited visibility into what patients do between sessions",
       description:
         "Therapists often don't know if or how patients practice, making it hard to adjust treatment",
@@ -21,7 +22,7 @@ const ProblemSection = () => {
         "border-calm-lavender/20 bg-gradient-to-br from-calm-lavender/10 to-calm-navy/10",
     },
     {
-      icon: "📈", // chart going up representing progress tracking
+      Icon: TrendingUp,
       title: "Progress tracking is manual and time-consuming",
       description:
         "Therapists spend hours creating reports instead of focusing on personalized care",
@@ -89,9 +90,9 @@ const ProblemSection = () => {
 
                 {/* Icon Container */}
                 <div
-                  className={`relative z-10 w-16 h-16 rounded-xl ${problem.accentColor} flex items-center justify-center text-2xl mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm`}
+                  className={`relative z-10 w-16 h-16 rounded-xl ${problem.accentColor} flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm`}
                 >
-                  {problem.icon}
+                  <problem.Icon className="w-8 h-8 text-calm-navy" strokeWidth={2} />
                 </div>
 
                 {/* Content */}
