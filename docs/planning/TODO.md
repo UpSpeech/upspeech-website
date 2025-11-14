@@ -284,13 +284,13 @@ This will be implemented post-launch based on user feedback.
 
 | Phase       | Feature                           | Status             | Priority |
 | ----------- | --------------------------------- | ------------------ | -------- |
-| Phase 2     | Automated Report Writing          | ✅ 95%             | CRITICAL |
+| Phase 2     | Automated Report Writing          | ✅ 100%            | CRITICAL |
+| **Phase 4** | **Manual Exercise Assignment**    | 🟡 **90% - In Progress** | **MEDIUM** |
 | **Phase 7** | **Manual Report Generator**       | 🟡 **In Progress** | **P1**   |
-| Phase 1     | Patient-Therapist Linking         | 🔴 90%             | HIGH     |
+| Phase 1     | Patient-Therapist Linking         | ✅ 100%            | HIGH     |
 | Phase 3     | Disfluency Detection & Annotation | 🟡 50%             | P0       |
 | Phase 5     | Progress Dashboard                | ✅ 75%             | MEDIUM   |
 | Phase 7     | Report Notes/Feedback             | ✅ 100%            | MEDIUM   |
 | Phase 7     | Patient Summary Export            | ✅ 100%            | MEDIUM   |
-| Phase 4     | Exercise Assignment               | 🔴 0%              | Post-MVP |
 
-**Next Milestone**: Complete Phase 7 (Manual Reports) → Phase 3 (Disfluency) → Phase 1 (Linking) → MVP Launch
+**Next Milestone**: Complete Phase 4 (Exercise Types) → Phase 3 (Disfluency) → MVP Launch

@@ -42,9 +42,9 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 | Phase | Name | Status | Priority | Effort | Target |
 |-------|------|--------|----------|--------|--------|
 | 1 | Foundational Setup | ✅ 100% | HIGH | 1 day | ✅ Complete |
-| 2 | Automated Report Writing | 🟢 95% | **CRITICAL** ⚡ | 2 weeks | Week 1-2 |
+| 2 | Automated Report Writing | ✅ 100% | **CRITICAL** ⚡ | 2 weeks | ✅ Complete |
 | 3 | Basic Speech Analysis | 🟡 50% | HIGH | 2 weeks | Week 5-6 |
-| 4 | Manual Exercise Assignment | ✅ 100% | MEDIUM (MVP) | 2 days | ✅ Complete |
+| 4 | Manual Exercise Assignment | 🟡 90% | MEDIUM (MVP) | 2 days | Final 10% |
 | 5 | Practice Tracker & Progress | 🟢 75% | MEDIUM | 2 weeks | Week 7-8 |
 | 6 | Gamified Motivation | 🔴 0% | LOW (Post-MVP) | 1-2 weeks | Post-launch |
 | 7 | Therapist Portal Expansion | ✅ 100% | MEDIUM | 1 week | ✅ Complete |
@@ -121,7 +121,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 **Objective**: Validate core value proposition - AI saves therapist time on clinical documentation.
 
-**Status**: 🟡 **60% Complete** - **HIGHEST PRIORITY**
+**Status**: ✅ **100% Complete**
 
 #### ✅ Completed Features
 
@@ -540,7 +540,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 **Objective**: Enable therapists to create and assign practice exercises to patients (without AI recommendations).
 
-**Status**: ✅ **100% Complete** (November 8, 2025)
+**Status**: 🟡 **90% Complete** (November 14, 2025) - Adding exercise types
 
 **Note**: This phase was simplified for MVP. Originally "Personalized Exercise Generator" with AI, now focuses on manual exercise management. AI recommendations will be added post-launch.
 
@@ -605,6 +605,35 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - Statistics cards (total, completed, in progress, completion rate)
    - Overdue indicator for late exercises
 
+#### 🔨 Pending Enhancements (Final 10%)
+
+**Exercise Types** - **Priority: P1** ⭐ **IN PROGRESS**
+- **What**: Add `exercise_type` enum with `daily` and `consultation` types
+- **Why**: Differentiate regular homework from in-session activities
+- **Effort**: 1-2 days
+
+**Implementation**:
+```ruby
+# Exercise model changes:
+enum exercise_type: { daily: 0, consultation: 1 }
+
+# Validation for consultation exercises:
+# - Must have description (presence: true)
+# - Must have exactly ONE of: text OR image_url (custom validation)
+```
+
+**Frontend Updates**:
+- Add type selector in create/edit forms
+- Show exercise type badges in library view
+- Add type filtering
+- Different icons for daily vs consultation exercises
+
+**Files to Modify**:
+- `app/models/exercise.rb` - Add enum and validation
+- `app-frontend/src/pages/ExerciseLibraryPage.tsx` - Type filtering
+- `app-frontend/src/pages/MyExercisesPage.tsx` - Show type
+- `app-frontend/src/types/exercise.ts` - Add type field
+
 #### User Stories
 
 **Therapist**:
@@ -614,6 +643,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - ✅ As an SLP, I can add notes/instructions for each assignment
 - ✅ As an SLP, I can see which exercises a patient completes
 - ✅ As an SLP, I can track completion rates and statistics
+- 🔨 As an SLP, I can create daily homework exercises and in-session consultation exercises
 
 **Patient**:
 - ✅ As a patient, I can view all exercises assigned to me
@@ -622,6 +652,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - ✅ As a patient, I can add notes about my practice
 - ✅ As a patient, I can see my completion rate and statistics
 - ✅ As a patient, I can see which exercises are overdue
+- 🔨 As a patient, I can see which exercises are for daily practice vs in-session consultation
 
 #### Post-MVP Enhancements (Future)
 
