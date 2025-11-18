@@ -5,6 +5,94 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## Post-Sprint 4 - November 17, 2025
+
+### Exercise System Refactoring ✅ COMPLETE
+
+#### Changed
+
+**Architecture Overhaul:**
+- Split unified `Exercise` model (with STI pattern) into two distinct models:
+  - `MiniGame` - Patient-assignable daily practice exercises
+  - `ConsultationExercise` - Therapist tools for in-session activities
+- Improved separation of concerns and clearer business logic
+- Better alignment with actual therapeutic workflows
+
+**Backend Changes:**
+- Created `mini_games` table (migrated 64 daily exercises from exercises)
+- Created `consultation_exercises` table (migrated 16 consultation exercises from exercises)
+- Created `report_consultation_exercises` join table with position tracking
+- Renamed `exercise_assignments` to `mini_game_assignments`
+- Created `MiniGamesController` and `ConsultationExercisesController` with full CRUD
+- Updated `ReportsController` with 3 new methods for consultation exercise management:
+  - `add_consultation_exercise` - Add exercise to report with auto-position
+  - `remove_consultation_exercise` - Remove and reorder remaining
+  - `reorder_consultation_exercises` - Update positions via array
+- Created `AiConsultationExerciseLogger` service for ML analysis
+- Added `POST /log-consultation-exercises` endpoint to AI service
+- Migrated 80 existing exercises with full data integrity
+
+**Frontend Changes:**
+- Created `MiniGamesLibraryPage.tsx` - CRUD interface for mini games with assignment
+- Created `ConsultationExercisesLibraryPage.tsx` - CRUD with text/image validation
+- Created `ConsultationExerciseSelector.tsx` - Reusable component for report integration
+- Updated `ReportEditPage`, `ManualReportGeneratorPage`, `ReportViewPage` with exercise selectors
+- Updated `MyExercisesPage` to use MiniGame terminology throughout
+- Added 30+ new API client methods
+- Updated TypeScript types for all new models
+
+**AI Integration:**
+- Automatic logging of consultation exercises when added/removed/reordered
+- Detailed per-exercise tracking (ID, title, category, difficulty, position, type)
+- Session summary statistics (category distribution, difficulty breakdown, type usage)
+- Foundation for future ML analysis:
+  - Session effectiveness correlation with exercise types
+  - Optimal exercise sequences for patient profiles
+  - Difficulty progression patterns
+
+**Testing:**
+- Created comprehensive RSpec tests for all new models:
+  - `mini_game_spec.rb` - 50+ test cases
+  - `consultation_exercise_spec.rb` - 50+ test cases
+  - `report_consultation_exercise_spec.rb` - 30+ test cases
+- Created FactoryBot factories for all models
+- Test coverage: validations, associations, scopes, permissions, tenant isolation
+
+**Documentation:**
+- Created comprehensive `EXERCISE_SYSTEM.md` architecture documentation
+- Documented models, controllers, API endpoints, AI integration
+- Added best practices and troubleshooting guide
+- Updated changelog
+
+**Key Features:**
+- **MiniGames:** Can be assigned to patients for independent practice
+- **Consultation Exercises:** Linked to reports, tracked by position, logged to AI
+- **Text vs Image:** Consultation exercises support either text OR image content
+- **Position Ordering:** Exercises in reports maintain sequence (1st, 2nd, 3rd)
+- **AI Logging:** Automatic tracking for future analysis
+
+**Migration:**
+- Data migration script with ID mapping
+- Zero data loss - all 80 exercises migrated successfully
+- All assignments preserved and remapped
+- Backwards compatibility maintained
+
+**Files Changed:**
+- Backend Models: `MiniGame`, `ConsultationExercise`, `ReportConsultationExercise`, `MiniGameAssignment`
+- Backend Controllers: `MiniGamesController`, `ConsultationExercisesController`, `MiniGameAssignmentsController` (renamed)
+- Backend Services: `AiConsultationExerciseLogger`
+- Frontend Pages: `MiniGamesLibraryPage.tsx`, `ConsultationExercisesLibraryPage.tsx`, `MyExercisesPage.tsx`
+- Frontend Components: `ConsultationExerciseSelector.tsx`
+- AI Service: `src/report_writer/endpoint.py` (new endpoint)
+
+#### Status
+- Exercise System Refactoring: 100% complete
+- Test Coverage: Comprehensive backend tests
+- Documentation: Complete architecture documentation
+- Production Ready: ✅
+
+---
+
 ## Sprint 4 (Week 4) - November 8, 2025
 
 ### Phase 1: Foundation (Patient-Therapist Linking) ✅ COMPLETE
@@ -199,4 +287,4 @@ and this project adheres to semantic versioning for sprints.
 
 ---
 
-**Last Updated:** 2025-11-08
+**Last Updated:** 2025-11-17

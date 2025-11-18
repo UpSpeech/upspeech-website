@@ -25,6 +25,7 @@ Core technical architecture, patterns, and system design.
 
 - **[architecture/SYSTEM_DESIGN.md](architecture/SYSTEM_DESIGN.md)** - Overall architecture and technical decisions
 - **[architecture/SERVICE_COMMUNICATION.md](architecture/SERVICE_COMMUNICATION.md)** - **⭐ How services communicate & API integration guide**
+- **[architecture/EXERCISE_SYSTEM.md](architecture/EXERCISE_SYSTEM.md)** - **⭐ Exercise system (MiniGames & Consultation Exercises)**
 - **[architecture/TESTING_STRATEGY.md](architecture/TESTING_STRATEGY.md)** - Testing philosophy, guidelines, and coverage plan
 - **[architecture/MULTI_TENANCY.md](architecture/MULTI_TENANCY.md)** - Multi-tenant isolation strategy
 - **[architecture/AUTH_FLOW.md](architecture/AUTH_FLOW.md)** - Authentication and session management
@@ -103,4 +104,4 @@ PRs that alter design docs should:
 
 **Questions or suggestions?** Open an issue or submit a PR to improve these docs.
 
-**Last Updated**: 2025-11-08
+**Last Updated**: 2025-11-17
