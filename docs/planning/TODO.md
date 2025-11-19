@@ -108,20 +108,17 @@ Implemented a comprehensive **tenant customization system** that allows each org
 ### Key Features
 
 1. **Dynamic Theming System**
-
    - Tenants can configure branding without code changes
    - CSS variable-based theming (colors apply in real-time)
    - Admin UI at `/dashboard/tenant` for owner/admin users
    - External logo URLs (no file uploads needed)
 
 2. **Tenant-Specific Templates**
-
    - Two-tier template selection: report type + tenant preference
    - Example: SpeechCare Portuguese template with custom branding
    - Easy to add new tenant-specific templates
 
 3. **Multi-Language Support**
-
    - Frontend (i18next) + Backend (Rails I18n)
    - Currently: English, Portuguese
    - Ready for: Spanish, French, German
@@ -222,14 +219,12 @@ As a therapist, I want to generate manual insurance reports by selecting a templ
 ### Tasks
 
 - [ ] **Disfluency Detection AI** (2 weeks)
-
   - Create `Disfluency` model (timestamp_start, timestamp_end, disfluency_type, confidence)
   - Build `disfluency_detector.py` in upspeech-ai
   - Integrate acoustic analysis + NLP for detection
   - Store disfluencies in `TranscriptionProcessorJob`
 
 - [ ] **Annotation Interface** (1 week)
-
   - Create `Annotation` model for user corrections/notes
   - Build annotation API endpoints (CRUD)
   - Install WaveSurfer.js for waveform visualization
@@ -282,15 +277,15 @@ This will be implemented post-launch based on user feedback.
 
 ## Phase Completion Status
 
-| Phase       | Feature                           | Status             | Priority |
-| ----------- | --------------------------------- | ------------------ | -------- |
-| Phase 2     | Automated Report Writing          | ✅ 100%            | CRITICAL |
+| Phase       | Feature                           | Status                   | Priority   |
+| ----------- | --------------------------------- | ------------------------ | ---------- |
+| Phase 2     | Automated Report Writing          | ✅ 100%                  | CRITICAL   |
 | **Phase 4** | **Manual Exercise Assignment**    | 🟡 **90% - In Progress** | **MEDIUM** |
-| **Phase 7** | **Manual Report Generator**       | 🟡 **In Progress** | **P1**   |
-| Phase 1     | Patient-Therapist Linking         | ✅ 100%            | HIGH     |
-| Phase 3     | Disfluency Detection & Annotation | 🟡 50%             | P0       |
-| Phase 5     | Progress Dashboard                | ✅ 75%             | MEDIUM   |
-| Phase 7     | Report Notes/Feedback             | ✅ 100%            | MEDIUM   |
-| Phase 7     | Patient Summary Export            | ✅ 100%            | MEDIUM   |
+| **Phase 7** | **Manual Report Generator**       | 🟡 **In Progress**       | **P1**     |
+| Phase 1     | Patient-Therapist Linking         | ✅ 100%                  | HIGH       |
+| Phase 3     | Disfluency Detection & Annotation | 🟡 50%                   | P0         |
+| Phase 5     | Progress Dashboard                | ✅ 75%                   | MEDIUM     |
+| Phase 7     | Report Notes/Feedback             | ✅ 100%                  | MEDIUM     |
+| Phase 7     | Patient Summary Export            | ✅ 100%                  | MEDIUM     |
 
 **Next Milestone**: Complete Phase 4 (Exercise Types) → Phase 3 (Disfluency) → MVP Launch

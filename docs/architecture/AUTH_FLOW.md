@@ -21,11 +21,11 @@ The application uses JWT Bearer tokens for authenticating all API requests. The 
 
 ## 4. Authentication Model
 
-| Component | Storage | Lifetime | Purpose |
-|---|---|---|---|
-| **JWT Access Token** | `localStorage` (frontend) | **24 hours** | Authenticate API requests. Contains `user_id`, `tenant_id`. |
-| **User Profile** | `localStorage` (frontend) | Session | Cache user data locally for the UI. |
-| **(Optional) Password Reset Token** | DB or signed token | 1h | Credential recovery. |
+| Component                           | Storage                   | Lifetime     | Purpose                                                     |
+| ----------------------------------- | ------------------------- | ------------ | ----------------------------------------------------------- |
+| **JWT Access Token**                | `localStorage` (frontend) | **24 hours** | Authenticate API requests. Contains `user_id`, `tenant_id`. |
+| **User Profile**                    | `localStorage` (frontend) | Session      | Cache user data locally for the UI.                         |
+| **(Optional) Password Reset Token** | DB or signed token        | 1h           | Credential recovery.                                        |
 
 ## 5. Login Flow
 
@@ -47,12 +47,12 @@ The application uses JWT Bearer tokens for authenticating all API requests. The 
 
 ## 6. Token Handling & API Requests
 
--   **Storage**: The JWT is stored in the browser's `localStorage`.
--   **Sending the Token**: A frontend Axios interceptor (`lib/api.ts`) automatically attaches the token to the `Authorization` header for all API requests to the versioned API:
-    `Authorization: Bearer <token>`
--   **Backend Verification**: On each request, a `before_action` in the `ApplicationController` (using the `JsonWebToken` concern) decodes and validates the token. It uses the token's payload to find the `current_user` and `current_tenant`.
--   **Unauthorized Requests**: If the token is missing, invalid, or expired, the server returns a `401 Unauthorized` status.
--   **Frontend 401 Handling**: An Axios response interceptor catches 401 errors, clears the `auth_token` and `user_data` from `localStorage`, and redirects the user to the login page.
+- **Storage**: The JWT is stored in the browser's `localStorage`.
+- **Sending the Token**: A frontend Axios interceptor (`lib/api.ts`) automatically attaches the token to the `Authorization` header for all API requests to the versioned API:
+  `Authorization: Bearer <token>`
+- **Backend Verification**: On each request, a `before_action` in the `ApplicationController` (using the `JsonWebToken` concern) decodes and validates the token. It uses the token's payload to find the `current_user` and `current_tenant`.
+- **Unauthorized Requests**: If the token is missing, invalid, or expired, the server returns a `401 Unauthorized` status.
+- **Frontend 401 Handling**: An Axios response interceptor catches 401 errors, clears the `auth_token` and `user_data` from `localStorage`, and redirects the user to the login page.
 
 ## 7. Logout
 
@@ -93,19 +93,19 @@ The application uses JWT Bearer tokens for authenticating all API requests. The 
 
 ### Backend
 
--   **Gems**:
-    -   `devise` for handling the user model and authentication logic.
-    -   `jwt` for encoding and decoding tokens.
-    -   `pundit` for authorization policies.
-    -   `argon2` for password hashing.
--   **`Auth::SessionsController`**: Overrides the default Devise `respond_with` method to generate and return a JWT upon successful login.
--   **`JwtService`**: A service class (`app/services/jwt_service.rb`) that encapsulates JWT encoding/decoding logic.
--   **`JsonWebToken` Concern**: A controller concern (`app/controllers/concerns/json_web_token.rb`) that handles decoding the token from the `Authorization` header and setting the `@current_user`.
+- **Gems**:
+  - `devise` for handling the user model and authentication logic.
+  - `jwt` for encoding and decoding tokens.
+  - `pundit` for authorization policies.
+  - `argon2` for password hashing.
+- **`Auth::SessionsController`**: Overrides the default Devise `respond_with` method to generate and return a JWT upon successful login.
+- **`JwtService`**: A service class (`app/services/jwt_service.rb`) that encapsulates JWT encoding/decoding logic.
+- **`JsonWebToken` Concern**: A controller concern (`app/controllers/concerns/json_web_token.rb`) that handles decoding the token from the `Authorization` header and setting the `@current_user`.
 
 ### Frontend
 
--   **`lib/api.ts`**: Contains the `ApiClient` with Axios interceptors to add the `Authorization` header to requests and handle 401 responses.
--   **`lib/auth.tsx`**: The `AuthProvider` component manages the user's authentication state, handles login/logout logic, and interacts with `localStorage`.
+- **`lib/api.ts`**: Contains the `ApiClient` with Axios interceptors to add the `Authorization` header to requests and handle 401 responses.
+- **`lib/auth.tsx`**: The `AuthProvider` component manages the user's authentication state, handles login/logout logic, and interacts with `localStorage`.
 
 ## 14. Auditing
 
@@ -113,11 +113,11 @@ Log events: login success/failure, password reset request, role change. (Future 
 
 ## 15. Future Improvements
 
--   **Refresh Tokens**: To improve security and provide longer-lived sessions without exposing a long-lived access token, a refresh token mechanism could be implemented.
-    -   Access tokens would have a shorter lifetime (e.g., 15 minutes).
-    -   A secure, `HttpOnly` refresh token would be used to obtain a new access token without requiring the user to log in again.
--   **SSO (SAML / OIDC)**: Map external identity providers to tenant roles.
--   **WebAuthn**: For phishing-resistant MFA.
+- **Refresh Tokens**: To improve security and provide longer-lived sessions without exposing a long-lived access token, a refresh token mechanism could be implemented.
+  - Access tokens would have a shorter lifetime (e.g., 15 minutes).
+  - A secure, `HttpOnly` refresh token would be used to obtain a new access token without requiring the user to log in again.
+- **SSO (SAML / OIDC)**: Map external identity providers to tenant roles.
+- **WebAuthn**: For phishing-resistant MFA.
 
 ## 16. Summary
 

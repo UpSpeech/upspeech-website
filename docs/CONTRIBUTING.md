@@ -33,6 +33,7 @@ cd upspeech-website
 ```
 
 **Service URLs after starting:**
+
 - Frontend: http://localhost:3001
 - Backend API: http://localhost:3000
 - AI Service: http://localhost:8081
@@ -163,6 +164,7 @@ Use descriptive branch names that follow this pattern:
 - `docs/documentation-update` - For documentation changes
 
 **Examples:**
+
 - `feature/phase-3-disfluency-detection`
 - `fix/report-export-pdf-formatting`
 - `refactor/audio-upload-component`
@@ -180,6 +182,7 @@ Follow conventional commits format:
 ```
 
 **Types:**
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation changes
@@ -189,6 +192,7 @@ Follow conventional commits format:
 - `chore:` - Maintenance tasks (dependencies, build, etc.)
 
 **Examples:**
+
 - `feat: add disfluency detection to speech analysis`
 - `fix: correct tenant isolation in reports query`
 - `docs: update TESTING_STRATEGY.md with new guidelines`

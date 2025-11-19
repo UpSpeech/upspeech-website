@@ -58,7 +58,7 @@ const ValueCycle = () => {
 
   const generateCirclePath = () => {
     const points = cycleNodes.map((_, i) =>
-      getNodePosition(i, cycleNodes.length)
+      getNodePosition(i, cycleNodes.length),
     );
     let path = `M ${points[0].x} ${points[0].y}`;
 
@@ -67,7 +67,7 @@ const ValueCycle = () => {
       const next = points[(i + 1) % points.length];
       const angle = Math.atan2(next.y - current.y, next.x - current.x);
       const distance = Math.sqrt(
-        Math.pow(next.x - current.x, 2) + Math.pow(next.y - current.y, 2)
+        Math.pow(next.x - current.x, 2) + Math.pow(next.y - current.y, 2),
       );
       const cp1x = current.x + (distance / 3) * Math.cos(angle);
       const cp1y = current.y + (distance / 3) * Math.sin(angle);
@@ -84,7 +84,7 @@ const ValueCycle = () => {
       const start = getNodePosition(i, cycleNodes.length);
       const end = getNodePosition(
         (i + 1) % cycleNodes.length,
-        cycleNodes.length
+        cycleNodes.length,
       );
       const midX = (start.x + end.x) / 2;
       const midY = (start.y + end.y) / 2;
@@ -125,7 +125,7 @@ const ValueCycle = () => {
           />
 
           {/* Arrows */}
-          {generateArrows().map(arrow => (
+          {generateArrows().map((arrow) => (
             <path
               key={arrow.id}
               d={arrow.path}

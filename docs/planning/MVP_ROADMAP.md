@@ -39,15 +39,15 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 ## Phase Overview
 
-| Phase | Name | Status | Priority | Effort | Target |
-|-------|------|--------|----------|--------|--------|
-| 1 | Foundational Setup | ✅ 100% | HIGH | 1 day | ✅ Complete |
-| 2 | Automated Report Writing | ✅ 100% | **CRITICAL** ⚡ | 2 weeks | ✅ Complete |
-| 3 | Basic Speech Analysis | 🟡 50% | HIGH | 2 weeks | Week 5-6 |
-| 4 | Manual Exercise Assignment | 🟡 90% | MEDIUM (MVP) | 2 days | Final 10% |
-| 5 | Practice Tracker & Progress | 🟢 75% | MEDIUM | 2 weeks | Week 7-8 |
-| 6 | Gamified Motivation | 🔴 0% | LOW (Post-MVP) | 1-2 weeks | Post-launch |
-| 7 | Therapist Portal Expansion | ✅ 100% | MEDIUM | 1 week | ✅ Complete |
+| Phase | Name                        | Status  | Priority        | Effort    | Target      |
+| ----- | --------------------------- | ------- | --------------- | --------- | ----------- |
+| 1     | Foundational Setup          | ✅ 100% | HIGH            | 1 day     | ✅ Complete |
+| 2     | Automated Report Writing    | ✅ 100% | **CRITICAL** ⚡ | 2 weeks   | ✅ Complete |
+| 3     | Basic Speech Analysis       | 🟡 50%  | HIGH            | 2 weeks   | Week 5-6    |
+| 4     | Manual Exercise Assignment  | 🟡 90%  | MEDIUM (MVP)    | 2 days    | Final 10%   |
+| 5     | Practice Tracker & Progress | 🟢 75%  | MEDIUM          | 2 weeks   | Week 7-8    |
+| 6     | Gamified Motivation         | 🔴 0%   | LOW (Post-MVP)  | 1-2 weeks | Post-launch |
+| 7     | Therapist Portal Expansion  | ✅ 100% | MEDIUM          | 1 week    | ✅ Complete |
 
 **Legend**: ✅ Complete | 🟢 High completion | 🟡 In progress | 🔴 Not started
 
@@ -75,6 +75,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - [x] **Invite Code System** ⭐ NEW
 
 **Implementation Files**:
+
 - `app-backend/app/models/user.rb`
 - `app-backend/app/models/therapist_patient_assignment.rb`
 - `app-backend/app/models/invite_code.rb`
@@ -106,11 +107,13 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### User Stories
 
 **Therapist**:
+
 - ✅ As an SLP, I can create an account and manage my patients
 - ✅ As an SLP, I can invite patients via email link
 - ✅ As an SLP, I can assign patients to myself or other therapists
 
 **Patient**:
+
 - ✅ As a patient, I can create an account and link to my therapist
 - ✅ As a patient, I can join using an invite link
 - ✅ As a patient, I have a home dashboard showing my data
@@ -141,6 +144,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - [x] Report metadata tracking (created_at, updated_at, user, tenant)
 
 **Implementation Files**:
+
 - `app-backend/app/models/report.rb`
 - `app-backend/app/controllers/api/v1/reports_controller.rb`
 - `app-backend/app/services/markdown_processor.rb`
@@ -155,6 +159,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - **Effort**: 1 week
 
    **Implementation**:
+
    ```ruby
    # Add to reports_controller.rb
    def update
@@ -197,6 +202,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    **Implementation Options**:
 
    **Option A: Prawn (Pure Ruby)**
+
    ```ruby
    # Gemfile
    gem 'prawn'
@@ -220,6 +226,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Option B: Wicked PDF (HTML to PDF)**
+
    ```ruby
    # Gemfile
    gem 'wicked_pdf'
@@ -253,6 +260,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - **Effort**: 4 days
 
    **Implementation**:
+
    ```ruby
    # New Model: ReportVersion
    # Fields: report_id, version_number, content, title, created_at, created_by_user_id
@@ -286,6 +294,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - **Effort**: 1 week
 
    **Implementation**:
+
    ```ruby
    # New Model: ReportTemplate
    # Fields: name, template_type, structure (jsonb), is_default, tenant_id
@@ -313,6 +322,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### User Stories
 
 **Therapist**:
+
 - ✅ As an SLP, I can generate a clinical report draft from session recordings
 - 🔨 **As an SLP, I can edit the report before saving** ⭐
 - 🔨 **As an SLP, I can export my final report as PDF** ⭐
@@ -341,6 +351,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - [x] Transcription display in reports with collapsible sections
 
 **Implementation Files**:
+
 - `app-backend/app/models/audio_recording.rb`
 - `app-backend/app/models/transcription.rb`
 - `app-backend/app/jobs/transcription_processor_job.rb`
@@ -358,6 +369,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    **Implementation**:
 
    **Backend AI Service Enhancement**:
+
    ```python
    # upspeech-ai/src/report_writer/disfluency_detector.py
 
@@ -389,6 +401,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Rails Backend Integration**:
+
    ```ruby
    # New Model: Disfluency
    # Fields: transcription_id, timestamp_start, timestamp_end, disfluency_type,
@@ -421,6 +434,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    **Implementation**:
 
    **Backend**:
+
    ```ruby
    # New Model: Annotation
    # Fields: disfluency_id, user_id, note, created_at, annotation_type (correction/confirmation/comment)
@@ -434,6 +448,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Frontend Component**:
+
    ```typescript
    // app-frontend/src/components/annotations/AnnotationInterface.tsx
 
@@ -443,7 +458,11 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
      disfluencies: Disfluency[];
    }
 
-   export function AnnotationInterface({ transcriptionId, audioUrl, disfluencies }: AnnotationInterfaceProps) {
+   export function AnnotationInterface({
+     transcriptionId,
+     audioUrl,
+     disfluencies,
+   }: AnnotationInterfaceProps) {
      // WaveSurfer.js for waveform visualization
      // Clickable markers for each disfluency
      // Sidebar for adding/editing annotations
@@ -464,6 +483,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - **Effort**: 4 days
 
    **Implementation**:
+
    ```ruby
    # New Model: DisfluencyMetric
    # Fields: audio_recording_id, disfluencies_per_minute, total_count,
@@ -500,6 +520,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - **Effort**: 2 days
 
    **Implementation**:
+
    ```ruby
    # Add to audio_recordings table
    # Migration: add_column :audio_recordings, :context_tags, :jsonb, default: []
@@ -524,12 +545,14 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### User Stories
 
 **Patient**:
+
 - ✅ As a patient, I can record short speech samples
 - 🔨 As a patient, I can see automatic disfluency detection in my recordings
 - 🔨 As a patient, I can tag recordings with context (structured, spontaneous, stressful)
 - 🔨 As a patient, I can annotate my own disfluencies at home
 
 **Therapist**:
+
 - 🔨 As an SLP, I can review patient recordings with AI-detected disfluencies
 - 🔨 As an SLP, I can annotate and correct disfluency detection
 - 🔨 As an SLP, I can see disfluency metrics across time (frequency trends)
@@ -560,6 +583,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 **Implementation Files**:
 
 **Backend**:
+
 - `app-backend/app/models/exercise.rb`
 - `app-backend/app/models/exercise_assignment.rb`
 - `app-backend/app/controllers/api/v1/exercises_controller.rb`
@@ -568,12 +592,14 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - `db/migrate/20251108130732_create_exercise_assignments.rb`
 
 **Frontend**:
+
 - `app-frontend/src/pages/ExerciseLibraryPage.tsx` (Therapist UI)
 - `app-frontend/src/pages/MyExercisesPage.tsx` (Patient UI)
 - `app-frontend/src/types/index.ts` (TypeScript types)
 - `app-frontend/src/lib/api.ts` (17 API client methods)
 
 **Routes**:
+
 - `/dashboard/exercises` - Exercise Library (therapists only)
 - `/my-exercises` - My Exercises (all users)
 
@@ -608,11 +634,13 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### 🔨 Pending Enhancements (Final 10%)
 
 **Exercise Types** - **Priority: P1** ⭐ **IN PROGRESS**
+
 - **What**: Add `exercise_type` enum with `daily` and `consultation` types
 - **Why**: Differentiate regular homework from in-session activities
 - **Effort**: 1-2 days
 
 **Implementation**:
+
 ```ruby
 # Exercise model changes:
 enum exercise_type: { daily: 0, consultation: 1 }
@@ -623,12 +651,14 @@ enum exercise_type: { daily: 0, consultation: 1 }
 ```
 
 **Frontend Updates**:
+
 - Add type selector in create/edit forms
 - Show exercise type badges in library view
 - Add type filtering
 - Different icons for daily vs consultation exercises
 
 **Files to Modify**:
+
 - `app/models/exercise.rb` - Add enum and validation
 - `app-frontend/src/pages/ExerciseLibraryPage.tsx` - Type filtering
 - `app-frontend/src/pages/MyExercisesPage.tsx` - Show type
@@ -637,6 +667,7 @@ enum exercise_type: { daily: 0, consultation: 1 }
 #### User Stories
 
 **Therapist**:
+
 - ✅ As an SLP, I can create custom exercises with instructions
 - ✅ As an SLP, I can assign exercises to specific patients
 - ✅ As an SLP, I can set due dates for exercises
@@ -646,6 +677,7 @@ enum exercise_type: { daily: 0, consultation: 1 }
 - 🔨 As an SLP, I can create daily homework exercises and in-session consultation exercises
 
 **Patient**:
+
 - ✅ As a patient, I can view all exercises assigned to me
 - ✅ As a patient, I can see exercise instructions and details
 - ✅ As a patient, I can mark exercises as in progress or complete
@@ -657,6 +689,7 @@ enum exercise_type: { daily: 0, consultation: 1 }
 #### Post-MVP Enhancements (Future)
 
 The following features will be added after launch:
+
 - AI-powered exercise recommendations based on speech analysis
 - Personalized difficulty adjustment
 - Scenario-based practice (text or avatar simulation)
@@ -686,6 +719,7 @@ The following features will be added after launch:
 - [x] Top organizations by activity (owner only)
 
 **Implementation Files**:
+
 - `app-backend/app/controllers/api/v1/analytics_controller.rb`
 - `app-frontend/src/pages/AnalyticsPage.tsx`
 
@@ -697,6 +731,7 @@ The following features will be added after launch:
    - **Effort**: 1 week
 
    **Implementation**:
+
    ```ruby
    # New Controller: PatientProgressController
    class Api::V1::PatientProgressController < ApplicationController
@@ -718,6 +753,7 @@ The following features will be added after launch:
    ```
 
    **Frontend**:
+
    ```typescript
    // app-frontend/src/pages/PatientProgressPage.tsx
    // Charts showing:
@@ -740,6 +776,7 @@ The following features will be added after launch:
    - **Effort**: 3 days
 
    **Implementation**:
+
    ```ruby
    # app/jobs/weekly_summary_job.rb
    class WeeklySummaryJob < ApplicationJob
@@ -768,6 +805,7 @@ The following features will be added after launch:
    - **Effort**: 1 week
 
    **Implementation**:
+
    ```ruby
    # New Model: Goal
    # Fields: user_id, goal_type, target_value, current_value, deadline, status
@@ -807,11 +845,13 @@ The following features will be added after launch:
 #### User Stories
 
 **Therapist**:
+
 - 🔨 As an SLP, I want to see visual reports of my patient's practice over time
 - 🔨 As an SLP, I want to receive weekly summaries via email
 - ✅ As an SLP, I can view system-wide analytics (completed at org level)
 
 **Patient**:
+
 - 🔨 As a patient, I want to visualize my progress (reduced disfluency, consistency)
 - 🔨 As a patient, I want to set goals and track milestones
 - 🔨 As a patient, I want to receive encouragement when hitting milestones
@@ -829,6 +869,7 @@ The following features will be added after launch:
 This phase will be implemented post-MVP.
 
 **Planned Features**:
+
 1. Daily streak tracking
 2. Badges (3-day, 7-day, 30-day streaks)
 3. Motivational nudges ("Great job practicing 5 days in a row!")
@@ -840,6 +881,7 @@ This phase will be implemented post-MVP.
 #### User Stories (Future)
 
 **Patient**:
+
 - As a patient, I want to receive badges when I practice regularly
 - As a patient, I want to get reminders when I skip practice
 
@@ -864,6 +906,7 @@ This phase will be implemented post-MVP.
 - [x] Patient profile management (edit name, contact info)
 
 **Implementation Files**:
+
 - `app-frontend/src/pages/ClientsManagementPage.tsx`
 - `app-frontend/src/pages/ReportsPage.tsx` (therapist view)
 - `app-backend/app/controllers/api/v1/users_controller.rb`
@@ -877,6 +920,7 @@ This phase will be implemented post-MVP.
    - **Effort**: 3 days
 
    **Implementation**:
+
    ```ruby
    # New Model: ReportNote
    # Fields: report_id, user_id (therapist), note, visibility (private/shared_with_patient)
@@ -904,6 +948,7 @@ This phase will be implemented post-MVP.
    - **Effort**: 4 days
 
    **Implementation**:
+
    ```ruby
    # app/services/patient_summary_generator.rb
    class PatientSummaryGenerator
@@ -936,6 +981,7 @@ This phase will be implemented post-MVP.
    - **Effort**: 3-4 days
 
    **Implementation**:
+
    ```ruby
    # app/controllers/api/v1/manual_reports_controller.rb
    class Api::V1::ManualReportsController < ApplicationController
@@ -963,6 +1009,7 @@ This phase will be implemented post-MVP.
    ```
 
    **Frontend**:
+
    ```typescript
    // app-frontend/src/pages/ManualReportGeneratorPage.tsx
    // 3-step flow:
@@ -989,6 +1036,7 @@ This phase will be implemented post-MVP.
    - **Effort**: 3 days
 
    **Implementation**:
+
    ```typescript
    // app-frontend/src/pages/TherapistDashboard.tsx
    // Shows:
@@ -1007,6 +1055,7 @@ This phase will be implemented post-MVP.
 #### User Stories
 
 **Therapist**:
+
 - ✅ As an SLP, I can see all my patients' key info in one place
 - 🔨 As an SLP, I can leave feedback on patient reports
 - 🔨 As an SLP, I can export patient progress summaries as PDF
@@ -1022,6 +1071,7 @@ This phase will be implemented post-MVP.
 **Focus**: Deliver core therapist value - editable reports with PDF export
 
 **Week 1: Report Editing**
+
 - [ ] Add `update` action to `reports_controller.rb`
 - [ ] Install Tiptap or React Quill
 - [ ] Build `ReportEditPage.tsx` with rich text editor
@@ -1030,6 +1080,7 @@ This phase will be implemented post-MVP.
 - [ ] Test editing workflow end-to-end
 
 **Week 2: PDF Export**
+
 - [ ] Add `prawn` gem to Gemfile
 - [ ] Create `PdfGeneratorService`
 - [ ] Design clinical report PDF template
@@ -1042,6 +1093,7 @@ This phase will be implemented post-MVP.
 - [ ] Test PDF generation with various report types
 
 **Deliverables**:
+
 - Therapists can edit AI-generated reports
 - Therapists can export reports as professional PDFs
 - Phase 2: 60% → 100% ✅
@@ -1053,6 +1105,7 @@ This phase will be implemented post-MVP.
 **Focus**: Enable therapist-patient relationships + start disfluency detection
 
 **Week 3: Therapist-Patient Linking**
+
 - [ ] Create `TherapistPatientAssignment` model + migration
 - [ ] Build assignment API endpoints (POST, DELETE)
 - [ ] Add assignment UI in `ClientsManagementPage.tsx`
@@ -1060,6 +1113,7 @@ This phase will be implemented post-MVP.
 - [ ] Test assignment workflow
 
 **Week 4: Disfluency Detection Foundation**
+
 - [ ] Research disfluency detection approaches (acoustic + NLP)
 - [ ] Create `Disfluency` model + migration
 - [ ] Enhance AI service (`disfluency_detector.py`)
@@ -1068,6 +1122,7 @@ This phase will be implemented post-MVP.
 - [ ] Display basic disfluency markers in frontend
 
 **Deliverables**:
+
 - Phase 1: 90% → 100% ✅
 - Phase 3: 50% → 65%
 
@@ -1078,6 +1133,7 @@ This phase will be implemented post-MVP.
 **Focus**: Full disfluency detection, annotation, and metrics
 
 **Week 5: Annotation Interface**
+
 - [ ] Create `Annotation` model + migration
 - [ ] Build annotation API (POST, PUT, DELETE)
 - [ ] Install WaveSurfer.js for waveform visualization
@@ -1089,6 +1145,7 @@ This phase will be implemented post-MVP.
 - [ ] Test annotation workflow (therapist + patient views)
 
 **Week 6: Metrics & Insights**
+
 - [ ] Create `DisfluencyMetric` model + migration
 - [ ] Build `DisfluencyMetricsCalculator` service
 - [ ] Calculate metrics after transcription processing
@@ -1097,6 +1154,7 @@ This phase will be implemented post-MVP.
 - [ ] Add context-based analysis (performance by speech type)
 
 **Deliverables**:
+
 - Phase 3: 65% → 100% ✅
 - Patients can annotate their recordings
 - Therapists can review and correct AI disfluency detection
@@ -1109,6 +1167,7 @@ This phase will be implemented post-MVP.
 **Focus**: Patient progress visualization + therapist portal polish
 
 **Week 7: Patient Progress Dashboard**
+
 - [ ] Create `PatientProgressController`
 - [ ] Build `PatientProgressPage.tsx`
 - [ ] Add disfluency trend charts (line chart, bar chart)
@@ -1117,6 +1176,7 @@ This phase will be implemented post-MVP.
 - [ ] Test progress view for multiple patients
 
 **Week 8: Therapist Portal Enhancements**
+
 - [ ] Create `ReportNote` model + migration
 - [ ] Build report notes API
 - [ ] Add notes UI in ReportsPage
@@ -1126,6 +1186,7 @@ This phase will be implemented post-MVP.
 - [ ] Add patient alerts (no activity, regression)
 
 **Deliverables**:
+
 - Phase 5: 40% → 90%
 - Phase 7: 70% → 100% ✅
 - Patients can see their progress over time
@@ -1138,29 +1199,32 @@ This phase will be implemented post-MVP.
 
 ### Phase Completion Status
 
-| Phase | Status | Launch-Critical? |
-|-------|--------|------------------|
-| Phase 1 - Foundation | ✅ 100% | Yes |
-| Phase 2 - Report Writing | ✅ 100% | **YES - CORE VALUE** |
-| Phase 3 - Speech Analysis | ✅ 100% | Yes - Differentiator |
-| Phase 4 - Exercises | 0% | No - Post-launch |
-| Phase 5 - Progress | 90% | Yes - Hypothesis validation |
-| Phase 6 - Gamification | 0% | No - Post-launch |
-| Phase 7 - Therapist Portal | ✅ 100% | Yes |
+| Phase                      | Status  | Launch-Critical?            |
+| -------------------------- | ------- | --------------------------- |
+| Phase 1 - Foundation       | ✅ 100% | Yes                         |
+| Phase 2 - Report Writing   | ✅ 100% | **YES - CORE VALUE**        |
+| Phase 3 - Speech Analysis  | ✅ 100% | Yes - Differentiator        |
+| Phase 4 - Exercises        | 0%      | No - Post-launch            |
+| Phase 5 - Progress         | 90%     | Yes - Hypothesis validation |
+| Phase 6 - Gamification     | 0%      | No - Post-launch            |
+| Phase 7 - Therapist Portal | ✅ 100% | Yes                         |
 
 **MVP Feature Completeness**: ~85%
 
 ### Post-MVP Roadmap
 
 **Phase 4: Exercise System** (3-4 weeks post-launch)
+
 - Based on user feedback: Do patients want structured exercises?
 - Implement if therapists request assignment features
 
 **Phase 6: Gamification** (1-2 weeks post-launch)
+
 - Add if engagement data shows drop-off
 - Implement streaks and badges
 
 **Advanced Features** (3+ months post-launch)
+
 - Real-time speech analysis during recording
 - AI avatar for scenario practice
 - Integration with clinic management systems
@@ -1172,6 +1236,7 @@ This phase will be implemented post-MVP.
 ## Technical Dependencies
 
 ### Backend Dependencies (Ruby)
+
 ```ruby
 # Gemfile additions needed:
 gem 'prawn'              # PDF generation
@@ -1182,18 +1247,20 @@ gem 'trix'               # Rich text (alternative to frontend editor)
 ```
 
 ### Frontend Dependencies (npm)
+
 ```json
 {
   "dependencies": {
-    "@tiptap/react": "^2.0.0",           // Rich text editor
-    "@tiptap/starter-kit": "^2.0.0",     // Tiptap extensions
-    "wavesurfer.js": "^7.0.0",           // Audio waveform
-    "recharts": "^2.10.0"                // Already installed - charts
+    "@tiptap/react": "^2.0.0", // Rich text editor
+    "@tiptap/starter-kit": "^2.0.0", // Tiptap extensions
+    "wavesurfer.js": "^7.0.0", // Audio waveform
+    "recharts": "^2.10.0" // Already installed - charts
   }
 }
 ```
 
 ### AI Service Dependencies (Python)
+
 ```txt
 # requirements.txt additions:
 torch>=2.0.0              # Already installed
@@ -1207,6 +1274,7 @@ librosa>=0.10.0           # Audio feature extraction
 ### Database Schema Changes
 
 **New Tables to Create**:
+
 1. `therapist_patient_assignments` (Phase 1)
 2. `invite_codes` (Phase 1)
 3. `report_versions` (Phase 2 - P2)
@@ -1219,6 +1287,7 @@ librosa>=0.10.0           # Audio feature extraction
 10. `report_notes` (Phase 7)
 
 **Table Modifications**:
+
 - `audio_recordings`: Add `context_tags`, `speech_type`, `stress_level` columns (Phase 3)
 
 ---
@@ -1228,38 +1297,46 @@ librosa>=0.10.0           # Audio feature extraction
 ### Phase 2 Success Criteria (Report Writing)
 
 **Therapist Adoption**:
+
 - **Goal**: 80% of therapists edit at least 1 report before exporting
 - **Measure**: Track `report.updated_at != report.created_at`
 
 **Time Savings**:
+
 - **Goal**: Average report creation time < 10 minutes (vs. 30-60 min manual)
 - **Measure**: Time from upload to PDF export
 
 **Quality**:
+
 - **Goal**: 70% of AI-generated reports rated "Acceptable" or "Good"
 - **Measure**: Optional feedback survey after report export
 
 ### Phase 3 Success Criteria (Speech Analysis)
 
 **Annotation Engagement**:
+
 - **Goal**: 60% of patients annotate at least 1 recording
 - **Measure**: Count users with annotations
 
 **Disfluency Detection Accuracy**:
+
 - **Goal**: 75% precision/recall vs. therapist annotations
 - **Measure**: Compare AI vs. therapist-marked disfluencies
 
 **Insights Usefulness**:
+
 - **Goal**: Therapists find metrics "Useful" or "Very Useful" (4-5 rating)
 - **Measure**: In-app survey
 
 ### Phase 5 Success Criteria (Progress Tracking)
 
 **Patient Engagement**:
+
 - **Goal**: 70% of patients check progress dashboard weekly
 - **Measure**: Weekly active users viewing progress page
 
 **Motivation**:
+
 - **Goal**: Patients with visible progress upload 2x more recordings
 - **Measure**: Compare recording frequency (with progress view vs. without)
 
@@ -1268,12 +1345,14 @@ librosa>=0.10.0           # Audio feature extraction
 ## Notes & Assumptions
 
 ### Assumptions
+
 1. **AI Service Capability**: Current Groq API provides sufficient transcription quality for clinical use
 2. **Disfluency Detection**: Combination of acoustic analysis + NLP can achieve 75%+ accuracy
 3. **Therapist Workflow**: SLPs prefer editing reports over writing from scratch
 4. **Patient Motivation**: Progress visualization increases engagement (requires validation)
 
 ### Risks
+
 1. **AI Accuracy**: Disfluency detection may require significant tuning per user
    - Mitigation: Human-in-the-loop annotation, per-user calibration
 2. **Compliance**: Clinical reports may have strict regulatory requirements
@@ -1282,6 +1361,7 @@ librosa>=0.10.0           # Audio feature extraction
    - Mitigation: Async job queue (Solid Queue) already in place
 
 ### Open Questions
+
 - Should we support video recordings for tension/secondary behavior analysis?
 - How to handle multi-language support (Portuguese priority)?
 - Integration with existing clinic EHR/EMR systems?

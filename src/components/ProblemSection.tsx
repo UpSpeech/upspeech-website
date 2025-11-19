@@ -92,7 +92,10 @@ const ProblemSection = () => {
                 <div
                   className={`relative z-10 w-16 h-16 rounded-xl ${problem.accentColor} flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 shadow-sm`}
                 >
-                  <problem.Icon className="w-8 h-8 text-calm-navy" strokeWidth={2} />
+                  <problem.Icon
+                    className="w-8 h-8 text-calm-navy"
+                    strokeWidth={2}
+                  />
                 </div>
 
                 {/* Content */}

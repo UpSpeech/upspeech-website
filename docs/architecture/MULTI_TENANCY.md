@@ -61,6 +61,7 @@ end
 ```
 
 `TenantScoped` concern (planned):
+
 - Validates presence of `tenant_id`.
 - `for_current_tenant` scope invoked in controllers.
 - Explicit scoping to avoid global default scope pitfalls.
@@ -133,12 +134,14 @@ Include `tenant_id` explicitly in job args. Load tenant context at job start. Fa
 ## 14. Future Improvements
 
 ### JWT Migration (Priority 1)
+
 - **Stateless tenant resolution**: Embed `tid` in JWT claims
 - **Performance**: Eliminate per-request tenant database lookups
 - **Scaling**: Enable horizontal scaling across multiple servers
 - **Microservices**: Allow other services to validate tenant context
 
 ### Additional Enhancements
+
 - Per-tenant rate limits (Redis buckets keyed by tenant)
 - Billing integration aligned with isolation levels
 - Enhanced audit logging with tenant context

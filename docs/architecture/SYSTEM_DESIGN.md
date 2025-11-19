@@ -185,14 +185,14 @@ Container image reused between web & worker with different commands.
 
 ## 12. Scaling Path
 
-| Stage               | Trigger                    | Action                                |
-| ------------------- | -------------------------- | ------------------------------------- |
-| 0 Prototype (MVP)   | <100 users                 | Single API container + DB (sessions) |
-| 1 Early Growth      | p95 > 400ms                | Scale API horizontally; CDN static   |
-| **1.5 Auth Migration** | **Multi-server scaling** | **Migrate to JWT authentication**  |
-| 2 Intensive Media   | Storage >5GB local         | Introduce S3/MinIO + async upload    |
-| 3 Enterprise        | Isolation request          | Migrate tenant to dedicated schema/DB |
-| 4 Observability     | Debug difficulty           | Add tracing + dashboards             |
+| Stage                  | Trigger                  | Action                                |
+| ---------------------- | ------------------------ | ------------------------------------- |
+| 0 Prototype (MVP)      | <100 users               | Single API container + DB (sessions)  |
+| 1 Early Growth         | p95 > 400ms              | Scale API horizontally; CDN static    |
+| **1.5 Auth Migration** | **Multi-server scaling** | **Migrate to JWT authentication**     |
+| 2 Intensive Media      | Storage >5GB local       | Introduce S3/MinIO + async upload     |
+| 3 Enterprise           | Isolation request        | Migrate tenant to dedicated schema/DB |
+| 4 Observability        | Debug difficulty         | Add tracing + dashboards              |
 
 ## 14. Tech Choices Rationale
 
@@ -205,28 +205,31 @@ Container image reused between web & worker with different commands.
 
 ## 14. Risks & Mitigations
 
-| Risk                    | Impact             | Mitigation                                 |
-| ----------------------- | ------------------ | ------------------------------------------ |
-| Session scaling limits  | Horizontal scaling | JWT migration planned for multi-server    |
-| N+1 queries             | Latency            | Bullet gem dev, add eager loads + indexes  |
-| Missing tenant scope    | Data leak          | TenantScoped concern + tests + (later) RLS |
-| Cost creep              | Burn               | Phase gating, infra right-sizing           |
-| Vendor lock-in          | Medium             | Portable Docker + standard libs            |
+| Risk                   | Impact             | Mitigation                                 |
+| ---------------------- | ------------------ | ------------------------------------------ |
+| Session scaling limits | Horizontal scaling | JWT migration planned for multi-server     |
+| N+1 queries            | Latency            | Bullet gem dev, add eager loads + indexes  |
+| Missing tenant scope   | Data leak          | TenantScoped concern + tests + (later) RLS |
+| Cost creep             | Burn               | Phase gating, infra right-sizing           |
+| Vendor lock-in         | Medium             | Portable Docker + standard libs            |
 
 ## 15. Future Improvements & Technical Debt
 
 ### Priority 1: Authentication Migration
+
 - **JWT Implementation**: Migrate from session-based to JWT authentication
 - **Stateless Scaling**: Enable horizontal scaling across multiple servers
 - **Tenant Claims**: Embed `tid` (tenant_id) in JWT for microservice compatibility
 - **Dual Support**: Implement gradual migration strategy supporting both auth methods
 
 ### Priority 2: Performance & Scale
+
 - **Object Storage**: Migrate from local disk to S3/MinIO for audio files
 - **Read Replicas**: Add database read replicas for query performance
 - **CDN Integration**: Implement CDN for static assets and cached responses
 
 ### Priority 3: Observability
+
 - **Structured Logging**: Enhanced logging with tenant_id and request tracing
 - **Metrics Dashboard**: Application performance monitoring
 - **Alerting**: Error rate and performance threshold alerts

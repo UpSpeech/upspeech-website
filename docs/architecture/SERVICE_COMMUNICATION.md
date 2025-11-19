@@ -39,11 +39,11 @@ sequenceDiagram
 
 ## Service Endpoints Summary
 
-| Service | URL (Dev) | URL (Prod) | Protocol |
-|---------|-----------|------------|----------|
-| Frontend | http://localhost:3001 | TBD | HTTP |
-| Backend API | http://localhost:3000 | TBD | HTTP |
-| AI Service | http://localhost:8081 | TBD | HTTP |
+| Service     | URL (Dev)             | URL (Prod) | Protocol |
+| ----------- | --------------------- | ---------- | -------- |
+| Frontend    | http://localhost:3001 | TBD        | HTTP     |
+| Backend API | http://localhost:3000 | TBD        | HTTP     |
+| AI Service  | http://localhost:8081 | TBD        | HTTP     |
 
 ---
 
@@ -58,13 +58,13 @@ The frontend uses a singleton `ApiClient` class built on Axios with two separate
 ```typescript
 // Versioned API client (most endpoints)
 this.client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,        // http://localhost:3000/api/v1
+  baseURL: import.meta.env.VITE_API_URL, // http://localhost:3000/api/v1
   timeout: 30000,
 });
 
 // Unversioned client (auth only)
 this.authClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,   // http://localhost:3000
+  baseURL: import.meta.env.VITE_API_BASE_URL, // http://localhost:3000
   timeout: 30000,
 });
 ```
@@ -94,13 +94,14 @@ client.interceptors.response.use(
       window.location.href = "/auth";
     }
     return Promise.reject(error);
-  }
+  },
 );
 ```
 
 ### Request Patterns
 
 **Standard GET Request:**
+
 ```typescript
 async getReports(params?: FilterParams): Promise<PaginatedResponse<Report>> {
   const response = await this.client.get<PaginatedResponse<Report>>(
@@ -112,6 +113,7 @@ async getReports(params?: FilterParams): Promise<PaginatedResponse<Report>> {
 ```
 
 **POST with JSON Body:**
+
 ```typescript
 async createReportNote(
   reportId: number,
@@ -125,6 +127,7 @@ async createReportNote(
 ```
 
 **File Upload (multipart/form-data):**
+
 ```typescript
 async uploadAudioFile(
   file: File | Blob,
@@ -212,6 +215,7 @@ end
 ```
 
 **Flow:**
+
 1. Frontend → Backend: POST /api/v1/audio_recordings (file)
 2. Backend → AI Service: POST /upload (file)
 3. AI Service returns `file_id` (UUID)
@@ -252,6 +256,7 @@ end
 ```
 
 **Flow:**
+
 1. Background job picks up queued work
 2. Job → AI Service: POST /process/{file_id} (with Groq-Api-Key header)
 3. AI Service transcribes audio and generates report
@@ -278,6 +283,7 @@ DEVISE_SECRET_KEY=your_devise_secret_here      # For Devise (generate with: rail
 ```
 
 **Generate secrets:**
+
 ```bash
 cd app-backend
 bundle exec rails secret  # For JWT_SECRET_KEY and DEVISE_SECRET_KEY
@@ -296,11 +302,13 @@ bundle exec rails secret  # For JWT_SECRET_KEY and DEVISE_SECRET_KEY
 ### Available Endpoints
 
 #### 1. Health Check
+
 ```http
 GET /health
 ```
 
 **Response:**
+
 ```json
 {
   "status": "healthy",
@@ -311,6 +319,7 @@ GET /health
 ```
 
 #### 2. Upload Audio File
+
 ```http
 POST /upload
 Content-Type: multipart/form-data
@@ -319,6 +328,7 @@ file: <binary audio data>
 ```
 
 **Response:**
+
 ```json
 {
   "file_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -329,17 +339,20 @@ file: <binary audio data>
 ```
 
 **Notes:**
+
 - Files stored in `/app/uploads` with UUID filename
 - Max file size: 200MB
 - File is NOT processed yet, just stored
 
 #### 3. Process Audio File
+
 ```http
 POST /process/{file_id}
 Groq-Api-Key: gsk_xxxxxxxxxxxx
 ```
 
 **Response:**
+
 ```json
 {
   "transcript": "Full transcription text here...",
@@ -350,6 +363,7 @@ Groq-Api-Key: gsk_xxxxxxxxxxxx
 ```
 
 **Notes:**
+
 - Requires `file_id` from previous upload
 - Requires `Groq-Api-Key` header for transcription
 - Audio split into 3-minute chunks for processing
@@ -357,11 +371,13 @@ Groq-Api-Key: gsk_xxxxxxxxxxxx
 - Groq LLM used for report generation
 
 #### 4. Delete Processed File
+
 ```http
 DELETE /files/{file_id}
 ```
 
 **Response:**
+
 ```json
 {
   "file_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -371,11 +387,13 @@ DELETE /files/{file_id}
 ```
 
 **Notes:**
+
 - Cleans up stored file after processing complete
 - Called automatically by backend after successful processing
 - Non-blocking (returns success even if file not found)
 
 #### 5. Admin Cleanup
+
 ```http
 POST /admin/cleanup
 ```
@@ -400,12 +418,14 @@ GROQ_API_KEY=your_groq_api_key_here
 **Answer**: **NO** - The frontend NEVER communicates directly with the AI service.
 
 **Why?**
+
 1. **Security**: Keeps Groq API key secret (only backend knows it)
 2. **Control**: Backend validates permissions before processing
 3. **Multi-tenancy**: Backend enforces tenant isolation
 4. **Consistency**: All audio processing logged and tracked in database
 
 **Correct Flow:**
+
 ```
 Frontend → Backend → AI Service
          ↓
@@ -553,6 +573,7 @@ function ExamplesPage() {
 ### 1. Multi-Tenancy Scoping
 
 **Always scope queries by tenant:**
+
 ```ruby
 # ✅ CORRECT
 current_tenant.reports.where(user: current_user)
@@ -564,6 +585,7 @@ Report.where(user: current_user)
 ### 2. Role-Based Access Control (RBAC)
 
 **Check permissions before returning data:**
+
 ```ruby
 case current_user.role
 when 'owner'
@@ -580,12 +602,14 @@ end
 ### 3. Nested Params (Rails Convention)
 
 **Backend expects nested params:**
+
 ```ruby
 # params.rb
 params.require(:report).permit(:title, :content)
 ```
 
 **Frontend must nest data:**
+
 ```typescript
 // ✅ CORRECT
 await apiClient.updateReport(id, { report: { title: "New Title" } });
@@ -597,6 +621,7 @@ await apiClient.updateReport(id, { title: "New Title" });
 ### 4. Error Handling
 
 **Backend:**
+
 ```ruby
 rescue ActiveRecord::RecordNotFound
   render json: { error: 'Resource not found' }, status: :not_found
@@ -605,6 +630,7 @@ rescue ActiveRecord::RecordInvalid => e
 ```
 
 **Frontend:**
+
 ```typescript
 try {
   const response = await apiClient.createExample(data);
@@ -619,12 +645,13 @@ try {
 ### 5. Timeouts for Long Operations
 
 **Adjust timeouts for file uploads and AI processing:**
+
 ```typescript
 // Frontend
-timeout: 120000  // 2 minutes for file uploads
+timeout: 120000; // 2 minutes for file uploads
 
 // Backend (Faraday)
-conn.options.timeout = 300  // 5 minutes for AI processing
+conn.options.timeout = 300; // 5 minutes for AI processing
 ```
 
 ---
@@ -634,6 +661,7 @@ conn.options.timeout = 300  // 5 minutes for AI processing
 ### Frontend can't connect to Backend
 
 **Check:**
+
 1. Backend is running: `curl http://localhost:3000/api/v1/up`
 2. CORS headers configured in `app-backend/config/application.rb`
 3. Environment variable `VITE_API_URL` is correct
@@ -641,6 +669,7 @@ conn.options.timeout = 300  // 5 minutes for AI processing
 ### Backend can't connect to AI Service
 
 **Check:**
+
 1. AI service is running: `curl http://localhost:8081/health`
 2. Environment variable `UPSPEECH_AI_URL` is set correctly
 3. Firewall/Docker network allows connection
@@ -648,12 +677,14 @@ conn.options.timeout = 300  // 5 minutes for AI processing
 ### AI Service returns 400 (Missing Groq API Key)
 
 **Check:**
+
 1. Backend has `GROQ_API_KEY` set in `.env`
 2. Job passes key in `Groq-Api-Key` header (note the capitalization)
 
 ### File Upload Fails
 
 **Check:**
+
 1. File size < 200MB limit
 2. Content-Type is set correctly (`multipart/form-data`)
 3. Backend Faraday has `:multipart` request adapter

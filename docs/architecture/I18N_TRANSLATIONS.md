@@ -189,7 +189,7 @@ export function LanguageSwitcher() {
 
   return (
     <select
-      onChange={e => changeLanguage(e.target.value)}
+      onChange={(e) => changeLanguage(e.target.value)}
       value={i18n.language}
     >
       <option value="en">English</option>

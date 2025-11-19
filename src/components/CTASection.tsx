@@ -32,7 +32,7 @@ const CTASection = () => {
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
     } else {
       console.warn(
-        "EmailJS public key not configured or using default placeholder"
+        "EmailJS public key not configured or using default placeholder",
       );
     }
   }, []);
@@ -74,7 +74,7 @@ const CTASection = () => {
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
+        EMAILJS_CONFIG.PUBLIC_KEY,
       );
     } catch (error) {
       console.error("Failed to send auto-reply email:", error);
@@ -204,7 +204,7 @@ const CTASection = () => {
                 id="name"
                 type="text"
                 value={formData.name}
-                onChange={e =>
+                onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender placeholder:text-calm-charcoal/30 transition-colors duration-200"
@@ -224,7 +224,7 @@ const CTASection = () => {
                 id="email"
                 type="email"
                 value={formData.email}
-                onChange={e =>
+                onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
                 className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender placeholder:text-calm-charcoal/30 transition-colors duration-200"
@@ -241,7 +241,7 @@ const CTASection = () => {
                 Role *
               </Label>
               <Select
-                onValueChange={value =>
+                onValueChange={(value) =>
                   setFormData({ ...formData, role: value })
                 }
               >
@@ -282,7 +282,7 @@ const CTASection = () => {
                 Clinic Size (Optional)
               </Label>
               <Select
-                onValueChange={value =>
+                onValueChange={(value) =>
                   setFormData({ ...formData, clinicSize: value })
                 }
               >
