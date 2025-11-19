@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/analytics";
 
 const Header = () => {
   const scrollToSection = (sectionId: string) => {
+    trackButtonClick(`nav_${sectionId}`, "header");
     const element = document.getElementById(sectionId);
     if (element) {
       const headerOffset = 80; // height of header (h-20 = 5rem = 80px)
@@ -24,7 +26,10 @@ const Header = () => {
           <div
             className="flex items-center animate-fade-in cursor-pointer"
             style={{ animationDelay: "0.2s" }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+              trackButtonClick("logo", "header");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             <img
               src="/images/logo.png"
@@ -58,7 +63,10 @@ const Header = () => {
           </nav>
 
           <Button
-            onClick={() => scrollToSection("cta")}
+            onClick={() => {
+              trackButtonClick("join_waitlist", "header");
+              scrollToSection("cta");
+            }}
             className="bg-calm-lavender hover:bg-calm-navy text-white font-nunito font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 animate-fade-in group"
             style={{ animationDelay: "0.6s" }}
           >

@@ -3,7 +3,7 @@
  * Manages user consent for analytics and advertising
  */
 
-// Extend Window interface to include gtag
+// Extend Window interface to include gtag and clarity
 declare global {
   interface Window {
     gtag?: (
@@ -12,6 +12,7 @@ declare global {
       config?: Record<string, unknown>,
     ) => void;
     dataLayer?: unknown[];
+    clarity?: (command: string, ...args: unknown[]) => void;
   }
 }
 
@@ -49,7 +50,7 @@ export const getConsentState = (): ConsentState | null => {
 
 /**
  * Grant all consent (analytics + advertising)
- * Updates Google Consent Mode and stores preference
+ * Updates Google Consent Mode, Microsoft Clarity, and stores preference
  */
 export const grantConsent = (): void => {
   if (typeof window === "undefined") return;
@@ -64,6 +65,14 @@ export const grantConsent = (): void => {
     });
   }
 
+  // Update Microsoft Clarity Consent (v2 API)
+  if (window.clarity) {
+    window.clarity("consentv2", {
+      ad_Storage: "granted",
+      analytics_Storage: "granted",
+    });
+  }
+
   // Store consent preference
   const consentState: ConsentState = {
     analytics: true,
@@ -75,7 +84,7 @@ export const grantConsent = (): void => {
 
 /**
  * Deny all consent
- * Updates Google Consent Mode and stores preference
+ * Updates Google Consent Mode, Microsoft Clarity, and stores preference
  */
 export const denyConsent = (): void => {
   if (typeof window === "undefined") return;
@@ -87,6 +96,14 @@ export const denyConsent = (): void => {
       ad_user_data: "denied",
       ad_personalization: "denied",
       analytics_storage: "denied",
+    });
+  }
+
+  // Update Microsoft Clarity Consent (v2 API)
+  if (window.clarity) {
+    window.clarity("consentv2", {
+      ad_Storage: "denied",
+      analytics_Storage: "denied",
     });
   }
 
@@ -113,6 +130,14 @@ export const grantAnalyticsOnly = (): void => {
       ad_user_data: "denied",
       ad_personalization: "denied",
       analytics_storage: "granted",
+    });
+  }
+
+  // Update Microsoft Clarity Consent (v2 API)
+  if (window.clarity) {
+    window.clarity("consentv2", {
+      ad_Storage: "denied",
+      analytics_Storage: "granted",
     });
   }
 

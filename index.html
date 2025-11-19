@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
 
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://upspeech.app; connect-src 'self' https://formspree.io https://api.emailjs.com https://cdn.emailjs.com https://www.google-analytics.com https://analytics.google.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com;"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -61,7 +57,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://upspeech.app; connect-src 'self' https://formspree.io https://api.emailjs.com https://www.google-analytics.com https://analytics.google.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com;"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://upspeech.app https://c.bing.com https://*.clarity.ms; connect-src 'self' https://formspree.io https://api.emailjs.com https://*.google-analytics.com https://analytics.google.com https://*.clarity.ms https://c.bing.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms;"
     />
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -196,17 +192,78 @@
         dataLayer.push(arguments);
       }
 
-      // Set default consent state (denied) - BEFORE gtag config
-      gtag("consent", "default", {
+      // 1. Determine default consent state based on localStorage
+      let defaultConsent = {
         ad_storage: "denied",
         ad_user_data: "denied",
         ad_personalization: "denied",
         analytics_storage: "denied",
-      });
+      };
 
-      // Initialize GA4
+      try {
+        const stored = localStorage.getItem("upspeech_cookie_consent");
+        if (stored) {
+          const consentState = JSON.parse(stored);
+          if (consentState.analytics) {
+            defaultConsent.analytics_storage = "granted";
+          }
+          if (consentState.advertising) {
+            defaultConsent.ad_storage = "granted";
+            defaultConsent.ad_user_data = "granted";
+            defaultConsent.ad_personalization = "granted";
+          }
+        }
+      } catch (e) {
+        // Ignore parsing errors
+      }
+
+      // 2. Set default consent state - BEFORE gtag config
+      gtag("consent", "default", defaultConsent);
+
+      // 3. Initialize GA4
       gtag("js", new Date());
-      gtag("config", "G-MVPYYDVPZZ");
+      // Disable automatic page view measurement (handled by PageViewTracker)
+      gtag("config", "G-MVPYYDVPZZ", { send_page_view: false });
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "u8mslvrqv7");
+
+      // Set Clarity consent state based on localStorage
+      try {
+        const stored = localStorage.getItem("upspeech_cookie_consent");
+        if (stored) {
+          const consentState = JSON.parse(stored);
+          window.clarity("consentv2", {
+            ad_Storage: consentState.advertising ? "granted" : "denied",
+            analytics_Storage: consentState.analytics ? "granted" : "denied",
+          });
+        } else {
+          // Default to denied if no consent stored
+          window.clarity("consentv2", {
+            ad_Storage: "denied",
+            analytics_Storage: "denied",
+          });
+        }
+      } catch (e) {
+        // Default to denied on error
+        window.clarity("consentv2", {
+          ad_Storage: "denied",
+          analytics_Storage: "denied",
+        });
+      }
     </script>
   </head>
 

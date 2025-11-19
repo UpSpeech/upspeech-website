@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/analytics";
 
 const InterstitialCTA = () => {
   const scrollToCTA = () => {
+    trackButtonClick("join_waitlist_interstitial", "interstitial");
     const element = document.getElementById("cta");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/analytics";
 
 const HeroSection = () => {
   const waveRef = useRef<HTMLDivElement>(null);
@@ -24,6 +25,7 @@ const HeroSection = () => {
   }, []);
 
   const scrollToCTA = () => {
+    trackButtonClick("join_waitlist_hero", "hero");
     const element = document.getElementById("cta");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

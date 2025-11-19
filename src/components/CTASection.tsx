@@ -12,6 +12,7 @@ import {
 import { toast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG, EmailTemplateParams } from "@/lib/emailjs";
+import { trackFormSubmit } from "@/lib/analytics";
 
 const CTASection = () => {
   const [formData, setFormData] = useState({
@@ -105,6 +106,7 @@ const CTASection = () => {
       });
 
       if (formspreeResponse.ok) {
+        trackFormSubmit("waitlist_form", true);
         // Reset form first (so user knows submission was successful)
         setFormData({
           name: "",
@@ -123,11 +125,13 @@ const CTASection = () => {
             "You've been successfully registered. Check your email for a confirmation message.",
         });
       } else {
+        trackFormSubmit("waitlist_form", false);
         const errorText = await formspreeResponse.text();
         console.error("Formspree error:", errorText);
         throw new Error(`Form submission failed: ${formspreeResponse.status}`);
       }
     } catch (error) {
+      trackFormSubmit("waitlist_form", false);
       console.error("Submission error:", error);
 
       let errorMessage = "Please try again later.";
