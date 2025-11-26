@@ -5,11 +5,12 @@
 set -e
 
 COMPOSE_FILE="docker-compose.dev.yml"
+ENV_FILE=".env.docker"
 
 case "$1" in
   "start"|"up")
     echo "🚀 Starting UpSpeech development environment..."
-    docker-compose -f $COMPOSE_FILE up -d
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d
     echo "✅ Services started!"
     echo ""
     echo "📋 Service URLs:"
@@ -24,65 +25,65 @@ case "$1" in
 
   "stop"|"down")
     echo "🛑 Stopping UpSpeech development environment..."
-    docker-compose -f $COMPOSE_FILE down
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE down
     echo "✅ Services stopped!"
     ;;
 
   "restart")
     echo "🔄 Restarting UpSpeech development environment..."
-    docker-compose -f $COMPOSE_FILE down
-    docker-compose -f $COMPOSE_FILE up -d
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE down
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d
     echo "✅ Services restarted!"
     ;;
 
   "logs")
     SERVICE=${2:-}
     if [ -n "$SERVICE" ]; then
-      docker-compose -f $COMPOSE_FILE logs -f $SERVICE
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE logs -f $SERVICE
     else
-      docker-compose -f $COMPOSE_FILE logs -f
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE logs -f
     fi
     ;;
 
   "build")
     echo "🔨 Building UpSpeech development images..."
-    docker-compose -f $COMPOSE_FILE build --no-cache
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE build --no-cache
     echo "✅ Images built!"
     ;;
 
   "clean")
     echo "🧹 Cleaning up Docker resources..."
-    docker-compose -f $COMPOSE_FILE down -v
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE down -v
     docker system prune -f
     echo "✅ Cleanup complete!"
     ;;
 
   "status")
     echo "📊 UpSpeech development environment status:"
-    docker-compose -f $COMPOSE_FILE ps
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE ps
     ;;
 
   "shell")
     SERVICE=${2:-backend}
     echo "🐚 Opening shell in $SERVICE container..."
-    docker-compose -f $COMPOSE_FILE exec $SERVICE bash
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec $SERVICE bash
     ;;
 
   "migrate")
     echo "🗄️  Running database migrations..."
-    docker-compose -f $COMPOSE_FILE exec backend rails db:migrate
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails db:migrate
     echo "✅ Migrations complete!"
     ;;
 
   "seed")
     echo "🌱 Seeding database..."
-    docker-compose -f $COMPOSE_FILE exec backend rails db:seed
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails db:seed
     echo "✅ Database seeded!"
     ;;
 
   "queue-setup")
     echo "🔧 Setting up Solid Queue tables..."
-    docker-compose -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
     echo "✅ Solid Queue tables created!"
     ;;
 
@@ -145,22 +146,22 @@ case "$1" in
     fi
 
     echo "🔨 Building Docker images..."
-    docker-compose -f $COMPOSE_FILE build
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE build
 
     echo "🚀 Starting database and Redis..."
-    docker-compose -f $COMPOSE_FILE up -d postgres redis
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d postgres redis
 
     echo "⏳ Waiting for database to be ready..."
     sleep 10
 
     echo "🗄️  Creating and seeding database..."
-    docker-compose -f $COMPOSE_FILE exec backend rails db:create db:migrate db:seed
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails db:create db:migrate db:seed
 
     echo "🔧 Setting up Solid Queue..."
-    docker-compose -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
 
     echo "🚀 Starting all services..."
-    docker-compose -f $COMPOSE_FILE up -d
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d
 
     echo ""
     echo "✅ Development environment ready!"
@@ -183,7 +184,7 @@ case "$1" in
 
   "bundle")
     echo "💎 Installing gems in backend container..."
-    docker-compose -f $COMPOSE_FILE run --rm backend bundle install
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE run --rm backend bundle install
     echo "✅ Gems installed!"
     ;;
 
@@ -195,10 +196,10 @@ case "$1" in
     echo "🧪 Running all tests..."
     echo ""
     echo "📦 Backend tests:"
-    docker-compose -f $COMPOSE_FILE exec backend bundle exec rspec
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bundle exec rspec
     echo ""
     echo "📦 Frontend tests:"
-    docker-compose -f $COMPOSE_FILE exec frontend npm run test
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test
     echo ""
     echo "✅ All tests completed!"
     ;;
@@ -207,16 +208,16 @@ case "$1" in
     TEST_PATH=${2:-}
     if [ -n "$TEST_PATH" ]; then
       echo "🧪 Running backend tests: $TEST_PATH"
-      docker-compose -f $COMPOSE_FILE exec backend bundle exec rspec $TEST_PATH
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bundle exec rspec $TEST_PATH
     else
       echo "🧪 Running all backend tests..."
-      docker-compose -f $COMPOSE_FILE exec backend bundle exec rspec
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bundle exec rspec
     fi
     ;;
 
   "test:backend:coverage")
     echo "🧪 Running backend tests with coverage..."
-    docker-compose -f $COMPOSE_FILE exec backend bash -c "COVERAGE=true bundle exec rspec"
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bash -c "COVERAGE=true bundle exec rspec"
     echo "✅ Coverage report generated in app-backend/coverage/"
     ;;
 
@@ -224,22 +225,22 @@ case "$1" in
     TEST_PATH=${2:-}
     if [ -n "$TEST_PATH" ]; then
       echo "🧪 Running frontend tests: $TEST_PATH"
-      docker-compose -f $COMPOSE_FILE exec frontend npm run test -- $TEST_PATH
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- $TEST_PATH
     else
       echo "🧪 Running all frontend tests..."
-      docker-compose -f $COMPOSE_FILE exec frontend npm run test
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test
     fi
     ;;
 
   "test:frontend:coverage")
     echo "🧪 Running frontend tests with coverage..."
-    docker-compose -f $COMPOSE_FILE exec frontend npm run test -- --coverage
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --coverage
     echo "✅ Coverage report generated in app-frontend/coverage/"
     ;;
 
   "test:frontend:watch")
     echo "🧪 Running frontend tests in watch mode..."
-    docker-compose -f $COMPOSE_FILE exec frontend npm run test -- --watch
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --watch
     ;;
 
   # ============================================
@@ -308,33 +309,33 @@ case "$1" in
     echo "🔍 Running all linters..."
     echo ""
     echo "📦 Backend (RuboCop):"
-    docker-compose -f $COMPOSE_FILE exec backend bin/rubocop
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bin/rubocop
     echo ""
     echo "📦 Frontend (ESLint + Prettier):"
-    docker-compose -f $COMPOSE_FILE exec frontend npm run lint
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run lint
     echo ""
     echo "✅ All linting completed!"
     ;;
 
   "lint:backend")
     echo "🔍 Running RuboCop..."
-    docker-compose -f $COMPOSE_FILE exec backend bin/rubocop
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bin/rubocop
     ;;
 
   "lint:frontend")
     echo "🔍 Running ESLint + Prettier..."
-    docker-compose -f $COMPOSE_FILE exec frontend npm run lint
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run lint
     ;;
 
   "lint:fix:backend")
     echo "🔧 Auto-fixing RuboCop issues..."
-    docker-compose -f $COMPOSE_FILE exec backend bin/rubocop -a
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bin/rubocop -a
     echo "✅ RuboCop auto-fix completed!"
     ;;
 
   "lint:fix:frontend")
     echo "🔧 Auto-fixing ESLint + Prettier issues..."
-    docker-compose -f $COMPOSE_FILE exec frontend npm run lint:fix
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run lint:fix
     echo "✅ Frontend linting auto-fix completed!"
     ;;
 
@@ -344,21 +345,21 @@ case "$1" in
 
   "db:reset")
     echo "🔄 Resetting database (drop, create, migrate, seed)..."
-    docker-compose -f $COMPOSE_FILE exec backend rails db:drop db:create db:migrate db:seed
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails db:drop db:create db:migrate db:seed
     echo "🔧 Setting up Solid Queue..."
-    docker-compose -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails runner "load('db/queue_schema.rb')"
     echo "✅ Database reset complete!"
     ;;
 
   "db:drop")
     echo "🗑️  Dropping database..."
-    docker-compose -f $COMPOSE_FILE exec backend rails db:drop
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend rails db:drop
     echo "✅ Database dropped!"
     ;;
 
   "db:console")
     echo "🗄️  Opening PostgreSQL console..."
-    docker-compose -f $COMPOSE_FILE exec postgres psql -U postgres upspeech_development
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec postgres psql -U postgres upspeech_development
     ;;
 
   # ============================================
@@ -375,8 +376,8 @@ case "$1" in
     fi
 
     echo "🔨 Rebuilding $SERVICE..."
-    docker-compose -f $COMPOSE_FILE build $SERVICE
-    docker-compose -f $COMPOSE_FILE restart $SERVICE
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE build $SERVICE
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE restart $SERVICE
     echo "✅ $SERVICE rebuilt and restarted!"
     ;;
 
@@ -390,7 +391,7 @@ case "$1" in
 
     # Check Docker container status
     echo "📦 Docker Containers:"
-    docker-compose -f $COMPOSE_FILE ps
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE ps
     echo ""
 
     # Check HTTP endpoints
@@ -421,14 +422,14 @@ case "$1" in
     echo "Database & Redis:"
 
     # PostgreSQL health check
-    if docker-compose -f $COMPOSE_FILE exec postgres pg_isready -U postgres > /dev/null 2>&1; then
+    if docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec postgres pg_isready -U postgres > /dev/null 2>&1; then
       echo "✅ PostgreSQL - Healthy"
     else
       echo "❌ PostgreSQL - Unhealthy"
     fi
 
     # Redis health check
-    if docker-compose -f $COMPOSE_FILE exec redis redis-cli ping > /dev/null 2>&1; then
+    if docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec redis redis-cli ping > /dev/null 2>&1; then
       echo "✅ Redis - Healthy"
     else
       echo "❌ Redis - Unhealthy"
