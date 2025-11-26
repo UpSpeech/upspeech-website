@@ -121,19 +121,67 @@ All development is managed through `./dev.sh`:
 
 ## 🔑 Environment Variables
 
-Required variables in `.env.docker`:
+All environment variables for Docker development are configured in `.env.docker` (not in individual service `.env` files).
 
-| Variable           | Required? | Purpose                                |
-| ------------------ | --------- | -------------------------------------- |
-| `GROQ_API_KEY`     | ⚠️ Yes    | AI transcription and report generation |
-| `RAILS_MASTER_KEY` | ⚠️ Yes    | Rails encrypted credentials            |
-| `SECRET_KEY_BASE`  | ⚠️ Yes    | Secure session cookies                 |
+### Required Variables
 
-Get your keys:
+| Variable                 | Purpose                                | How to Get                        |
+| ------------------------ | -------------------------------------- | --------------------------------- |
+| `GROQ_API_KEY`           | AI transcription and report generation | https://console.groq.com/keys     |
+| `RAILS_MASTER_KEY`       | Rails encrypted credentials            | `openssl rand -hex 32`            |
+| `SECRET_KEY_BASE`        | Secure session cookies                 | `openssl rand -hex 64`            |
+| `JWT_SECRET_KEY`         | JWT authentication                     | `openssl rand -hex 64`            |
+| `DEVISE_SECRET_KEY`      | Devise sessions                        | `openssl rand -hex 64`            |
+| `GCS_BUCKET`             | Google Cloud Storage bucket name       | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_PROJECT_ID`         | GCP project ID                         | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_CREDENTIALS_PATH`   | Path to GCS service account JSON       | See [GCS Setup](#google-cloud-storage-setup) |
 
-- **GROQ_API_KEY**: https://console.groq.com/keys
-- **RAILS_MASTER_KEY**: Generate with `openssl rand -hex 32`
-- **SECRET_KEY_BASE**: Generate with `openssl rand -hex 64`
+### Optional Variables (with defaults)
+
+| Variable                      | Default | Purpose                              |
+| ----------------------------- | ------- | ------------------------------------ |
+| `CLIP_BUFFER_SECONDS`         | 5       | Audio/video clip extraction buffer   |
+| `CHAT_MESSAGE_HISTORY_LIMIT`  | 15      | Backend chatbot history limit        |
+| `VITE_ENABLE_CHATBOT`         | true    | Enable/disable chatbot feature       |
+| `VITE_CHAT_MESSAGE_LIMIT`     | 15      | Frontend chatbot message limit       |
+| `VITE_APP_VERSION`            | 1.0.0   | Application version                  |
+
+**Important:** Individual service `.env` files (like `app-backend/.env`) are **NOT** used in Docker development. All configuration comes from `.env.docker` in the `upspeech-website/` directory.
+
+## ☁️ Google Cloud Storage Setup
+
+GCS is used for storing exercise videos, audio clips, and tenant logos.
+
+**Required configuration:**
+
+```bash
+# In .env.docker
+GCS_BUCKET=upspeech-dev                              # Your GCS bucket name
+GCS_PROJECT_ID=serious-bearing-478818-q8            # GCP project ID
+GCS_CREDENTIALS_PATH=config/gcp/service-account-key.json  # Path to service account JSON
+```
+
+**Service account setup:**
+
+1. The service account key should already exist at `app-backend/config/gcp/service-account-key.json`
+2. If missing, contact the team to get the credentials
+3. **Never commit this file to git** (already in .gitignore)
+
+**For production (Railway/Heroku):**
+
+Use base64-encoded credentials instead of file path:
+
+```bash
+# Encode the JSON file
+cat app-backend/config/gcp/service-account-key.json | base64
+
+# Set in production environment
+GCS_CREDENTIALS_JSON=<base64_encoded_json>
+GCS_PROJECT_ID=serious-bearing-478818-q8
+GCS_BUCKET=upspeech-production
+```
+
+**Note:** The service includes safety checks to prevent using production buckets in development.
 
 ## 📚 Documentation
 

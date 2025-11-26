@@ -112,14 +112,29 @@ case "$1" in
         cp .env.docker.example .env.docker
         echo "✅ .env.docker created!"
         echo ""
-        echo "⚠️  IMPORTANT: You must update .env.docker with your keys:"
-        echo "    • GROQ_API_KEY      - Required for AI transcription/reports"
-        echo "    • RAILS_MASTER_KEY  - Required for Rails credentials"
-        echo "    • SECRET_KEY_BASE   - Required for secure sessions"
+        echo "⚠️  IMPORTANT: You must update .env.docker with the following required values:"
+        echo ""
+        echo "🔐 Rails Secrets (generate with: openssl rand -hex 64):"
+        echo "    • RAILS_MASTER_KEY       - Required for Rails credentials"
+        echo "    • SECRET_KEY_BASE        - Required for secure sessions"
+        echo "    • JWT_SECRET_KEY         - Required for JWT authentication"
+        echo "    • DEVISE_SECRET_KEY      - Required for Devise sessions"
+        echo ""
+        echo "🤖 AI Service:"
+        echo "    • GROQ_API_KEY           - Get from https://console.groq.com/keys"
+        echo ""
+        echo "☁️  Google Cloud Storage:"
+        echo "    • GCS_BUCKET             - Bucket name (e.g., upspeech-dev)"
+        echo "    • GCS_PROJECT_ID         - GCP project ID"
+        echo "    • GCS_CREDENTIALS_PATH   - Path to service account JSON"
         echo ""
         echo "📝 Edit the file now:"
         echo "    nano .env.docker"
         echo "    # or use your preferred editor"
+        echo ""
+        echo "💡 Generate secrets:"
+        echo "    openssl rand -hex 32  # For RAILS_MASTER_KEY"
+        echo "    openssl rand -hex 64  # For SECRET_KEY_BASE, JWT_SECRET_KEY, DEVISE_SECRET_KEY"
         echo ""
         read -p "Press Enter after updating .env.docker to continue setup..."
         echo ""
@@ -156,6 +171,7 @@ case "$1" in
     echo "   AI Service: http://localhost:8081"
     echo ""
     echo "⚠️  NOTE: AI features require GROQ_API_KEY in .env.docker"
+    echo "⚠️  NOTE: File uploads require GCS credentials in .env.docker"
     echo ""
     echo "💡 Next steps:"
     echo "   • Run '$0 health' to check service health"
@@ -427,41 +443,104 @@ case "$1" in
 
     MISSING_VARS=0
 
-    # Check for .env files
-    echo "📋 Environment Files:"
+    # Check for .env.docker (the ONLY env file needed for Docker)
+    echo "📋 Environment File:"
     if [ -f ".env.docker" ]; then
       echo "✅ .env.docker exists"
+      # Load environment variables from .env.docker
+      set -a
+      source .env.docker
+      set +a
     else
-      echo "❌ .env.docker missing"
+      echo "❌ .env.docker missing (run: cp .env.docker.example .env.docker)"
       MISSING_VARS=1
-    fi
-
-    if [ -f "../app-backend/.env" ]; then
-      echo "✅ app-backend/.env exists"
-    else
-      echo "⚠️  app-backend/.env missing (optional)"
-    fi
-
-    if [ -f "../app-frontend/.env" ]; then
-      echo "✅ app-frontend/.env exists"
-    else
-      echo "⚠️  app-frontend/.env missing (optional)"
+      echo ""
+      echo "⚠️  Cannot validate variables without .env.docker file"
+      exit 1
     fi
 
     echo ""
-    echo "🔑 Required Variables:"
+    echo "🔑 Critical Variables (Required):"
 
-    # Check critical environment variables
+    # AI Service
     if [ -z "$GROQ_API_KEY" ]; then
-      echo "⚠️  GROQ_API_KEY not set (required for AI features)"
+      echo "❌ GROQ_API_KEY not set (required for AI features)"
+      MISSING_VARS=1
     else
       echo "✅ GROQ_API_KEY is set"
     fi
 
+    # Rails Secrets
     if [ -z "$RAILS_MASTER_KEY" ]; then
-      echo "⚠️  RAILS_MASTER_KEY not set (may be required for credentials)"
+      echo "❌ RAILS_MASTER_KEY not set (required for credentials)"
+      MISSING_VARS=1
     else
       echo "✅ RAILS_MASTER_KEY is set"
+    fi
+
+    if [ -z "$SECRET_KEY_BASE" ]; then
+      echo "❌ SECRET_KEY_BASE not set (required for sessions)"
+      MISSING_VARS=1
+    else
+      echo "✅ SECRET_KEY_BASE is set"
+    fi
+
+    if [ -z "$JWT_SECRET_KEY" ]; then
+      echo "❌ JWT_SECRET_KEY not set (required for JWT auth)"
+      MISSING_VARS=1
+    else
+      echo "✅ JWT_SECRET_KEY is set"
+    fi
+
+    if [ -z "$DEVISE_SECRET_KEY" ]; then
+      echo "❌ DEVISE_SECRET_KEY not set (required for Devise)"
+      MISSING_VARS=1
+    else
+      echo "✅ DEVISE_SECRET_KEY is set"
+    fi
+
+    # Google Cloud Storage
+    if [ -z "$GCS_BUCKET" ]; then
+      echo "❌ GCS_BUCKET not set (required for file uploads)"
+      MISSING_VARS=1
+    else
+      echo "✅ GCS_BUCKET is set"
+    fi
+
+    if [ -z "$GCS_PROJECT_ID" ]; then
+      echo "❌ GCS_PROJECT_ID not set (required for GCS)"
+      MISSING_VARS=1
+    else
+      echo "✅ GCS_PROJECT_ID is set"
+    fi
+
+    if [ -z "$GCS_CREDENTIALS_PATH" ] && [ -z "$GCS_CREDENTIALS_JSON" ]; then
+      echo "❌ GCS credentials not set (need GCS_CREDENTIALS_PATH or GCS_CREDENTIALS_JSON)"
+      MISSING_VARS=1
+    else
+      echo "✅ GCS credentials configured"
+    fi
+
+    echo ""
+    echo "📦 Optional Variables (with defaults):"
+
+    # Optional with defaults
+    if [ -z "$CLIP_BUFFER_SECONDS" ]; then
+      echo "⚠️  CLIP_BUFFER_SECONDS not set (will use default: 5)"
+    else
+      echo "✅ CLIP_BUFFER_SECONDS is set: $CLIP_BUFFER_SECONDS"
+    fi
+
+    if [ -z "$CHAT_MESSAGE_HISTORY_LIMIT" ]; then
+      echo "⚠️  CHAT_MESSAGE_HISTORY_LIMIT not set (will use default: 15)"
+    else
+      echo "✅ CHAT_MESSAGE_HISTORY_LIMIT is set: $CHAT_MESSAGE_HISTORY_LIMIT"
+    fi
+
+    if [ -z "$VITE_ENABLE_CHATBOT" ]; then
+      echo "⚠️  VITE_ENABLE_CHATBOT not set (will use default: true)"
+    else
+      echo "✅ VITE_ENABLE_CHATBOT is set: $VITE_ENABLE_CHATBOT"
     fi
 
     echo ""
