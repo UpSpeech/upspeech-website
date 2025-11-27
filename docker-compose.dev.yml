@@ -150,6 +150,7 @@ services:
       # API Configuration (Docker internal URLs)
       - VITE_API_URL=http://localhost:3000/api/v1
       - VITE_API_BASE_URL=http://localhost:3000
+      - VITE_ACTION_CABLE_URL=ws://localhost:3000/cable
       - VITE_NODE_ENV=development
 
       # Application Configuration (from .env.docker)
