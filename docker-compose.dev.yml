@@ -158,7 +158,6 @@ services:
       - VITE_APP_VERSION=${VITE_APP_VERSION:-1.0.0}
 
       # Chatbot Configuration (from .env.docker)
-      - VITE_ENABLE_CHATBOT=${VITE_ENABLE_CHATBOT:-true}
       - VITE_CHAT_MESSAGE_LIMIT=${VITE_CHAT_MESSAGE_LIMIT:-15}
     volumes:
       - ../app-frontend:/app

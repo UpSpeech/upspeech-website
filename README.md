@@ -125,26 +125,25 @@ All environment variables for Docker development are configured in `.env.docker`
 
 ### Required Variables
 
-| Variable                 | Purpose                                | How to Get                        |
-| ------------------------ | -------------------------------------- | --------------------------------- |
-| `GROQ_API_KEY`           | AI transcription and report generation | https://console.groq.com/keys     |
-| `RAILS_MASTER_KEY`       | Rails encrypted credentials            | `openssl rand -hex 32`            |
-| `SECRET_KEY_BASE`        | Secure session cookies                 | `openssl rand -hex 64`            |
-| `JWT_SECRET_KEY`         | JWT authentication                     | `openssl rand -hex 64`            |
-| `DEVISE_SECRET_KEY`      | Devise sessions                        | `openssl rand -hex 64`            |
-| `GCS_BUCKET`             | Google Cloud Storage bucket name       | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_PROJECT_ID`         | GCP project ID                         | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_CREDENTIALS_PATH`   | Path to GCS service account JSON       | See [GCS Setup](#google-cloud-storage-setup) |
+| Variable               | Purpose                                | How to Get                                   |
+| ---------------------- | -------------------------------------- | -------------------------------------------- |
+| `GROQ_API_KEY`         | AI transcription and report generation | https://console.groq.com/keys                |
+| `RAILS_MASTER_KEY`     | Rails encrypted credentials            | `openssl rand -hex 32`                       |
+| `SECRET_KEY_BASE`      | Secure session cookies                 | `openssl rand -hex 64`                       |
+| `JWT_SECRET_KEY`       | JWT authentication                     | `openssl rand -hex 64`                       |
+| `DEVISE_SECRET_KEY`    | Devise sessions                        | `openssl rand -hex 64`                       |
+| `GCS_BUCKET`           | Google Cloud Storage bucket name       | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_PROJECT_ID`       | GCP project ID                         | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_CREDENTIALS_PATH` | Path to GCS service account JSON       | See [GCS Setup](#google-cloud-storage-setup) |
 
 ### Optional Variables (with defaults)
 
-| Variable                      | Default | Purpose                              |
-| ----------------------------- | ------- | ------------------------------------ |
-| `CLIP_BUFFER_SECONDS`         | 5       | Audio/video clip extraction buffer   |
-| `CHAT_MESSAGE_HISTORY_LIMIT`  | 15      | Backend chatbot history limit        |
-| `VITE_ENABLE_CHATBOT`         | true    | Enable/disable chatbot feature       |
-| `VITE_CHAT_MESSAGE_LIMIT`     | 15      | Frontend chatbot message limit       |
-| `VITE_APP_VERSION`            | 1.0.0   | Application version                  |
+| Variable                     | Default | Purpose                            |
+| ---------------------------- | ------- | ---------------------------------- |
+| `CLIP_BUFFER_SECONDS`        | 5       | Audio/video clip extraction buffer |
+| `CHAT_MESSAGE_HISTORY_LIMIT` | 15      | Backend chatbot history limit      |
+| `VITE_CHAT_MESSAGE_LIMIT`    | 15      | Frontend chatbot message limit     |
+| `VITE_APP_VERSION`           | 1.0.0   | Application version                |
 
 **Important:** Individual service `.env` files (like `app-backend/.env`) are **NOT** used in Docker development. All configuration comes from `.env.docker` in the `upspeech-website/` directory.
 

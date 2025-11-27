@@ -86,7 +86,6 @@ services:
         - VITE_APP_NAME=${VITE_APP_NAME:-UpSpeech}
         - VITE_APP_VERSION=${VITE_APP_VERSION:-1.0.0}
         - VITE_NODE_ENV=production
-        - VITE_ENABLE_CHATBOT=${VITE_ENABLE_CHATBOT:-true}
         - VITE_CHAT_MESSAGE_LIMIT=${VITE_CHAT_MESSAGE_LIMIT:-15}
     container_name: upspeech_frontend_prod
     ports:

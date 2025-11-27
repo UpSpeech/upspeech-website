@@ -538,12 +538,6 @@ case "$1" in
       echo "✅ CHAT_MESSAGE_HISTORY_LIMIT is set: $CHAT_MESSAGE_HISTORY_LIMIT"
     fi
 
-    if [ -z "$VITE_ENABLE_CHATBOT" ]; then
-      echo "⚠️  VITE_ENABLE_CHATBOT not set (will use default: true)"
-    else
-      echo "✅ VITE_ENABLE_CHATBOT is set: $VITE_ENABLE_CHATBOT"
-    fi
-
     echo ""
     if [ $MISSING_VARS -eq 0 ]; then
       echo "✅ Environment validation passed!"
