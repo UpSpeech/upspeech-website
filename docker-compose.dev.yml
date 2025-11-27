@@ -180,8 +180,12 @@ services:
       - "8081:8081"
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - DATABASE_URL=${DATABASE_URL:-}
     volumes:
       - ai_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: unless-stopped
     networks:
       - upspeech-network

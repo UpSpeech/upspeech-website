@@ -97,6 +97,9 @@ services:
     container_name: upspeech_ai_prod
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - postgres
     networks:
       - upspeech-network
     restart: unless-stopped
