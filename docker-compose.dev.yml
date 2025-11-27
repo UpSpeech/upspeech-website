@@ -31,6 +31,16 @@ services:
     networks:
       - upspeech-network
 
+  # MailCatcher (SMTP server for development email testing)
+  mailcatcher:
+    image: sj26/mailcatcher:latest
+    container_name: upspeech_mailcatcher_dev
+    ports:
+      - "1025:1025"  # SMTP server
+      - "1080:1080"  # Web UI
+    networks:
+      - upspeech-network
+
   # Rails Backend API (Web Server)
   backend:
     build:
