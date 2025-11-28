@@ -90,6 +90,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### Features Completed
 
 1. **Patient-Therapist Linking System** ✅
+
    - Formal assignment model tracking therapist-patient relationships
    - API endpoints: index, create, update (status), destroy
    - Frontend UI for assigning patients to therapists
@@ -154,6 +155,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### 🔨 Missing Features (40%)
 
 1. **Report Editing** - **Priority: P0** ⭐
+
    - **What**: Allow therapists to edit AI-generated report content
    - **Why**: Core hypothesis - therapists need to refine AI output for accuracy
    - **Effort**: 1 week
@@ -169,7 +171,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
      if @report.update(report_params)
        render json: { report: @report }, status: :ok
      else
-       render json: { errors: @report.errors }, status: :unprocessable_entity
+       render json: { errors: @report.errors }, status: :unprocessable_content
      end
    end
 
@@ -181,20 +183,24 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Frontend**:
+
    - Rich text editor: Use **Tiptap** (https://tiptap.dev/) or **React Quill**
    - Autosave functionality (debounced, every 3 seconds)
    - Version indicator showing last saved time
 
    **Files to Create**:
+
    - `app-frontend/src/pages/ReportEditPage.tsx`
    - `app-frontend/src/components/reports/ReportEditor.tsx`
    - `app-frontend/src/hooks/useAutoSave.ts`
 
    **Files to Modify**:
+
    - `app-backend/app/controllers/api/v1/reports_controller.rb` - Add `update` action
    - `app-frontend/src/pages/ReportsPage.tsx` - Add "Edit" button
 
 2. **PDF Export** - **Priority: P0** ⭐
+
    - **What**: Generate professional clinical report PDFs
    - **Why**: Therapists need to share reports with clients, insurance, supervisors
    - **Effort**: 1 week
@@ -246,15 +252,18 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    **Recommended**: **Prawn** for better control over layout and clinical formatting
 
    **Files to Create**:
+
    - `app/services/pdf_generator_service.rb`
    - `app/views/reports/_report_template.pdf.prawn` (if using view templates)
 
    **Files to Modify**:
+
    - `app-backend/app/controllers/api/v1/reports_controller.rb` - Add `export_pdf` action
    - `Gemfile` - Add prawn gem
    - `app-frontend/src/pages/ReportsPage.tsx` - Add "Export PDF" button
 
 3. **Report Versioning** - **Priority: P2**
+
    - **What**: Track edit history with ability to restore previous versions
    - **Why**: Audit trail, undo major changes, compliance
    - **Effort**: 4 days
@@ -281,14 +290,17 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Files to Create**:
+
    - `app/models/report_version.rb`
    - Migration: `db/migrate/YYYYMMDDHHMMSS_create_report_versions.rb`
 
    **Files to Modify**:
+
    - `app/models/report.rb` - Add versioning callbacks
    - `app-frontend/src/pages/ReportEditPage.tsx` - Add version history sidebar
 
 4. **Report Templates** - **Priority: P3**
+
    - **What**: Predefined report structures (Assessment, Progress Note, Re-assessment)
    - **Why**: Consistency, compliance with clinical standards
    - **Effort**: 1 week
@@ -308,11 +320,13 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Files to Create**:
+
    - `app/models/report_template.rb`
    - `app/controllers/api/v1/report_templates_controller.rb`
    - `app-frontend/src/pages/ReportTemplatesPage.tsx`
 
 5. **Smart Suggestions** - **Priority: P3** (Post-MVP)
+
    - **What**: AI-powered suggestions like "Add common observations", "Flag unclear sections"
    - **Why**: Guide therapists to complete reports, improve quality
    - **Effort**: 2 weeks
@@ -362,6 +376,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### 🔨 Missing Features (50%)
 
 1. **Disfluency Detection** - **Priority: P0**
+
    - **What**: AI detection of stuttering moments (repetitions, prolongations, blocks)
    - **Why**: Core product differentiator - go beyond basic transcription
    - **Effort**: 2 weeks
@@ -418,15 +433,18 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Files to Create**:
+
    - `upspeech-ai/src/report_writer/disfluency_detector.py`
    - `app/models/disfluency.rb`
    - Migration: `db/migrate/YYYYMMDDHHMMSS_create_disfluencies.rb`
 
    **Files to Modify**:
+
    - `upspeech-ai/app.py` - Add disfluency detection to `/generate-report/` endpoint
    - `app/jobs/transcription_processor_job.rb` - Store disfluencies from AI response
 
 2. **Annotation Interface** - **Priority: P0**
+
    - **What**: Interactive UI for therapists/patients to mark and annotate disfluencies
    - **Why**: Human-in-the-loop improves AI accuracy, empowers patients
    - **Effort**: 1.5 weeks
@@ -471,6 +489,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Files to Create**:
+
    - `app/models/annotation.rb`
    - `app/controllers/api/v1/annotations_controller.rb`
    - `app-frontend/src/components/annotations/AnnotationInterface.tsx`
@@ -478,6 +497,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - `app-frontend/src/pages/AnnotationPage.tsx`
 
 3. **Disfluency Metrics Calculation** - **Priority: P1**
+
    - **What**: Calculate frequency, distribution, severity scores
    - **Why**: Quantify progress, provide objective data for reports
    - **Effort**: 4 days
@@ -508,13 +528,16 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Files to Create**:
+
    - `app/models/disfluency_metric.rb`
    - `app/services/disfluency_metrics_calculator.rb`
 
    **Files to Modify**:
+
    - `app/jobs/transcription_processor_job.rb` - Calculate metrics after processing
 
 4. **Context Tagging** - **Priority: P2**
+
    - **What**: Tag recordings with context (structured task, spontaneous speech, stressful situation)
    - **Why**: Understand how context affects fluency, personalize therapy
    - **Effort**: 2 days
@@ -534,11 +557,13 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    ```
 
    **Frontend**:
+
    - Add context selector dropdown in AudioUploadPage
    - Add stress level slider (1-5)
    - Add custom tags input
 
    **Files to Modify**:
+
    - Migration: Add context columns to `audio_recordings`
    - `app-frontend/src/pages/AudioUploadPage.tsx` - Add context form fields
 
@@ -606,6 +631,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 #### Features Completed
 
 1. **Exercise Library Management** ✅
+
    - Create, read, update, delete exercises
    - Filter by category and difficulty
    - Search and pagination
@@ -614,6 +640,7 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
    - Rich text instructions field
 
 2. **Exercise Assignment System** ✅
+
    - Assign exercises to specific patients
    - Set due dates (optional)
    - Add therapist notes (optional)
@@ -726,6 +753,7 @@ The following features will be added after launch:
 #### 🔨 Missing Features (60%)
 
 1. **Individual Patient Progress Dashboard** - **Priority: P1**
+
    - **What**: Patient-specific view showing disfluency trends, exercise completion
    - **Why**: Core hypothesis validation - patients stay engaged when they see progress
    - **Effort**: 1 week
@@ -765,12 +793,14 @@ The following features will be added after launch:
    ```
 
    **Files to Create**:
+
    - `app/controllers/api/v1/patient_progress_controller.rb`
    - `app-frontend/src/pages/PatientProgressPage.tsx`
    - `app-frontend/src/components/progress/DisfluencyTrendChart.tsx`
    - `app-frontend/src/components/progress/ProgressComparison.tsx`
 
 2. **Weekly Summaries for Therapists** - **Priority: P2**
+
    - **What**: Automated email digest showing patient activity, progress, alerts
    - **Why**: Keep therapists informed without daily logins
    - **Effort**: 3 days
@@ -795,11 +825,13 @@ The following features will be added after launch:
    ```
 
    **Files to Create**:
+
    - `app/jobs/weekly_summary_job.rb`
    - `app/mailers/weekly_summary_mailer.rb`
    - `app/views/weekly_summary_mailer/send_summary.html.erb`
 
 3. **Goal Setting & Milestone Tracking** - **Priority: P2**
+
    - **What**: Patients and therapists can set goals (reduce disfluencies by 20%, practice 5x/week)
    - **Why**: Motivation, clear targets, measure progress against goals
    - **Effort**: 1 week
@@ -832,6 +864,7 @@ The following features will be added after launch:
    ```
 
    **Files to Create**:
+
    - `app/models/goal.rb`
    - `app/models/milestone.rb`
    - `app/controllers/api/v1/goals_controller.rb`
@@ -915,6 +948,7 @@ This phase will be implemented post-MVP.
 #### 🔨 Missing Features (30%)
 
 1. **Report Notes/Feedback System** - **Priority: P1**
+
    - **What**: Therapists can leave comments/feedback on specific reports
    - **Why**: Asynchronous communication, provide guidance on exercises
    - **Effort**: 3 days
@@ -935,14 +969,17 @@ This phase will be implemented post-MVP.
    ```
 
    **Files to Create**:
+
    - `app/models/report_note.rb`
    - `app/controllers/api/v1/report_notes_controller.rb`
    - `app-frontend/src/components/reports/ReportNotes.tsx`
 
    **Files to Modify**:
+
    - `app-frontend/src/pages/ReportsPage.tsx` - Add notes section
 
 2. **Patient Summary Export** - **Priority: P1**
+
    - **What**: Generate comprehensive PDF with patient progress, charts, all reports
    - **Why**: Share with supervisors, insurance companies, other clinicians
    - **Effort**: 4 days
@@ -969,13 +1006,16 @@ This phase will be implemented post-MVP.
    ```
 
    **Files to Create**:
+
    - `app/services/patient_summary_generator.rb`
    - `app/controllers/api/v1/patient_summaries_controller.rb`
 
    **Files to Modify**:
+
    - `app-frontend/src/pages/ClientsManagementPage.tsx` - Add "Export Summary" button
 
 3. **Manual Report Generator (Insurance Templates)** - **Priority: P1** ⭐ **IN PROGRESS**
+
    - **What**: UI to generate manual reports from templates (insurance declarations, assessments)
    - **Why**: Enable therapists to quickly create insurance documentation without manual typing
    - **Effort**: 3-4 days
@@ -1019,18 +1059,22 @@ This phase will be implemented post-MVP.
    ```
 
    **Files to Create**:
+
    - `app/controllers/api/v1/manual_reports_controller.rb`
    - `app-frontend/src/pages/ManualReportGeneratorPage.tsx`
 
    **Files to Modify**:
+
    - `config/routes.rb` - Add manual reports routes
    - Navigation component - Add link to manual reports page
 
    **Existing Integration**:
+
    - `POST /insurance-report` endpoint already exists in upspeech-ai (line 487-519 in endpoint.py)
    - Template already defined in `src/report_writer/templates/report_templates.py`
 
 4. **Therapist Dashboard with Quick Metrics** - **Priority: P2**
+
    - **What**: Dedicated dashboard showing all assigned patients with key metrics at a glance
    - **Why**: Efficient caseload management, quick identification of at-risk patients
    - **Effort**: 3 days
@@ -1049,6 +1093,7 @@ This phase will be implemented post-MVP.
    ```
 
    **Files to Create**:
+
    - `app-frontend/src/pages/TherapistDashboard.tsx`
    - `app-frontend/src/components/therapist/PatientCard.tsx`
 

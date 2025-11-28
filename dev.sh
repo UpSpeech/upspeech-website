@@ -199,7 +199,7 @@ case "$1" in
     docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec backend bundle exec rspec
     echo ""
     echo "📦 Frontend tests:"
-    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --run
     echo ""
     echo "✅ All tests completed!"
     ;;
@@ -225,16 +225,16 @@ case "$1" in
     TEST_PATH=${2:-}
     if [ -n "$TEST_PATH" ]; then
       echo "🧪 Running frontend tests: $TEST_PATH"
-      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- $TEST_PATH
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --run $TEST_PATH
     else
       echo "🧪 Running all frontend tests..."
-      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test
+      docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --run
     fi
     ;;
 
   "test:frontend:coverage")
     echo "🧪 Running frontend tests with coverage..."
-    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --coverage
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --coverage --run
     echo "✅ Coverage report generated in app-frontend/coverage/"
     ;;
 

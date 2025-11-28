@@ -75,7 +75,7 @@ this.authClient = axios.create({
 
 ```typescript
 // Request interceptor adds JWT to all requests
-this.client.interceptors.request.use((config) => {
+this.client.interceptors.request.use(config => {
   const token = localStorage.getItem("auth_token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -85,8 +85,8 @@ this.client.interceptors.request.use((config) => {
 
 // Response interceptor handles 401 (unauthorized)
 client.interceptors.response.use(
-  (response) => response,
-  (error) => {
+  response => response,
+  error => {
     if (error.response?.status === 401) {
       // Clear auth data and redirect to login
       localStorage.removeItem("auth_token");
@@ -94,7 +94,7 @@ client.interceptors.response.use(
       window.location.href = "/auth";
     }
     return Promise.reject(error);
-  },
+  }
 );
 ```
 
@@ -464,7 +464,7 @@ class Api::V1::ExampleController < ApplicationController
     if @example.save
       render json: { data: example_json(@example) }, status: :created
     else
-      render json: { error: @example.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: @example.errors.full_messages }, status: :unprocessable_content
     end
   end
 
@@ -552,7 +552,7 @@ function ExamplesPage() {
   const [examples, setExamples] = useState<Example[]>([]);
 
   useEffect(() => {
-    apiClient.getExamples().then((response) => {
+    apiClient.getExamples().then(response => {
       setExamples(response.data);
     });
   }, []);
@@ -626,7 +626,7 @@ await apiClient.updateReport(id, { title: "New Title" });
 rescue ActiveRecord::RecordNotFound
   render json: { error: 'Resource not found' }, status: :not_found
 rescue ActiveRecord::RecordInvalid => e
-  render json: { error: e.message }, status: :unprocessable_entity
+  render json: { error: e.message }, status: :unprocessable_content
 ```
 
 **Frontend:**
