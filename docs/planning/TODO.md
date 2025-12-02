@@ -169,7 +169,24 @@ if (enabled) {
 
 **Priority**: P1 (High) - Critical first-time user experience & ongoing support
 **Effort**: 5-6 days
-**Status**: 🔴 Not Started
+**Status**: ✅ Complete (Completed: December 2, 2025)
+
+### Completion Summary
+
+✅ **Delivered Features:**
+- Welcome modal with role-specific messages (Patient/Therapist/Admin)
+- "Don't show this again" checkbox with instant backend sync
+- Video placeholder component (ready for real videos)
+- Comprehensive Help Center page at `/help` with:
+  - Video library with 8 videos organized by role (placeholders)
+  - Searchable FAQ section (4 questions)
+  - Category tabs (All/Patient/Therapist/Admin)
+  - Documentation and support links
+  - "What's New" section
+- User preferences API (GET/PATCH `/api/v1/user/preferences`)
+- Full i18n support (English, Portuguese, Spanish)
+- Help navigation link in sidebar (all users)
+- Auto-trigger welcome modal on first login
 
 ### User Story
 
@@ -551,10 +568,10 @@ end
 
 ### Help Center & Welcome Experience
 
-- [ ] Backend user preferences (show_welcome_modal)
-- [ ] Welcome Modal with "don't show again" checkbox
-- [ ] Help Center page with video placeholders
-- [ ] Navigation integration
+- [x] Backend user preferences (show_welcome_modal)
+- [x] Welcome Modal with "don't show again" checkbox
+- [x] Help Center page with video placeholders
+- [x] Navigation integration
 - [ ] Testing and documentation
 
 ### Feedback Mechanism
@@ -629,8 +646,8 @@ end
 | Sprint Phase | Feature                            | Priority | Status         | Effort         |
 | ------------ | ---------------------------------- | -------- | -------------- | -------------- |
 | **Phase 1**  | **Feature Flag System**            | **P0**   | ✅ **Complete** | **3-4 days**   |
-| **Phase 2**  | **Help Center & Welcome**          | **P1**   | 🔴 Not Started | **5-6 days**   |
+| **Phase 2**  | **Help Center & Welcome**          | **P1**   | ✅ **Complete** | **5-6 days**   |
 | **Phase 3**  | **Feedback System**                | **P1**   | 🔴 Not Started | **2 weeks**    |
 | **Phase 4**  | **Database & Permissions**         | **P1**   | 🔴 Not Started | **2 days**     |
 
-**Next Milestone**: Complete Phases 2-4 → User Feedback Launch 🚀
+**Next Milestone**: Complete Phases 3-4 → User Feedback Launch 🚀
