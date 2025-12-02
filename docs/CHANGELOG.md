@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## November 29, 2025 - Legacy Exercise Model Removal
+
+### Cleanup ✅ COMPLETE
+
+#### Removed
+
+**Deprecated Exercise Model:**
+- Removed `Exercise` model (`app/models/exercise.rb`) - fully replaced by MiniGame and ConsultationExercise
+- Removed `ExercisesController` (`app/controllers/api/v1/exercises_controller.rb`)
+- Removed `/api/v1/exercises` API endpoints
+- Dropped `exercises` table from database (migration `20251129131554_drop_exercises_table.rb`)
+- Removed test specs for Exercise model and ExercisesController
+- Removed exercises factory
+
+**Verification:**
+- ✅ All 80 exercises successfully migrated to new models (64 mini games, 16 consultation exercises)
+- ✅ Zero active code dependencies on legacy Exercise model
+- ✅ Frontend fully using MiniGame and ConsultationExercise types
+- ✅ Database table successfully dropped
+- ✅ All tests passing (no exercise-related failures)
+
+**Migration History Preserved:**
+- Kept legacy migration files for historical reference and audit trail
+- Original migrations: `create_exercises.rb`, `add_exercise_type_to_exercises.rb`, `migrate_existing_exercises_to_new_tables.rb`
+
+**Impact:**
+- Cleaner codebase with no deprecated code
+- No backward compatibility needed (no external API clients)
+- Complete migration to new MiniGame and ConsultationExercise architecture
+
+---
+
 ## Post-Sprint 4 - November 17, 2025
 
 ### Exercise System Refactoring ✅ COMPLETE
