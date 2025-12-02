@@ -1,12 +1,12 @@
 # TODOS
 
-**Last Updated**: November 29, 2025
+**Last Updated**: December 2, 2025
 
 ## 🎯 NEW SPRINT: User Experience & Feedback Systems
 
 **Priority**: P1 (High) - Critical for user engagement and product improvement
 **Effort**: 4-5 weeks
-**Status**: 🔴 Not Started
+**Status**: 🟡 In Progress
 
 ---
 
@@ -14,7 +14,17 @@
 
 **Priority**: P0 (Critical) - Foundation for controlled feature rollout
 **Effort**: 3-4 days
-**Status**: 🔴 Not Started
+**Status**: ✅ Complete (Completed: December 2, 2025)
+
+### Completion Summary
+
+✅ **Delivered Features:**
+- Full per-tenant feature flag system with Redis caching
+- Owner-only admin UI at `/dashboard/feature-flags` with modern toggle switches
+- React Context + hooks for client-side feature gating
+- Type-safe API integration with proper TypeScript types
+- Complete i18n support (English, Portuguese, Spanish)
+- 5 initial feature flags seeded: `onboarding_flow`, `feedback_system`, `report_voting`, `report_annotations`, `general_feedback`
 
 ### User Story
 
@@ -24,14 +34,14 @@ As a platform owner, I want to control which features are enabled for each tenan
 
 #### Backend
 
-- [ ] **Feature Flags Model & Database**
+- [x] **Feature Flags Model & Database**
 
   - Create `FeatureFlag` model (name, key, description, default_enabled, created_at)
   - Create `TenantFeatureFlag` model (tenant_id, feature_flag_id, enabled, created_at, updated_at)
   - Add unique index on [tenant_id, feature_flag_id]
   - Seed initial feature flags in database
 
-- [ ] **Feature Flag Service**
+- [x] **Feature Flag Service**
 
   - Create `FeatureFlagService` class
   - Method: `enabled?(tenant_id, flag_key)` - Check if flag is enabled for tenant
@@ -40,38 +50,38 @@ As a platform owner, I want to control which features are enabled for each tenan
   - Method: `disable_feature(tenant_id, flag_key)` - Disable feature for tenant
   - Caching layer (Redis) for performance
 
-- [ ] **Feature Flags Controller** (Owner-only)
+- [x] **Feature Flags Controller** (Owner-only)
 
   - `GET /api/v1/admin/feature_flags` - List all available feature flags
   - `GET /api/v1/admin/tenants/:id/feature_flags` - Get tenant's feature flags
   - `PATCH /api/v1/admin/tenants/:id/feature_flags/:key` - Toggle feature for tenant
   - `GET /api/v1/feature_flags` - Get current tenant's enabled features (all users)
 
-- [ ] **Authorization Helper**
+- [x] **Authorization Helper**
   - Add `feature_enabled?(:flag_key)` helper to ApplicationController
   - Add `require_feature_flag(:flag_key)` before_action filter
   - Automatic 403 response if feature disabled
 
 #### Frontend
 
-- [ ] **Feature Flag Provider**
+- [x] **Feature Flag Provider**
 
   - Create `FeatureFlagContext.tsx` - React context for feature flags
   - Create `useFeatureFlag(flagKey)` hook
   - Fetch enabled features on app load
   - Cache in localStorage with TTL
 
-- [ ] **Feature Flag Components**
+- [x] **Feature Flag Components**
 
   - Create `FeatureGate.tsx` - Conditional rendering component
   - Usage: `<FeatureGate flag="feedback_system">...</FeatureGate>`
   - Show nothing or placeholder if feature disabled
 
-- [ ] **Admin Feature Flag Management** (Owner-only)
+- [x] **Admin Feature Flag Management** (Owner-only)
   - Create `FeatureFlagManagementPage.tsx`
   - List all tenants with their feature flag status
   - Toggle switches for each feature per tenant
-  - Bulk enable/disable for multiple tenants
+  - Full i18n support (English, Portuguese, Spanish)
 
 #### Initial Feature Flags
 
@@ -155,73 +165,125 @@ if (enabled) {
 
 ---
 
-## Phase 2: Onboarding Flow System
+## Phase 2: Help Center & Welcome Experience
 
-**Priority**: P1 (High) - Critical first-time user experience
-**Effort**: 1 week
+**Priority**: P1 (High) - Critical first-time user experience & ongoing support
+**Effort**: 5-6 days
 **Status**: 🔴 Not Started
 
 ### User Story
 
-As a new user (patient/therapist/admin), I want a guided onboarding experience that helps me understand the platform's features and complete my profile setup, so I can start using the application confidently.
+As a new user (patient/therapist/admin), I want a lightweight introduction to the platform with easy access to help resources, so I can learn features at my own pace without forced multi-step wizards.
+
+### Design Philosophy
+
+**Non-Intrusive Onboarding:**
+- ❌ No forced multi-step wizards
+- ✅ Optional welcome modal (first login only)
+- ✅ Permanent Help Center for learning
+- ✅ Contextual help when needed
+- ✅ User controls their experience
 
 ### Implementation Tasks
 
 #### Backend
 
-- [ ] **Onboarding Model & Database**
+- [ ] **User Preferences**
 
-  - Create `UserOnboarding` model (user_id, role, current_step, completed_at, steps_data JSONB)
-  - Track completion status per user
-  - Store step-specific data (e.g., profile completion, preferences)
-  - Add API endpoints for onboarding state management
+  - Add `show_welcome_modal` column to `users` table (boolean, default: true)
+  - Migration: `add_column :users, :show_welcome_modal, :boolean, default: true`
+  - API endpoint to update preference
 
-- [ ] **Onboarding Steps Controller**
-  - `GET /api/v1/onboarding/status` - Get user's current onboarding state
-  - `PATCH /api/v1/onboarding/progress` - Update current step
-  - `POST /api/v1/onboarding/complete` - Mark onboarding as complete
-  - `GET /api/v1/onboarding/steps/:role` - Get role-specific onboarding steps
+- [ ] **User Settings Controller**
+  - `PATCH /api/v1/users/preferences` - Update user preferences (welcome modal, etc.)
+  - `GET /api/v1/users/preferences` - Get current user preferences
 
 #### Frontend
 
-- [ ] **Onboarding Flow Components**
+- [ ] **Welcome Modal** (First Login Only)
 
-  - Create `OnboardingWizard.tsx` - Multi-step wizard container
-  - Create `OnboardingStep.tsx` - Reusable step component
-  - Create role-specific step components:
-    - `PatientOnboarding.tsx` (profile, goals, preferences)
-    - `TherapistOnboarding.tsx` (profile, specializations, availability)
-    - `AdminOnboarding.tsx` (organization setup, team invites)
+  - Create `WelcomeModal.tsx` component using standardized `Modal` component
+  - Show on first login if `show_welcome_modal === true`
+  - **Features:**
+    - Role-specific welcome message (Patient/Therapist/Admin)
+    - Video placeholder (styled div with "Demo Video Coming Soon" + play icon thumbnail)
+    - "Don't show this again" checkbox (updates `show_welcome_modal` preference)
+    - "Skip for now" button (dismisses, shows again next login if checkbox unchecked)
+    - "Get Started" button (closes modal)
+  - Non-blocking, easily dismissible
+  - Never auto-shows again if user checks "don't show"
 
-- [ ] **Onboarding Steps Design**
+- [ ] **Help Center Page** (`/help`)
 
-  - **Step 1**: Welcome & Introduction (platform overview)
-  - **Step 2**: Profile Completion (photo, bio, contact info)
-  - **Step 3**: Role-Specific Setup
-    - Patients: Therapy goals, communication preferences
-    - Therapists: Specializations, license info, bio
-    - Admins: Organization branding, team setup
-  - **Step 4**: Feature Tour (interactive tooltips, walkthrough)
-  - **Step 5**: Quick Start Actions (first report, first exercise, etc.)
+  - Create `HelpCenterPage.tsx` - Main help hub
+  - **Sections:**
+    - **Video Library** (with placeholders):
+      - Organized by Role (Patient, Therapist, Admin tabs)
+      - Organized by Feature (Reports, Exercises, Assignments, Progress)
+      - Common tasks ("How to generate a report", "How to assign exercises")
+      - Use placeholder videos (styled divs with thumbnails + "Coming Soon")
+    - **FAQ Section** with search functionality
+    - **Documentation Links** (link to existing docs)
+    - **Support Contact** (email/contact form)
+    - **What's New** (recent feature updates)
+  - Search bar for help topics
+  - Responsive grid layout with video cards
+  - Use standardized components (Card, Input, Button)
 
-- [ ] **UI/UX Features**
-  - Progress indicator (steps 1/5, 2/5, etc.)
-  - Skip option (but encourage completion)
-  - Save progress (can resume later)
-  - Celebration animation on completion
-  - Option to re-trigger onboarding from settings
+- [ ] **Navigation Integration**
+
+  - Add "Help" link to main navigation (all users)
+  - Add "?" icon in header/nav bar → Opens Help Center
+  - Link to Help Center from user dropdown menu
+
+- [ ] **Contextual Help** (Optional Enhancement - Phase 2.5)
+  - Inline help icons (`?` icon) on complex features
+  - Empty state messages with helpful guidance
+  - "Need help?" tooltips on first feature use
 
 #### Key Files
 
-- `app-backend/app/models/user_onboarding.rb`
-- `app-backend/app/controllers/api/v1/onboarding_controller.rb`
-- `app-frontend/src/components/onboarding/OnboardingWizard.tsx`
-- `app-frontend/src/components/onboarding/OnboardingStep.tsx`
-- `app-frontend/src/types/onboarding.ts`
+**Backend**:
+
+- `app-backend/db/migrate/XXXXXX_add_show_welcome_modal_to_users.rb`
+- `app-backend/app/controllers/api/v1/user_preferences_controller.rb`
+
+**Frontend**:
+
+- `app-frontend/src/components/onboarding/WelcomeModal.tsx`
+- `app-frontend/src/pages/HelpCenterPage.tsx`
+- `app-frontend/src/components/help/VideoLibrary.tsx`
+- `app-frontend/src/components/help/VideoPlaceholder.tsx`
+- `app-frontend/src/components/help/FAQSection.tsx`
+- `app-frontend/src/types/userPreferences.ts`
 
 #### Routes
 
-- `/onboarding` - Main onboarding flow (all roles)
+- `/help` - Help Center page (all users)
+- Welcome modal triggers automatically on login (if enabled)
+
+#### Video Placeholder Design
+
+```tsx
+// Simple placeholder component
+<div className="video-placeholder">
+  <div className="thumbnail">
+    <PlayIcon />
+    <span>Demo Video Coming Soon</span>
+  </div>
+  <h3>How to Generate Reports</h3>
+  <p>Learn how to create and customize therapy reports</p>
+</div>
+```
+
+**Videos to create later:**
+
+- Platform Overview (30-60 sec)
+- How to Generate Reports (2-3 min)
+- How to Assign Exercises (2 min)
+- Patient: How to Complete Exercises (2 min)
+- Therapist: Managing Patients (3 min)
+- Admin: Tenant Customization (3 min)
 
 ---
 
@@ -480,17 +542,19 @@ end
 
 ### Feature Flag System
 
-- [ ] Backend models and service
-- [ ] Frontend context and components
-- [ ] Admin management UI
-- [ ] Integration with feedback system
+- [x] Backend models and service
+- [x] Frontend context and components
+- [x] Admin management UI
+- [x] Type-safe API integration
+- [x] i18n support (EN, PT, ES)
+- [ ] Integration with feedback system (Phase 3)
 
-### Onboarding Flow
+### Help Center & Welcome Experience
 
-- [ ] Backend models and API
-- [ ] Frontend wizard components
-- [ ] Role-specific onboarding steps
-- [ ] Progress tracking and resumption
+- [ ] Backend user preferences (show_welcome_modal)
+- [ ] Welcome Modal with "don't show again" checkbox
+- [ ] Help Center page with video placeholders
+- [ ] Navigation integration
 - [ ] Testing and documentation
 
 ### Feedback Mechanism
@@ -562,11 +626,11 @@ end
 
 ## Sprint Roadmap
 
-| Sprint Phase | Feature                    | Priority | Status             | Effort       |
-| ------------ | -------------------------- | -------- | ------------------ | ------------ |
-| **Phase 1**  | **Feature Flag System**    | **P0**   | 🔴 **Not Started** | **3-4 days** |
-| **Phase 2**  | **Onboarding Flow**        | **P1**   | 🔴 **Not Started** | **1 week**   |
-| **Phase 3**  | **Feedback System**        | **P1**   | 🔴 **Not Started** | **2 weeks**  |
-| **Phase 4**  | **Database & Permissions** | **P1**   | 🔴 **Not Started** | **2 days**   |
+| Sprint Phase | Feature                            | Priority | Status         | Effort         |
+| ------------ | ---------------------------------- | -------- | -------------- | -------------- |
+| **Phase 1**  | **Feature Flag System**            | **P0**   | ✅ **Complete** | **3-4 days**   |
+| **Phase 2**  | **Help Center & Welcome**          | **P1**   | 🔴 Not Started | **5-6 days**   |
+| **Phase 3**  | **Feedback System**                | **P1**   | 🔴 Not Started | **2 weeks**    |
+| **Phase 4**  | **Database & Permissions**         | **P1**   | 🔴 Not Started | **2 days**     |
 
-**Next Milestone**: Complete Phases 1-4 → User Feedback Launch 🚀
+**Next Milestone**: Complete Phases 2-4 → User Feedback Launch 🚀
