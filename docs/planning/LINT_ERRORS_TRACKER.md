@@ -4,18 +4,29 @@
 
 This document tracks all ESLint and TypeScript errors that need to be fixed before deployment.
 
+## ✅ Progress Update (2025-12-04)
+
+**TypeScript Errors: COMPLETE!** 🎉
+
+- ✅ All 9 TypeScript errors fixed
+- ✅ `npm run typecheck` passes with 0 errors
+- ✅ Storybook Modal stories updated with proper types
+- ✅ null type handling fixed in library pages
+
+**Next Steps**: ESLint errors (393 remaining) - see Phase 2 & 3 in Fix Strategy below
+
 ## Summary
 
-| Category | Total Errors | Priority | Status |
-|----------|--------------|----------|--------|
-| **ESLint** | **393** | High | 🔴 In Progress |
-| i18n Literal Strings | 324 | High | 🔴 Not Started |
-| Inline SVG Elements | 58 | High | 🔴 Not Started |
-| Standalone h1 Elements | 7 | High | 🔴 Not Started |
-| Raw HTML Elements | 4 | High | 🔴 Not Started |
-| **TypeScript** | **9** | Critical | 🔴 Not Started |
-| Storybook Modal Stories | 7 | Medium | 🔴 Not Started |
-| Type Mismatch (null) | 2 | High | 🔴 Not Started |
+| Category                    | Total Errors | Priority | Status                |
+| --------------------------- | ------------ | -------- | --------------------- |
+| **ESLint**                  | **393**      | High     | 🔴 In Progress        |
+| i18n Literal Strings        | 324          | High     | 🔴 Not Started        |
+| Inline SVG Elements         | 58           | High     | 🔴 Not Started        |
+| Standalone h1 Elements      | 7            | High     | 🔴 Not Started        |
+| Raw HTML Elements           | 4            | High     | 🔴 Not Started        |
+| **TypeScript**              | **0**        | Critical | ✅ **COMPLETE**       |
+| ~~Storybook Modal Stories~~ | ~~7~~        | Medium   | ✅ Fixed (2025-12-04) |
+| ~~Type Mismatch (null)~~    | ~~2~~        | High     | ✅ Fixed (2025-12-04) |
 
 ---
 
@@ -36,100 +47,89 @@ npm run test          # Ensure tests still pass
 
 ---
 
-## TypeScript Errors (9 total) - PRIORITY 🚨
+## TypeScript Errors ✅ COMPLETE (0 errors)
 
-These must be fixed first as they prevent builds.
+All TypeScript errors have been fixed! 🎉
 
-### 1. Storybook Modal Stories Type Issues (7 errors)
+### ✅ 1. Storybook Modal Stories Type Issues (7 errors) - FIXED
 
 **Files**: `src/components/ui/Modal/Modal.stories.tsx`
 
 **Error**: Missing `args` property in Story type
 
-**Lines**:
-- Line 46: `WithBodyFooter` story
-- Line 63: `SmallModal` story
-- Line 89: `FullscreenModal` story
-- Line 110: `WithLongContent` story
-- Line 161: `MultipleModals` story
-- Line 230: `FormModal` story
-- Line 297: `ConfirmationModal` story
+**Status**: ✅ Fixed on 2025-12-04
 
-**Fix**:
+**Solution Applied**:
+
 ```tsx
-// ❌ Current (missing args)
-export const WithBodyFooter: Story = {
-  render: () => (
-    <Modal isOpen={true} onClose={() => {}}>
-      ...
-    </Modal>
-  ),
-};
-
-// ✅ Fixed (add args with default values)
-export const WithBodyFooter: Story = {
+// Added args property to all 7 stories:
+export const Basic: Story = {
   args: {
     isOpen: true,
     onClose: () => {},
-    children: null, // Will be overridden in render
+    children: null,
   },
-  render: (args) => (
-    <Modal {...args}>
-      ...
-    </Modal>
+  render: () => (
+    <ModalExample>
+      {({ isOpen, onClose }) => (
+        <Modal isOpen={isOpen} onClose={onClose}>
+          ...
+        </Modal>
+      )}
+    </ModalExample>
   ),
 };
 ```
 
-**Estimated Time**: 15 minutes
+**Stories Fixed**:
+
+- ✅ Basic (line 46)
+- ✅ WithFooter (line 63)
+- ✅ WithoutCloseButton (line 89)
+- ✅ Sizes (line 110)
+- ✅ HeadingLevels (line 161)
+- ✅ FormExample (line 230)
+- ✅ LongContent (line 297)
 
 ---
 
-### 2. Type Mismatch: null not assignable to string (2 errors)
+### ✅ 2. Type Mismatch: null not assignable to string (2 errors) - FIXED
 
-#### A. ConsultationExercisesLibraryPage.tsx:490
+**Files**:
+
+- `src/pages/ConsultationExercisesLibraryPage.tsx:490`
+- `src/pages/MiniGamesLibraryPage.tsx:351`
 
 **Error**: `Argument of type 'string | number | null' is not assignable to parameter of type 'string'`
 
-**Context**:
+**Status**: ✅ Fixed on 2025-12-04
+
+**Problem**: Select component's `onChange` callback returns `string | number | null`, but `parseInt()` requires a string parameter.
+
+**Solution Applied**:
+
 ```tsx
-// Line 490
-const filtered = exercises.filter((ex) =>
-  ex.title.toLowerCase().includes(searchTerm) // searchTerm can be null
-);
+// ❌ Before (line 490 & 351)
+<Select
+  value={selectedTenantId.toString()}
+  onChange={(value) => {
+    setSelectedTenantId(value === "all" ? "all" : parseInt(value));
+    setPage(1);
+  }}
+/>
+
+// ✅ After - Added null check and String() conversion
+<Select
+  value={selectedTenantId.toString()}
+  onChange={(value) => {
+    if (value === null) return;
+    setSelectedTenantId(value === "all" ? "all" : parseInt(String(value)));
+    setPage(1);
+  }}
+/>
 ```
 
-**Fix**:
-```tsx
-// Option 1: Add null check
-const filtered = exercises.filter((ex) =>
-  ex.title.toLowerCase().includes(searchTerm || "")
-);
-
-// Option 2: Type guard
-if (!searchTerm) return exercises;
-const filtered = exercises.filter((ex) =>
-  ex.title.toLowerCase().includes(searchTerm)
-);
-```
-
-**Estimated Time**: 2 minutes
-
-#### B. MiniGamesLibraryPage.tsx:351
-
-**Error**: Same as above
-
-**Context**:
-```tsx
-// Line 351
-const filtered = miniGames.filter((game) =>
-  game.title.toLowerCase().includes(searchTerm) // searchTerm can be null
-);
-```
-
-**Fix**: Same as ConsultationExercisesLibraryPage
-
-**Estimated Time**: 2 minutes
+**Result**: Both files now handle null values correctly and TypeScript passes without errors.
 
 ---
 
@@ -137,12 +137,12 @@ const filtered = miniGames.filter((game) =>
 
 ### Category Breakdown
 
-| Category | Count | Auto-Fixable | Manual Work Required |
-|----------|-------|--------------|---------------------|
-| i18n Literal Strings | 324 | ❌ No | ✅ Yes - Add `useTranslation()` |
-| Inline SVG Elements | 58 | ❌ No | ✅ Yes - Replace with Heroicons |
-| Standalone h1 Elements | 7 | ❌ No | ✅ Yes - Use `<PageHeader>` |
-| Raw HTML Elements | 4 | ❌ No | ✅ Yes - Use component library |
+| Category               | Count | Auto-Fixable | Manual Work Required            |
+| ---------------------- | ----- | ------------ | ------------------------------- |
+| i18n Literal Strings   | 324   | ❌ No        | ✅ Yes - Add `useTranslation()` |
+| Inline SVG Elements    | 58    | ❌ No        | ✅ Yes - Replace with Heroicons |
+| Standalone h1 Elements | 7     | ❌ No        | ✅ Yes - Use `<PageHeader>`     |
+| Raw HTML Elements      | 4     | ❌ No        | ✅ Yes - Use component library  |
 
 ---
 
@@ -153,6 +153,7 @@ const filtered = miniGames.filter((game) =>
 **Problem**: Hardcoded English text that should be translatable
 
 **Files Affected** (top offenders):
+
 - `src/pages/MiniGamesLibraryPage.tsx` - 103 errors
 - `src/pages/ConsultationExercisesLibraryPage.tsx` - 96 errors
 - `src/pages/ExercisesManagementPage.tsx` - 29 errors
@@ -166,6 +167,7 @@ const filtered = miniGames.filter((game) =>
 - And 10+ more files...
 
 **Standard Fix Pattern**:
+
 ```tsx
 // ❌ Current (hardcoded string)
 <h2>Assign Daily Exercise</h2>
@@ -189,10 +191,12 @@ function MyComponent() {
 ```
 
 **Translation Files to Update**:
+
 - `app-frontend/src/i18n/locales/en.json` - Add English keys
 - `app-frontend/src/i18n/locales/pt.json` - Add Portuguese translations
 
 **Estimated Time**:
+
 - Per file: 30-60 minutes (depending on file size)
 - Total: ~20-30 hours
 
@@ -207,6 +211,7 @@ function MyComponent() {
 **Problem**: Inline SVGs instead of Heroicons
 
 **Files Affected**:
+
 - `src/pages/MiniGamesLibraryPage.tsx` - 10 SVGs
 - `src/pages/ConsultationExercisesLibraryPage.tsx` - 10 SVGs
 - `src/pages/DashboardPage.tsx` - 12 SVGs
@@ -216,19 +221,26 @@ function MyComponent() {
 - `src/pages/UsersManagementPage.tsx` - 8 SVGs
 
 **Standard Fix Pattern**:
+
 ```tsx
 // ❌ Current (inline SVG)
 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-</svg>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={2}
+    d="M12 4v16m8-8H4"
+  />
+</svg>;
 
 // ✅ Fixed (Heroicons)
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from "@heroicons/react/24/outline";
 
-<PlusIcon className="w-6 h-6" />
+<PlusIcon className="w-6 h-6" />;
 ```
 
 **Common SVG → Icon Mappings**:
+
 - Plus/Add → `PlusIcon`
 - Edit/Pencil → `PencilIcon`
 - Delete/Trash → `TrashIcon`
@@ -244,6 +256,7 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 **Reference**: See `docs/architecture/ICON_GUIDELINES.md` for complete mappings
 
 **Estimated Time**:
+
 - Per SVG: 2-5 minutes
 - Total: ~3-5 hours
 
@@ -258,6 +271,7 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 **Problem**: Pages using `<h1>` instead of `<PageHeader>`
 
 **Files Affected**:
+
 - `src/pages/MiniGamesLibraryPage.tsx:220`
 - `src/pages/ConsultationExercisesLibraryPage.tsx:229`
 - `src/pages/ExercisesManagementPage.tsx:145`
@@ -267,13 +281,14 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 - `src/pages/UsersManagementPage.tsx:265` (warning, not error)
 
 **Standard Fix Pattern**:
+
 ```tsx
 // ❌ Current (standalone h1)
-<h1 className="text-2xl font-bold">My Page Title</h1>
+<h1 className="text-2xl font-bold">My Page Title</h1>;
 
 // ✅ Fixed (PageHeader)
-import { PageHeader } from '@/components/ui/PageHeader';
-import { Button } from '@/components/ui/Button';
+import { PageHeader } from "@/components/ui/PageHeader";
+import { Button } from "@/components/ui/Button";
 
 <PageHeader
   title="My Page Title"
@@ -284,10 +299,11 @@ import { Button } from '@/components/ui/Button';
       Add New
     </Button>
   }
-/>
+/>;
 ```
 
 **Estimated Time**:
+
 - Per page: 10-15 minutes
 - Total: ~1.5 hours
 
@@ -304,6 +320,7 @@ import { Button } from '@/components/ui/Button';
 **Problem**: Using raw HTML elements instead of standardized components
 
 **Standard Fix**:
+
 ```tsx
 // ❌ Current
 <button className="px-4 py-2 bg-blue-600">Click</button>
@@ -323,6 +340,7 @@ import { Button } from '@/components/ui/Button';
 ## Fix Strategy & Timeline
 
 ### Phase 1: Critical TypeScript Errors (Day 1 - 30 min)
+
 **Must fix first** - blocks builds
 
 1. ✅ Fix Storybook Modal stories (7 errors) - 15 min
@@ -331,6 +349,7 @@ import { Button } from '@/components/ui/Button';
 4. ✅ Test affected components - 5 min
 
 ### Phase 2: Component Standardization (Day 1-2 - 3 hours)
+
 **High priority** - consistency & accessibility
 
 1. ✅ Replace inline SVGs with Heroicons (58 errors) - 2 hours
@@ -339,20 +358,25 @@ import { Button } from '@/components/ui/Button';
 4. ✅ Run lint and verify reduction in errors
 
 ### Phase 3: i18n Migration (Days 2-5 - 20-30 hours)
+
 **Large effort** - split across multiple sessions
 
 **Priority Order** (most user-facing first):
+
 1. **Patient-facing pages** (highest visibility):
+
    - DashboardPage (24 errors)
    - PatientsPage (10 errors)
    - ExercisesManagementPage (29 errors)
 
 2. **Therapist tools**:
+
    - MiniGamesLibraryPage (103 errors) - largest file
    - ConsultationExercisesLibraryPage (96 errors)
    - Assignment modals (36 errors)
 
 3. **Admin pages** (lower priority):
+
    - TenantsManagementPage (6 errors)
    - UsersManagementPage (6 errors)
 
@@ -361,6 +385,7 @@ import { Button } from '@/components/ui/Button';
    - Other components (~15 errors)
 
 **Per-file workflow**:
+
 1. Add `useTranslation()` hook
 2. Extract all literal strings to translation keys
 3. Add English translations to `en.json`
@@ -369,6 +394,7 @@ import { Button } from '@/components/ui/Button';
 6. Verify lint passes for that file
 
 ### Phase 4: Final Verification (Day 5 - 1 hour)
+
 1. ✅ Run `npm run lint` - should show 0 errors
 2. ✅ Run `npm run typecheck` - should show 0 errors
 3. ✅ Run `npm run test` - all tests pass
@@ -380,12 +406,15 @@ import { Button } from '@/components/ui/Button';
 ## Progress Tracking
 
 ### Completed Files ✅
+
 - None yet
 
 ### In Progress 🔄
+
 - None yet
 
 ### Blocked 🚫
+
 - None
 
 ---
