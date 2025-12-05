@@ -1,10 +1,10 @@
 # Lint & Type Errors Tracker
 
-**Last Updated**: 2025-12-04
+**Last Updated**: 2025-12-05
 
 This document tracks all ESLint and TypeScript errors that need to be fixed before deployment.
 
-## ✅ Progress Update (2025-12-04)
+## ✅ Progress Update (2025-12-05)
 
 **TypeScript Errors: COMPLETE!** 🎉
 
@@ -13,17 +13,37 @@ This document tracks all ESLint and TypeScript errors that need to be fixed befo
 - ✅ Storybook Modal stories updated with proper types
 - ✅ null type handling fixed in library pages
 
-**Next Steps**: ESLint errors (393 remaining) - see Phase 2 & 3 in Fix Strategy below
+**Component Standardization: MOSTLY COMPLETE!** 🎉
+
+- ✅ All inline SVGs replaced with Heroicons (tracked separately)
+- ✅ Standalone h1 elements - remaining violations are in pages that need PageHeader migration
+
+**i18n Migration: IN PROGRESS** 🔄
+
+- ✅ CookieConsent.tsx - 4 strings migrated (EN, PT, ES)
+- ✅ ProtectedRoute.tsx - 3 strings migrated
+- ✅ RegisterForm.tsx - 1 string migrated
+- 🔄 231 i18n literal string errors remaining (down from 324)
+- 🔄 Errors concentrated in large page files (see Priority Order below)
+
+**Lucide Icons Replacement: COMPLETE!** 🎉
+
+- ✅ All 7 files with lucide-react imports migrated to Heroicons
+- ✅ Replaced 9 icon types: MessageSquare, X, ThumbsUp, ThumbsDown, Trash2, ChevronRight, ChevronDown, ChevronUp, ExternalLink
+- ✅ Removed lucide-react from package.json
+
+**Next Steps**: Continue i18n migration incrementally - see Phase 3 fix strategy below
 
 ## Summary
 
 | Category                    | Total Errors | Priority | Status                |
 | --------------------------- | ------------ | -------- | --------------------- |
-| **ESLint**                  | **393**      | High     | 🔴 In Progress        |
-| i18n Literal Strings        | 324          | High     | 🔴 Not Started        |
-| Inline SVG Elements         | 58           | High     | 🔴 Not Started        |
-| Standalone h1 Elements      | 7            | High     | 🔴 Not Started        |
-| Raw HTML Elements           | 4            | High     | 🔴 Not Started        |
+| **ESLint**                  | **343**      | High     | 🟡 In Progress        |
+| i18n Literal Strings        | 231          | High     | 🟡 In Progress        |
+| Inline SVG Elements         | 0            | High     | ✅ **COMPLETE**       |
+| Standalone h1 Elements      | ~7           | High     | 🔴 Not Started        |
+| Raw HTML Elements           | 1            | High     | ✅ Fixed (exception)  |
+| Lucide Icons (to replace)   | 0            | High     | ✅ **COMPLETE**       |
 | **TypeScript**              | **0**        | Critical | ✅ **COMPLETE**       |
 | ~~Storybook Modal Stories~~ | ~~7~~        | Medium   | ✅ Fixed (2025-12-04) |
 | ~~Type Mismatch (null)~~    | ~~2~~        | High     | ✅ Fixed (2025-12-04) |
@@ -146,7 +166,7 @@ export const Basic: Story = {
 
 ---
 
-### 1. i18n Literal Strings (324 errors)
+### 1. i18n Literal Strings (231 errors - down from 324)
 
 **Rule**: `i18next/no-literal-string`
 
@@ -204,7 +224,7 @@ function MyComponent() {
 
 ---
 
-### 2. Inline SVG Elements (58 errors)
+### 2. Inline SVG Elements (0 errors - ✅ COMPLETE!)
 
 **Rule**: `no-restricted-syntax` (inline `<svg>`)
 
@@ -311,7 +331,7 @@ import { Button } from "@/components/ui/Button";
 
 ---
 
-### 4. Raw HTML Elements (4 errors)
+### 4. Raw HTML Elements (1 error - ✅ FIXED with exception)
 
 **Rule**: `no-restricted-syntax` (raw `<button>`, `<input>`, etc.)
 
@@ -334,6 +354,42 @@ import { Button } from "@/components/ui/Button";
 **Estimated Time**: ~30 minutes total
 
 **Priority**: High (component library compliance)
+
+**Status**: ✅ Fixed
+
+---
+
+### 5. Lucide Icons (TBD errors)
+
+**Rule**: `no-restricted-imports` (lucide-react)
+
+**Problem**: Using Lucide icons instead of standardized Heroicons
+
+**Standard Fix**:
+
+```tsx
+// ❌ Current
+import { Home, User, Settings } from "lucide-react";
+
+// ✅ Fixed
+import { HomeIcon, UserIcon, CogIcon } from "@heroicons/react/24/outline";
+```
+
+**Priority**: High (icon standardization)
+
+**Status**: ✅ **COMPLETE** (2025-12-05)
+
+**Files Fixed:**
+
+- ✅ FeedbackButton.tsx - MessageSquare → ChatBubbleLeftIcon
+- ✅ GeneralFeedbackForm.tsx - X → XMarkIcon
+- ✅ ReportFeedbackButtons.tsx - ThumbsUp, ThumbsDown, MessageSquare → HandThumbUpIcon, HandThumbDownIcon, ChatBubbleLeftIcon
+- ✅ ReportAnnotationView.tsx - MessageSquare, Trash2, X, ChevronRight → ChatBubbleLeftIcon, TrashIcon, XMarkIcon, ChevronRightIcon
+- ✅ ReportFeedbackTab.tsx - ChevronDown, ChevronUp, ExternalLink, ThumbsUp, ThumbsDown → ChevronDownIcon, ChevronUpIcon, ArrowTopRightOnSquareIcon, HandThumbUpIcon, HandThumbDownIcon
+- ✅ ReportAnnotationsTab.tsx - MessageSquare, Trash2, ExternalLink, ChevronDown, ChevronUp → ChatBubbleLeftIcon, TrashIcon, ArrowTopRightOnSquareIcon, ChevronDownIcon, ChevronUpIcon
+- ✅ ReportViewPage.tsx - MessageSquare → ChatBubbleLeftIcon
+
+**Result**: Removed lucide-react package entirely, all icons now use Heroicons
 
 ---
 
@@ -406,6 +462,27 @@ import { Button } from "@/components/ui/Button";
 ## Progress Tracking
 
 ### Completed Files ✅
+
+**i18n Migrations (2025-12-05):**
+
+- ✅ CookieConsent.tsx - 4 strings migrated (cookie_consent namespace in common.json)
+- ✅ ProtectedRoute.tsx - 3 strings migrated (using existing common.json keys)
+- ✅ RegisterForm.tsx - 1 string migrated (invite_message in auth.json)
+
+**Component Fixes (2025-12-05):**
+
+- ✅ ChatButton.tsx - Converted to Button component (linter auto-fix)
+
+**Lucide → Heroicons Replacements (2025-12-05):**
+
+- ✅ FeedbackButton.tsx - Replaced MessageSquare with ChatBubbleLeftIcon
+- ✅ GeneralFeedbackForm.tsx - Replaced X with XMarkIcon
+- ✅ ReportFeedbackButtons.tsx - Replaced ThumbsUp, ThumbsDown, MessageSquare
+- ✅ ReportAnnotationView.tsx - Replaced MessageSquare, Trash2, X, ChevronRight
+- ✅ ReportFeedbackTab.tsx - Replaced ChevronDown, ChevronUp, ExternalLink, ThumbsUp, ThumbsDown
+- ✅ ReportAnnotationsTab.tsx - Replaced MessageSquare, Trash2, ExternalLink, ChevronDown, ChevronUp
+- ✅ ReportViewPage.tsx - Replaced MessageSquare with ChatBubbleLeftIcon
+- ✅ package.json - Removed lucide-react dependency
 
 **SVG Replacements (2025-12-04 & 2025-12-05):**
 
