@@ -1,10 +1,10 @@
 # Lint & Type Errors Tracker
 
-**Last Updated**: 2025-12-05
+**Last Updated**: 2025-12-06
 
 This document tracks all ESLint and TypeScript errors that need to be fixed before deployment.
 
-## ✅ Progress Update (2025-12-05)
+## ✅ Progress Update (2025-12-06)
 
 **TypeScript Errors: COMPLETE!** 🎉
 
@@ -21,9 +21,18 @@ This document tracks all ESLint and TypeScript errors that need to be fixed befo
 **i18n Migration: IN PROGRESS** 🔄
 
 - ✅ CookieConsent.tsx - 4 strings migrated (EN, PT, ES)
-- ✅ ProtectedRoute.tsx - 3 strings migrated
-- ✅ RegisterForm.tsx - 1 string migrated
-- 🔄 231 i18n literal string errors remaining (down from 324)
+- ✅ ProtectedRoute.tsx - 3 strings migrated (EN, PT, ES)
+- ✅ RegisterForm.tsx - 1 string migrated (EN, PT, ES)
+- ✅ ManualReportGeneratorPage.tsx - 2 error messages migrated (EN, PT, ES)
+- ✅ ReportViewPage.tsx - 2 error messages migrated (EN, PT, ES)
+- ✅ ReportAnnotationsTab.tsx - 1 error message migrated (EN, PT, ES)
+- ✅ MyPatientsPage.tsx - 1 success message migrated (EN, PT, ES)
+- ✅ TenantsManagementPage.tsx - 1 bug fix ("common.all" → "all")
+- ✅ TenantSettingsPage.tsx - Fixed double-nesting bug ("tenant.tenant.*" → "tenant.*")
+- ✅ Added missing exercises translations (4 keys: assign_exercise, status.active, no_completed_exercises variants) in EN, PT, ES
+- ✅ Added missing tenants.search_placeholder in EN, PT, ES
+- ✅ Added "all" to common.json in EN, PT, ES
+- 🔄 **343 i18n literal string errors remaining** (down from 393 - 50 errors fixed!)
 - 🔄 Errors concentrated in large page files (see Priority Order below)
 
 **Lucide Icons Replacement: COMPLETE!** 🎉
@@ -39,7 +48,7 @@ This document tracks all ESLint and TypeScript errors that need to be fixed befo
 | Category                    | Total Errors | Priority | Status                |
 | --------------------------- | ------------ | -------- | --------------------- |
 | **ESLint**                  | **343**      | High     | 🟡 In Progress        |
-| i18n Literal Strings        | 231          | High     | 🟡 In Progress        |
+| i18n Literal Strings        | 343          | High     | 🟡 In Progress        |
 | Inline SVG Elements         | 0            | High     | ✅ **COMPLETE**       |
 | Standalone h1 Elements      | ~7           | High     | 🔴 Not Started        |
 | Raw HTML Elements           | 1            | High     | ✅ Fixed (exception)  |
@@ -463,11 +472,20 @@ import { HomeIcon, UserIcon, CogIcon } from "@heroicons/react/24/outline";
 
 ### Completed Files ✅
 
-**i18n Migrations (2025-12-05):**
+**i18n Migrations (2025-12-05 & 2025-12-06):**
 
-- ✅ CookieConsent.tsx - 4 strings migrated (cookie_consent namespace in common.json)
-- ✅ ProtectedRoute.tsx - 3 strings migrated (using existing common.json keys)
-- ✅ RegisterForm.tsx - 1 string migrated (invite_message in auth.json)
+- ✅ CookieConsent.tsx - 4 strings migrated (cookie_consent namespace in common.json) - EN, PT, ES
+- ✅ ProtectedRoute.tsx - 3 strings migrated (using existing common.json keys) - EN, PT, ES
+- ✅ RegisterForm.tsx - 1 string migrated (invite_message in auth.json) - EN, PT, ES
+- ✅ ManualReportGeneratorPage.tsx - 2 error messages (reports.manual namespace) - EN, PT, ES
+- ✅ ReportViewPage.tsx - 2 error messages (reports.errors namespace) - EN, PT, ES
+- ✅ ReportAnnotationsTab.tsx - 1 error message (feedback.errors namespace) - EN, PT, ES
+- ✅ MyPatientsPage.tsx - 1 success message (patients.invitation_sent) - EN, PT, ES
+- ✅ TenantsManagementPage.tsx - Bug fix ("common.all" → "all") - EN, PT, ES
+- ✅ TenantSettingsPage.tsx - Bug fix (removed double "tenant." nesting)
+- ✅ exercises.json - Added 4 missing keys (assign_exercise, status.active, no_completed_exercises variants) - EN, PT, ES
+- ✅ tenant.json - Added tenants.search_placeholder - EN, PT, ES
+- ✅ common.json - Added "all" key - EN, PT, ES
 
 **Component Fixes (2025-12-05):**
 
