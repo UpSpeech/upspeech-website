@@ -62,9 +62,6 @@ services:
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-}
       - DEVISE_SECRET_KEY=${DEVISE_SECRET_KEY:-}
 
-      # AI Service
-      - GROQ_API_KEY=${GROQ_API_KEY:-}
-
       # Google Cloud Storage
       - GCS_PROJECT_ID=${GCS_PROJECT_ID:-}
       - GCS_BUCKET=${GCS_BUCKET:-}
@@ -113,9 +110,6 @@ services:
       - SECRET_KEY_BASE=${SECRET_KEY_BASE:-}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-}
       - DEVISE_SECRET_KEY=${DEVISE_SECRET_KEY:-}
-
-      # AI Service
-      - GROQ_API_KEY=${GROQ_API_KEY:-}
 
       # Google Cloud Storage
       - GCS_PROJECT_ID=${GCS_PROJECT_ID:-}

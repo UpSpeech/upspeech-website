@@ -37,7 +37,6 @@ services:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/upspeech_production
       - REDIS_URL=redis://redis:6379/0
       - UPSPEECH_AI_URL=http://ai-service:8081
-      - GROQ_API_KEY=${GROQ_API_KEY}
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     volumes:
@@ -61,7 +60,6 @@ services:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/upspeech_production
       - REDIS_URL=redis://redis:6379/0
       - UPSPEECH_AI_URL=http://ai-service:8081
-      - GROQ_API_KEY=${GROQ_API_KEY}
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     volumes:
