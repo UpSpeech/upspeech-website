@@ -27,6 +27,7 @@ Core technical architecture, patterns, and system design.
 - **[architecture/SERVICE_COMMUNICATION.md](architecture/SERVICE_COMMUNICATION.md)** - **⭐ How services communicate & API integration guide**
 - **[architecture/EXERCISE_SYSTEM.md](architecture/EXERCISE_SYSTEM.md)** - **⭐ Exercise system (MiniGames & Consultation Exercises)**
 - **[architecture/TESTING_STRATEGY.md](architecture/TESTING_STRATEGY.md)** - Testing philosophy, guidelines, and coverage plan
+- **[architecture/UI_COMPONENT_TESTING.md](architecture/UI_COMPONENT_TESTING.md)** - **⭐ UI component testing: Storybook vs Tests, coverage tracker**
 - **[architecture/MULTI_TENANCY.md](architecture/MULTI_TENANCY.md)** - Multi-tenant isolation strategy
 - **[architecture/AUTH_FLOW.md](architecture/AUTH_FLOW.md)** - Authentication and session management
 - **[architecture/PERMISSIONS.md](architecture/PERMISSIONS.md)** - Role-based access control (5 roles)
