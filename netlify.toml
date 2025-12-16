@@ -26,6 +26,12 @@
   status = 301
   force = true
 
+# SPA fallback: serve index.html for all routes (must be last)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [build.environment]
   # Configure secrets scanning to ignore EmailJS environment variables
   # These are public keys meant to be exposed in the client-side bundle

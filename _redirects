@@ -7,3 +7,6 @@ https://www.upspeech.app/* https://upspeech.app/:splat 301!
 http://www.upspeech.app/* https://upspeech.app/:splat 301!
 https://www.upspeechapp.com/* https://upspeech.app/:splat 301!
 http://www.upspeechapp.com/* https://upspeech.app/:splat 301!
+
+# SPA fallback: serve index.html for all routes (must be last)
+/*    /index.html   200
