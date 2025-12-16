@@ -22,7 +22,25 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex space-x-8">
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-2">
+            <a
+              href="/privacy"
+              className="hover:underline font-nunito text-sm text-white/80 hover:text-white transition-all duration-200"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms"
+              className="hover:underline font-nunito text-sm text-white/80 hover:text-white transition-all duration-200"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="/cookies"
+              className="hover:underline font-nunito text-sm text-white/80 hover:text-white transition-all duration-200"
+            >
+              Cookie Policy
+            </a>
             <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"

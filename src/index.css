@@ -125,3 +125,82 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Legal document specific styles */
+.legal-document {
+  @apply text-base leading-relaxed;
+}
+
+.legal-document h1 {
+  @apply text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white mt-8 first:mt-0;
+}
+
+.legal-document h2 {
+  @apply text-2xl md:text-3xl font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-b border-gray-200 dark:border-gray-700 pb-2;
+}
+
+.legal-document h3 {
+  @apply text-xl md:text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100 mt-6;
+}
+
+.legal-document h4 {
+  @apply text-lg md:text-xl font-medium mb-2 text-gray-800 dark:text-gray-100 mt-4;
+}
+
+.legal-document p {
+  @apply mb-4 text-gray-700 dark:text-gray-300;
+}
+
+.legal-document ul,
+.legal-document ol {
+  @apply mb-4 ml-6 space-y-2;
+}
+
+.legal-document ul {
+  @apply list-disc;
+}
+
+.legal-document ol {
+  @apply list-decimal;
+}
+
+.legal-document li {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.legal-document strong {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.legal-document a {
+  @apply text-indigo-600 dark:text-indigo-400 hover:underline;
+}
+
+.legal-document code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.legal-document pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.legal-document blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic my-4 text-gray-600 dark:text-gray-400;
+}
+
+.legal-document table {
+  @apply w-full border-collapse mb-4;
+}
+
+.legal-document th,
+.legal-document td {
+  @apply border border-gray-300 dark:border-gray-600 px-4 py-2;
+}
+
+.legal-document th {
+  @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+}
+
+.legal-document hr {
+  @apply my-8 border-gray-200 dark:border-gray-700;
+}
