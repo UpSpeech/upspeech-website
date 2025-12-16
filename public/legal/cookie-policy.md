@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This Cookie Policy explains how UpSpeech uses cookies and similar technologies to recognize you when you visit our platform. It explains what these technologies are, why we use them, and your rights to control our use of them.
+This Cookie Policy explains how UpSpeech uses cookies and similar technologies when you visit our platforms. It explains what these technologies are, why we use them, and your rights to control our use of them.
 
 ## What Are Cookies and Similar Technologies?
 
@@ -20,88 +20,230 @@ Local Storage is a web storage mechanism that allows websites to store data dire
 
 Session Storage is similar to Local Storage but is cleared when you close your browser tab. It's used for temporary data that only needs to persist during a single browsing session.
 
-## How UpSpeech Uses Cookies and Storage
+## How UpSpeech Uses Cookies
 
-**UpSpeech uses minimal tracking technologies and does not use traditional cookies for advertising or tracking purposes.**
+UpSpeech uses different technologies on our **marketing website** and our **application platform**:
 
-### What We Use
+### Marketing Website (upspeech.app)
 
-#### 1. Local Storage (Primary Method)
+Our public-facing marketing website uses cookies and similar technologies to understand how visitors interact with our site and to improve your experience.
 
-We primarily use **Local Storage** (not cookies) to store essential data in your browser:
+#### Analytics and Performance Cookies
 
-| Data Item            | Purpose                                                      | Type       | Duration  |
-| -------------------- | ------------------------------------------------------------ | ---------- | --------- |
-| **auth_token**       | JWT authentication token for maintaining your login session  | Essential  | 24 hours  |
-| **user_data**        | Cached copy of your user profile for faster page loads       | Functional | Session   |
-| **language**         | Your selected interface language (English, Portuguese, etc.) | Functional | Permanent |
-| **theme_preference** | Your color theme preference (light/dark mode)                | Functional | Permanent |
-| **token_expiry**     | Expiration timestamp of your authentication token            | Essential  | 24 hours  |
+**Google Analytics 4**
 
-#### 2. Session Storage (Temporary)
+We use Google Analytics to understand how visitors use our website, which pages are most popular, and how users navigate our site.
 
-We may use **Session Storage** for temporary data such as:
+| Cookie Name  | Purpose                                      | Duration | Type      |
+| ------------ | -------------------------------------------- | -------- | --------- |
+| **\_ga**     | Distinguishes unique users                   | 2 years  | Analytics |
+| **\_ga\_\*** | Maintains session state for Google Analytics | 2 years  | Analytics |
+| **\_gid**    | Distinguishes unique users                   | 24 hours | Analytics |
+| **\_gat**    | Throttles request rate to Google Analytics   | 1 minute | Analytics |
+
+**Microsoft Clarity**
+
+We use Microsoft Clarity to understand how users interact with our website through session recordings and heatmaps.
+
+| Cookie Name | Purpose                                     | Duration   | Type      |
+| ----------- | ------------------------------------------- | ---------- | --------- |
+| **\_clck**  | Persists Clarity User ID across visits      | 1 year     | Analytics |
+| **\_clsk**  | Connects multiple page views in one session | 1 day      | Analytics |
+| **CLID**    | Identifies user across multiple domains     | 1 year     | Analytics |
+| **SM**      | Synchronizes user ID across domains         | Session    | Analytics |
+| **MR**      | Indicates if a data refresh is needed       | 7 days     | Analytics |
+| **MUID**    | Microsoft User Identifier                   | 1 year     | Analytics |
+| **ANONCHK** | Indicates whether MUID cookie is used       | 10 minutes | Analytics |
+
+**Consent Management**
+
+| Storage Item                | Purpose                            | Type      | Duration  |
+| --------------------------- | ---------------------------------- | --------- | --------- |
+| **upspeech_cookie_consent** | Stores your cookie consent choices | Essential | Permanent |
+
+This is stored in Local Storage (not a cookie) and remembers whether you've accepted or declined analytics cookies.
+
+#### How We Use Analytics Data
+
+We use analytics data to:
+
+- Understand which pages are most visited and useful
+- Identify technical issues and improve site performance
+- Optimize user journeys and improve the overall experience
+- Understand where our visitors come from (e.g., search engines, social media)
+
+**We do NOT:**
+
+- Sell or share your data with third parties for advertising
+- Use analytics data to identify individual users
+- Track you across other websites outside of UpSpeech
+
+### Application Platform (app.upspeech.com)
+
+Our application platform primarily uses Local Storage (not cookies) for essential functionality:
+
+#### Essential Local Storage
+
+| Data Item        | Purpose                                                     | Duration |
+| ---------------- | ----------------------------------------------------------- | -------- |
+| **auth_token**   | JWT authentication token for maintaining your login session | 24 hours |
+| **user_data**    | Cached copy of your user profile for faster page loads      | Session  |
+| **token_expiry** | Expiration timestamp of your authentication token           | 24 hours |
+
+#### Functional Local Storage
+
+| Data Item            | Purpose                                                      | Duration  |
+| -------------------- | ------------------------------------------------------------ | --------- |
+| **language**         | Your selected interface language (English, Portuguese, etc.) | Permanent |
+| **theme_preference** | Your color theme preference (light/dark mode)                | Permanent |
+
+#### Session Storage (Temporary)
+
+We may use Session Storage for temporary data such as:
 
 - Form data preservation (to prevent data loss if you navigate away)
 - Temporary UI state (e.g., collapsed sidebars, active tabs)
-- Short-lived feature flags or A/B testing assignments
+- Short-lived feature flags for A/B testing
 
 Session Storage data is automatically cleared when you close your browser tab.
 
-### What We Do NOT Use
+#### Analytics (Optional - Coming Soon)
 
-- ❌ **Third-party advertising cookies** - We do not serve ads or use advertising networks
-- ❌ **Third-party tracking cookies** - We do not use analytics services like Google Analytics
-- ❌ **Social media cookies** - We do not embed social media widgets that track you
-- ❌ **Cross-site tracking** - We do not track you across other websites
+We may introduce similar analytics to the application platform in the future to improve the user experience. If we do, we will:
 
-## Types of Technologies We Use
+- Update this policy and notify you
+- Provide clear opt-in/opt-out controls
+- Use the same privacy-respecting approach as our marketing website
 
-### 1. Essential Technologies
+## Cookie Consent and Your Choices
 
-These are strictly necessary for the platform to function and cannot be disabled:
+### Marketing Website
 
-**Authentication Token (Local Storage)**
+When you first visit our marketing website, you'll see a consent banner that allows you to:
 
-- **Purpose:** Maintains your login session and authenticates API requests
-- **Duration:** 24 hours (automatically expires)
-- **Data Stored:** JWT token containing your user ID and tenant ID
-- **Why Essential:** Without this, you cannot use authenticated features of the platform
+- **Accept All** - Allow all analytics cookies
+- **Decline** - Block all non-essential cookies
 
-### 2. Functional Technologies
+You can change your consent preferences at any time by:
 
-These enhance functionality and user experience but are not strictly essential:
+1. Clearing your browser's cookies and Local Storage
+2. Revisiting the website (the consent banner will reappear)
+3. Making a new selection
 
-**User Data Cache (Local Storage)**
+We use **Google Consent Mode v2**, which means:
 
-- **Purpose:** Stores your profile information locally to reduce server requests
-- **Duration:** Until manually cleared or you log out
-- **Data Stored:** Name, email, role, preferences
-- **Why Useful:** Improves page load times and reduces bandwidth usage
+- If you decline cookies, Google Analytics and Microsoft Clarity will operate in a privacy-enhanced mode
+- Your choice is respected and stored locally
+- Analytics scripts will not track you if you've declined
 
-**Language Preference (Local Storage)**
+### Application Platform
 
-- **Purpose:** Remembers your selected interface language
-- **Duration:** Permanent (until manually cleared)
-- **Data Stored:** Language code (e.g., "en", "pt", "es")
-- **Why Useful:** Prevents having to re-select your language on each visit
+For the application platform:
 
-**Theme Preference (Local Storage)**
+- **Essential storage (authentication) cannot be disabled** - Without it, you cannot log in or use the platform
+- **Functional storage (preferences) can be cleared** - But you'll need to re-select your preferences on each visit
 
-- **Purpose:** Remembers whether you prefer light or dark mode
-- **Duration:** Permanent (until manually cleared)
-- **Data Stored:** Theme name ("light" or "dark")
-- **Why Useful:** Maintains consistent visual experience across sessions
+## Managing Cookies and Storage
 
-### 3. Analytical Technologies
+### Browser-Level Controls
 
-**Current Status:** We do not currently use analytical cookies or tracking technologies.
+All modern browsers allow you to control cookies through their settings:
 
-**Future Use:** We may introduce privacy-friendly analytics in the future (such as server-side analytics or self-hosted solutions) to understand platform usage and improve user experience. If we do, we will update this policy and notify you.
+**Google Chrome:**
 
-## Third-Party Technologies
+1. Settings → Privacy and security → Cookies and other site data
+2. Choose to block third-party cookies or all cookies
+3. View and delete cookies for specific sites
 
-UpSpeech integrates with third-party services that may use their own cookies or storage mechanisms when you interact with them:
+**Mozilla Firefox:**
+
+1. Settings → Privacy & Security
+2. Choose Enhanced Tracking Protection level
+3. Manage cookie exceptions under "Cookies and Site Data"
+
+**Safari:**
+
+1. Preferences → Privacy
+2. Choose "Prevent cross-site tracking"
+3. Manage website data
+
+**Microsoft Edge:**
+
+1. Settings → Cookies and site permissions
+2. Manage and delete cookies
+
+### Viewing and Deleting Local Storage
+
+You can view and delete Local Storage through browser developer tools:
+
+**In Chrome/Edge:**
+
+1. Press F12 or right-click → Inspect
+2. Go to "Application" tab → "Local Storage"
+3. Select the UpSpeech domain
+4. Delete individual items or clear all
+
+**In Firefox:**
+
+1. Press F12 → "Storage" tab → "Local Storage"
+
+**In Safari:**
+
+1. Develop → Show Web Inspector → "Storage" tab
+
+### Clearing All Data
+
+**For Marketing Website:**
+
+- Clear your browser's cookies for upspeech.app
+- Clear Local Storage to reset your consent preferences
+
+**For Application Platform:**
+
+- Log out (we automatically delete the auth token)
+- Or manually clear Local Storage (will log you out)
+
+**Note:** Clearing essential storage will log you out of the application platform.
+
+## Impact of Blocking Cookies
+
+### Marketing Website
+
+If you decline or block analytics cookies:
+
+- ✅ The website will function normally
+- ✅ Your privacy is protected
+- ⚠️ We cannot improve the site based on usage patterns
+- ⚠️ We cannot identify and fix technical issues as easily
+
+### Application Platform
+
+If you block essential Local Storage:
+
+- ❌ You will be logged out immediately
+- ❌ You cannot access authenticated features
+- ❌ The platform will not function properly
+
+If you clear functional Local Storage:
+
+- ⚠️ Your language and theme preferences will reset
+- ⚠️ You'll need to re-select preferences on each visit
+
+## Third-Party Cookies and Services
+
+### Google Analytics
+
+Google Analytics is a web analytics service provided by Google LLC. Google uses cookies to analyze how users interact with websites.
+
+- Privacy Policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+- Opt-out: [https://tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout)
+
+### Microsoft Clarity
+
+Microsoft Clarity provides session recording and heatmap analytics to help us improve user experience.
+
+- Privacy Policy: [https://privacy.microsoft.com/privacystatement](https://privacy.microsoft.com/privacystatement)
+- Learn more: [https://clarity.microsoft.com/](https://clarity.microsoft.com/)
 
 ### Google Cloud Storage
 
@@ -114,95 +256,16 @@ See Google's cookie policy: [https://policies.google.com/technologies/cookies](h
 
 ### Groq API
 
-We send audio files to Groq API for transcription and report generation. Groq may use cookies or similar technologies on their infrastructure, though these do not track you through UpSpeech.
+We send audio files to Groq API for transcription and report generation. Groq may use cookies on their infrastructure for security purposes.
 
 See Groq's privacy policy: [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
 
-**Note:** UpSpeech does not control third-party cookies. Please review third-party privacy policies for details on their practices.
+## Do Not Track (DNT)
 
-## Your Rights and Choices
+UpSpeech respects "Do Not Track" (DNT) browser signals:
 
-### Viewing and Managing Local Storage
-
-You can view, manage, and delete Local Storage data through your browser's developer tools:
-
-**Google Chrome:**
-
-1. Press F12 or right-click → Inspect
-2. Go to "Application" tab
-3. Expand "Local Storage" in the left sidebar
-4. Select the UpSpeech domain
-5. View or delete individual items or clear all
-
-**Mozilla Firefox:**
-
-1. Press F12 or right-click → Inspect Element
-2. Go to "Storage" tab
-3. Expand "Local Storage"
-4. Select the UpSpeech domain
-5. View or delete items
-
-**Safari:**
-
-1. Enable developer menu: Preferences → Advanced → "Show Develop menu"
-2. Develop → Show Web Inspector
-3. Go to "Storage" tab
-4. Select "Local Storage"
-
-**Microsoft Edge:**
-
-1. Press F12
-2. Go to "Application" tab (same as Chrome)
-3. Manage Local Storage
-
-### Clearing All Data
-
-**Logout:** When you log out of UpSpeech, we automatically delete the authentication token from Local Storage.
-
-**Manual Clearing:** You can manually clear all Local Storage for UpSpeech through your browser settings:
-
-- Chrome: Settings → Privacy and security → Clear browsing data → Cookies and site data
-- Firefox: Settings → Privacy & Security → Cookies and Site Data → Clear Data
-- Safari: Preferences → Privacy → Manage Website Data → Remove All
-- Edge: Settings → Privacy → Clear browsing data
-
-**Note:** Clearing Local Storage will log you out and reset your preferences.
-
-### Browser Settings
-
-Most browsers allow you to:
-
-- Block all Local Storage (may prevent platform functionality)
-- Clear Local Storage on browser close
-- Manage storage on a per-site basis
-
-Consult your browser's help documentation for specific instructions.
-
-### Do Not Track (DNT)
-
-UpSpeech respects "Do Not Track" (DNT) browser signals. However, since we do not track you across websites or use third-party trackers, DNT settings do not significantly change our behavior.
-
-## Impact of Blocking or Deleting Storage
-
-### Essential Storage (Authentication Token)
-
-If you block or delete the authentication token:
-
-- ❌ You will be logged out immediately
-- ❌ You cannot access protected features of the platform
-- ❌ The platform will not function properly
-
-**Recommendation:** Do not block essential Local Storage if you want to use UpSpeech.
-
-### Functional Storage (Preferences)
-
-If you delete functional Local Storage:
-
-- ⚠️ Your language preference will reset to default (English)
-- ⚠️ Your theme preference will reset to default (light mode)
-- ⚠️ You will need to re-select your preferences on each visit
-
-**Recommendation:** Keep functional storage enabled for a better user experience.
+- On our **marketing website**, we honor DNT by treating it as a declined consent
+- On our **application platform**, DNT is respected, but essential authentication storage is still required for the platform to function
 
 ## Children's Privacy
 
@@ -210,21 +273,66 @@ UpSpeech is not directed to children under 13, and we do not knowingly collect d
 
 If a child's recordings are uploaded by a parent or therapist, the adult user is responsible for obtaining appropriate consent and managing the child's data.
 
+## International Users
+
+UpSpeech is hosted in the United States. If you access our platform from outside the US, please be aware that:
+
+- Cookies and Local Storage data are stored on your device (not transferred to our servers)
+- Analytics data collected by Google Analytics and Microsoft Clarity may be transferred to and stored in the US
+- Google and Microsoft are compliant with relevant data protection frameworks
+
+For users in the EU/EEA:
+
+- We use Google Consent Mode v2 to respect GDPR requirements
+- Analytics cookies require your explicit consent
+- You have the right to withdraw consent at any time
+
+## GDPR and CCPA Rights
+
+### For EU/EEA Users (GDPR)
+
+You have the right to:
+
+- Access what data we collect about you
+- Correct inaccurate data
+- Delete your data (right to erasure)
+- Restrict processing
+- Data portability
+- Object to processing
+- Withdraw consent at any time
+
+### For California Users (CCPA)
+
+You have the right to:
+
+- Know what personal information is collected
+- Know whether personal information is sold or shared (we don't sell data)
+- Opt-out of the sale of personal information (not applicable)
+- Access your personal information
+- Request deletion of your personal information
+- Non-discrimination for exercising your rights
+
+To exercise these rights, contact us at upspeechapp@gmail.com
+
 ## Changes to This Cookie Policy
 
-We may update this Cookie Policy from time to time to reflect changes in our practices or for legal, regulatory, or operational reasons.
+We may update this Cookie Policy from time to time to reflect:
 
-When we make material changes, we will:
+- Changes in our use of cookies
+- Changes in cookie technologies
+- Legal, regulatory, or operational requirements
 
-- Update the "Last Updated" date at the top of this policy
-- Notify you via email or a prominent notice in the platform (for significant changes)
-- Provide you an opportunity to review the changes before they take effect
+When we make changes, we will:
 
-Your continued use of UpSpeech after changes take effect constitutes your acceptance of the updated Cookie Policy.
+- Update the "Last Updated" date at the top
+- Notify you via email or a prominent notice (for significant changes)
+- Give you an opportunity to review changes
+
+Your continued use of UpSpeech after changes take effect constitutes acceptance of the updated policy.
 
 ## Contact Us
 
-If you have questions about this Cookie Policy or how we use storage technologies, please contact us:
+If you have questions about this Cookie Policy or how we use cookies and similar technologies, please contact us:
 
 **Email:** upspeechapp@gmail.com
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
@@ -232,8 +340,24 @@ If you have questions about this Cookie Policy or how we use storage technologie
 
 ---
 
-**Summary:**
+## Summary
 
-UpSpeech uses Local Storage (not cookies) to maintain your login session and remember your preferences. We do not use third-party tracking, advertising cookies, or cross-site tracking technologies. You can manage Local Storage through your browser settings, but blocking essential storage will prevent the platform from working properly.
+**Marketing Website:**
+
+- Uses Google Analytics and Microsoft Clarity cookies for site analytics
+- Requires your consent (via banner) before setting analytics cookies
+- You can accept or decline at any time
+
+**Application Platform:**
+
+- Uses Local Storage (not cookies) for authentication and preferences
+- Essential storage is required for the platform to work
+- Functional storage can be cleared but improves user experience
+
+**Your Control:**
+
+- Manage cookie consent on the marketing website
+- Control cookies and storage through browser settings
+- Contact us to exercise your data rights
 
 For more information about how we handle your personal data, see our [Privacy Policy](/privacy).
