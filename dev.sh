@@ -377,7 +377,7 @@ case "$1" in
 
     echo "🔨 Rebuilding $SERVICE..."
     docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE build $SERVICE
-    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE restart $SERVICE
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d --no-deps $SERVICE
     echo "✅ $SERVICE rebuilt and restarted!"
     ;;
 
