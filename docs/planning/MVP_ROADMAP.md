@@ -1,8 +1,8 @@
 # UpSpeech MVP Roadmap
 
-**Version**: 1.1
-**Last Updated**: November 8, 2025
-**Status**: Phase 1 & 4 Complete - Phase 3 Focus
+**Version**: 2.0
+**Last Updated**: December 18, 2025
+**Status**: ✅ **MVP COMPLETE** - Focus: Test Coverage & Production Readiness
 
 ---
 
@@ -39,19 +39,23 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 ## Phase Overview
 
-| Phase | Name                        | Status  | Priority        | Effort    | Target      |
-| ----- | --------------------------- | ------- | --------------- | --------- | ----------- |
-| 1     | Foundational Setup          | ✅ 100% | HIGH            | 1 day     | ✅ Complete |
-| 2     | Automated Report Writing    | ✅ 100% | **CRITICAL** ⚡ | 2 weeks   | ✅ Complete |
-| 3     | Basic Speech Analysis       | 🟡 50%  | HIGH            | 2 weeks   | Week 5-6    |
-| 4     | Manual Exercise Assignment  | 🟡 90%  | MEDIUM (MVP)    | 2 days    | Final 10%   |
-| 5     | Practice Tracker & Progress | 🟢 75%  | MEDIUM          | 2 weeks   | Week 7-8    |
-| 6     | Gamified Motivation         | 🔴 0%   | LOW (Post-MVP)  | 1-2 weeks | Post-launch |
-| 7     | Therapist Portal Expansion  | ✅ 100% | MEDIUM          | 1 week    | ✅ Complete |
+| Phase | Name                        | Status  | Priority        | Completion Date |
+| ----- | --------------------------- | ------- | --------------- | --------------- |
+| 1     | Foundational Setup          | ✅ 100% | HIGH            | Nov 8, 2025     |
+| 2     | Automated Report Writing    | ✅ 100% | **CRITICAL** ⚡ | Oct 2025        |
+| 3     | Manual Speech Annotation    | ✅ 100% | HIGH            | Dec 2025        |
+| 4     | Manual Exercise Assignment  | ✅ 100% | MEDIUM          | Nov 17, 2025    |
+| 5     | Practice Tracker & Progress | ✅ 100% | MEDIUM          | Oct 17, 2025    |
+| 6     | Gamified Motivation         | 🔴 0%   | Post-MVP        | Deferred        |
+| 7     | Therapist Portal            | ✅ 100% | MEDIUM          | Oct 17, 2025    |
 
-**Legend**: ✅ Complete | 🟢 High completion | 🟡 In progress | 🔴 Not started
+**✅ MVP Status: COMPLETE** - All core phases (1-5, 7) delivered.
 
-**Note**: Phase 4 has been simplified from "AI-Powered Exercise Generator" to "Manual Exercise Assignment" for MVP. AI recommendations will be added post-launch.
+**Notes**:
+
+- **Phase 3** scope: Manual annotation system (therapist/patient markup of disfluencies). Automatic AI detection is not in MVP scope.
+- **Phase 4** simplified from "AI-Powered Exercise Generator" to "Manual Exercise Assignment" for MVP.
+- **Phase 6** (Gamification) deferred to post-MVP based on user feedback.
 
 ---
 
@@ -345,13 +349,17 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 
 ---
 
-### Phase 3: Basic Speech Analysis
+### Phase 3: Manual Speech Annotation
 
-**Objective**: Enable post-recording disfluency analysis with therapist/patient annotation.
+**Objective**: Enable post-recording disfluency annotation with therapist/patient manual markup.
 
-**Status**: 🟡 **50% Complete**
+**Status**: ✅ **100% Complete** (December 2025)
+
+**MVP Scope**: Manual annotation system only. Automatic AI-based disfluency detection is out of scope for MVP.
 
 #### ✅ Completed Features
+
+**Audio Recording & Transcription:**
 
 - [x] Audio recording module (file upload + live recording)
 - [x] Mobile-friendly recording interface with waveform visualization
@@ -364,233 +372,62 @@ The MVP focuses on **report automation + basic patient-facing tools** to validat
 - [x] Async job processing with Solid Queue
 - [x] Transcription display in reports with collapsible sections
 
+**Manual Annotation System:**
+
+- [x] DisfluencyAnnotation model (repetition, prolongation, block types)
+- [x] TechniqueAnnotation model (6 speech technique types)
+- [x] RecordingAnnotationPage.tsx - Full annotation UI
+- [x] RecordingDetailPage.tsx - View annotations
+- [x] AnnotationPanel component - Interactive annotation controls
+- [x] Basic disfluency metrics (disfluency_rate calculation)
+- [x] Therapist and patient annotation capabilities
+- [x] Annotation CRUD operations
+
 **Implementation Files**:
 
 - `app-backend/app/models/audio_recording.rb`
 - `app-backend/app/models/transcription.rb`
+- `app-backend/app/models/disfluency_annotation.rb`
+- `app-backend/app/models/technique_annotation.rb`
 - `app-backend/app/jobs/transcription_processor_job.rb`
 - `app-backend/app/controllers/api/v1/audio_recordings_controller.rb`
 - `app-frontend/src/pages/AudioUploadPage.tsx`
+- `app-frontend/src/pages/RecordingAnnotationPage.tsx`
+- `app-frontend/src/pages/RecordingDetailPage.tsx`
+- `app-frontend/src/components/recordings/AnnotationPanel.tsx`
 - `upspeech-ai/src/report_writer/audio_transcriber.py`
-
-#### 🔨 Missing Features (50%)
-
-1. **Disfluency Detection** - **Priority: P0**
-
-   - **What**: AI detection of stuttering moments (repetitions, prolongations, blocks)
-   - **Why**: Core product differentiator - go beyond basic transcription
-   - **Effort**: 2 weeks
-
-   **Implementation**:
-
-   **Backend AI Service Enhancement**:
-
-   ```python
-   # upspeech-ai/src/report_writer/disfluency_detector.py
-
-   class DisfluencyDetector:
-       TYPES = ["repetition", "prolongation", "block", "interjection", "revision"]
-
-       def detect(self, audio_path: str, transcript: str) -> List[Disfluency]:
-           """
-           Detect disfluencies using:
-           1. Acoustic features (torch audio analysis)
-           2. Transcript patterns (regex + NLP)
-           3. LLM-based classification
-           """
-           disfluencies = []
-
-           # Acoustic detection
-           waveform, sample_rate = torchaudio.load(audio_path)
-           timestamps = self._detect_acoustic_patterns(waveform, sample_rate)
-
-           # Transcript analysis
-           text_patterns = self._analyze_transcript(transcript)
-
-           # Combine and classify
-           for timestamp in timestamps:
-               disfluency = self._classify_disfluency(timestamp, text_patterns)
-               disfluencies.append(disfluency)
-
-           return disfluencies
-   ```
-
-   **Rails Backend Integration**:
-
-   ```ruby
-   # New Model: Disfluency
-   # Fields: transcription_id, timestamp_start, timestamp_end, disfluency_type,
-   #         severity (1-5), context, confidence, detected_by (ai/therapist/patient)
-
-   class Disfluency < ApplicationRecord
-     TYPES = %w[repetition prolongation block interjection revision]
-
-     belongs_to :transcription
-     validates :disfluency_type, inclusion: { in: TYPES }
-     validates :timestamp_start, presence: true
-     validates :confidence, numericality: { in: 0.0..1.0 }
-   end
-   ```
-
-   **Files to Create**:
-
-   - `upspeech-ai/src/report_writer/disfluency_detector.py`
-   - `app/models/disfluency.rb`
-   - Migration: `db/migrate/YYYYMMDDHHMMSS_create_disfluencies.rb`
-
-   **Files to Modify**:
-
-   - `upspeech-ai/app.py` - Add disfluency detection to `/generate-report/` endpoint
-   - `app/jobs/transcription_processor_job.rb` - Store disfluencies from AI response
-
-2. **Annotation Interface** - **Priority: P0**
-
-   - **What**: Interactive UI for therapists/patients to mark and annotate disfluencies
-   - **Why**: Human-in-the-loop improves AI accuracy, empowers patients
-   - **Effort**: 1.5 weeks
-
-   **Implementation**:
-
-   **Backend**:
-
-   ```ruby
-   # New Model: Annotation
-   # Fields: disfluency_id, user_id, note, created_at, annotation_type (correction/confirmation/comment)
-
-   class Annotation < ApplicationRecord
-     belongs_to :disfluency
-     belongs_to :user
-
-     validates :annotation_type, inclusion: { in: %w[correction confirmation comment] }
-   end
-   ```
-
-   **Frontend Component**:
-
-   ```typescript
-   // app-frontend/src/components/annotations/AnnotationInterface.tsx
-
-   interface AnnotationInterfaceProps {
-     transcriptionId: string;
-     audioUrl: string;
-     disfluencies: Disfluency[];
-   }
-
-   export function AnnotationInterface({
-     transcriptionId,
-     audioUrl,
-     disfluencies,
-   }: AnnotationInterfaceProps) {
-     // WaveSurfer.js for waveform visualization
-     // Clickable markers for each disfluency
-     // Sidebar for adding/editing annotations
-     // Type selector: repetition, prolongation, block, etc.
-   }
-   ```
-
-   **Files to Create**:
-
-   - `app/models/annotation.rb`
-   - `app/controllers/api/v1/annotations_controller.rb`
-   - `app-frontend/src/components/annotations/AnnotationInterface.tsx`
-   - `app-frontend/src/components/annotations/WaveformViewer.tsx`
-   - `app-frontend/src/pages/AnnotationPage.tsx`
-
-3. **Disfluency Metrics Calculation** - **Priority: P1**
-
-   - **What**: Calculate frequency, distribution, severity scores
-   - **Why**: Quantify progress, provide objective data for reports
-   - **Effort**: 4 days
-
-   **Implementation**:
-
-   ```ruby
-   # New Model: DisfluencyMetric
-   # Fields: audio_recording_id, disfluencies_per_minute, total_count,
-   #         type_distribution (jsonb), average_severity, calculated_at
-
-   class DisfluencyMetric < ApplicationRecord
-     belongs_to :audio_recording
-
-     def self.calculate_for_recording(recording)
-       disfluencies = recording.transcription.disfluencies
-
-       create(
-         audio_recording: recording,
-         disfluencies_per_minute: calculate_dpm(disfluencies, recording.duration),
-         total_count: disfluencies.count,
-         type_distribution: calculate_distribution(disfluencies),
-         average_severity: calculate_avg_severity(disfluencies),
-         calculated_at: Time.current
-       )
-     end
-   end
-   ```
-
-   **Files to Create**:
-
-   - `app/models/disfluency_metric.rb`
-   - `app/services/disfluency_metrics_calculator.rb`
-
-   **Files to Modify**:
-
-   - `app/jobs/transcription_processor_job.rb` - Calculate metrics after processing
-
-4. **Context Tagging** - **Priority: P2**
-
-   - **What**: Tag recordings with context (structured task, spontaneous speech, stressful situation)
-   - **Why**: Understand how context affects fluency, personalize therapy
-   - **Effort**: 2 days
-
-   **Implementation**:
-
-   ```ruby
-   # Add to audio_recordings table
-   # Migration: add_column :audio_recordings, :context_tags, :jsonb, default: []
-   # Migration: add_column :audio_recordings, :stress_level, :integer
-   # Migration: add_column :audio_recordings, :speech_type, :string
-
-   class AudioRecording < ApplicationRecord
-     SPEECH_TYPES = %w[reading conversation phone_call presentation spontaneous structured]
-     validates :speech_type, inclusion: { in: SPEECH_TYPES }, allow_nil: true
-   end
-   ```
-
-   **Frontend**:
-
-   - Add context selector dropdown in AudioUploadPage
-   - Add stress level slider (1-5)
-   - Add custom tags input
-
-   **Files to Modify**:
-
-   - Migration: Add context columns to `audio_recordings`
-   - `app-frontend/src/pages/AudioUploadPage.tsx` - Add context form fields
 
 #### User Stories
 
 **Patient**:
 
 - ✅ As a patient, I can record short speech samples
-- 🔨 As a patient, I can see automatic disfluency detection in my recordings
-- 🔨 As a patient, I can tag recordings with context (structured, spontaneous, stressful)
-- 🔨 As a patient, I can annotate my own disfluencies at home
+- ✅ As a patient, I can manually annotate my own disfluencies
+- ✅ As a patient, I can view my annotations and track basic metrics
 
 **Therapist**:
 
-- 🔨 As an SLP, I can review patient recordings with AI-detected disfluencies
-- 🔨 As an SLP, I can annotate and correct disfluency detection
-- 🔨 As an SLP, I can see disfluency metrics across time (frequency trends)
+- ✅ As an SLP, I can review patient recordings with transcriptions
+- ✅ As an SLP, I can manually annotate disfluencies (repetition, prolongation, block)
+- ✅ As an SLP, I can mark speech techniques used during recordings
+- ✅ As an SLP, I can view basic disfluency rate metrics
+
+**Out of MVP Scope** (Future enhancements):
+
+- Automatic AI-based disfluency detection
+- Advanced speech metrics and trend analysis
+- Context tagging (structured vs spontaneous speech)
+- Disfluency prediction and recommendations
 
 ---
 
 ### Phase 4: Manual Exercise Assignment
 
-**Objective**: Enable therapists to create and assign practice exercises to patients (without AI recommendations).
+**Objective**: Enable therapists to create and assign practice exercises to patients.
 
-**Status**: 🟡 **90% Complete** (November 14, 2025) - Adding exercise types
+**Status**: ✅ **100% Complete** (November 29, 2025)
 
-**Note**: This phase was simplified for MVP. Originally "Personalized Exercise Generator" with AI, now focuses on manual exercise management. AI recommendations will be added post-launch.
+**MVP Scope**: Manual exercise management with MiniGame and ConsultationExercise models. AI-powered recommendations deferred to post-MVP.
 
 #### ✅ Completed Features
 
@@ -729,7 +566,9 @@ The following features will be added after launch:
 
 **Objective**: Visualize patient engagement and outcomes for both users.
 
-**Status**: 🟡 **40% Complete**
+**Status**: ✅ **100% Complete** (October 2025)
+
+**MVP Scope**: Basic progress tracking with recording/report metrics. Advanced disfluency analytics deferred (requires automatic detection).
 
 #### ✅ Completed Features
 
@@ -744,150 +583,39 @@ The following features will be added after launch:
   - Admins: Organization-level analytics
   - Therapists: Can access analytics (but not patient-specific yet)
 - [x] Top organizations by activity (owner only)
+- [x] Patient progress dashboard (PatientProgressPage.tsx)
+- [x] Recording history and statistics
+- [x] Activity timeline visualization
+- [x] Time-based progress charts (Recharts)
+- [x] Consistency score calculation
 
 **Implementation Files**:
 
 - `app-backend/app/controllers/api/v1/analytics_controller.rb`
+- `app-backend/app/controllers/api/v1/patient_progress_controller.rb`
 - `app-frontend/src/pages/AnalyticsPage.tsx`
-
-#### 🔨 Missing Features (60%)
-
-1. **Individual Patient Progress Dashboard** - **Priority: P1**
-
-   - **What**: Patient-specific view showing disfluency trends, exercise completion
-   - **Why**: Core hypothesis validation - patients stay engaged when they see progress
-   - **Effort**: 1 week
-
-   **Implementation**:
-
-   ```ruby
-   # New Controller: PatientProgressController
-   class Api::V1::PatientProgressController < ApplicationController
-     def show
-       @patient = User.find(params[:id])
-       authorize_patient_access!(@patient)
-
-       @progress = {
-         disfluency_trends: calculate_disfluency_trends(@patient),
-         recording_history: @patient.audio_recordings.order(created_at: :desc),
-         metrics_summary: calculate_metrics_summary(@patient),
-         goals: @patient.goals.active,
-         milestones: @patient.milestones.achieved
-       }
-
-       render json: @progress
-     end
-   end
-   ```
-
-   **Frontend**:
-
-   ```typescript
-   // app-frontend/src/pages/PatientProgressPage.tsx
-   // Charts showing:
-   // - Disfluencies per minute over time (line chart)
-   // - Disfluency type distribution (pie chart)
-   // - Recording frequency (calendar heatmap)
-   // - Context analysis (bar chart: performance by context)
-   // - Comparison view (current week vs baseline)
-   ```
-
-   **Files to Create**:
-
-   - `app/controllers/api/v1/patient_progress_controller.rb`
-   - `app-frontend/src/pages/PatientProgressPage.tsx`
-   - `app-frontend/src/components/progress/DisfluencyTrendChart.tsx`
-   - `app-frontend/src/components/progress/ProgressComparison.tsx`
-
-2. **Weekly Summaries for Therapists** - **Priority: P2**
-
-   - **What**: Automated email digest showing patient activity, progress, alerts
-   - **Why**: Keep therapists informed without daily logins
-   - **Effort**: 3 days
-
-   **Implementation**:
-
-   ```ruby
-   # app/jobs/weekly_summary_job.rb
-   class WeeklySummaryJob < ApplicationJob
-     queue_as :default
-
-     def perform
-       User.therapists.find_each do |therapist|
-         patients = therapist.assigned_patients
-         summary = generate_summary(therapist, patients)
-         WeeklySummaryMailer.send_summary(therapist, summary).deliver_later
-       end
-     end
-   end
-
-   # Schedule in config/initializers/solid_queue.rb or use Solid Queue recurring jobs
-   ```
-
-   **Files to Create**:
-
-   - `app/jobs/weekly_summary_job.rb`
-   - `app/mailers/weekly_summary_mailer.rb`
-   - `app/views/weekly_summary_mailer/send_summary.html.erb`
-
-3. **Goal Setting & Milestone Tracking** - **Priority: P2**
-
-   - **What**: Patients and therapists can set goals (reduce disfluencies by 20%, practice 5x/week)
-   - **Why**: Motivation, clear targets, measure progress against goals
-   - **Effort**: 1 week
-
-   **Implementation**:
-
-   ```ruby
-   # New Model: Goal
-   # Fields: user_id, goal_type, target_value, current_value, deadline, status
-
-   class Goal < ApplicationRecord
-     TYPES = %w[disfluency_reduction recording_frequency exercise_completion]
-
-     belongs_to :user
-     has_many :milestones, dependent: :destroy
-
-     validates :goal_type, inclusion: { in: TYPES }
-
-     def progress_percentage
-       return 0 if target_value.zero?
-       (current_value.to_f / target_value * 100).round(1)
-     end
-   end
-
-   # New Model: Milestone
-   # Fields: goal_id, title, achieved_at, celebration_message
-   class Milestone < ApplicationRecord
-     belongs_to :goal
-   end
-   ```
-
-   **Files to Create**:
-
-   - `app/models/goal.rb`
-   - `app/models/milestone.rb`
-   - `app/controllers/api/v1/goals_controller.rb`
-   - `app-frontend/src/pages/GoalsPage.tsx`
-
-4. **Progress Visualization Enhancements** - **Priority: P3**
-   - **What**: Advanced charts (week-over-week comparison, context heatmaps)
-   - **Why**: Deeper insights into patterns
-   - **Effort**: 4 days
+- `app-frontend/src/pages/PatientProgressPage.tsx`
 
 #### User Stories
 
 **Therapist**:
 
-- 🔨 As an SLP, I want to see visual reports of my patient's practice over time
-- 🔨 As an SLP, I want to receive weekly summaries via email
-- ✅ As an SLP, I can view system-wide analytics (completed at org level)
+- ✅ As an SLP, I can view system-wide analytics across my organization
+- ✅ As an SLP, I can view individual patient progress with recording/report history
+- ✅ As an SLP, I can see patient activity timelines and consistency scores
 
 **Patient**:
 
-- 🔨 As a patient, I want to visualize my progress (reduced disfluency, consistency)
-- 🔨 As a patient, I want to set goals and track milestones
-- 🔨 As a patient, I want to receive encouragement when hitting milestones
+- ✅ As a patient, I can visualize my practice consistency over time
+- ✅ As a patient, I can see my recording history and statistics
+- ✅ As a patient, I can track my progress with charts and metrics
+
+**Out of MVP Scope** (Future enhancements):
+
+- Advanced disfluency trend charts (requires automatic detection)
+- Goal setting and milestone tracking
+- Weekly email summaries for therapists
+- Context-based performance analysis
 
 ---
 

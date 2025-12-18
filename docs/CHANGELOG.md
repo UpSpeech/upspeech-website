@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## December 18, 2025 - MVP Completion & Documentation Update
+
+### Documentation ✅ COMPLETE
+
+#### Changed
+
+**MVP Status Declaration:**
+
+- ✅ **MVP officially declared COMPLETE** - All phases 1-5 and 7 delivered
+- Updated MVP_ROADMAP.md to reflect accurate completion status
+- Clarified Phase 3 scope: Manual annotation system (not automatic AI detection)
+- Marked Phase 4 as 100% complete (was shown as 90%)
+- Marked Phase 5 as 100% complete (was shown as 75%)
+- Phase 6 (Gamification) officially deferred to post-MVP
+
+**Documentation Overhaul:**
+
+- Rewrote TODO.md with focus on test coverage goals
+- Updated all phase descriptions to remove "missing features" for MVP
+- Added "Out of MVP Scope" sections clarifying future enhancements
+- Removed obsolete planning documentation
+
+**Test Coverage Focus:**
+
+- Identified test coverage gaps: Backend 67% → Target 80%+
+- Identified frontend coverage gaps: ~35% → Target 80%+
+- Created prioritized test coverage plan (2-4 week sprint)
+- Listed 83 untested frontend components
+- Listed 4 untested backend services
+
+**Status:**
+
+- All MVP features delivered and functional
+- Primary remaining work: Test coverage improvement
+- Target production launch: Mid-January 2026
+
+---
+
 ## November 29, 2025 - Legacy Exercise Model Removal
 
 ### Cleanup ✅ COMPLETE
@@ -12,6 +50,7 @@ and this project adheres to semantic versioning for sprints.
 #### Removed
 
 **Deprecated Exercise Model:**
+
 - Removed `Exercise` model (`app/models/exercise.rb`) - fully replaced by MiniGame and ConsultationExercise
 - Removed `ExercisesController` (`app/controllers/api/v1/exercises_controller.rb`)
 - Removed `/api/v1/exercises` API endpoints
@@ -20,6 +59,7 @@ and this project adheres to semantic versioning for sprints.
 - Removed exercises factory
 
 **Verification:**
+
 - ✅ All 80 exercises successfully migrated to new models (64 mini games, 16 consultation exercises)
 - ✅ Zero active code dependencies on legacy Exercise model
 - ✅ Frontend fully using MiniGame and ConsultationExercise types
@@ -27,10 +67,12 @@ and this project adheres to semantic versioning for sprints.
 - ✅ All tests passing (no exercise-related failures)
 
 **Migration History Preserved:**
+
 - Kept legacy migration files for historical reference and audit trail
 - Original migrations: `create_exercises.rb`, `add_exercise_type_to_exercises.rb`, `migrate_existing_exercises_to_new_tables.rb`
 
 **Impact:**
+
 - Cleaner codebase with no deprecated code
 - No backward compatibility needed (no external API clients)
 - Complete migration to new MiniGame and ConsultationExercise architecture
