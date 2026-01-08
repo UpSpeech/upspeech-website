@@ -5,6 +5,103 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## January 7, 2026 - Reference Video System for Mini Game Assignments
+
+### Feature: Personalized Reference Videos ✅ COMPLETE
+
+#### Added
+
+**Basic Reference Video System:**
+
+- Added 5 new fields to `mini_game_assignments` table for storing reference video metadata
+- Implemented video upload during assignment creation (MP4/WebM, 100MB max)
+- Patients can view reference videos in assignment details and completion modals
+- Videos stored securely in GCS with tenant isolation
+- Backend API endpoints for post-assignment video management
+
+**Enhancement 1: Per-Patient Video Assignment (Multi-Step Wizard):**
+
+- Converted assignment modal to 3-step wizard workflow:
+  - Step 1: Select mini game, patients, dates, advice (existing fields)
+  - Step 2: Upload or record personalized video for each patient individually
+  - Step 3: Review all assignments before confirming
+- Enabled different videos for each patient in multi-patient assignments
+- Per-patient video storage using `Map<number, File | null>` data structure
+- Skip video option for individual patients
+- Video preview and file validation per patient
+
+**Enhancement 2: Post-Assignment Video Management UI:**
+
+- Added "Manage Reference Video" section to ExerciseDetailsModal (therapist-only)
+- Upload, replace, or remove videos after assignment creation
+- File validation (100MB limit, MP4/WebM formats)
+- Video preview before upload
+- Confirmation dialog for video removal
+- Integrated with existing API endpoints (`uploadReferenceVideo`, `deleteReferenceVideo`)
+
+**Enhancement 3: In-App Video Recording:**
+
+- Created reusable `VideoRecordingModal` component with MediaRecorder API
+- Live camera preview with mirrored display
+- Recording controls (Start/Stop) with visual indicator
+- Playback after recording with re-record option
+- WebM format with VP8/Opus codec support
+- Integrated into both MiniGameAssignmentModal and ExerciseDetailsModal
+- Therapists can record videos directly instead of uploading files
+
+**Backend Changes:**
+
+- Migration: `add_reference_video_to_mini_game_assignments.rb` (5 new fields)
+- Model: `mini_game_assignment.rb` - Added `has_reference_video?`, `reference_video_url`, `upload_reference_video`, `delete_reference_video` methods
+- Controller: `mini_game_assignments_controller.rb` - Updated `create` action, added `upload_reference_video` and `delete_reference_video` endpoints
+- Routes: Added `POST :upload_reference_video` and `DELETE :reference_video` member routes
+- File validation: Size (100MB), format (MP4/WebM), MIME type checking
+
+**Frontend Changes:**
+
+- API Client: Added `uploadReferenceVideo` and `deleteReferenceVideo` functions
+- Updated `createMiniGameAssignment` to support FormData for multipart uploads
+- Added `ReferenceVideo` TypeScript interface
+- `MiniGameAssignmentModal.tsx`: Converted to 3-step wizard with per-patient video support
+- `ExerciseDetailsModal.tsx`: Added video management UI (therapist view only)
+- `VideoRecordingModal.tsx`: NEW - Reusable component for in-browser video recording
+- `ExerciseCompletionModal.tsx`: Reference video display for patients during exercise completion
+
+**Key Features:**
+
+- **Personalized Videos**: Each patient can have their own reference video
+- **Multi-Step Wizard**: Clear workflow for assigning exercises with videos to multiple patients
+- **Post-Assignment Editing**: Add, replace, or remove videos after assignment creation
+- **In-App Recording**: Record demonstration videos directly through the browser
+- **File Validation**: Client and server-side validation for file size and format
+- **GCS Storage**: Secure video storage with signed URLs (1-hour expiry)
+- **Tenant Isolation**: Videos scoped by tenant_id in GCS paths
+
+**Technical Details:**
+
+- Video Storage Path: `mini_game_assignments/tenant_{id}/assignment_{id}/reference_video.{ext}`
+- Supported Formats: MP4 (H.264), WebM (VP8/VP9)
+- Maximum File Size: 100MB
+- MediaRecorder API: WebM with VP8 video + Opus audio codecs
+- Browser Support: Chrome 49+, Safari 14.1+, Firefox 25+
+
+**Files Changed:**
+
+- Backend: `mini_game_assignment.rb`, `mini_game_assignments_controller.rb`, `routes.rb`
+- Frontend: `MiniGameAssignmentModal.tsx`, `ExerciseDetailsModal.tsx`, `VideoRecordingModal.tsx` (NEW), `api.ts`
+- Database: Migration `20XXXXXX_add_reference_video_to_mini_game_assignments.rb`
+
+#### Status
+
+- Basic Reference Video System: 100% complete
+- Enhancement 1 (Per-Patient Videos): 100% complete
+- Enhancement 2 (Post-Assignment Management): 100% complete
+- Enhancement 3 (In-App Recording): 100% complete
+- Documentation: Complete
+- Tests: Pending (backend RSpec + frontend Vitest)
+
+---
+
 ## December 18, 2025 - MVP Completion & Documentation Update
 
 ### Documentation ✅ COMPLETE
