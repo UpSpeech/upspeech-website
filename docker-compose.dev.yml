@@ -205,6 +205,34 @@ services:
     networks:
       - upspeech-network
 
+  # Marketing Website
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: upspeech_website_dev
+    ports:
+      - "8080:8080"
+    environment:
+      # API Configuration (browser-accessible URL)
+      # Website runs in browser, so API must be accessible from host machine
+      - VITE_API_URL=http://localhost:3000/api/v1
+
+      # EmailJS Configuration (optional - for waitlist form)
+      - VITE_EMAILJS_SERVICE_ID=${VITE_EMAILJS_SERVICE_ID:-}
+      - VITE_EMAILJS_TEMPLATE_ID=${VITE_EMAILJS_TEMPLATE_ID:-}
+      - VITE_EMAILJS_PUBLIC_KEY=${VITE_EMAILJS_PUBLIC_KEY:-}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      - upspeech-network
+
 volumes:
   postgres_data:
   redis_data:

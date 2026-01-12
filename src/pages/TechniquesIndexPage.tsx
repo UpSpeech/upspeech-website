@@ -224,11 +224,6 @@ export function TechniquesIndexPage() {
                                 <div className="flex-1">
                                   <h4 className="font-semibold text-gray-900 mb-1">
                                     {subTech.name}
-                                    {subTech.featured && (
-                                      <span className="ml-2 text-yellow-600 text-sm">
-                                        ⭐ {t.featured}
-                                      </span>
-                                    )}
                                   </h4>
                                   <p className="text-sm text-gray-600">
                                     {subTech.description}
@@ -277,11 +272,6 @@ export function TechniquesIndexPage() {
                   <Card key={technique.slug} className="p-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {technique.name}
-                      {technique.featured && (
-                        <span className="ml-2 text-yellow-600 text-sm">
-                          ⭐ {t.featured}
-                        </span>
-                      )}
                     </h3>
                     <p className="text-gray-600 mb-4">
                       {technique.description}
@@ -299,7 +289,7 @@ export function TechniquesIndexPage() {
           )}
 
           {/* Call to Action */}
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <p className="text-gray-600 mb-4">
               {locale === "pt"
                 ? "Pronto para começar a praticar?"
@@ -317,7 +307,7 @@ export function TechniquesIndexPage() {
                   ? "Comenzar Ahora"
                   : "Get Started"}
             </a>
-          </div>
+          </div> */}
         </div>
       </main>
 

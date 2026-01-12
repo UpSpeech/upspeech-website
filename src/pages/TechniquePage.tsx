@@ -170,11 +170,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 {technique.description}
               </p>
             )}
-            {technique.featured && (
-              <span className="inline-block mt-4 bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">
-                ⭐ Featured Technique
-              </span>
-            )}
           </div>
 
           {/* Content Sections */}
@@ -247,7 +242,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                       >
                         <h3 className="font-semibold text-gray-900 mb-2">
                           {subTech.name}
-                          {subTech.featured && " ⭐"}
                         </h3>
                         <p className="text-sm text-gray-600">
                           {subTech.description}
@@ -260,7 +254,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           </div>
 
           {/* Call to Action */}
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <p className="text-gray-600 mb-4">
               {locale === "pt"
                 ? "Pronto para praticar esta técnica?"
@@ -278,7 +272,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   ? "Empezar a Practicar"
                   : "Start Practicing"}
             </a>
-          </div>
+          </div> */}
         </div>
       </main>
 

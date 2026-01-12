@@ -16,9 +16,10 @@ case "$1" in
     echo "📋 Service URLs:"
     echo "   Frontend: http://localhost:3001"
     echo "   Backend:  http://localhost:3000"
+    echo "   Website:  http://localhost:8080"
+    echo "   AI Service: http://localhost:8081"
     echo "   Database: postgresql://postgres:postgres@localhost:5432/upspeech_development"
     echo "   Redis:    redis://localhost:6379"
-    echo "   AI Service: http://localhost:8081"
     echo ""
     echo "📝 Run 'docker-compose -f $COMPOSE_FILE logs -f' to view logs"
     ;;
@@ -105,6 +106,8 @@ case "$1" in
       exit 1
     fi
 
+    # Note: upspeech-website is in the current directory (.), so no need to check for it
+
     # Check for environment file
     if [ ! -f ".env.docker" ]; then
       echo "⚠️  Warning: .env.docker not found"
@@ -169,6 +172,7 @@ case "$1" in
     echo "📋 Service URLs:"
     echo "   Frontend: http://localhost:3001"
     echo "   Backend:  http://localhost:3000"
+    echo "   Website:  http://localhost:8080"
     echo "   AI Service: http://localhost:8081"
     echo ""
     echo "⚠️  NOTE: AI features require GROQ_API_KEY in .env.docker"
@@ -371,7 +375,7 @@ case "$1" in
     if [ -z "$SERVICE" ]; then
       echo "❌ Error: Please specify a service to rebuild"
       echo "Usage: $0 rebuild [service]"
-      echo "Available services: backend, frontend, ai-service, worker, postgres, redis"
+      echo "Available services: backend, frontend, website, ai-service, worker, postgres, redis"
       exit 1
     fi
 
@@ -409,6 +413,13 @@ case "$1" in
       echo "✅ Frontend (http://localhost:3001) - Healthy"
     else
       echo "❌ Frontend (http://localhost:3001) - Unhealthy"
+    fi
+
+    # Website health check
+    if curl -f -s http://localhost:8080 > /dev/null 2>&1; then
+      echo "✅ Website (http://localhost:8080) - Healthy"
+    else
+      echo "❌ Website (http://localhost:8080) - Unhealthy"
     fi
 
     # AI Service health check
