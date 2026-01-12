@@ -11,6 +11,19 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 
+// Technique Pages
+import VoluntaryStuttering from "./pages/techniques/VoluntaryStuttering";
+import Cancelation from "./pages/techniques/Cancelation";
+import PullOut from "./pages/techniques/PullOut";
+import PreparatorySet from "./pages/techniques/PreparatorySet";
+import Holding from "./pages/techniques/Holding";
+import SoftStarts from "./pages/techniques/SoftStarts";
+import SoftArticulationContact from "./pages/techniques/SoftArticulationContact";
+import ProlongedSpeech from "./pages/techniques/ProlongedSpeech";
+import SpeechSpeedManagement from "./pages/techniques/SpeechSpeedManagement";
+import Pauses from "./pages/techniques/Pauses";
+import IdentificationDesensitization from "./pages/techniques/IdentificationDesensitization";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +39,20 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/cookies" element={<CookiePolicy />} />
+
+          {/* Technique Documentation Routes */}
+          <Route path="/techniques/voluntary-stuttering" element={<VoluntaryStuttering />} />
+          <Route path="/techniques/cancelation" element={<Cancelation />} />
+          <Route path="/techniques/pull-out" element={<PullOut />} />
+          <Route path="/techniques/preparatory-set" element={<PreparatorySet />} />
+          <Route path="/techniques/holding" element={<Holding />} />
+          <Route path="/techniques/soft-starts" element={<SoftStarts />} />
+          <Route path="/techniques/soft-articulation-contact" element={<SoftArticulationContact />} />
+          <Route path="/techniques/prolonged-speech" element={<ProlongedSpeech />} />
+          <Route path="/techniques/speech-speed-management" element={<SpeechSpeedManagement />} />
+          <Route path="/techniques/pauses" element={<Pauses />} />
+          <Route path="/techniques/identification-desensitization" element={<IdentificationDesensitization />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
