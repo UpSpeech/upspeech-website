@@ -3,12 +3,13 @@
  * Base URL should be configured via environment variable
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
 
 export interface Technique {
   id: number;
   slug: string;
-  category_type: 'main_category' | 'subcategory' | 'standalone';
+  category_type: "main_category" | "subcategory" | "standalone";
   name: string;
   description: string;
   practical_description: string;
@@ -49,12 +50,12 @@ export interface TechniqueResponse {
  * @param featured - Filter by featured techniques only
  */
 export async function fetchTechniques(
-  locale: string = 'en',
-  featured?: boolean
+  locale: string = "en",
+  featured?: boolean,
 ): Promise<Technique[]> {
   const params = new URLSearchParams({ locale });
   if (featured) {
-    params.append('featured', 'true');
+    params.append("featured", "true");
   }
 
   const response = await fetch(`${API_BASE_URL}/techniques?${params}`);
@@ -74,7 +75,7 @@ export async function fetchTechniques(
  */
 export async function fetchTechnique(
   slug: string,
-  locale: string = 'en'
+  locale: string = "en",
 ): Promise<Technique> {
   const params = new URLSearchParams({ locale });
   const response = await fetch(`${API_BASE_URL}/techniques/${slug}?${params}`);

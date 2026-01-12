@@ -1,4 +1,4 @@
-import { TechniquePage } from '../TechniquePage';
+import { TechniquePage } from "../TechniquePage";
 
 export default function Holding() {
   return <TechniquePage slug="holding" />;

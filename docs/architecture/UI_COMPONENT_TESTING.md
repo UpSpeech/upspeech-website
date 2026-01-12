@@ -100,7 +100,7 @@ describe("Button", () => {
   it("renders with correct text", () => {
     render(<Button>Click me</Button>);
     expect(
-      screen.getByRole("button", { name: "Click me" })
+      screen.getByRole("button", { name: "Click me" }),
     ).toBeInTheDocument();
   });
 
@@ -118,7 +118,7 @@ describe("Button", () => {
     render(
       <Button onClick={onClick} disabled>
         Click me
-      </Button>
+      </Button>,
     );
 
     fireEvent.click(screen.getByRole("button"));
@@ -389,14 +389,12 @@ npm run test src/components/ui/Button.test.tsx
 When creating a new UI component, follow this checklist:
 
 - [ ] **1. Create component** (`Button.tsx`)
-
   - [ ] TypeScript props interface with JSDoc comments
   - [ ] Proper TypeScript types (no `any`)
   - [ ] Dark mode support
   - [ ] Accessibility (ARIA, keyboard nav)
 
 - [ ] **2. Create Storybook story** (`Button.stories.tsx`)
-
   - [ ] All visual variants
   - [ ] All sizes
   - [ ] Interactive states (hover, active, disabled)
@@ -404,7 +402,6 @@ When creating a new UI component, follow this checklist:
   - [ ] Realistic example data
 
 - [ ] **3. Create tests** (`Button.test.tsx`)
-
   - [ ] Renders correctly
   - [ ] User interactions (click, type, etc.)
   - [ ] Event handlers fire correctly
@@ -434,13 +431,11 @@ When creating a new UI component, follow this checklist:
 ### Immediate Priorities (High Priority)
 
 1. **Add tests for Button component**
-
    - Most used component in the app
    - Critical user interaction
    - No tests currently
 
 2. **Add stories for Form components**
-
    - Input, Select, Textarea
    - Referenced in CLAUDE.md as standardized components
    - Need visual documentation

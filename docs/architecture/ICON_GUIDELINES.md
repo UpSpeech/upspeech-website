@@ -10,10 +10,12 @@
 ### Current State - INCONSISTENT
 
 **Icon Libraries Installed:**
+
 - ✅ **Heroicons** v2.2.0 (`@heroicons/react`)
 - ⚠️ **Lucide** v0.555.0 (`lucide-react`)
 
 **Usage Statistics:**
+
 - 📦 **Heroicons**: 39 imports across codebase
   - 24/outline: 34 imports (PRIMARY)
   - 24/solid: 3 imports
@@ -25,12 +27,14 @@
 ### Problems Identified
 
 **1. Mixed Icon Libraries** 🔴 HIGH SEVERITY
+
 - Using both Heroicons AND Lucide creates inconsistency
 - Different visual styles between libraries
 - Increases bundle size unnecessarily
 - Confusing for developers (which library to use?)
 
 **2. Excessive Inline SVGs** 🔴 HIGH SEVERITY
+
 - 142 inline SVG instances across 34 files
 - Duplicated code (same icons defined multiple times)
 - Harder to maintain (changes require editing multiple files)
@@ -38,6 +42,7 @@
 - Increases code complexity and file sizes
 
 **3. Emojis in UI Code** 🟡 MEDIUM SEVERITY
+
 - Emojis used for icons in 20+ locations
 - Examples:
   - ✓ (checkmark) - Should use CheckIcon
@@ -49,6 +54,7 @@
   - 🔍 (search) - Should use MagnifyingGlassIcon
 
 **Affected Files:**
+
 ```
 Inline SVGs (34 files):
 - src/components/clients/PatientStatsCards.tsx
@@ -86,6 +92,7 @@ Mixed Libraries (4 files using Lucide):
 **Decision**: Use **Heroicons 24/outline** as the standard icon library.
 
 **Rationale:**
+
 - ✅ Already heavily used (34/39 imports)
 - ✅ MIT licensed, free for commercial use
 - ✅ Maintained by Tailwind CSS team (consistent updates)
@@ -198,6 +205,7 @@ import { MagnifyingGlassIcon, CheckIcon } from "@heroicons/react/24/outline";
 ```
 
 **Exception**: Emojis ARE allowed in:
+
 - User-generated content
 - Celebratory messages (e.g., "Great job! 🎉")
 - Fun copy/marketing text
@@ -208,13 +216,18 @@ import { MagnifyingGlassIcon, CheckIcon } from "@heroicons/react/24/outline";
 ```tsx
 // ❌ BAD - Inline SVG
 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-</svg>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={2}
+    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+  />
+</svg>;
 
 // ✅ GOOD - Use Heroicons
 import { HomeIcon } from "@heroicons/react/24/outline";
 
-<HomeIcon className="w-6 h-6" />
+<HomeIcon className="w-6 h-6" />;
 ```
 
 **Exception**: Custom brand logos or complex illustrations that are NOT available in Heroicons.
@@ -253,10 +266,14 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 interface IconButtonProps {
   icon: React.ComponentType<{ className?: string }>;
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
 }
 
-export function IconButton({ icon: Icon, label, variant = 'primary' }: IconButtonProps) {
+export function IconButton({
+  icon: Icon,
+  label,
+  variant = "primary",
+}: IconButtonProps) {
   return (
     <button className={/* button styles */}>
       <Icon className="w-5 h-5" />
@@ -266,7 +283,7 @@ export function IconButton({ icon: Icon, label, variant = 'primary' }: IconButto
 }
 
 // Usage
-<IconButton icon={HomeIcon} label="Home" />
+<IconButton icon={HomeIcon} label="Home" />;
 ```
 
 ### 3. Accessibility
@@ -294,20 +311,20 @@ export function IconButton({ icon: Icon, label, variant = 'primary' }: IconButto
 
 Use these Heroicons equivalents for common emojis:
 
-| Emoji | Heroicon | Import |
-|-------|----------|--------|
-| ✓ | CheckIcon | `@heroicons/react/24/outline` |
-| ✕ | XMarkIcon | `@heroicons/react/24/outline` |
-| 🔍 | MagnifyingGlassIcon | `@heroicons/react/24/outline` |
-| 📊 | ChartBarIcon | `@heroicons/react/24/outline` |
-| 📄 | DocumentTextIcon | `@heroicons/react/24/outline` |
-| ⚠️ | ExclamationTriangleIcon | `@heroicons/react/24/outline` |
-| 🗑️ | TrashIcon | `@heroicons/react/24/outline` |
-| ✏️ | PencilIcon | `@heroicons/react/24/outline` |
-| ➕ | PlusIcon | `@heroicons/react/24/outline` |
-| ⚙️ | CogIcon | `@heroicons/react/24/outline` |
-| 👤 | UserIcon | `@heroicons/react/24/outline` |
-| 🏠 | HomeIcon | `@heroicons/react/24/outline` |
+| Emoji | Heroicon                | Import                        |
+| ----- | ----------------------- | ----------------------------- |
+| ✓     | CheckIcon               | `@heroicons/react/24/outline` |
+| ✕     | XMarkIcon               | `@heroicons/react/24/outline` |
+| 🔍    | MagnifyingGlassIcon     | `@heroicons/react/24/outline` |
+| 📊    | ChartBarIcon            | `@heroicons/react/24/outline` |
+| 📄    | DocumentTextIcon        | `@heroicons/react/24/outline` |
+| ⚠️    | ExclamationTriangleIcon | `@heroicons/react/24/outline` |
+| 🗑️    | TrashIcon               | `@heroicons/react/24/outline` |
+| ✏️    | PencilIcon              | `@heroicons/react/24/outline` |
+| ➕    | PlusIcon                | `@heroicons/react/24/outline` |
+| ⚙️    | CogIcon                 | `@heroicons/react/24/outline` |
+| 👤    | UserIcon                | `@heroicons/react/24/outline` |
+| 🏠    | HomeIcon                | `@heroicons/react/24/outline` |
 
 Browse all icons: https://heroicons.com/
 
@@ -353,6 +370,7 @@ Add to `eslint.config.js`:
 ## 📋 Migration Plan
 
 ### Phase 1: Prevent New Violations (Immediate)
+
 1. ✅ Add ESLint rules to prevent:
    - Emojis in JSX
    - Inline SVG elements
@@ -363,16 +381,19 @@ Add to `eslint.config.js`:
 ### Phase 2: Fix Existing Violations (1-2 weeks)
 
 **Priority 1: Replace Emojis (20+ instances)**
+
 - Low effort, high impact
 - Search and replace with Heroicons
 - ~2-3 hours
 
 **Priority 2: Remove Lucide (4 files)**
+
 - Replace 4 Lucide imports with Heroicons equivalents
 - Test feedback components
 - ~1 hour
 
 **Priority 3: Replace Inline SVGs (142 instances, 34 files)**
+
 - High effort, high impact
 - Identify unique SVGs
 - Replace with Heroicons or extract to components
@@ -381,6 +402,7 @@ Add to `eslint.config.js`:
 **Estimated Total**: 11-16 hours
 
 ### Phase 3: Cleanup (After migration)
+
 1. Remove `lucide-react` from package.json
 2. Create icon component library helpers
 3. Add Storybook stories for common icon patterns
@@ -398,14 +420,14 @@ Add to `eslint.config.js`:
 
 ## 📊 Progress Tracking
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Create guidelines | ✅ COMPLETE | This document |
-| Add ESLint rules | 🟡 PENDING | See below for implementation |
-| Replace emojis | ⬜ NOT STARTED | 20+ instances |
-| Remove Lucide | ⬜ NOT STARTED | 4 files |
-| Replace inline SVGs | ⬜ NOT STARTED | 142 instances |
-| Remove lucide-react | ⬜ NOT STARTED | After migration |
+| Task                | Status         | Notes                        |
+| ------------------- | -------------- | ---------------------------- |
+| Create guidelines   | ✅ COMPLETE    | This document                |
+| Add ESLint rules    | 🟡 PENDING     | See below for implementation |
+| Replace emojis      | ⬜ NOT STARTED | 20+ instances                |
+| Remove Lucide       | ⬜ NOT STARTED | 4 files                      |
+| Replace inline SVGs | ⬜ NOT STARTED | 142 instances                |
+| Remove lucide-react | ⬜ NOT STARTED | After migration              |
 
 ---
 

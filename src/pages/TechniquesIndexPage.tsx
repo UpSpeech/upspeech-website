@@ -39,7 +39,7 @@ export function TechniquesIndexPage() {
         setTechniques(data);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "Failed to load techniques"
+          err instanceof Error ? err.message : "Failed to load techniques",
         );
         console.error("Error loading techniques:", err);
       } finally {
@@ -60,9 +60,9 @@ export function TechniquesIndexPage() {
 
   // Group techniques by type
   const mainCategories = techniques.filter(
-    t => t.category_type === "main_category"
+    (t) => t.category_type === "main_category",
   );
-  const standalone = techniques.filter(t => t.category_type === "standalone");
+  const standalone = techniques.filter((t) => t.category_type === "standalone");
 
   // Get translations
   const translations = {
@@ -203,7 +203,7 @@ export function TechniquesIndexPage() {
                 {t.mainCategories}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {mainCategories.map(category => (
+                {mainCategories.map((category) => (
                   <Card key={category.slug} className="p-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {category.name}
@@ -214,7 +214,7 @@ export function TechniquesIndexPage() {
                     {category.sub_techniques &&
                       category.sub_techniques.length > 0 && (
                         <div className="space-y-3">
-                          {category.sub_techniques.map(subTech => (
+                          {category.sub_techniques.map((subTech) => (
                             <Link
                               key={subTech.slug}
                               to={`/techniques/${subTech.slug}?lang=${locale}`}
@@ -273,7 +273,7 @@ export function TechniquesIndexPage() {
                 {t.standalone}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {standalone.map(technique => (
+                {standalone.map((technique) => (
                   <Card key={technique.slug} className="p-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {technique.name}
@@ -304,8 +304,8 @@ export function TechniquesIndexPage() {
               {locale === "pt"
                 ? "Pronto para começar a praticar?"
                 : locale === "es"
-                ? "¿Listo para empezar a practicar?"
-                : "Ready to start practicing?"}
+                  ? "¿Listo para empezar a practicar?"
+                  : "Ready to start practicing?"}
             </p>
             <a
               href="https://upspeech.app/join"
@@ -314,8 +314,8 @@ export function TechniquesIndexPage() {
               {locale === "pt"
                 ? "Começar Agora"
                 : locale === "es"
-                ? "Comenzar Ahora"
-                : "Get Started"}
+                  ? "Comenzar Ahora"
+                  : "Get Started"}
             </a>
           </div>
         </div>

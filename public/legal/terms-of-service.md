@@ -397,7 +397,6 @@ We disclaim all warranties, including:
 **TO THE MAXIMUM EXTENT PERMITTED BY LAW, UPSPEECH AND ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR:**
 
 1. **Indirect, incidental, consequential, special, or punitive damages**, including:
-
    - Lost profits or revenue
    - Loss of data or content
    - Business interruption
@@ -405,7 +404,6 @@ We disclaim all warranties, including:
    - Cost of substitute services
 
 2. **Any damages arising from:**
-
    - Use or inability to use the Service
    - Errors, inaccuracies, or omissions in AI-generated content
    - Unauthorized access to your data

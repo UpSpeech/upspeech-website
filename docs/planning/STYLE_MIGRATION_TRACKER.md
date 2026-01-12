@@ -24,7 +24,7 @@
 **Total Raw HTML Elements**: 58 instances
 
 | Element Type | Files Affected | Total Instances |
-|--------------|----------------|-----------------|
+| ------------ | -------------- | --------------- |
 | `<button>`   | 16 files       | 42 instances    |
 | `<input>`    | 5 files        | 10 instances    |
 | `<select>`   | 2 files        | 5 instances     |
@@ -78,6 +78,7 @@
 **Severity**: 🔴 HIGH - Violates mandatory project standards
 
 **Issues Caused**:
+
 1. ❌ **Inconsistent UI** - Different styling approaches across codebase
 2. ❌ **Harder maintenance** - Style changes require updating multiple locations
 3. ❌ **Accessibility gaps** - Missing ARIA attributes and keyboard navigation
@@ -85,6 +86,7 @@
 5. ❌ **Violates CLAUDE.md** - Explicitly mandates standardized components only
 
 **Files Most Affected**:
+
 - **Feedback system** (7 files) - Highest concentration of violations
 - **Chat system** (4 files) - Entire module needs migration
 - **Exercise modals** (2 files) - Large complex components with 11 violations
@@ -92,6 +94,7 @@
 ### Recommended Action Plan
 
 **Priority 1 - Quick Wins (7 files, <30 min each)**:
+
 - components/chat/ChatButton.tsx
 - components/chat/ChatMessage.tsx
 - components/common/FilterPanel.tsx
@@ -101,6 +104,7 @@
 - components/onboarding/WelcomeModal.tsx
 
 **Priority 2 - Medium Complexity (7 files, ~1 hour each)**:
+
 - components/auth/RegisterForm.tsx
 - components/chat/ChatInput.tsx
 - components/chat/ChatPanel.tsx
@@ -110,6 +114,7 @@
 - components/MiniGameAssignmentModal.tsx
 
 **Priority 3 - High Complexity (9 files, ~2+ hours each)**:
+
 - components/exercises/ExerciseCompletionModal.tsx (5 buttons)
 - components/exercises/ExerciseSelectorModal.tsx (6 buttons, already imports Button!)
 - components/feedback/FeedbackFilters.tsx (4 buttons + 4 selects)
@@ -697,18 +702,21 @@ None currently.
 **🚨 CRITICAL DISCOVERY: Migration Was NOT Complete**
 
 **What Happened**:
+
 - Previous session claimed "100% migration complete" with 40/40 files
 - Comprehensive grep audit revealed this was **inaccurate**
 - Found **23 files** with **58 raw HTML element violations**
 - Many files were never included in the original migration count
 
 **Audit Findings**:
+
 - ❌ 16 files with 42 raw `<button>` elements
 - ❌ 5 files with 10 raw `<input>` elements
 - ❌ 2 files with 5 raw `<select>` elements
 - ❌ 1 file with 1 raw `<textarea>` element
 
 **Why This Happened**:
+
 1. Original migration tracked specific "known" files
 2. New files added after migration (chat/, feedback/, exercises/)
 3. Some existing files were overlooked (onboarding, feature flags)
@@ -716,11 +724,13 @@ None currently.
 5. Over-optimistic grep searches excluded valid matches
 
 **Files Most Affected**:
+
 - **Feedback system** (7 files) - Entire feature never migrated
 - **Chat system** (4 files) - Entire feature never migrated
 - **Exercise modals** (2 files) - Complex components partially migrated
 
 **Actions Taken**:
+
 1. ✅ Created detailed audit report with all 23 files listed
 2. ✅ Updated migration tracker status (40/63 files = 63.5%)
 3. ✅ Created 3-phase migration plan (Quick Wins → Medium → Complex)
@@ -728,6 +738,7 @@ None currently.
 5. ✅ Documented impact and severity (HIGH - violates CLAUDE.md)
 
 **Recommendations for Future**:
+
 1. Add ESLint rule to prevent raw HTML elements in TSX files
 2. Add pre-commit hook to grep for violations
 3. Regular audits (monthly) to catch new violations early
@@ -735,6 +746,7 @@ None currently.
 5. Consider automated migration scripts for simple patterns
 
 **Next Steps**:
+
 - Start Phase 1 migrations (7 quick wins, ~3-4 hours)
 - Track progress with checkboxes in this document
 - Re-audit after each phase to verify completion

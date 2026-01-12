@@ -43,17 +43,35 @@ const App = () => (
 
           {/* Technique Documentation Routes */}
           <Route path="/techniques" element={<TechniquesIndexPage />} />
-          <Route path="/techniques/voluntary-stuttering" element={<VoluntaryStuttering />} />
+          <Route
+            path="/techniques/voluntary-stuttering"
+            element={<VoluntaryStuttering />}
+          />
           <Route path="/techniques/cancelation" element={<Cancelation />} />
           <Route path="/techniques/pull-out" element={<PullOut />} />
-          <Route path="/techniques/preparatory-set" element={<PreparatorySet />} />
+          <Route
+            path="/techniques/preparatory-set"
+            element={<PreparatorySet />}
+          />
           <Route path="/techniques/holding" element={<Holding />} />
           <Route path="/techniques/soft-starts" element={<SoftStarts />} />
-          <Route path="/techniques/soft-articulation-contact" element={<SoftArticulationContact />} />
-          <Route path="/techniques/prolonged-speech" element={<ProlongedSpeech />} />
-          <Route path="/techniques/speech-speed-management" element={<SpeechSpeedManagement />} />
+          <Route
+            path="/techniques/soft-articulation-contact"
+            element={<SoftArticulationContact />}
+          />
+          <Route
+            path="/techniques/prolonged-speech"
+            element={<ProlongedSpeech />}
+          />
+          <Route
+            path="/techniques/speech-speed-management"
+            element={<SpeechSpeedManagement />}
+          />
           <Route path="/techniques/pauses" element={<Pauses />} />
-          <Route path="/techniques/identification-desensitization" element={<IdentificationDesensitization />} />
+          <Route
+            path="/techniques/identification-desensitization"
+            element={<IdentificationDesensitization />}
+          />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

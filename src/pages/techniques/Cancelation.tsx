@@ -1,4 +1,4 @@
-import { TechniquePage } from '../TechniquePage';
+import { TechniquePage } from "../TechniquePage";
 
 export default function Cancelation() {
   return <TechniquePage slug="cancelation" />;
