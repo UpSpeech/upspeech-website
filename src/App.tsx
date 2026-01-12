@@ -12,6 +12,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 
 // Technique Pages
+import { TechniquesIndexPage } from "./pages/TechniquesIndexPage";
 import VoluntaryStuttering from "./pages/techniques/VoluntaryStuttering";
 import Cancelation from "./pages/techniques/Cancelation";
 import PullOut from "./pages/techniques/PullOut";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/cookies" element={<CookiePolicy />} />
 
           {/* Technique Documentation Routes */}
+          <Route path="/techniques" element={<TechniquesIndexPage />} />
           <Route path="/techniques/voluntary-stuttering" element={<VoluntaryStuttering />} />
           <Route path="/techniques/cancelation" element={<Cancelation />} />
           <Route path="/techniques/pull-out" element={<PullOut />} />
