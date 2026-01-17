@@ -251,7 +251,8 @@ export default {
         "notification-pulse": "notification-pulse 2s infinite",
         breathe: "breathe 4s ease-in-out infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
-        "success-pop": "success-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+        "success-pop":
+          "success-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
         shimmer: "shimmer 2s linear infinite",
         glow: "glow 2s ease-in-out infinite alternate",
       },

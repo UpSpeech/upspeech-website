@@ -78,7 +78,7 @@ We use analytics data to:
 - Use analytics data to identify individual users
 - Track you across other websites outside of UpSpeech
 
-### Application Platform (*.upspeech.app)
+### Application Platform (\*.upspeech.app)
 
 Our application platform (accessed via tenant subdomains like `speechcare.upspeech.app`) uses Local Storage for essential functionality and analytics cookies for improving your experience:
 
@@ -371,7 +371,7 @@ If you have questions about this Cookie Policy or how we use cookies and similar
 - Requires your consent (via banner) before setting analytics cookies
 - You can accept or decline at any time
 
-**Application Platform (*.upspeech.app):**
+**Application Platform (\*.upspeech.app):**
 
 - Uses Local Storage for authentication and preferences (essential)
 - Uses Google Analytics and Microsoft Clarity for analytics (consent required)

@@ -27,6 +27,7 @@ The project uses TypeScript strict mode, ESLint, and Prettier to maintain code q
 ### Differences from app-frontend
 
 The website has a similar TypeScript configuration to app-frontend but without:
+
 - Test file exclusions (marketing site has simpler test setup)
 - `verbatimModuleSyntax` and other advanced module features
 
@@ -37,17 +38,20 @@ The website has a similar TypeScript configuration to app-frontend but without:
 ### Enabled Rules
 
 #### React & React Hooks
+
 - **React Hooks recommended-latest**: Latest best practices for hooks
 - **exhaustive-deps**: Warns about missing dependencies in useEffect/useCallback
 - **Fast refresh support**: Optimized for Vite HMR
 
 #### TypeScript
+
 - **no-unused-vars**: Warns about unused variables
   - Allows `_prefixed` variables for intentionally unused params
 - **no-explicit-any**: Warns against using `any` type
 - **no-unused-expressions**: Prevents statements that have no effect
 
 #### Code Quality
+
 - **no-console**: Warns about console.log (allows console.warn/error)
 - **prefer-const**: Enforces const for variables that aren't reassigned
 - **no-var**: Prevents use of `var` keyword
@@ -62,6 +66,7 @@ The website has a similar TypeScript configuration to app-frontend but without:
 The website has a **simpler** ESLint config than app-frontend because it's a marketing site:
 
 **Not included** (app-frontend only):
+
 - Component library enforcement (Button, Input, Modal patterns)
 - i18next translation enforcement
 - PageHeader requirements
@@ -77,6 +82,7 @@ The website has a **simpler** ESLint config than app-frontend because it's a mar
 **File**: `.prettierrc`
 
 Standard formatting rules for consistency:
+
 - Semicolons: Yes
 - Single quotes: No (double quotes)
 - Print width: 80 characters
