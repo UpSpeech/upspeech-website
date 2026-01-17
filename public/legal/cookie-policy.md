@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last Updated:** December 16, 2025
+**Last Updated:** January 17, 2026
 
 ## Introduction
 
@@ -78,9 +78,9 @@ We use analytics data to:
 - Use analytics data to identify individual users
 - Track you across other websites outside of UpSpeech
 
-### Application Platform (app.upspeech.com)
+### Application Platform (*.upspeech.app)
 
-Our application platform primarily uses Local Storage (not cookies) for essential functionality:
+Our application platform (accessed via tenant subdomains like `speechcare.upspeech.app`) uses Local Storage for essential functionality and analytics cookies for improving your experience:
 
 #### Essential Local Storage
 
@@ -107,13 +107,36 @@ We may use Session Storage for temporary data such as:
 
 Session Storage data is automatically cleared when you close your browser tab.
 
-#### Analytics (Optional - Coming Soon)
+#### Analytics Cookies (Consent Required)
 
-We may introduce similar analytics to the application platform in the future to improve the user experience. If we do, we will:
+The application platform uses the same analytics services as our marketing website to help us improve the user experience.
 
-- Update this policy and notify you
-- Provide clear opt-in/opt-out controls
-- Use the same privacy-respecting approach as our marketing website
+**Google Analytics 4**
+
+| Cookie Name  | Purpose                                      | Duration | Type      |
+| ------------ | -------------------------------------------- | -------- | --------- |
+| **\_ga**     | Distinguishes unique users                   | 2 years  | Analytics |
+| **\_ga\_\*** | Maintains session state for Google Analytics | 2 years  | Analytics |
+| **\_gid**    | Distinguishes unique users                   | 24 hours | Analytics |
+
+**Microsoft Clarity**
+
+| Cookie Name | Purpose                                     | Duration | Type      |
+| ----------- | ------------------------------------------- | -------- | --------- |
+| **\_clck**  | Persists Clarity User ID across visits      | 1 year   | Analytics |
+| **\_clsk**  | Connects multiple page views in one session | 1 day    | Analytics |
+| **CLID**    | Identifies user across multiple domains     | 1 year   | Analytics |
+| **MUID**    | Microsoft User Identifier                   | 1 year   | Analytics |
+
+**Consent Management**
+
+| Storage Item                | Purpose                            | Type      | Duration  |
+| --------------------------- | ---------------------------------- | --------- | --------- |
+| **upspeech_cookie_consent** | Stores your cookie consent choices | Essential | Permanent |
+
+When you first use the application, you'll see a consent banner allowing you to accept or decline analytics cookies. Your choice is stored in Local Storage and respected for all future visits to that subdomain.
+
+**Note:** Each tenant subdomain (e.g., `speechcare.upspeech.app`, `demo.upspeech.app`) maintains its own consent preferences separately
 
 ## Cookie Consent and Your Choices
 
@@ -342,21 +365,22 @@ If you have questions about this Cookie Policy or how we use cookies and similar
 
 ## Summary
 
-**Marketing Website:**
+**Marketing Website (upspeech.app):**
 
 - Uses Google Analytics and Microsoft Clarity cookies for site analytics
 - Requires your consent (via banner) before setting analytics cookies
 - You can accept or decline at any time
 
-**Application Platform:**
+**Application Platform (*.upspeech.app):**
 
-- Uses Local Storage (not cookies) for authentication and preferences
+- Uses Local Storage for authentication and preferences (essential)
+- Uses Google Analytics and Microsoft Clarity for analytics (consent required)
+- Each tenant subdomain maintains separate consent preferences
 - Essential storage is required for the platform to work
-- Functional storage can be cleared but improves user experience
 
 **Your Control:**
 
-- Manage cookie consent on the marketing website
+- Manage cookie consent via the banner on each site/subdomain
 - Control cookies and storage through browser settings
 - Contact us to exercise your data rights
 
