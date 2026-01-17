@@ -90,15 +90,15 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="animate-fade-in text-center lg:text-left">
-            <h1 className="font-nunito font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
+            <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
               Speech Therapy happens once a week.{" "}
-              <span className="text-transparent bg-gradient-to-r from-calm-navy via-calm-lavender to-calm-navy bg-clip-text">
+              <span className="text-gradient-primary">
                 Practice happens every day{" "}
               </span>
               — with UpSpeech.
             </h1>
 
-            <p className="font-nunito text-base sm:text-lg md:text-xl text-calm-charcoal/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               With UpSpeech, clinics empower people who stutter to practice
               smarter, stay engaged, and accelerate real-life improvements.
             </p>
@@ -107,7 +107,7 @@ const HeroSection = () => {
               <Button
                 onClick={scrollToCTA}
                 size="lg"
-                className="w-full sm:w-auto bg-calm-lavender hover:from-calm-navy/90 hover:via-calm-lavender/90 hover:to-calm-navy/90 text-white font-nunito font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 shadow-md"
+                className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white font-body font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 shadow-button"
               >
                 Join the Waitlist for Early Access
               </Button>
@@ -119,7 +119,7 @@ const HeroSection = () => {
               {/* Online Status Card */}
               <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 z-20 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-calm-light p-2 sm:p-3 flex items-center space-x-2">
                 <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-nunito text-xs sm:text-sm font-semibold text-calm-charcoal">
+                <span className="font-body text-xs sm:text-sm font-semibold text-calm-charcoal">
                   Online
                 </span>
               </div>
@@ -139,15 +139,15 @@ const HeroSection = () => {
                       style={{ animationDelay: "2s" }}
                     ></div>
                   </div>
-                  <h3 className="font-nunito font-semibold text-lg text-calm-charcoal mb-2">
+                  <h3 className="font-heading font-semibold text-lg text-calm-charcoal mb-2">
                     Patient Dashboard
                   </h3>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="font-nunito text-sm text-calm-charcoal/70">
+                      <span className="font-body text-sm text-calm-charcoal/70">
                         Today's Practice
                       </span>
-                      <span className="font-nunito text-sm font-semibold text-calm-navy">
+                      <span className="font-body text-sm font-semibold text-calm-navy">
                         3/5 Complete
                       </span>
                     </div>
@@ -162,7 +162,7 @@ const HeroSection = () => {
 
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-calm-lavender/20 to-calm-lavender/10 rounded-2xl border border-calm-lavender/30">
-                    <span className="font-nunito text-sm font-medium text-calm-charcoal">
+                    <span className="font-body text-sm font-medium text-calm-charcoal">
                       Stuttering Modification
                     </span>
                     <div className="w-6 h-6 bg-calm-lavender rounded-full flex items-center justify-center">
@@ -170,7 +170,7 @@ const HeroSection = () => {
                     </div>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-calm-navy/10 to-calm-navy/5 rounded-2xl border border-calm-navy/20">
-                    <span className="font-nunito text-sm font-medium text-calm-charcoal">
+                    <span className="font-body text-sm font-medium text-calm-charcoal">
                       Fluency Shaping
                     </span>
                     <div className="w-6 h-6 bg-calm-lavender rounded-full flex items-center justify-center">
@@ -178,7 +178,7 @@ const HeroSection = () => {
                     </div>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-calm-light/80 to-calm-charcoal/5 rounded-2xl border border-calm-charcoal/10">
-                    <span className="font-nunito text-sm font-medium text-calm-charcoal/70">
+                    <span className="font-body text-sm font-medium text-calm-charcoal/70">
                       Stabilization
                     </span>
                     <div className="w-6 h-6 bg-calm-charcoal/30 rounded-full"></div>

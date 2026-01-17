@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Globe, Target, Zap, TrendingUp, Monitor, Rocket } from "lucide-react";
+import {
+  GlobeAltIcon,
+  AdjustmentsHorizontalIcon,
+  BoltIcon,
+  ArrowTrendingUpIcon,
+  ComputerDesktopIcon,
+  RocketLaunchIcon,
+} from "@heroicons/react/24/outline";
 
 const ValueCycle = () => {
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
@@ -8,37 +15,37 @@ const ValueCycle = () => {
     {
       title: "Equal Access",
       description: "Speech therapy for everyone, everywhere",
-      icon: Globe,
+      icon: GlobeAltIcon,
       color: "calm-lavender",
     },
     {
       title: "Personalization",
       description: "AI-powered adaptation to individual needs",
-      icon: Target,
+      icon: AdjustmentsHorizontalIcon,
       color: "calm-navy",
     },
     {
       title: "Reduce Admin",
       description: "Automated reports free up therapist time",
-      icon: Zap,
+      icon: BoltIcon,
       color: "calm-charcoal",
     },
     {
       title: "Faster Results",
       description: "Data-driven insights for faster results",
-      icon: TrendingUp,
+      icon: ArrowTrendingUpIcon,
       color: "calm-lavender",
     },
     {
       title: "Remote Care",
       description: "Care beyond the clinic walls",
-      icon: Monitor,
+      icon: ComputerDesktopIcon,
       color: "calm-navy",
     },
     {
       title: "Growth",
       description: "Better outcomes create growth",
-      icon: Rocket,
+      icon: RocketLaunchIcon,
       color: "calm-charcoal",
     },
   ];
@@ -190,13 +197,12 @@ const ValueCycle = () => {
                     className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${
                       isHovered ? "text-white" : "text-calm-navy"
                     }`}
-                    strokeWidth={2}
                   />
                 </div>
 
                 {/* Number Badge */}
                 <div
-                  className={`absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-nunito font-bold text-xs transition-all duration-300 ${
+                  className={`absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-body font-bold text-xs transition-all duration-300 ${
                     isHovered ? "bg-calm-navy" : "bg-calm-lavender"
                   } text-white`}
                 >
@@ -206,7 +212,7 @@ const ValueCycle = () => {
                 {/* Label - Always Visible */}
                 <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none">
                   <p
-                    className={`font-nunito text-xs md:text-sm font-semibold text-calm-charcoal transition-all ${
+                    className={`font-body text-xs md:text-sm font-semibold text-calm-charcoal transition-all ${
                       isHovered ? "scale-110" : ""
                     }`}
                   >
@@ -231,13 +237,12 @@ const ValueCycle = () => {
               <div className="w-10 h-10 bg-calm-lavender rounded-full flex items-center justify-center mb-2">
                 {React.createElement(cycleNodes[hoveredNode].icon, {
                   className: "w-6 h-6 text-white",
-                  strokeWidth: 2,
                 })}
               </div>
-              <h4 className="font-nunito font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
+              <h4 className="font-heading font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
                 {cycleNodes[hoveredNode].title}
               </h4>
-              <p className="font-nunito text-xs md:text-sm text-calm-charcoal/70 text-center">
+              <p className="font-body text-xs md:text-sm text-calm-charcoal/70 text-center">
                 {cycleNodes[hoveredNode].description}
               </p>
             </div>

@@ -14,11 +14,11 @@ const GuidingVoicesBanner: React.FC = () => {
       <div className="mx-auto max-w-5xl px-6 text-center">
         <h2
           id="guiding-voices-heading"
-          className="font-nunito font-extrabold tracking-tight text-2xl sm:text-3xl md:text-4xl text-white"
+          className="font-heading font-extrabold tracking-tight text-2xl sm:text-3xl md:text-4xl text-white"
         >
           Guiding voices with care and tech
         </h2>
-        <p className="mt-5 max-w-2xl mx-auto text-base sm:text-lg text-white leading-relaxed">
+        <p className="mt-5 max-w-2xl mx-auto font-body text-base sm:text-lg text-white leading-relaxed">
           Human-centered speech therapy powered by intelligent tooling —
           extending care and amplifying clinician impact between sessions.
         </p>

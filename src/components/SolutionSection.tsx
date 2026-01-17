@@ -48,7 +48,7 @@ const SolutionSection = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
             The first multidimensional platform that unites
             <br />
             <span className="text-calm-lavender text-4xl sm:text-5xl">
@@ -79,12 +79,12 @@ const SolutionSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side content */}
             <div className="animate-fade-in" style={{ animationDelay: "1s" }}>
-              <h3 className="font-nunito font-bold text-2xl text-calm-charcoal mb-6">
+              <h3 className="font-heading font-bold text-2xl text-calm-charcoal mb-6">
                 Designed with Therapists,
                 <br />
                 Built for Clinics, Loved by Patients.
               </h3>
-              <p className="font-nunito text-lg text-calm-charcoal/80 mb-8">
+              <p className="font-body text-lg text-calm-charcoal/80 mb-8">
                 We work alongside therapists to provide structured plans,
                 real-time feedback, and motivational support — tailored to each
                 user's progress.
@@ -97,8 +97,8 @@ const SolutionSection = () => {
                   "Motivate patients with daily micro-successes",
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-4">
-                    <div className="w-3 h-3 bg-calm-navy rounded-full"></div>
-                    <span className="font-nunito text-base text-calm-charcoal">
+                    <div className="w-3 h-3 bg-calm-navy rounded-full" />
+                    <span className="font-body text-base text-calm-charcoal">
                       {feature}
                     </span>
                   </div>

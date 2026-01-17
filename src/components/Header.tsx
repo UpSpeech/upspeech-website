@@ -44,19 +44,19 @@ const Header = () => {
           >
             <button
               onClick={() => scrollToSection("about")}
-              className="font-nunito text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("features")}
-              className="font-nunito text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection("differentiation")}
-              className="font-nunito text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
             >
               Why Us
             </button>
@@ -67,7 +67,7 @@ const Header = () => {
               trackButtonClick("join_waitlist", "header");
               scrollToSection("cta");
             }}
-            className="bg-calm-lavender hover:bg-calm-navy text-white font-nunito font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 animate-fade-in group"
+            className="bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 animate-fade-in group shadow-button"
             style={{ animationDelay: "0.6s" }}
           >
             Join the Waitlist

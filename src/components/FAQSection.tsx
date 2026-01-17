@@ -61,7 +61,7 @@ const FAQSection = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2
-            className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
+            className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
             Have Questions? We've Got Answers.
@@ -77,12 +77,12 @@ const FAQSection = () => {
               style={{ animationDelay: `${0.2 + index * 0.15}s` }}
             >
               <AccordionTrigger className="px-6 py-4 text-left hover:no-underline hover:bg-calm-lavender/5">
-                <span className="font-nunito font-semibold text-lg text-calm-charcoal">
+                <span className="font-body font-semibold text-lg text-calm-charcoal">
                   {faq.question}
                 </span>
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-4">
-                <p className="font-nunito text-calm-charcoal/80 leading-relaxed">
+                <p className="font-body text-calm-charcoal/80 leading-relaxed">
                   {faq.answer}
                 </p>
               </AccordionContent>

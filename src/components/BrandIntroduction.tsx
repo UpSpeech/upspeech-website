@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  Users,
-  Stethoscope,
-  Building2,
-  CheckCircle2,
-  Sparkles,
-} from "lucide-react";
+  UserGroupIcon,
+  HeartIcon,
+  BuildingOffice2Icon,
+  CheckCircleIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
 
 const BrandIntroduction = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -13,15 +13,15 @@ const BrandIntroduction = () => {
   const audiences = [
     {
       title: "Clinics",
-      icon: Building2,
+      icon: BuildingOffice2Icon,
       color: "calm-lavender",
       gradient: "from-calm-lavender/20 to-calm-lavender/5",
       accentColor: "bg-calm-lavender",
       borderColor: "border-calm-lavender/30",
       highlights: [
-        { icon: Sparkles, text: "Scale Without Extra Staff" },
-        { icon: CheckCircle2, text: "Better Clinical Outcomes" },
-        { icon: CheckCircle2, text: "Reduce Paperwork" },
+        { icon: SparklesIcon, text: "Scale Without Extra Staff" },
+        { icon: CheckCircleIcon, text: "Better Clinical Outcomes" },
+        { icon: CheckCircleIcon, text: "Reduce Paperwork" },
       ],
       points: [
         "Differentiate your practice with cutting-edge AI tools",
@@ -32,15 +32,15 @@ const BrandIntroduction = () => {
 
     {
       title: "Therapists",
-      icon: Stethoscope,
+      icon: HeartIcon,
       color: "calm-lavender",
       gradient: "from-calm-lavender/20 to-calm-lavender/5",
       accentColor: "bg-calm-lavender",
       borderColor: "border-calm-lavender/30",
       highlights: [
-        { icon: Sparkles, text: "Treatment Plans in Minutes" },
-        { icon: CheckCircle2, text: "Clinical Dashboard" },
-        { icon: CheckCircle2, text: "Automated Reports" },
+        { icon: SparklesIcon, text: "Treatment Plans in Minutes" },
+        { icon: CheckCircleIcon, text: "Clinical Dashboard" },
+        { icon: CheckCircleIcon, text: "Automated Reports" },
       ],
       points: [
         "Multidimensional tracking and data-driven insights",
@@ -50,15 +50,15 @@ const BrandIntroduction = () => {
     },
     {
       title: "Patients",
-      icon: Users,
+      icon: UserGroupIcon,
       color: "calm-lavender",
       gradient: "from-calm-lavender/20 to-calm-lavender/5",
       accentColor: "bg-calm-lavender",
       borderColor: "border-calm-lavender/30",
       highlights: [
-        { icon: Sparkles, text: "AI-Powered Feedback" },
-        { icon: CheckCircle2, text: "Daily Practice" },
-        { icon: CheckCircle2, text: "Real-Time Progress" },
+        { icon: SparklesIcon, text: "AI-Powered Feedback" },
+        { icon: CheckCircleIcon, text: "Daily Practice" },
+        { icon: CheckCircleIcon, text: "Real-Time Progress" },
       ],
       points: [
         "Interactive scenario simulations and challenging exercises",
@@ -81,13 +81,13 @@ const BrandIntroduction = () => {
             <button
               key={index}
               onClick={() => setActiveTab(index)}
-              className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-nunito font-semibold text-sm transition-all duration-300 ${
+              className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-body font-semibold text-sm transition-all duration-300 ${
                 activeTab === index
                   ? `bg-white shadow-md text-${audience.color}`
                   : "text-calm-charcoal/60 hover:text-calm-charcoal/80"
               }`}
             >
-              <TabIcon className="w-4 h-4" strokeWidth={2.5} />
+              <TabIcon className="w-4 h-4" />
               <span className="hidden sm:inline">{audience.title}</span>
             </button>
           );
@@ -103,13 +103,13 @@ const BrandIntroduction = () => {
           <div
             className={`w-14 h-14 ${activeAudience.accentColor} rounded-xl flex items-center justify-center shadow-lg`}
           >
-            <Icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+            <Icon className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h4 className="font-nunito font-bold text-xl text-calm-charcoal">
+            <h4 className="font-heading font-bold text-xl text-calm-charcoal">
               For {activeAudience.title}
             </h4>
-            <p className="font-nunito text-sm text-calm-charcoal/60">
+            <p className="font-body text-sm text-calm-charcoal/60">
               Empowering your journey
             </p>
           </div>
@@ -125,12 +125,9 @@ const BrandIntroduction = () => {
                 className="flex items-center space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-3 border border-white/80"
               >
                 <div className={`${activeAudience.accentColor} rounded-lg p-2`}>
-                  <HighlightIcon
-                    className="w-4 h-4 text-white"
-                    strokeWidth={2.5}
-                  />
+                  <HighlightIcon className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-nunito font-semibold text-sm text-calm-charcoal">
+                <span className="font-body font-semibold text-sm text-calm-charcoal">
                   {highlight.text}
                 </span>
               </div>
@@ -140,15 +137,15 @@ const BrandIntroduction = () => {
 
         {/* Additional Points */}
         <div className="space-y-2.5">
-          <p className="font-nunito font-semibold text-xs uppercase tracking-wide text-calm-charcoal/50 mb-3">
+          <p className="font-body font-semibold text-xs uppercase tracking-wide text-calm-charcoal/50 mb-3">
             Plus more
           </p>
           {activeAudience.points.map((point, idx) => (
             <div key={idx} className="flex items-start space-x-3">
               <div
                 className={`w-1.5 h-1.5 ${activeAudience.accentColor} rounded-full mt-2 shrink-0`}
-              ></div>
-              <span className="font-nunito text-sm text-calm-charcoal/80 leading-relaxed">
+              />
+              <span className="font-body text-sm text-calm-charcoal/80 leading-relaxed">
                 {point}
               </span>
             </div>

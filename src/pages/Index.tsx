@@ -12,7 +12,7 @@ import FAQSection from "@/components/FAQSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen font-nunito">
+    <div className="min-h-screen font-body">
       <Header />
       <HeroSection />
       <ProblemSection />

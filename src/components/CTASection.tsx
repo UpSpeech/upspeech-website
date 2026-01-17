@@ -71,7 +71,7 @@ const CTASection = () => {
         reply_to: "upspeechapp@gmail.com",
       };
 
-      const response = await emailjs.send(
+      await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams,
@@ -158,30 +158,30 @@ const CTASection = () => {
   return (
     <section
       id="cta"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-calm-lavender/20 via-calm-navy/5 to-calm-light relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-mesh-calm relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-calm-charcoal/10 rounded-full blur-2xl animate-float"></div>
+        <div className="absolute top-20 left-20 w-32 h-32 bg-calm-charcoal/10 rounded-full blur-2xl animate-float" />
         <div
           className="absolute bottom-20 right-20 w-40 h-40 bg-calm-navy/10 rounded-full blur-3xl animate-float-delayed"
           style={{ animationDelay: "2s" }}
-        ></div>
+        />
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-calm-lavender/15 rounded-full blur-xl animate-float-slow"
           style={{ animationDelay: "4s" }}
-        ></div>
+        />
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
         <h2
-          className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
+          className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
           Join us before we launch!
         </h2>
         <p
-          className="font-nunito text-xl text-calm-charcoal/80 mb-12 max-w-3xl mx-auto animate-fade-in"
+          className="font-body text-xl text-calm-charcoal/80 mb-12 max-w-3xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
           Join forward-thinking speech therapy clinics already revolutionizing
@@ -189,10 +189,10 @@ const CTASection = () => {
         </p>
 
         <div
-          className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
+          className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <h3 className="font-nunito font-bold text-xl text-calm-charcoal mb-6">
+          <h3 className="font-heading font-bold text-xl text-calm-charcoal mb-6">
             Request Early Access to UpSpeech
           </h3>
 
@@ -200,7 +200,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="name"
-                className="font-nunito text-sm font-semibold text-calm-charcoal"
+                className="font-body text-sm font-semibold text-calm-charcoal"
               >
                 Full Name *
               </Label>
@@ -211,7 +211,7 @@ const CTASection = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender placeholder:text-calm-charcoal/30 transition-colors duration-200"
+                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/30 transition-colors duration-200"
                 placeholder="Enter your name"
                 required
               />
@@ -220,7 +220,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="email"
-                className="font-nunito text-sm font-semibold text-calm-charcoal"
+                className="font-body text-sm font-semibold text-calm-charcoal"
               >
                 Email Address *
               </Label>
@@ -231,7 +231,7 @@ const CTASection = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender placeholder:text-calm-charcoal/30 transition-colors duration-200"
+                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/30 transition-colors duration-200"
                 placeholder="your@email.com"
                 required
               />
@@ -240,7 +240,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="role"
-                className="font-nunito text-sm font-semibold text-calm-charcoal"
+                className="font-body text-sm font-semibold text-calm-charcoal"
               >
                 Role *
               </Label>
@@ -249,10 +249,10 @@ const CTASection = () => {
                   setFormData({ ...formData, role: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
+                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
                   <SelectValue placeholder="Choose your role" />
                 </SelectTrigger>
-                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm">
+                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm rounded-xl">
                   <SelectItem
                     value="speech-therapist"
                     className="focus:bg-calm-navy/5"
@@ -281,7 +281,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="clinic-size"
-                className="font-nunito text-sm font-semibold text-calm-charcoal"
+                className="font-body text-sm font-semibold text-calm-charcoal"
               >
                 Clinic Size (Optional)
               </Label>
@@ -290,10 +290,10 @@ const CTASection = () => {
                   setFormData({ ...formData, clinicSize: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-nunito rounded-2xl border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
+                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
                   <SelectValue placeholder="Choose clinic size" />
                 </SelectTrigger>
-                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm">
+                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm rounded-xl">
                   <SelectItem value="solo" className="focus:bg-calm-navy/5">
                     Solo Practice
                   </SelectItem>
@@ -313,7 +313,7 @@ const CTASection = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-calm-navy to-calm-lavender hover:from-calm-navy/90 hover:to-calm-lavender/90 text-white font-nunito font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 mt-6 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? "Joining Waitlist..." : "Join the Waitlist"}
             </Button>

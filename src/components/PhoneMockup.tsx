@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Bell,
-  BarChart3,
-  MessageCircle,
-  Calendar,
-  TrendingUp,
-} from "lucide-react";
+  BellIcon,
+  ChartBarIcon,
+  ChatBubbleLeftIcon,
+  CalendarIcon,
+  ArrowTrendingUpIcon,
+} from "@heroicons/react/24/outline";
 
 const PhoneMockup = () => {
   const [selectedMood, setSelectedMood] = useState<number>(3);
@@ -64,7 +64,7 @@ const PhoneMockup = () => {
                   </div>
                   <div className="relative group">
                     <div className="relative w-8 h-8 bg-calm-lavender rounded-full flex items-center justify-center cursor-pointer">
-                      <Bell className="w-4 h-4 text-white" />
+                      <BellIcon className="w-4 h-4 text-white" />
                       {showNotificationDot && (
                         <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full animate-notification-pulse">
                           <span className="absolute inset-0 flex items-center justify-center text-white text-[8px] font-semibold">
@@ -146,7 +146,7 @@ const PhoneMockup = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-calm-lavender/30 rounded-xl p-3 text-center">
                     <div className="w-8 h-8 bg-calm-lavender rounded-full mx-auto mb-2 flex items-center justify-center">
-                      <BarChart3 className="w-4 h-4 text-white" />
+                      <ChartBarIcon className="w-4 h-4 text-white" />
                     </div>
                     <p className="text-xs font-semibold text-gray-700">
                       View Analytics
@@ -154,7 +154,7 @@ const PhoneMockup = () => {
                   </div>
                   <div className="bg-calm-navy/20 rounded-xl p-3 text-center">
                     <div className="w-8 h-8 bg-calm-navy rounded-full mx-auto mb-2 flex items-center justify-center">
-                      <MessageCircle className="w-4 h-4 text-white" />
+                      <ChatBubbleLeftIcon className="w-4 h-4 text-white" />
                     </div>
                     <p className="text-xs font-semibold text-gray-700">
                       Get Support
@@ -171,7 +171,7 @@ const PhoneMockup = () => {
           <div className="bg-white rounded-xl p-4 shadow-lg border border-calm-light w-48">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-calm-navy rounded-full flex items-center justify-center">
-                <TrendingUp className="w-4 h-4 text-white" />
+                <ArrowTrendingUpIcon className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
                 <h6 className="font-semibold text-sm text-gray-800">
@@ -189,7 +189,7 @@ const PhoneMockup = () => {
           <div className="bg-white rounded-xl p-4 shadow-lg border border-calm-light w-44">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-calm-lavender rounded-full flex items-center justify-center">
-                <Calendar className="w-4 h-4 text-white" />
+                <CalendarIcon className="w-4 h-4 text-white" />
               </div>
               <div>
                 <h6 className="font-semibold text-sm text-gray-800">

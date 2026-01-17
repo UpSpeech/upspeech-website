@@ -1,4 +1,5 @@
 import React from "react";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const DifferentiationSection = () => {
   const features = [
@@ -76,14 +77,14 @@ const DifferentiationSection = () => {
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <h2 className="font-nunito font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in">
               We're not replacing therapy.
               <br />
               <span className="text-calm-lavender text-4xl sm:text-5xl line-height-tight">
                 We're supercharging it.
               </span>
             </h2>
-            <p className="font-nunito text-xl text-calm-charcoal/80 mb-8">
+            <p className="font-body text-xl text-calm-charcoal/80 mb-8">
               By making speech therapy more continuous, engaging, and scalable
               for the professionals who deliver it.
             </p>
@@ -101,13 +102,13 @@ const DifferentiationSection = () => {
         {/* Desktop Layout - Hidden on mobile */}
         <div className="hidden md:block bg-white/90 backdrop-blur-sm rounded-2xl border border-calm-light shadow-lg overflow-hidden">
           <div className="grid grid-cols-[2fr,1fr,1fr] border-b border-calm-light">
-            <div className="p-6 font-nunito font-bold text-lg text-calm-charcoal">
+            <div className="p-6 font-heading font-bold text-lg text-calm-charcoal">
               Features
             </div>
-            <div className="p-6 font-nunito font-bold text-lg text-calm-charcoal border-l border-calm-light">
+            <div className="p-6 font-heading font-bold text-lg text-calm-charcoal border-l border-calm-light">
               Traditional Approach
             </div>
-            <div className="p-6 font-nunito font-bold text-lg text-white border-l border-calm-light bg-calm-lavender">
+            <div className="p-6 font-heading font-bold text-lg text-white border-l border-calm-light bg-calm-lavender">
               UpSpeech Platform
             </div>
           </div>
@@ -119,7 +120,7 @@ const DifferentiationSection = () => {
                 className="grid grid-cols-[2fr,1fr,1fr] items-center group hover:bg-calm-navy/5 transition-all duration-300"
               >
                 <div className="p-6">
-                  <h3 className="font-nunito font-bold text-calm-charcoal mb-2">
+                  <h3 className="font-heading font-bold text-calm-charcoal mb-2">
                     {item.feature}
                   </h3>
                 </div>
@@ -129,62 +130,26 @@ const DifferentiationSection = () => {
                   <div className="flex items-center mb-2">
                     {item.traditional ? (
                       <div className="w-8 h-8 overflow-hidden shrink-0 rounded-full bg-calm-lavender flex items-center justify-center">
-                        <svg
-                          className="w-5 h-5 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
+                        <CheckIcon className="w-5 h-5 text-white" />
                       </div>
                     ) : (
                       <div className="w-8 h-8 overflow-hidden shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
-                        <svg
-                          className="w-5 h-5 text-gray-300"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
+                        <XMarkIcon className="w-5 h-5 text-gray-300" />
                       </div>
                     )}
-                    <span className="ml-3 text-sm text-calm-charcoal/70">
+                    <span className="ml-3 text-sm font-body text-calm-charcoal/70">
                       {item.traditionalExtra}
                     </span>
                   </div>
                 </div>
 
                 {/* UpSpeech Check + Extra Feature */}
-                <div className="p-6 border-l border-calm-light bg-calm-lavender/10">
+                <div className="p-6 border-l border-calm-light bg-calm-lavender/10 h-full">
                   <div className="flex items-center mb-2">
                     <div className="w-8 h-8 overflow-hidden shrink-0 rounded-full bg-calm-lavender flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <CheckIcon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="ml-3 text-sm text-calm-navy font-medium">
+                    <span className="ml-3 text-sm font-body text-calm-navy font-medium">
                       {item.upspeechExtra}
                     </span>
                   </div>
@@ -202,7 +167,7 @@ const DifferentiationSection = () => {
               className="bg-white/90 backdrop-blur-sm rounded-xl border border-calm-light p-5 hover:border-calm-navy/30 transition-all duration-300"
             >
               <div className="mb-4">
-                <h3 className="font-nunito font-bold text-lg text-calm-charcoal mb-2">
+                <h3 className="font-heading font-bold text-lg text-calm-charcoal mb-2">
                   {item.feature}
                 </h3>
               </div>
@@ -210,46 +175,22 @@ const DifferentiationSection = () => {
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-calm-light/30">
                 {/* Traditional */}
                 <div className="space-y-2">
-                  <div className="text-xs font-medium text-calm-charcoal/70">
+                  <div className="text-xs font-body font-medium text-calm-charcoal/70">
                     Traditional Approach
                   </div>
                   <div className="flex flex-col space-y-2">
                     <div className="flex items-center space-x-2">
                       {item.traditional ? (
                         <div className="w-6 h-6 rounded-full bg-calm-lavender flex items-center justify-center">
-                          <svg
-                            className="w-4 h-4 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
+                          <CheckIcon className="w-4 h-4 text-white" />
                         </div>
                       ) : (
                         <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
-                          <svg
-                            className="w-4 h-4 text-gray-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M6 18L18 6M6 6l12 12"
-                            />
-                          </svg>
+                          <XMarkIcon className="w-4 h-4 text-gray-300" />
                         </div>
                       )}
                     </div>
-                    <span className="text-xs leading-tight text-calm-charcoal/70">
+                    <span className="text-xs font-body leading-tight text-calm-charcoal/70">
                       {item.traditionalExtra}
                     </span>
                   </div>
@@ -257,28 +198,16 @@ const DifferentiationSection = () => {
 
                 {/* UpSpeech */}
                 <div className="space-y-2">
-                  <div className="text-xs font-medium text-calm-navy">
+                  <div className="text-xs font-body font-medium text-calm-navy">
                     UpSpeech Platform
                   </div>
                   <div className="flex flex-col space-y-2">
                     <div className="flex items-center space-x-2">
                       <div className="w-6 h-6 shrink-0 rounded-full bg-calm-lavender flex items-center justify-center">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
+                        <CheckIcon className="w-4 h-4 text-white" />
                       </div>
                     </div>
-                    <span className="text-xs leading-tight text-calm-navy">
+                    <span className="text-xs font-body leading-tight text-calm-navy">
                       {item.upspeechExtra}
                     </span>
                   </div>
