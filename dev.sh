@@ -19,7 +19,6 @@ case "$1" in
     echo "   Website:  http://localhost:8080"
     echo "   AI Service: http://localhost:8081"
     echo "   Database: postgresql://postgres:postgres@localhost:5432/upspeech_development"
-    echo "   Redis:    redis://localhost:6379"
     echo ""
     echo "📝 Run 'docker-compose -f $COMPOSE_FILE logs -f' to view logs"
     ;;
@@ -151,8 +150,8 @@ case "$1" in
     echo "🔨 Building Docker images..."
     docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE build
 
-    echo "🚀 Starting database and Redis..."
-    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d postgres redis
+    echo "🚀 Starting database..."
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE up -d postgres
 
     echo "⏳ Waiting for database to be ready..."
     sleep 10
@@ -375,7 +374,7 @@ case "$1" in
     if [ -z "$SERVICE" ]; then
       echo "❌ Error: Please specify a service to rebuild"
       echo "Usage: $0 rebuild [service]"
-      echo "Available services: backend, frontend, website, ai-service, worker, postgres, redis"
+      echo "Available services: backend, frontend, website, ai-service, worker, postgres"
       exit 1
     fi
 
@@ -430,20 +429,13 @@ case "$1" in
     fi
 
     echo ""
-    echo "Database & Redis:"
+    echo "Database:"
 
     # PostgreSQL health check
     if docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec postgres pg_isready -U postgres > /dev/null 2>&1; then
       echo "✅ PostgreSQL - Healthy"
     else
       echo "❌ PostgreSQL - Unhealthy"
-    fi
-
-    # Redis health check
-    if docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec redis redis-cli ping > /dev/null 2>&1; then
-      echo "✅ Redis - Healthy"
-    else
-      echo "❌ Redis - Unhealthy"
     fi
 
     echo ""
