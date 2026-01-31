@@ -25,42 +25,42 @@
 
 ---
 
-## Phase 1: Backend Foundation (Week 1-2)
+## Phase 1: Backend Foundation ✅ COMPLETE
 
 ### Database Migrations
 
-- [ ] Create `milestones` table
-- [ ] Create `milestone_steps` table
-- [ ] Create `step_exercise_templates` table
-- [ ] Create `patient_learning_paths` table
-- [ ] Create `patient_step_progresses` table
-- [ ] Create `patient_step_exercises` table
-- [ ] Create `milestone_questionnaires` table
-- [ ] Add `patient_step_progress_id` to `audio_recordings`
+- [x] Create `milestones` table
+- [x] Create `milestone_steps` table
+- [x] Create `step_exercise_templates` table
+- [x] Create `patient_learning_paths` table
+- [x] Create `patient_step_progresses` table
+- [x] Create `patient_step_exercises` table
+- [x] Create `milestone_questionnaires` table
+- [x] Add `patient_step_progress_id` to `audio_recordings`
 
 ### Models
 
-- [ ] `Milestone` model with validations, scopes, methods
-- [ ] `MilestoneStep` model with validations, scopes, methods
-- [ ] `StepExerciseTemplate` model
-- [ ] `PatientLearningPath` model with progression logic + `welcome_back_message`
-- [ ] `PatientStepProgress` model with complete/skip logic
-- [ ] `PatientStepExercise` model
-- [ ] `MilestoneQuestionnaire` model
+- [x] `Milestone` model with validations, scopes, methods
+- [x] `MilestoneStep` model with validations, scopes, methods
+- [x] `StepExerciseTemplate` model
+- [x] `PatientLearningPath` model with progression logic + `welcome_back_message`
+- [x] `PatientStepProgress` model with complete/skip logic
+- [x] `PatientStepExercise` model
+- [x] `MilestoneQuestionnaire` model
 
 ### Seed Data
 
-- [ ] Seed all 8 milestones with steps and `narrative_key`
-- [ ] Seed default exercise templates for each step
-- [ ] Create i18n keys for all titles/descriptions/narratives
-- [ ] Create welcome back message translations
+- [x] Seed all 8 milestones with steps and `narrative_key`
+- [x] Seed default exercise templates for each step
+- [x] Create i18n keys for all titles/descriptions/narratives
+- [x] Create welcome back message translations
 
 ### Basic APIs
 
-- [ ] `MilestonesController` (index, show)
-- [ ] `MilestoneStepsController` (index, show)
-- [ ] `LearningPathsController` (show, create, update)
-- [ ] `StepProgressesController` (show, complete, skip, move_back)
+- [x] `MilestonesController` (index, show)
+- [x] `MilestoneStepsController` (index, show)
+- [x] `LearningPathsController` (show, create, update)
+- [x] `StepProgressesController` (show, complete, skip, move_back)
 
 ### Tests
 
@@ -70,32 +70,32 @@
 
 ---
 
-## Phase 2: Backend Advanced (Week 2-3)
+## Phase 2: Backend Advanced - IN PROGRESS
 
 ### Therapist APIs
 
-- [ ] Therapist dashboard endpoint (all patients' learning paths)
-- [ ] Patient detail endpoint
-- [ ] Exercise customization endpoint
-- [ ] Therapist notes endpoint (reuse existing)
+- [x] Therapist dashboard endpoint (all patients' learning paths)
+- [x] Patient detail endpoint
+- [x] Exercise customization endpoint (2026-01-30)
+- [x] Therapist notes endpoint (reuse existing)
 
 ### Patient APIs
 
-- [ ] Record attempt endpoint
-- [ ] Questionnaire submission endpoint
-- [ ] Acknowledgments endpoint
+- [x] Record attempt endpoint
+- [x] Questionnaire submission endpoint (frontend + backend complete 2026-01-30)
+- [x] Acknowledgments endpoint
 
 ### Integration with Existing
 
-- [ ] Link recordings to step progress
-- [ ] Link scenario sessions to step progress
-- [ ] Update progress tracking to include learning path data
-- [ ] Integrate with Practice Library
+- [x] Link recordings to step progress (2026-01-31)
+- [x] Link scenario sessions to step progress (2026-01-31)
+- [x] Update progress tracking to include learning path data (2026-01-31)
+- [x] Integrate with Practice Library (2026-01-30)
 
 ### Quiz Content
 
-- [ ] Create quiz questions for Milestone 1 (hardcoded, backend-modifiable)
-- [ ] Quiz validation and scoring logic
+- [x] Create quiz questions for Milestone 1 (hardcoded, backend-modifiable) (2026-01-31)
+- [x] Quiz validation and scoring logic (2026-01-31)
 
 ### Tests
 
@@ -105,37 +105,47 @@
 
 ---
 
-## Phase 3: Frontend Foundation (Week 3-4)
+## Phase 3: Frontend Foundation ✅ COMPLETE
 
 **Design Commands:** `/quieter`, `/simplify`, `/onboard`
 
 ### API Client
 
-- [ ] Add learning path endpoints to `api.ts`
-- [ ] Add TypeScript types for all responses
+- [x] Add learning path endpoints to `api.ts`
+- [x] Add TypeScript types for all responses (`src/types/learningPath.ts`)
 
 ### Hooks
 
-- [ ] `useLearningPath` hook
-- [ ] `useStepProgress` hook
-- [ ] `useAcknowledgments` hook
+- [x] `useLearningPath` hook
+- [x] `useStepProgress` hook
+- [x] `usePatientLearningPath` hook (therapist management)
+- [x] `useMilestones` hook
 
 ### Patient Journey Page
 
-- [ ] Basic page structure (`/journey` route)
-- [ ] `JourneyTimeline` component (vertical visualization)
-- [ ] `MilestoneCard` component (expanded/collapsed states)
-- [ ] `CurrentStepPanel` component
-- [ ] `NextStepPreview` component
-- [ ] `WelcomeBackBanner` component
-- [ ] Navigation to exercise/practice
+- [x] Basic page structure (`/journey` route)
+- [x] `JourneyTimeline` component (vertical visualization)
+- [x] `MilestoneCard` component (expanded/collapsed states)
+- [x] `CurrentStepPanel` component
+- [x] `WelcomeBackBanner` component
+- [x] Navigation to exercise/practice
+- [x] `NextStepPreview` component
+
+### Step Detail Page
+
+- [x] Basic page structure (`/journey/step/:stepProgressId` route)
+- [x] Step instructions display
+- [x] Exercise list
+- [x] Practice stats (attempts, time)
+- [x] Completion modal
+- [x] AcknowledgmentOverlay integration
 
 ### Integration with Practice
 
-- [ ] Link from journey to practice page
-- [ ] Pass step context to recording
-- [ ] Return to journey after practice
-- [ ] Show journey exercises in Practice Library
+- [x] Link from journey to practice page (via StepDetailPage)
+- [x] Pass step context to recording (navigation state)
+- [x] Return to journey after practice (JourneyContextBanner)
+- [x] Show journey exercises in Practice Library (2026-01-30)
 
 ### Tests
 
@@ -145,35 +155,65 @@
 
 ---
 
-## Phase 4: Frontend Advanced (Week 4-5)
+## Phase 4: Frontend Advanced - IN PROGRESS
 
 **Design Commands:** `/normalize` (dashboard), `/quieter`, `/delight` (acknowledgments)
 
 ### Therapist Dashboard
 
-- [ ] `TherapistLearningDashboard` page
-- [ ] Patient list with progress indicators
-- [ ] Filters (by progress, activity, etc.)
+- [x] `TherapistLearningDashboard` page (`/dashboard/learning-paths`)
+- [x] Patient list with progress indicators
+- [x] Stats cards (total, with paths, active, needs attention)
+- [x] Filters (by progress, activity, search)
 
 ### Patient Detail View
 
-- [ ] `PatientLearningDetailPage`
-- [ ] Step management (complete, skip, move back)
-- [ ] Exercise customization modal
-- [ ] Therapist notes (reuse existing)
+- [x] `PatientLearningDetailPage` (`/dashboard/patients/:patientId/learning-path`)
+- [x] Step management (complete, skip, reopen)
+- [x] Pause/resume/complete status management
+- [x] Exercise customization modal (2026-01-30)
+- [x] Therapist notes (2026-01-31)
+
+### Navigation
+
+- [x] "My Journey" nav item for patients
+- [x] "Learning Paths" nav item for therapists
+- [x] Route integration in App.tsx
+
+### Translations
+
+- [x] English translations for learning_path namespace
+- [x] Portuguese translations
+- [x] Spanish translations
 
 ### Acknowledgments
 
-- [ ] `AcknowledgmentOverlay` component (calm, not confetti)
-- [ ] Gentle glow/color shift animation
-- [ ] Warm congratulatory message
-- [ ] Integration with login flow
+- [x] `AcknowledgmentOverlay` component (calm, not confetti)
+- [x] Gentle glow/color shift animation
+- [x] Warm congratulatory message
+- [x] Integration with login flow (2026-01-31)
 
 ### Questionnaire
 
-- [ ] `SliderInput` component (SurveyMonkey-style)
-- [ ] `QuestionnaireModal` component
-- [ ] Integration with milestone completion
+- [x] `SliderInput` component (SurveyMonkey-style)
+- [x] `QuestionnaireModal` component
+- [x] Integration with milestone completion (TherapyJourneyPage)
+
+### Design Polish ✅ COMPLETE (2026-01-30)
+
+Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/delight`, `/audit`
+
+- [x] TherapyJourneyPage simplified (removed nested cards, cleaner timeline)
+- [x] AcknowledgmentOverlay redesigned (full-screen, auto-dismiss, tap-anywhere)
+- [x] SliderInput changed to button group (better touch targets)
+- [x] Focus indicators added to all interactive elements
+- [x] Progress bars have ARIA attributes
+- [x] Completed steps have checkmark indicator (not color-only)
+- [x] Dark mode contrast fixed
+- [x] SparklesIcon replaced with BookOpenIcon in JourneyContextBanner
+- [x] QuestionnaireModal uses Textarea component (removed raw element)
+- [x] NextStepPreview uses Button component (removed raw element)
+- [x] AcknowledgmentOverlay pauses auto-dismiss on hover/focus (accessibility)
 
 ### Tests
 
@@ -185,24 +225,24 @@
 
 ## Phase 5: Specialized Exercises - Milestone 1-2 (Week 5-6)
 
-### Quiz Component
+### Quiz Component ✅ COMPLETE (2026-01-31)
 
-- [ ] `QuizExercise` component (warm, encouraging - never cold)
-- [ ] Question types: true/false, multiple choice
-- [ ] Progress tracking
-- [ ] Encouraging results display
+- [x] `QuizExercise` component (warm, encouraging - never cold)
+- [x] Question types: true/false, multiple choice
+- [x] Progress tracking
+- [x] Encouraging results display
 
 ### Identification Exercises
 
-- [ ] Video review with annotation (reuse PlyrVideo)
-- [ ] Classification interface (short/long, soft/tense)
-- [ ] Moment marking on timeline
-- [ ] Intensity rating (1-5 scale)
+- [x] Video review with annotation (reuse PlyrVideo) (2026-01-31)
+- [x] Classification interface (short/long, soft/tense) (2026-01-31)
+- [x] Moment marking on timeline (2026-01-31)
+- [x] Intensity rating (1-5 scale) (2026-01-31)
 
 ### Reflection Exercises
 
-- [ ] Video recording for explanation
-- [ ] Text entry for reflections
+- [x] Video recording for explanation (2026-01-31)
+- [x] Text entry for reflections (2026-01-31)
 
 ### Tests
 
@@ -217,37 +257,37 @@
 
 ### Waveform Visualizer
 
-- [ ] Real-time audio analysis (Web Audio API)
-- [ ] Visual waveform display with calming aesthetic
-- [ ] Target zone visualization for smooth exit
-- [ ] Pace guidance feedback ("too fast", "good pace")
-- [ ] Non-visual alternative (audio level numbers for accessibility)
+- [x] Real-time audio analysis (Web Audio API) (2026-01-31)
+- [x] Visual waveform display with calming aesthetic (2026-01-31)
+- [x] Target zone visualization for smooth exit (2026-01-31)
+- [x] Pace guidance feedback ("too fast", "good pace") (2026-01-31)
+- [x] Non-visual alternative (audio level numbers for accessibility) (2026-01-31)
 
 ### Timer Component
 
-- [ ] Configurable duration (therapist sets)
-- [ ] Visual progress (count UP, not countdown)
-- [ ] Start/stop/pause controls (patient controlled)
-- [ ] Haptic feedback option
-- [ ] Spoken time option for accessibility
+- [x] Configurable duration (therapist sets) (2026-01-31)
+- [x] Visual progress (count UP, not countdown) (2026-01-31)
+- [x] Start/stop/pause controls (patient controlled) (2026-01-31)
+- [x] Haptic feedback option (2026-01-31)
+- [x] Spoken time option for accessibility (2026-01-31)
 
 ### Holding Exercise
 
-- [ ] Integration of timer + waveform
-- [ ] Exit speed levels (very slow, medium, natural)
-- [ ] Smooth exit visualization
+- [x] Integration of timer + waveform (2026-01-31)
+- [x] Exit speed levels (very slow, medium, natural) (2026-01-31)
+- [x] Smooth exit visualization (waveform integrated) (2026-01-31)
 
 ### Live Marker Button
 
-- [ ] Large touch target (minimum 44px, prefer 64px)
-- [ ] Keyboard shortcut (spacebar or M key)
-- [ ] Timestamp capture
-- [ ] Visual + haptic confirmation feedback
+- [x] Large touch target (minimum 44px, prefer 64px) (2026-01-31)
+- [x] Keyboard shortcut (spacebar or M key) (2026-01-31)
+- [x] Timestamp capture (2026-01-31)
+- [x] Visual + haptic confirmation feedback (2026-01-31)
 
 ### Motor Control Exercise
 
-- [ ] Force/no-force marking during live recording
-- [ ] Integration with live marker
+- [x] Force/no-force marking during live recording (2026-01-31)
+- [x] Integration with live marker (2026-01-31)
 
 ### Tests
 
@@ -261,22 +301,23 @@
 
 ### Self-Modeling
 
-- [ ] Integrate existing video annotation
-- [ ] Add intensity/difficulty rating (1-5 scale)
-- [ ] Link to step progress
+- [x] `SelfModelingExercise` component with video review (2026-01-31)
+- [x] Multi-dimensional rating (fluency, confidence, technique, overall) (2026-01-31)
+- [x] Star rating UI (1-5 scale) (2026-01-31)
+- [ ] Link to step progress (backend integration)
 
 ### Pause Exercises
 
-- [ ] Visual signal for guided pauses (calming, not jarring)
-- [ ] Levels (very long, medium, short)
+- [x] Visual signal for guided pauses (calming, not jarring) (2026-01-31)
+- [x] Levels (very long, medium, short) (2026-01-31)
 - [ ] Autonomous pause identification
 
 ### Journal Component
 
-- [ ] `JournalExercise` component
-- [ ] Guided prompts ("How did I feel?", "What went well?")
-- [ ] Rich writing experience (emotional touchpoint)
-- [ ] History view
+- [x] `JournalExercise` component (2026-01-31)
+- [x] Guided prompts ("How did I feel?", "What went well?") (2026-01-31)
+- [x] Rich writing experience (emotional touchpoint) (2026-01-31)
+- [x] History view (2026-01-31)
 
 ### Tests
 
@@ -288,14 +329,14 @@
 
 ### Self-Disclosure Scenarios
 
-- [ ] Scenario templates per type (phone, ordering, introduction, work meeting)
-- [ ] "I stutter" prompts with confidence
+- [x] Scenario templates per type (phone, ordering, introduction, work meeting) (2026-01-31)
+- [x] "I stutter" prompts with confidence (2026-01-31)
 - [ ] Integration with existing scenario system
 
 ### Generalisation
 
-- [ ] Scenario with technique identification
-- [ ] Final scenario step
+- [x] Scenario with technique identification (2026-01-31)
+- [x] Final scenario step (2026-01-31)
 
 ### Tests
 
@@ -309,18 +350,21 @@
 
 ### Polish
 
-- [ ] Animations and transitions (ease-out-soft curves)
+- [x] Animations and transitions (ease-out-soft curves) (2026-01-31)
 - [ ] Loading states (breathing/pulsing, calming)
-- [ ] Error handling (helpful, non-blaming)
+- [x] Error handling (helpful, non-blaming) (2026-01-31)
 - [ ] Empty states (guide toward action)
 
 ### Accessibility
 
-- [ ] Keyboard navigation for journey timeline
-- [ ] Screen reader support with ARIA live regions
-- [ ] Focus management
-- [ ] Non-visual alternatives for waveform/timer
+- [x] Keyboard navigation for dropdown menus (IdentificationExercise) (2026-01-31)
+- [x] Screen reader support with ARIA live regions (2026-01-31)
+- [x] Focus management for dropdowns (2026-01-31)
+- [x] Non-visual alternatives for waveform/timer (already implemented)
 - [ ] Cognitive load review
+- [x] Star rating ARIA roles (SelfModelingExercise) (2026-01-31)
+- [x] Progress bar ARIA (PauseExercise) (2026-01-31)
+- [x] Touch targets ≥44px (SelfModelingExercise) (2026-01-31)
 
 ### Testing
 
