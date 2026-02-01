@@ -26,6 +26,7 @@ Core technical architecture, patterns, and system design.
 - **[architecture/SYSTEM_DESIGN.md](architecture/SYSTEM_DESIGN.md)** - Overall architecture and technical decisions
 - **[architecture/SERVICE_COMMUNICATION.md](architecture/SERVICE_COMMUNICATION.md)** - **⭐ How services communicate & API integration guide**
 - **[architecture/EXERCISE_SYSTEM.md](architecture/EXERCISE_SYSTEM.md)** - **⭐ Exercise system (MiniGames & Consultation Exercises)**
+- **[architecture/LEARNING_PATH.md](architecture/LEARNING_PATH.md)** - **⭐ Learning Path system (therapy journey, milestones, exercises)**
 - **[architecture/TESTING_STRATEGY.md](architecture/TESTING_STRATEGY.md)** - Testing philosophy, guidelines, and coverage plan
 - **[architecture/UI_COMPONENT_TESTING.md](architecture/UI_COMPONENT_TESTING.md)** - **⭐ UI component testing: Storybook vs Tests, coverage tracker**
 - **[architecture/MULTI_TENANCY.md](architecture/MULTI_TENANCY.md)** - Multi-tenant isolation strategy
@@ -43,6 +44,13 @@ Deployment configuration, infrastructure setup, and operational docs.
 - **[infrastructure/JOBS_AND_PROCESSING.md](infrastructure/JOBS_AND_PROCESSING.md)** - Background job strategy (Solid Queue)
 - **[infrastructure/EMAILJS_SETUP.md](infrastructure/EMAILJS_SETUP.md)** - Email integration configuration
 - **[infrastructure/database-indexing-strategy.md](infrastructure/database-indexing-strategy.md)** - Database optimization
+
+## User Guides
+
+Documentation for end users of the platform.
+
+- **[guides/LEARNING_PATH_PATIENT_GUIDE.md](guides/LEARNING_PATH_PATIENT_GUIDE.md)** - Patient guide for the therapy journey
+- **[guides/LEARNING_PATH_THERAPIST_GUIDE.md](guides/LEARNING_PATH_THERAPIST_GUIDE.md)** - Therapist guide for managing patient journeys
 
 ## Development Guides
 
@@ -70,6 +78,7 @@ Technical decisions and their rationale.
 - **planning/** - Roadmaps, TODO lists, implementation tracking
 - **architecture/** - System design, patterns, technical architecture
 - **infrastructure/** - Deployment, ops, service configuration
+- **guides/** - End-user documentation (patient and therapist guides)
 - **adr/** - Architectural Decision Records
 
 ### Writing Guidelines
@@ -105,4 +114,4 @@ PRs that alter design docs should:
 
 **Questions or suggestions?** Open an issue or submit a PR to improve these docs.
 
-**Last Updated**: 2025-11-17
+**Last Updated**: 2026-02-01

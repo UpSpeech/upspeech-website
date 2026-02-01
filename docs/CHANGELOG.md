@@ -5,6 +5,113 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to semantic versioning for sprints.
 
+## February 1, 2026 - Learning Path Design Polish ✅ COMPLETE
+
+### Design: Patient Journey Experience
+
+Executed comprehensive design polish on Learning Path components following the "Soft Clinical Modern" aesthetic direction.
+
+#### Design Commands Applied
+
+| Phase | Commands | Status |
+|-------|----------|--------|
+| Patient Journey UI | `/quieter`, `/simplify`, `/onboard` | ✅ |
+| Milestone Acknowledgment | `/quieter`, `/delight` | ✅ |
+| Accessibility Pass | `/audit`, `/harden` | ✅ |
+| Final Polish | `/critique`, `/simplify`, `/design-polish` | ✅ |
+
+#### Changed
+
+**TherapyJourneyPage.tsx:**
+- Added motion-reduce support to progress bar animation
+- Added ARIA live regions for loading state announcements
+- Improved dark mode contrast for milestone narrative text
+- Refined empty state copy for warmth and encouragement
+- Refined completed journey state with better styling and copy
+
+**StepDetailPage.tsx (Major Simplification):**
+- Replaced ExerciseCard with lightweight ExerciseItem component
+- Removed all Card wrappers for flatter, calmer layout
+- Changed stats from dashboard grid to inline text (less clinical)
+- Moved "Complete Step" section to bottom as clear journey endpoint
+- Added responsive layout for complete section (mobile-friendly)
+- Refined completion modal copy for encouragement
+
+**AcknowledgmentOverlay.tsx:**
+- Code cleanup with clarifying comments
+- Removed unused ESLint disable directive
+
+**QuestionnaireModal.tsx:**
+- Added motion-reduce support to progress bar animation
+
+#### Design Principles Applied
+
+- **Calm Before All Else**: Reduced visual noise, flatter layouts
+- **Progress, Not Pressure**: Encouraging copy, no performance anxiety
+- **Clinical Credibility**: Professional appearance with warmth
+- **Accessible by Default**: Motion-reduce, ARIA live regions, focus management
+
+#### Files Changed
+
+- `src/pages/TherapyJourneyPage.tsx`
+- `src/pages/StepDetailPage.tsx`
+- `src/components/learning-path/AcknowledgmentOverlay.tsx`
+- `src/components/learning-path/QuestionnaireModal.tsx`
+
+#### Status
+
+- Learning Path Design Polish: 100% complete
+- All TypeScript compilation passing
+- All ESLint checks passing (except pre-existing test file issue)
+
+---
+
+## February 1, 2026 - Backend Integrations & Documentation
+
+### Backend: Learning Path Integrations ✅ COMPLETE
+
+#### Added
+
+**Pause Submission Endpoint:**
+- Added `POST /api/v1/step_progresses/:id/submit_pauses` endpoint
+- Supports guided mode (user-marked pauses) and autonomous mode (auto-detected)
+- Stores pause markers with timestamps, durations, and levels
+- Links to audio recordings optionally
+- Frontend API client method `submitPauses()` added
+
+**Verified Existing Integrations:**
+- Self-modeling → step progress: Already complete via `submit_self_modeling` endpoint
+- Scenario system integration: Already complete via `patient_step_progress_id` link on ScenarioSession
+
+#### Files Changed
+
+- `app-backend/config/routes.rb` - Added `submit_pauses` route
+- `app-backend/app/controllers/api/v1/step_progresses_controller.rb` - Added `submit_pauses` action
+- `app-frontend/src/lib/api.ts` - Added `submitPauses()` method
+
+### Documentation ✅ COMPLETE
+
+#### Added
+
+**User Guides:**
+- `docs/guides/LEARNING_PATH_PATIENT_GUIDE.md` - Patient-facing guide
+- `docs/guides/LEARNING_PATH_THERAPIST_GUIDE.md` - Therapist/admin guide
+
+**Technical Documentation:**
+- `docs/architecture/LEARNING_PATH.md` - Complete technical reference
+  - Database schema
+  - API endpoints
+  - Frontend components and hooks
+  - Exercise types and metadata storage
+  - Progress calculation
+  - Internationalization
+  - Multi-tenancy
+  - Testing guide
+  - Accessibility notes
+  - Design principles
+
+---
+
 ## January 7, 2026 - Reference Video System for Mini Game Assignments
 
 ### Feature: Personalized Reference Videos ✅ COMPLETE
@@ -494,4 +601,4 @@ and this project adheres to semantic versioning for sprints.
 
 ---
 
-**Last Updated:** 2025-11-17
+**Last Updated:** 2026-02-01

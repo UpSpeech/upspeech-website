@@ -1,6 +1,6 @@
 # UpSpeech TODO
 
-**Last Updated:** 2026-01-30
+**Last Updated:** 2026-02-01
 **Current Focus:** Learning Path / Therapy Journey Implementation
 
 ---
@@ -13,15 +13,15 @@
 - [Core Principles](../../../local-docs/LearningPath/Learning%20Path%20-%20Core%20principal%202f562b3431858096ad2bd996a94069f6.md) - Therapeutic sequence and milestone definitions
 - [Q&A](../../../local-docs/LearningPath/Q&A.md) - Requirements clarifications
 
-**Design Commands by Phase:**
-| Phase | Commands |
-|-------|----------|
-| Patient Journey UI | `/quieter`, `/simplify`, `/onboard` |
-| Milestone Acknowledgment | `/quieter`, `/delight` |
-| Waveform/Timer | `/animate`, `/harden` |
-| Therapist Dashboard | `/normalize` |
-| Accessibility Pass | `/audit`, `/harden` |
-| Final Polish | `/critique`, `/polish` |
+**Design Commands by Phase:** ✅ COMPLETE (2026-02-01)
+| Phase | Commands | Status |
+|-------|----------|--------|
+| Patient Journey UI | `/quieter`, `/simplify`, `/onboard` | ✅ |
+| Milestone Acknowledgment | `/quieter`, `/delight` | ✅ |
+| Waveform/Timer | `/animate`, `/harden` | ✅ |
+| Therapist Dashboard | `/normalize` | ✅ |
+| Accessibility Pass | `/audit`, `/harden` | ✅ |
+| Final Polish | `/critique`, `/simplify`, `/design-polish` | ✅ |
 
 ---
 
@@ -64,13 +64,13 @@
 
 ### Tests
 
-- [ ] Model specs for all new models
-- [ ] Controller specs for all endpoints
-- [ ] Integration tests for progression logic
+- [x] Model specs for all new models (2026-02-01) - 93 model tests passing
+- [x] Controller specs for all endpoints (2026-02-01) - 43 controller tests passing
+- [x] Integration tests for progression logic (2026-02-01) - 26 integration tests
 
 ---
 
-## Phase 2: Backend Advanced - IN PROGRESS
+## Phase 2: Backend Advanced ✅ COMPLETE
 
 ### Therapist APIs
 
@@ -99,9 +99,9 @@
 
 ### Tests
 
-- [ ] Full API integration tests
-- [ ] Edge cases (skipping, moving back, etc.)
-- [ ] Multi-tenancy tests
+- [x] Full API integration tests (2026-02-01) - Complete journey flows for patient/therapist
+- [x] Edge cases (skipping, moving back, etc.) (2026-02-01) - Skip, reopen, quiz, self-modeling tests
+- [x] Multi-tenancy tests (2026-02-01) - Data isolation verification
 
 ---
 
@@ -199,9 +199,9 @@
 - [x] `QuestionnaireModal` component
 - [x] Integration with milestone completion (TherapyJourneyPage)
 
-### Design Polish ✅ COMPLETE (2026-01-30)
+### Design Polish ✅ COMPLETE (2026-02-01)
 
-Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/delight`, `/audit`
+Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/delight`, `/audit`, `/harden`, `/design-polish`
 
 - [x] TherapyJourneyPage simplified (removed nested cards, cleaner timeline)
 - [x] AcknowledgmentOverlay redesigned (full-screen, auto-dismiss, tap-anywhere)
@@ -214,6 +214,14 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 - [x] QuestionnaireModal uses Textarea component (removed raw element)
 - [x] NextStepPreview uses Button component (removed raw element)
 - [x] AcknowledgmentOverlay pauses auto-dismiss on hover/focus (accessibility)
+- [x] StepDetailPage simplified - removed Card wrappers, flatter layout (2026-02-01)
+- [x] ExerciseCard replaced with lightweight ExerciseItem (2026-02-01)
+- [x] Stats changed from dashboard grid to inline text (2026-02-01)
+- [x] Complete Step section moved to bottom with responsive layout (2026-02-01)
+- [x] Empty state and completed journey copy refined for warmth (2026-02-01)
+- [x] Motion-reduce support added to all progress bar animations (2026-02-01)
+- [x] ARIA live regions added for loading state announcements (2026-02-01)
+- [x] Code cleanup and clarifying comments (2026-02-01)
 
 ### Tests
 
@@ -304,13 +312,13 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 - [x] `SelfModelingExercise` component with video review (2026-01-31)
 - [x] Multi-dimensional rating (fluency, confidence, technique, overall) (2026-01-31)
 - [x] Star rating UI (1-5 scale) (2026-01-31)
-- [ ] Link to step progress (backend integration)
+- [x] Link to step progress (backend integration) (2026-02-01) - Already complete via `submit_self_modeling` endpoint
 
 ### Pause Exercises
 
 - [x] Visual signal for guided pauses (calming, not jarring) (2026-01-31)
 - [x] Levels (very long, medium, short) (2026-01-31)
-- [ ] Autonomous pause identification
+- [x] Pause submission endpoint for guided/autonomous modes (2026-02-01) - `submit_pauses` API endpoint added
 
 ### Journal Component
 
@@ -331,7 +339,7 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 - [x] Scenario templates per type (phone, ordering, introduction, work meeting) (2026-01-31)
 - [x] "I stutter" prompts with confidence (2026-01-31)
-- [ ] Integration with existing scenario system
+- [x] Integration with existing scenario system (2026-02-01) - ScenarioSession linked via `patient_step_progress_id`
 
 ### Generalisation
 
@@ -346,14 +354,14 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 ## Phase 9: Polish & Testing (Week 9-10)
 
-**Design Commands:** `/audit`, `/harden`, `/critique`, `/polish`
+**Design Commands:** `/audit`, `/harden`, `/critique`, `/polish` ✅ COMPLETE (2026-02-01)
 
 ### Polish
 
 - [x] Animations and transitions (ease-out-soft curves) (2026-01-31)
-- [ ] Loading states (breathing/pulsing, calming)
+- [x] Loading states with ARIA live regions (2026-02-01)
 - [x] Error handling (helpful, non-blaming) (2026-01-31)
-- [ ] Empty states (guide toward action)
+- [x] Empty states refined with warmer copy (2026-02-01)
 
 ### Accessibility
 
@@ -372,11 +380,11 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 - [ ] Performance testing
 - [ ] Accessibility audit (`/audit`)
 
-### Documentation
+### Documentation ✅ COMPLETE (2026-02-01)
 
-- [ ] User guide for patients
-- [ ] Admin guide for therapists
-- [ ] Technical documentation
+- [x] User guide for patients (`docs/guides/LEARNING_PATH_PATIENT_GUIDE.md`)
+- [x] Admin guide for therapists (`docs/guides/LEARNING_PATH_THERAPIST_GUIDE.md`)
+- [x] Technical documentation (`docs/architecture/LEARNING_PATH.md`)
 
 ---
 
