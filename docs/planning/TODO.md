@@ -155,7 +155,7 @@
 
 ---
 
-## Phase 4: Frontend Advanced - IN PROGRESS
+## Phase 4: Frontend Advanced ✅ COMPLETE
 
 **Design Commands:** `/normalize` (dashboard), `/quieter`, `/delight` (acknowledgments)
 
@@ -179,6 +179,13 @@
 - [x] "My Journey" nav item for patients
 - [x] "Learning Paths" nav item for therapists
 - [x] Route integration in App.tsx
+
+### Permissions & Route Protection ✅ COMPLETE (2026-02-01)
+
+- [x] Patient routes (`/journey`, `/journey/step/:id`) protected with `requiredRole={["client", "member"]}`
+- [x] Therapist routes (`/dashboard/learning-paths`) protected with `requiredPermission="can_manage_clients"`
+- [x] Backend API enforces role-based access on all endpoints
+- [x] Navigation items gated by user permissions
 
 ### Translations
 
