@@ -13,6 +13,38 @@
 - [Core Principles](../../../local-docs/LearningPath/Learning%20Path%20-%20Core%20principal%202f562b3431858096ad2bd996a94069f6.md) - Therapeutic sequence and milestone definitions
 - [Q&A](../../../local-docs/LearningPath/Q&A.md) - Requirements clarifications
 
+---
+
+## CRITICAL: Therapist-Controlled Progression Fix
+
+**Issue:** Current implementation incorrectly allows patients to self-complete steps.
+**Correct Behavior:** Patients stay on their current step until the therapist advances them.
+
+### Backend Changes
+
+- [ ] **Remove patient step completion** - Update `can_complete_step?` in `StepProgressesController` to only allow therapists/admins/owners
+- [ ] **Update API response** - Ensure completion endpoint returns 403 Forbidden for patients
+- [ ] **Update tests** - Add/update controller specs to verify patients cannot complete steps
+- [ ] **Track pending completions** - Consider adding patient "ready for review" flag (optional UX enhancement)
+
+### Frontend Changes (requires design audit + critique)
+
+- [ ] **Remove "Complete Step" button** from `StepDetailPage.tsx` for patient view
+- [ ] **Remove `CompletionModal`** component or restrict to therapist view
+- [ ] **Add encouraging "Keep Practicing" section** - Focus on value of practice, not progression (e.g., "Practice builds confidence. Take your time with this step.")
+- [ ] **Update acknowledgment flow** - Show step completions on next login (therapist-triggered)
+- [ ] **Update translations** - Add new i18n keys for practice-focused messaging (avoid "next step" language)
+- [ ] **Design audit** - Run `/audit` on StepDetailPage for accessibility after changes
+- [ ] **Design critique** - Run `/critique` to ensure the patient experience is encouraging, not blocking
+
+### Design Polish (after implementation)
+
+- [ ] Run `/quieter` - Ensure messaging is calm and supportive
+- [ ] Run `/delight` - Add encouraging micro-interactions for practice completion
+- [ ] Run `/harden` - Handle edge cases (long waits, multiple practice sessions)
+
+---
+
 **Design Commands by Phase:** ✅ COMPLETE (2026-02-01)
 | Phase | Commands | Status |
 |-------|----------|--------|
@@ -413,15 +445,16 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 ## Key Design Decisions (Reference)
 
-| Decision          | Resolution                                       |
-| ----------------- | ------------------------------------------------ |
-| Visual layout     | Vertical journey (journey upward)                |
-| Locked indicators | No locked badges, just "coming next" preview     |
-| Celebration style | Calm acknowledgment, no confetti                 |
-| Return messaging  | Welcome back, no guilt                           |
-| Step completion   | Patient continues until therapist marks complete |
-| Timer direction   | Counts UP (not down) to reduce pressure          |
-| Questionnaire UI  | Sliders, SurveyMonkey-style                      |
+| Decision            | Resolution                                                                 |
+| ------------------- | -------------------------------------------------------------------------- |
+| Visual layout       | Vertical journey (journey upward)                                          |
+| Locked indicators   | No locked badges, just "coming next" preview                               |
+| Celebration style   | Calm acknowledgment, no confetti                                           |
+| Return messaging    | Welcome back, no guilt                                                     |
+| **Step completion** | **THERAPIST ONLY** - Patient practices unlimited times until therapist advances |
+| Timer direction     | Counts UP (not down) to reduce pressure                                    |
+| Questionnaire UI    | Sliders, SurveyMonkey-style                                                |
+| Patient view        | No "Complete Step" button - show encouraging "Keep Practicing" instead     |
 
 ---
 

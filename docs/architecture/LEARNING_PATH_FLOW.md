@@ -4,7 +4,7 @@ This document describes the end-to-end user flows for the Learning Path (Therapy
 
 ## Overview
 
-The Learning Path guides patients through 8 structured milestones of speech therapy. Each milestone contains multiple steps with exercises. Progression is linear and therapist-controlled.
+The Learning Path guides patients through 8 structured milestones of speech therapy. Each milestone contains multiple steps with exercises. **Progression is therapist-controlled** - patients practice until their therapist advances them.
 
 ```
 Milestone 1: Understanding
@@ -15,6 +15,19 @@ Milestone 2: Identification
 Milestone 8: Maintenance
   └── Step 8.1 → Step 8.2 → ... → Journey Complete
 ```
+
+---
+
+## Core Principle: Therapist-Controlled Progression
+
+**Patients DO NOT self-advance through steps.** A patient stays on their current step until:
+- The **therapist marks the step complete**, or
+- The **therapist skips the step**
+
+This allows patients to:
+- Practice the same step for days or weeks until mastery
+- Complete exercises multiple times (recommended: once daily + unlimited practice)
+- Build confidence without pressure to advance
 
 ---
 
@@ -106,7 +119,7 @@ Milestone 8: Maintenance
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Practicing a Step
+### Practicing a Step (Patient View)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -128,9 +141,14 @@ Milestone 8: Maintenance
 │  "Practiced 5 times · 23 minutes total"                         │
 │                                                                 │
 │  ┌─────────────────────────────────────┐                        │
-│  │  Feeling confident?                 │                        │
-│  │  [Complete Step]                    │ ← When ready           │
+│  │  Keep Practicing                    │                        │
+│  │                                     │                        │
+│  │  "Practice builds confidence.       │ ← Encouraging,         │
+│  │   Take your time with this step."   │   present-focused      │
 │  └─────────────────────────────────────┘                        │
+│                                                                 │
+│  NOTE: NO "Complete Step" button for patients!                  │
+│  Messaging focuses on the VALUE of practice, not progression.   │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -150,6 +168,7 @@ Milestone 8: Maintenance
 │  └── Multiple choice / true-false questions                     │
 │      └── POST /api/v1/step_progresses/:id/submit_quiz           │
 │      └── Returns score, shows explanations                      │
+│      └── Can retake to improve understanding                    │
 │                                                                 │
 │  SELF-MODELING                                                  │
 │  └── Patient rates themselves on 4 dimensions (1-5)             │
@@ -173,49 +192,53 @@ Milestone 8: Maintenance
 │  JOURNAL                                                        │
 │  └── Reflective writing with guided prompts                     │
 │                                                                 │
+│  All exercise submissions track attempts and practice time.     │
+│  Patients can repeat any exercise unlimited times.              │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Step Completion Flow
+## 3. Step Completion Flow (THERAPIST ONLY)
 
-### Patient Completes a Step
+### Therapist Advances Patient to Next Step
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ STEP COMPLETION                                                 │
+│ STEP COMPLETION (THERAPIST ONLY)                                │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  1. Patient clicks "Complete Step"                              │
-│     └── Confirmation modal appears                              │
-│         "Ready to move on? You can always come back."           │
+│  1. Therapist reviews patient's practice data                   │
+│     ├── Number of attempts                                      │
+│     ├── Total practice time                                     │
+│     ├── Quiz scores (if applicable)                             │
+│     └── Self-modeling ratings over time                         │
 │                                                                 │
-│  2. Patient confirms                                            │
+│  2. Therapist clicks "Complete" in patient detail view          │
 │     └── POST /api/v1/step_progresses/:id/complete               │
+│     └── completed_by_id set to therapist's user ID              │
 │                                                                 │
 │  3. Backend updates:                                            │
 │     ├── Current step → status: completed                        │
 │     ├── Next step → status: current (unlocked)                  │
 │     └── Learning path → current_step updated                    │
 │                                                                 │
-│  4. AcknowledgmentOverlay appears                               │
+│  4. Next time patient logs in:                                  │
+│     └── AcknowledgmentOverlay shows the step completion         │
 │     ┌─────────────────────────────────────┐                     │
 │     │         ✓ Step Complete             │                     │
 │     │                                     │                     │
 │     │  "Identifying Your Stuttering"      │                     │
 │     │                                     │                     │
-│     │  "Every step forward matters."      │ ← Random message    │
+│     │  "Your therapist has marked this    │                     │
+│     │   step complete. Great work!"       │                     │
 │     │                                     │                     │
 │     │         [Continue]                  │                     │
-│     │                                     │                     │
-│     │    Tap anywhere to continue         │                     │
 │     └─────────────────────────────────────┘                     │
 │     └── Auto-dismisses after 4 seconds                          │
-│     └── Pauses on hover/focus (accessibility)                   │
 │                                                                 │
-│  5. Patient returns to journey page                             │
-│     └── Next step is now current                                │
+│  5. Patient can now access the next step                        │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -228,12 +251,14 @@ Milestone 8: Maintenance
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ MILESTONE COMPLETION                                            │
+│ MILESTONE COMPLETION (triggered when therapist completes the    │
+│ last step of a milestone)                                       │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  1. Patient completes last step of milestone                    │
+│  1. Therapist completes the last step of a milestone            │
 │                                                                 │
-│  2. Questionnaire modal appears                                 │
+│  2. Next time patient logs in:                                  │
+│     └── Questionnaire modal appears                             │
 │     ┌─────────────────────────────────────┐                     │
 │     │  Milestone 2 Complete!              │                     │
 │     │                                     │                     │
@@ -261,7 +286,7 @@ Milestone 8: Maintenance
 │     │         [Continue]                  │                     │
 │     └─────────────────────────────────────┘                     │
 │                                                                 │
-│  5. Next milestone unlocks                                      │
+│  5. Next milestone is now unlocked                              │
 │     └── First step of next milestone becomes current            │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -316,7 +341,7 @@ Milestone 8: Maintenance
 │  │                                                              │
 │  ├── 📍 Step 3.2: Practice Techniques (current)                │
 │  │   ├── Attempts: 12 | Time: 45 min                           │
-│  │   ├── [Complete] [Skip] [Reopen]                            │
+│  │   ├── [Complete] [Skip] [Reopen]   ← THERAPIST ACTIONS      │
 │  │   ├── [Edit Exercises]                                       │
 │  │   └── 📝 Notes: [Add note...]                                │
 │  │                                                              │
@@ -329,13 +354,14 @@ Milestone 8: Maintenance
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ THERAPIST ACTIONS                                               │
+│ THERAPIST ACTIONS (only therapists can perform these)           │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  COMPLETE STEP (for patient)                                    │
+│  COMPLETE STEP                                                  │
 │  └── When therapist determines patient has mastered step        │
 │      └── POST /api/v1/step_progresses/:id/complete              │
 │      └── completed_by_id set to therapist                       │
+│      └── Patient advances to next step                          │
 │                                                                 │
 │  SKIP STEP                                                      │
 │  └── When step isn't applicable for this patient                │
@@ -412,9 +438,9 @@ Milestone 8: Maintenance
 │ JOURNEY COMPLETE                                                │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  1. Patient completes last step of Milestone 8                  │
+│  1. Therapist completes last step of Milestone 8                │
 │                                                                 │
-│  2. Final questionnaire                                         │
+│  2. Next time patient logs in: Final questionnaire              │
 │                                                                 │
 │  3. Journey Complete AcknowledgmentOverlay                      │
 │     ┌─────────────────────────────────────┐                     │
@@ -433,7 +459,7 @@ Milestone 8: Maintenance
 │                                                                 │
 │  5. Journey page shows completion state                         │
 │     ┌─────────────────────────────────────┐                     │
-│     │  🎉 Congratulations!                │                     │
+│     │  Congratulations!                   │                     │
 │     │                                     │                     │
 │     │  You've completed your therapy      │                     │
 │     │  journey. All 8 milestones are      │                     │
@@ -450,24 +476,24 @@ Milestone 8: Maintenance
 
 ## API Reference
 
-| Action                   | Method | Endpoint                                                  |
-| ------------------------ | ------ | --------------------------------------------------------- |
-| Get patient's journey    | GET    | `/api/v1/my_learning_path`                                |
-| Acknowledge updates      | POST   | `/api/v1/my_learning_path/acknowledge`                    |
-| Get step details         | GET    | `/api/v1/step_progresses/:id`                             |
-| Complete step            | POST   | `/api/v1/step_progresses/:id/complete`                    |
-| Record attempt           | POST   | `/api/v1/step_progresses/:id/record_attempt`              |
-| Submit quiz              | POST   | `/api/v1/step_progresses/:id/submit_quiz`                 |
-| Submit self-modeling     | POST   | `/api/v1/step_progresses/:id/submit_self_modeling`        |
-| Submit pauses            | POST   | `/api/v1/step_progresses/:id/submit_pauses`               |
-| Submit questionnaire     | POST   | `/api/v1/milestones/:id/questionnaire`                    |
-| Skip step (therapist)    | POST   | `/api/v1/step_progresses/:id/skip`                        |
-| Reopen step (therapist)  | POST   | `/api/v1/step_progresses/:id/reopen`                      |
-| Update notes (therapist) | PATCH  | `/api/v1/step_progresses/:id/update_notes`                |
-| Create learning path     | POST   | `/api/v1/patients/:id/learning_path`                      |
-| Update learning path     | PATCH  | `/api/v1/patients/:id/learning_path`                      |
-| Customize exercise       | PATCH  | `/api/v1/patient_step_exercises/:id`                      |
-| Enable/disable exercise  | POST   | `/api/v1/patient_step_exercises/:id/enable` or `/disable` |
+| Action                          | Method | Endpoint                                                  | Who Can Call         |
+| ------------------------------- | ------ | --------------------------------------------------------- | -------------------- |
+| Get patient's journey           | GET    | `/api/v1/my_learning_path`                                | Patient              |
+| Acknowledge updates             | POST   | `/api/v1/my_learning_path/acknowledge`                    | Patient              |
+| Get step details                | GET    | `/api/v1/step_progresses/:id`                             | Patient, Therapist   |
+| Record attempt                  | POST   | `/api/v1/step_progresses/:id/record_attempt`              | Patient              |
+| Submit quiz                     | POST   | `/api/v1/step_progresses/:id/submit_quiz`                 | Patient              |
+| Submit self-modeling            | POST   | `/api/v1/step_progresses/:id/submit_self_modeling`        | Patient              |
+| Submit pauses                   | POST   | `/api/v1/step_progresses/:id/submit_pauses`               | Patient              |
+| Submit questionnaire            | POST   | `/api/v1/milestones/:id/questionnaire`                    | Patient              |
+| **Complete step**               | POST   | `/api/v1/step_progresses/:id/complete`                    | **Therapist only**   |
+| **Skip step**                   | POST   | `/api/v1/step_progresses/:id/skip`                        | **Therapist only**   |
+| **Reopen step**                 | POST   | `/api/v1/step_progresses/:id/reopen`                      | **Therapist only**   |
+| Update notes                    | PATCH  | `/api/v1/step_progresses/:id/update_notes`                | Therapist only       |
+| Create learning path            | POST   | `/api/v1/patients/:id/learning_path`                      | Therapist only       |
+| Update learning path            | PATCH  | `/api/v1/patients/:id/learning_path`                      | Therapist only       |
+| Customize exercise              | PATCH  | `/api/v1/patient_step_exercises/:id`                      | Therapist only       |
+| Enable/disable exercise         | POST   | `/api/v1/patient_step_exercises/:id/enable` or `/disable` | Therapist only       |
 
 ---
 
