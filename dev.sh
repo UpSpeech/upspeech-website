@@ -246,6 +246,28 @@ case "$1" in
     docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test -- --watch
     ;;
 
+  "test:storybook")
+    echo "🎨 Running Storybook interaction tests..."
+    echo "⚠️  Note: Storybook must be running (./dev.sh storybook:start)"
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run test:storybook
+    ;;
+
+  "test:storybook:ci")
+    echo "🎨 Running Storybook tests in CI mode..."
+    echo "📦 Building Storybook first..."
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npm run build-storybook
+    echo "🧪 Running tests against static build..."
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec frontend npx concurrently -k -s first -n "SB,TEST" \
+      "npx http-server storybook-static --port 6006 --silent" \
+      "npx wait-on tcp:6006 && npm run test:storybook:ci"
+    ;;
+
+  "storybook:start")
+    echo "🎨 Starting Storybook dev server..."
+    docker-compose --env-file $ENV_FILE -f $COMPOSE_FILE exec -d frontend npm run storybook
+    echo "✅ Storybook started at http://localhost:6006"
+    ;;
+
   # ============================================
   # GIT OPERATIONS
   # ============================================
@@ -586,6 +608,9 @@ case "$1" in
     echo "  test:frontend [path]         Run frontend Vitest tests (all or specific path)"
     echo "  test:frontend:coverage       Run frontend tests with coverage report"
     echo "  test:frontend:watch          Run frontend tests in watch mode"
+    echo "  test:storybook               Run Storybook interaction tests (requires Storybook running)"
+    echo "  test:storybook:ci            Run Storybook tests in CI mode (builds Storybook first)"
+    echo "  storybook:start              Start Storybook dev server"
     echo ""
     echo "═══════════════════════════════════════════════════════════════"
     echo "CODE QUALITY"

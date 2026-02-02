@@ -1,7 +1,76 @@
 # UpSpeech TODO
 
-**Last Updated:** 2026-02-01
-**Current Focus:** Learning Path / Therapy Journey Implementation
+**Last Updated:** 2026-02-02
+**Current Focus:** Learning Path / Storybook-First Testing Migration
+
+---
+
+## NEW: Storybook-First Testing Migration
+
+**Documentation:** [STORYBOOK_TESTING_MIGRATION.md](../../../app-frontend/docs/STORYBOOK_TESTING_MIGRATION.md)
+
+**Strategy:** Migrate from scattered unit tests to page-level Storybook stories with MSW + play functions.
+
+### Quick Stats
+| Metric | Current | Target |
+|--------|---------|--------|
+| Pages with Story Tests | 2 / 41 | 35 / 41 |
+| MSW Handler Factories | 1 / 8 | 8 / 8 |
+| UI Component Tests to Delete | 0 / 22 | 22 / 22 |
+
+### Phase 1: Foundation ✅ COMPLETE
+- [x] MSW handlers with data factories (`src/mocks/handlers/learningPath.ts`)
+- [x] Page decorator with providers (`pageDecorator.tsx` - includes i18n, Router, Toast, PageHeader)
+- [x] Reference: `TherapyJourneyPage.stories.tsx` (11 tests passing)
+- [x] Reference: `StepDetailPage.stories.tsx` (12 tests passing)
+
+### Phase 2: High-Priority Pages (Patient-Facing)
+- [ ] `DashboardPage.stories.tsx` - Needs `dashboards.ts` handler
+- [ ] `PracticePage.stories.tsx` - Needs `exercises.ts` handler
+- [ ] `MyExercisesPage.stories.tsx` - Needs `exercises.ts` handler
+- [ ] `PatientProgressPage.stories.tsx` - Needs `patients.ts` handler
+- [ ] `ScenarioSessionPage.stories.tsx` - Needs `exercises.ts` handler
+
+### Phase 3: Therapist Portal Pages
+- [ ] `MyPatientsPage.stories.tsx` - Needs `patients.ts` handler
+- [ ] `PatientDetailPage.stories.tsx`
+- [ ] `PatientLearningDetailPage.stories.tsx`
+- [ ] `TherapistLearningDashboard.stories.tsx`
+- [ ] `RecordingAnnotationPage.stories.tsx`
+
+### Phase 4: Reports Pages
+- [ ] `ReportsPage.stories.tsx` - Needs `reports.ts` handler
+- [ ] `ReportViewPage.stories.tsx`
+- [ ] `ReportEditPage.stories.tsx`
+- [ ] `ManualReportGeneratorPage.stories.tsx`
+- [ ] `AudioUploadPage.stories.tsx`
+
+### Phase 5: Admin Pages
+- [ ] `TenantSettingsPage.stories.tsx` - Needs `tenants.ts` handler
+- [ ] `AccountSettingsPage.stories.tsx` - Needs `users.ts` handler
+- [ ] `UsersManagementPage.stories.tsx`
+- [ ] `TenantsManagementPage.stories.tsx`
+- [ ] `ExerciseManagementPage.stories.tsx`
+
+### MSW Handler Factories Needed
+- [x] `learningPath.ts` - `/my_learning_path`, `/milestones`, `/step_progresses/*`
+- [ ] `exercises.ts` - `/exercises`, `/mini_games`, `/assignments`
+- [ ] `reports.ts` - `/reports`, `/reports/:id`, `/report_notes`
+- [ ] `patients.ts` - `/patients`, `/patients/:id`, `/patient_progress`
+- [ ] `users.ts` - `/users`, `/me`, `/account_settings`
+- [ ] `tenants.ts` - `/tenant_settings`, `/tenants`
+- [ ] `auth.ts` - `/login`, `/logout`, `/forgot_password`
+- [ ] `dashboards.ts` - `/dashboard_stats`, `/activity`
+
+### Test Cleanup (After Stories Exist)
+- [ ] Delete 22 UI component test files (Button.test.tsx, etc.) - Stories cover these
+- [ ] Convert 9 page test files to stories with play functions
+- [ ] Keep 4 utility test files (permissions.test.ts, analytics.test.ts, consent.test.ts, utils.test.ts)
+
+### E2E Tests to Keep (Playwright)
+- [ ] `auth.spec.ts` - Login, logout, session handling
+- [ ] `therapy-session.spec.ts` - Complete therapy session flow
+- [ ] `report-generation.spec.ts` - Generate and view a report
 
 ---
 
@@ -181,9 +250,9 @@
 
 ### Tests
 
-- [ ] Component tests for all new components
-- [ ] Page tests for journey page
-- [ ] Integration tests for navigation flow
+- [x] Page story tests with play functions (see Storybook Migration)
+  - [x] `TherapyJourneyPage.stories.tsx` - 11 tests
+  - [x] `StepDetailPage.stories.tsx` - 12 tests
 
 ---
 
@@ -264,9 +333,9 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 ### Tests
 
-- [ ] Component tests
-- [ ] Page tests
-- [ ] E2E tests for therapist flows
+- [ ] Page story tests (see Storybook Migration - Phase 3)
+  - [ ] `TherapistLearningDashboard.stories.tsx`
+  - [ ] `PatientLearningDetailPage.stories.tsx`
 
 ---
 
@@ -415,7 +484,8 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 ### Testing
 
-- [ ] Comprehensive E2E tests
+- [ ] Complete Storybook-first migration (see [STORYBOOK_TESTING_MIGRATION.md](../../../app-frontend/docs/STORYBOOK_TESTING_MIGRATION.md))
+- [ ] Keep 5-10 critical E2E tests (auth, therapy session, report generation)
 - [ ] Performance testing
 - [ ] Accessibility audit (`/audit`)
 
@@ -463,3 +533,4 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 - [TECHNICAL_PLAN.md](../../../local-docs/LearningPath/TECHNICAL_PLAN.md) - Complete Learning Path specification
 - [Q&A.md](../../../local-docs/LearningPath/Q&A.md) - Requirements clarifications
 - [TESTING_STRATEGY.md](../architecture/TESTING_STRATEGY.md) - Test coverage goals
+- [STORYBOOK_TESTING_MIGRATION.md](../../../app-frontend/docs/STORYBOOK_TESTING_MIGRATION.md) - Storybook-first testing migration plan

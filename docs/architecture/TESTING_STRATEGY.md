@@ -70,7 +70,15 @@ COVERAGE=true bundle exec rspec      # Run with coverage
 npm run test              # Run all tests
 npm run test -- --watch   # Watch mode
 npm run test:ui           # UI dashboard
-npm run test -- --coverage # With coverage
+npm run test:coverage     # With coverage
+```
+
+**Storybook Interaction Tests:**
+
+```bash
+npm run storybook         # Start Storybook dev server (port 6006)
+npm run test:storybook    # Run Storybook interaction tests (requires Storybook running)
+npm run test:storybook:ci # Run in CI mode (builds Storybook first)
 ```
 
 ### Coverage Requirements
@@ -172,6 +180,80 @@ Total:        ~177 tests (15-20% of codebase)
 6. ❌ **Custom Hooks** - useAuth, useDebounce, useLocalStorage (if any)
 7. ❌ **Utilities** - API client helpers, formatters, validators
 8. ⚠️ **Integration Tests** - Limited full-flow testing (e.g., invite acceptance e2e)
+
+---
+
+### Storybook-First Testing (Page-Level)
+
+**Status**: In Progress (January 2026)
+
+UpSpeech is migrating to a **Storybook-first testing approach** for page-level tests. This pattern provides:
+
+- **Visual testing** - See exactly what users see
+- **Interaction testing** - Play functions simulate user behavior
+- **MSW mocking** - Deterministic network behavior with Mock Service Worker
+- **Component isolation** - Test pages with different user roles and data scenarios
+
+**Reference**: [Storybook-first testing pattern](https://perjerz.medium.com/shifting-left-our-storybook-first-ui-page-level-tests-msw-and-the-storybook-test-harness-e0fdf4b75c5f)
+
+**Current Coverage:**
+
+| Page              | Stories | Status  |
+| ----------------- | ------- | ------- |
+| DashboardPage     | 10      | ✅ Done |
+| PracticePage      | 10      | ✅ Done |
+| MyExercisesPage   | 15      | ✅ Done |
+| TherapyJourneyPage| 5       | ✅ Done |
+| StepDetailPage    | 8       | ✅ Done |
+
+**MSW Handler Factories** (located in `src/mocks/handlers/`):
+
+- `exercises.ts` - Mini games, assignments, statistics, categories
+- `dashboards.ts` - Audio recordings, reports
+- `practice.ts` - Composes exercises + dashboards + learning path + user filtering
+- `learningPath.ts` - Learning path and step progress endpoints
+
+**Writing Page Stories:**
+
+```tsx
+// src/pages/MyPage.stories.tsx
+import { pageDecorator, mockUsers } from "../../.storybook/decorators";
+import { createMyPageHandlers } from "@/mocks/handlers/myPage";
+
+export const Default: Story = {
+  decorators: [
+    pageDecorator({
+      path: "/my-page",
+      initialEntry: "/my-page",
+      user: mockUsers.client,
+    }),
+  ],
+  parameters: {
+    msw: {
+      handlers: createMyPageHandlers(),
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() => {
+      expect(canvas.getByText("Expected Content")).toBeInTheDocument();
+    }, { timeout: 5000 });
+  },
+};
+```
+
+**Running Storybook Tests:**
+
+```bash
+# Start Storybook dev server
+npm run storybook
+
+# Run tests (in another terminal, with Storybook running)
+npm run test:storybook
+
+# CI mode (builds Storybook first, then tests)
+npm run test:storybook:ci
+```
 
 ---
 
