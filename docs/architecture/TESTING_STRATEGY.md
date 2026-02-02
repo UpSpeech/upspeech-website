@@ -64,22 +64,24 @@ bundle exec rspec spec/models/       # Run specific folder
 COVERAGE=true bundle exec rspec      # Run with coverage
 ```
 
-**Frontend (Vitest):**
+**Frontend Unit Tests (Vitest):**
 
 ```bash
-npm run test              # Run all tests
+npm run test              # Run unit tests
 npm run test -- --watch   # Watch mode
 npm run test:ui           # UI dashboard
 npm run test:coverage     # With coverage
 ```
 
-**Storybook Interaction Tests:**
+**Frontend Page Tests (Storybook):**
 
 ```bash
 npm run storybook         # Start Storybook dev server (port 6006)
 npm run test:storybook    # Run Storybook interaction tests (requires Storybook running)
 npm run test:storybook:ci # Run in CI mode (builds Storybook first)
 ```
+
+> **Note**: Unit tests (`npm run test`) and Storybook tests (`npm run test:storybook`) are separate. Unit tests run in jsdom and test components in isolation. Storybook tests run in a real browser and test full pages with MSW mocking.
 
 ### Coverage Requirements
 
