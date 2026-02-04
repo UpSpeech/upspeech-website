@@ -58,12 +58,38 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Supported By Section */}
+        {/* <div
+          className="border-t border-white/20 mt-8 pt-8 animate-fade-in"
+          style={{ animationDelay: "0.3s" }}
+        >
+          <div className="flex flex-col items-center space-y-3">
+            <p className="font-body text-xs text-white/50 uppercase tracking-wider">
+              Supported by
+            </p>
+            <a
+              href="https://elevenlabs.io/startup-grants"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-80 hover:opacity-100 transition-opacity duration-200"
+            >
+              <img
+                src="/images/elevenlabs-grants-white.webp"
+                alt="ElevenLabs Grants"
+                className="h-4 w-auto"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div> */}
+
+        {/* Copyright */}
         <div
-          className="border-t border-white/20 mt-8 pt-8 text-center animate-fade-in"
+          className="mt-6 text-center animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
           <p className="font-body text-sm text-white/60">
-            © 2025 UpSpeech. All rights reserved.
+            © {new Date().getFullYear()} UpSpeech. All rights reserved.
           </p>
         </div>
       </div>

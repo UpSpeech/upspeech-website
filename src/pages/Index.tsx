@@ -6,6 +6,7 @@ import InterstitialCTA from "@/components/InterstitialCTA";
 import SolutionSection from "@/components/SolutionSection";
 import GuidingVoicesBanner from "@/components/GuidingVoicesBanner";
 import DifferentiationSection from "@/components/DifferentiationSection";
+import PartnersSection from "@/components/PartnersSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
@@ -20,6 +21,7 @@ const Index = () => {
       <SolutionSection />
       <GuidingVoicesBanner />
       <DifferentiationSection />
+      <PartnersSection />
       <CTASection />
       {/* <FAQSection /> */}
       <Footer />
