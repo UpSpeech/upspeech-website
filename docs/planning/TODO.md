@@ -1,7 +1,15 @@
 # UpSpeech TODO
 
-**Last Updated:** 2026-02-02
+**Last Updated:** 2026-02-09
 **Current Focus:** Learning Path / Storybook-First Testing Migration
+
+---
+
+## User Priority Tasks (TODO-simple.md)
+
+**File:** [TODO-simple.md](./TODO-simple.md) — managed by the user, not by Claude.
+
+**Instructions for Claude:** Check `TODO-simple.md` for the user's current priorities. These tasks are user-managed — Claude may only mark items as done when completed. Do not add, remove, or reorder items.
 
 ---
 
