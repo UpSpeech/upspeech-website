@@ -1,7 +1,7 @@
 # UpSpeech TODO
 
-**Last Updated:** 2026-02-09
-**Current Focus:** Learning Path / Storybook-First Testing Migration
+**Last Updated:** 2026-02-10
+**Current Focus:** Learning Path UX Audit Fixes / Storybook-First Testing Migration
 
 ---
 
@@ -13,50 +13,36 @@
 
 ---
 
-## NEW: Storybook-First Testing Migration
+## Storybook-First Testing Migration
 
 **Documentation:** [STORYBOOK_TESTING_MIGRATION.md](../../../app-frontend/docs/STORYBOOK_TESTING_MIGRATION.md)
 
 **Strategy:** Migrate from scattered unit tests to page-level Storybook stories with MSW + play functions.
 
 ### Quick Stats
-| Metric | Current | Target |
-|--------|---------|--------|
-| Pages with Story Tests | 8 / 23 | 20 / 23 |
-| MSW Handler Factories | 7 / 8 | 8 / 8 |
-| UI Component Tests to Delete | 0 / 22 | 22 / 22 |
 
-**Note:** 23 pages based on App.tsx routes (removed pages: PatientProgressPage, TherapistLearningDashboard, PatientLearningDetailPage - all integrated into other pages as tabs)
+| Metric                       | Current | Target  |
+| ---------------------------- | ------- | ------- |
+| Pages with Story Tests       | 8 / 23  | 20 / 23 |
+| MSW Handler Factories        | 7 / 8   | 8 / 8   |
+| UI Component Tests to Delete | 0 / 22  | 22 / 22 |
 
-### Phase 1: Foundation ✅ COMPLETE
-- [x] MSW handlers with data factories (`src/mocks/handlers/learningPath.ts`)
-- [x] Page decorator with providers (`pageDecorator.tsx` - includes i18n, Router, Toast, PageHeader)
-- [x] Reference: `TherapyJourneyPage.stories.tsx` (11 tests passing)
-- [x] Reference: `StepDetailPage.stories.tsx` (12 tests passing)
+### Therapist Portal Pages
 
-### Phase 2: High-Priority Pages (Patient-Facing) ✅ COMPLETE
-- [x] `DashboardPage.stories.tsx` - Has `dashboards.ts` handler ✅
-- [x] `PracticePage.stories.tsx` - Has `practice.ts` + `exercises.ts` handlers ✅
-- [x] `MyExercisesPage.stories.tsx` - Has `exercises.ts` handler ✅
-- [x] `ScenarioSessionPage.stories.tsx` - Has `scenarios.ts` handler ✅
-- [x] `HelpCenterPage.stories.tsx` - Static content page (11 stories) ✅
-
-### Phase 3: Therapist Portal Pages
-- [x] `MyPatientsPage.stories.tsx` - Has `patients.ts` handler (11 stories) ✅
+- [x] `MyPatientsPage.stories.tsx` ✅
 - [ ] `PatientDetailPage.stories.tsx` - Unified tabbed view (Progress, Learning Path, Exercises tabs)
 - [ ] `RecordingAnnotationPage.stories.tsx`
-- ~~`PatientProgressPage`~~ - REMOVED (now a tab in PatientDetailPage)
-- ~~`TherapistLearningDashboard`~~ - REMOVED (now a tab in DashboardPage)
-- ~~`PatientLearningDetailPage`~~ - REMOVED (now a tab in PatientDetailPage)
 
-### Phase 4: Reports Pages
+### Reports Pages
+
 - [ ] `ReportsPage.stories.tsx` - Needs `reports.ts` handler
 - [ ] `ReportViewPage.stories.tsx`
 - [ ] `ReportEditPage.stories.tsx`
 - [ ] `ManualReportGeneratorPage.stories.tsx`
 - [ ] `AudioUploadPage.stories.tsx`
 
-### Phase 5: Admin & Settings Pages
+### Admin & Settings Pages
+
 - [ ] `AccountSettingsPage.stories.tsx` - Needs `users.ts` handler
 - [ ] `TenantSettingsPage.stories.tsx` - Needs `tenants.ts` handler
 - [ ] `UsersManagementPage.stories.tsx`
@@ -67,448 +53,144 @@
 - [ ] `FeedbackManagementDashboard.stories.tsx`
 
 ### MSW Handler Factories Needed
-- [x] `learningPath.ts` - `/my_learning_path`, `/milestones`, `/step_progresses/*` ✅
-- [x] `exercises.ts` - `/exercises`, `/mini_games`, `/assignments` ✅
-- [x] `dashboards.ts` - `/dashboard_stats`, `/activity` ✅
-- [x] `practice.ts` - `/practice/*`, `/recordings/*` ✅
+
 - [ ] `reports.ts` - `/reports`, `/reports/:id`, `/report_notes`
-- [x] `patients.ts` - `/patients`, `/patients/:id`, `/patients/:id/progress`, `/patients/:id/summary` ✅
-- [x] `scenarios.ts` - `/scenario_sessions/:id`, transcribe, messages, tts, abandon ✅
 - [ ] `users.ts` - `/users`, `/me`, `/account_settings`
 - [ ] `tenants.ts` - `/tenant_settings`, `/tenants`
 
 ### Test Cleanup (After Stories Exist)
+
 - [ ] Delete 22 UI component test files (Button.test.tsx, etc.) - Stories cover these
 - [ ] Convert 9 page test files to stories with play functions
 - [ ] Keep 4 utility test files (permissions.test.ts, analytics.test.ts, consent.test.ts, utils.test.ts)
 
 ### E2E Tests to Keep (Playwright)
+
 - [ ] `auth.spec.ts` - Login, logout, session handling
 - [ ] `therapy-session.spec.ts` - Complete therapy session flow
 - [ ] `report-generation.spec.ts` - Generate and view a report
 
 ---
 
-## Current Priority: Learning Path (Therapy Journey)
+## Outstanding Testing
 
-**Documentation:**
+Remaining test items from completed learning path phases:
 
-- [Technical Plan](../../../local-docs/LearningPath/TECHNICAL_PLAN.md) - Complete implementation specification
-- [Core Principles](../../../local-docs/LearningPath/Learning%20Path%20-%20Core%20principal%202f562b3431858096ad2bd996a94069f6.md) - Therapeutic sequence and milestone definitions
-- [Q&A](../../../local-docs/LearningPath/Q&A.md) - Requirements clarifications
-
----
-
-## CRITICAL: Therapist-Controlled Progression Fix ✅ COMPLETE (2026-02-02)
-
-**Issue:** Current implementation incorrectly allows patients to self-complete steps.
-**Correct Behavior:** Patients stay on their current step until the therapist advances them.
-
-### Backend Changes ✅ COMPLETE
-
-- [x] **Remove patient step completion** - `can_complete_step?` in `StepProgressesController` only allows therapists/admins/owners
-- [x] **Update API response** - Completion endpoint returns 403 Forbidden for patients
-- [x] **Update tests** - Controller specs verify patients cannot complete steps (lines 57-67 of step_progresses_controller_spec.rb)
-- [ ] **Track pending completions** - Consider adding patient "ready for review" flag (optional UX enhancement - deferred to post-MVP)
-
-### Frontend Changes ✅ COMPLETE
-
-- [x] **Patient view correct** - `StepDetailPage.tsx` never had a "Complete Step" button (already correct)
-- [x] **"Keep Practicing" section** - Already implemented with encouraging messaging
-- [x] **Therapist "Complete Step" button** - Added to `PatientLearningDetailPage.tsx` so therapists can advance patients
-- [x] **Hook updated** - Added `completeStep` to `usePatientLearningPath` hook
-- [x] **Acknowledgment flow** - Already implemented - patients acknowledge therapist-completed steps on login
-- [ ] **Design audit** - Run `/audit` on StepDetailPage for accessibility (optional, post-MVP)
-- [ ] **Design critique** - Run `/critique` to ensure patient experience is encouraging (optional, post-MVP)
-
-### Design Polish (deferred to post-MVP)
-
-- [ ] Run `/quieter` - Ensure messaging is calm and supportive
-- [ ] Run `/delight` - Add encouraging micro-interactions for practice completion
-- [ ] Run `/harden` - Handle edge cases (long waits, multiple practice sessions)
-
----
-
-**Design Commands by Phase:** ✅ COMPLETE (2026-02-01)
-| Phase | Commands | Status |
-|-------|----------|--------|
-| Patient Journey UI | `/quieter`, `/simplify`, `/onboard` | ✅ |
-| Milestone Acknowledgment | `/quieter`, `/delight` | ✅ |
-| Waveform/Timer | `/animate`, `/harden` | ✅ |
-| Therapist Dashboard | `/normalize` | ✅ |
-| Accessibility Pass | `/audit`, `/harden` | ✅ |
-| Final Polish | `/critique`, `/simplify`, `/design-polish` | ✅ |
-
----
-
-## Phase 1: Backend Foundation ✅ COMPLETE
-
-### Database Migrations
-
-- [x] Create `milestones` table
-- [x] Create `milestone_steps` table
-- [x] Create `step_exercise_templates` table
-- [x] Create `patient_learning_paths` table
-- [x] Create `patient_step_progresses` table
-- [x] Create `patient_step_exercises` table
-- [x] Create `milestone_questionnaires` table
-- [x] Add `patient_step_progress_id` to `audio_recordings`
-
-### Models
-
-- [x] `Milestone` model with validations, scopes, methods
-- [x] `MilestoneStep` model with validations, scopes, methods
-- [x] `StepExerciseTemplate` model
-- [x] `PatientLearningPath` model with progression logic + `welcome_back_message`
-- [x] `PatientStepProgress` model with complete/skip logic
-- [x] `PatientStepExercise` model
-- [x] `MilestoneQuestionnaire` model
-
-### Seed Data
-
-- [x] Seed all 8 milestones with steps and `narrative_key`
-- [x] Seed default exercise templates for each step
-- [x] Create i18n keys for all titles/descriptions/narratives
-- [x] Create welcome back message translations
-
-### Basic APIs
-
-- [x] `MilestonesController` (index, show)
-- [x] `MilestoneStepsController` (index, show)
-- [x] `LearningPathsController` (show, create, update)
-- [x] `StepProgressesController` (show, complete, skip, move_back)
-
-### Tests
-
-- [x] Model specs for all new models (2026-02-01) - 93 model tests passing
-- [x] Controller specs for all endpoints (2026-02-01) - 43 controller tests passing
-- [x] Integration tests for progression logic (2026-02-01) - 26 integration tests
-
----
-
-## Phase 2: Backend Advanced ✅ COMPLETE
-
-### Therapist APIs
-
-- [x] Therapist dashboard endpoint (all patients' learning paths)
-- [x] Patient detail endpoint
-- [x] Exercise customization endpoint (2026-01-30)
-- [x] Therapist notes endpoint (reuse existing)
-
-### Patient APIs
-
-- [x] Record attempt endpoint
-- [x] Questionnaire submission endpoint (frontend + backend complete 2026-01-30)
-- [x] Acknowledgments endpoint
-
-### Integration with Existing
-
-- [x] Link recordings to step progress (2026-01-31)
-- [x] Link scenario sessions to step progress (2026-01-31)
-- [x] Update progress tracking to include learning path data (2026-01-31)
-- [x] Integrate with Practice Library (2026-01-30)
-
-### Quiz Content
-
-- [x] Create quiz questions for Milestone 1 (hardcoded, backend-modifiable) (2026-01-31)
-- [x] Quiz validation and scoring logic (2026-01-31)
-
-### Tests
-
-- [x] Full API integration tests (2026-02-01) - Complete journey flows for patient/therapist
-- [x] Edge cases (skipping, moving back, etc.) (2026-02-01) - Skip, reopen, quiz, self-modeling tests
-- [x] Multi-tenancy tests (2026-02-01) - Data isolation verification
-
----
-
-## Phase 3: Frontend Foundation ✅ COMPLETE
-
-**Design Commands:** `/quieter`, `/simplify`, `/onboard`
-
-### API Client
-
-- [x] Add learning path endpoints to `api.ts`
-- [x] Add TypeScript types for all responses (`src/types/learningPath.ts`)
-
-### Hooks
-
-- [x] `useLearningPath` hook
-- [x] `useStepProgress` hook
-- [x] `usePatientLearningPath` hook (therapist management)
-- [x] `useMilestones` hook
-
-### Patient Journey Page
-
-- [x] Basic page structure (`/journey` route)
-- [x] `JourneyTimeline` component (vertical visualization)
-- [x] `MilestoneCard` component (expanded/collapsed states)
-- [x] `CurrentStepPanel` component
-- [x] `WelcomeBackBanner` component
-- [x] Navigation to exercise/practice
-- [x] `NextStepPreview` component
-
-### Step Detail Page
-
-- [x] Basic page structure (`/journey/step/:stepProgressId` route)
-- [x] Step instructions display
-- [x] Exercise list
-- [x] Practice stats (attempts, time)
-- [x] Completion modal
-- [x] AcknowledgmentOverlay integration
-
-### Integration with Practice
-
-- [x] Link from journey to practice page (via StepDetailPage)
-- [x] Pass step context to recording (navigation state)
-- [x] Return to journey after practice (JourneyContextBanner)
-- [x] Show journey exercises in Practice Library (2026-01-30)
-
-### Tests
-
-- [x] Page story tests with play functions (see Storybook Migration)
-  - [x] `TherapyJourneyPage.stories.tsx` - 11 tests
-  - [x] `StepDetailPage.stories.tsx` - 12 tests
-
----
-
-## Phase 4: Frontend Advanced ✅ COMPLETE
-
-**Design Commands:** `/normalize` (dashboard), `/quieter`, `/delight` (acknowledgments)
-
-### Therapist Dashboard
-
-- [x] `TherapistLearningDashboard` page (`/dashboard/learning-paths`)
-- [x] Patient list with progress indicators
-- [x] Stats cards (total, with paths, active, needs attention)
-- [x] Filters (by progress, activity, search)
-
-### Patient Detail View
-
-- [x] `PatientLearningDetailPage` (`/dashboard/patients/:patientId/learning-path`)
-- [x] Step management (complete, skip, reopen)
-- [x] Pause/resume/complete status management
-- [x] Exercise customization modal (2026-01-30)
-- [x] Therapist notes (2026-01-31)
-
-### Navigation
-
-- [x] "My Journey" nav item for patients
-- [x] "Learning Paths" nav item for therapists
-- [x] Route integration in App.tsx
-
-### Permissions & Route Protection ✅ COMPLETE (2026-02-01)
-
-- [x] Patient routes (`/journey`, `/journey/step/:id`) protected with `requiredRole={["client", "member"]}`
-- [x] Therapist routes (`/dashboard/learning-paths`) protected with `requiredPermission="can_manage_clients"`
-- [x] Backend API enforces role-based access on all endpoints
-- [x] Navigation items gated by user permissions
-
-### Translations
-
-- [x] English translations for learning_path namespace
-- [x] Portuguese translations
-- [x] Spanish translations
-
-### Acknowledgments
-
-- [x] `AcknowledgmentOverlay` component (calm, not confetti)
-- [x] Gentle glow/color shift animation
-- [x] Warm congratulatory message
-- [x] Integration with login flow (2026-01-31)
-
-### Questionnaire
-
-- [x] `SliderInput` component (SurveyMonkey-style)
-- [x] `QuestionnaireModal` component
-- [x] Integration with milestone completion (TherapyJourneyPage)
-
-### Design Polish ✅ COMPLETE (2026-02-01)
-
-Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/delight`, `/audit`, `/harden`, `/design-polish`
-
-- [x] TherapyJourneyPage simplified (removed nested cards, cleaner timeline)
-- [x] AcknowledgmentOverlay redesigned (full-screen, auto-dismiss, tap-anywhere)
-- [x] SliderInput changed to button group (better touch targets)
-- [x] Focus indicators added to all interactive elements
-- [x] Progress bars have ARIA attributes
-- [x] Completed steps have checkmark indicator (not color-only)
-- [x] Dark mode contrast fixed
-- [x] SparklesIcon replaced with BookOpenIcon in JourneyContextBanner
-- [x] QuestionnaireModal uses Textarea component (removed raw element)
-- [x] NextStepPreview uses Button component (removed raw element)
-- [x] AcknowledgmentOverlay pauses auto-dismiss on hover/focus (accessibility)
-- [x] StepDetailPage simplified - removed Card wrappers, flatter layout (2026-02-01)
-- [x] ExerciseCard replaced with lightweight ExerciseItem (2026-02-01)
-- [x] Stats changed from dashboard grid to inline text (2026-02-01)
-- [x] Complete Step section moved to bottom with responsive layout (2026-02-01)
-- [x] Empty state and completed journey copy refined for warmth (2026-02-01)
-- [x] Motion-reduce support added to all progress bar animations (2026-02-01)
-- [x] ARIA live regions added for loading state announcements (2026-02-01)
-- [x] Code cleanup and clarifying comments (2026-02-01)
-
-### Tests
-
-- [ ] Page story tests (see Storybook Migration - Phase 3)
-  - [ ] `TherapistLearningDashboard.stories.tsx`
-  - [ ] `PatientLearningDetailPage.stories.tsx`
-
----
-
-## Phase 5: Specialized Exercises - Milestone 1-2 (Week 5-6)
-
-### Quiz Component ✅ COMPLETE (2026-01-31)
-
-- [x] `QuizExercise` component (warm, encouraging - never cold)
-- [x] Question types: true/false, multiple choice
-- [x] Progress tracking
-- [x] Encouraging results display
-
-### Identification Exercises
-
-- [x] Video review with annotation (reuse PlyrVideo) (2026-01-31)
-- [x] Classification interface (short/long, soft/tense) (2026-01-31)
-- [x] Moment marking on timeline (2026-01-31)
-- [x] Intensity rating (1-5 scale) (2026-01-31)
-
-### Reflection Exercises
-
-- [x] Video recording for explanation (2026-01-31)
-- [x] Text entry for reflections (2026-01-31)
-
-### Tests
-
-- [ ] Component tests for quiz
-- [ ] Integration tests for identification
-
----
-
-## Phase 6: Specialized Exercises - Milestone 3-4 (Week 6-7)
-
-**Design Commands:** `/animate` (therapeutic intent), `/harden`
-
-### Waveform Visualizer
-
-- [x] Real-time audio analysis (Web Audio API) (2026-01-31)
-- [x] Visual waveform display with calming aesthetic (2026-01-31)
-- [x] Target zone visualization for smooth exit (2026-01-31)
-- [x] Pace guidance feedback ("too fast", "good pace") (2026-01-31)
-- [x] Non-visual alternative (audio level numbers for accessibility) (2026-01-31)
-
-### Timer Component
-
-- [x] Configurable duration (therapist sets) (2026-01-31)
-- [x] Visual progress (count UP, not countdown) (2026-01-31)
-- [x] Start/stop/pause controls (patient controlled) (2026-01-31)
-- [x] Haptic feedback option (2026-01-31)
-- [x] Spoken time option for accessibility (2026-01-31)
-
-### Holding Exercise
-
-- [x] Integration of timer + waveform (2026-01-31)
-- [x] Exit speed levels (very slow, medium, natural) (2026-01-31)
-- [x] Smooth exit visualization (waveform integrated) (2026-01-31)
-
-### Live Marker Button
-
-- [x] Large touch target (minimum 44px, prefer 64px) (2026-01-31)
-- [x] Keyboard shortcut (spacebar or M key) (2026-01-31)
-- [x] Timestamp capture (2026-01-31)
-- [x] Visual + haptic confirmation feedback (2026-01-31)
-
-### Motor Control Exercise
-
-- [x] Force/no-force marking during live recording (2026-01-31)
-- [x] Integration with live marker (2026-01-31)
-
-### Tests
-
-- [ ] Component tests for waveform, timer
-- [ ] Integration tests for exercises
-- [ ] Accessibility tests
-
----
-
-## Phase 7: Specialized Exercises - Milestone 5-6 (Week 7-8)
-
-### Self-Modeling
-
-- [x] `SelfModelingExercise` component with video review (2026-01-31)
-- [x] Multi-dimensional rating (fluency, confidence, technique, overall) (2026-01-31)
-- [x] Star rating UI (1-5 scale) (2026-01-31)
-- [x] Link to step progress (backend integration) (2026-02-01) - Already complete via `submit_self_modeling` endpoint
-
-### Pause Exercises
-
-- [x] Visual signal for guided pauses (calming, not jarring) (2026-01-31)
-- [x] Levels (very long, medium, short) (2026-01-31)
-- [x] Pause submission endpoint for guided/autonomous modes (2026-02-01) - `submit_pauses` API endpoint added
-
-### Journal Component
-
-- [x] `JournalExercise` component (2026-01-31)
-- [x] Guided prompts ("How did I feel?", "What went well?") (2026-01-31)
-- [x] Rich writing experience (emotional touchpoint) (2026-01-31)
-- [x] History view (2026-01-31)
-
-### Tests
-
+- [ ] Component tests for exercise components (quiz, waveform, timer, identification)
 - [ ] Integration tests for all exercise types
-
----
-
-## Phase 8: Specialized Exercises - Milestone 7-8 (Week 8-9)
-
-### Self-Disclosure Scenarios
-
-- [x] Scenario templates per type (phone, ordering, introduction, work meeting) (2026-01-31)
-- [x] "I stutter" prompts with confidence (2026-01-31)
-- [x] Integration with existing scenario system (2026-02-01) - ScenarioSession linked via `patient_step_progress_id`
-
-### Generalisation
-
-- [x] Scenario with technique identification (2026-01-31)
-- [x] Final scenario step (2026-01-31)
-
-### Tests
-
-- [ ] E2E tests for complete learning path
-
----
-
-## Phase 9: Polish & Testing (Week 9-10)
-
-**Design Commands:** `/audit`, `/harden`, `/critique`, `/polish` ✅ COMPLETE (2026-02-01)
-
-### Polish
-
-- [x] Animations and transitions (ease-out-soft curves) (2026-01-31)
-- [x] Loading states with ARIA live regions (2026-02-01)
-- [x] Error handling (helpful, non-blaming) (2026-01-31)
-- [x] Empty states refined with warmer copy (2026-02-01)
-
-### Accessibility
-
-- [x] Keyboard navigation for dropdown menus (IdentificationExercise) (2026-01-31)
-- [x] Screen reader support with ARIA live regions (2026-01-31)
-- [x] Focus management for dropdowns (2026-01-31)
-- [x] Non-visual alternatives for waveform/timer (already implemented)
-- [ ] Cognitive load review
-- [x] Star rating ARIA roles (SelfModelingExercise) (2026-01-31)
-- [x] Progress bar ARIA (PauseExercise) (2026-01-31)
-- [x] Touch targets ≥44px (SelfModelingExercise) (2026-01-31)
-
-### Testing
-
-- [ ] Complete Storybook-first migration (see [STORYBOOK_TESTING_MIGRATION.md](../../../app-frontend/docs/STORYBOOK_TESTING_MIGRATION.md))
-- [ ] Keep 5-10 critical E2E tests (auth, therapy session, report generation)
+- [ ] E2E tests for complete learning path flow
 - [ ] Performance testing
-- [ ] Accessibility audit (`/audit`)
+- [x] Cognitive load review — Completed Feb 10, 2026. Both patient and therapist flows evaluated for information density, competing choices, flow predictability, and anxiety triggers. Result: Pass. Patient flow uses excellent progressive disclosure (accordion milestones, single CTA, one-question-at-a-time questionnaires). Therapist flow is appropriately dense for clinical professionals. No code changes needed.
+- [x] Accessibility audit (`/audit`) — Design review + polish pass completed (Feb 10, 2026): 17 issues found and fixed across 10 files (touch targets, keyboard navigation, heading hierarchy, ARIA roles, design token consistency, focus rings, runtime bug fix)
 
-### Documentation ✅ COMPLETE (2026-02-01)
+---
 
-- [x] User guide for patients (`docs/guides/LEARNING_PATH_PATIENT_GUIDE.md`)
-- [x] Admin guide for therapists (`docs/guides/LEARNING_PATH_THERAPIST_GUIDE.md`)
-- [x] Technical documentation (`docs/architecture/LEARNING_PATH.md`)
+## Phase 10: Learning Path UX Audit Fixes (2026-02-10)
+
+**Source:** Comprehensive UI/UX and usability audit of the entire learning path system (therapist + patient flows).
+**Total Issues:** 52 findings across patient experience, therapist experience, exercise components, accessibility, and information architecture.
+
+### Batch 1: Critical Issues (Fix First)
+
+These issues represent functional gaps or data loss risks that should be resolved before any other improvements.
+
+- [x] **#38 — Recordings never uploaded to server** — Added `uploadExerciseRecording` helper in StepDetailPage, wired into all 6 recording exercises. Backend consent validation exempted for learning path recordings. WebM extension mapping added to API client. ✅
+- [x] **#20 — No confirmation dialogs for therapist actions** — Added confirmation modal for Complete/Skip/Reopen actions in TherapistLearningPathView with action-specific messaging and button variants. ✅
+- [x] **#1 — No paused learning path UI state** — Added paused status check in TherapyJourneyPage with calm sky-blue PauseCircleIcon and reassuring messaging. ✅
+- [x] **#39 — QuizExercise double onComplete call** — Removed premature `onComplete` call from `handleNextQuestion`. Now fires only when user clicks "Continue" on results screen. ✅
+
+### Batch 2: High Priority — Therapist Experience
+
+These issues significantly impact the therapist workflow and clinical utility.
+
+- [x] **#22 — No visibility into patient exercise submissions** — Added `metadata` field to step_progress_json in both controllers. Frontend SubmissionSummary component shows quiz scores, self-modeling ratings, and pause sessions inline with each step. ✅
+- [x] **#23 — No practice history for therapists** — Exposed metadata JSONB via API and added TypeScript types. Therapists now see submission badges (quiz score, ratings, session counts) in StepRow. ✅
+- [x] **#24 — Acknowledgment queue can overwhelm therapists** — Added queue counter ("1 of 3 achievements") and "Dismiss all" button to AcknowledgmentOverlay for stacked acknowledgments. **Files:** `AcknowledgmentOverlay.tsx`, `TherapyJourneyPage.tsx`
+- [x] **#25 — Notes modal lacks context** — Added step progress context panel (status badge, attempt count, practice time, started/completed dates) above the textarea in NotesModal. ✅
+- [x] **#21 — Mobile button density in therapist view** — Secondary actions (Notes, Exercises) hidden on mobile; primary actions (Complete/Skip/Reopen) always visible. Button labels use `lg:inline` breakpoint. ✅
+- [x] **#26 — No bulk operations** — Added select mode toggle to MilestoneSection with checkboxes on each StepRow. Batch action bar shows "Complete" and "Skip" buttons for selected steps. Select all/deselect all supported. **File:** `app-frontend/src/components/patients/TherapistLearningPathView.tsx`
+
+### Batch 3: High Priority — Patient Experience
+
+- [x] **#3 — Step "0 of 0" display for future milestones** — Verified: MilestoneCard already has fallback to `milestone.steps_count` when `stepProgresses.length === 0`. All step progresses created upfront. No fix needed. ✅
+- [x] **#10 — Generic fallback navigation** — Replaced `/practice` navigation with in-page content showing step instructions and a "Log Practice Attempt" button. ✅
+- [x] **#2 — Missing welcome back message personalization** — Added current step title and last practice date to WelcomeBackBanner for personalized context. ✅
+- [x] **#14 — AcknowledgmentOverlay has no auto-dismiss** — Added 5-second auto-dismiss timer for step-type acknowledgments. Milestones/journey remain manual. Respects prefers-reduced-motion. ✅
+
+### Batch 4: Medium Priority — Exercise Component Consistency
+
+- [x] **#31 — Inconsistent color palettes across exercises** — Verified: intentional design — 5 exercises use primary navy (Quiz, Journal, Reflection, Identification, Holding), 5 use distinct therapeutic accent colors (violet, emerald, orange, sky, amber) for visual identity per exercise type. No change needed. **Files:** All exercise components
+- [x] **#32 — Inconsistent "Try Again" patterns** — Verified: all exercises already use consistent `Button variant="secondary"` + `deleteRecording` pattern. Minor icon differences acceptable per exercise context. **Files:** All exercise components
+- [x] **#33 — Varied loading and error states** — Verified: all exercises already use consistent `LoadingSpinner size="sm"` + `isSubmitting` prop pattern in submit buttons. **Files:** All exercise components
+- [x] **#34 — Native audio/video player inconsistency** — Verified: native `<audio>` elements all use consistent styling (`w-full max-w-md`). Plyr is used for video (appropriate for different media type — fullscreen, play-large). No change needed. **Files:** Recording exercise components
+- [x] **#35 — Missing MediaErrorAlert in 4 exercises** — Added MediaErrorAlert with categorized DOMException handling (permission_denied, no_device, generic) to ReflectionExercise (camera), GeneralisationExercise (conditional camera/microphone), SelfDisclosureExercise, and MotorControlExercise. ✅
+- [x] **#36 — No recording time limits** — Added 5-minute auto-stop to PauseExercise with amber color warning at 4:30. ReflectionExercise already had maxVideoDuration. Other exercises still need limits (partial fix). **Files:** `app-frontend/src/components/exercises/PauseExercise.tsx`
+- [x] **#37 — No recording size/duration warning** — PauseExercise now shows max duration indicator when approaching limit. ReflectionExercise already shows time/max. **Files:** `app-frontend/src/components/exercises/PauseExercise.tsx`
+
+### Batch 5: Medium Priority — Patient Journey Polish
+
+- [x] **#4 — CurrentStepPanel lacks exercise preview** — Added exercise type badge to CurrentStepPanel showing the exercise type (quiz, recording, etc.) next to milestone label. **File:** `app-frontend/src/pages/TherapyJourneyPage.tsx`
+- [x] **#5 — NextStepPreview shows too little** — Added "Coming up next" teaser below CurrentStepPanel showing the next locked step's number and title. Uses `step_progresses` to find the next step after current. **File:** `app-frontend/src/pages/TherapyJourneyPage.tsx`
+- [x] **#6 — No progress indicator within exercises** — Added exercise count indicator ("3 exercises") to the exercise list heading in StepDetailPage. **File:** `app-frontend/src/pages/StepDetailPage.tsx`
+- [x] **#7 — Milestone completion celebration is identical** — Differentiated celebrations: steps get CheckIcon/emerald (h-16), milestones get StarIcon/deep navy (h-20), journey gets TrophyIcon/warm gold (h-24). Progressively more significant. **File:** `app-frontend/src/components/learning-path/AcknowledgmentOverlay.tsx`
+- [x] **#8 — No session summary after practice** — Added session tracking with submission count and elapsed time. Banner shows "This session: N exercise(s) completed · X min" after submissions. **File:** `app-frontend/src/pages/StepDetailPage.tsx`
+- [x] **#9 — Journey completion has no special treatment** — Journey completion now uses TrophyIcon with warm amber/gold gradient and largest icon size (h-24 w-24), distinct from steps and milestones. **Files:** `app-frontend/src/components/learning-path/AcknowledgmentOverlay.tsx`
+
+### Batch 6: Medium Priority — Therapist Tools
+
+- [x] **#27 — ExerciseCustomizationModal has no "Reset to defaults"** — Added "Reset to Defaults" button in modal footer that sends nil values to clear custom_title/custom_instructions/custom_video_url, reverting to template defaults. ✅
+- [x] **#28 — No video URL validation beyond browser native** — Added URL validation checking for known video providers (YouTube, Vimeo, Loom) and video file extensions (.mp4, .webm). Shows warning for unrecognized URLs. **File:** `app-frontend/src/components/learning-path/ExerciseCustomizationModal.tsx`
+- [x] **#29 — StatusModal (pause/resume/complete) lacks impact preview** — Added explanatory text below each action button describing the impact on the patient's experience. ✅
+
+### Batch 7: Accessibility Issues
+
+- [x] **#44 — Keyboard trap in IdentificationExercise timeline** — Added 'M' keyboard shortcut to open the Mark Moment dropdown, with kbd hint displayed next to time. Menu already supports arrow key navigation. **File:** `app-frontend/src/components/exercises/IdentificationExercise.tsx`
+- [x] **#45 — Star rating in SelfModelingExercise lacks visible focus** — Added explicit amber focus ring with ring-offset to star buttons. Also added video progress fallback (#41). **File:** `app-frontend/src/components/exercises/SelfModelingExercise.tsx`
+- [x] **#46 — Waveform visualizer in HoldingExercise is visual-only** — Added target zone status to aria-live screen reader announcement ("In target zone" / "Outside target zone"). Component already had accessibility mode and amplitude announcement. **File:** `app-frontend/src/components/exercises/WaveformVisualizer.tsx`
+- [x] **#47 — Space key conflict in PauseExercise** — Added target check to skip space capture when an interactive element (button, input, etc.) has focus. **File:** `app-frontend/src/components/exercises/PauseExercise.tsx`
+- [x] **#48 — AcknowledgmentOverlay contrast on gradient background** — Increased text opacity from 55-70% to 70-90% across heading, subtitle, encouragement, and hint text for WCAG AA compliance. **File:** `app-frontend/src/components/learning-path/AcknowledgmentOverlay.tsx`
+
+### Batch 8: Exercise-Specific UX Issues
+
+- [x] **#40 — No quiz review mode** — Added question-by-question review section to results screen showing correct/incorrect status with explanations for wrong answers. **File:** `app-frontend/src/components/exercises/QuizExercise.tsx`
+- [x] **#41 — SelfModelingExercise video completion detection** — Added timeupdate fallback that considers video watched at >=90% progress. **File:** `app-frontend/src/components/exercises/SelfModelingExercise.tsx`
+- [x] **#42 — IdentificationExercise timeline markers overlap** — Added vertical offset calculation for markers within 5% of each other, alternating above/below center. **File:** `app-frontend/src/components/exercises/IdentificationExercise.tsx`
+- [x] **#43 — No undo for IdentificationExercise marker placement** — Added double-click to remove on timeline markers with tooltip hint. List view already had delete buttons. **File:** `app-frontend/src/components/exercises/IdentificationExercise.tsx`
+
+### Batch 9: Questionnaire & Interaction Polish
+
+- [x] **#18 — QuestionnaireModal slider defaults to minimum** — Changed default from minimum to midpoint (Math.round((min+max)/2)) to avoid biasing responses. **File:** `app-frontend/src/components/learning-path/QuestionnaireModal.tsx`
+- [x] **#19 — QuestionnaireModal state resets on close** — Added inline confirmation UI (replaced native `window.confirm`) when closing with unsaved answers. Shows "Discard & Close" / "Keep Going" buttons. **File:** `app-frontend/src/components/learning-path/QuestionnaireModal.tsx`
+- [x] **#15 — AcknowledgmentOverlay gradient contrast** — Fixed with #48 — increased opacity across all text elements. **File:** `app-frontend/src/components/learning-path/AcknowledgmentOverlay.tsx`
+
+### Batch 10: Flow & Information Architecture
+
+- [x] **#49 — No breadcrumb navigation in step detail** — Replaced back link with semantic breadcrumb nav (Journey > Milestone X > Step X.Y). Added `milestone_number` and `milestone_title` to backend step_summary. **Files:** `StepDetailPage.tsx`, `step_progresses_controller.rb`, `learningPath.ts`
+- [x] **#50 — TherapyJourneyPage scroll position lost** — Added sessionStorage-based scroll position save/restore when navigating to/from StepDetailPage. **File:** `app-frontend/src/pages/TherapyJourneyPage.tsx`
+- [x] **#51 — No deep linking to specific milestones** — Added `id="milestone-{number}"` anchors with `scroll-mt-24` and hash-based scroll-on-mount. Navigate to `/journey#milestone-3` to jump directly. **File:** `app-frontend/src/pages/TherapyJourneyPage.tsx`
+- [x] **#52 — Exercise completion state not persisted locally** — Added localStorage persistence of exercise submissions with timestamps. Shows "You last practiced this step on [date]" on return visits. **File:** `app-frontend/src/pages/StepDetailPage.tsx`
+
+### Low Priority — Nice-to-Have Polish
+
+- [x] **#11 — JournalExercise previous entries are read-only** — Added `therapistComment` and `therapistCommentAt` fields to `JournalEntry` type. History entries now display therapist annotations in a styled callout below the entry content. **File:** `app-frontend/src/components/exercises/JournalExercise.tsx`
+- [x] **#12 — SelfDisclosureExercise scenario repetition** — Added Fisher-Yates shuffle to prompt order on each session so repeated practice sees prompts in different sequence. **File:** `app-frontend/src/components/exercises/SelfDisclosureExercise.tsx`
+- [x] **#13 — GeneralisationExercise technique markers not reviewed** — Verified: already has technique summary badges with timestamps in recorded state (lines 492-505). **File:** `app-frontend/src/components/exercises/GeneralisationExercise.tsx`
+- [ ] **#16 — Breathing circle in PauseExercise could sync with audio** — Deferred: requires WebAudio API AnalyserNode integration for real-time amplitude detection, too complex for a polish pass. CSS-driven breathing animation works well as-is. **File:** `app-frontend/src/components/exercises/PauseExercise.tsx`
+- [x] **#17 — MotorControlExercise force markers lack timeline view** — Verified: already has marker summary badges with type and timestamp in recorded state (lines 458-485). **File:** `app-frontend/src/components/exercises/MotorControlExercise.tsx`
+
+### Priority Summary
+
+| Priority          | Count  | Description                                                           |
+| ----------------- | ------ | --------------------------------------------------------------------- |
+| Critical          | 4      | Data loss, functional bugs (#38, #20, #1, #39)                        |
+| High              | 10     | Major UX gaps for therapists (#22-26) and patients (#3, #10, #2, #14) |
+| Medium            | 19     | Consistency (#31-37), polish (#4-9), therapist tools (#27-29)         |
+| Accessibility     | 5      | Keyboard, contrast, screen reader (#44-48)                            |
+| Exercise-specific | 4      | Quiz, video, timeline UX (#40-43)                                     |
+| Interaction       | 3      | Questionnaire, overlay polish (#18, #19, #15)                         |
+| Flow/IA           | 4      | Navigation, scroll, deep linking (#49-52)                             |
+| Low               | 5      | Nice-to-have enhancements (#11-13, #16-17)                            |
+| **Total**         | **52** |                                                                       |
 
 ---
 
@@ -520,6 +202,7 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 - [ ] Email/push notifications for inactivity, completions, unlocks
 - [ ] Learning path analytics for therapists
 - [ ] Full translation of exercise content (multiple languages)
+- [ ] Track pending completions — patient "ready for review" flag for therapist
 
 ### Low Priority (From Design Audit)
 
@@ -528,18 +211,30 @@ Design commands executed: `/critique`, `/simplify`, `/quieter`, `/bolder`, `/del
 
 ---
 
+## Completed Phases (Reference)
+
+All learning path implementation phases (1-9) completed between Jan 30 — Feb 2, 2026:
+
+- **Phase 1-2**: Backend Foundation & Advanced (models, migrations, APIs, seed data, tests)
+- **Phase 3-4**: Frontend Foundation & Advanced (pages, hooks, therapist dashboard, permissions, translations, acknowledgments, questionnaire, design polish)
+- **Phase 5-8**: Specialized Exercises for Milestones 1-8 (quiz, identification, reflection, waveform, timer, holding, motor control, self-modeling, pause, journal, self-disclosure, generalisation)
+- **Phase 9**: Polish & Testing (animations, loading states, error handling, accessibility, documentation)
+- **Therapist-Controlled Progression Fix** (2026-02-02): Patients cannot self-complete steps
+
+---
+
 ## Key Design Decisions (Reference)
 
-| Decision            | Resolution                                                                 |
-| ------------------- | -------------------------------------------------------------------------- |
-| Visual layout       | Vertical journey (journey upward)                                          |
-| Locked indicators   | No locked badges, just "coming next" preview                               |
-| Celebration style   | Calm acknowledgment, no confetti                                           |
-| Return messaging    | Welcome back, no guilt                                                     |
+| Decision            | Resolution                                                                      |
+| ------------------- | ------------------------------------------------------------------------------- |
+| Visual layout       | Vertical journey (journey upward)                                               |
+| Locked indicators   | No locked badges, just "coming next" preview                                    |
+| Celebration style   | Calm acknowledgment, no confetti                                                |
+| Return messaging    | Welcome back, no guilt                                                          |
 | **Step completion** | **THERAPIST ONLY** - Patient practices unlimited times until therapist advances |
-| Timer direction     | Counts UP (not down) to reduce pressure                                    |
-| Questionnaire UI    | Sliders, SurveyMonkey-style                                                |
-| Patient view        | No "Complete Step" button - show encouraging "Keep Practicing" instead     |
+| Timer direction     | Counts UP (not down) to reduce pressure                                         |
+| Questionnaire UI    | Sliders, SurveyMonkey-style                                                     |
+| Patient view        | No "Complete Step" button - show encouraging "Keep Practicing" instead          |
 
 ---
 
