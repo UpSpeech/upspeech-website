@@ -25,39 +25,39 @@
 
 | Metric                       | Current | Target  |
 | ---------------------------- | ------- | ------- |
-| Pages with Story Tests       | 8 / 23  | 20 / 23 |
-| MSW Handler Factories        | 7 / 8   | 8 / 8   |
+| Pages with Story Tests       | 23 / 23 | 23 / 23 |
+| MSW Handler Factories        | 10 / 10 | 10 / 10 |
 | UI Component Tests to Delete | 0 / 22  | 22 / 22 |
 
 ### Therapist Portal Pages
 
-- [ ] `PatientDetailPage.stories.tsx` - Unified tabbed view (Progress, Learning Path, Exercises tabs)
-- [ ] `RecordingAnnotationPage.stories.tsx`
+- [x] `PatientDetailPage.stories.tsx` - Unified tabbed view (Progress, Learning Path, Exercises tabs)
+- [x] `RecordingAnnotationPage.stories.tsx`
 
 ### Reports Pages
 
-- [ ] `ReportsPage.stories.tsx` - Needs `reports.ts` handler
-- [ ] `ReportViewPage.stories.tsx`
-- [ ] `ReportEditPage.stories.tsx`
-- [ ] `ManualReportGeneratorPage.stories.tsx`
-- [ ] `AudioUploadPage.stories.tsx`
+- [x] `ReportsPage.stories.tsx`
+- [x] `ReportViewPage.stories.tsx`
+- [x] `ReportEditPage.stories.tsx`
+- [x] `ManualReportGeneratorPage.stories.tsx`
+- [x] `AudioUploadPage.stories.tsx`
 
 ### Admin & Settings Pages
 
-- [ ] `AccountSettingsPage.stories.tsx` - Needs `users.ts` handler
-- [ ] `TenantSettingsPage.stories.tsx` - Needs `tenants.ts` handler
-- [ ] `UsersManagementPage.stories.tsx`
-- [ ] `TenantsManagementPage.stories.tsx`
-- [ ] `ExerciseManagementPage.stories.tsx`
-- [ ] `AnalyticsPage.stories.tsx`
-- [ ] `FeatureFlagManagementPage.stories.tsx`
-- [ ] `FeedbackManagementDashboard.stories.tsx`
+- [x] `AccountSettingsPage.stories.tsx` - Uses `users.ts` handler
+- [x] `TenantSettingsPage.stories.tsx` - Uses `tenants.ts` handler
+- [x] `UsersManagementPage.stories.tsx`
+- [x] `TenantsManagementPage.stories.tsx`
+- [x] `ExerciseManagementPage.stories.tsx`
+- [x] `AnalyticsPage.stories.tsx`
+- [x] `FeatureFlagManagementPage.stories.tsx`
+- [x] `FeedbackManagementDashboard.stories.tsx`
 
 ### MSW Handler Factories Needed
 
-- [ ] `reports.ts` - `/reports`, `/reports/:id`, `/report_notes`
-- [ ] `users.ts` - `/users`, `/me`, `/account_settings`
-- [ ] `tenants.ts` - `/tenant_settings`, `/tenants`
+- [x] `reports.ts` - `/reports`, `/reports/:id`, `/report_notes`, `/audio_recordings`, `/manual_reports`
+- [x] `users.ts` - `/users`, `/invite_codes`, `/password`
+- [x] `tenants.ts` - `/tenants`, `/tenant_settings`, `/feature_flags`, `/general_feedbacks`, `/analytics`
 
 ### Test Cleanup (After Stories Exist)
 
