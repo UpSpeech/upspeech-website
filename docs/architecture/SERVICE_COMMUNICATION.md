@@ -41,9 +41,9 @@ sequenceDiagram
 
 | Service     | URL (Dev)             | URL (Prod) | Protocol |
 | ----------- | --------------------- | ---------- | -------- |
-| Frontend    | http://localhost:3001 | TBD        | HTTP     |
-| Backend API | http://localhost:3000 | TBD        | HTTP     |
-| AI Service  | http://localhost:8081 | TBD        | HTTP     |
+| Frontend    | http://localhost:3051 | TBD        | HTTP     |
+| Backend API | http://localhost:3050 | TBD        | HTTP     |
+| AI Service  | http://localhost:3053 | TBD        | HTTP     |
 
 ---
 
@@ -58,13 +58,13 @@ The frontend uses a singleton `ApiClient` class built on Axios with two separate
 ```typescript
 // Versioned API client (most endpoints)
 this.client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, // http://localhost:3000/api/v1
+  baseURL: import.meta.env.VITE_API_URL, // http://localhost:3050/api/v1
   timeout: 30000,
 });
 
 // Unversioned client (auth only)
 this.authClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // http://localhost:3000
+  baseURL: import.meta.env.VITE_API_BASE_URL, // http://localhost:3050
   timeout: 30000,
 });
 ```
@@ -155,8 +155,8 @@ async uploadAudioFile(
 
 ```bash
 # Required - API endpoints
-VITE_API_URL=http://localhost:3000/api/v1          # Versioned API base URL
-VITE_API_BASE_URL=http://localhost:3000            # Unversioned (auth only)
+VITE_API_URL=http://localhost:3050/api/v1          # Versioned API base URL
+VITE_API_BASE_URL=http://localhost:3050            # Unversioned (auth only)
 
 # Optional - App metadata
 VITE_APP_NAME=UpSpeech
@@ -181,7 +181,7 @@ The backend communicates with the AI service in **two ways**:
 
 ```ruby
 def upload_to_ai_service(uploaded_file)
-  service_url = ENV.fetch('UPSPEECH_AI_URL', 'http://localhost:8081')
+  service_url = ENV.fetch('UPSPEECH_AI_URL', 'http://localhost:3053')
 
   connection = Faraday.new(url: service_url) do |conn|
     conn.request :multipart
@@ -228,7 +228,7 @@ end
 
 ```ruby
 def call_ai_service_with_file_id(audio_recording)
-  service_url = ENV.fetch('UPSPEECH_AI_URL', 'http://localhost:8081')
+  service_url = ENV.fetch('UPSPEECH_AI_URL', 'http://localhost:3053')
   groq_api_key = ENV.fetch('GROQ_API_KEY')
 
   file_id = audio_recording.metadata&.dig('ai_file_id')
@@ -272,7 +272,7 @@ end
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/upspeech_development
 
 # Required - AI Service Integration
-UPSPEECH_AI_URL=http://localhost:8081          # AI service base URL
+UPSPEECH_AI_URL=http://localhost:3053          # AI service base URL
 GROQ_API_KEY=your_groq_api_key_here            # API key for Groq transcription
 
 # Required - Rails/Authentication
@@ -662,7 +662,7 @@ conn.options.timeout = 300; // 5 minutes for AI processing
 
 **Check:**
 
-1. Backend is running: `curl http://localhost:3000/api/v1/up`
+1. Backend is running: `curl http://localhost:3050/api/v1/up`
 2. CORS headers configured in `app-backend/config/application.rb`
 3. Environment variable `VITE_API_URL` is correct
 
@@ -670,7 +670,7 @@ conn.options.timeout = 300; // 5 minutes for AI processing
 
 **Check:**
 
-1. AI service is running: `curl http://localhost:8081/health`
+1. AI service is running: `curl http://localhost:3053/health`
 2. Environment variable `UPSPEECH_AI_URL` is set correctly
 3. Firewall/Docker network allows connection
 
@@ -696,20 +696,20 @@ conn.options.timeout = 300; // 5 minutes for AI processing
 
 ```bash
 # Check if services are running
-curl http://localhost:3001                    # Frontend
-curl http://localhost:3000/api/v1/up          # Backend
-curl http://localhost:8081/health             # AI Service
+curl http://localhost:3051                    # Frontend
+curl http://localhost:3050/api/v1/up          # Backend
+curl http://localhost:3053/health             # AI Service
 
 # Test file upload (Backend → AI Service)
-curl -X POST http://localhost:8081/upload \
+curl -X POST http://localhost:3053/upload \
   -F "file=@test.wav"
 
 # Test processing (requires file_id from upload)
-curl -X POST http://localhost:8081/process/{file_id} \
+curl -X POST http://localhost:3053/process/{file_id} \
   -H "Groq-Api-Key: your_key_here"
 
 # Delete file from AI service
-curl -X DELETE http://localhost:8081/files/{file_id}
+curl -X DELETE http://localhost:3053/files/{file_id}
 ```
 
 ---

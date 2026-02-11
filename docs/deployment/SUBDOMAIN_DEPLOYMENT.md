@@ -287,17 +287,17 @@ For local development, use **lvh.me** (a free service that resolves `*.lvh.me` t
 **app-frontend/.env:**
 
 ```bash
-VITE_API_BASE_URL=http://localhost:3000
-VITE_API_URL=http://localhost:3000/api/v1
-VITE_BASE_DOMAIN=lvh.me:3001
+VITE_API_BASE_URL=http://localhost:3050
+VITE_API_URL=http://localhost:3050/api/v1
+VITE_BASE_DOMAIN=lvh.me:3051
 ```
 
 ### Step 2: Access Local Subdomains
 
-- **No subdomain**: `http://localhost:3001` (works with any tenant)
-- **Admin portal**: `http://admin.lvh.me:3001` (platform-wide admin - owners only)
-- **Tenant subdomain**: `http://acme.lvh.me:3001` (Acme tenant)
-- **Tenant subdomain**: `http://speechcare.lvh.me:3001` (SpeechCare tenant)
+- **No subdomain**: `http://localhost:3051` (works with any tenant)
+- **Admin portal**: `http://admin.lvh.me:3051` (platform-wide admin - owners only)
+- **Tenant subdomain**: `http://acme.lvh.me:3051` (Acme tenant)
+- **Tenant subdomain**: `http://speechcare.lvh.me:3051` (SpeechCare tenant)
 
 ### Step 3: Test Subdomain Validation Locally
 
@@ -343,16 +343,16 @@ VITE_BASE_DOMAIN=lvh.me:3001
    ```
 
 2. **Test regular user access:**
-   - Visit `http://acme.lvh.me:3001` and log in with Acme admin
-   - Try visiting `http://speechcare.lvh.me:3001` → should be logged out ✅
-   - Try visiting `http://admin.lvh.me:3001` → should be redirected to `acme.lvh.me:3001` ✅
+   - Visit `http://acme.lvh.me:3051` and log in with Acme admin
+   - Try visiting `http://speechcare.lvh.me:3051` → should be logged out ✅
+   - Try visiting `http://admin.lvh.me:3051` → should be redirected to `acme.lvh.me:3051` ✅
 
 3. **Test owner access:**
-   - Visit `http://admin.lvh.me:3001` and log in with owner
+   - Visit `http://admin.lvh.me:3051` and log in with owner
    - Should see reports/users from ALL tenants ✅
-   - Visit `http://acme.lvh.me:3001` (without logging out)
+   - Visit `http://acme.lvh.me:3051` (without logging out)
    - Should see ONLY Acme data ✅
-   - Visit `http://speechcare.lvh.me:3001` (without logging out)
+   - Visit `http://speechcare.lvh.me:3051` (without logging out)
    - Should see ONLY SpeechCare data ✅
 
 ---

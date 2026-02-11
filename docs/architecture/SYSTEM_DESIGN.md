@@ -165,7 +165,7 @@ Abstraction: `StorageProvider` interface -> `LocalDiskStorage` then S3/MinIO.
 | ---------------------- | -------------------------------------------------------- |
 | SECRET_KEY_BASE        | Rails session signing key                                |
 | DATABASE_URL           | Postgres connection                                      |
-| UPSPEECH_AI_URL        | FastAPI service endpoint (e.g., http://upspeech-ai:8081) |
+| UPSPEECH_AI_URL        | FastAPI service endpoint (e.g., http://upspeech-ai:3053) |
 | GROQ_API_KEY           | Groq API key for transcription service                   |
 | AZURE_OPENAI_KEY       | Azure OpenAI key (alternative to Groq)                   |
 | ACTIVE_STORAGE_SERVICE | local (dev) / s3 (later)                                 |

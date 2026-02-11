@@ -36,7 +36,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: upspeech_backend_dev
     ports:
-      - "3000:3000"
+      - "3050:3000"
     environment:
       # Rails Environment
       - RAILS_ENV=development
@@ -131,12 +131,12 @@ services:
       dockerfile: Dockerfile.dev
     container_name: upspeech_frontend_dev
     ports:
-      - "3001:3001"
+      - "3051:3001"
     environment:
       # API Configuration (Docker internal URLs)
-      - VITE_API_URL=http://localhost:3000/api/v1
-      - VITE_API_BASE_URL=http://localhost:3000
-      - VITE_ACTION_CABLE_URL=ws://localhost:3000/cable
+      - VITE_API_URL=http://localhost:3050/api/v1
+      - VITE_API_BASE_URL=http://localhost:3050
+      - VITE_ACTION_CABLE_URL=ws://localhost:3050/cable
       - VITE_NODE_ENV=development
 
       # Application Configuration (from .env.docker)
@@ -163,7 +163,7 @@ services:
       dockerfile: Dockerfile
     container_name: upspeech_ai_dev
     ports:
-      - "8081:8081"
+      - "3053:8081"
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY:-}
       - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY:-}
@@ -198,11 +198,11 @@ services:
       dockerfile: Dockerfile.dev
     container_name: upspeech_website_dev
     ports:
-      - "8080:8080"
+      - "3052:3052"
     environment:
       # API Configuration (browser-accessible URL)
       # Website runs in browser, so API must be accessible from host machine
-      - VITE_API_URL=http://localhost:3000/api/v1
+      - VITE_API_URL=http://localhost:3050/api/v1
 
       # EmailJS Configuration (optional - for waitlist form)
       - VITE_EMAILJS_SERVICE_ID=${VITE_EMAILJS_SERVICE_ID:-}

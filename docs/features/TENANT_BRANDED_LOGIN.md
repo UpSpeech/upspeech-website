@@ -171,7 +171,7 @@ async getTenantBranding(slug: string): Promise<ApiResponse<TenantBranding>>
 
 ### Example 4: Localhost Development (No Subdomain)
 
-**URL**: `http://localhost:3001/auth`
+**URL**: `http://localhost:3051/auth`
 
 **Result**:
 
@@ -181,7 +181,7 @@ async getTenantBranding(slug: string): Promise<ApiResponse<TenantBranding>>
 
 ### Example 5: Local Subdomain Testing
 
-**URL**: `http://speechcare.localhost:3001/auth` (requires /etc/hosts entry)
+**URL**: `http://speechcare.localhost:3051/auth` (requires /etc/hosts entry)
 
 **Result**:
 
@@ -222,8 +222,8 @@ curl https://api.upspeech.app/api/v1/tenants/system/branding
    Then access:
 
    ```
-   http://speechcare.localhost:3001/auth
-   http://admin.localhost:3001/auth
+   http://speechcare.localhost:3051/auth
+   http://admin.localhost:3051/auth
    ```
 
 2. **Alternative: Local subdomain testing** (using lvh.me DNS):

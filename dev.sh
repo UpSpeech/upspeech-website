@@ -14,10 +14,10 @@ case "$1" in
     echo "✅ Services started!"
     echo ""
     echo "📋 Service URLs:"
-    echo "   Frontend: http://localhost:3001"
-    echo "   Backend:  http://localhost:3000"
-    echo "   Website:  http://localhost:8080"
-    echo "   AI Service: http://localhost:8081"
+    echo "   Frontend: http://localhost:3051"
+    echo "   Backend:  http://localhost:3050"
+    echo "   Website:  http://localhost:3052"
+    echo "   AI Service: http://localhost:3053"
     echo "   Database: postgresql://postgres:postgres@localhost:5432/upspeech_development"
     echo ""
     echo "📝 Run 'docker-compose -f $COMPOSE_FILE logs -f' to view logs"
@@ -169,10 +169,10 @@ case "$1" in
     echo "✅ Development environment ready!"
     echo ""
     echo "📋 Service URLs:"
-    echo "   Frontend: http://localhost:3001"
-    echo "   Backend:  http://localhost:3000"
-    echo "   Website:  http://localhost:8080"
-    echo "   AI Service: http://localhost:8081"
+    echo "   Frontend: http://localhost:3051"
+    echo "   Backend:  http://localhost:3050"
+    echo "   Website:  http://localhost:3052"
+    echo "   AI Service: http://localhost:3053"
     echo ""
     echo "⚠️  NOTE: AI features require GROQ_API_KEY in .env.docker"
     echo "⚠️  NOTE: File uploads require GCS credentials in .env.docker"
@@ -423,31 +423,31 @@ case "$1" in
     echo "🌐 HTTP Endpoints:"
 
     # Backend health check
-    if curl -f -s http://localhost:3000/api/v1/health > /dev/null 2>&1 || curl -f -s http://localhost:3000 > /dev/null 2>&1; then
-      echo "✅ Backend (http://localhost:3000) - Healthy"
+    if curl -f -s http://localhost:3050/api/v1/health > /dev/null 2>&1 || curl -f -s http://localhost:3050 > /dev/null 2>&1; then
+      echo "✅ Backend (http://localhost:3050) - Healthy"
     else
-      echo "❌ Backend (http://localhost:3000) - Unhealthy"
+      echo "❌ Backend (http://localhost:3050) - Unhealthy"
     fi
 
     # Frontend health check
-    if curl -f -s http://localhost:3001 > /dev/null 2>&1; then
-      echo "✅ Frontend (http://localhost:3001) - Healthy"
+    if curl -f -s http://localhost:3051 > /dev/null 2>&1; then
+      echo "✅ Frontend (http://localhost:3051) - Healthy"
     else
-      echo "❌ Frontend (http://localhost:3001) - Unhealthy"
+      echo "❌ Frontend (http://localhost:3051) - Unhealthy"
     fi
 
     # Website health check
-    if curl -f -s http://localhost:8080 > /dev/null 2>&1; then
-      echo "✅ Website (http://localhost:8080) - Healthy"
+    if curl -f -s http://localhost:3052 > /dev/null 2>&1; then
+      echo "✅ Website (http://localhost:3052) - Healthy"
     else
-      echo "❌ Website (http://localhost:8080) - Unhealthy"
+      echo "❌ Website (http://localhost:3052) - Unhealthy"
     fi
 
     # AI Service health check
-    if curl -f -s http://localhost:8081/health > /dev/null 2>&1 || curl -f -s http://localhost:8081 > /dev/null 2>&1; then
-      echo "✅ AI Service (http://localhost:8081) - Healthy"
+    if curl -f -s http://localhost:3053/health > /dev/null 2>&1 || curl -f -s http://localhost:3053 > /dev/null 2>&1; then
+      echo "✅ AI Service (http://localhost:3053) - Healthy"
     else
-      echo "❌ AI Service (http://localhost:8081) - Unhealthy"
+      echo "❌ AI Service (http://localhost:3053) - Unhealthy"
     fi
 
     echo ""

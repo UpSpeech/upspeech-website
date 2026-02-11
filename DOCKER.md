@@ -31,11 +31,11 @@ vim .env.docker
 
 ### 4. Access Your Application
 
-- **Frontend**: http://localhost:3001
-- **Backend API**: http://localhost:3000
+- **Frontend**: http://localhost:3051
+- **Backend API**: http://localhost:3050
 - **Database**: postgresql://postgres:postgres@localhost:5432/upspeech_development
 - **Redis**: redis://localhost:6379
-- **AI Service**: http://localhost:8081
+- **AI Service**: http://localhost:3053
 
 ## Development Commands
 
@@ -77,9 +77,9 @@ vim .env.docker
 
 1. **postgres** - PostgreSQL 16 database
 2. **redis** - Redis for caching and background jobs
-3. **backend** - Rails 8 API server (port 3000)
-4. **frontend** - React + Vite development server (port 3001)
-5. **ai-service** - Python FastAPI service (port 8081)
+3. **backend** - Rails 8 API server (port 3050)
+4. **frontend** - React + Vite development server (port 3051)
+5. **ai-service** - Python FastAPI service (port 3053)
 
 ### Volumes
 
@@ -116,8 +116,8 @@ vim .env.docker
 
 ```bash
 # Check what's using ports
-lsof -i :3000
-lsof -i :3001
+lsof -i :3050
+lsof -i :3051
 
 # Stop conflicting services
 ./dev.sh stop

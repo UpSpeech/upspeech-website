@@ -34,9 +34,9 @@ cd upspeech-website
 
 **Service URLs after starting:**
 
-- Frontend: http://localhost:3001
-- Backend API: http://localhost:3000
-- AI Service: http://localhost:8081
+- Frontend: http://localhost:3051
+- Backend API: http://localhost:3050
+- AI Service: http://localhost:3053
 - PostgreSQL: postgresql://postgres:postgres@localhost:5432/upspeech_development
 - Redis: redis://localhost:6379
 

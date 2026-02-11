@@ -36,9 +36,9 @@ nano .env.docker  # Set GROQ_API_KEY, RAILS_MASTER_KEY, SECRET_KEY_BASE
 
 After setup, services will be available at:
 
-- **Frontend**: http://localhost:3001
-- **Backend API**: http://localhost:3000
-- **AI Service**: http://localhost:8081
+- **Frontend**: http://localhost:3051
+- **Backend API**: http://localhost:3050
+- **AI Service**: http://localhost:3053
 
 ## 📁 Repository Structure
 
