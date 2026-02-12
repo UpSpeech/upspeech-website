@@ -11,7 +11,7 @@
 
 **File:** [TODO-simple.md](./TODO-simple.md) — managed by the user, not by Claude.
 
-**Instructions for Claude:** Check `TODO-simple.md` for the user's current priorities. These tasks are user-managed — Claude may only mark items as done when completed. Do not add, remove, or reorder items.
+**Instructions for Claude:** Check `TODO-simple.md` for the user's current priorities. These tasks are user-managed — Claude may only mark items as done when completed. Do not add, or remove them. If they're not prioritized, put them into P1 or P2.
 
 ---
 
