@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+.DS_Store
+.env*
+!.env.docker.example
+dist
+build
+coverage
+.git
+.gitignore
+README.md
+.eslintcache
+.vscode/
+.idea/
