@@ -1,4 +1,5 @@
 import React from "react";
+import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
@@ -14,6 +15,7 @@ import FAQSection from "@/components/FAQSection";
 const Index = () => {
   return (
     <div className="min-h-screen font-body">
+      <SEO path="/" />
       <Header />
       <HeroSection />
       <ProblemSection />

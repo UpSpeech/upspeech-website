@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 // Configure marked for GFM (GitHub Flavored Markdown) support
 marked.setOptions({
@@ -65,6 +66,11 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Privacy Policy"
+        description="UpSpeech privacy policy — how we collect, use, and protect your personal data in our AI-powered speech therapy platform."
+        path="/privacy"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 marked.setOptions({
   gfm: true,
@@ -62,6 +63,11 @@ export default function CookiePolicy() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Cookie Policy"
+        description="UpSpeech cookie policy — how we use cookies and similar technologies on our AI-powered speech therapy platform."
+        path="/cookies"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">

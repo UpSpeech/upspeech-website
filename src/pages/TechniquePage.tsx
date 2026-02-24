@@ -3,7 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { fetchTechnique, type Technique } from "@/lib/api";
+import { TECHNIQUE_SEO, getTechniqueStructuredData } from "@/lib/seo-data";
 
 interface TechniquePageProps {
   slug: string;
@@ -62,10 +64,19 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     window.history.replaceState({}, "", `?${newParams.toString()}`);
   };
 
+  const staticSeo = TECHNIQUE_SEO[slug];
+
   // Loading state
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col bg-gray-50">
+        {staticSeo && (
+          <SEO
+            title={staticSeo.title}
+            description={staticSeo.description}
+            path={`/techniques/${slug}`}
+          />
+        )}
         <Header />
         <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
@@ -115,8 +126,25 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     ));
   };
 
+  const seoTitle = technique.name;
+  const seoDescription =
+    technique.description ||
+    staticSeo?.description ||
+    `Learn about ${technique.name} — a speech therapy technique for stuttering.`;
+  const structuredData = getTechniqueStructuredData(
+    slug,
+    technique.name,
+    seoDescription,
+  );
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        path={`/techniques/${slug}`}
+        structuredData={structuredData}
+      />
       <Header />
 
       <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">

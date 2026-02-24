@@ -3,7 +3,9 @@ import { useSearchParams, Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
+import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 
 export function TechniquesIndexPage() {
   const [searchParams] = useSearchParams();
@@ -150,6 +152,12 @@ export function TechniquesIndexPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <SEO
+        title="Speech Therapy Techniques"
+        description="Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches."
+        path="/techniques"
+        structuredData={getTechniquesIndexStructuredData()}
+      />
       <Header />
 
       <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
