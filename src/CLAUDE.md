@@ -7,5 +7,5 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
-| #14955 | 11:20 AM | 🟣 | Enhanced SEO component with comprehensive meta tags and accessibility support | ~483 |
+| #14947 | 11:17 AM | 🔵 | SEO component imported but never rendered in any routes | ~409 |
 </claude-mem-context>

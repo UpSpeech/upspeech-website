@@ -75,6 +75,14 @@ export function getTechniqueStructuredData(
     headline: name,
     description: description,
     url: `https://upspeech.app/techniques/${slug}`,
+    inLanguage: "en",
+    datePublished: "2026-02-01",
+    dateModified: "2026-03-03",
+    author: {
+      "@type": "Organization",
+      name: "UpSpeech",
+      url: "https://upspeech.app",
+    },
     publisher: {
       "@type": "Organization",
       name: "UpSpeech",
@@ -84,6 +92,7 @@ export function getTechniqueStructuredData(
         url: "https://upspeech.app/icons/apple-touch-icon.png",
       },
     },
+    image: "https://upspeech.app/screenshots/desktop.jpg",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://upspeech.app/techniques/${slug}`,
@@ -124,10 +133,14 @@ export function getTechniquesIndexStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Speech Therapy Techniques",
+    name: "Speech Therapy Techniques for Stuttering",
     description:
       "Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches.",
     url: "https://upspeech.app/techniques",
+    inLanguage: "en",
+    isPartOf: {
+      "@id": "https://upspeech.app/#website",
+    },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: Object.entries(TECHNIQUE_SEO).map(
