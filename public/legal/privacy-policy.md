@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** December 16, 2025
+**Last Updated:** March 5, 2026
 
 ## Introduction
 
@@ -191,9 +191,9 @@ We may share your information for other purposes with your explicit consent, suc
 
 ### Where We Store Your Data
 
-- **Database** - PostgreSQL database hosted on Railway (United States by default)
-- **File storage** - Google Cloud Storage (configurable region, default: United States)
-- **Application servers** - Railway infrastructure (United States by default)
+- **Database** - PostgreSQL database hosted on Railway (European Union servers)
+- **File storage** - Google Cloud Storage (European Union region)
+- **Application servers** - Railway infrastructure (European Union servers)
 
 ### Security Measures
 
@@ -218,9 +218,9 @@ We implement industry-standard security practices:
 - **Deletion requests** - You may request deletion of your data at any time (see Your Rights section)
 - **Backups** - Deleted data may persist in backups for up to 90 days before permanent removal
 
-## Your Rights and Choices
+## Your Rights
 
-Depending on your location, you may have the following rights regarding your personal information:
+Under the General Data Protection Regulation (GDPR), you have the following rights regarding your personal information:
 
 ### 1. Access and Portability
 
@@ -247,9 +247,9 @@ Depending on your location, you may have the following rights regarding your per
 - **Withdraw consent** - Withdraw consent for processing where consent is the legal basis
 - **Opt-out** - Unsubscribe from non-essential emails using the unsubscribe link
 
-### 5. Complaint and Enforcement
+### 5. Complaint
 
-- **Data protection authority** - Lodge a complaint with your local data protection authority if you believe we've violated your privacy rights
+- **Supervisory authority** - Lodge a complaint with the Portuguese data protection authority (Comissão Nacional de Proteção de Dados — CNPD) or your local data protection authority
 - **Contact us** - Reach out to us directly with privacy concerns at upspeechapp@gmail.com
 
 **To exercise these rights**, email us at **upspeechapp@gmail.com** with your request. We will respond within 30 days.
@@ -258,56 +258,34 @@ Depending on your location, you may have the following rights regarding your per
 
 UpSpeech is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.
 
-**Note for parents/guardians:** If a child's speech recordings are uploaded by a parent, guardian, or therapist, the adult user is responsible for obtaining any necessary consent and ensuring compliance with applicable laws (such as COPPA in the United States).
+**Note for parents/guardians:** If a child's speech recordings are uploaded by a parent, guardian, or therapist, the adult user is responsible for obtaining any necessary consent and ensuring compliance with applicable laws regarding children's data protection.
 
 If we become aware that we have collected personal information from a child under 13 without proper parental consent, we will take steps to delete that information promptly.
 
 ## International Data Transfers
 
-UpSpeech is based in the United States, and our servers and third-party service providers are primarily located in the United States. If you are accessing our platform from outside the United States, please be aware that your information may be transferred to, stored in, and processed in the United States and other countries.
+UpSpeech is based in Portugal, within the European Union. Our servers and primary infrastructure are located in the European Union. Some third-party service providers we use may process data outside the EU.
 
-These countries may have data protection laws that differ from those in your country of residence. By using UpSpeech, you consent to the transfer of your information to the United States and other countries as described in this Privacy Policy.
+When data is transferred outside the European Economic Area (EEA), we ensure appropriate safeguards are in place, such as Standard Contractual Clauses or adequacy decisions approved by the European Commission.
 
-For users in the European Economic Area (EEA), United Kingdom, or Switzerland, we rely on appropriate legal mechanisms for international data transfers, such as Standard Contractual Clauses or adequacy decisions.
+If you are accessing our platform from outside the EU, please be aware that your information is stored and processed in the European Union, which has strong data protection standards under the General Data Protection Regulation (GDPR).
 
-## California Privacy Rights (CCPA)
+## Legal Basis for Processing (GDPR)
 
-If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):
-
-- **Right to know** - What personal information we collect, use, disclose, and sell
-- **Right to delete** - Request deletion of your personal information (with certain exceptions)
-- **Right to opt-out** - We do not sell personal information, so no opt-out is necessary
-- **Right to non-discrimination** - We will not discriminate against you for exercising your CCPA rights
-
-To exercise these rights, contact us at **upspeechapp@gmail.com**.
-
-## European Privacy Rights (GDPR)
-
-If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, you have rights under the General Data Protection Regulation (GDPR):
-
-### Legal Basis for Processing
-
-We process your personal data based on the following legal grounds:
+UpSpeech is based in Portugal and subject to the General Data Protection Regulation (GDPR). We process your personal data based on the following legal grounds:
 
 - **Contract** - Processing necessary to provide our services under our Terms of Service
 - **Legitimate interests** - For fraud prevention, security, analytics, and service improvement
 - **Consent** - For specific processing activities where we ask for your consent (e.g., uploading recordings)
 - **Legal obligation** - To comply with applicable laws and regulations
 
-### Your GDPR Rights
+Your rights under the GDPR are described in the "Your Rights" section above.
 
-- **Right of access** - Obtain confirmation of processing and a copy of your data
-- **Right to rectification** - Correct inaccurate or incomplete personal data
-- **Right to erasure** ("right to be forgotten") - Request deletion of your personal data
-- **Right to restriction** - Limit how we use your personal data
-- **Right to data portability** - Receive your data in a portable format
-- **Right to object** - Object to processing based on legitimate interests
-- **Right to withdraw consent** - Withdraw consent where that is the legal basis
-- **Right to lodge a complaint** - File a complaint with your local data protection authority
-
-### Data Protection Officer
+### Data Protection Contact
 
 For GDPR-related inquiries, contact us at **upspeechapp@gmail.com**.
+
+Our supervisory authority is the Comissão Nacional de Proteção de Dados (CNPD), Portugal.
 
 ## Cookies and Tracking Technologies
 

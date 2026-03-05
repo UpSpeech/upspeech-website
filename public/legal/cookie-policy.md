@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last Updated:** January 17, 2026
+**Last Updated:** March 5, 2026
 
 ## Introduction
 
@@ -298,10 +298,10 @@ If a child's recordings are uploaded by a parent or therapist, the adult user is
 
 ## International Users
 
-UpSpeech is hosted in the United States. If you access our platform from outside the US, please be aware that:
+UpSpeech is based in Portugal and hosted on European Union servers. If you access our platform from outside the EU, please be aware that:
 
 - Cookies and Local Storage data are stored on your device (not transferred to our servers)
-- Analytics data collected by Google Analytics and Microsoft Clarity may be transferred to and stored in the US
+- Analytics data collected by Google Analytics and Microsoft Clarity may be transferred to and processed in countries where these providers operate
 - Google and Microsoft are compliant with relevant data protection frameworks
 
 For users in the EU/EEA:
@@ -310,11 +310,9 @@ For users in the EU/EEA:
 - Analytics cookies require your explicit consent
 - You have the right to withdraw consent at any time
 
-## GDPR and CCPA Rights
+## Your Data Rights (GDPR)
 
-### For EU/EEA Users (GDPR)
-
-You have the right to:
+As an EU-based service, we comply with the General Data Protection Regulation (GDPR). You have the right to:
 
 - Access what data we collect about you
 - Correct inaccurate data
@@ -323,17 +321,6 @@ You have the right to:
 - Data portability
 - Object to processing
 - Withdraw consent at any time
-
-### For California Users (CCPA)
-
-You have the right to:
-
-- Know what personal information is collected
-- Know whether personal information is sold or shared (we don't sell data)
-- Opt-out of the sale of personal information (not applicable)
-- Access your personal information
-- Request deletion of your personal information
-- Non-discrimination for exercising your rights
 
 To exercise these rights, contact us at upspeechapp@gmail.com
 

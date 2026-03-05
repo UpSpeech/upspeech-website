@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last Updated:** December 16, 2024
+**Last Updated:** March 5, 2026
 
 ## 1. Agreement to Terms
 
@@ -295,26 +295,23 @@ Therapists and organizations are responsible for:
 
 ## 11. Payment and Subscriptions
 
-### 11.1 Current Status (MVP)
+### 11.1 Fees
 
-**UpSpeech is currently free to use during our MVP (Minimum Viable Product) phase.** No payment is required to access the Service.
+Access to the Service may require payment of fees as set out in a separate agreement, order form, or pricing page provided by UpSpeech. If no separate agreement exists, the Service is provided under the terms communicated to you at the time of registration.
 
-### 11.2 Future Pricing
+### 11.2 Changes to Pricing
 
-We reserve the right to introduce subscription plans, usage fees, or other charges in the future. We will provide advance notice before implementing any paid features:
+We may update our pricing from time to time. We will provide at least 30 days' written notice before any pricing change takes effect for existing users. If you do not agree to the updated pricing, you may terminate your account before the change takes effect.
 
-- **Notice period** - At least 30 days' notice before introducing fees for existing users
-- **Pricing transparency** - Clear pricing information will be available on our website
-- **Continued access** - You may continue using free features or upgrade to paid plans
+### 11.3 Payment Terms
 
-### 11.3 Future Terms
+Where fees apply, additional terms will govern:
 
-When payment features are introduced, additional terms will apply, including:
-
-- Subscription fees, billing cycles, and payment methods
+- Billing cycles and accepted payment methods
 - Refund and cancellation policies
-- Free trial terms (if applicable)
 - Automatic renewal and cancellation procedures
+
+These terms will be communicated in the applicable agreement or at the point of purchase.
 
 ## 12. Service Availability and Modifications
 
@@ -411,7 +408,7 @@ We disclaim all warranties, including:
    - Service interruptions or security breaches
 
 3. **Total aggregate liability** for all claims related to the Service shall not exceed:
-   - **$100 USD**, or
+   - **€100 EUR**, or
    - **The amount you paid to UpSpeech in the 12 months before the claim** (whichever is greater)
 
 **This limitation applies even if we have been advised of the possibility of such damages.**
@@ -441,19 +438,11 @@ Before filing any formal dispute, you agree to contact us at **upspeechapp@gmail
 
 ### 16.2 Governing Law
 
-These Terms are governed by and construed in accordance with the laws of the **State of [Your State/Country]**, without regard to its conflict of law provisions.
+These Terms are governed by and construed in accordance with the laws of **Portugal** and applicable European Union law, without regard to conflict of law provisions.
 
 ### 16.3 Jurisdiction and Venue
 
-Any legal action or proceeding relating to these Terms shall be brought exclusively in the courts located in **[Your City/State]**, and you consent to personal jurisdiction in these courts.
-
-### 16.4 Arbitration (Optional - To Be Determined)
-
-_[Note: If you wish to include binding arbitration, add arbitration clause here. Otherwise, disputes proceed to court.]_
-
-### 16.5 Class Action Waiver
-
-**You agree to resolve disputes on an individual basis only.** You waive any right to participate in a class action lawsuit or class-wide arbitration against UpSpeech.
+Any legal action or proceeding relating to these Terms shall be brought exclusively in the courts of **Lisbon, Portugal**, and you consent to personal jurisdiction in these courts.
 
 ## 17. General Provisions
 
@@ -491,11 +480,7 @@ We are not liable for delays or failures in performance resulting from causes be
 
 You agree not to export or re-export the Service or any part thereof in violation of applicable export control laws and regulations.
 
-### 17.8 U.S. Government Rights
-
-If you are a U.S. government entity, the Service is a "commercial item" as defined in FAR 2.101, and is provided with only those rights granted to all other users under these Terms.
-
-### 17.9 Contact Information
+### 17.8 Contact Information
 
 For questions about these Terms, contact us:
 
@@ -503,7 +488,7 @@ For questions about these Terms, contact us:
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Support:** Use the support link in the platform
 
-### 17.10 Language
+### 17.9 Language
 
 These Terms are written in English. Any translations are provided for convenience only. In case of conflict, the English version prevails.
 
@@ -511,4 +496,4 @@ These Terms are written in English. Any translations are provided for convenienc
 
 **By using UpSpeech, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**
 
-**Last Updated:** December 16, 2025
+**Last Updated:** March 5, 2026
