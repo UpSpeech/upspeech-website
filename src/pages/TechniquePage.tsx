@@ -117,10 +117,25 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     );
   }
 
-  // Format instructions: convert \n to line breaks and create numbered list
+  // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
-    return text.split("\n").map((line, index) => (
-      <p key={index} className="mb-2">
+    const lines = text.split("\n").filter((line) => line.trim());
+    const isNumberedList = lines.every((line) => /^\d+[\.\)]\s/.test(line));
+
+    if (isNumberedList) {
+      return (
+        <ol className="list-decimal list-inside space-y-3">
+          {lines.map((line, index) => (
+            <li key={index} className="leading-relaxed">
+              {line.replace(/^\d+[\.\)]\s*/, "")}
+            </li>
+          ))}
+        </ol>
+      );
+    }
+
+    return lines.map((line, index) => (
+      <p key={index} className="mb-3">
         {line}
       </p>
     ));
