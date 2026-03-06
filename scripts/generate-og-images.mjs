@@ -166,8 +166,8 @@ function LogoIcon() {
   return {
     type: "svg",
     props: {
-      width: 38,
-      height: 44,
+      width: 30,
+      height: 34,
       viewBox: "100 84 178 206",
       children: [
         {
@@ -263,7 +263,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
       style: {
         display: "flex",
         alignItems: "center",
-        gap: 14,
+        gap: 10,
       },
       children: [
         LogoIcon(),

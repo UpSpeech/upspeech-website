@@ -1,6 +1,6 @@
 import opentype from "opentype.js";
 import { Resvg } from "@resvg/resvg-js";
-import { writeFileSync, readFileSync } from "fs";
+import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -26,70 +26,106 @@ async function downloadFont() {
   return opentype.parse(buffer);
 }
 
-// -- Generate wordmark path data --
+// -- Icon geometry (original coordinates) --
 
-function generateWordmarkPath(font, text, fontSize, x, y) {
-  const path = font.getPath(text, x, y, fontSize);
-  return path.toPathData(3);
+// Full icon bounding box including purple accent circle:
+// Top of circle: cy - r = 122.6 - 33 = 89.6
+// Bottom of lower shape: 282.8
+// Left of shapes: 106.667
+// Right of circle: cx + r = 238.066 + 33 = 271.066
+const ICON = {
+  topPath:
+    "M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z",
+  bottomPath:
+    "M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z",
+  circle: { cx: 238.066, cy: 122.6, r: 33 },
+  // Bounding box (including circle)
+  minX: 106.667,
+  maxX: 271.066,
+  minY: 89.6,
+  maxY: 282.8,
+};
+ICON.width = ICON.maxX - ICON.minX; // 164.4
+ICON.height = ICON.maxY - ICON.minY; // 193.2
+ICON.centerX = (ICON.minX + ICON.maxX) / 2; // 188.87
+ICON.centerY = (ICON.minY + ICON.maxY) / 2; // 186.2
+
+// -- SVG generation --
+
+function buildSVG({ wordmarkPath, textFill, iconScale, iconX, iconY, viewBoxWidth, viewBoxHeight }) {
+  // Icon transform: scale around center, then translate to target position
+  // transform = translate(tx, ty) scale(s) where:
+  //   new_x = original_x * s + tx
+  //   new_y = original_y * s + ty
+  // We want icon center to end up at (iconX + scaledWidth/2, iconY + scaledHeight/2)
+  const s = iconScale;
+  const scaledCenterX = iconX + (ICON.width * s) / 2;
+  const scaledCenterY = iconY + (ICON.height * s) / 2;
+  const tx = scaledCenterX - ICON.centerX * s;
+  const ty = scaledCenterY - ICON.centerY * s;
+
+  const iconTransform = `translate(${tx.toFixed(3)}, ${ty.toFixed(3)}) scale(${s})`;
+
+  const iconFill = textFill;
+  const circleFill = "#958AF0";
+
+  return `<svg width="${viewBoxWidth}" height="${viewBoxHeight}" viewBox="0 0 ${viewBoxWidth} ${viewBoxHeight}" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="${viewBoxWidth}" height="${viewBoxHeight}" fill="none"/>
+<path d="${wordmarkPath}" fill="${textFill}"/>
+<path transform="${iconTransform}" d="${ICON.topPath}" fill="${iconFill}"/>
+<path transform="${iconTransform}" d="${ICON.bottomPath}" fill="${iconFill}"/>
+<circle transform="${iconTransform}" cx="${ICON.circle.cx}" cy="${ICON.circle.cy}" r="${ICON.circle.r}" fill="${circleFill}"/>
+</svg>
+`;
 }
 
-// -- SVG logo variants --
+// -- File definitions --
 
 const LOGO_VARIANTS = [
   {
     label: "app-frontend/logo.svg",
-    src: join(__dirname, "../../app-frontend/public/images/logo.svg"),
+    path: join(__dirname, "../../app-frontend/public/images/logo.svg"),
     textFill: "#212540",
-    rectFill: "none",
   },
   {
     label: "app-frontend/logo-invert.svg",
-    src: join(__dirname, "../../app-frontend/public/images/logo-invert.svg"),
+    path: join(__dirname, "../../app-frontend/public/images/logo-invert.svg"),
     textFill: "#FDFDFD",
-    rectFill: "none",
   },
   {
     label: "upspeech-website/logo.svg",
-    src: join(__dirname, "../public/images/logo.svg"),
+    path: join(__dirname, "../public/images/logo.svg"),
     textFill: "#212540",
-    rectFill: "none",
   },
   {
     label: "upspeech-website/logo-invert.svg",
-    src: join(__dirname, "../public/images/logo-invert.svg"),
+    path: join(__dirname, "../public/images/logo-invert.svg"),
     textFill: "#FDFDFD",
-    rectFill: "none",
   },
   {
     label: "demo-videos/logo.svg",
-    src: join(__dirname, "../../demo-videos/remotion/public/assets/logo.svg"),
+    path: join(__dirname, "../../demo-videos/remotion/public/assets/logo.svg"),
     textFill: "#212540",
-    rectFill: "none",
   },
   {
     label: "demo-videos/logo-invert.svg",
-    src: join(
+    path: join(
       __dirname,
       "../../demo-videos/remotion/public/assets/logo-invert.svg",
     ),
     textFill: "#FDFDFD",
-    rectFill: "none",
   },
 ];
 
-// PNG outputs (generated from SVGs using resvg)
 const PNG_OUTPUTS = [
   {
     label: "app-frontend/logo.png",
-    svgPath: join(__dirname, "../../app-frontend/public/images/logo.svg"),
+    svgVariant: "app-frontend/logo.svg",
     pngPath: join(__dirname, "../../app-frontend/public/images/logo.png"),
   },
   {
     label: "app-frontend/logo-invert.png",
-    svgPath: join(
-      __dirname,
-      "../../app-frontend/public/images/logo-invert.svg",
-    ),
+    svgVariant: "app-frontend/logo-invert.svg",
     pngPath: join(
       __dirname,
       "../../app-frontend/public/images/logo-invert.png",
@@ -97,12 +133,12 @@ const PNG_OUTPUTS = [
   },
   {
     label: "upspeech-website/logo.png",
-    svgPath: join(__dirname, "../public/images/logo.svg"),
+    svgVariant: "upspeech-website/logo.svg",
     pngPath: join(__dirname, "../public/images/logo.png"),
   },
   {
     label: "upspeech-website/logo-invert.png",
-    svgPath: join(__dirname, "../public/images/logo-invert.svg"),
+    svgVariant: "upspeech-website/logo-invert.svg",
     pngPath: join(__dirname, "../public/images/logo-invert.png"),
   },
 ];
@@ -111,70 +147,79 @@ async function main() {
   console.log("Downloading Outfit Bold font...");
   const font = await downloadFont();
 
-  // The existing SVG viewBox is "0 0 1024 374", icon occupies ~x:107-271, y:90-283
-  // The wordmark needs to start after the icon+circle area
-  // Existing wordmark starts at ~x=313 and the vertical center is ~y=197 (baseline for the text)
-
   const text = "UpSpeech";
+  const viewBoxWidth = 1024;
+  const viewBoxHeight = 374;
+  const margin = 50;
 
-  // X position: start after the icon+circle area with some gap
-  const xStart = 313;
-  // Target width: fill to near the right edge of the SVG (1024px viewBox)
-  const targetWidth = 940 - xStart;
+  // Scale icon so its full height (including circle) is 1.5x the text cap height
+  // This matches the OG image proportions (34px icon / 22.6px cap height ≈ 1.5)
+  const iconToTextRatio = 1.5;
 
-  // Calculate font size to fill the target width
-  const testSize = 100;
-  const testWidth = font.getAdvanceWidth(text, testSize);
-  const finalFontSize = (targetWidth / testWidth) * testSize;
-  console.log(`Font size: ${finalFontSize.toFixed(1)}px for width ${targetWidth}`);
+  // Cap height ratio for this font
+  const capHeightRatio =
+    (font.tables.os2.sCapHeight || font.ascender * 0.7) / font.unitsPerEm;
 
-  // Center the cap-height vertically with the icon
-  // Icon body spans y:112-283, center at ~197
-  const iconCenterY = 197;
-  const capHeight =
-    ((font.tables.os2.sCapHeight || font.ascender * 0.7) / font.unitsPerEm) *
-    finalFontSize;
-  const finalBaseline = iconCenterY + capHeight / 2;
+  // Solve: iconWidth * scale + gap + textAdvanceWidth = availableWidth
+  // Where: scale = iconToTextRatio * fontSize * capHeightRatio / ICON.height
+  const advPerPx = font.getAdvanceWidth(text, 1);
+  const gap = 50;
+  const availableWidth = viewBoxWidth - 2 * margin;
 
-  const pathData = generateWordmarkPath(
-    font,
-    text,
-    finalFontSize,
-    xStart,
-    finalBaseline,
-  );
-  console.log(`Generated path data (${pathData.length} chars)`);
+  const fontSize =
+    (availableWidth - gap) /
+    ((ICON.width * iconToTextRatio * capHeightRatio) / ICON.height + advPerPx);
 
-  // Update all SVG files
-  console.log("\nUpdating SVG files...");
+  const capHeight = fontSize * capHeightRatio;
+  const iconScale = (iconToTextRatio * capHeight) / ICON.height;
+  const scaledIconWidth = ICON.width * iconScale;
+  const textWidth = font.getAdvanceWidth(text, fontSize);
+
+  console.log(`Font size: ${fontSize.toFixed(1)}px`);
+  console.log(`Cap height: ${capHeight.toFixed(1)}px`);
+  console.log(`Icon scale: ${iconScale.toFixed(3)} (${(ICON.height * iconScale).toFixed(1)}px tall)`);
+  console.log(`Text width: ${textWidth.toFixed(1)}px`);
+  console.log(`Total width: ${(scaledIconWidth + gap + textWidth).toFixed(1)}px / ${availableWidth}px available`);
+
+  // Position: center icon (taller element) vertically, align text to icon center
+  const scaledIconHeight = ICON.height * iconScale;
+  const centerY = viewBoxHeight / 2;
+  const iconX = margin;
+  const iconY = centerY - scaledIconHeight / 2;
+  const textX = margin + scaledIconWidth + gap;
+  const textBaseline = centerY + capHeight / 2;
+
+  const wordmarkPath = font.getPath(text, textX, textBaseline, fontSize).toPathData(3);
+  console.log(`Generated wordmark path (${wordmarkPath.length} chars)`);
+
+  // Generate all SVGs
+  console.log("\nWriting SVG files...");
+  const svgMap = {};
   for (const variant of LOGO_VARIANTS) {
-    const svg = readFileSync(variant.src, "utf-8");
-
-    // Replace the first <path> element (the wordmark) — always the first <path> in the file
-    const updatedSvg = svg.replace(
-      /<path d="[^"]*"/,
-      `<path d="${pathData}"`,
-    );
-
-    if (updatedSvg === svg) {
-      console.log(`  ${variant.label} (already up to date)`);
-      continue;
-    }
-
-    writeFileSync(variant.src, updatedSvg);
-    console.log(`  Updated ${variant.label}`);
+    const svg = buildSVG({
+      wordmarkPath,
+      textFill: variant.textFill,
+      iconScale,
+      iconX,
+      iconY,
+      viewBoxWidth,
+      viewBoxHeight,
+    });
+    writeFileSync(variant.path, svg);
+    svgMap[variant.label] = svg;
+    console.log(`  ${variant.label}`);
   }
 
-  // Generate PNGs from updated SVGs
+  // Generate PNGs
   console.log("\nGenerating PNG files...");
   for (const output of PNG_OUTPUTS) {
-    const svg = readFileSync(output.svgPath, "utf-8");
+    const svg = svgMap[output.svgVariant];
     const resvg = new Resvg(svg, {
       fitTo: { mode: "width", value: 2048 },
     });
     const png = resvg.render().asPng();
     writeFileSync(output.pngPath, png);
-    console.log(`  Generated ${output.label}`);
+    console.log(`  ${output.label}`);
   }
 
   console.log("\nDone!");
