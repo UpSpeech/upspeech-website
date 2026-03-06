@@ -92,8 +92,8 @@ const TECHNIQUES = {
 const PAGES = [
   {
     slug: "home",
-    title: "UpSpeech",
-    subtitle: "AI-Powered Speech Therapy Support",
+    title: "AI-Powered Speech Therapy Support",
+    subtitle: null,
     description:
       "Transform your speech therapy practice with AI-powered training between sessions.",
     category: null,
@@ -166,8 +166,8 @@ function LogoIcon() {
   return {
     type: "svg",
     props: {
-      width: 62,
-      height: 72,
+      width: 38,
+      height: 44,
       viewBox: "100 84 178 206",
       children: [
         {
@@ -256,14 +256,14 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
     children.push(ScreenshotCard());
   }
 
-  // Top bar: logo + domain
+  // Top bar: logo icon + wordmark
   children.push({
     type: "div",
     props: {
       style: {
         display: "flex",
         alignItems: "center",
-        gap: 16,
+        gap: 14,
       },
       children: [
         LogoIcon(),
@@ -271,13 +271,13 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
           type: "span",
           props: {
             style: {
-              fontSize: 22,
-              fontFamily: "Plus Jakarta Sans",
-              fontWeight: 500,
-              color: "#958AF0",
-              letterSpacing: "0.03em",
+              fontSize: 32,
+              fontFamily: "Outfit",
+              fontWeight: 700,
+              color: "#FDFDFD",
+              letterSpacing: "-0.01em",
             },
-            children: "upspeech.app",
+            children: "UpSpeech",
           },
         },
       ],
@@ -291,7 +291,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
       props: {
         style: {
           display: "flex",
-          marginTop: 40,
+          marginTop: 24,
         },
         children: [
           {
@@ -321,7 +321,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
       style: {
         display: "flex",
         flexDirection: "column",
-        marginTop: category ? 16 : 48,
+        marginTop: category ? 12 : 24,
         maxWidth: textMaxWidth,
         gap: 8,
       },
@@ -371,7 +371,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
         height: 3,
         background: "#958AF0",
         borderRadius: 2,
-        marginTop: 28,
+        marginTop: 20,
       },
     },
   });
@@ -386,7 +386,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
         fontWeight: 400,
         color: "rgba(253,253,253,0.6)",
         lineHeight: 1.5,
-        marginTop: 20,
+        marginTop: 16,
         maxWidth: textMaxWidth,
       },
       children: description,
@@ -399,6 +399,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
       style: {
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         width: "100%",
         height: "100%",
         padding: "56px 64px",

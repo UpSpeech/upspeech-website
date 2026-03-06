@@ -22,10 +22,8 @@ export default {
       fontFamily: {
         // Primary fonts (synced with app-frontend)
         heading: ["Outfit", "system-ui", "sans-serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        body: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
         accent: ["Bricolage Grotesque", "system-ui", "sans-serif"],
-        // Legacy fallback
-        nunito: ["Nunito", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
