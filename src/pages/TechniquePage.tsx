@@ -119,7 +119,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
   // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
-    const lines = text.split("\n").filter((line) => line.trim());
+    const lines = text.split(/\\n|\n/).filter((line) => line.trim());
     const isNumberedList = lines.every((line) => /^\d+[\.\)]\s/.test(line));
 
     if (isNumberedList) {
