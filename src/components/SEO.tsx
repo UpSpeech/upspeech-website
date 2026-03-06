@@ -4,9 +4,6 @@ const BASE_URL = "https://upspeech.app";
 const DEFAULT_TITLE = "UpSpeech - AI-Powered Speech Therapy Support";
 const DEFAULT_DESCRIPTION =
   "Transform your speech therapy practice with AI-powered training between sessions. Help patients practice effectively and see better results.";
-const DEFAULT_IMAGE = `${BASE_URL}/screenshots/desktop.jpg`;
-const DEFAULT_IMAGE_ALT =
-  "UpSpeech dashboard showing AI-powered speech therapy tools for stuttering treatment";
 
 interface SEOProps {
   title?: string;
@@ -19,18 +16,25 @@ interface SEOProps {
   structuredData?: object;
 }
 
+function ogImageForPath(path: string): string {
+  const slug = path === "/" || path === "" ? "home" : path.replace(/^\//, "");
+  return `${BASE_URL}/og/${slug}.png`;
+}
+
 export function SEO({
   title,
   description = DEFAULT_DESCRIPTION,
   path = "",
-  image = DEFAULT_IMAGE,
-  imageAlt = DEFAULT_IMAGE_ALT,
+  image,
+  imageAlt,
   noindex = false,
   type = "website",
   structuredData,
 }: SEOProps) {
   const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
   const canonicalUrl = `${BASE_URL}${path}`;
+  const resolvedImage = image ?? ogImageForPath(path);
+  const resolvedImageAlt = imageAlt ?? fullTitle;
 
   return (
     <Helmet>
@@ -53,20 +57,20 @@ export function SEO({
       <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:secure_url" content={image} />
-      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image" content={resolvedImage} />
+      <meta property="og:image:secure_url" content={resolvedImage} />
+      <meta property="og:image:type" content={resolvedImage.endsWith(".jpg") || resolvedImage.endsWith(".jpeg") ? "image/jpeg" : "image/png"} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={imageAlt} />
+      <meta property="og:image:alt" content={resolvedImageAlt} />
       <meta property="og:url" content={canonicalUrl} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content={imageAlt} />
+      <meta name="twitter:image" content={resolvedImage} />
+      <meta name="twitter:image:alt" content={resolvedImageAlt} />
 
       {/* Structured Data */}
       {structuredData && (

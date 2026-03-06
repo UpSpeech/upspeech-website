@@ -92,7 +92,7 @@ export function getTechniqueStructuredData(
         url: "https://upspeech.app/icons/apple-touch-icon.png",
       },
     },
-    image: "https://upspeech.app/screenshots/desktop.jpg",
+    image: `https://upspeech.app/og/techniques/${slug}.png`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://upspeech.app/techniques/${slug}`,
