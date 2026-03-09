@@ -32,3 +32,8 @@ public/og
 
 # Ignore everything in duplicate root directory
 upspeech-website/*
+
+# CLAUDE
+.claude
+**/CLAUDE.md
+!/CLAUDE.md
