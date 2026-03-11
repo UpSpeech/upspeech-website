@@ -68,7 +68,7 @@ const CTASection = () => {
         linkedin_url: "https://www.linkedin.com/company/upspeech/",
         logo_url: "https://upspeech.app/images/logo.svg",
         referral_link: "https://upspeech.app",
-        reply_to: "upspeechapp@gmail.com",
+        reply_to: "hello@upspeech.app",
       };
 
       await emailjs.send(

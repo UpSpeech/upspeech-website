@@ -127,7 +127,8 @@ All environment variables for Docker development are configured in `.env.docker`
 
 | Variable               | Purpose                                | How to Get                                   |
 | ---------------------- | -------------------------------------- | -------------------------------------------- |
-| `GROQ_API_KEY`         | AI transcription and report generation | https://console.groq.com/keys                |
+| `ELEVENLABS_API_KEY`   | AI speech-to-text transcription        | https://elevenlabs.io/app/settings/api-keys  |
+| `GOOGLE_API_KEY`       | AI report generation (Gemini)          | https://aistudio.google.com/apikey           |
 | `RAILS_MASTER_KEY`     | Rails encrypted credentials            | `openssl rand -hex 32`                       |
 | `SECRET_KEY_BASE`      | Secure session cookies                 | `openssl rand -hex 64`                       |
 | `JWT_SECRET_KEY`       | JWT authentication                     | `openssl rand -hex 64`                       |
@@ -212,7 +213,7 @@ Complete documentation in the `docs/` directory:
 
 - **Backend**: Rails 8, PostgreSQL 16, Solid Queue
 - **Frontend**: React 19, TypeScript, Vite, TailwindCSS v4
-- **AI Service**: FastAPI, Groq API (Whisper + Llama)
+- **AI Service**: FastAPI, ElevenLabs (Scribe v2), Google Gemini
 - **Infrastructure**: Docker, Railway
 - **Runtime**: Ruby 3.4.7, Node 22.17.1, Python 3.11+
 

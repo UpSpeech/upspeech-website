@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** March 5, 2026
+**Last Updated:** March 11, 2026
 
 ## Introduction
 
@@ -38,10 +38,10 @@ UpSpeech allows users to upload speech recordings for analysis:
 
 ### 3. Transcriptions and AI-Generated Content
 
-We use third-party artificial intelligence services (Groq API) to process your audio recordings:
+We use third-party artificial intelligence services to process your audio recordings:
 
-- **Transcriptions** - Text transcripts generated from your audio recordings using AI speech recognition (Whisper)
-- **AI-generated reports** - Clinical reports automatically generated using large language models (GPT)
+- **Transcriptions** - Text transcripts generated from your audio recordings using AI speech recognition (ElevenLabs Scribe v2)
+- **AI-generated reports** - Clinical reports automatically generated using large language models (Google Gemini)
 - **Disfluency annotations** - Automated detection and classification of speech disfluencies (repetitions, prolongations, blocks)
 - **Speech analysis data** - Statistical analysis of speech patterns and stuttering severity
 
@@ -115,8 +115,8 @@ We use the information we collect for the following purposes:
 
 ### 2. AI Processing and Report Generation
 
-- **Transcription** - Send your audio recordings to Groq API for speech-to-text conversion
-- **Report automation** - Generate clinical reports using AI language models based on transcription and your clinical context
+- **Transcription** - Send your audio recordings to ElevenLabs for speech-to-text conversion
+- **Report automation** - Generate clinical reports using Google Gemini language models based on transcription and your clinical context
 - **Disfluency detection** - Automatically identify and classify stuttering behaviors in recordings
 - **Clinical insights** - Provide statistical analysis and trends to support treatment planning
 
@@ -150,7 +150,8 @@ We do not sell your personal information to third parties. We share your informa
 
 We use trusted third-party services to operate our platform:
 
-- **Groq API** - Provides AI transcription (Whisper) and language models (GPT) for report generation. Audio recordings are sent to Groq for processing. See Groq's privacy policy at [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
+- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2). Audio recordings are sent to ElevenLabs for processing. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
+- **Google AI (Gemini)** - Provides large language models for clinical report generation and AI-assisted features. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
 - **Email service providers** - Deliver transactional emails (invitations, password resets, notifications)
@@ -250,9 +251,9 @@ Under the General Data Protection Regulation (GDPR), you have the following righ
 ### 5. Complaint
 
 - **Supervisory authority** - Lodge a complaint with the Portuguese data protection authority (Comissão Nacional de Proteção de Dados — CNPD) or your local data protection authority
-- **Contact us** - Reach out to us directly with privacy concerns at upspeechapp@gmail.com
+- **Contact us** - Reach out to us directly with privacy concerns at help@upspeech.app
 
-**To exercise these rights**, email us at **upspeechapp@gmail.com** with your request. We will respond within 30 days.
+**To exercise these rights**, email us at **help@upspeech.app** with your request. We will respond within 30 days.
 
 ## Children's Privacy
 
@@ -283,7 +284,7 @@ Your rights under the GDPR are described in the "Your Rights" section above.
 
 ### Data Protection Contact
 
-For GDPR-related inquiries, contact us at **upspeechapp@gmail.com**.
+For GDPR-related inquiries, contact us at **help@upspeech.app**.
 
 Our supervisory authority is the Comissão Nacional de Proteção de Dados (CNPD), Portugal.
 
@@ -323,7 +324,7 @@ Your continued use of UpSpeech after the effective date of changes constitutes y
 
 If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-**Email:** upspeechapp@gmail.com
+**Email:** hello@upspeech.app
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Platform:** Use the "Support" link in the platform footer to submit a support request
 

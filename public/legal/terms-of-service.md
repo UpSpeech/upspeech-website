@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last Updated:** March 5, 2026
+**Last Updated:** March 11, 2026
 
 ## 1. Agreement to Terms
 
@@ -168,7 +168,7 @@ All uploaded content (audio, video, text) must:
 You retain ownership of Your Content. By uploading Your Content, you grant UpSpeech a **limited, non-exclusive, worldwide, royalty-free license** to:
 
 - Store, process, and display Your Content to provide the Service
-- Transmit Your Content to third-party AI services (Groq API) for transcription and analysis
+- Transmit Your Content to third-party AI services (ElevenLabs, Google Gemini) for transcription and analysis
 - Create derivatives (transcriptions, reports, annotations) from Your Content
 - Back up Your Content for data protection and disaster recovery
 
@@ -207,7 +207,7 @@ Your privacy is important to us. Our [Privacy Policy](/privacy) explains how we 
 
 Key points:
 
-- **Audio recordings** are processed by third-party AI services (Groq API) for transcription
+- **Audio recordings** are processed by third-party AI services (ElevenLabs) for transcription
 - **Storage** - Files are stored securely in Google Cloud Storage
 - **Multi-tenant isolation** - Your organization's data is isolated from other organizations
 - **Consent** - You are responsible for obtaining necessary consent before uploading patient recordings
@@ -219,26 +219,28 @@ By using the Service, you consent to data processing as described in the Privacy
 
 UpSpeech integrates with third-party services to provide functionality:
 
-### 9.1 Groq API (AI Services)
+### 9.1 ElevenLabs (Speech-to-Text)
 
-We use Groq API for:
+We use ElevenLabs for audio transcription (Scribe v2 speech-to-text). Your audio recordings are sent to ElevenLabs for processing. See ElevenLabs' terms and privacy policy:
 
-- Audio transcription (Whisper speech-to-text)
-- Report generation (GPT language models)
+- [https://elevenlabs.io/terms-of-service](https://elevenlabs.io/terms-of-service)
+- [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 
-Your audio recordings and related data are sent to Groq for processing. See Groq's terms and privacy policy:
+### 9.2 Google AI — Gemini (Report Generation)
 
-- [https://groq.com/terms-of-use/](https://groq.com/terms-of-use/)
-- [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
+We use Google Gemini language models for clinical report generation and AI-assisted features. See Google's terms and privacy policy:
 
-### 9.2 Google Cloud Storage
+- [https://cloud.google.com/terms](https://cloud.google.com/terms)
+- [https://policies.google.com/privacy](https://policies.google.com/privacy)
+
+### 9.3 Google Cloud Storage
 
 We use Google Cloud Platform to store audio/video files and images. See Google's terms:
 
 - [https://cloud.google.com/terms](https://cloud.google.com/terms)
 - [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
-### 9.3 Railway (Hosting)
+### 9.4 Railway (Hosting)
 
 Our application is hosted on Railway. See Railway's terms:
 
@@ -345,7 +347,7 @@ We will provide reasonable notice of material changes when feasible.
 You may terminate your account at any time by:
 
 - Using the account deletion feature in the platform
-- Contacting us at upspeechapp@gmail.com
+- Contacting us at hello@upspeech.app
 
 Upon termination:
 
@@ -434,7 +436,7 @@ This indemnification obligation survives termination of your account or these Te
 
 ### 16.1 Informal Resolution
 
-Before filing any formal dispute, you agree to contact us at **upspeechapp@gmail.com** to attempt to resolve the dispute informally. We will work with you in good faith to resolve the issue.
+Before filing any formal dispute, you agree to contact us at **hello@upspeech.app** to attempt to resolve the dispute informally. We will work with you in good faith to resolve the issue.
 
 ### 16.2 Governing Law
 
@@ -484,7 +486,7 @@ You agree not to export or re-export the Service or any part thereof in violatio
 
 For questions about these Terms, contact us:
 
-**Email:** upspeechapp@gmail.com
+**Email:** hello@upspeech.app
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Support:** Use the support link in the platform
 
@@ -496,4 +498,4 @@ These Terms are written in English. Any translations are provided for convenienc
 
 **By using UpSpeech, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**
 
-**Last Updated:** March 5, 2026
+**Last Updated:** March 11, 2026

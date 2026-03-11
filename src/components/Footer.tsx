@@ -50,7 +50,7 @@ const Footer = () => {
               LinkedIn
             </a>
             <a
-              href="mailto:upspeechapp@gmail.com"
+              href="mailto:hello@upspeech.app"
               className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
             >
               Contact us

@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last Updated:** March 5, 2026
+**Last Updated:** March 11, 2026
 
 ## Introduction
 
@@ -277,11 +277,17 @@ When you upload or download audio/video files, Google Cloud Storage may use cook
 
 See Google's cookie policy: [https://policies.google.com/technologies/cookies](https://policies.google.com/technologies/cookies)
 
-### Groq API
+### ElevenLabs
 
-We send audio files to Groq API for transcription and report generation. Groq may use cookies on their infrastructure for security purposes.
+We send audio files to ElevenLabs for speech-to-text transcription. ElevenLabs may use cookies on their infrastructure for security purposes.
 
-See Groq's privacy policy: [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
+See ElevenLabs' privacy policy: [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
+
+### Google AI (Gemini)
+
+We use Google Gemini language models for clinical report generation. Google may use cookies on their infrastructure for security purposes.
+
+See Google's privacy policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 
 ## Do Not Track (DNT)
 
@@ -322,7 +328,7 @@ As an EU-based service, we comply with the General Data Protection Regulation (G
 - Object to processing
 - Withdraw consent at any time
 
-To exercise these rights, contact us at upspeechapp@gmail.com
+To exercise these rights, contact us at help@upspeech.app
 
 ## Changes to This Cookie Policy
 
@@ -344,7 +350,7 @@ Your continued use of UpSpeech after changes take effect constitutes acceptance 
 
 If you have questions about this Cookie Policy or how we use cookies and similar technologies, please contact us:
 
-**Email:** upspeechapp@gmail.com
+**Email:** hello@upspeech.app
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Support:** Use the support link in the platform footer
 
