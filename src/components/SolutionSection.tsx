@@ -93,7 +93,7 @@ const SolutionSection = () => {
                 {[
                   "Assign custom plans in minutes",
                   "Track practice consistency and difficulty",
-                  "HIPAA-compliant reports after every session",
+                  "Professional clinical reports after every session",
                   "Motivate patients with daily micro-successes",
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-4">
