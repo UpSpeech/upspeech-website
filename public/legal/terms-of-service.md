@@ -29,7 +29,11 @@ The Service is provided "as is" and may be modified, updated, or discontinued at
 
 ### 3.1 Age Requirements
 
-You must be at least 18 years of age to create an account and use the Service. If you are under 18, you may only use the Service under the supervision of a parent, legal guardian, or licensed healthcare professional who has agreed to these Terms.
+You must be at least 18 years of age to create an account and use the Service independently.
+
+Users aged 13 to 17 may use the Service only under the supervision of a parent, legal guardian, or licensed healthcare professional who has agreed to these Terms and provided verifiable consent. The supervising adult is responsible for the minor's use of the Service and any content uploaded on their behalf.
+
+The Service is not intended for children under 13. We do not knowingly collect personal information from children under 13.
 
 ### 3.2 Professional Qualifications
 
@@ -116,7 +120,7 @@ Patients are individuals receiving speech therapy who:
 - View their own reports and progress
 - Can only access their own data (cannot view other patients' information)
 
-**Patient consent:** By uploading recordings, you confirm that you (or your legal guardian) consent to the processing of your speech data.
+**Patient consent:** By uploading recordings, you confirm that you (or your parent/legal guardian, if you are under 18) consent to the processing of your speech data.
 
 ### 5.5 Member
 

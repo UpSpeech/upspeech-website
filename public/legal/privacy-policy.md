@@ -259,7 +259,9 @@ Under the General Data Protection Regulation (GDPR), you have the following righ
 
 UpSpeech is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.
 
-**Note for parents/guardians:** If a child's speech recordings are uploaded by a parent, guardian, or therapist, the adult user is responsible for obtaining any necessary consent and ensuring compliance with applicable laws regarding children's data protection.
+Users aged 13 to 17 may use the platform only with the consent and supervision of a parent, legal guardian, or licensed speech-language pathologist. The supervising adult is responsible for the minor's use of the platform, including obtaining any necessary consent before uploading speech recordings.
+
+Users aged 18 and over are solely responsible for their own use of the platform and the content they upload.
 
 If we become aware that we have collected personal information from a child under 13 without proper parental consent, we will take steps to delete that information promptly.
 

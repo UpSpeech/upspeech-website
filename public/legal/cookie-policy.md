@@ -298,9 +298,9 @@ UpSpeech respects "Do Not Track" (DNT) browser signals:
 
 ## Children's Privacy
 
-UpSpeech is not directed to children under 13, and we do not knowingly collect data from children through cookies or Local Storage.
+UpSpeech is not directed to children under 13, and we do not knowingly collect data from children under 13 through cookies or Local Storage.
 
-If a child's recordings are uploaded by a parent or therapist, the adult user is responsible for obtaining appropriate consent and managing the child's data.
+Users aged 13 to 17 may use the platform only with the consent and supervision of a parent, legal guardian, or licensed speech-language pathologist. The supervising adult is responsible for obtaining appropriate consent and managing the minor's data.
 
 ## International Users
 
