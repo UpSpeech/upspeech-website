@@ -4,8 +4,8 @@ import ValueCycle from "./ValueCycle";
 import PhoneMockup from "./PhoneMockup";
 
 const SolutionSection = () => {
-  const [selectedMood, setSelectedMood] = useState<number>(3);
-  const [showNotificationDot, setShowNotificationDot] = useState(false);
+  const [_selectedMood, _setSelectedMood] = useState<number>(3);
+  const [_showNotificationDot, _setShowNotificationDot] = useState(false);
   const phoneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

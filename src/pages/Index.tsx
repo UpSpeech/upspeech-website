@@ -9,8 +9,8 @@ import GuidingVoicesBanner from "@/components/GuidingVoicesBanner";
 import DifferentiationSection from "@/components/DifferentiationSection";
 import PartnersSection from "@/components/PartnersSection";
 import CTASection from "@/components/CTASection";
+import TechniquesOverviewSection from "@/components/TechniquesOverviewSection";
 import Footer from "@/components/Footer";
-import FAQSection from "@/components/FAQSection";
 
 const Index = () => {
   return (
@@ -23,6 +23,7 @@ const Index = () => {
       <SolutionSection />
       <GuidingVoicesBanner />
       <DifferentiationSection />
+      <TechniquesOverviewSection />
       <PartnersSection />
       <CTASection />
       {/* <FAQSection /> */}

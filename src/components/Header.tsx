@@ -60,6 +60,13 @@ const Header = () => {
             >
               Why Us
             </button>
+            <a
+              href="/techniques"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30"
+              onClick={() => trackButtonClick("nav_techniques", "header")}
+            >
+              Techniques
+            </a>
           </nav>
 
           <Button

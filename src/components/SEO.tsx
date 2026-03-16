@@ -13,7 +13,7 @@ interface SEOProps {
   imageAlt?: string;
   noindex?: boolean;
   type?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
 }
 
 function ogImageForPath(path: string): string {
@@ -73,11 +73,18 @@ export function SEO({
       <meta name="twitter:image:alt" content={resolvedImageAlt} />
 
       {/* Structured Data */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
+      {structuredData &&
+        (Array.isArray(structuredData)
+          ? structuredData.map((data, i) => (
+              <script key={i} type="application/ld+json">
+                {JSON.stringify(data)}
+              </script>
+            ))
+          : (
+              <script type="application/ld+json">
+                {JSON.stringify(structuredData)}
+              </script>
+            ))}
     </Helmet>
   );
 }

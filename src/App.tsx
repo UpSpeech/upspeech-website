@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
-import { SEO } from "@/components/SEO";
 import Index from "./pages/Index";
+// TODO: Re-enable when "What Is Stuttering" page is ready for production
+// import WhatIsStuttering from "./pages/WhatIsStuttering";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -43,6 +44,12 @@ const App = () => (
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+
+            {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
+            {/* <Route
+              path="/what-is-stuttering"
+              element={<WhatIsStuttering />}
+            /> */}
 
             {/* Technique Documentation Routes */}
             <Route path="/techniques" element={<TechniquesIndexPage />} />

@@ -117,6 +117,15 @@ const PAGES = [
     showScreenshot: true,
   })),
   {
+    slug: "what-is-stuttering",
+    title: "What Is Stuttering?",
+    subtitle: "Types, Causes & Treatment",
+    description:
+      "A comprehensive guide to understanding stuttering and evidence-based treatment approaches.",
+    category: "Guide",
+    showScreenshot: false,
+  },
+  {
     slug: "privacy",
     title: "Privacy Policy",
     subtitle: null,

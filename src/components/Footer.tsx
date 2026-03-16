@@ -23,6 +23,13 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-2">
+            {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
+            {/* <a
+              href="/what-is-stuttering"
+              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+            >
+              What Is Stuttering?
+            </a> */}
             <a
               href="/privacy"
               className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"

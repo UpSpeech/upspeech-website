@@ -5,7 +5,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechnique, type Technique } from "@/lib/api";
-import { TECHNIQUE_SEO, getTechniqueStructuredData } from "@/lib/seo-data";
+import {
+  TECHNIQUE_SEO,
+  getTechniqueStructuredData,
+  getTechniqueFAQStructuredData,
+} from "@/lib/seo-data";
+import { TechniqueFAQ } from "@/components/TechniqueFAQ";
 
 interface TechniquePageProps {
   slug: string;
@@ -120,14 +125,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
   // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
     const lines = text.split(/\\n|\n/).filter((line) => line.trim());
-    const isNumberedList = lines.every((line) => /^\d+[\.\)]\s/.test(line));
+    const isNumberedList = lines.every((line) => /^\d+[.)]\s/.test(line));
 
     if (isNumberedList) {
       return (
         <ol className="list-decimal list-inside space-y-3">
           {lines.map((line, index) => (
             <li key={index} className="leading-relaxed">
-              {line.replace(/^\d+[\.\)]\s*/, "")}
+              {line.replace(/^\d+[.)]\s*/, "")}
             </li>
           ))}
         </ol>
@@ -146,11 +151,10 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     technique.description ||
     staticSeo?.description ||
     `Learn about ${technique.name} — a speech therapy technique for stuttering.`;
-  const structuredData = getTechniqueStructuredData(
-    slug,
-    technique.name,
-    seoDescription,
-  );
+  const structuredData = [
+    getTechniqueStructuredData(slug, technique.name, seoDescription),
+    getTechniqueFAQStructuredData(slug, locale),
+  ].filter(Boolean);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -294,6 +298,8 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </div>
                 </Card>
               )}
+            {/* FAQ Section */}
+            <TechniqueFAQ slug={slug} locale={locale} />
           </div>
 
           {/* Call to Action */}

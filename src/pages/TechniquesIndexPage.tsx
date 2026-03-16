@@ -83,16 +83,16 @@ export function TechniquesIndexPage() {
     pt: {
       title: "Técnicas de Terapia da Fala",
       subtitle:
-        "Explore técnicas baseadas em evidências para terapia de gagueira",
+        "Explore técnicas baseadas em evidências para a terapia da gaguez",
       featured: "Destaque",
       mainCategories: "Categorias de Técnicas",
       standalone: "Técnicas Independentes",
       viewDetails: "Ver Detalhes",
       techniques: "técnicas",
-      loading: "Carregando técnicas...",
+      loading: "A carregar técnicas...",
       error: "Erro ao Carregar Técnicas",
       tryAgain:
-        "Falha ao carregar técnicas. Por favor, tente novamente mais tarde.",
+        "Erro ao carregar técnicas. Por favor, tente novamente mais tarde.",
     },
     es: {
       title: "Técnicas de Terapia del Habla",

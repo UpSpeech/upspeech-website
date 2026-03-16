@@ -84,6 +84,26 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Educational Content -->
+  <url>
+    <loc>https://upspeech.app/what-is-stuttering</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://upspeech.app/what-is-stuttering?lang=pt</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://upspeech.app/what-is-stuttering?lang=es</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Legal Pages -->
   <url>
     <loc>https://upspeech.app/privacy</loc>

@@ -1,0 +1,42 @@
+# UpSpeech
+
+> UpSpeech is an AI-powered speech therapy platform that helps speech-language pathologists and their patients manage stuttering. Patients get structured practice between sessions with therapist-linked feedback and progress tracking. AI automates clinical report writing.
+
+UpSpeech provides evidence-based information about stuttering and speech therapy techniques. The content below covers stuttering as a condition and the therapeutic techniques used to treat it.
+
+## About Stuttering
+
+- [What Is Stuttering?](https://upspeech.app/what-is-stuttering): A comprehensive guide to stuttering — definition, types (developmental, neurogenic, psychogenic), core behaviors (repetitions, prolongations, blocks), prevalence (~1% of adults worldwide), causes (genetics, neurological differences), impact, and evidence-based treatment approaches.
+
+## Speech Therapy Techniques
+
+- [All Techniques](https://upspeech.app/techniques): Index of evidence-based speech therapy techniques for stuttering, organized by category.
+
+### Stuttering Modification
+
+Techniques that change how a person stutters — making stuttering moments easier and less tense.
+
+- [Voluntary Stuttering](https://upspeech.app/techniques/voluntary-stuttering): Intentionally stuttering in a controlled way to reduce fear, shame, and avoidance behaviors.
+- [Cancellation](https://upspeech.app/techniques/cancelation): Pausing after a stuttered word, identifying what went wrong, and repeating it with easier speech.
+- [Pull-Out](https://upspeech.app/techniques/pull-out): Modifying a stutter in real time mid-word by reducing tension and transitioning to smoother speech.
+- [Preparatory Set](https://upspeech.app/techniques/preparatory-set): Planning relaxed articulatory movements before speaking a word to prevent blocks.
+- [Holding](https://upspeech.app/techniques/holding): Maintaining articulatory position during a block and releasing tension gradually.
+
+### Fluency Shaping
+
+Techniques that change overall speech production patterns to promote smoother, more fluent speech.
+
+- [Soft Starts](https://upspeech.app/techniques/soft-starts): Beginning voicing gently with relaxed vocal folds to reduce hard glottal attacks.
+- [Soft Articulation Contact](https://upspeech.app/techniques/soft-articulation-contact): Using light, relaxed pressure when articulators make contact during speech.
+- [Prolonged Speech](https://upspeech.app/techniques/prolonged-speech): Extending vowels and continuant consonants to slow speaking rate and reduce interruptions.
+- [Speech Speed Management](https://upspeech.app/techniques/speech-speed-management): Controlling speaking rate through phrasing, pausing, and rate reduction.
+- [Pauses](https://upspeech.app/techniques/pauses): Incorporating natural breaks between phrases to reduce time pressure and maintain control.
+
+### Cognitive Approaches
+
+- [Identification & Desensitization](https://upspeech.app/techniques/identification-desensitization): Recognizing stuttering patterns and reducing emotional reactions to disfluency through structured exposure.
+
+## Optional
+
+- [Privacy Policy](https://upspeech.app/privacy): How UpSpeech collects, uses, and protects personal data.
+- [Terms of Service](https://upspeech.app/terms): Terms and conditions for using the UpSpeech platform.
