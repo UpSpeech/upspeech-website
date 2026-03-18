@@ -89,6 +89,8 @@ const App = () => (
               element={<IdentificationDesensitization />}
             />
 
+            <Route path="/preview" element={<PreviewPage />} />
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
