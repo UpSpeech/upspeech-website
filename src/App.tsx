@@ -9,6 +9,7 @@ import { PageViewTracker } from "@/components/PageViewTracker";
 import Index from "./pages/Index";
 // TODO: Re-enable when "What Is Stuttering" page is ready for production
 // import WhatIsStuttering from "./pages/WhatIsStuttering";
+import PreviewPage from "./pages/PreviewPage";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -82,6 +83,8 @@ const App = () => (
               path="/techniques/identification-desensitization"
               element={<IdentificationDesensitization />}
             />
+
+            <Route path="/preview" element={<PreviewPage />} />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
