@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Skip prerender for deploy previews (no Chrome on Netlify CI)
+[context.deploy-preview]
+  command = "node scripts/generate-og-images.mjs && vite build"
+
 [[redirects]]
   from = "https://upspeechapp.com/*"
   to = "https://upspeech.app/:splat"
