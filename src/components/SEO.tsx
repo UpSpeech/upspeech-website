@@ -5,6 +5,14 @@ const DEFAULT_TITLE = "UpSpeech - AI-Powered Speech Therapy Support";
 const DEFAULT_DESCRIPTION =
   "Transform your speech therapy practice with AI-powered training between sessions. Help patients practice effectively and see better results.";
 
+const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
+
+const LOCALE_TO_OG: Record<string, string> = {
+  en: "en_US",
+  pt: "pt_PT",
+  es: "es_ES",
+};
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -13,6 +21,7 @@ interface SEOProps {
   imageAlt?: string;
   noindex?: boolean;
   type?: string;
+  locale?: string;
   structuredData?: object | object[];
 }
 
@@ -29,12 +38,14 @@ export function SEO({
   imageAlt,
   noindex = false,
   type = "website",
+  locale = "en",
   structuredData,
 }: SEOProps) {
   const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
   const canonicalUrl = `${BASE_URL}${path}`;
   const resolvedImage = image ?? ogImageForPath(path);
   const resolvedImageAlt = imageAlt ?? fullTitle;
+  const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
 
   return (
     <Helmet>
@@ -51,10 +62,24 @@ export function SEO({
         }
       />
 
+      {/* hreflang alternates */}
+      {SUPPORTED_LOCALES.map((l) => (
+        <link
+          key={l}
+          rel="alternate"
+          hrefLang={l}
+          href={l === "en" ? canonicalUrl : `${canonicalUrl}?lang=${l}`}
+        />
+      ))}
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+
       {/* OpenGraph */}
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="UpSpeech" />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={ogLocale} />
+      {SUPPORTED_LOCALES.filter((l) => l !== locale).map((l) => (
+        <meta key={l} property="og:locale:alternate" content={LOCALE_TO_OG[l]} />
+      ))}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={resolvedImage} />

@@ -80,6 +80,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
             title={staticSeo.title}
             description={staticSeo.description}
             path={`/techniques/${slug}`}
+            locale={locale}
           />
         )}
         <Header />
@@ -152,7 +153,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     staticSeo?.description ||
     `Learn about ${technique.name} — a speech therapy technique for stuttering.`;
   const structuredData = [
-    getTechniqueStructuredData(slug, technique.name, seoDescription),
+    getTechniqueStructuredData(slug, technique.name, seoDescription, locale),
     getTechniqueFAQStructuredData(slug, locale),
   ].filter(Boolean);
 
@@ -162,6 +163,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         title={seoTitle}
         description={seoDescription}
         path={`/techniques/${slug}`}
+        locale={locale}
         structuredData={structuredData}
       />
       <Header />

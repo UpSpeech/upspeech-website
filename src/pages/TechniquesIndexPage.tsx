@@ -156,7 +156,8 @@ export function TechniquesIndexPage() {
         title="Speech Therapy Techniques"
         description="Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches."
         path="/techniques"
-        structuredData={getTechniquesIndexStructuredData()}
+        locale={locale}
+        structuredData={getTechniquesIndexStructuredData(locale)}
       />
       <Header />
 

@@ -70,6 +70,7 @@ export function getTechniqueStructuredData(
   slug: string,
   name: string,
   description: string,
+  locale: string = "en",
 ) {
   return {
     "@context": "https://schema.org",
@@ -77,7 +78,7 @@ export function getTechniqueStructuredData(
     headline: name,
     description: description,
     url: `https://upspeech.app/techniques/${slug}`,
-    inLanguage: "en",
+    inLanguage: locale,
     datePublished: "2026-02-01",
     dateModified: "2026-03-03",
     author: {
@@ -152,7 +153,7 @@ export function getTechniqueFAQStructuredData(
   };
 }
 
-export function getTechniquesIndexStructuredData() {
+export function getTechniquesIndexStructuredData(locale: string = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -160,7 +161,7 @@ export function getTechniquesIndexStructuredData() {
     description:
       "Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches.",
     url: "https://upspeech.app/techniques",
-    inLanguage: "en",
+    inLanguage: locale,
     isPartOf: {
       "@id": "https://upspeech.app/#website",
     },

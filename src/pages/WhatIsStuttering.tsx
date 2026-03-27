@@ -116,6 +116,7 @@ export default function WhatIsStuttering() {
           description={seo.description}
           path="/what-is-stuttering"
           type="article"
+          locale={locale}
           structuredData={structuredData}
         />
         <Header />
@@ -165,6 +166,7 @@ export default function WhatIsStuttering() {
         description={seo.description}
         path="/what-is-stuttering"
         type="article"
+        locale={locale}
         structuredData={structuredData}
       />
       <Header />
