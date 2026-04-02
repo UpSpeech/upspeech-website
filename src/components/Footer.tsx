@@ -29,25 +29,25 @@ const Footer = () => {
             {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
             {/* <a
               href="/what-is-stuttering"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               What Is Stuttering?
             </a> */}
             <a
               href="/privacy"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               Privacy Policy
             </a>
             <a
               href="/terms"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               Terms of Service
             </a>
             <a
               href="/cookies"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               Cookie Policy
             </a>
@@ -55,13 +55,13 @@ const Footer = () => {
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               LinkedIn
             </a>
             <a
               href="mailto:hello@upspeech.app"
-              className="hover:underline font-body text-sm text-white/80 hover:text-white transition-all duration-200"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
             >
               Contact us
             </a>

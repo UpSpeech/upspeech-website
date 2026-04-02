@@ -122,7 +122,7 @@ const BrandIntroduction = () => {
             return (
               <div
                 key={idx}
-                className="flex items-center space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-3 border border-white/80"
+                className="flex items-center space-x-3 bg-white/80 rounded-lg p-3 border border-white/80"
               >
                 <div className={`${activeAudience.accentColor} rounded-lg p-2`}>
                   <HighlightIcon className="w-4 h-4 text-white" />

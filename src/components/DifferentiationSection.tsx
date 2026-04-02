@@ -103,7 +103,7 @@ const DifferentiationSection = () => {
         </div>
 
         {/* Desktop Layout - Hidden on mobile */}
-        <div className="hidden md:block bg-white/90 backdrop-blur-sm rounded-2xl border border-calm-light shadow-lg overflow-hidden">
+        <div className="hidden md:block bg-white rounded-2xl border border-calm-light shadow-lg overflow-hidden">
           <div className="grid grid-cols-[2fr,1fr,1fr] border-b border-calm-light">
             <div className="p-6 font-heading font-bold text-lg text-calm-charcoal">
               Features
@@ -167,7 +167,7 @@ const DifferentiationSection = () => {
           {features.map((item, index) => (
             <div
               key={`mobile-${index}`}
-              className="bg-white/90 backdrop-blur-sm rounded-xl border border-calm-light p-5 hover:border-calm-navy/30 transition-all duration-300"
+              className="bg-white rounded-xl border border-calm-light p-5 hover:border-calm-navy/30 transition-all duration-300"
             >
               <div className="mb-4">
                 <h3 className="font-heading font-bold text-lg text-calm-charcoal mb-2">

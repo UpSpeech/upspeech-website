@@ -149,6 +149,7 @@ const HeroSection = () => {
       {/* Wave divider — CSS transform animation (GPU-composited) */}
       <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
         <svg
+          aria-hidden="true"
           className="w-full h-24 will-change-transform animate-float-slow"
           viewBox="0 0 1200 100"
           preserveAspectRatio="none"

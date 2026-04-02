@@ -89,7 +89,7 @@ const ProblemSection = () => {
               className="group animate-fade-in-up"
               style={{ animationDelay: `${0.2 + index * 0.2}s` }}
             >
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 h-full relative overflow-hidden">
+              <div className="bg-white rounded-2xl p-8 border border-gray-200/50 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 h-full relative overflow-hidden">
                 {/* Gradient Background */}
                 <div
                   className={`absolute inset-0 opacity-50 mix-blend-multiply bg-gradient-to-br ${problem.gradient}`}

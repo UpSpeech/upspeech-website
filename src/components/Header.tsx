@@ -20,11 +20,13 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-calm-light shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-calm-light shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div
-            className="flex items-center cursor-pointer"
+          <button
+            type="button"
+            aria-label="UpSpeech — scroll to top"
+            className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender rounded-lg"
             onClick={() => {
               trackButtonClick("logo", "header");
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -33,34 +35,34 @@ const Header = () => {
             <img
               src="/images/logo.svg"
               alt="UpSpeech"
-              className="h-14 w-auto transition-transform duration-300 hover:scale-105"
+              className="h-14 w-auto"
               width="192"
               height="56"
             />
-          </div>
+          </button>
 
           <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("about")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("features")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection("differentiation")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               Why Us
             </button>
             <a
               href="/techniques"
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
               onClick={() => trackButtonClick("nav_techniques", "header")}
             >
               Techniques

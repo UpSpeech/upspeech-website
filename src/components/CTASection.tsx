@@ -186,7 +186,7 @@ const CTASection = () => {
         </p>
 
         <div
-          className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
+          className="bg-white rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
           <h3 className="font-heading font-bold text-xl text-calm-charcoal mb-6">
@@ -249,7 +249,7 @@ const CTASection = () => {
                 <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
                   <SelectValue placeholder="Choose your role" />
                 </SelectTrigger>
-                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm rounded-xl">
+                <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem
                     value="speech-therapist"
                     className="focus:bg-calm-navy/5"
@@ -290,7 +290,7 @@ const CTASection = () => {
                 <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
                   <SelectValue placeholder="Choose clinic size" />
                 </SelectTrigger>
-                <SelectContent className="border-calm-charcoal/10 bg-white/90 backdrop-blur-sm rounded-xl">
+                <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem value="solo" className="focus:bg-calm-navy/5">
                     Solo Practice
                   </SelectItem>

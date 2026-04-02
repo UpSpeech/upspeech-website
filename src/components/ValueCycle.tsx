@@ -119,7 +119,11 @@ const ValueCycle = () => {
     <div className="flex items-center justify-center">
       <div className="relative w-full max-w-md aspect-square">
         {/* SVG Container */}
-        <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full">
+        <svg
+          viewBox="0 0 100 100"
+          className="absolute inset-0 w-full h-full"
+          aria-hidden="true"
+        >
           {/* Connecting Path */}
           <path
             d={generateCirclePath()}
@@ -177,8 +181,13 @@ const ValueCycle = () => {
                 transform: "translate(-50%, -50%)",
                 zIndex: isHovered ? 30 : 20,
               }}
+              role="button"
+              tabIndex={0}
+              aria-label={node.title}
               onMouseEnter={() => setHoveredNode(index)}
               onMouseLeave={() => setHoveredNode(null)}
+              onFocus={() => setHoveredNode(index)}
+              onBlur={() => setHoveredNode(null)}
             >
               <div
                 className={`relative cursor-pointer transition-all duration-300 ${

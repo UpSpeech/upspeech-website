@@ -75,7 +75,7 @@ const SolutionSection = () => {
         </div>
 
         {/* Main Content with Mockups */}
-        <div className="animate-fade-in-up bg-gradient-to-r from-calm-lavender/20 to-calm-navy/10 rounded-2xl p-8 border border-calm-light backdrop-blur-sm shadow-lg relative overflow-hidden hover:shadow-xl transition-all duration-300">
+        <div className="animate-fade-in-up bg-gradient-to-r from-calm-lavender/20 to-calm-navy/10 rounded-2xl p-8 border border-calm-light shadow-lg relative overflow-hidden hover:shadow-xl transition-all duration-300">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side content */}
             <div className="animate-fade-in" style={{ animationDelay: "1s" }}>
