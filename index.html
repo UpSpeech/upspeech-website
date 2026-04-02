@@ -51,22 +51,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Heading font: loaded eagerly with display=optional (prevents CLS on desktop) -->
+    <!-- All fonts non-render-blocking; heading font uses display=optional (no CLS) -->
     <link
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=optional"
     />
     <link
-      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <!-- Body fonts: non-render-blocking via media swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media = 'all'"
+      onload="this.media='all'"
     />
     <noscript>
       <link
