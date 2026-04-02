@@ -51,11 +51,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Fonts - Synced with app-frontend design system -->
+    <!-- Fonts - Non-render-blocking via media swap -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
@@ -153,9 +161,15 @@
       }
     </script>
 
-    <!-- Google Analytics 4 with Consent Mode v2 -->
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google Analytics 4 with Consent Mode v2 — deferred to avoid blocking FCP -->
     <script
-      async
+      defer
       src="https://www.googletagmanager.com/gtag/js?id=G-MVPYYDVPZZ"
     ></script>
     <script>
@@ -163,84 +177,50 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-
-      // 1. Determine default consent state based on localStorage
-      let defaultConsent = {
+      var defaultConsent = {
         ad_storage: "denied",
         ad_user_data: "denied",
         ad_personalization: "denied",
         analytics_storage: "denied",
       };
-
       try {
-        const stored = localStorage.getItem("upspeech_cookie_consent");
+        var stored = localStorage.getItem("upspeech_cookie_consent");
         if (stored) {
-          const consentState = JSON.parse(stored);
-          if (consentState.analytics) {
-            defaultConsent.analytics_storage = "granted";
-          }
-          if (consentState.advertising) {
+          var cs = JSON.parse(stored);
+          if (cs.analytics) defaultConsent.analytics_storage = "granted";
+          if (cs.advertising) {
             defaultConsent.ad_storage = "granted";
             defaultConsent.ad_user_data = "granted";
             defaultConsent.ad_personalization = "granted";
           }
         }
-      } catch (e) {
-        // Ignore parsing errors
-      }
-
-      // 2. Set default consent state - BEFORE gtag config
+      } catch (e) {}
       gtag("consent", "default", defaultConsent);
-
-      // 3. Initialize GA4
       gtag("js", new Date());
-      // Disable automatic page view measurement (handled by PageViewTracker)
       gtag("config", "G-MVPYYDVPZZ", { send_page_view: false });
     </script>
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+    <!-- Microsoft Clarity — deferred -->
+    <script>
       (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "u8mslvrqv7");
-
-      // Set Clarity consent state based on localStorage
       try {
-        const stored = localStorage.getItem("upspeech_cookie_consent");
+        var stored = localStorage.getItem("upspeech_cookie_consent");
         if (stored) {
-          const consentState = JSON.parse(stored);
+          var cs = JSON.parse(stored);
           window.clarity("consentv2", {
-            ad_Storage: consentState.advertising ? "granted" : "denied",
-            analytics_Storage: consentState.analytics ? "granted" : "denied",
+            ad_Storage: cs.advertising ? "granted" : "denied",
+            analytics_Storage: cs.analytics ? "granted" : "denied",
           });
         } else {
-          // Default to denied if no consent stored
-          window.clarity("consentv2", {
-            ad_Storage: "denied",
-            analytics_Storage: "denied",
-          });
+          window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
         }
       } catch (e) {
-        // Default to denied on error
-        window.clarity("consentv2", {
-          ad_Storage: "denied",
-          analytics_Storage: "denied",
-        });
+        window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
       }
     </script>
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -61,6 +61,9 @@ const ProblemSection = () => {
               src="/images/therapy.jpg"
               alt="People in a therapy session"
               className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
+              width="640"
+              height="400"
+              loading="lazy"
             />
           </div>
           <div className="order-1 lg:order-2">
@@ -70,7 +73,7 @@ const ProblemSection = () => {
               <br />
               Happens Between Sessions
             </h2>
-            <p className="font-body text-xl text-calm-charcoal/70 max-w-3xl leading-relaxed animate-fade-in">
+            <p className="font-body text-xl text-calm-charcoal/70 max-w-3xl leading-relaxed">
               Your sessions are structured, engaging, and tailored to each
               patient. But maintaining that quality of practice between visits
               has always been a challenge.

@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG, EmailTemplateParams } from "@/lib/emailjs";
 import { trackFormSubmit } from "@/lib/analytics";
 
@@ -23,20 +22,17 @@ const CTASection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Initialize EmailJS
-  React.useEffect(() => {
-    // Initialize EmailJS with public key
+  // Lazy-load emailjs only when needed
+  const getEmailJS = async () => {
+    const { default: emailjs } = await import("@emailjs/browser");
     if (
       EMAILJS_CONFIG.PUBLIC_KEY &&
       EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
     ) {
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    } else {
-      console.warn(
-        "EmailJS public key not configured or using default placeholder",
-      );
     }
-  }, []);
+    return emailjs;
+  };
 
   const sendAutoReplyEmail = async (userData: typeof formData) => {
     try {
@@ -71,6 +67,7 @@ const CTASection = () => {
         reply_to: "hello@upspeech.app",
       };
 
+      const emailjs = await getEmailJS();
       await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,

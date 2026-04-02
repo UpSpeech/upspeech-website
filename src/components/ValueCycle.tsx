@@ -259,6 +259,9 @@ const ValueCycle = () => {
               src="/favicon.png"
               alt="UpSpeech Logo"
               className="w-full h-full object-contain"
+              width="64"
+              height="64"
+              loading="lazy"
             />
           </div>
         </div>

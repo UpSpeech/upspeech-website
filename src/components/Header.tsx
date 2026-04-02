@@ -20,27 +20,27 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-calm-light shadow-sm animate-fade-in">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-calm-light shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div
-            className="flex items-center animate-fade-in cursor-pointer"
-            style={{ animationDelay: "0.2s" }}
+            className="flex items-center cursor-pointer"
             onClick={() => {
               trackButtonClick("logo", "header");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
             <img
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="UpSpeech"
               className="h-14 w-auto transition-transform duration-300 hover:scale-105"
+              width="192"
+              height="56"
             />
           </div>
 
           <nav
-            className="hidden md:flex items-center space-x-6 animate-fade-in"
-            style={{ animationDelay: "0.4s" }}
+            className="hidden md:flex items-center space-x-6"
           >
             <button
               onClick={() => scrollToSection("about")}
@@ -74,8 +74,7 @@ const Header = () => {
               trackButtonClick("join_waitlist", "header");
               scrollToSection("cta");
             }}
-            className="bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 animate-fade-in group shadow-button"
-            style={{ animationDelay: "0.6s" }}
+            className="bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
             Join the Waitlist
           </Button>

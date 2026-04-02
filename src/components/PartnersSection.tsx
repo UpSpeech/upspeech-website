@@ -70,6 +70,8 @@ const PartnersSection = () => {
                     src={partner.logo}
                     alt={partner.name}
                     className="w-56 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                    width="224"
+                    height="48"
                     loading="lazy"
                   />
                 </div>

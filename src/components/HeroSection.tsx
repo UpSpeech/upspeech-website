@@ -1,28 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { trackButtonClick } from "@/lib/analytics";
 
 const HeroSection = () => {
-  const waveRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (waveRef.current) {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-
-        const xPercent = (clientX / innerWidth) * 100;
-        const yPercent = (clientY / innerHeight) * 100;
-
-        waveRef.current.style.transform = `translate(${xPercent * 0.1}px, ${
-          yPercent * 0.1
-        }px)`;
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const scrollToCTA = () => {
     trackButtonClick("join_waitlist_hero", "hero");
@@ -38,58 +18,30 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-calm-lavender/20 via-transparent to-calm-navy/15"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-calm-charcoal/5 via-transparent to-calm-lavender/10"></div>
 
-      {/* Floating Elements */}
+      {/* Floating Elements — GPU-composited (transform/opacity only, no blur) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-3 h-3 sm:w-4 sm:h-4 bg-calm-lavender/40 rounded-full animate-float blur-sm"></div>
+        <div className="absolute top-[10%] left-[5%] w-3 h-3 sm:w-4 sm:h-4 bg-calm-lavender/30 rounded-full animate-float"></div>
         <div
-          className="absolute top-[20%] right-[10%] w-4 h-4 sm:w-6 sm:h-6 bg-calm-navy/30 rounded-full animate-float-delayed blur-sm"
+          className="absolute top-[20%] right-[10%] w-4 h-4 sm:w-6 sm:h-6 bg-calm-navy/20 rounded-full animate-float-delayed"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute bottom-[15%] left-[10%] w-4 h-4 sm:w-5 sm:h-5 bg-calm-navy/20 rounded-full animate-float-slow blur-sm"
+          className="absolute bottom-[15%] left-[10%] w-4 h-4 sm:w-5 sm:h-5 bg-calm-navy/15 rounded-full animate-float-slow"
           style={{ animationDelay: "2s" }}
         ></div>
         <div
-          className="absolute top-[15%] left-1/3 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-calm-navy/20 to-calm-lavender/30 rounded-full animate-float blur-lg"
+          className="absolute top-[15%] left-1/3 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-calm-navy/15 to-calm-lavender/20 rounded-full animate-float"
           style={{ animationDelay: "1.5s" }}
         ></div>
         <div
-          className="absolute bottom-[20%] right-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-tl from-calm-charcoal/10 to-calm-lavender/20 rounded-full animate-float-delayed blur-xl"
+          className="absolute bottom-[20%] right-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-tl from-calm-charcoal/10 to-calm-lavender/15 rounded-full animate-float-delayed"
           style={{ animationDelay: "2.5s" }}
         ></div>
       </div>
 
-      {/* Interactive Wave Background */}
-      <div
-        ref={waveRef}
-        className="absolute inset-0 transition-transform duration-300 ease-out"
-      >
-        <svg
-          className="absolute top-20 left-0 w-full h-full opacity-15"
-          viewBox="0 0 1200 800"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient
-              id="enhanced-wave-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#293587" stopOpacity="0.3" />
-              <stop offset="25%" stopColor="#98A5FE" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#4B4E4E" stopOpacity="0.2" />
-              <stop offset="75%" stopColor="#293587" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#98A5FE" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="animate-fade-in text-center lg:text-left">
+          <div className="text-center lg:text-left">
             <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
               Speech Therapy happens once a week.{" "}
               <span className="text-gradient-primary">
@@ -190,65 +142,23 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Vocal Cord Wave Animation at Bottom */}
+      {/* Wave divider — CSS transform animation (GPU-composited) */}
       <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
         <svg
-          className="w-full h-24"
+          className="w-full h-24 animate-float-slow"
           viewBox="0 0 1200 100"
           preserveAspectRatio="none"
         >
           <path
             d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 V100 H0 Z"
-            fill="url(#vocal-wave-gradient)"
-            className="animate-pulse"
-          >
-            <animate
-              attributeName="d"
-              values="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 V100 H0 Z;
-                      M0,50 Q150,80 300,50 T600,50 T900,50 T1200,50 V100 H0 Z;
-                      M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 V100 H0 Z"
-              dur="3s"
-              repeatCount="indefinite"
-            />
-          </path>
+            fill="#293587"
+            opacity="0.15"
+          />
           <path
             d="M0,60 Q200,30 400,60 T800,60 T1200,60 V100 H0 Z"
-            fill="url(#vocal-wave-gradient-2)"
-            opacity="0.7"
-          >
-            <animate
-              attributeName="d"
-              values="M0,60 Q200,30 400,60 T800,60 T1200,60 V100 H0 Z;
-                      M0,60 Q200,90 400,60 T800,60 T1200,60 V100 H0 Z;
-                      M0,60 Q200,30 400,60 T800,60 T1200,60 V100 H0 Z"
-              dur="2.5s"
-              repeatCount="indefinite"
-            />
-          </path>
-          <defs>
-            <linearGradient
-              id="vocal-wave-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#293587" stopOpacity="0.15" />
-              <stop offset="50%" stopColor="#98A5FE" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#293587" stopOpacity="0.15" />
-            </linearGradient>
-            <linearGradient
-              id="vocal-wave-gradient-2"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#98A5FE" stopOpacity="0.1" />
-              <stop offset="50%" stopColor="#4B4E4E" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#98A5FE" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
+            fill="#98A5FE"
+            opacity="0.1"
+          />
         </svg>
       </div>
     </section>

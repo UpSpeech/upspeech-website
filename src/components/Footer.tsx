@@ -16,6 +16,9 @@ const Footer = () => {
               src="/images/logo-invert.svg"
               alt="UpSpeech"
               className="h-12 w-auto mb-2 transition-transform duration-300 hover:scale-105"
+              width="164"
+              height="48"
+              loading="lazy"
             />
             <p className="font-body text-sm text-white/80">
               Guiding voices with care and tech
@@ -84,6 +87,8 @@ const Footer = () => {
                 src="/images/elevenlabs-grants-white.webp"
                 alt="ElevenLabs Grants"
                 className="h-4 w-auto"
+                width="120"
+                height="16"
                 loading="lazy"
               />
             </a>
