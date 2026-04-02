@@ -17,23 +17,23 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-calm-lavender/20 via-transparent to-calm-navy/15"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-calm-charcoal/5 via-transparent to-calm-lavender/10"></div>
 
-      {/* Floating Elements — GPU-composited (transform/opacity only, no blur) */}
+      {/* Floating Elements — GPU-composited (transform/opacity only) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-3 h-3 sm:w-4 sm:h-4 bg-calm-lavender/30 rounded-full animate-float"></div>
+        <div className="absolute top-[10%] left-[5%] w-3 h-3 sm:w-4 sm:h-4 bg-calm-lavender/30 rounded-full will-change-transform animate-float"></div>
         <div
-          className="absolute top-[20%] right-[10%] w-4 h-4 sm:w-6 sm:h-6 bg-calm-navy/20 rounded-full animate-float-delayed"
+          className="absolute top-[20%] right-[10%] w-4 h-4 sm:w-6 sm:h-6 bg-calm-navy/20 rounded-full will-change-transform animate-float-delayed"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute bottom-[15%] left-[10%] w-4 h-4 sm:w-5 sm:h-5 bg-calm-navy/15 rounded-full animate-float-slow"
+          className="absolute bottom-[15%] left-[10%] w-4 h-4 sm:w-5 sm:h-5 bg-calm-navy/15 rounded-full will-change-transform animate-float-slow"
           style={{ animationDelay: "2s" }}
         ></div>
         <div
-          className="absolute top-[15%] left-1/3 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-calm-navy/15 to-calm-lavender/20 rounded-full animate-float"
+          className="absolute top-[15%] left-1/3 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-calm-navy/15 to-calm-lavender/20 rounded-full will-change-transform animate-float"
           style={{ animationDelay: "1.5s" }}
         ></div>
         <div
-          className="absolute bottom-[20%] right-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-tl from-calm-charcoal/10 to-calm-lavender/15 rounded-full animate-float-delayed"
+          className="absolute bottom-[20%] right-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-tl from-calm-charcoal/10 to-calm-lavender/15 rounded-full will-change-transform animate-float-delayed"
           style={{ animationDelay: "2.5s" }}
         ></div>
       </div>
@@ -66,9 +66,9 @@ const HeroSection = () => {
           </div>
 
           <div className="relative animate-fade-in mt-8 lg:mt-0">
-            <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 lg:p-8 border border-calm-light relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 lg:p-8 border border-calm-light mx-auto max-w-md lg:max-w-none">
               {/* Online Status Card */}
-              <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 z-20 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-calm-light p-2 sm:p-3 flex items-center space-x-2">
+              <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 z-20 bg-white rounded-xl sm:rounded-2xl shadow-lg border border-calm-light p-2 sm:p-3 flex items-center space-x-2">
                 <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="font-body text-xs sm:text-sm font-semibold text-calm-charcoal">
                   Online
@@ -80,12 +80,17 @@ const HeroSection = () => {
               <div className="relative z-10">
                 <div className="bg-gradient-to-br from-calm-lavender/20 to-calm-navy/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-3 h-3 bg-calm-navy rounded-full animate-glow"></div>
                     <div
+                      className="w-3 h-3 bg-calm-navy rounded-full animate-glow"
+                      aria-hidden="true"
+                    ></div>
+                    <div
+                      aria-hidden="true"
                       className="w-3 h-3 bg-calm-lavender rounded-full animate-glow"
                       style={{ animationDelay: "1s" }}
                     ></div>
                     <div
+                      aria-hidden="true"
                       className="w-3 h-3 bg-calm-charcoal rounded-full animate-glow"
                       style={{ animationDelay: "2s" }}
                     ></div>
@@ -144,7 +149,7 @@ const HeroSection = () => {
       {/* Wave divider — CSS transform animation (GPU-composited) */}
       <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
         <svg
-          className="w-full h-24 animate-float-slow"
+          className="w-full h-24 will-change-transform animate-float-slow"
           viewBox="0 0 1200 100"
           preserveAspectRatio="none"
         >

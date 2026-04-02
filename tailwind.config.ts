@@ -229,8 +229,8 @@ export default {
           "100%": { backgroundPosition: "200% 0" },
         },
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(152, 165, 254, 0.2)" },
-          "100%": { boxShadow: "0 0 40px rgba(152, 165, 254, 0.4)" },
+          "0%": { opacity: "0.6" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {

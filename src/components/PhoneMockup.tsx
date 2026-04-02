@@ -55,15 +55,19 @@ const PhoneMockup = () => {
               <div className="px-6 py-4">
                 <div className="flex items-center space-x-3 mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800">
+                    <p className="text-xl font-bold text-gray-800">
                       Session Overview
-                    </h4>
+                    </p>
                     <p className="text-sm text-gray-600">
                       John Smith - Week 12
                     </p>
                   </div>
                   <div className="relative group">
-                    <div className="relative w-8 h-8 bg-calm-lavender rounded-full flex items-center justify-center cursor-pointer">
+                    <button
+                      type="button"
+                      aria-label="Notifications"
+                      className="relative w-8 h-8 bg-calm-lavender rounded-full flex items-center justify-center cursor-pointer"
+                    >
                       <BellIcon className="w-4 h-4 text-white" />
                       {showNotificationDot && (
                         <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full animate-notification-pulse">
@@ -72,7 +76,7 @@ const PhoneMockup = () => {
                           </span>
                         </div>
                       )}
-                    </div>
+                    </button>
                     <div className="absolute right-0 w-48 p-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 border border-gray-100">
                       <div className="flex items-center space-x-2">
                         <span className="text-lg">👋</span>
@@ -87,9 +91,9 @@ const PhoneMockup = () => {
                 {/* Progress Card */}
                 <div className="mb-4">
                   <div className="flex justify-between items-center mb-2">
-                    <h5 className="font-semibold text-gray-800 text-sm">
+                    <p className="font-semibold text-gray-800 text-sm">
                       Weekly Progress
-                    </h5>
+                    </p>
                     <span className="text-calm-navy font-bold text-xs">
                       87%
                     </span>
@@ -107,10 +111,24 @@ const PhoneMockup = () => {
                   <p className="text-xs text-gray-600 text-center mb-1">
                     How is your stuttering today?
                   </p>
-                  <div className="flex justify-between items-center">
-                    {["😢", "😐", "😊", "😊", "😄"].map((emoji, index) => (
-                      <div
+                  <div
+                    className="flex justify-between items-center"
+                    role="group"
+                    aria-label="Rate your stuttering today"
+                  >
+                    {(
+                      [
+                        { emoji: "😢", label: "Very difficult" },
+                        { emoji: "😐", label: "Difficult" },
+                        { emoji: "😊", label: "Okay" },
+                        { emoji: "😊", label: "Good" },
+                        { emoji: "😄", label: "Great" },
+                      ] as const
+                    ).map((mood, index) => (
+                      <button
                         key={index}
+                        type="button"
+                        aria-label={mood.label}
                         onClick={() => setSelectedMood(index)}
                         className={`w-8 h-8 cursor-pointer transition-colors duration-200 ${
                           selectedMood === index
@@ -119,24 +137,23 @@ const PhoneMockup = () => {
                         } rounded-full flex items-center justify-center`}
                       >
                         <span
+                          aria-hidden="true"
                           className={`text-xs ${
                             selectedMood === index
                               ? "text-white"
                               : "text-gray-600"
                           }`}
                         >
-                          {emoji}
+                          {mood.emoji}
                         </span>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Today's Session Card */}
                 <div className="bg-gray-800 rounded-xl p-4 text-white mb-4">
-                  <h5 className="text-sm font-semibold mb-1">
-                    Today's Session
-                  </h5>
+                  <p className="text-sm font-semibold mb-1">Today's Session</p>
                   <p className="text-xs text-gray-300">
                     Breathing exercises to help reduce anxiety
                   </p>
@@ -174,9 +191,9 @@ const PhoneMockup = () => {
                 <ArrowTrendingUpIcon className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
-                <h6 className="font-semibold text-sm text-gray-800">
+                <p className="font-semibold text-sm text-gray-800">
                   Progress Report
-                </h6>
+                </p>
                 <p className="text-xs text-gray-600">
                   +23% improvement this month
                 </p>
@@ -192,9 +209,9 @@ const PhoneMockup = () => {
                 <CalendarIcon className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h6 className="font-semibold text-sm text-gray-800">
+                <p className="font-semibold text-sm text-gray-800">
                   Next Session
-                </h6>
+                </p>
                 <p className="text-xs text-gray-600">Thursday, 2:00 PM</p>
               </div>
             </div>
