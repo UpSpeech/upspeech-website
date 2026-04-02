@@ -133,7 +133,15 @@ async function prerender() {
       );
     }
 
-    const html = await page.content();
+    // Extract the fully-rendered HTML, then clear #root to avoid React
+    // hydration mismatches (lazy routes + client state cause #418/#423).
+    // SEO metadata lives in <head> so crawlers still get everything they need.
+    const html = await page.evaluate(() => {
+      const root = document.getElementById("root");
+      if (root) root.innerHTML = "";
+      return document.documentElement.outerHTML;
+    });
+    const fullHtml = `<!DOCTYPE html>\n${html}`;
 
     // Determine output path
     let outputPath;
@@ -148,7 +156,7 @@ async function prerender() {
       mkdirSync(outputDir, { recursive: true });
     }
 
-    writeFileSync(outputPath, html, "utf-8");
+    writeFileSync(outputPath, fullHtml, "utf-8");
     console.log("  %s -> %s", route, outputPath.replace(DIST_DIR, "dist"));
   }
 
