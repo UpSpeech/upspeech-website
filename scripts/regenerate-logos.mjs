@@ -52,7 +52,15 @@ ICON.centerY = (ICON.minY + ICON.maxY) / 2; // 186.2
 
 // -- SVG generation --
 
-function buildSVG({ wordmarkPath, textFill, iconScale, iconX, iconY, viewBoxWidth, viewBoxHeight }) {
+function buildSVG({
+  wordmarkPath,
+  textFill,
+  iconScale,
+  iconX,
+  iconY,
+  viewBoxWidth,
+  viewBoxHeight,
+}) {
   // Icon transform: scale around center, then translate to target position
   // transform = translate(tx, ty) scale(s) where:
   //   new_x = original_x * s + tx
@@ -177,9 +185,13 @@ async function main() {
 
   console.log(`Font size: ${fontSize.toFixed(1)}px`);
   console.log(`Cap height: ${capHeight.toFixed(1)}px`);
-  console.log(`Icon scale: ${iconScale.toFixed(3)} (${(ICON.height * iconScale).toFixed(1)}px tall)`);
+  console.log(
+    `Icon scale: ${iconScale.toFixed(3)} (${(ICON.height * iconScale).toFixed(1)}px tall)`,
+  );
   console.log(`Text width: ${textWidth.toFixed(1)}px`);
-  console.log(`Total width: ${(scaledIconWidth + gap + textWidth).toFixed(1)}px / ${availableWidth}px available`);
+  console.log(
+    `Total width: ${(scaledIconWidth + gap + textWidth).toFixed(1)}px / ${availableWidth}px available`,
+  );
 
   // Position: center icon (taller element) vertically, align text to icon center
   const scaledIconHeight = ICON.height * iconScale;
@@ -189,7 +201,9 @@ async function main() {
   const textX = margin + scaledIconWidth + gap;
   const textBaseline = centerY + capHeight / 2;
 
-  const wordmarkPath = font.getPath(text, textX, textBaseline, fontSize).toPathData(3);
+  const wordmarkPath = font
+    .getPath(text, textX, textBaseline, fontSize)
+    .toPathData(3);
   console.log(`Generated wordmark path (${wordmarkPath.length} chars)`);
 
   // Generate all SVGs

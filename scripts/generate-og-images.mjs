@@ -217,7 +217,8 @@ function ScreenshotCard() {
         height: 480,
         borderRadius: 16,
         overflow: "hidden",
-        boxShadow: "0 24px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(149,138,240,0.15)",
+        boxShadow:
+          "0 24px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(149,138,240,0.15)",
       },
       children: [
         {

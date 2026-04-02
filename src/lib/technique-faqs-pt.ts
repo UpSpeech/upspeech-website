@@ -25,8 +25,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
   ],
   cancelation: [
     {
-      question:
-        "O que é a técnica de cancelamento na terapia da gaguez?",
+      question: "O que é a técnica de cancelamento na terapia da gaguez?",
       answer:
         "O cancelamento é uma técnica de modificação da gaguez em que, após gaguejar numa palavra, se faz uma pausa, identifica-se o que aconteceu e repete-se a palavra utilizando uma fala mais suave e relaxada. Isto ajuda a aprender com cada momento de disfluência e a produzir gradualmente uma fala mais fluente.",
     },
@@ -79,8 +78,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
   ],
   holding: [
     {
-      question:
-        "O que é a técnica de holding na terapia da gaguez?",
+      question: "O que é a técnica de holding na terapia da gaguez?",
       answer:
         "A técnica de holding envolve manter a posição articulatória durante um bloqueio, em vez de forçar ou recuar. Ao manter a posição com calma e depois libertar com tensão reduzida, aprende-se a gerir os bloqueios sem luta e a fazer a transição para uma fala mais fluente.",
     },
@@ -90,8 +88,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
         "Durante um bloqueio, o instinto natural é forçar mais ou parar completamente. O holding ensina a permanecer no momento, manter a posição sem adicionar tensão e, de seguida, libertar suavemente para o restante da palavra. Isto reduz a severidade dos bloqueios e constrói confiança.",
     },
     {
-      question:
-        "Holding é o mesmo que congelar durante um bloqueio?",
+      question: "Holding é o mesmo que congelar durante um bloqueio?",
       answer:
         "Não. Congelar é uma resposta involuntária em que a tensão aumenta. O holding é uma escolha deliberada e controlada de manter a posição enquanto se relaxa conscientemente a tensão. O objetivo é passar do holding para uma fala suave e com movimento para a frente.",
     },
@@ -127,16 +124,14 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
         "Os inícios suaves focam-se em como se inicia a fonação — começando suavemente com pregas vocais relaxadas. O contacto articulatório suave foca-se em como os articuladores se tocam fisicamente durante a produção de consoantes. Ambos reduzem a tensão, mas atuam em partes diferentes do mecanismo de fala.",
     },
     {
-      question:
-        "Quais sons beneficiam mais do contacto articulatório suave?",
+      question: "Quais sons beneficiam mais do contacto articulatório suave?",
       answer:
         "Os sons oclusivos (p, b, t, d, k, g) são os mais beneficiados porque exigem um fechamento completo dos articuladores. Ao utilizar contacto leve em vez de um fechamento firme, reduz-se a acumulação de pressão que pode conduzir a bloqueios. No entanto, a técnica pode ser aplicada a qualquer som consonântico.",
     },
   ],
   "prolonged-speech": [
     {
-      question:
-        "O que é a fala prolongada na terapia da gaguez?",
+      question: "O que é a fala prolongada na terapia da gaguez?",
       answer:
         "A fala prolongada é uma técnica de modelação da fluência em que se estendem as vogais e as consoantes contínuas para reduzir a velocidade de fala. Ao alongar os sons, cria-se um fluxo de ar mais suave e contínuo, reduzindo as interrupções características da gaguez.",
     },
@@ -146,8 +141,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
         "Inicialmente, a fala prolongada pode soar lenta ou exagerada. Com a prática, aprende-se a utilizá-la de forma mais subtil — aplicando prolongamentos leves que mantêm a fluência sem soar artificial. O objetivo é aumentar gradualmente a velocidade de fala mantendo a suavidade.",
     },
     {
-      question:
-        "Fala prolongada é o mesmo que falar devagar?",
+      question: "Fala prolongada é o mesmo que falar devagar?",
       answer:
         "Não exatamente. Simplesmente falar devagar não aborda os padrões de tensão subjacentes na gaguez. A fala prolongada envolve especificamente o alongamento dos sons e a manutenção da fonação contínua, o que modifica a produção da fala a nível motor, não apenas a velocidade.",
     },
@@ -164,8 +158,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
         "Velocidades de fala mais elevadas aumentam as exigências sobre o sistema motor da fala. Quando se fala rápido, há menos tempo para coordenar respiração, fonação e articulação, o que pode desencadear a gaguez. Gerir a velocidade dá ao sistema mais tempo para produzir uma fala fluente.",
     },
     {
-      question:
-        "Como gerir a velocidade de fala sem soar artificial?",
+      question: "Como gerir a velocidade de fala sem soar artificial?",
       answer:
         "Concentre-se no fraseamento natural — divida a sua fala em grupos de pensamento mais curtos com breves pausas entre eles. Isto soa conversacional e é como muitos falantes fluentes naturalmente comunicam. Não se trata de desacelerar cada palavra, mas sim de organizar a fala em blocos manejáveis.",
     },

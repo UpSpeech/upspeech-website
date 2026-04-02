@@ -34,32 +34,32 @@ Nuestro sitio web de marketing público utiliza cookies y tecnologías similares
 
 Utilizamos Google Analytics para comprender cómo los visitantes utilizan nuestro sitio web, qué páginas son más populares y cómo navegan los usuarios por nuestro sitio.
 
-| Nombre de la Cookie | Finalidad                                          | Duración  | Tipo     |
-| ------------------- | -------------------------------------------------- | --------- | -------- |
-| **\_ga**            | Distingue usuarios únicos                          | 2 años    | Análisis |
-| **\_ga\_\***        | Mantiene el estado de sesión de Google Analytics    | 2 años    | Análisis |
-| **\_gid**           | Distingue usuarios únicos                          | 24 horas  | Análisis |
-| **\_gat**           | Limita la tasa de solicitudes a Google Analytics    | 1 minuto  | Análisis |
+| Nombre de la Cookie | Finalidad                                        | Duración | Tipo     |
+| ------------------- | ------------------------------------------------ | -------- | -------- |
+| **\_ga**            | Distingue usuarios únicos                        | 2 años   | Análisis |
+| **\_ga\_\***        | Mantiene el estado de sesión de Google Analytics | 2 años   | Análisis |
+| **\_gid**           | Distingue usuarios únicos                        | 24 horas | Análisis |
+| **\_gat**           | Limita la tasa de solicitudes a Google Analytics | 1 minuto | Análisis |
 
 **Microsoft Clarity**
 
 Utilizamos Microsoft Clarity para comprender cómo los usuarios interactúan con nuestro sitio web mediante grabaciones de sesión y mapas de calor.
 
-| Nombre de la Cookie | Finalidad                                            | Duración   | Tipo     |
-| ------------------- | ---------------------------------------------------- | ---------- | -------- |
-| **\_clck**          | Mantiene el ID de usuario de Clarity entre visitas    | 1 año      | Análisis |
-| **\_clsk**          | Conecta múltiples vistas de página en una sesión      | 1 día      | Análisis |
-| **CLID**            | Identifica al usuario en múltiples dominios           | 1 año      | Análisis |
-| **SM**              | Sincroniza el ID de usuario entre dominios            | Sesión     | Análisis |
-| **MR**              | Indica si es necesaria una actualización de datos     | 7 días     | Análisis |
-| **MUID**            | Identificador de Usuario de Microsoft                 | 1 año      | Análisis |
-| **ANONCHK**         | Indica si se utiliza la cookie MUID                   | 10 minutos | Análisis |
+| Nombre de la Cookie | Finalidad                                          | Duración   | Tipo     |
+| ------------------- | -------------------------------------------------- | ---------- | -------- |
+| **\_clck**          | Mantiene el ID de usuario de Clarity entre visitas | 1 año      | Análisis |
+| **\_clsk**          | Conecta múltiples vistas de página en una sesión   | 1 día      | Análisis |
+| **CLID**            | Identifica al usuario en múltiples dominios        | 1 año      | Análisis |
+| **SM**              | Sincroniza el ID de usuario entre dominios         | Sesión     | Análisis |
+| **MR**              | Indica si es necesaria una actualización de datos  | 7 días     | Análisis |
+| **MUID**            | Identificador de Usuario de Microsoft              | 1 año      | Análisis |
+| **ANONCHK**         | Indica si se utiliza la cookie MUID                | 10 minutos | Análisis |
 
 **Gestión de Consentimiento**
 
-| Elemento de Almacenamiento    | Finalidad                                        | Tipo      | Duración   |
-| ----------------------------- | ------------------------------------------------ | --------- | ---------- |
-| **upspeech_cookie_consent**   | Almacena sus opciones de consentimiento de cookies | Esencial  | Permanente |
+| Elemento de Almacenamiento  | Finalidad                                          | Tipo     | Duración   |
+| --------------------------- | -------------------------------------------------- | -------- | ---------- |
+| **upspeech_cookie_consent** | Almacena sus opciones de consentimiento de cookies | Esencial | Permanente |
 
 Este se almacena en el Almacenamiento Local (no es una cookie) y registra si ha aceptado o rechazado las cookies de análisis.
 
@@ -78,24 +78,24 @@ Utilizamos los datos de análisis para:
 - Utilizamos datos de análisis para identificar usuarios individuales
 - Rastreamos a los usuarios en otros sitios web fuera de UpSpeech
 
-### Plataforma de Aplicación (*.upspeech.app)
+### Plataforma de Aplicación (\*.upspeech.app)
 
 Nuestra plataforma de aplicación (accesible a través de subdominios de tenant como `speechcare.upspeech.app`) utiliza el Almacenamiento Local para funcionalidades esenciales y cookies de análisis para mejorar su experiencia:
 
 #### Almacenamiento Local Esencial
 
-| Elemento de Datos | Finalidad                                                         | Duración  |
-| ----------------- | ----------------------------------------------------------------- | --------- |
-| **auth_token**    | Token de autenticación JWT para mantener su sesión de inicio      | 24 horas  |
-| **user_data**     | Copia en caché de su perfil de usuario para cargas más rápidas    | Sesión    |
-| **token_expiry**  | Marca de tiempo de expiración de su token de autenticación        | 24 horas  |
+| Elemento de Datos | Finalidad                                                      | Duración |
+| ----------------- | -------------------------------------------------------------- | -------- |
+| **auth_token**    | Token de autenticación JWT para mantener su sesión de inicio   | 24 horas |
+| **user_data**     | Copia en caché de su perfil de usuario para cargas más rápidas | Sesión   |
+| **token_expiry**  | Marca de tiempo de expiración de su token de autenticación     | 24 horas |
 
 #### Almacenamiento Local Funcional
 
-| Elemento de Datos    | Finalidad                                                           | Duración   |
-| -------------------- | ------------------------------------------------------------------- | ---------- |
-| **language**         | El idioma de interfaz seleccionado (inglés, portugués, etc.)        | Permanente |
-| **theme_preference** | Su preferencia de tema de colores (modo claro/oscuro)               | Permanente |
+| Elemento de Datos    | Finalidad                                                    | Duración   |
+| -------------------- | ------------------------------------------------------------ | ---------- |
+| **language**         | El idioma de interfaz seleccionado (inglés, portugués, etc.) | Permanente |
+| **theme_preference** | Su preferencia de tema de colores (modo claro/oscuro)        | Permanente |
 
 #### Almacenamiento de Sesión (Temporal)
 
@@ -113,26 +113,26 @@ La plataforma de aplicación utiliza los mismos servicios de análisis que nuest
 
 **Google Analytics 4**
 
-| Nombre de la Cookie | Finalidad                                          | Duración  | Tipo     |
-| ------------------- | -------------------------------------------------- | --------- | -------- |
-| **\_ga**            | Distingue usuarios únicos                          | 2 años    | Análisis |
-| **\_ga\_\***        | Mantiene el estado de sesión de Google Analytics    | 2 años    | Análisis |
-| **\_gid**           | Distingue usuarios únicos                          | 24 horas  | Análisis |
+| Nombre de la Cookie | Finalidad                                        | Duración | Tipo     |
+| ------------------- | ------------------------------------------------ | -------- | -------- |
+| **\_ga**            | Distingue usuarios únicos                        | 2 años   | Análisis |
+| **\_ga\_\***        | Mantiene el estado de sesión de Google Analytics | 2 años   | Análisis |
+| **\_gid**           | Distingue usuarios únicos                        | 24 horas | Análisis |
 
 **Microsoft Clarity**
 
-| Nombre de la Cookie | Finalidad                                            | Duración | Tipo     |
-| ------------------- | ---------------------------------------------------- | -------- | -------- |
-| **\_clck**          | Mantiene el ID de usuario de Clarity entre visitas    | 1 año    | Análisis |
-| **\_clsk**          | Conecta múltiples vistas de página en una sesión      | 1 día    | Análisis |
-| **CLID**            | Identifica al usuario en múltiples dominios           | 1 año    | Análisis |
-| **MUID**            | Identificador de Usuario de Microsoft                 | 1 año    | Análisis |
+| Nombre de la Cookie | Finalidad                                          | Duración | Tipo     |
+| ------------------- | -------------------------------------------------- | -------- | -------- |
+| **\_clck**          | Mantiene el ID de usuario de Clarity entre visitas | 1 año    | Análisis |
+| **\_clsk**          | Conecta múltiples vistas de página en una sesión   | 1 día    | Análisis |
+| **CLID**            | Identifica al usuario en múltiples dominios        | 1 año    | Análisis |
+| **MUID**            | Identificador de Usuario de Microsoft              | 1 año    | Análisis |
 
 **Gestión de Consentimiento**
 
-| Elemento de Almacenamiento    | Finalidad                                        | Tipo      | Duración   |
-| ----------------------------- | ------------------------------------------------ | --------- | ---------- |
-| **upspeech_cookie_consent**   | Almacena sus opciones de consentimiento de cookies | Esencial  | Permanente |
+| Elemento de Almacenamiento  | Finalidad                                          | Tipo     | Duración   |
+| --------------------------- | -------------------------------------------------- | -------- | ---------- |
+| **upspeech_cookie_consent** | Almacena sus opciones de consentimiento de cookies | Esencial | Permanente |
 
 Cuando utiliza la aplicación por primera vez, verá un banner de consentimiento que le permite aceptar o rechazar las cookies de análisis. Su elección se almacena en el Almacenamiento Local y se respeta en todas las visitas futuras a ese subdominio.
 
@@ -364,7 +364,7 @@ Si tiene preguntas sobre esta Política de Cookies o sobre cómo utilizamos cook
 - Requiere su consentimiento (mediante banner) antes de establecer cookies de análisis
 - Puede aceptar o rechazar en cualquier momento
 
-**Plataforma de Aplicación (*.upspeech.app):**
+**Plataforma de Aplicación (\*.upspeech.app):**
 
 - Utiliza Almacenamiento Local para autenticación y preferencias (esencial)
 - Utiliza Google Analytics y Microsoft Clarity para análisis (requiere consentimiento)

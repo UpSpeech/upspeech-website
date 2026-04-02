@@ -127,7 +127,10 @@ async function prerender() {
         timeout: 5000,
       });
     } catch {
-      console.warn("  Warning: og:title not found for %s (using current HTML)", route);
+      console.warn(
+        "  Warning: og:title not found for %s (using current HTML)",
+        route,
+      );
     }
 
     const html = await page.content();

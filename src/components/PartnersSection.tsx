@@ -37,7 +37,7 @@ const PartnersSection = () => {
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 animate-fade-in-up">
-          <p className="font-body text-sm text-secondary/50 uppercase tracking-wider mb-2">
+          <p className="font-body text-sm text-secondary/70 uppercase tracking-wider mb-2">
             Trusted Partners
           </p>
           <h2 className="font-heading font-semibold text-2xl text-secondary">
@@ -76,7 +76,7 @@ const PartnersSection = () => {
                   />
                 </div>
                 {partner.description && (
-                  <span className="font-body text-xs text-secondary/40 group-hover:text-secondary/60 transition-colors duration-300">
+                  <span className="font-body text-xs text-secondary/70 group-hover:text-secondary/90 transition-colors duration-300">
                     {partner.description}
                   </span>
                 )}

@@ -69,4 +69,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://upspeech.app/sitemap.xml
-LLMs: https://upspeech.app/llms.txt

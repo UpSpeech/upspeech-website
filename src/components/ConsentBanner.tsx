@@ -78,7 +78,7 @@ export const ConsentBanner = () => {
                 rel="noopener noreferrer"
                 className="underline hover:text-gray-900"
               >
-                Learn more
+                Learn more about cookies
               </a>
             </p>
           </div>

@@ -12,9 +12,9 @@ const SolutionSection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setShowNotificationDot(true), 1000);
+          setTimeout(() => _setShowNotificationDot(true), 1000);
         } else {
-          setShowNotificationDot(false);
+          _setShowNotificationDot(false);
         }
       },
       { threshold: 0.5 },

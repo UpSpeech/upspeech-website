@@ -106,9 +106,9 @@ const BrandIntroduction = () => {
             <Icon className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h4 className="font-heading font-bold text-xl text-calm-charcoal">
+            <h3 className="font-heading font-bold text-xl text-calm-charcoal">
               For {activeAudience.title}
-            </h4>
+            </h3>
             <p className="font-body text-sm text-calm-charcoal/60">
               Empowering your journey
             </p>
@@ -137,7 +137,7 @@ const BrandIntroduction = () => {
 
         {/* Additional Points */}
         <div className="space-y-2.5">
-          <p className="font-body font-semibold text-xs uppercase tracking-wide text-calm-charcoal/50 mb-3">
+          <p className="font-body font-semibold text-xs uppercase tracking-wide text-calm-charcoal/70 mb-3">
             Plus more
           </p>
           {activeAudience.points.map((point, idx) => (

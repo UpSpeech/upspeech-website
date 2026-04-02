@@ -56,7 +56,8 @@ const TechniquesOverviewSection = () => {
             <p className="font-body text-lg text-calm-charcoal/70 leading-relaxed mb-8">
               UpSpeech structures practice around the same evidence-based
               approaches used by speech-language pathologists worldwide — from
-              stuttering modification to fluency shaping to cognitive strategies.
+              stuttering modification to fluency shaping to cognitive
+              strategies.
             </p>
 
             {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}

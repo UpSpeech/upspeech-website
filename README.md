@@ -125,17 +125,17 @@ All environment variables for Docker development are configured in `.env.docker`
 
 ### Required Variables
 
-| Variable               | Purpose                                | How to Get                                   |
-| ---------------------- | -------------------------------------- | -------------------------------------------- |
-| `ELEVENLABS_API_KEY`   | AI speech-to-text transcription        | https://elevenlabs.io/app/settings/api-keys  |
-| `GOOGLE_API_KEY`       | AI report generation (Gemini)          | https://aistudio.google.com/apikey           |
-| `RAILS_MASTER_KEY`     | Rails encrypted credentials            | `openssl rand -hex 32`                       |
-| `SECRET_KEY_BASE`      | Secure session cookies                 | `openssl rand -hex 64`                       |
-| `JWT_SECRET_KEY`       | JWT authentication                     | `openssl rand -hex 64`                       |
-| `DEVISE_SECRET_KEY`    | Devise sessions                        | `openssl rand -hex 64`                       |
-| `GCS_BUCKET`           | Google Cloud Storage bucket name       | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_PROJECT_ID`       | GCP project ID                         | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_CREDENTIALS_PATH` | Path to GCS service account JSON       | See [GCS Setup](#google-cloud-storage-setup) |
+| Variable               | Purpose                          | How to Get                                   |
+| ---------------------- | -------------------------------- | -------------------------------------------- |
+| `ELEVENLABS_API_KEY`   | AI speech-to-text transcription  | https://elevenlabs.io/app/settings/api-keys  |
+| `GOOGLE_API_KEY`       | AI report generation (Gemini)    | https://aistudio.google.com/apikey           |
+| `RAILS_MASTER_KEY`     | Rails encrypted credentials      | `openssl rand -hex 32`                       |
+| `SECRET_KEY_BASE`      | Secure session cookies           | `openssl rand -hex 64`                       |
+| `JWT_SECRET_KEY`       | JWT authentication               | `openssl rand -hex 64`                       |
+| `DEVISE_SECRET_KEY`    | Devise sessions                  | `openssl rand -hex 64`                       |
+| `GCS_BUCKET`           | Google Cloud Storage bucket name | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_PROJECT_ID`       | GCP project ID                   | See [GCS Setup](#google-cloud-storage-setup) |
+| `GCS_CREDENTIALS_PATH` | Path to GCS service account JSON | See [GCS Setup](#google-cloud-storage-setup) |
 
 ### Optional Variables (with defaults)
 

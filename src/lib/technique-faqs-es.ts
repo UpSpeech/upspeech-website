@@ -8,8 +8,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
         "El tartamudeo voluntario es una técnica de logopedia en la que la persona tartamudea intencionalmente de manera controlada y suave. Al elegir tartamudear a propósito, el hablante reduce el miedo, la vergüenza y las conductas de evitación asociadas a la tartamudez, y adquiere una mayor sensación de control sobre su habla.",
     },
     {
-      question:
-        "¿Cómo ayuda el tartamudeo voluntario a reducir la tartamudez?",
+      question: "¿Cómo ayuda el tartamudeo voluntario a reducir la tartamudez?",
       answer:
         "El tartamudeo voluntario funciona desensibilizando al hablante ante la experiencia de tartamudear. Cuando tartamudeas a propósito, el miedo y la tensión que normalmente agravan la tartamudez se reducen. Con el tiempo, esto disminuye las conductas de evitación y hace que los momentos de tartamudez involuntaria sean menos intensos.",
     },
@@ -87,8 +86,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
         "La técnica de mantenimiento consiste en mantener la posición articulatoria durante un bloqueo en lugar de forzar la salida o retroceder. Al mantener la posición con calma y luego soltar con menor tensión, aprendes a manejar los bloqueos sin luchar y a hacer una transición hacia un habla más fluida.",
     },
     {
-      question:
-        "¿Cómo ayuda el mantenimiento con los bloqueos de tartamudez?",
+      question: "¿Cómo ayuda el mantenimiento con los bloqueos de tartamudez?",
       answer:
         "Durante un bloqueo, el instinto natural es forzar más o detenerse por completo. El mantenimiento te enseña a permanecer en el momento, sostener tu posición sin añadir tensión y luego soltar suavemente el resto de la palabra. Esto reduce la severidad de los bloqueos y aumenta la confianza.",
     },
@@ -138,8 +136,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
   ],
   "prolonged-speech": [
     {
-      question:
-        "¿Qué es el habla prolongada en la terapia de tartamudez?",
+      question: "¿Qué es el habla prolongada en la terapia de tartamudez?",
       answer:
         "El habla prolongada es una técnica de modelado de la fluidez en la que se prolongan las vocales y las consonantes continuas para reducir la velocidad del habla. Al estirar los sonidos, se crea un flujo de aire más continuo y suave que reduce las interrupciones características de la tartamudez.",
     },
@@ -149,8 +146,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
         "Al principio, el habla prolongada puede sonar lenta o exagerada. Con la práctica, se aprende a utilizarla de forma más sutil, aplicando prolongaciones ligeras que mantienen la fluidez sin sonar artificial. El objetivo es aumentar gradualmente la velocidad del habla manteniendo la suavidad.",
     },
     {
-      question:
-        "¿El habla prolongada es lo mismo que hablar despacio?",
+      question: "¿El habla prolongada es lo mismo que hablar despacio?",
       answer:
         "No exactamente. Simplemente hablar despacio no aborda los patrones de tensión subyacentes a la tartamudez. El habla prolongada implica específicamente estirar los sonidos y mantener la fonación continua, lo que modifica la producción del habla a nivel motor, no solo la velocidad.",
     },
@@ -204,8 +200,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
         "Muchas de las dificultades asociadas a la tartamudez están impulsadas por reacciones emocionales: miedo a hablar, vergüenza por tartamudear, evitación de situaciones sociales. La desensibilización reduce estas reacciones, lo que a su vez suele disminuir la frecuencia y la severidad de la tartamudez.",
     },
     {
-      question:
-        "¿Cómo ayuda la identificación a mejorar la fluidez del habla?",
+      question: "¿Cómo ayuda la identificación a mejorar la fluidez del habla?",
       answer:
         "Cuando puedes identificar exactamente qué ocurre durante tus momentos de tartamudez — qué músculos se tensan, qué sonidos son difíciles, qué situaciones provocan ansiedad — puedes aplicar técnicas específicas de forma más eficaz. La autoconciencia es la base de todas las estrategias de modificación de la tartamudez.",
     },

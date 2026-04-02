@@ -122,8 +122,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "Soft articulation contact is a fluency shaping technique where you use light, relaxed pressure when your articulators (lips, tongue, teeth, palate) make contact during speech. Instead of pressing hard, you touch lightly, reducing tension that can trigger stuttering.",
     },
     {
-      question:
-        "How does soft articulation contact differ from soft starts?",
+      question: "How does soft articulation contact differ from soft starts?",
       answer:
         "Soft starts focus on how you initiate voicing — beginning gently with relaxed vocal folds. Soft articulation contact focuses on how your articulators physically touch during consonant production. Both reduce tension, but they target different parts of the speech mechanism.",
     },
@@ -145,8 +144,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "Initially, prolonged speech may sound slow or exaggerated. With practice, you learn to use it more subtly — applying slight prolongations that maintain fluency without sounding unnatural. The goal is to gradually increase your speaking rate while maintaining the smoothness.",
     },
     {
-      question:
-        "Is prolonged speech the same as speaking slowly?",
+      question: "Is prolonged speech the same as speaking slowly?",
       answer:
         "Not exactly. Simply speaking slowly does not address the underlying tension patterns in stuttering. Prolonged speech specifically involves stretching sounds and maintaining continuous phonation, which changes how you produce speech at a motor level, not just the speed.",
     },
@@ -163,8 +161,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "Faster speaking rates increase the demands on your speech motor system. When you speak quickly, there is less time to coordinate breathing, voicing, and articulation, which can trigger stuttering. Managing your speed gives your system more time to produce smooth speech.",
     },
     {
-      question:
-        "How do I manage my speech speed without sounding unnatural?",
+      question: "How do I manage my speech speed without sounding unnatural?",
       answer:
         "Focus on natural phrasing — break your speech into shorter thought groups with brief pauses between them. This sounds conversational and is how many fluent speakers naturally talk. You are not slowing every word; you are organizing your speech into manageable chunks.",
     },
@@ -188,19 +185,18 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
   ],
   "identification-desensitization": [
     {
-      question: "What is identification and desensitization in stuttering therapy?",
+      question:
+        "What is identification and desensitization in stuttering therapy?",
       answer:
         "Identification involves learning to recognize your specific stuttering patterns — the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
     },
     {
-      question:
-        "Why is desensitization important for people who stutter?",
+      question: "Why is desensitization important for people who stutter?",
       answer:
         "Many of the difficulties associated with stuttering are driven by emotional reactions — fear of speaking, shame about stuttering, avoidance of social situations. Desensitization reduces these reactions, which in turn often reduces the frequency and severity of stuttering itself.",
     },
     {
-      question:
-        "How does identification help improve speech fluency?",
+      question: "How does identification help improve speech fluency?",
       answer:
         "When you can identify exactly what happens during your stuttering moments — which muscles tense, which sounds are difficult, what situations trigger anxiety — you can apply targeted techniques more effectively. Self-awareness is the foundation for all stuttering modification strategies.",
     },

@@ -56,7 +56,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
     <noscript>
       <link
@@ -160,7 +160,6 @@
         ]
       }
     </script>
-
   </head>
 
   <body>
@@ -203,9 +202,16 @@
     <!-- Microsoft Clarity — deferred -->
     <script>
       (function (c, l, a, r, i, t, y) {
-        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "u8mslvrqv7");
       try {
         var stored = localStorage.getItem("upspeech_cookie_consent");
@@ -216,10 +222,16 @@
             analytics_Storage: cs.analytics ? "granted" : "denied",
           });
         } else {
-          window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+          window.clarity("consentv2", {
+            ad_Storage: "denied",
+            analytics_Storage: "denied",
+          });
         }
       } catch (e) {
-        window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+        window.clarity("consentv2", {
+          ad_Storage: "denied",
+          analytics_Storage: "denied",
+        });
       }
     </script>
   </body>

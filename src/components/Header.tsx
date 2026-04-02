@@ -39,9 +39,7 @@ const Header = () => {
             />
           </div>
 
-          <nav
-            className="hidden md:flex items-center space-x-6"
-          >
+          <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("about")}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender transform px-3 py-2 rounded-md hover:bg-calm-light/30"

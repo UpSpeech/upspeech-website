@@ -239,9 +239,9 @@ const ValueCycle = () => {
                   className: "w-6 h-6 text-white",
                 })}
               </div>
-              <h4 className="font-heading font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
+              <h3 className="font-heading font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
                 {cycleNodes[hoveredNode].title}
-              </h4>
+              </h3>
               <p className="font-body text-xs md:text-sm text-calm-charcoal/70 text-center">
                 {cycleNodes[hoveredNode].description}
               </p>

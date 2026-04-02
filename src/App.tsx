@@ -1,55 +1,61 @@
+import React, { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import Index from "./pages/Index";
-// TODO: Re-enable when "What Is Stuttering" page is ready for production
-// import WhatIsStuttering from "./pages/WhatIsStuttering";
-import NotFound from "./pages/NotFound";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import CookiePolicy from "./pages/CookiePolicy";
 
-// Technique Pages
-import { TechniquesIndexPage } from "./pages/TechniquesIndexPage";
-import VoluntaryStuttering from "./pages/techniques/VoluntaryStuttering";
-import Cancelation from "./pages/techniques/Cancelation";
-import PullOut from "./pages/techniques/PullOut";
-import PreparatorySet from "./pages/techniques/PreparatorySet";
-import Holding from "./pages/techniques/Holding";
-import SoftStarts from "./pages/techniques/SoftStarts";
-import SoftArticulationContact from "./pages/techniques/SoftArticulationContact";
-import ProlongedSpeech from "./pages/techniques/ProlongedSpeech";
-import SpeechSpeedManagement from "./pages/techniques/SpeechSpeedManagement";
-import Pauses from "./pages/techniques/Pauses";
-import IdentificationDesensitization from "./pages/techniques/IdentificationDesensitization";
-
-const queryClient = new QueryClient();
+// Lazy-loaded routes — split into separate chunks
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
+const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
+const TechniquesIndexPage = React.lazy(() =>
+  import("./pages/TechniquesIndexPage").then((m) => ({
+    default: m.TechniquesIndexPage,
+  })),
+);
+const VoluntaryStuttering = React.lazy(
+  () => import("./pages/techniques/VoluntaryStuttering"),
+);
+const Cancelation = React.lazy(() => import("./pages/techniques/Cancelation"));
+const PullOut = React.lazy(() => import("./pages/techniques/PullOut"));
+const PreparatorySet = React.lazy(
+  () => import("./pages/techniques/PreparatorySet"),
+);
+const Holding = React.lazy(() => import("./pages/techniques/Holding"));
+const SoftStarts = React.lazy(() => import("./pages/techniques/SoftStarts"));
+const SoftArticulationContact = React.lazy(
+  () => import("./pages/techniques/SoftArticulationContact"),
+);
+const ProlongedSpeech = React.lazy(
+  () => import("./pages/techniques/ProlongedSpeech"),
+);
+const SpeechSpeedManagement = React.lazy(
+  () => import("./pages/techniques/SpeechSpeedManagement"),
+);
+const Pauses = React.lazy(() => import("./pages/techniques/Pauses"));
+const IdentificationDesensitization = React.lazy(
+  () => import("./pages/techniques/IdentificationDesensitization"),
+);
 
 const App = () => (
   <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <ConsentBanner />
-        <BrowserRouter>
-          <PageViewTracker />
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <ConsentBanner />
+      <BrowserRouter>
+        <PageViewTracker />
+        <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookies" element={<CookiePolicy />} />
-
-            {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
-            {/* <Route
-              path="/what-is-stuttering"
-              element={<WhatIsStuttering />}
-            /> */}
 
             {/* Technique Documentation Routes */}
             <Route path="/techniques" element={<TechniquesIndexPage />} />
@@ -86,9 +92,9 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+        </Suspense>
+      </BrowserRouter>
+    </TooltipProvider>
   </HelmetProvider>
 );
 
