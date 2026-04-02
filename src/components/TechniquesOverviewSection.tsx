@@ -95,19 +95,19 @@ const TechniquesOverviewSection = () => {
                       <h3 className="font-heading font-bold text-xl text-calm-charcoal group-hover:text-calm-navy transition-colors duration-200">
                         {approach.name}
                       </h3>
-                      <span className="font-body text-xs text-calm-charcoal/40 tabular-nums">
+                      <span className="font-body text-xs text-calm-charcoal/70 tabular-nums">
                         {approach.count}{" "}
                         {approach.count === 1 ? "technique" : "techniques"}
                       </span>
                     </div>
-                    <p className="font-body text-sm text-calm-charcoal/60 leading-relaxed mb-3">
+                    <p className="font-body text-sm text-calm-charcoal/70 leading-relaxed mb-3">
                       {approach.description}
                     </p>
                     <div className="flex flex-wrap gap-x-3 gap-y-1">
                       {approach.techniques.map((t) => (
                         <span
                           key={t}
-                          className="font-body text-xs text-calm-charcoal/40"
+                          className="font-body text-xs text-calm-charcoal/70"
                         >
                           {t}
                         </span>

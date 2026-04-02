@@ -208,7 +208,7 @@ const CTASection = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/30 transition-colors duration-200"
+                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/50 transition-colors duration-200"
                 placeholder="Enter your name"
                 required
               />
@@ -228,7 +228,7 @@ const CTASection = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/30 transition-colors duration-200"
+                className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/50 transition-colors duration-200"
                 placeholder="your@email.com"
                 required
               />
@@ -246,7 +246,7 @@ const CTASection = () => {
                   setFormData({ ...formData, role: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
+                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200">
                   <SelectValue placeholder="Choose your role" />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
@@ -287,7 +287,7 @@ const CTASection = () => {
                   setFormData({ ...formData, clinicSize: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/30 transition-colors duration-200">
+                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200">
                   <SelectValue placeholder="Choose clinic size" />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">

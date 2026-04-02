@@ -95,9 +95,9 @@ const HeroSection = () => {
                       style={{ animationDelay: "2s" }}
                     ></div>
                   </div>
-                  <h3 className="font-heading font-semibold text-lg text-calm-charcoal mb-2">
+                  <p className="font-heading font-semibold text-lg text-calm-charcoal mb-2">
                     Patient Dashboard
-                  </h3>
+                  </p>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="font-body text-sm text-calm-charcoal/70">

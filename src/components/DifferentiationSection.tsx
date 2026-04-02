@@ -137,7 +137,7 @@ const DifferentiationSection = () => {
                       </div>
                     ) : (
                       <div className="w-8 h-8 overflow-hidden shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
-                        <XMarkIcon className="w-5 h-5 text-gray-300" />
+                        <XMarkIcon className="w-5 h-5 text-gray-400" />
                       </div>
                     )}
                     <span className="ml-3 text-sm font-body text-calm-charcoal/70">
@@ -189,7 +189,7 @@ const DifferentiationSection = () => {
                         </div>
                       ) : (
                         <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
-                          <XMarkIcon className="w-4 h-4 text-gray-300" />
+                          <XMarkIcon className="w-4 h-4 text-gray-400" />
                         </div>
                       )}
                     </div>
