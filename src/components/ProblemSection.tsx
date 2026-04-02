@@ -68,12 +68,12 @@ const ProblemSection = () => {
           </div>
           <div className="order-1 lg:order-2">
             <h2 className="font-heading font-bold text-4xl sm:text-5xl text-calm-charcoal mb-6 leading-tight">
-              The <span className="text-calm-lavender">Hardest</span> Part of
+              The <span className="text-primary-400">Hardest</span> Part of
               Speech Therapy
               <br />
               Happens Between Sessions
             </h2>
-            <p className="font-body text-xl text-calm-charcoal/70 max-w-3xl leading-relaxed">
+            <p className="font-body text-xl text-calm-charcoal/80 max-w-3xl leading-relaxed">
               Your sessions are structured, engaging, and tailored to each
               patient. But maintaining that quality of practice between visits
               has always been a challenge.

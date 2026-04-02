@@ -49,7 +49,7 @@ const HeroSection = () => {
               — with UpSpeech.
             </h1>
 
-            <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               With UpSpeech, clinics empower people who stutter to practice
               smarter, stay engaged, and accelerate real-life improvements.
             </p>
@@ -100,7 +100,7 @@ const HeroSection = () => {
                   </p>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="font-body text-sm text-calm-charcoal/70">
+                      <span className="font-body text-sm text-calm-charcoal/80">
                         Today's Practice
                       </span>
                       <span className="font-body text-sm font-semibold text-calm-navy">
@@ -134,7 +134,7 @@ const HeroSection = () => {
                     </div>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gradient-to-r from-calm-light/80 to-calm-charcoal/5 rounded-2xl border border-calm-charcoal/10">
-                    <span className="font-body text-sm font-medium text-calm-charcoal/70">
+                    <span className="font-body text-sm font-medium text-calm-charcoal/80">
                       Stabilization
                     </span>
                     <div className="w-6 h-6 bg-calm-charcoal/30 rounded-full"></div>

@@ -85,7 +85,7 @@ const BrandIntroduction = () => {
               className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-body font-semibold text-sm transition-all duration-300 ${
                 activeTab === index
                   ? `bg-white shadow-md text-${audience.color}`
-                  : "text-calm-charcoal/70 hover:text-calm-charcoal/80"
+                  : "text-calm-charcoal/80 hover:text-calm-charcoal/80"
               }`}
             >
               <TabIcon className="w-4 h-4" />
@@ -110,7 +110,7 @@ const BrandIntroduction = () => {
             <h3 className="font-heading font-bold text-xl text-calm-charcoal">
               For {activeAudience.title}
             </h3>
-            <p className="font-body text-sm text-calm-charcoal/70">
+            <p className="font-body text-sm text-calm-charcoal/80">
               Empowering your journey
             </p>
           </div>
@@ -138,7 +138,7 @@ const BrandIntroduction = () => {
 
         {/* Additional Points */}
         <div className="space-y-2.5">
-          <p className="font-body font-semibold text-xs uppercase tracking-wide text-calm-charcoal/70 mb-3">
+          <p className="font-body font-semibold text-xs uppercase tracking-wide text-calm-charcoal/80 mb-3">
             Plus more
           </p>
           {activeAudience.points.map((point, idx) => (

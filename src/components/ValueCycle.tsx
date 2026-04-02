@@ -251,7 +251,7 @@ const ValueCycle = () => {
               <h3 className="font-heading font-bold text-sm md:text-base text-calm-charcoal text-center mb-1">
                 {cycleNodes[hoveredNode].title}
               </h3>
-              <p className="font-body text-xs md:text-sm text-calm-charcoal/70 text-center">
+              <p className="font-body text-xs md:text-sm text-calm-charcoal/80 text-center">
                 {cycleNodes[hoveredNode].description}
               </p>
             </div>

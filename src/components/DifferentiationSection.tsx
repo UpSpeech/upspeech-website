@@ -140,7 +140,7 @@ const DifferentiationSection = () => {
                         <XMarkIcon className="w-5 h-5 text-gray-400" />
                       </div>
                     )}
-                    <span className="ml-3 text-sm font-body text-calm-charcoal/70">
+                    <span className="ml-3 text-sm font-body text-calm-charcoal/80">
                       {item.traditionalExtra}
                     </span>
                   </div>
@@ -178,7 +178,7 @@ const DifferentiationSection = () => {
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-calm-light/30">
                 {/* Traditional */}
                 <div className="space-y-2">
-                  <div className="text-xs font-body font-medium text-calm-charcoal/70">
+                  <div className="text-xs font-body font-medium text-calm-charcoal/80">
                     Traditional Approach
                   </div>
                   <div className="flex flex-col space-y-2">
@@ -193,7 +193,7 @@ const DifferentiationSection = () => {
                         </div>
                       )}
                     </div>
-                    <span className="text-xs font-body leading-tight text-calm-charcoal/70">
+                    <span className="text-xs font-body leading-tight text-calm-charcoal/80">
                       {item.traditionalExtra}
                     </span>
                   </div>

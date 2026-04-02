@@ -47,13 +47,13 @@ const TechniquesOverviewSection = () => {
         <div className="grid lg:grid-cols-[1fr,1.4fr] gap-12 lg:gap-16 items-start">
           {/* Left column — editorial heading */}
           <div className="lg:sticky lg:top-28">
-            <p className="font-body text-sm text-calm-lavender font-semibold uppercase tracking-wider mb-3">
+            <p className="font-body text-sm text-calm-navy font-semibold uppercase tracking-wider mb-3">
               Evidence-Based Practice
             </p>
             <h2 className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-5 leading-tight">
               Built on proven speech therapy techniques
             </h2>
-            <p className="font-body text-lg text-calm-charcoal/70 leading-relaxed mb-8">
+            <p className="font-body text-lg text-calm-charcoal/80 leading-relaxed mb-8">
               UpSpeech structures practice around the same evidence-based
               approaches used by speech-language pathologists worldwide — from
               stuttering modification to fluency shaping to cognitive
@@ -95,19 +95,19 @@ const TechniquesOverviewSection = () => {
                       <h3 className="font-heading font-bold text-xl text-calm-charcoal group-hover:text-calm-navy transition-colors duration-200">
                         {approach.name}
                       </h3>
-                      <span className="font-body text-xs text-calm-charcoal/70 tabular-nums">
+                      <span className="font-body text-xs text-calm-charcoal/80 tabular-nums">
                         {approach.count}{" "}
                         {approach.count === 1 ? "technique" : "techniques"}
                       </span>
                     </div>
-                    <p className="font-body text-sm text-calm-charcoal/70 leading-relaxed mb-3">
+                    <p className="font-body text-sm text-calm-charcoal/80 leading-relaxed mb-3">
                       {approach.description}
                     </p>
                     <div className="flex flex-wrap gap-x-3 gap-y-1">
                       {approach.techniques.map((t) => (
                         <span
                           key={t}
-                          className="font-body text-xs text-calm-charcoal/70"
+                          className="font-body text-xs text-calm-charcoal/80"
                         >
                           {t}
                         </span>
