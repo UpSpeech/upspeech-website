@@ -246,7 +246,10 @@ const CTASection = () => {
                   setFormData({ ...formData, role: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200">
+                <SelectTrigger
+                  aria-label="Choose your role"
+                  className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200"
+                >
                   <SelectValue placeholder="Choose your role" />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
@@ -287,7 +290,10 @@ const CTASection = () => {
                   setFormData({ ...formData, clinicSize: value })
                 }
               >
-                <SelectTrigger className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200">
+                <SelectTrigger
+                  aria-label="Choose clinic size"
+                  className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/50 transition-colors duration-200"
+                >
                   <SelectValue placeholder="Choose clinic size" />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">

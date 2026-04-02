@@ -81,6 +81,7 @@ const BrandIntroduction = () => {
             <button
               key={index}
               onClick={() => setActiveTab(index)}
+              aria-label={audience.title}
               className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-body font-semibold text-sm transition-all duration-300 ${
                 activeTab === index
                   ? `bg-white shadow-md text-${audience.color}`
