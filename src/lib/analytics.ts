@@ -11,6 +11,7 @@ declare global {
       config?: Record<string, unknown>,
     ) => void;
     dataLayer?: unknown[];
+    clarity?: (command: string, ...args: unknown[]) => void;
   }
 }
 

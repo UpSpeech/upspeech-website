@@ -11,7 +11,13 @@ export const PageViewTracker = () => {
 
   useEffect(() => {
     // Track page view on location change
-    trackPageView(document.title, location.pathname + location.search);
+    const pagePath = location.pathname + location.search;
+    trackPageView(document.title, pagePath);
+
+    // Signal route change to Microsoft Clarity for accurate heatmaps/recordings
+    if (window.clarity) {
+      window.clarity("set", "page", pagePath);
+    }
   }, [location]);
 
   return null;
