@@ -133,12 +133,12 @@ async function prerender() {
       );
     }
 
-    // Extract the fully-rendered HTML, then clear #root to avoid React
-    // hydration mismatches (lazy routes + client state cause #418/#423).
-    // SEO metadata lives in <head> so crawlers still get everything they need.
+    // Extract the fully-rendered HTML, keeping #root content intact so
+    // crawlers that don't execute JS (Bing, DuckDuckGo) see real page content.
+    // main.tsx uses createRoot (not hydrateRoot) so there are no hydration mismatches.
     const html = await page.evaluate(() => {
-      const root = document.getElementById("root");
-      if (root) root.innerHTML = "";
+      // Remove transient UI elements that shouldn't be in static HTML
+      document.querySelectorAll("[data-sonner-toaster], [aria-label*='Notifications']").forEach((el) => el.remove());
       return document.documentElement.outerHTML;
     });
     const fullHtml = `<!DOCTYPE html>\n${html}`;
