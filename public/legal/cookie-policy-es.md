@@ -1,6 +1,6 @@
 # Política de Cookies
 
-**Última Actualización:** 11 de marzo de 2026
+**Última Actualización:** 8 de abril de 2026
 
 ## Introducción
 
@@ -54,6 +54,14 @@ Utilizamos Microsoft Clarity para comprender cómo los usuarios interactúan con
 | **MR**              | Indica si es necesaria una actualización de datos  | 7 días     | Análisis |
 | **MUID**            | Identificador de Usuario de Microsoft              | 1 año      | Análisis |
 | **ANONCHK**         | Indica si se utiliza la cookie MUID                | 10 minutos | Análisis |
+
+**PostHog**
+
+Utilizamos PostHog para análisis de producto, para comprender cómo los usuarios interactúan con nuestra plataforma, incluyendo vistas de página, uso de funcionalidades y recorridos de usuario. Los datos de PostHog se alojan en la Unión Europea.
+
+| Cookie/Elemento de Almacenamiento | Finalidad                                      | Duración | Tipo     |
+| --------------------------------- | ---------------------------------------------- | -------- | -------- |
+| **ph_\***                         | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
 
 **Gestión de Consentimiento**
 
@@ -128,6 +136,12 @@ La plataforma de aplicación utiliza los mismos servicios de análisis que nuest
 | **CLID**            | Identifica al usuario en múltiples dominios        | 1 año    | Análisis |
 | **MUID**            | Identificador de Usuario de Microsoft              | 1 año    | Análisis |
 
+**PostHog**
+
+| Cookie/Elemento de Almacenamiento | Finalidad                                      | Duración | Tipo     |
+| --------------------------------- | ---------------------------------------------- | -------- | -------- |
+| **ph_\***                         | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
+
 **Gestión de Consentimiento**
 
 | Elemento de Almacenamiento  | Finalidad                                          | Tipo     | Duración   |
@@ -153,9 +167,9 @@ Puede cambiar sus preferencias de consentimiento en cualquier momento:
 2. Revisitando el sitio web (el banner de consentimiento reaparecerá)
 3. Haciendo una nueva selección
 
-Utilizamos **Google Consent Mode v2**, lo que significa:
+Utilizamos **Google Consent Mode v2** y la API de consentimiento de PostHog, lo que significa:
 
-- Si rechaza las cookies, Google Analytics y Microsoft Clarity funcionarán en un modo de privacidad mejorada
+- Si rechaza las cookies, Google Analytics, Microsoft Clarity y PostHog no recopilarán datos
 - Su elección se respeta y se almacena localmente
 - Los scripts de análisis no le rastrearán si los ha rechazado
 
@@ -268,6 +282,19 @@ Microsoft Clarity proporciona análisis de grabación de sesión y mapas de calo
 - Política de Privacidad: [https://privacy.microsoft.com/privacystatement](https://privacy.microsoft.com/privacystatement)
 - Más información: [https://clarity.microsoft.com/](https://clarity.microsoft.com/)
 
+### PostHog
+
+PostHog proporciona análisis de producto para ayudarnos a comprender cómo los usuarios interactúan con nuestra plataforma. Los datos de PostHog se procesan y almacenan en la Unión Europea.
+
+- Política de Privacidad: [https://posthog.com/privacy](https://posthog.com/privacy)
+- Procesamiento de Datos: Alojado en la UE (Frankfurt)
+
+### Sentry
+
+Sentry proporciona seguimiento de errores y monitorización de rendimiento para ayudarnos a identificar y corregir bugs. Cuando ocurre un error, Sentry recopila información técnica (mensaje de error, stack trace, información del navegador/dispositivo) pero no utiliza cookies. Sentry no requiere consentimiento de cookies.
+
+- Política de Privacidad: [https://sentry.io/privacy/](https://sentry.io/privacy/)
+
 ### Google Cloud Storage
 
 Cuando carga o descarga ficheros de audio/vídeo, Google Cloud Storage puede utilizar cookies para:
@@ -308,6 +335,7 @@ UpSpeech tiene su sede en Portugal y está alojado en servidores de la Unión Eu
 
 - Las cookies y los datos del Almacenamiento Local se almacenan en su dispositivo (no se transfieren a nuestros servidores)
 - Los datos de análisis recopilados por Google Analytics y Microsoft Clarity pueden ser transferidos y tratados en países donde estos proveedores operan
+- Los datos de análisis de PostHog se procesan y almacenan en la Unión Europea (Frankfurt)
 - Google y Microsoft cumplen los marcos de protección de datos pertinentes
 
 Para usuarios en la UE/EEE:
@@ -360,14 +388,15 @@ Si tiene preguntas sobre esta Política de Cookies o sobre cómo utilizamos cook
 
 **Sitio Web de Marketing (upspeech.app):**
 
-- Utiliza cookies de Google Analytics y Microsoft Clarity para análisis del sitio
+- Utiliza cookies de Google Analytics, Microsoft Clarity y PostHog para análisis del sitio
 - Requiere su consentimiento (mediante banner) antes de establecer cookies de análisis
 - Puede aceptar o rechazar en cualquier momento
 
 **Plataforma de Aplicación (\*.upspeech.app):**
 
 - Utiliza Almacenamiento Local para autenticación y preferencias (esencial)
-- Utiliza Google Analytics y Microsoft Clarity para análisis (requiere consentimiento)
+- Utiliza Google Analytics, Microsoft Clarity y PostHog para análisis (requiere consentimiento)
+- Utiliza Sentry para seguimiento de errores (sin cookies, sin consentimiento necesario)
 - Cada subdominio de tenant mantiene preferencias de consentimiento separadas
 - El almacenamiento esencial es necesario para el funcionamiento de la plataforma
 

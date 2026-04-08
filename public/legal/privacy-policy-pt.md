@@ -1,6 +1,6 @@
 # Política de Privacidade
 
-**Última Atualização:** 11 de março de 2026
+**Última Atualização:** 8 de abril de 2026
 
 ## Introdução
 
@@ -154,6 +154,8 @@ Utilizamos serviços de terceiros de confiança para operar a nossa plataforma:
 - **Google AI (Gemini)** - Fornece modelos de linguagem de grande escala para geração de relatórios clínicos e funcionalidades assistidas por IA. Consulte a política de privacidade da Google em [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Armazena ficheiros de áudio/vídeo e logótipos no Google Cloud Storage com encriptação. Consulte a política de privacidade da Google em [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Aloja a nossa infraestrutura de aplicações. Consulte a política de privacidade da Railway em [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
+- **PostHog** - Fornece análise de produto para compreender como os utilizadores interagem com a nossa plataforma. Os dados são processados e armazenados na União Europeia. Consulte a política de privacidade do PostHog em [https://posthog.com/privacy](https://posthog.com/privacy)
+- **Sentry** - Fornece rastreio de erros e monitorização de desempenho para nos ajudar a identificar e corrigir bugs. Recolhe informações técnicas de erros (mensagens de erro, stack traces, informações do navegador/dispositivo) mas não dados pessoais. Consulte a política de privacidade do Sentry em [https://sentry.io/privacy/](https://sentry.io/privacy/)
 - **Prestadores de serviços de email** - Entregam emails transacionais (convites, recuperação de palavras-passe, notificações)
 
 Estes prestadores estão contratualmente obrigados a proteger as suas informações e a utilizá-las apenas para os fins que especificamos.
@@ -302,9 +304,9 @@ Armazenamos o seguinte no localStorage do seu navegador:
 - **Dados do perfil do utilizador** - Cópia em cache das suas informações de utilizador para carregamentos de página mais rápidos
 - **Preferência de idioma** - O idioma de interface selecionado
 
-### Sem Cookies de Terceiros
+### Cookies de Análise
 
-Não utilizamos cookies de terceiros para fins de publicidade ou rastreio. Não participamos em redes de publicidade comportamental.
+Utilizamos cookies de análise (Google Analytics, Microsoft Clarity, PostHog) para compreender como os utilizadores interagem com a nossa plataforma. Estes cookies só são definidos com o seu consentimento explícito. Não utilizamos cookies para fins de publicidade ou rastreio, e não participamos em redes de publicidade comportamental. Para mais detalhes, consulte a nossa [Política de Cookies](/cookies).
 
 ### Definições do Navegador
 
