@@ -1,6 +1,8 @@
 /**
- * Google Analytics 4 utilities for tracking events
+ * Analytics utilities — GA4, Clarity, and PostHog
  */
+
+import posthog from "posthog-js";
 
 // Extend Window interface to include gtag
 declare global {
@@ -15,6 +17,21 @@ declare global {
   }
 }
 
+// Initialize PostHog
+if (
+  typeof window !== "undefined" &&
+  import.meta.env.VITE_POSTHOG_KEY &&
+  import.meta.env.VITE_NODE_ENV === "production"
+) {
+  posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
+    api_host: import.meta.env.VITE_POSTHOG_HOST || "https://eu.i.posthog.com",
+    capture_pageview: false,
+    capture_pageleave: true,
+    persistence: "localStorage+cookie",
+    opt_out_capturing_by_default: true, // Respect cookie consent — enabled via consent.ts
+  });
+}
+
 /**
  * Track a custom event in Google Analytics
  * @param eventName - The name of the event (e.g., 'button_click', 'form_submit')
@@ -24,9 +41,13 @@ export const trackEvent = (
   eventName: string,
   eventParams?: Record<string, unknown>,
 ) => {
-  if (typeof window !== "undefined" && window.gtag) {
+  if (typeof window === "undefined") return;
+
+  if (window.gtag) {
     window.gtag("event", eventName, eventParams);
   }
+
+  posthog.capture(eventName, eventParams);
 };
 
 /**
@@ -35,12 +56,20 @@ export const trackEvent = (
  * @param pagePath - The path of the page
  */
 export const trackPageView = (pageTitle: string, pagePath: string) => {
-  if (typeof window !== "undefined" && window.gtag) {
+  if (typeof window === "undefined") return;
+
+  if (window.gtag) {
     window.gtag("event", "page_view", {
       page_title: pageTitle,
       page_path: pagePath,
     });
   }
+
+  posthog.capture("$pageview", {
+    $current_url: window.location.href,
+    page_title: pageTitle,
+    page_path: pagePath,
+  });
 };
 
 /**

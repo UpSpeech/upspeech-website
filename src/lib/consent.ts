@@ -1,7 +1,9 @@
 /**
- * Google Consent Mode v2 utilities
- * Manages user consent for analytics and advertising
+ * Consent Mode utilities
+ * Manages user consent for analytics and advertising (GA4, Clarity, PostHog)
  */
+
+import posthog from "posthog-js";
 
 // Extend Window interface to include gtag and clarity
 declare global {
@@ -73,6 +75,9 @@ export const grantConsent = (): void => {
     });
   }
 
+  // Enable PostHog tracking
+  posthog.opt_in_capturing();
+
   // Store consent preference
   const consentState: ConsentState = {
     analytics: true,
@@ -107,6 +112,9 @@ export const denyConsent = (): void => {
     });
   }
 
+  // Disable PostHog tracking
+  posthog.opt_out_capturing();
+
   // Store consent preference
   const consentState: ConsentState = {
     analytics: false,
@@ -140,6 +148,9 @@ export const grantAnalyticsOnly = (): void => {
       analytics_Storage: "granted",
     });
   }
+
+  // Enable PostHog tracking (analytics only)
+  posthog.opt_in_capturing();
 
   // Store consent preference
   const consentState: ConsentState = {
