@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last Updated:** March 11, 2026
+**Last Updated:** April 8, 2026
 
 ## Introduction
 
@@ -54,6 +54,14 @@ We use Microsoft Clarity to understand how users interact with our website throu
 | **MR**      | Indicates if a data refresh is needed       | 7 days     | Analytics |
 | **MUID**    | Microsoft User Identifier                   | 1 year     | Analytics |
 | **ANONCHK** | Indicates whether MUID cookie is used       | 10 minutes | Analytics |
+
+**PostHog**
+
+We use PostHog for product analytics to understand how users interact with our platform, including page views, feature usage, and user journeys. PostHog data is hosted in the European Union.
+
+| Cookie/Storage Item | Purpose                                    | Duration  | Type      |
+| ------------------- | ------------------------------------------ | --------- | --------- |
+| **ph_\***           | Stores anonymous user and session identity | 1 year    | Analytics |
 
 **Consent Management**
 
@@ -128,6 +136,12 @@ The application platform uses the same analytics services as our marketing websi
 | **CLID**    | Identifies user across multiple domains     | 1 year   | Analytics |
 | **MUID**    | Microsoft User Identifier                   | 1 year   | Analytics |
 
+**PostHog**
+
+| Cookie/Storage Item | Purpose                                    | Duration  | Type      |
+| ------------------- | ------------------------------------------ | --------- | --------- |
+| **ph_\***           | Stores anonymous user and session identity | 1 year    | Analytics |
+
 **Consent Management**
 
 | Storage Item                | Purpose                            | Type      | Duration  |
@@ -153,9 +167,9 @@ You can change your consent preferences at any time by:
 2. Revisiting the website (the consent banner will reappear)
 3. Making a new selection
 
-We use **Google Consent Mode v2**, which means:
+We use **Google Consent Mode v2** and PostHog's consent API, which means:
 
-- If you decline cookies, Google Analytics and Microsoft Clarity will operate in a privacy-enhanced mode
+- If you decline cookies, Google Analytics, Microsoft Clarity, and PostHog will not collect data
 - Your choice is respected and stored locally
 - Analytics scripts will not track you if you've declined
 
@@ -268,6 +282,19 @@ Microsoft Clarity provides session recording and heatmap analytics to help us im
 - Privacy Policy: [https://privacy.microsoft.com/privacystatement](https://privacy.microsoft.com/privacystatement)
 - Learn more: [https://clarity.microsoft.com/](https://clarity.microsoft.com/)
 
+### PostHog
+
+PostHog provides product analytics to help us understand how users interact with our platform. PostHog data is processed and stored in the European Union.
+
+- Privacy Policy: [https://posthog.com/privacy](https://posthog.com/privacy)
+- Data Processing: EU-hosted (Frankfurt)
+
+### Sentry
+
+Sentry provides error tracking and performance monitoring to help us identify and fix bugs. When an error occurs, Sentry collects technical information (error message, stack trace, browser/device info) but does not use cookies. Sentry does not require cookie consent.
+
+- Privacy Policy: [https://sentry.io/privacy/](https://sentry.io/privacy/)
+
 ### Google Cloud Storage
 
 When you upload or download audio/video files, Google Cloud Storage may use cookies for:
@@ -308,6 +335,7 @@ UpSpeech is based in Portugal and hosted on European Union servers. If you acces
 
 - Cookies and Local Storage data are stored on your device (not transferred to our servers)
 - Analytics data collected by Google Analytics and Microsoft Clarity may be transferred to and processed in countries where these providers operate
+- PostHog analytics data is processed and stored in the European Union (Frankfurt)
 - Google and Microsoft are compliant with relevant data protection frameworks
 
 For users in the EU/EEA:
@@ -360,14 +388,15 @@ If you have questions about this Cookie Policy or how we use cookies and similar
 
 **Marketing Website (upspeech.app):**
 
-- Uses Google Analytics and Microsoft Clarity cookies for site analytics
+- Uses Google Analytics, Microsoft Clarity, and PostHog cookies for site analytics
 - Requires your consent (via banner) before setting analytics cookies
 - You can accept or decline at any time
 
 **Application Platform (\*.upspeech.app):**
 
 - Uses Local Storage for authentication and preferences (essential)
-- Uses Google Analytics and Microsoft Clarity for analytics (consent required)
+- Uses Google Analytics, Microsoft Clarity, and PostHog for analytics (consent required)
+- Uses Sentry for error tracking (no cookies, no consent required)
 - Each tenant subdomain maintains separate consent preferences
 - Essential storage is required for the platform to work
 

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** March 11, 2026
+**Last Updated:** April 8, 2026
 
 ## Introduction
 
@@ -154,6 +154,8 @@ We use trusted third-party services to operate our platform:
 - **Google AI (Gemini)** - Provides large language models for clinical report generation and AI-assisted features. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
+- **PostHog** - Provides product analytics to understand how users interact with our platform. Data is processed and stored in the European Union. See PostHog's privacy policy at [https://posthog.com/privacy](https://posthog.com/privacy)
+- **Sentry** - Provides error tracking and performance monitoring to help us identify and fix bugs. Collects technical error information (error messages, stack traces, browser/device info) but not personal data. See Sentry's privacy policy at [https://sentry.io/privacy/](https://sentry.io/privacy/)
 - **Email service providers** - Deliver transactional emails (invitations, password resets, notifications)
 
 These providers are contractually obligated to protect your information and use it only for the purposes we specify.
@@ -302,9 +304,9 @@ We store the following in your browser's localStorage:
 - **User profile data** - Cached copy of your user information for faster page loads
 - **Language preference** - Your selected interface language
 
-### No Third-Party Cookies
+### Analytics Cookies
 
-We do not use third-party cookies for advertising or tracking purposes. We do not participate in behavioral advertising networks.
+We use analytics cookies (Google Analytics, Microsoft Clarity, PostHog) to understand how users interact with our platform. These cookies are only set with your explicit consent. We do not use cookies for advertising or tracking purposes, and we do not participate in behavioral advertising networks. For full details, see our [Cookie Policy](/cookies).
 
 ### Browser Settings
 
