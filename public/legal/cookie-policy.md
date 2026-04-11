@@ -59,9 +59,9 @@ We use Microsoft Clarity to understand how users interact with our website throu
 
 We use PostHog for product analytics to understand how users interact with our platform, including page views, feature usage, and user journeys. PostHog data is hosted in the European Union.
 
-| Cookie/Storage Item | Purpose                                    | Duration  | Type      |
-| ------------------- | ------------------------------------------ | --------- | --------- |
-| **ph_\***           | Stores anonymous user and session identity | 1 year    | Analytics |
+| Cookie/Storage Item | Purpose                                    | Duration | Type      |
+| ------------------- | ------------------------------------------ | -------- | --------- |
+| **ph\_\***          | Stores anonymous user and session identity | 1 year   | Analytics |
 
 **Consent Management**
 
@@ -138,9 +138,9 @@ The application platform uses the same analytics services as our marketing websi
 
 **PostHog**
 
-| Cookie/Storage Item | Purpose                                    | Duration  | Type      |
-| ------------------- | ------------------------------------------ | --------- | --------- |
-| **ph_\***           | Stores anonymous user and session identity | 1 year    | Analytics |
+| Cookie/Storage Item | Purpose                                    | Duration | Type      |
+| ------------------- | ------------------------------------------ | -------- | --------- |
+| **ph\_\***          | Stores anonymous user and session identity | 1 year   | Analytics |
 
 **Consent Management**
 

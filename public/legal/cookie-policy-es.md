@@ -61,7 +61,7 @@ Utilizamos PostHog para análisis de producto, para comprender cómo los usuario
 
 | Cookie/Elemento de Almacenamiento | Finalidad                                      | Duración | Tipo     |
 | --------------------------------- | ---------------------------------------------- | -------- | -------- |
-| **ph_\***                         | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
+| **ph\_\***                        | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
 
 **Gestión de Consentimiento**
 
@@ -140,7 +140,7 @@ La plataforma de aplicación utiliza los mismos servicios de análisis que nuest
 
 | Cookie/Elemento de Almacenamiento | Finalidad                                      | Duración | Tipo     |
 | --------------------------------- | ---------------------------------------------- | -------- | -------- |
-| **ph_\***                         | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
+| **ph\_\***                        | Almacena identidad anónima de usuario y sesión | 1 año    | Análisis |
 
 **Gestión de Consentimiento**
 

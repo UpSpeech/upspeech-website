@@ -138,7 +138,11 @@ async function prerender() {
     // main.tsx uses createRoot (not hydrateRoot) so there are no hydration mismatches.
     const html = await page.evaluate(() => {
       // Remove transient UI elements that shouldn't be in static HTML
-      document.querySelectorAll("[data-sonner-toaster], [aria-label*='Notifications']").forEach((el) => el.remove());
+      document
+        .querySelectorAll(
+          "[data-sonner-toaster], [aria-label*='Notifications']",
+        )
+        .forEach((el) => el.remove());
       return document.documentElement.outerHTML;
     });
     const fullHtml = `<!DOCTYPE html>\n${html}`;
