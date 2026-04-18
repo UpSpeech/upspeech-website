@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 
 const PILLS = [
-  { label: "Practice Engine" },
-  { label: "AI Reports" },
-  { label: "Patient Analytics" },
-  { label: "Learning Paths" },
+  { label: "Structured Training Protocols" },
+  { label: "Continuous AI-Powered Feedback" },
+  { label: "Progress Tracking & Visualization" },
 ] as const;
 
 const SCREENSHOTS = [
@@ -35,12 +34,14 @@ const HeroOptionC = () => {
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           {/* Small label */}
           <p className="animate-fade-in mb-4 font-body text-xs font-semibold uppercase tracking-widest text-calm-lavender sm:text-sm">
-            The Clinical Operating System for Speech Therapy
+            The Infrastructure Layer for Speech Therapy
           </p>
 
           {/* Headline */}
           <h1 className="animate-fade-in-up font-heading text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Stop Losing Patients Between Sessions.
+            A new era of speech therapy,
+            <br />
+            <span className="text-calm-lavender">powered by hybrid care.</span>
           </h1>
 
           {/* Subheadline */}
@@ -48,10 +49,10 @@ const HeroOptionC = () => {
             className="mx-auto mt-6 max-w-3xl animate-fade-in-up font-body text-base leading-relaxed text-white/70 sm:mt-8 sm:text-lg md:text-xl"
             style={{ animationDelay: "0.15s" }}
           >
-            UpSpeech gives speech therapy clinics the complete platform:
-            structured daily practice for patients, AI-powered report automation
-            for therapists, and real-time analytics for clinic owners. One
-            system. Every workflow.
+            UpSpeech turns the gap between sessions into structured practice —
+            with an AI engine trained on a proprietary clinical dataset, built
+            alongside the therapists who use it. One platform for the clinic,
+            the therapist, and the patient.
           </p>
 
           {/* Icon pills */}
@@ -80,7 +81,7 @@ const HeroOptionC = () => {
               size="lg"
               className="bg-gradient-primary font-body text-base font-bold text-white shadow-button transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-button-hover sm:px-8 sm:py-4 sm:text-lg"
             >
-              Request Pilot Access
+              Partner with UpSpeech
             </Button>
             <a
               href="#platform"
