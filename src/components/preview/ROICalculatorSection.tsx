@@ -84,9 +84,7 @@ const ResultCard = ({ icon, value, label, delay }: ResultCardProps) => (
         <p className="font-heading font-bold text-2xl sm:text-3xl text-calm-navy tabular-nums leading-tight">
           {value}
         </p>
-        <p className="font-body text-sm text-calm-charcoal/70 mt-1">
-          {label}
-        </p>
+        <p className="font-body text-sm text-calm-charcoal/70 mt-1">{label}</p>
       </div>
     </div>
   </div>
@@ -171,9 +169,7 @@ const ROICalculatorSection = () => {
   const extraPatients = therapists * 3;
   const revenueImpact = extraPatients * 150 * 4;
   const totalPatients = therapists * patientsPerTherapist;
-  const patientsRetained = Math.round(
-    totalPatients * (churnRate / 100) * 0.4,
-  );
+  const patientsRetained = Math.round(totalPatients * (churnRate / 100) * 0.4);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("de-DE", {

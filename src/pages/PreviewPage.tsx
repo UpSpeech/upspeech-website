@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -7,22 +7,31 @@ import HeroOptionA from "@/components/preview/HeroOptionA";
 import HeroOptionB from "@/components/preview/HeroOptionB";
 import HeroOptionC from "@/components/preview/HeroOptionC";
 
-// Existing sections (shared)
+// Shared live-site sections reused in preview
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import GuidingVoicesBanner from "@/components/GuidingVoicesBanner";
-import DifferentiationSection from "@/components/DifferentiationSection";
 import TechniquesOverviewSection from "@/components/TechniquesOverviewSection";
 import CTASection from "@/components/CTASection";
-
-// New sections
-import ProductShowcaseSection from "@/components/preview/ProductShowcaseSection";
-import PricingSection from "@/components/preview/PricingSection";
-import ROICalculatorSection from "@/components/preview/ROICalculatorSection";
-import SocialProofSection from "@/components/preview/SocialProofSection";
 import PartnersSection from "@/components/PartnersSection";
 
-type Option = "A" | "B" | "C";
+// Preview-only sections
+import ProductShowcaseSection from "@/components/preview/ProductShowcaseSection";
+import LabsSection from "@/components/preview/LabsSection";
+import DifferentiationSectionPreview from "@/components/preview/DifferentiationSectionPreview";
+
+// Option D — cinematic narrative
+import HeroOptionD from "@/components/preview/optionD/HeroOptionD";
+import GapSection from "@/components/preview/optionD/GapSection";
+import TherapistScene from "@/components/preview/optionD/TherapistScene";
+import PatientScene from "@/components/preview/optionD/PatientScene";
+import CycleScene from "@/components/preview/optionD/CycleScene";
+import JourneyScene from "@/components/preview/optionD/JourneyScene";
+import EngineSection from "@/components/preview/optionD/EngineSection";
+import FoundationsScene from "@/components/preview/optionD/FoundationsScene";
+import InvitationSection from "@/components/preview/optionD/InvitationSection";
+
+type Option = "A" | "B" | "C" | "D";
 
 const optionMeta: Record<
   Option,
@@ -30,21 +39,27 @@ const optionMeta: Record<
 > = {
   A: {
     label: "Option A: Quick Wins",
-    subtitle: "Conservative upgrade",
+    subtitle: "B2B-tilted conservative upgrade",
     description:
-      "Current site with real screenshots, pricing, and product showcase. Minimal copy changes. Fastest to ship.",
+      "Current site refreshed with B2B hero copy, real screenshots, and the UpSpeech Labs research story. Minimum disruption, maximum signal for clinic decision-makers.",
   },
   B: {
     label: "Option B: Clinic-Focused",
-    subtitle: "ICP = Private clinics (PT/ES)",
+    subtitle: "ICP = Private clinics (PT / ES / BR)",
     description:
-      "New hero targeting clinic owners. ROI calculator, per-therapist pricing, social proof with pilot metrics. Focused economic narrative.",
+      "Hero anchored in the 167-hour practice gap. Continuous-care narrative, annotation tool in the product showcase, research credibility up front. No public pricing.",
   },
   C: {
-    label: "Option C: Clinical OS",
-    subtitle: "Bold repositioning",
+    label: "Option C: Infrastructure Layer",
+    subtitle: "Aligned to investor / enterprise deck positioning",
     description:
-      'Full rebrand as "Clinical Operating System for Speech Therapy". Enterprise feel, platform showcase, regulatory roadmap placeholder. Highest impact, biggest change.',
+      "Deck-aligned repositioning: 'The Infrastructure Layer for Speech Therapy'. Hybrid care framing, dedicated UpSpeech Labs section as the data moat, partnership CTA.",
+  },
+  D: {
+    label: "Option D: Cinematic Narrative",
+    subtitle: "Apple-style four-act story",
+    description:
+      "Self-contained editorial flow — scroll-linked 167-hour reveal, staggered pillar choreography, dark Labs act, quiet closing invitation. No shared site chrome; the story carries it.",
   },
 };
 
@@ -62,11 +77,11 @@ const PreviewPage = () => {
                 Website Preview
               </span>
               <span className="text-white/50 text-xs hidden sm:inline">
-                — comparing 3 options from the audit
+                — comparing 3 B2B narratives
               </span>
             </div>
             <div className="flex gap-2">
-              {(["A", "B", "C"] as Option[]).map((opt) => (
+              {(["A", "B", "C", "D"] as Option[]).map((opt) => (
                 <button
                   key={opt}
                   onClick={() => {
@@ -120,9 +135,9 @@ const PreviewPage = () => {
           <ProductShowcaseSection />
           <SolutionSection />
           <GuidingVoicesBanner />
-          <DifferentiationSection />
+          <DifferentiationSectionPreview />
+          <LabsSection />
           <TechniquesOverviewSection />
-          <PricingSection />
           <PartnersSection />
           <CTASection />
           <Footer />
@@ -140,30 +155,42 @@ const PreviewPage = () => {
           <ProductShowcaseSection />
           <SolutionSection />
           <GuidingVoicesBanner />
-          <DifferentiationSection />
-          <ROICalculatorSection />
-          <SocialProofSection />
-          <PricingSection />
+          <DifferentiationSectionPreview />
+          <LabsSection />
           <TechniquesOverviewSection />
           <CTASection />
           <Footer />
         </>
       )}
 
-      {/* ============ OPTION C: Clinical OS ============ */}
+      {/* ============ OPTION C: Infrastructure Layer ============ */}
       {option === "C" && (
         <>
           <HeroOptionC />
           <ProblemSection />
           <ProductShowcaseSection />
           <SolutionSection />
-          <ROICalculatorSection />
+          <LabsSection />
           <GuidingVoicesBanner />
-          <DifferentiationSection />
-          <SocialProofSection />
-          <PricingSection />
+          <DifferentiationSectionPreview />
           <TechniquesOverviewSection />
           <CTASection />
+          <Footer />
+        </>
+      )}
+
+      {/* ============ OPTION D: Cinematic Narrative ============ */}
+      {option === "D" && (
+        <>
+          <HeroOptionD />
+          <GapSection />
+          <TherapistScene />
+          <PatientScene />
+          <CycleScene />
+          <JourneyScene />
+          <EngineSection />
+          <FoundationsScene />
+          <InvitationSection />
           <Footer />
         </>
       )}

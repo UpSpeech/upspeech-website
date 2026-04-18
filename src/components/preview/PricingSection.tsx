@@ -162,7 +162,9 @@ const PricingSection = () => {
                   <li key={feature} className="flex items-start gap-3">
                     <CheckIcon
                       className={`w-5 h-5 shrink-0 mt-0.5 ${
-                        tier.highlighted ? "text-white/90" : "text-calm-lavender"
+                        tier.highlighted
+                          ? "text-white/90"
+                          : "text-calm-lavender"
                       }`}
                     />
                     <span
@@ -195,7 +197,8 @@ const PricingSection = () => {
 
         {/* Footer Note */}
         <p className="text-center font-body text-sm text-calm-charcoal/60 mt-12 animate-fade-in">
-          All plans include a 3-month free pilot period. No credit card required.
+          All plans include a 3-month free pilot period. No credit card
+          required.
         </p>
       </div>
     </section>

@@ -88,27 +88,39 @@ const HeroOptionA = () => {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="animate-fade-in text-center lg:text-left">
-            <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
-              Speech Therapy happens once a week.{" "}
-              <span className="text-gradient-primary">
-                Practice happens every day{" "}
+            <div className="inline-flex items-center gap-2 rounded-full border border-calm-lavender/40 bg-white/60 backdrop-blur-sm px-3 py-1 mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-calm-lavender" />
+              <span className="font-body text-xs font-semibold uppercase tracking-widest text-calm-navy">
+                For Speech Therapy Clinics
               </span>
-              — with UpSpeech.
+            </div>
+            <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
+              Therapy is 45 minutes a week.{" "}
+              <span className="text-gradient-primary">
+                Patients need support for the other 167.
+              </span>
             </h1>
 
             <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              With UpSpeech, clinics empower people who stutter to practice
-              smarter, stay engaged, and accelerate real-life improvements.
+              UpSpeech gives clinics the infrastructure to extend care beyond
+              the session — structured daily practice, AI-powered feedback, and
+              automated clinical reports. Built with SLPs, for SLPs.
             </p>
 
-            <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Button
                 onClick={scrollToCTA}
                 size="lg"
                 className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white font-body font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 shadow-button"
               >
-                Join the Waitlist for Early Access
+                Book a Clinic Demo
               </Button>
+              <a
+                href="#platform"
+                className="font-body text-base font-semibold text-calm-navy hover:text-calm-lavender transition-colors"
+              >
+                See the platform →
+              </a>
             </div>
           </div>
 
@@ -162,7 +174,7 @@ const HeroOptionA = () => {
               <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-card border border-calm-lavender/30 px-4 py-2.5 flex items-center gap-2.5">
                 <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="font-body text-xs sm:text-sm font-semibold text-calm-charcoal">
-                  Real Product. Real Results.
+                  Co-developed with SpeechCare clinicians
                 </span>
               </div>
             </div>
