@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  "4h/week saved on reports per therapist",
-  "3x more practice between sessions",
-  "40% better patient retention",
+  "99% of the week without clinical support",
+  "< 20% of patients practice consistently",
+  "6–12 months average treatment duration",
 ];
 
 const HeroOptionB = () => {
@@ -17,18 +17,24 @@ const HeroOptionB = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left: Copy */}
           <div className="animate-fade-in text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border border-calm-lavender/40 bg-white/60 backdrop-blur-sm px-3 py-1 mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-calm-lavender" />
+              <span className="font-body text-xs font-semibold uppercase tracking-widest text-calm-navy">
+                Hybrid Care for Speech Clinics
+              </span>
+            </div>
             <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
-              Give Your Therapists Superpowers.
-              <br />
+              Turn the 167-hour gap{" "}
               <span className="text-gradient-primary">
-                Give Your Patients Daily Practice.
+                into your clinic's next growth lever.
               </span>
             </h1>
 
             <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/70 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              UpSpeech helps speech therapy clinics extend care beyond sessions
-              — with structured practice, AI-generated clinical reports, and
-              real-time patient analytics. All from one platform.
+              Speech therapy stops when the session ends. UpSpeech keeps it
+              going — with structured daily practice for patients, AI-drafted
+              reports for therapists, and progress analytics for clinic owners.
+              One platform, continuous care.
             </p>
 
             {/* Stat badges */}
@@ -49,14 +55,14 @@ const HeroOptionB = () => {
                 size="lg"
                 className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white font-body font-bold px-8 py-4 text-base sm:text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 shadow-button"
               >
-                Start Your Free Pilot
+                Apply for the Pilot Program
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto font-body font-bold px-8 py-4 text-base sm:text-lg rounded-full border-2 border-calm-navy text-calm-navy hover:bg-calm-navy hover:text-white transition-all duration-300"
               >
-                Book a Demo
+                Book a Clinic Demo
               </Button>
             </div>
           </div>
