@@ -26,7 +26,8 @@ interface SEOProps {
 }
 
 function ogImageForPath(path: string): string {
-  const slug = path === "/" || path === "" ? "home" : path.replace(/^\//, "");
+  const slug =
+    path === "/" || path === "" ? "home" : path.replace(/^\/|\/$/g, "");
   return `${BASE_URL}/og/${slug}.png`;
 }
 
@@ -42,7 +43,11 @@ export function SEO({
   structuredData,
 }: SEOProps) {
   const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
-  const canonicalUrl = `${BASE_URL}${path}`;
+  // Netlify serves every non-root URL with a trailing slash; match it in
+  // canonical/og:url/hreflang so sitemap, canonical, and served URL all agree.
+  const canonicalPath =
+    !path || path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`;
+  const canonicalUrl = `${BASE_URL}${canonicalPath}`;
   const resolvedImage = image ?? ogImageForPath(path);
   const resolvedImageAlt = imageAlt ?? fullTitle;
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";

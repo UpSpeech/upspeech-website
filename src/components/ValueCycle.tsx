@@ -211,6 +211,7 @@ const ValueCycle = () => {
 
                 {/* Number Badge */}
                 <div
+                  aria-hidden="true"
                   className={`absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center font-body font-bold text-xs transition-all duration-300 ${
                     isHovered ? "bg-calm-navy" : "bg-calm-lavender"
                   } text-white`}

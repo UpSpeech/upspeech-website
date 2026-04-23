@@ -754,7 +754,7 @@
 }
 
 .legal-document a {
-  @apply text-primary hover:underline;
+  @apply text-primary underline;
 }
 
 .legal-document code {
