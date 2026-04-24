@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
+import PreviewPage from "@/pages/PreviewPage";
 import Index from "./pages/Index";
 
 // Lazy-loaded routes — split into separate chunks
@@ -88,6 +89,8 @@ const App = () => (
               path="/techniques/identification-desensitization"
               element={<IdentificationDesensitization />}
             />
+
+            <Route path="/preview" element={<PreviewPage />} />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
