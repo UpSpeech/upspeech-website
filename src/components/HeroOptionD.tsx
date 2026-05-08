@@ -54,7 +54,7 @@ const HeroOptionD = () => {
           }}
         >
           <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender">
-            For clinics treating stuttering
+            For clinics with stuttering services
           </span>
         </div>
 

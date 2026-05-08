@@ -1,4 +1,5 @@
 import { useReveal } from "./useReveal";
+import ZoomableImage from "./ui/ZoomableImage";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -105,7 +106,7 @@ const JourneyScene = () => {
                 </span>
               </div>
             </div>
-            <img
+            <ZoomableImage
               src="/screenshots/app/client-journey.png"
               alt="UpSpeech therapy journey with milestones and structured learning path"
               className="w-full h-auto block"

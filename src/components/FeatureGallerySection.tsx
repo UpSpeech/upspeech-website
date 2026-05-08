@@ -1,4 +1,5 @@
 import { useReveal } from "./useReveal";
+import ZoomableImage from "./ui/ZoomableImage";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -97,7 +98,7 @@ const FeatureGallerySection = () => {
           }}
         >
           <div className="relative bg-calm-charcoal/[0.03] flex items-center justify-center p-3 sm:p-5 lg:p-6">
-            <img
+            <ZoomableImage
               src="/screenshots/app/researcher-annotation-tool.jpg"
               alt="UpSpeech annotation tool with audio waveform, video review, and frame-by-frame disfluency tagging"
               className="w-full h-auto block rounded-lg"
@@ -153,7 +154,7 @@ const FeatureGallerySection = () => {
               }}
             >
               <div className="rounded-2xl overflow-hidden border border-calm-navy/10 bg-white shadow-[0_24px_60px_-30px_rgba(41,53,135,0.3)]">
-                <img
+                <ZoomableImage
                   src={f.image}
                   alt={f.imageAlt}
                   className="w-full h-auto block"
