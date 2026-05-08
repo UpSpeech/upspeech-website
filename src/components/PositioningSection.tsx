@@ -2,6 +2,21 @@ import { useReveal } from "./useReveal";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
+const PILLARS = [
+  {
+    label: "Session prep",
+    copy: "Walk into every appointment already knowing how the week went.",
+  },
+  {
+    label: "Reports, drafted",
+    copy: "Session data becomes a structured clinical draft. Therapist edits, signs.",
+  },
+  {
+    label: "Between sessions",
+    copy: "Patients follow a clinician-set plan, with practice that holds.",
+  },
+] as const;
+
 const PositioningSection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.3 });
 
@@ -37,20 +52,41 @@ const PositioningSection = () => {
             ...style(120),
           }}
         >
-          We're not an AI company.
+          Not another AI tool.
           <br />
           <span className="text-calm-lavender">
-            We're a speech therapy platform that uses AI to keep clinical work
-            continuous.
+            A stuttering therapy platform, with AI built around the clinical
+            workflow.
           </span>
         </h2>
         <p
           className="mt-8 max-w-2xl mx-auto font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={style(280)}
         >
-          Built by clinicians, for clinicians. AI works in the background so
-          therapists can spend their time where it matters: with patients.
+          Built with clinicians, for clinicians. The AI works in the background,
+          so therapists spend their time where it matters: with patients.
         </p>
+
+        <div className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto">
+          {PILLARS.map((p, i) => (
+            <div
+              key={p.label}
+              style={{
+                transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
+                transitionDelay: `${440 + i * 90}ms`,
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(20px)",
+              }}
+            >
+              <div className="font-body text-[11px] font-semibold tracking-[0.22em] uppercase text-calm-lavender">
+                {p.label}
+              </div>
+              <p className="mt-2.5 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                {p.copy}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

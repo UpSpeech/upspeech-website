@@ -9,10 +9,10 @@ export const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
  * boolean on sticky sections).
  *
  * Standard delay ladder per scene:
- *   0    — eyebrow
- *   80   — headline
- *   160  — body / subhead
- *   240+ — secondary content (stagger 80ms)
+ *   0, eyebrow
+ *   80, headline
+ *   160, body / subhead
+ *   240+, secondary content (stagger 80ms)
  */
 export const reveal = (
   revealed: boolean,

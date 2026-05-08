@@ -82,18 +82,72 @@ const FeatureGallerySection = () => {
           Specific tools.
           <br />
           <span className="text-calm-lavender">
-            For specific clinical work.
+            For clinicians and researchers.
           </span>
         </h2>
 
-        <div className="mt-[clamp(3rem,6vw,5rem)] grid gap-8 sm:gap-10 sm:grid-cols-2">
+        {/* Featured: Annotation tool (cross-audience) */}
+        <article
+          className="mt-[clamp(3rem,6vw,5rem)] rounded-2xl overflow-hidden border border-calm-navy/10 bg-white shadow-[0_30px_80px_-30px_rgba(41,53,135,0.35)] grid grid-cols-1 lg:grid-cols-[1.4fr,1fr]"
+          style={{
+            transition: `opacity 1000ms ${EASE}, transform 1000ms ${EASE}`,
+            transitionDelay: "180ms",
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? "translateY(0)" : "translateY(32px)",
+          }}
+        >
+          <div className="relative bg-calm-charcoal/[0.03] flex items-center justify-center p-3 sm:p-5 lg:p-6">
+            <img
+              src="/screenshots/app/researcher-annotation-tool.jpg"
+              alt="UpSpeech annotation tool with audio waveform, video review, and frame-by-frame disfluency tagging"
+              className="w-full h-auto block rounded-lg"
+              loading="lazy"
+            />
+          </div>
+          <div className="p-7 sm:p-9 lg:p-11 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-calm-navy/10">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <span className="rounded-full bg-calm-lavender/15 px-2.5 py-1 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-navy">
+                For clinicians
+              </span>
+              <span className="rounded-full bg-calm-lavender/15 px-2.5 py-1 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-navy">
+                For researchers
+              </span>
+            </div>
+            <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
+              Annotation tool
+            </div>
+            <h3 className="mt-2 font-heading font-bold text-calm-charcoal tracking-tight text-2xl sm:text-3xl leading-tight">
+              The tool clinicians and researchers use to label what actually
+              happens.
+            </h3>
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+              Frame-by-frame tagging of stuttering moments: core behavior,
+              secondary behaviors, tension level. Standard taxonomy. The same
+              tool builds our dataset and grounds research collaborations.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {["SR", "ISR", "MUR", "Prolongation", "Block", "Tension 0-3"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-calm-navy/15 bg-calm-light px-2.5 py-1 font-body text-[11px] font-medium text-calm-charcoal/70"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
+            </div>
+          </div>
+        </article>
+
+        <div className="mt-[clamp(2rem,4vw,3rem)] grid gap-8 sm:gap-10 sm:grid-cols-2">
           {FEATURES.map((f, i) => (
             <article
               key={f.label}
               className="flex flex-col"
               style={{
                 transition: `opacity 1000ms ${EASE}, transform 1000ms ${EASE}`,
-                transitionDelay: `${200 + i * 120}ms`,
+                transitionDelay: `${320 + i * 120}ms`,
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(32px)",
               }}

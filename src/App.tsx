@@ -8,7 +8,7 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import Index from "./pages/Index";
 
-// Lazy-loaded routes — split into separate chunks
+// Lazy-loaded routes, split into separate chunks
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));

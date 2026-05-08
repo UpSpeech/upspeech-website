@@ -27,7 +27,7 @@ const InvitationSection = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={style(0)}
         >
-          Act VIII · Partner with us
+          Partner with us
         </p>
         <h2
           className="mt-6 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -46,13 +46,13 @@ const InvitationSection = () => {
           className="mt-10 max-w-xl mx-auto font-body text-lg sm:text-xl text-calm-charcoal/65 leading-relaxed"
           style={style(300)}
         >
-          Currently partnering with a small cohort of speech therapy clinics in
-          Portugal, Spain, and Brazil, building the infrastructure with the
-          clinicians who will use it.
+          Currently partnering with a small cohort of clinics treating
+          stuttering in Portugal, Spain, and Brazil, building the infrastructure
+          with the clinicians who will use it.
         </p>
 
         <div
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="mt-12 flex items-center justify-center"
           style={style(440)}
         >
           <a
@@ -63,12 +63,6 @@ const InvitationSection = () => {
             <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
               →
             </span>
-          </a>
-          <a
-            href="#platform"
-            className="font-body font-medium text-calm-charcoal/70 hover:text-calm-charcoal transition-colors"
-          >
-            Read the thesis
           </a>
         </div>
       </div>

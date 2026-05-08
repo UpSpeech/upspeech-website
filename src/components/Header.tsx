@@ -25,7 +25,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           <button
             type="button"
-            aria-label="UpSpeech — scroll to top"
+            aria-label="UpSpeech, scroll to top"
             className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender rounded-lg"
             onClick={() => {
               trackButtonClick("logo", "header");
@@ -76,7 +76,7 @@ const Header = () => {
             }}
             className="bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
-            Join the Waitlist
+            Request early access
           </Button>
         </div>
       </div>

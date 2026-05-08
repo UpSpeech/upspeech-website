@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-calm-lavender/20 via-transparent to-calm-navy/15"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-calm-charcoal/5 via-transparent to-calm-lavender/10"></div>
 
-      {/* Floating Elements — GPU-composited (transform/opacity only) */}
+      {/* Floating Elements, GPU-composited (transform/opacity only) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-3 h-3 sm:w-4 sm:h-4 bg-calm-lavender/30 rounded-full will-change-transform animate-float"></div>
         <div
@@ -44,9 +44,9 @@ const HeroSection = () => {
             <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-calm-charcoal leading-tight mb-4 sm:mb-6">
               Speech Therapy happens once a week.{" "}
               <span className="text-gradient-primary">
-                Practice happens every day{" "}
+                Practice happens every day
               </span>
-              — with UpSpeech.
+              , with UpSpeech.
             </h1>
 
             <p className="font-body text-base sm:text-lg md:text-xl text-calm-charcoal/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -146,7 +146,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Wave divider — CSS transform animation (GPU-composited) */}
+      {/* Wave divider, CSS transform animation (GPU-composited) */}
       <div className="absolute -bottom-1 left-0 w-full overflow-hidden">
         <svg
           aria-hidden="true"

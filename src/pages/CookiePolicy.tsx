@@ -15,17 +15,17 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
     title: "Cookie Policy",
     description:
-      "UpSpeech cookie policy — how we use cookies and similar technologies on our AI-powered speech therapy platform.",
+      "UpSpeech cookie policy, how we use cookies and similar technologies on our AI-powered speech therapy platform.",
   },
   pt: {
     title: "Política de Cookies",
     description:
-      "Política de cookies da UpSpeech — como utilizamos cookies e tecnologias semelhantes na nossa plataforma de terapia da fala com IA.",
+      "Política de cookies da UpSpeech, como utilizamos cookies e tecnologias semelhantes na nossa plataforma de terapia da fala com IA.",
   },
   es: {
     title: "Política de Cookies",
     description:
-      "Política de cookies de UpSpeech — cómo utilizamos cookies y tecnologías similares en nuestra plataforma de logopedia con IA.",
+      "Política de cookies de UpSpeech, cómo utilizamos cookies y tecnologías similares en nuestra plataforma de logopedia con IA.",
   },
 };
 

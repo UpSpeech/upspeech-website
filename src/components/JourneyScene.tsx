@@ -33,7 +33,7 @@ const JourneyScene = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={style(0)}
         >
-          Act V · The long arc
+          The long arc
         </p>
         <h2
           className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
@@ -101,7 +101,7 @@ const JourneyScene = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
               <div className="ml-3 flex-1 h-5 rounded-md bg-white/90 max-w-[260px] border border-calm-charcoal/5 flex items-center justify-center">
                 <span className="font-body text-[10px] text-calm-charcoal/40 tabular-nums">
-                  app.upspeech.io/journey
+                  app.upspeech.app/journey
                 </span>
               </div>
             </div>

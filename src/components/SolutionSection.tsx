@@ -86,7 +86,7 @@ const SolutionSection = () => {
               </h3>
               <p className="font-body text-lg text-calm-charcoal/80 mb-8">
                 We work alongside therapists to provide structured plans,
-                real-time feedback, and motivational support — tailored to each
+                real-time feedback, and motivational support, tailored to each
                 user's progress.
               </p>
               <div className="space-y-4">

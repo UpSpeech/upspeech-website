@@ -26,7 +26,7 @@ const GapSection = () => {
       return;
     }
 
-    // Entry reveal — fires once when the section starts intersecting.
+    // Entry reveal, fires once when the section starts intersecting.
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -62,7 +62,7 @@ const GapSection = () => {
   }, []);
 
   // Choreography:
-  //  0.00           both rows visible — gap is the default state
+  //  0.00           both rows visible, gap is the default state
   //  0.20 → 0.75    fill the continuous row day by day
   //  0.50 → 0.85    headline swaps from 'today' to 'by design'
   //  0.80 → 0.95    footer insight fades in
@@ -79,7 +79,7 @@ const GapSection = () => {
       className="relative bg-white"
       style={{ height: "320vh" }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -93,7 +93,7 @@ const GapSection = () => {
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-6 sm:mb-8"
             style={reveal(revealed, 0)}
           >
-            Act I · Continuous care, by design
+            The patient's week
           </p>
 
           {/* Swapping headlines */}
@@ -114,7 +114,7 @@ const GapSection = () => {
                 transform: `translateY(${swap * -28}px)`,
               }}
             >
-              A week of care, as it is today.
+              A patient's week, as it is today.
             </h2>
             <h2
               className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -126,7 +126,7 @@ const GapSection = () => {
                 transform: `translateY(${(1 - swap) * 28}px)`,
               }}
             >
-              A week of care,{" "}
+              A patient's week,{" "}
               <span className="text-calm-lavender">by design.</span>
             </h2>
           </div>
@@ -143,7 +143,7 @@ const GapSection = () => {
                   Traditional
                 </span>
                 <span className="font-body text-xs sm:text-sm text-calm-charcoal/55 tabular-nums">
-                  1 session · 6 days of silence
+                  1 session · 6 days without support
                 </span>
               </div>
               <WeekRow variant="traditional" progress={1} />

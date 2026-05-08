@@ -54,7 +54,7 @@ const HeroOptionD = () => {
           }}
         >
           <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender">
-            A proposition
+            For clinics treating stuttering
           </span>
         </div>
 
@@ -82,12 +82,12 @@ const HeroOptionD = () => {
             transform: loaded ? "translateY(0)" : "translateY(16px)",
           }}
         >
-          The infrastructure layer that keeps your care continuous. AI working
-          quietly in the background, clinicians always in the loop.
+          Structured practice between sessions. Clinical reports drafted from
+          session data. Therapists always in the loop.
         </p>
       </div>
 
-      {/* Product peek at bottom — half-cut browser frame invites scroll */}
+      {/* Product peek at bottom, half-cut browser frame invites scroll */}
       <div
         className="relative z-10 mt-10 px-[max(1.5rem,5vw)]"
         style={{
@@ -105,7 +105,7 @@ const HeroOptionD = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
               <div className="ml-3 flex-1 h-5 rounded-md bg-white/90 max-w-[260px] border border-calm-charcoal/5 flex items-center justify-center">
                 <span className="font-body text-[10px] text-calm-charcoal/40 tabular-nums">
-                  app.upspeech.io/dashboard
+                  app.upspeech.app/dashboard
                 </span>
               </div>
             </div>

@@ -136,7 +136,7 @@ const CycleScene = () => {
   }, []);
 
   // Structural chrome (eyebrow, headline, labels, center, description, footer)
-  // is visible from the start — the cycle reads as 'ready to go' at scroll 0
+  // is visible from the start, the cycle reads as 'ready to go' at scroll 0
   // defaulting to step 01 (AI drafts). Scroll drives only the progression.
   const nodePhase = clamp01(progress / 0.9);
   const finalGlow = clamp01((progress - 0.9) / 0.1);
@@ -149,13 +149,13 @@ const CycleScene = () => {
   const active = NODES[activeIndex];
   const activeIsAI = active.actor === "ai";
 
-  // Orbital satellite — rides the ring at the current nodeFloat position
+  // Orbital satellite, rides the ring at the current nodeFloat position
   const orbitDeg = (nodeFloat / NODES.length) * 360;
   const orbitRad = (orbitDeg * Math.PI) / 180;
   const orbitX = CENTER + RADIUS * Math.sin(orbitRad);
   const orbitY = CENTER - RADIUS * Math.cos(orbitRad);
 
-  // Progress arc — continuous loop drawn from top clockwise
+  // Progress arc, continuous loop drawn from top clockwise
   const circumference = 2 * Math.PI * RADIUS;
   const arcDrawn = nodePhase * circumference;
 
@@ -165,7 +165,7 @@ const CycleScene = () => {
       className="relative bg-white"
       style={{ height: "380vh" }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{
@@ -179,7 +179,7 @@ const CycleScene = () => {
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-5 sm:mb-6"
             style={reveal(revealed, 0)}
           >
-            Act IV · The loop
+            The loop
           </p>
 
           <h2
@@ -219,7 +219,7 @@ const CycleScene = () => {
                   strokeWidth="0.6"
                 />
 
-                {/* Progress arc — continuous loop, from top clockwise */}
+                {/* Progress arc, continuous loop, from top clockwise */}
                 <circle
                   cx={CENTER}
                   cy={CENTER}
@@ -233,7 +233,7 @@ const CycleScene = () => {
                   style={{ transition: `stroke-dasharray 450ms ${EASE}` }}
                 />
 
-                {/* Orbital satellite — subtle position indicator */}
+                {/* Orbital satellite, subtle position indicator */}
                 {nodePhase > 0 && (
                   <g style={{ transition: `transform 450ms ${EASE}` }}>
                     <circle
@@ -316,7 +316,7 @@ const CycleScene = () => {
                 })}
               </svg>
 
-              {/* HTML labels outside the ring — positioned per quadrant */}
+              {/* HTML labels outside the ring, positioned per quadrant */}
               {NODES.map((node, i) => {
                 const pos = nodePoint(i, LABEL_RADIUS);
                 const isActive = i === activeIndex && nodePhase > 0;
@@ -374,7 +374,7 @@ const CycleScene = () => {
                 );
               })}
 
-              {/* Center scoreboard — live actor readout */}
+              {/* Center scoreboard, live actor readout */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
                 <div
                   className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/45"
@@ -383,7 +383,7 @@ const CycleScene = () => {
                   The loop
                 </div>
 
-                {/* Actor readout — swaps and recolors with each step */}
+                {/* Actor readout, swaps and recolors with each step */}
                 <div
                   key={`actor-${activeIndex}`}
                   className="font-heading font-bold tracking-tight mt-2 mb-2.5"
@@ -408,7 +408,7 @@ const CycleScene = () => {
               </div>
             </div>
 
-            {/* Description panel — shows step 01 by default, swaps with scroll */}
+            {/* Description panel, shows step 01 by default, swaps with scroll */}
             <div className="relative min-h-[14rem] lg:min-h-[18rem]">
               <div
                 key={activeIndex}

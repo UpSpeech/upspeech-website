@@ -1,5 +1,5 @@
 /**
- * Analytics utilities — GA4, Clarity, and PostHog
+ * Analytics utilities, GA4, Clarity, and PostHog
  */
 
 import posthog from "posthog-js";
@@ -28,7 +28,7 @@ if (
     capture_pageview: false,
     capture_pageleave: true,
     persistence: "localStorage+cookie",
-    opt_out_capturing_by_default: true, // Respect cookie consent — enabled via consent.ts
+    opt_out_capturing_by_default: true, // Respect cookie consent, enabled via consent.ts
   });
 }
 
