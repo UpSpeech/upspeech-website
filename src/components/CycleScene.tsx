@@ -17,7 +17,7 @@ const NODES: Node[] = [
     actor: "ai",
     verb: "drafts",
     title: "AI drafts the clinical report.",
-    body: "Session recording and notes turn into a structured draft — SOAP format, disfluency counts, technique use, next-step suggestions.",
+    body: "Session recording and notes turn into a structured draft: SOAP format, disfluency counts, technique use, next-step suggestions.",
   },
   {
     actor: "clinician",
@@ -29,7 +29,7 @@ const NODES: Node[] = [
     actor: "ai",
     verb: "structures",
     title: "AI structures the practice plan.",
-    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises — holding, pauses, soft starts, identification.",
+    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises: holding, pauses, soft starts, identification.",
   },
   {
     actor: "clinician",
@@ -41,13 +41,13 @@ const NODES: Node[] = [
     actor: "ai",
     verb: "listens",
     title: "AI listens between sessions.",
-    body: "Real-time fluency analysis on every practice attempt — sound, context, facial cues — building a continuous picture of progress.",
+    body: "Real-time fluency analysis on every practice attempt (sound, context, facial cues), building a continuous picture of progress.",
   },
   {
     actor: "clinician",
     verb: "decides",
     title: "The clinician decides what's next.",
-    body: "Aggregated signal lands on the therapist's dashboard. They choose the next protocol — informed, not replaced.",
+    body: "Aggregated signal lands on the therapist's dashboard. They choose the next protocol, informed, not replaced.",
   },
 ];
 

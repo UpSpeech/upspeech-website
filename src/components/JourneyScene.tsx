@@ -51,7 +51,7 @@ const JourneyScene = () => {
           className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={style(160)}
         >
-          A structured learning path maps every patient's journey — from
+          A structured learning path maps every patient's journey, from
           identification and desensitisation, through fluency-shaping, to
           generalisation in real-world contexts. Clinicians always know what's
           next. Patients always know how far they've come.

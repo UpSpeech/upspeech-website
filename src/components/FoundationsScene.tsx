@@ -137,7 +137,7 @@ const FoundationsScene = () => {
           <p className="mt-3 font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
             A dedicated research team of published clinicians and AI
             specialists, building the proprietary multimodal dataset that powers
-            our voice analysis engine — one clinician-annotated frame at a time.
+            our voice analysis engine, one clinician-annotated frame at a time.
           </p>
         </div>
 
