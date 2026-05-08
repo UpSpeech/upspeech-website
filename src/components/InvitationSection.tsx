@@ -46,8 +46,8 @@ const InvitationSection = () => {
           className="mt-10 max-w-xl mx-auto font-body text-lg sm:text-xl text-calm-charcoal/65 leading-relaxed"
           style={style(300)}
         >
-          Currently partnering with a small cohort of clinics treating
-          stuttering in Portugal, Spain, and Brazil, building the infrastructure
+          Currently partnering with a small cohort of clinics with stuttering
+          services in Portugal, Spain, and Brazil, building the infrastructure
           with the clinicians who will use it.
         </p>
 

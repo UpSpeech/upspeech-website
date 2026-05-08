@@ -1,4 +1,5 @@
 import { useReveal } from "./useReveal";
+import ZoomableImage from "./ui/ZoomableImage";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -108,7 +109,7 @@ const ProductScene = ({
                 </span>
               </div>
             </div>
-            <img
+            <ZoomableImage
               src={image}
               alt={imageAlt}
               className="w-full h-auto block"
