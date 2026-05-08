@@ -127,7 +127,7 @@ const GapSection = () => {
               }}
             >
               A patient's week,{" "}
-              <span className="text-calm-lavender">by design.</span>
+              <span className="text-calm-lavender">with UpSpeech.</span>
             </h2>
           </div>
 
@@ -180,9 +180,9 @@ const GapSection = () => {
               transform: `translateY(${(1 - footer) * 20}px)`,
             }}
           >
-            Not more work for the clinician.{" "}
+            Continuous support for the patient,{" "}
             <span className="text-calm-navy font-semibold">
-              More structure, every day.
+              without more work for the clinician.
             </span>
           </div>
         </div>

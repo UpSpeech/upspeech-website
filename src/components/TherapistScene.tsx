@@ -7,10 +7,12 @@ const TherapistScene = () => (
       <>
         The session belongs to the clinician.
         <br />
-        <span className="text-calm-lavender">We take care of the rest.</span>
+        <span className="text-calm-lavender">
+          The platform handles the rest.
+        </span>
       </>
     }
-    body="Automated clinical reports, patient-level analytics, and a continuous picture of what's happening outside the room, so therapists walk into every session already knowing where to focus."
+    body="Clinical reports drafted from session data. Patient activity visible outside the appointment. Therapists arrive at each session with the context they need to plan it."
     image="/screenshots/app/therapist-patient-progress.jpg"
     imageAlt="UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step"
     url="app.upspeech.app/therapist"
@@ -18,16 +20,16 @@ const TherapistScene = () => (
     align="left"
     points={[
       {
-        label: "Prep, with context",
-        copy: "Walk into every session already knowing the week, what was practiced, where the patient struggled, what to focus on.",
+        label: "Session prep",
+        copy: "Walk into the appointment knowing what the patient practised since the last visit.",
       },
       {
         label: "Reports, drafted",
-        copy: "Session data becomes a structured clinical draft. The therapist reads, edits, signs.",
+        copy: "Session data becomes a structured clinical draft for the therapist to review and sign.",
       },
       {
-        label: "Capacity, returned",
-        copy: "Less time on admin. More time with patients.",
+        label: "Between sessions",
+        copy: "Patients follow a plan set by the clinician, with structured practice between visits.",
       },
     ]}
   />

@@ -46,16 +46,18 @@ const JourneyScene = () => {
         >
           Therapy is months of small wins.
           <br />
-          <span className="text-calm-lavender">We make every one visible.</span>
+          <span className="text-calm-lavender">
+            Each one recorded along the way.
+          </span>
         </h2>
         <p
           className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={style(160)}
         >
-          A structured learning path maps every patient's journey, from
-          identification and desensitisation, through fluency-shaping, to
-          generalisation in real-world contexts. Clinicians always know what's
-          next. Patients always know how far they've come.
+          A structured learning path covers identification and desensitisation,
+          fluency-shaping techniques, and generalisation to real-world
+          contexts. The next step is clear to the clinician, and past steps
+          are visible to the patient.
         </p>
 
         {/* Stats row */}

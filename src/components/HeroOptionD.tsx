@@ -83,7 +83,7 @@ const HeroOptionD = () => {
           }}
         >
           Structured practice between sessions. Clinical reports drafted from
-          session data. Therapists always in the loop.
+          session data. Therapists keep the final say.
         </p>
       </div>
 

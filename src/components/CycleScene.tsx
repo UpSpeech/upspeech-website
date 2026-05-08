@@ -17,37 +17,37 @@ const NODES: Node[] = [
     actor: "ai",
     verb: "drafts",
     title: "AI drafts the clinical report.",
-    body: "Session recording and notes turn into a structured draft: SOAP format, disfluency counts, technique use, next-step suggestions.",
+    body: "Session recording and notes turn into a structured draft.",
   },
   {
     actor: "clinician",
-    verb: "signs",
-    title: "The clinician reads, edits, signs.",
-    body: "Nothing leaves the platform without therapist review. Corrections feed back into the model, quietly making the next draft better.",
+    verb: "approves",
+    title: "The clinician reads, edits, approves.",
+    body: "Nothing leaves the platform without therapist review. Corrections feed back into the model and improve the next draft.",
   },
   {
     actor: "ai",
     verb: "structures",
     title: "AI structures the practice plan.",
-    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises: holding, pauses, soft starts, identification.",
+    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises and changes to the therapeutical plan.",
   },
   {
     actor: "clinician",
     verb: "calibrates",
     title: "The clinician calibrates it.",
-    body: "The therapist approves, adjusts difficulty, swaps techniques. The plan is never assigned without a clinician's judgement behind it.",
+    body: "The therapist approves, adjusts difficulty, and swaps techniques. No plan is assigned without clinical review.",
   },
   {
     actor: "ai",
     verb: "listens",
-    title: "AI listens between sessions.",
-    body: "Real-time fluency analysis on every practice attempt (sound, context, facial cues), building a continuous picture of progress.",
+    title: "AI helps between sessions.",
+    body: "Real-time fluency analysis runs on each practice attempt (sound, context, facial cues), recording progress over time.",
   },
   {
     actor: "clinician",
     verb: "decides",
     title: "The clinician decides what's next.",
-    body: "Aggregated signal lands on the therapist's dashboard. They choose the next protocol, informed, not replaced.",
+    body: "Aggregated signal appears on the therapist's dashboard. They select the next protocol with the data at hand.",
   },
 ];
 
@@ -190,8 +190,8 @@ const CycleScene = () => {
               ...reveal(revealed, 80),
             }}
           >
-            Humans,{" "}
-            <span className="text-calm-lavender">always in the loop.</span>
+            Every step{" "}
+            <span className="text-calm-lavender">reviewed by a clinician.</span>
           </h2>
 
           <div
@@ -485,10 +485,10 @@ const CycleScene = () => {
             style={reveal(revealed, 320)}
           >
             <span className="font-heading font-semibold text-calm-charcoal">
-              AI in the stack.
+              Drafted by AI.
             </span>{" "}
             <span className="font-heading font-semibold text-calm-lavender">
-              Clinician in the loop.
+              Reviewed by the clinician.
             </span>
           </div>
         </div>
