@@ -1,7 +1,6 @@
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import HeroOptionD from "@/components/HeroOptionD";
-import PositioningSection from "@/components/PositioningSection";
 import GapSection from "@/components/GapSection";
 import TherapistScene from "@/components/TherapistScene";
 import PatientScene from "@/components/PatientScene";
@@ -20,7 +19,6 @@ const Index = () => {
       <SEO path="/" />
       <Header />
       <HeroOptionD />
-      <PositioningSection />
       <GapSection />
       <div id="features">
         <TherapistScene />

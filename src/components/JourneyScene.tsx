@@ -56,8 +56,7 @@ const JourneyScene = () => {
         >
           A structured learning path covers identification and desensitisation,
           fluency-shaping techniques, and generalisation to real-world
-          contexts. The next step is clear to the clinician, and past steps
-          are visible to the patient.
+          contexts.
         </p>
 
         {/* Stats row */}

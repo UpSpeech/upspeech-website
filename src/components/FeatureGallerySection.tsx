@@ -13,14 +13,6 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   {
-    label: "Drafted reports",
-    title: "Clinical reports drafted from session data.",
-    copy: "Session recordings and notes become a structured clinical report. The therapist reviews, edits, and signs.",
-    image: "/screenshots/app/therapist-report.png",
-    imageAlt:
-      "UpSpeech report editor with patient assignment and structured speech therapy report",
-  },
-  {
     label: "Practice scenarios",
     title: "Rehearsal with a virtual conversation partner.",
     copy: "Patients rehearse difficult conversations with a virtual counterpart. The clinician sets the scenario and difficulty.",
@@ -141,7 +133,7 @@ const FeatureGallerySection = () => {
           </div>
         </article>
 
-        <div className="mt-[clamp(2rem,4vw,3rem)] grid gap-8 sm:gap-10 sm:grid-cols-2">
+        <div className="mt-[clamp(2rem,4vw,3rem)] grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f, i) => (
             <article
               key={f.label}

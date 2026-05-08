@@ -95,27 +95,6 @@ const FoundationsScene = () => {
           platform with patients.
         </p>
 
-        {/* UpSpeech Labs pillar (kept) */}
-        <div
-          className="mt-[clamp(3rem,6vw,5rem)] max-w-3xl border-t border-calm-charcoal/15 pt-8"
-          style={style(500)}
-        >
-          <div className="font-body text-[11px] font-semibold tracking-[0.22em] uppercase text-calm-lavender">
-            Research arm
-          </div>
-          <h3
-            className="mt-3 font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", lineHeight: 1.15 }}
-          >
-            UpSpeech Labs.
-          </h3>
-          <p className="mt-3 font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
-            A research team of published clinicians and AI specialists builds
-            the multimodal dataset behind our voice analysis engine. Every frame
-            is annotated by a clinician.
-          </p>
-        </div>
-
         {/* Partners grid */}
         <div className="mt-[clamp(4rem,8vw,7rem)]">
           <div

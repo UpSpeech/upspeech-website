@@ -28,8 +28,8 @@ const TherapistScene = () => (
         copy: "Session data becomes a structured clinical draft for the therapist to review and sign.",
       },
       {
-        label: "Between sessions",
-        copy: "Patients follow a plan set by the clinician, with structured practice between visits.",
+        label: "Therapist sign-off",
+        copy: "Every report and treatment plan is a draft until the therapist reviews and signs it.",
       },
     ]}
   />
