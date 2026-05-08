@@ -409,7 +409,7 @@ const CycleScene = () => {
             </div>
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
-            <div className="relative min-h-[14rem] lg:min-h-[18rem]">
+            <div className="relative min-h-[10rem] lg:min-h-[18rem]">
               <div
                 key={activeIndex}
                 className="absolute inset-0 flex flex-col justify-center"
