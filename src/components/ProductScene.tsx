@@ -56,7 +56,7 @@ const ProductScene = ({
       />
 
       <div ref={ref} className="relative max-w-6xl mx-auto">
-        <div className={align === "right" ? "text-right ml-auto" : ""}>
+        <div className={align === "right" ? "lg:text-right lg:ml-auto" : ""}>
           <p
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
             style={style(0)}
@@ -64,22 +64,22 @@ const ProductScene = ({
             {eyebrow}
           </p>
           <h2
-            className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
+            className={`mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl ${
+              align === "right" ? "lg:ml-auto" : ""
+            }`}
             style={{
               fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
               lineHeight: 1.05,
-              marginLeft: align === "right" ? "auto" : undefined,
               ...style(80),
             }}
           >
             {headline}
           </h2>
           <p
-            className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
-            style={{
-              marginLeft: align === "right" ? "auto" : undefined,
-              ...style(160),
-            }}
+            className={`mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed ${
+              align === "right" ? "lg:ml-auto" : ""
+            }`}
+            style={style(160)}
           >
             {body}
           </p>
@@ -118,11 +118,10 @@ const ProductScene = ({
         </div>
 
         {/* Value points */}
-        <div className="mt-[clamp(2.5rem,5vw,4rem)] grid gap-x-10 gap-y-6 sm:grid-cols-3">
+        <div className="mt-[clamp(2.5rem,5vw,4rem)] grid gap-x-10 gap-y-8 sm:grid-cols-3">
           {points.map((p, i) => (
             <div
               key={p.label}
-              className="border-t border-calm-charcoal/15 pt-5"
               style={{
                 transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
                 transitionDelay: `${400 + i * 100}ms`,
@@ -130,10 +129,16 @@ const ProductScene = ({
                 transform: revealed ? "translateY(0)" : "translateY(20px)",
               }}
             >
-              <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
-                {p.label}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-heading font-bold tabular-nums text-calm-lavender text-base leading-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="block h-px flex-1 bg-calm-lavender/40" />
               </div>
-              <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/75 leading-relaxed">
+              <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
+                {p.label}
+              </h3>
+              <p className="mt-2.5 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
                 {p.copy}
               </p>
             </div>

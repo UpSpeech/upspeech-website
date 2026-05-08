@@ -11,8 +11,8 @@ const TherapistScene = () => (
       </>
     }
     body="Automated clinical reports, patient-level analytics, and a continuous picture of what's happening outside the room, so therapists walk into every session already knowing where to focus."
-    image="/screenshots/app/therapist-dashboard.png"
-    imageAlt="UpSpeech therapist dashboard with patient analytics and report tools"
+    image="/screenshots/app/therapist-patient-progress.jpg"
+    imageAlt="UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step"
     url="app.upspeech.app/therapist"
     tone="offwhite"
     align="left"

@@ -183,10 +183,10 @@ const CycleScene = () => {
           </p>
 
           <h2
-            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.5rem,4vh,3rem)]"
+            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
             style={{
-              fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-              lineHeight: 1.05,
+              fontSize: "clamp(1.75rem, 4vw, 3rem)",
+              lineHeight: 1.1,
               ...reveal(revealed, 80),
             }}
           >
@@ -201,7 +201,7 @@ const CycleScene = () => {
             {/* Cycle */}
             <div
               className="relative mx-auto aspect-square"
-              style={{ width: "min(520px, 52vh, 88vw)" }}
+              style={{ width: "min(520px, 52vh, 78vw)" }}
             >
               <svg
                 viewBox="0 0 100 100"
@@ -327,7 +327,7 @@ const CycleScene = () => {
                 return (
                   <div
                     key={`lbl-${i}`}
-                    className="pointer-events-none absolute"
+                    className="pointer-events-none hidden lg:block absolute"
                     style={{
                       left: `${pos.x}%`,
                       top: `${pos.y}%`,

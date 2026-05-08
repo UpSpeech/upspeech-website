@@ -90,7 +90,7 @@ const GapSection = () => {
 
         <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)]">
           <p
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-6 sm:mb-8"
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-4 sm:mb-5"
             style={reveal(revealed, 0)}
           >
             The patient's week
@@ -98,17 +98,17 @@ const GapSection = () => {
 
           {/* Swapping headlines */}
           <div
-            className="relative max-w-5xl"
+            className="relative max-w-4xl"
             style={{
-              minHeight: "clamp(6rem, 12vw, 11rem)",
+              minHeight: "clamp(3.5rem, 6vw, 5rem)",
               ...reveal(revealed, 80),
             }}
           >
             <h2
               className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
               style={{
-                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-                lineHeight: 1.05,
+                fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                lineHeight: 1.1,
                 transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
                 opacity: 1 - swap,
                 transform: `translateY(${swap * -28}px)`,
@@ -119,8 +119,8 @@ const GapSection = () => {
             <h2
               className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
               style={{
-                fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-                lineHeight: 1.05,
+                fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                lineHeight: 1.1,
                 transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
                 opacity: swap,
                 transform: `translateY(${(1 - swap) * 28}px)`,
@@ -133,11 +133,11 @@ const GapSection = () => {
 
           {/* Two week-rows */}
           <div
-            className="mt-[clamp(2.5rem,6vw,5rem)] max-w-[min(72rem,94vw)]"
+            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-[min(64rem,94vw)]"
             style={reveal(revealed, 160)}
           >
             {/* Traditional row */}
-            <div className="mb-10 sm:mb-14">
+            <div className="mb-6 sm:mb-10">
               <div className="mb-3 flex items-baseline justify-between">
                 <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/55">
                   Traditional
@@ -173,7 +173,7 @@ const GapSection = () => {
 
           {/* Footer insight */}
           <div
-            className="mt-[clamp(2rem,5vw,4rem)] max-w-2xl font-body text-base sm:text-xl text-calm-charcoal/70 leading-relaxed"
+            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed"
             style={{
               transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
               opacity: footer,
@@ -222,7 +222,7 @@ const WeekRow = ({
 
               {variant === "traditional" && isSession && (
                 <div className="absolute inset-0 rounded-xl bg-calm-navy flex items-center justify-center">
-                  <span className="font-body text-[10px] sm:text-xs font-semibold text-white">
+                  <span className="hidden sm:inline font-body text-[10px] sm:text-xs font-semibold text-white">
                     Session
                   </span>
                 </div>
@@ -237,7 +237,7 @@ const WeekRow = ({
                   }}
                 >
                   {/* Mini activity bars */}
-                  <div className="absolute inset-x-3 bottom-3 flex items-end gap-[2px] h-[30%]">
+                  <div className="absolute inset-x-3 bottom-3 hidden sm:flex items-end gap-[2px] h-[30%]">
                     {Array.from({ length: 6 }).map((_, b) => (
                       <div
                         key={b}
@@ -255,7 +255,7 @@ const WeekRow = ({
                   {/* Session + Practice stack on Thursday */}
                   {isSession && lit > 0.3 ? (
                     <div
-                      className="relative z-10 flex flex-col items-center gap-1"
+                      className="relative z-10 hidden sm:flex flex-col items-center gap-1"
                       style={{
                         opacity: clamp01((lit - 0.3) / 0.4),
                       }}
@@ -270,7 +270,7 @@ const WeekRow = ({
                   ) : (
                     lit > 0.4 && (
                       <span
-                        className="relative z-10 font-body text-[10px] sm:text-xs font-semibold text-white"
+                        className="relative z-10 hidden sm:inline font-body text-[10px] sm:text-xs font-semibold text-white"
                         style={{
                           opacity: clamp01((lit - 0.4) / 0.4),
                         }}
