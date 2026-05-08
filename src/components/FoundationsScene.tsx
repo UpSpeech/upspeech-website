@@ -2,12 +2,6 @@ import { useReveal } from "./useReveal";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-const metrics = [
-  { value: "12", label: "SLPs onboarded" },
-  { value: "30", label: "Patients in pilot" },
-  { value: "1", label: "Clinical partner" },
-] as const;
-
 type Partner = {
   name: string;
   context: string;
@@ -28,22 +22,28 @@ const partners: Partner[] = [
     context: "AI infrastructure grant",
   },
   {
-    name: "STARS",
-    wordmark: "STARS",
-    wordmarkFont: "heading",
-    context: "Stuttering Treatment & Research Society",
-  },
-  {
     name: "Lispolis Ignite",
     wordmark: "Lispolis · Ignite",
     wordmarkFont: "body",
-    context: "Acceleration program · 2026",
+    context: "Acceleration program",
   },
   {
     name: "Unicorn Factory",
     wordmark: "Unicorn Factory",
     wordmarkFont: "heading",
     context: "Most Promising Startup · Lisboa",
+  },
+  {
+    name: "Innocatalyst Health Program",
+    wordmark: "Innocatalyst Health",
+    wordmarkFont: "heading",
+    context: "Health innovation programme",
+  },
+  {
+    name: "HealthQUP",
+    wordmark: "HealthQUP",
+    wordmarkFont: "heading",
+    context: "Health acceleration programme",
   },
 ];
 
@@ -95,31 +95,6 @@ const FoundationsScene = () => {
           platform with patients.
         </p>
 
-        {/* Traction metrics */}
-        <div className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-3 gap-6 sm:gap-12 max-w-2xl">
-          {metrics.map((m, i) => (
-            <div
-              key={m.label}
-              style={{
-                transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
-                transitionDelay: `${220 + i * 90}ms`,
-                opacity: revealed ? 1 : 0,
-                transform: revealed ? "translateY(0)" : "translateY(20px)",
-              }}
-            >
-              <div
-                className="font-heading font-bold text-calm-navy tabular-nums leading-none"
-                style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)" }}
-              >
-                {m.value}
-              </div>
-              <div className="mt-2 font-body text-xs sm:text-sm text-calm-charcoal/65">
-                {m.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
         {/* UpSpeech Labs pillar (kept) */}
         <div
           className="mt-[clamp(3rem,6vw,5rem)] max-w-3xl border-t border-calm-charcoal/15 pt-8"
@@ -136,8 +111,8 @@ const FoundationsScene = () => {
           </h3>
           <p className="mt-3 font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
             A research team of published clinicians and AI specialists builds
-            the multimodal dataset behind our voice analysis engine. Every
-            frame is annotated by a clinician.
+            the multimodal dataset behind our voice analysis engine. Every frame
+            is annotated by a clinician.
           </p>
         </div>
 
@@ -156,11 +131,8 @@ const FoundationsScene = () => {
           </div>
 
           <div
-            className="grid gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
-            style={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))",
-              ...style(720),
-            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
+            style={style(720)}
           >
             {partners.map((p, i) => (
               <div

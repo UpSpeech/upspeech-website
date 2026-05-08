@@ -46,9 +46,8 @@ const InvitationSection = () => {
           className="mt-10 max-w-xl mx-auto font-body text-lg sm:text-xl text-calm-charcoal/65 leading-relaxed"
           style={style(300)}
         >
-          Currently working with a small group of clinics with stuttering
-          services in Portugal, Spain, and Brazil, alongside the clinicians
-          who will use the platform.
+          Currently working with a cohort of clinics. We'd like to hear from any
+          clinic working in stuttering.
         </p>
 
         <div

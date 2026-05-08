@@ -108,25 +108,6 @@ const EngineSection = () => {
           </div>
         </div>
 
-        <div
-          className="mt-[clamp(3rem,6vw,5rem)] max-w-4xl"
-          style={textStyle(520)}
-        >
-          <span className="block h-px w-16 bg-calm-lavender/70 mb-6" />
-          <blockquote
-            className="font-heading font-medium text-white/90 tracking-tight"
-            style={{
-              fontSize: "clamp(1.25rem, 3vw, 2.25rem)",
-              lineHeight: 1.25,
-            }}
-          >
-            "This isn't training a model on what AI can find. It's teaching AI
-            what SLPs already know."
-          </blockquote>
-          <p className="mt-5 font-body text-sm text-white/50">
-            Gonçalo Leal · Clinical Lead, UpSpeech
-          </p>
-        </div>
       </div>
     </section>
   );
