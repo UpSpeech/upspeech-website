@@ -82,17 +82,17 @@ const FoundationsScene = () => {
             ...style(80),
           }}
         >
-          Clinical and AI,
+          Clinical practice and AI engineering,
           <br />
-          <span className="text-calm-lavender">together from day one.</span>
+          <span className="text-calm-lavender">in the same team.</span>
         </h2>
         <p
           className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={style(160)}
         >
-          UpSpeech is built by a team that refuses the false choice between AI
-          and clinical judgement. Every line of code is accountable to the
-          people who will use it in front of a patient.
+          Clinicians and engineers work side by side. Product decisions are
+          reviewed by the practising speech-language pathologists who use the
+          platform with patients.
         </p>
 
         {/* Traction metrics */}
@@ -135,9 +135,9 @@ const FoundationsScene = () => {
             UpSpeech Labs.
           </h3>
           <p className="mt-3 font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
-            A dedicated research team of published clinicians and AI
-            specialists, building the proprietary multimodal dataset that powers
-            our voice analysis engine, one clinician-annotated frame at a time.
+            A research team of published clinicians and AI specialists builds
+            the multimodal dataset behind our voice analysis engine. Every
+            frame is annotated by a clinician.
           </p>
         </div>
 

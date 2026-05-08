@@ -13,32 +13,32 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   {
-    label: "AI-drafted reports",
-    title: "Reports, drafted from data, signed by clinicians.",
-    copy: "Session recording and notes turn into a structured clinical report. The therapist reviews, edits, signs.",
+    label: "Drafted reports",
+    title: "Clinical reports drafted from session data.",
+    copy: "Session recordings and notes become a structured clinical report. The therapist reviews, edits, and signs.",
     image: "/screenshots/app/therapist-report.png",
     imageAlt:
       "UpSpeech report editor with patient assignment and structured speech therapy report",
   },
   {
-    label: "AI scenarios",
-    title: "Rehearsal, with a partner who never gets tired.",
-    copy: "Patients practice difficult conversations with an AI counterpart, calibrated by the clinician to the patient's stage.",
+    label: "Practice scenarios",
+    title: "Rehearsal with a virtual conversation partner.",
+    copy: "Patients rehearse difficult conversations with a virtual counterpart. The clinician sets the scenario and difficulty.",
     image: "/screenshots/app/patient-ai-scenario.png",
     imageAlt:
-      "UpSpeech AI scenario interface showing a job interview rehearsal with objectives and video call",
+      "UpSpeech practice scenario interface showing a job interview rehearsal with objectives and video call",
   },
   {
     label: "Daily check-ins",
-    title: "A 30-second self-report. A continuous trend.",
-    copy: "Patients log severity in a few taps. Trends surface in the clinician's dashboard, ready for the next session.",
+    title: "A 30-second self-report from the patient.",
+    copy: "Patients log severity in a few taps. Trends are visible in the clinician's dashboard before the next session.",
     image: "/screenshots/app/patient-daily-checkin.png",
     imageAlt: "UpSpeech daily severity check-in scale from 0 to 10",
   },
   {
-    label: "Proactive nudges",
-    title: "Patients who go quiet show up at the top of your day.",
-    copy: "The dashboard surfaces inactive patients before they slip through. One tap to check in.",
+    label: "Inactive-patient alerts",
+    title: "Patients without recent activity at the top of the dashboard.",
+    copy: "Patients without recent practice appear at the top of the clinician's dashboard, so they can be checked on.",
     image: "/screenshots/app/therapist-inactive-patients.png",
     imageAlt:
       "UpSpeech inactive patients alert showing a patient with no practice for 62 days",
@@ -118,13 +118,13 @@ const FeatureGallerySection = () => {
               Annotation tool
             </div>
             <h3 className="mt-2 font-heading font-bold text-calm-charcoal tracking-tight text-2xl sm:text-3xl leading-tight">
-              The tool clinicians and researchers use to label what actually
-              happens.
+              The tool clinicians and researchers use to label stuttering
+              moments.
             </h3>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
               Frame-by-frame tagging of stuttering moments: core behavior,
               secondary behaviors, tension level. Standard taxonomy. The same
-              tool builds our dataset and grounds research collaborations.
+              tool builds our dataset and supports research partnerships.
             </p>
             <div className="mt-5 flex flex-wrap gap-1.5">
               {["SR", "ISR", "MUR", "Prolongation", "Block", "Tension 0-3"].map(

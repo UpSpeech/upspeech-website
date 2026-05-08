@@ -46,19 +46,20 @@ const EngineSection = () => {
             ...textStyle(80),
           }}
         >
-          Every model needs a dataset.
+          Trained on
           <br />
-          <span className="text-calm-lavender">Ours is clinical.</span>
+          <span className="text-calm-lavender">
+            clinician-annotated data.
+          </span>
         </h2>
 
         <p
           className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/65 leading-relaxed"
           style={textStyle(160)}
         >
-          We built an annotation tool in-house, used by practicing
-          speech-language pathologists to tag disfluencies, tensions, and blocks
-          frame by frame. The model doesn't learn from the internet. It learns
-          from clinicians.
+          We built an annotation tool in-house, used by practising
+          speech-language pathologists to tag disfluencies, tensions, and
+          blocks frame by frame. The dataset is clinical from the start.
         </p>
 
         <div

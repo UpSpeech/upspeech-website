@@ -26,8 +26,8 @@ const Index = () => {
         <TherapistScene />
         <PatientScene />
       </div>
-      <FeatureGallerySection />
       <CycleScene />
+      <FeatureGallerySection />
       <JourneyScene />
       <div id="differentiation">
         <EngineSection />
