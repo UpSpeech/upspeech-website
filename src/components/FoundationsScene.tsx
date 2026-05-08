@@ -60,10 +60,10 @@ const FoundationsScene = () => {
   return (
     <section className="relative bg-calm-light py-[clamp(5rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(900px 600px at 10% 20%, rgba(41,53,135,0.08), transparent 60%)",
+            "radial-gradient(1400px 800px at 50% 0%, rgba(152,165,254,0.10), transparent 65%)",
         }}
       />
 
