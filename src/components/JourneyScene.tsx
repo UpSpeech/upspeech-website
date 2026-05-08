@@ -55,8 +55,7 @@ const JourneyScene = () => {
           style={style(160)}
         >
           A structured learning path covers identification and desensitisation,
-          fluency-shaping techniques, and generalisation to real-world
-          contexts.
+          fluency-shaping techniques, and generalisation to real-world contexts.
         </p>
 
         {/* Stats row */}
