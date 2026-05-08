@@ -48,9 +48,7 @@ const EngineSection = () => {
         >
           Trained on
           <br />
-          <span className="text-calm-lavender">
-            clinician-annotated data.
-          </span>
+          <span className="text-calm-lavender">clinician-annotated data.</span>
         </h2>
 
         <p
@@ -58,8 +56,8 @@ const EngineSection = () => {
           style={textStyle(160)}
         >
           We built an annotation tool in-house, used by practising
-          speech-language pathologists to tag disfluencies, tensions, and
-          blocks frame by frame. The dataset is clinical from the start.
+          speech-language pathologists to tag disfluencies, tensions, and blocks
+          frame by frame. The dataset is clinical from the start.
         </p>
 
         <div
@@ -75,19 +73,31 @@ const EngineSection = () => {
         >
           <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 sm:p-6 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
             <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-white/5 bg-calm-charcoal">
-              <video
-                className="absolute inset-0 h-full w-full object-cover"
-                poster="/videos/annotation-tool.jpg"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-label="UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame"
-              >
-                <source src="/videos/annotation-tool.webm" type="video/webm" />
-                <source src="/videos/annotation-tool.mp4" type="video/mp4" />
-              </video>
+              {revealed ? (
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  poster="/videos/annotation-tool.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="none"
+                  aria-label="UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame"
+                >
+                  <source
+                    src="/videos/annotation-tool.webm"
+                    type="video/webm"
+                  />
+                  <source src="/videos/annotation-tool.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src="/videos/annotation-tool.jpg"
+                  alt="UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+              )}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {TAGS.map((tag, i) => (
@@ -107,7 +117,6 @@ const EngineSection = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

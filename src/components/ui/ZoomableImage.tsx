@@ -17,7 +17,12 @@ const ZoomableImage = ({ className = "", src, alt, ...rest }: Props) => {
         onClick={() => setOpen(true)}
         className={`${className} cursor-zoom-in`}
       />
-      <Lightbox src={src} alt={alt} open={open} onClose={() => setOpen(false)} />
+      <Lightbox
+        src={src}
+        alt={alt}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
     </>
   );
 };
