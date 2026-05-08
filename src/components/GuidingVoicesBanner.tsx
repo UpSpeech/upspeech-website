@@ -19,7 +19,7 @@ const GuidingVoicesBanner: React.FC = () => {
           Guiding voices with care and tech
         </h2>
         <p className="mt-5 max-w-2xl mx-auto font-body text-base sm:text-lg text-white leading-relaxed">
-          Human-centered speech therapy powered by intelligent tooling —
+          Human-centered speech therapy powered by intelligent tooling,
           extending care and amplifying clinician impact between sessions.
         </p>
       </div>

@@ -15,12 +15,12 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Gaguez voluntária é o mesmo que fingir que se gagueja?",
       answer:
-        "Não. A gaguez voluntária é uma técnica terapêutica praticada sob orientação de um terapeuta da fala. Envolve produzir repetições ou prolongamentos suaves e relaxados — não imitar ou ridicularizar a gaguez. O objetivo é desenvolver abertura, reduzir a tensão e melhorar a comunicação no seu todo.",
+        "Não. A gaguez voluntária é uma técnica terapêutica praticada sob orientação de um terapeuta da fala. Envolve produzir repetições ou prolongamentos suaves e relaxados, não imitar ou ridicularizar a gaguez. O objetivo é desenvolver abertura, reduzir a tensão e melhorar a comunicação no seu todo.",
     },
     {
       question: "Quando devo praticar a gaguez voluntária?",
       answer:
-        "O seu terapeuta da fala irá orientá-lo sobre quando e como praticar. Normalmente, começa-se em situações de baixa pressão — como com um amigo de confiança ou durante uma sessão de terapia — e progride-se gradualmente para contextos de fala mais desafiantes à medida que a confiança aumenta.",
+        "O seu terapeuta da fala irá orientá-lo sobre quando e como praticar. Normalmente, começa-se em situações de baixa pressão, como com um amigo de confiança ou durante uma sessão de terapia, e progride-se gradualmente para contextos de fala mais desafiantes à medida que a confiança aumenta.",
     },
   ],
   cancelation: [
@@ -32,12 +32,12 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Como se pratica a técnica de cancelamento?",
       answer:
-        "Depois de gaguejar numa palavra, pare completamente. Reserve um momento para perceber o que a sua boca, mandíbula e garganta estavam a fazer durante a disfluência. De seguida, repita a palavra deliberadamente, utilizando uma abordagem mais lenta e relaxada — como um início suave ou um contacto articulatório leve.",
+        "Depois de gaguejar numa palavra, pare completamente. Reserve um momento para perceber o que a sua boca, mandíbula e garganta estavam a fazer durante a disfluência. De seguida, repita a palavra deliberadamente, utilizando uma abordagem mais lenta e relaxada, como um início suave ou um contacto articulatório leve.",
     },
     {
       question: "Qual é a diferença entre cancelamento e pull-out?",
       answer:
-        "O cancelamento ocorre após a disfluência — termina-se a palavra gaguejada, faz-se uma pausa e depois repete-se com uma fala mais suave. O pull-out ocorre durante a disfluência — modifica-se a gaguez em tempo real, enquanto ainda se está na palavra, fazendo a transição para uma fala mais fluente no meio do momento.",
+        "O cancelamento ocorre após a disfluência, termina-se a palavra gaguejada, faz-se uma pausa e depois repete-se com uma fala mais suave. O pull-out ocorre durante a disfluência, modifica-se a gaguez em tempo real, enquanto ainda se está na palavra, fazendo a transição para uma fala mais fluente no meio do momento.",
     },
   ],
   "pull-out": [
@@ -49,7 +49,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Como se realiza um pull-out durante uma disfluência?",
       answer:
-        "Quando perceber que está a gaguejar numa palavra, desacelere em vez de forçar. Relaxe gradualmente os músculos envolvidos na fala — lábios, língua, mandíbula ou pregas vocais — e deslize suavemente para o restante da palavra com um toque mais lento e leve. O objetivo é terminar a palavra de forma fluente.",
+        "Quando perceber que está a gaguejar numa palavra, desacelere em vez de forçar. Relaxe gradualmente os músculos envolvidos na fala, lábios, língua, mandíbula ou pregas vocais, e deslize suavemente para o restante da palavra com um toque mais lento e leve. O objetivo é terminar a palavra de forma fluente.",
     },
     {
       question: "A técnica de pull-out é difícil de aprender?",
@@ -62,13 +62,13 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
       question:
         "O que é o preparatory set (pré-ajuste articulatório) na terapia da fala?",
       answer:
-        "O preparatory set é uma técnica em que se planeia como se vai dizer uma palavra antes de começar a pronunciá-la. Preparam-se mental e fisicamente os articuladores — lábios, língua, mandíbula — para um início relaxado e suave, reduzindo a probabilidade de um bloqueio de gaguez.",
+        "O preparatory set é uma técnica em que se planeia como se vai dizer uma palavra antes de começar a pronunciá-la. Preparam-se mental e fisicamente os articuladores, lábios, língua, mandíbula, para um início relaxado e suave, reduzindo a probabilidade de um bloqueio de gaguez.",
     },
     {
       question:
         "Como é que o preparatory set difere de outras técnicas para a gaguez?",
       answer:
-        "O preparatory set é proativo — acontece antes de se pronunciar a palavra. O cancelamento é utilizado após uma disfluência, e o pull-out é utilizado durante uma disfluência. O preparatory set visa prevenir a ocorrência da gaguez, preparando o sistema para uma produção de fala fluente.",
+        "O preparatory set é proativo, acontece antes de se pronunciar a palavra. O cancelamento é utilizado após uma disfluência, e o pull-out é utilizado durante uma disfluência. O preparatory set visa prevenir a ocorrência da gaguez, preparando o sistema para uma produção de fala fluente.",
     },
     {
       question: "Quando devo usar o preparatory set?",
@@ -121,7 +121,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
       question:
         "Qual a diferença entre contacto articulatório suave e inícios suaves?",
       answer:
-        "Os inícios suaves focam-se em como se inicia a fonação — começando suavemente com pregas vocais relaxadas. O contacto articulatório suave foca-se em como os articuladores se tocam fisicamente durante a produção de consoantes. Ambos reduzem a tensão, mas atuam em partes diferentes do mecanismo de fala.",
+        "Os inícios suaves focam-se em como se inicia a fonação, começando suavemente com pregas vocais relaxadas. O contacto articulatório suave foca-se em como os articuladores se tocam fisicamente durante a produção de consoantes. Ambos reduzem a tensão, mas atuam em partes diferentes do mecanismo de fala.",
     },
     {
       question: "Quais sons beneficiam mais do contacto articulatório suave?",
@@ -138,7 +138,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "A fala prolongada soa natural?",
       answer:
-        "Inicialmente, a fala prolongada pode soar lenta ou exagerada. Com a prática, aprende-se a utilizá-la de forma mais subtil — aplicando prolongamentos leves que mantêm a fluência sem soar artificial. O objetivo é aumentar gradualmente a velocidade de fala mantendo a suavidade.",
+        "Inicialmente, a fala prolongada pode soar lenta ou exagerada. Com a prática, aprende-se a utilizá-la de forma mais subtil, aplicando prolongamentos leves que mantêm a fluência sem soar artificial. O objetivo é aumentar gradualmente a velocidade de fala mantendo a suavidade.",
     },
     {
       question: "Fala prolongada é o mesmo que falar devagar?",
@@ -160,7 +160,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Como gerir a velocidade de fala sem soar artificial?",
       answer:
-        "Concentre-se no fraseamento natural — divida a sua fala em grupos de pensamento mais curtos com breves pausas entre eles. Isto soa conversacional e é como muitos falantes fluentes naturalmente comunicam. Não se trata de desacelerar cada palavra, mas sim de organizar a fala em blocos manejáveis.",
+        "Concentre-se no fraseamento natural, divida a sua fala em grupos de pensamento mais curtos com breves pausas entre eles. Isto soa conversacional e é como muitos falantes fluentes naturalmente comunicam. Não se trata de desacelerar cada palavra, mas sim de organizar a fala em blocos manejáveis.",
     },
   ],
   pauses: [
@@ -172,7 +172,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Onde devo posicionar as pausas na minha fala?",
       answer:
-        "Posicione as pausas em fronteiras linguísticas naturais — entre sintagmas, orações ou frases. Faça uma pausa após um pensamento completo, antes de iniciar uma nova ideia ou antes de uma palavra em que antecipe dificuldade. As pausas naturais fazem com que a fala soe ponderada e organizada, não hesitante.",
+        "Posicione as pausas em fronteiras linguísticas naturais, entre sintagmas, orações ou frases. Faça uma pausa após um pensamento completo, antes de iniciar uma nova ideia ou antes de uma palavra em que antecipe dificuldade. As pausas naturais fazem com que a fala soe ponderada e organizada, não hesitante.",
     },
     {
       question: "Pausar é o mesmo que evitar palavras?",
@@ -185,19 +185,19 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
       question:
         "O que é identificação e dessensibilização na terapia da gaguez?",
       answer:
-        "A identificação envolve aprender a reconhecer os padrões específicos de gaguez — os sons, palavras, situações e tensões físicas associados à disfluência. A dessensibilização envolve reduzir gradualmente as reações emocionais (medo, vergonha, constrangimento) à gaguez através de exposição estruturada.",
+        "A identificação envolve aprender a reconhecer os padrões específicos de gaguez, os sons, palavras, situações e tensões físicas associados à disfluência. A dessensibilização envolve reduzir gradualmente as reações emocionais (medo, vergonha, constrangimento) à gaguez através de exposição estruturada.",
     },
     {
       question:
         "Por que é que a dessensibilização é importante para pessoas que gaguejam?",
       answer:
-        "Muitas das dificuldades associadas à gaguez são impulsionadas por reações emocionais — medo de falar, vergonha de gaguejar, evitamento de situações sociais. A dessensibilização reduz estas reações, o que, por sua vez, frequentemente diminui a frequência e a severidade da própria gaguez.",
+        "Muitas das dificuldades associadas à gaguez são impulsionadas por reações emocionais, medo de falar, vergonha de gaguejar, evitamento de situações sociais. A dessensibilização reduz estas reações, o que, por sua vez, frequentemente diminui a frequência e a severidade da própria gaguez.",
     },
     {
       question:
         "Como é que a identificação ajuda a melhorar a fluência da fala?",
       answer:
-        "Quando se consegue identificar exatamente o que acontece durante os momentos de disfluência — quais músculos tensionam, quais sons são difíceis, que situações geram ansiedade — podem aplicar-se técnicas específicas com mais eficácia. A autoconsciência é a base de todas as estratégias de modificação da gaguez.",
+        "Quando se consegue identificar exatamente o que acontece durante os momentos de disfluência, quais músculos tensionam, quais sons são difíceis, que situações geram ansiedade, podem aplicar-se técnicas específicas com mais eficácia. A autoconsciência é a base de todas as estratégias de modificação da gaguez.",
     },
     {
       question:

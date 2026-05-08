@@ -36,7 +36,7 @@ const EngineSection = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-6 sm:mb-8"
           style={textStyle(0)}
         >
-          Act VI · UpSpeech Labs
+          UpSpeech Labs
         </p>
         <h2
           className="font-heading font-bold text-white tracking-tight max-w-4xl"
@@ -55,7 +55,7 @@ const EngineSection = () => {
           className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/65 leading-relaxed"
           style={textStyle(160)}
         >
-          We built a research-grade annotation tool in-house, used by practicing
+          We built an annotation tool in-house, used by practicing
           speech-language pathologists to tag disfluencies, tensions, and blocks
           frame by frame. The model doesn't learn from the internet. It learns
           from clinicians.
@@ -123,7 +123,7 @@ const EngineSection = () => {
             what SLPs already know."
           </blockquote>
           <p className="mt-5 font-body text-sm text-white/50">
-            Clinical lead · UpSpeech Labs
+            Gonçalo Leal · Clinical Lead, UpSpeech
           </p>
         </div>
       </div>

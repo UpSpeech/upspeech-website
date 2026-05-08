@@ -16,7 +16,7 @@ const FAQSection = () => {
     {
       question: "Will UpSpeech replace my role as a therapist?",
       answer:
-        "Never. UpSpeech enhances your impact by reinforcing your work—not replacing it. You remain in complete control of treatment plans and goals while UpSpeech provides structured practice between sessions.",
+        "Never. UpSpeech enhances your impact by reinforcing your work, not replacing it. You remain in complete control of treatment plans and goals while UpSpeech provides structured practice between sessions.",
     },
     {
       question: "How do I know if patients are actually using it?",

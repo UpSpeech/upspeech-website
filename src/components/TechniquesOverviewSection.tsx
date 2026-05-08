@@ -5,7 +5,7 @@ const APPROACHES = [
   {
     name: "Stuttering Modification",
     description:
-      "Change how you stutter — making moments easier and less tense rather than eliminating them.",
+      "Change how you stutter, making moments easier and less tense rather than eliminating them.",
     count: 5,
     href: "/techniques",
     techniques: [
@@ -45,7 +45,7 @@ const TechniquesOverviewSection = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-[1fr,1.4fr] gap-12 lg:gap-16 items-start">
-          {/* Left column — editorial heading */}
+          {/* Left column, editorial heading */}
           <div className="lg:sticky lg:top-28">
             <p className="font-body text-sm text-calm-navy font-semibold uppercase tracking-wider mb-3">
               Evidence-Based Practice
@@ -55,7 +55,7 @@ const TechniquesOverviewSection = () => {
             </h2>
             <p className="font-body text-lg text-calm-charcoal/80 leading-relaxed mb-8">
               UpSpeech structures practice around the same evidence-based
-              approaches used by speech-language pathologists worldwide — from
+              approaches used by speech-language pathologists worldwide, from
               stuttering modification to fluency shaping to cognitive
               strategies.
             </p>
@@ -75,7 +75,7 @@ const TechniquesOverviewSection = () => {
             </a> */}
           </div>
 
-          {/* Right column — approach index */}
+          {/* Right column, approach index */}
           <div className="space-y-0 border-t border-calm-charcoal/10">
             {APPROACHES.map((approach) => (
               <a

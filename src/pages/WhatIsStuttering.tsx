@@ -16,17 +16,17 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
     title: "What Is Stuttering? Types, Causes & Treatment",
     description:
-      "A comprehensive guide to understanding stuttering — its types, causes, prevalence, and evidence-based treatment approaches used in speech therapy.",
+      "A comprehensive guide to understanding stuttering, its types, causes, prevalence, and evidence-based treatment approaches used in speech therapy.",
   },
   pt: {
     title: "O Que É a Gaguez? Tipos, Causas e Tratamento",
     description:
-      "Um guia completo para entender a gaguez — os seus tipos, causas, prevalência e abordagens de tratamento baseadas em evidências na terapia da fala.",
+      "Um guia completo para entender a gaguez, os seus tipos, causas, prevalência e abordagens de tratamento baseadas em evidências na terapia da fala.",
   },
   es: {
     title: "¿Qué Es la Tartamudez? Tipos, Causas y Tratamiento",
     description:
-      "Una guía completa para entender la tartamudez — sus tipos, causas, prevalencia y enfoques de tratamiento basados en evidencia en logopedia.",
+      "Una guía completa para entender la tartamudez, sus tipos, causas, prevalencia y enfoques de tratamiento basados en evidencia en logopedia.",
   },
 };
 

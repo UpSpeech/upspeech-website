@@ -2,19 +2,20 @@ import ProductScene from "./ProductScene";
 
 const PatientScene = () => (
   <ProductScene
-    act="Act III"
     eyebrow="Outside the room"
     headline={
       <>
         Practice that holds.
         <br />
-        <span className="text-calm-lavender">Feedback that understands.</span>
+        <span className="text-calm-lavender">
+          Feedback your therapist shapes.
+        </span>
       </>
     }
     body="Patients open UpSpeech to a plan, not a blank page. Every exercise is prescribed by their clinician, calibrated to their therapeutic stage, and paired with real-time fluency feedback that keeps momentum between visits."
     image="/screenshots/app/client-dashboard.png"
     imageAlt="UpSpeech patient dashboard with daily practice exercises and progress"
-    url="app.upspeech.io"
+    url="app.upspeech.app"
     tone="light"
     align="right"
     points={[

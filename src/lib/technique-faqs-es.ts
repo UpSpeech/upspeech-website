@@ -20,7 +20,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Cuándo debo practicar el tartamudeo voluntario?",
       answer:
-        "Tu logopeda te orientará sobre cuándo y cómo practicar. Normalmente, se empieza en situaciones de baja presión — como con un amigo de confianza o durante una sesión de terapia — y se avanza gradualmente hacia contextos de habla más exigentes a medida que crece tu confianza.",
+        "Tu logopeda te orientará sobre cuándo y cómo practicar. Normalmente, se empieza en situaciones de baja presión, como con un amigo de confianza o durante una sesión de terapia, y se avanza gradualmente hacia contextos de habla más exigentes a medida que crece tu confianza.",
     },
   ],
   cancelation: [
@@ -52,7 +52,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Cómo se realiza un pull-out durante una disfluencia?",
       answer:
-        "Cuando sientes que estás tartamudeando en una palabra, reduce la velocidad en lugar de forzar. Relaja gradualmente los músculos implicados en el habla — labios, lengua, mandíbula o cuerdas vocales — y facilita la salida del resto de la palabra con un toque más lento y ligero. El objetivo es terminar la palabra de forma fluida.",
+        "Cuando sientes que estás tartamudeando en una palabra, reduce la velocidad en lugar de forzar. Relaja gradualmente los músculos implicados en el habla, labios, lengua, mandíbula o cuerdas vocales, y facilita la salida del resto de la palabra con un toque más lento y ligero. El objetivo es terminar la palabra de forma fluida.",
     },
     {
       question: "¿Es difícil aprender la técnica de pull-out?",
@@ -64,7 +64,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Qué es el set preparatorio en logopedia?",
       answer:
-        "El set preparatorio es una técnica en la que planificas cómo vas a decir una palabra antes de comenzar a pronunciarla. Te preparas mental y físicamente — labios, lengua, mandíbula — para un inicio relajado y suave, reduciendo la probabilidad de un bloqueo.",
+        "El set preparatorio es una técnica en la que planificas cómo vas a decir una palabra antes de comenzar a pronunciarla. Te preparas mental y físicamente, labios, lengua, mandíbula, para un inicio relajado y suave, reduciendo la probabilidad de un bloqueo.",
     },
     {
       question:
@@ -202,7 +202,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Cómo ayuda la identificación a mejorar la fluidez del habla?",
       answer:
-        "Cuando puedes identificar exactamente qué ocurre durante tus momentos de tartamudez — qué músculos se tensan, qué sonidos son difíciles, qué situaciones provocan ansiedad — puedes aplicar técnicas específicas de forma más eficaz. La autoconciencia es la base de todas las estrategias de modificación de la tartamudez.",
+        "Cuando puedes identificar exactamente qué ocurre durante tus momentos de tartamudez, qué músculos se tensan, qué sonidos son difíciles, qué situaciones provocan ansiedad, puedes aplicar técnicas específicas de forma más eficaz. La autoconciencia es la base de todas las estrategias de modificación de la tartamudez.",
     },
     {
       question:

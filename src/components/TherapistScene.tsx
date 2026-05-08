@@ -2,7 +2,6 @@ import ProductScene from "./ProductScene";
 
 const TherapistScene = () => (
   <ProductScene
-    act="Act II"
     eyebrow="In the room"
     headline={
       <>
@@ -14,21 +13,21 @@ const TherapistScene = () => (
     body="Automated clinical reports, patient-level analytics, and a continuous picture of what's happening outside the room, so therapists walk into every session already knowing where to focus."
     image="/screenshots/app/therapist-dashboard.png"
     imageAlt="UpSpeech therapist dashboard with patient analytics and report tools"
-    url="app.upspeech.io/therapist"
+    url="app.upspeech.app/therapist"
     tone="offwhite"
     align="left"
     points={[
       {
+        label: "Prep, with context",
+        copy: "Walk into every session already knowing the week, what was practiced, where the patient struggled, what to focus on.",
+      },
+      {
         label: "Reports, drafted",
-        copy: "AI turns session data into a clinical report. The therapist reads, edits, signs.",
+        copy: "Session data becomes a structured clinical draft. The therapist reads, edits, signs.",
       },
       {
-        label: "Capacity, reclaimed",
-        copy: "Hours of admin per week collapse into minutes, reinvested in patients.",
-      },
-      {
-        label: "Decisions, informed",
-        copy: "Every assignment is grounded in actual outside-the-room data, not recall.",
+        label: "Capacity, returned",
+        copy: "Less time on admin. More time with patients.",
       },
     ]}
   />

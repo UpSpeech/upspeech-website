@@ -72,7 +72,7 @@ const FoundationsScene = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={style(0)}
         >
-          Act VII · Foundations
+          Foundations
         </p>
         <h2
           className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"

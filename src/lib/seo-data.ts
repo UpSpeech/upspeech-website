@@ -12,57 +12,57 @@ export const TECHNIQUE_SEO: Record<
   "voluntary-stuttering": {
     title: "Voluntary Stuttering Technique",
     description:
-      "Learn voluntary stuttering — a speech therapy technique where you intentionally stutter to reduce fear and tension. Understand how it works, its objectives, and how to practice.",
+      "Learn voluntary stuttering, a speech therapy technique where you intentionally stutter to reduce fear and tension. Understand how it works, its objectives, and how to practice.",
   },
   cancelation: {
     title: "Cancellation Technique for Stuttering",
     description:
-      "Master the cancellation technique — pause after a stuttered word and repeat it with controlled, easier speech. A core stuttering modification strategy for speech therapy.",
+      "Master the cancellation technique, pause after a stuttered word and repeat it with controlled, easier speech. A core stuttering modification strategy for speech therapy.",
   },
   "pull-out": {
     title: "Pull-Out Technique for Stuttering",
     description:
-      "Learn the pull-out technique — modify a stutter mid-word by easing into smoother speech. A real-time stuttering modification method used in speech therapy.",
+      "Learn the pull-out technique, modify a stutter mid-word by easing into smoother speech. A real-time stuttering modification method used in speech therapy.",
   },
   "preparatory-set": {
     title: "Preparatory Set Technique",
     description:
-      "Understand the preparatory set — plan your articulatory movements before speaking to reduce stuttering. A proactive fluency shaping technique for speech therapy.",
+      "Understand the preparatory set, plan your articulatory movements before speaking to reduce stuttering. A proactive fluency shaping technique for speech therapy.",
   },
   holding: {
     title: "Holding Technique for Stuttering",
     description:
-      "Learn the holding technique — maintain your articulatory position during a block to release tension gradually. A key stuttering modification strategy.",
+      "Learn the holding technique, maintain your articulatory position during a block to release tension gradually. A key stuttering modification strategy.",
   },
   "soft-starts": {
     title: "Soft Starts Speech Technique",
     description:
-      "Practice soft starts — begin voicing gently with relaxed vocal folds to reduce hard glottal attacks. A foundational fluency shaping technique in speech therapy.",
+      "Practice soft starts, begin voicing gently with relaxed vocal folds to reduce hard glottal attacks. A foundational fluency shaping technique in speech therapy.",
   },
   "soft-articulation-contact": {
     title: "Soft Articulation Contact Technique",
     description:
-      "Learn soft articulation contact — use light, relaxed contact between articulators to reduce tension and improve speech flow. A fluency shaping method for stuttering therapy.",
+      "Learn soft articulation contact, use light, relaxed contact between articulators to reduce tension and improve speech flow. A fluency shaping method for stuttering therapy.",
   },
   "prolonged-speech": {
     title: "Prolonged Speech Technique",
     description:
-      "Master prolonged speech — extend vowels and continuant consonants to slow your rate and increase fluency. A widely-used fluency shaping technique in stuttering therapy.",
+      "Master prolonged speech, extend vowels and continuant consonants to slow your rate and increase fluency. A widely-used fluency shaping technique in stuttering therapy.",
   },
   "speech-speed-management": {
     title: "Speech Speed Management Technique",
     description:
-      "Learn speech speed management — control your speaking rate to maintain fluency under different communication demands. A practical technique for stuttering therapy.",
+      "Learn speech speed management, control your speaking rate to maintain fluency under different communication demands. A practical technique for stuttering therapy.",
   },
   pauses: {
     title: "Pauses Technique in Speech Therapy",
     description:
-      "Master the use of pauses — incorporate natural breaks in speech to reduce time pressure and improve fluency. An essential technique for stuttering management.",
+      "Master the use of pauses, incorporate natural breaks in speech to reduce time pressure and improve fluency. An essential technique for stuttering management.",
   },
   "identification-desensitization": {
     title: "Identification & Desensitization for Stuttering",
     description:
-      "Learn identification and desensitization — recognize stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
+      "Learn identification and desensitization, recognize stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
   },
 };
 
@@ -159,7 +159,7 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
     "@type": "CollectionPage",
     name: "Speech Therapy Techniques for Stuttering",
     description:
-      "Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches.",
+      "Browse evidence-based speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     url: "https://upspeech.app/techniques",
     inLanguage: locale,
     isPartOf: {
@@ -203,7 +203,7 @@ export function getWhatIsStutteringStructuredData() {
       "@type": "Article",
       headline: "What Is Stuttering? Types, Causes & Treatment",
       description:
-        "A comprehensive guide to understanding stuttering — its types, causes, prevalence, and evidence-based treatment approaches used in speech therapy.",
+        "A comprehensive guide to understanding stuttering, its types, causes, prevalence, and evidence-based treatment approaches used in speech therapy.",
       url: "https://upspeech.app/what-is-stuttering",
       inLanguage: "en",
       datePublished: "2026-03-16",
@@ -273,7 +273,7 @@ export function getWhatIsStutteringStructuredData() {
           name: "How common is stuttering?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Stuttering affects approximately 1% of the world's adult population — more than 70 million people globally. About 5% of all children experience stuttering during development. It occurs in all languages, cultures, and socioeconomic groups, with a 4:1 male-to-female ratio in adults.",
+            text: "Stuttering affects approximately 1% of the world's adult population, more than 70 million people globally. About 5% of all children experience stuttering during development. It occurs in all languages, cultures, and socioeconomic groups, with a 4:1 male-to-female ratio in adults.",
           },
         },
         {
@@ -289,7 +289,7 @@ export function getWhatIsStutteringStructuredData() {
           name: "When should I seek help for stuttering?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "For children, consult a speech-language pathologist if stuttering has persisted for more than 6 months, started after age 3.5, there is a family history of persistent stuttering, or the child shows signs of frustration or avoidance. For adults, it is never too late to seek help — speech therapy can improve fluency and communication confidence at any age.",
+            text: "For children, consult a speech-language pathologist if stuttering has persisted for more than 6 months, started after age 3.5, there is a family history of persistent stuttering, or the child shows signs of frustration or avoidance. For adults, it is never too late to seek help, speech therapy can improve fluency and communication confidence at any age.",
           },
         },
         {

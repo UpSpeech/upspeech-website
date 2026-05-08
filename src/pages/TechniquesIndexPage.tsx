@@ -154,7 +154,7 @@ export function TechniquesIndexPage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO
         title="Speech Therapy Techniques"
-        description="Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches."
+        description="Browse evidence-based speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches."
         path="/techniques"
         locale={locale}
         structuredData={getTechniquesIndexStructuredData(locale)}

@@ -8,7 +8,6 @@ export type ValuePoint = {
 };
 
 type Props = {
-  act: string;
   eyebrow: string;
   headline: React.ReactNode;
   body: string;
@@ -21,13 +20,12 @@ type Props = {
 };
 
 const ProductScene = ({
-  act,
   eyebrow,
   headline,
   body,
   image,
   imageAlt,
-  url = "app.upspeech.io",
+  url = "app.upspeech.app",
   points,
   tone,
   align = "left",
@@ -63,7 +61,7 @@ const ProductScene = ({
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
             style={style(0)}
           >
-            {act} · {eyebrow}
+            {eyebrow}
           </p>
           <h2
             className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
