@@ -47,7 +47,7 @@ const InvitationSection = () => {
           style={style(300)}
         >
           Currently partnering with a small cohort of speech therapy clinics in
-          Portugal, Spain, and Brazil — building the infrastructure with the
+          Portugal, Spain, and Brazil, building the infrastructure with the
           clinicians who will use it.
         </p>
 

@@ -11,7 +11,7 @@ const TherapistScene = () => (
         <span className="text-calm-lavender">We take care of the rest.</span>
       </>
     }
-    body="Automated clinical reports, patient-level analytics, and a continuous picture of what's happening outside the room — so therapists walk into every session already knowing where to focus."
+    body="Automated clinical reports, patient-level analytics, and a continuous picture of what's happening outside the room, so therapists walk into every session already knowing where to focus."
     image="/screenshots/app/therapist-dashboard.png"
     imageAlt="UpSpeech therapist dashboard with patient analytics and report tools"
     url="app.upspeech.io/therapist"
@@ -24,7 +24,7 @@ const TherapistScene = () => (
       },
       {
         label: "Capacity, reclaimed",
-        copy: "Hours of admin per week collapse into minutes — reinvested in patients.",
+        copy: "Hours of admin per week collapse into minutes, reinvested in patients.",
       },
       {
         label: "Decisions, informed",

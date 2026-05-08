@@ -44,27 +44,7 @@ const HeroOptionD = () => {
         }}
       />
 
-      {/* Minimal top bar */}
-      <div
-        className="relative z-10 px-[max(1.5rem,5vw)] pt-8 sm:pt-10 flex items-center justify-between"
-        style={{
-          transition: `opacity 900ms ${EASE}`,
-          transitionDelay: "200ms",
-          opacity: loaded ? 1 : 0,
-        }}
-      >
-        <div className="flex items-center gap-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-calm-navy" />
-          <span className="font-body text-[11px] font-semibold tracking-[0.25em] uppercase text-calm-navy/70">
-            UpSpeech · Infrastructure for Speech Therapy
-          </span>
-        </div>
-        <span className="hidden md:inline font-body text-[11px] tracking-[0.2em] uppercase text-calm-charcoal/40">
-          Preview · Option D
-        </span>
-      </div>
-
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-[max(1.5rem,5vw)] pt-24 sm:pt-28">
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-[max(1.5rem,5vw)] pt-32 sm:pt-40">
         <div
           className="mb-6 sm:mb-8"
           style={{
@@ -102,7 +82,7 @@ const HeroOptionD = () => {
             transform: loaded ? "translateY(0)" : "translateY(16px)",
           }}
         >
-          The infrastructure layer that keeps your care continuous — AI working
+          The infrastructure layer that keeps your care continuous. AI working
           quietly in the background, clinicians always in the loop.
         </p>
       </div>
