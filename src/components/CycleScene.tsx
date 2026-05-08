@@ -163,7 +163,7 @@ const CycleScene = () => {
     <section
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: "380vh" }}
+      style={{ height: "240vh" }}
     >
       <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
         <div
