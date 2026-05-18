@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["PLACEHOLDER_TEAM_ID.app.upspeech.mobile"],
+        "components": [
+          { "/": "/r/*", "comment": "Routes all tenant deep-link redirects (signup, reset-password, journey, patients, exercises, notifications, settings) into the UpSpeech mobile app" }
+        ]
+      }
+    ]
+  }
+}

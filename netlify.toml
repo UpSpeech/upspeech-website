@@ -26,6 +26,22 @@
   status = 301
   force = true
 
+# Mobile-app deep-link redirect. Mobile intercepts via Universal Links / App
+# Links before the 302 fires; web users fall through to the tenant SPA. See
+# decisions/2026-05-18-apex-deep-link-redirect.md.
+[[redirects]]
+  from = "/r/:tenant/*"
+  to = "https://:tenant.upspeech.app/:splat"
+  status = 302
+  force = true
+
+# Same redirect for the bare `/r/<tenant>` form (no trailing path or splat).
+[[redirects]]
+  from = "/r/:tenant"
+  to = "https://:tenant.upspeech.app/"
+  status = 302
+  force = true
+
 # SPA fallback: serve index.html for all routes (must be last)
 [[redirects]]
   from = "/*"
@@ -45,6 +61,21 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Universal Links / Android App Links manifests.
+# AASA has no file extension; force application/json so iOS accepts it.
+# See decisions/2026-05-18-apex-deep-link-redirect.md.
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/.well-known/assetlinks.json"
+  [headers.values]
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=86400"
 
 # Cache static assets aggressively (Vite adds content hashes to filenames)
 [[headers]]
