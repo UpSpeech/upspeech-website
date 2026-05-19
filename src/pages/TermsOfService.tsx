@@ -15,17 +15,17 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
     title: "Terms of Service",
     description:
-      "UpSpeech terms of service — the rules and guidelines governing your use of our AI-powered speech therapy platform.",
+      "UpSpeech terms of service, the rules and guidelines governing your use of our AI-powered speech therapy platform.",
   },
   pt: {
     title: "Termos de Serviço",
     description:
-      "Termos de serviço da UpSpeech — as regras e diretrizes que regem a utilização da nossa plataforma de terapia da fala com IA.",
+      "Termos de serviço da UpSpeech, as regras e diretrizes que regem a utilização da nossa plataforma de terapia da fala com IA.",
   },
   es: {
     title: "Términos de Servicio",
     description:
-      "Términos de servicio de UpSpeech — las normas y directrices que rigen el uso de nuestra plataforma de logopedia con IA.",
+      "Términos de servicio de UpSpeech, las normas y directrices que rigen el uso de nuestra plataforma de logopedia con IA.",
   },
 };
 

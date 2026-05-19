@@ -117,9 +117,9 @@ const CTASection = () => {
         await sendAutoReplyEmail(formData);
 
         toast({
-          title: "Welcome to the UpSpeech waitlist!",
+          title: "You're on the list.",
           description:
-            "You've been successfully registered. Check your email for a confirmation message.",
+            "Thanks, we'll be in touch. Check your email for a confirmation.",
         });
       } else {
         trackFormSubmit("waitlist_form", false);
@@ -175,24 +175,19 @@ const CTASection = () => {
           className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          Join us before we launch!
+          Request early access.
         </h2>
         <p
-          className="font-body text-xl text-calm-charcoal/80 mb-12 max-w-3xl mx-auto animate-fade-in"
+          className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          Join forward-thinking speech therapy clinics already revolutionizing
-          their practice with AI-powered continuous care solutions.
+          Tell us a little about your practice. We'll be in touch.
         </p>
 
         <div
           className="bg-white rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <h3 className="font-heading font-bold text-xl text-calm-charcoal mb-6">
-            Request Early Access to UpSpeech
-          </h3>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="text-left">
               <Label
@@ -318,7 +313,7 @@ const CTASection = () => {
               disabled={isSubmitting}
               className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              {isSubmitting ? "Joining Waitlist..." : "Join the Waitlist"}
+              {isSubmitting ? "Submitting..." : "Request early access"}
             </Button>
           </form>
         </div>

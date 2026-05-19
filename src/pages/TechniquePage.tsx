@@ -100,7 +100,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     technique?.description ||
     staticSeo?.description ||
     (technique
-      ? `Learn about ${technique.name} — a speech therapy technique for stuttering.`
+      ? `Learn about ${technique.name}, a speech therapy technique for stuttering.`
       : undefined);
   const structuredData = technique
     ? [

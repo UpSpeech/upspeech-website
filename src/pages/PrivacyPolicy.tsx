@@ -16,17 +16,17 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
     title: "Privacy Policy",
     description:
-      "UpSpeech privacy policy — how we collect, use, and protect your personal data in our AI-powered speech therapy platform.",
+      "UpSpeech privacy policy, how we collect, use, and protect your personal data in our AI-powered speech therapy platform.",
   },
   pt: {
     title: "Política de Privacidade",
     description:
-      "Política de privacidade da UpSpeech — como recolhemos, utilizamos e protegemos os seus dados pessoais na nossa plataforma de terapia da fala com IA.",
+      "Política de privacidade da UpSpeech, como recolhemos, utilizamos e protegemos os seus dados pessoais na nossa plataforma de terapia da fala com IA.",
   },
   es: {
     title: "Política de Privacidad",
     description:
-      "Política de privacidad de UpSpeech — cómo recopilamos, utilizamos y protegemos sus datos personales en nuestra plataforma de logopedia con IA.",
+      "Política de privacidad de UpSpeech, cómo recopilamos, utilizamos y protegemos sus datos personales en nuestra plataforma de logopedia con IA.",
   },
 };
 
