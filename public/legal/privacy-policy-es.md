@@ -119,6 +119,7 @@ Utilizamos la información que recopilamos para los siguientes fines:
 - **Automatización de informes** - Generar informes clínicos mediante modelos de lenguaje Google Gemini basándose en la transcripción y su contexto clínico
 - **Detección de disfluencias** - Identificar y clasificar automáticamente comportamientos de tartamudez en las grabaciones
 - **Información clínica** - Proporcionar análisis estadísticos y tendencias para apoyar la planificación del tratamiento
+- **Entrenamiento opcional del modelo (con consentimiento)** - Con su consentimiento explícito (opt-in), las grabaciones de voz anonimizadas pueden conservarse después de que elimine su cuenta y utilizarse para entrenar futuras versiones de los modelos de IA de terapia del habla de UpSpeech. Es opcional, requiere adhesión explícita, y puede cambiar de opinión en el momento de la eliminación seleccionando "Eliminar todo". Las grabaciones de voz son datos biométricos en virtud del artículo 9 del RGPD; este tratamiento solo se realiza con su consentimiento específico y explícito
 
 ### 3. Comunicación
 
@@ -239,10 +240,12 @@ En virtud del Reglamento General de Protección de Datos (RGPD), tiene los sigui
 
 ### 3. Supresión y Limitación
 
-- **Eliminación de la cuenta** - Solicitar la eliminación de su cuenta y datos asociados
+- **Eliminación de la cuenta** - Elimine su cuenta y los datos asociados directamente desde la aplicación (Ajustes → Cuenta → Eliminar cuenta), o contactando con nosotros. La eliminación es permanente y no se puede deshacer desde la aplicación
+- **Retención opcional de grabaciones** - Si concedió consentimiento para el entrenamiento de IA (en el registro o contactando con nosotros), puede elegir en el momento de la eliminación conservar sus grabaciones de forma anonimizada (su ID de usuario, nombre, nombres de archivo, transcripciones y notas del logopeda se eliminan; el audio se conserva para el entrenamiento del modelo). Si no concedió este consentimiento, las grabaciones se eliminan junto con su cuenta
 - **Eliminación de grabaciones** - Eliminar grabaciones individuales de audio/vídeo (también las elimina de Google Cloud Storage)
 - **Eliminación de informes** - Eliminar informes específicos (solo logopedas)
 - **Limitación del tratamiento** - Solicitar que dejemos de tratar sus datos (con algunas excepciones por requisitos legales)
+- **Retirar consentimiento de entrenamiento** - Puede retirar su consentimiento en cualquier momento antes de la eliminación enviando un correo a **help@upspeech.app**, o en el momento de la eliminación seleccionando "Eliminar todo". Una vez anonimizadas para entrenamiento, las grabaciones ya no pueden vincularse a usted y, por tanto, no pueden eliminarse de forma individual. Para inquietudes más amplias, contáctenos en **help@upspeech.app**
 
 ### 4. Oposición y Retirada
 
