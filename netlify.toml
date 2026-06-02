@@ -61,6 +61,7 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
 # Universal Links / Android App Links manifests.
 # AASA has no file extension; force application/json so iOS accepts it.
