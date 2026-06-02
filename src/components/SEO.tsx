@@ -53,7 +53,7 @@ export function SEO({
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: locale }}>
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />

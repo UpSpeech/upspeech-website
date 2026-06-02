@@ -240,6 +240,8 @@
   /* Scroll Behavior */
   html {
     scroll-behavior: smooth;
+    /* Reserve scrollbar space so toggling overflow doesn't shift layout. */
+    scrollbar-gutter: stable;
   }
 
   /* Selection Color */

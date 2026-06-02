@@ -18,23 +18,25 @@ const Index = () => {
     <div className="min-h-screen font-body">
       <SEO path="/" />
       <Header />
-      <HeroOptionD />
-      <GapSection />
-      <div id="features">
-        <TherapistScene />
-        <PatientScene />
-      </div>
-      <CycleScene />
-      <FeatureGallerySection />
-      <JourneyScene />
-      <div id="differentiation">
-        <EngineSection />
-      </div>
-      <div id="about">
-        <FoundationsScene />
-      </div>
-      <InvitationSection />
-      <CTASection />
+      <main id="main">
+        <HeroOptionD />
+        <GapSection />
+        <div id="features">
+          <TherapistScene />
+          <PatientScene />
+        </div>
+        <CycleScene />
+        <FeatureGallerySection />
+        <JourneyScene />
+        <div id="differentiation">
+          <EngineSection />
+        </div>
+        <div id="about">
+          <FoundationsScene />
+        </div>
+        <InvitationSection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );

@@ -21,6 +21,11 @@ const CTASection = () => {
     clinicSize: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    role?: string;
+  }>({});
 
   // Lazy-load emailjs only when needed
   const getEmailJS = async () => {
@@ -84,6 +89,11 @@ const CTASection = () => {
     setIsSubmitting(true);
 
     if (!formData.name || !formData.email || !formData.role) {
+      setFieldErrors({
+        name: formData.name ? undefined : "Please enter your name.",
+        email: formData.email ? undefined : "Please enter your email address.",
+        role: formData.role ? undefined : "Please choose your role.",
+      });
       toast({
         title: "Please fill in all required fields",
         variant: "destructive",
@@ -91,6 +101,7 @@ const CTASection = () => {
       setIsSubmitting(false);
       return;
     }
+    setFieldErrors({});
 
     try {
       // Submit to Formspree for your records
@@ -200,13 +211,26 @@ const CTASection = () => {
                 id="name"
                 type="text"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                  if (fieldErrors.name)
+                    setFieldErrors({ ...fieldErrors, name: undefined });
+                }}
+                aria-invalid={!!fieldErrors.name}
+                aria-describedby={fieldErrors.name ? "name-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
                 placeholder="Enter your name"
                 required
               />
+              {fieldErrors.name && (
+                <p
+                  id="name-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.name}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -220,13 +244,26 @@ const CTASection = () => {
                 id="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (fieldErrors.email)
+                    setFieldErrors({ ...fieldErrors, email: undefined });
+                }}
+                aria-invalid={!!fieldErrors.email}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
                 placeholder="your@email.com"
                 required
               />
+              {fieldErrors.email && (
+                <p
+                  id="email-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -237,12 +274,16 @@ const CTASection = () => {
                 Role *
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, role: value })
-                }
+                onValueChange={(value) => {
+                  setFormData({ ...formData, role: value });
+                  if (fieldErrors.role)
+                    setFieldErrors({ ...fieldErrors, role: undefined });
+                }}
               >
                 <SelectTrigger
                   aria-label="Choose your role"
+                  aria-invalid={!!fieldErrors.role}
+                  aria-describedby={fieldErrors.role ? "role-error" : undefined}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
                   <SelectValue placeholder="Choose your role" />
@@ -271,6 +312,15 @@ const CTASection = () => {
                   </SelectItem>
                 </SelectContent>
               </Select>
+              {fieldErrors.role && (
+                <p
+                  id="role-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.role}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
