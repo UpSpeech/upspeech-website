@@ -5,21 +5,21 @@ const CLICK_FRAME = 82;
 
 const EXERCISES = [
   {
-    label: "Warm-up",
-    title: "Diaphragmatic breathing",
-    meta: "5 min · every day",
+    label: "Communication Strategies",
+    title: "Guided Pauses - Medium",
+    meta: "2 sec pauses",
     tone: COLORS.lavender,
   },
   {
-    label: "Technique",
-    title: "Smooth Start",
-    meta: "Holding · 10 min",
+    label: "Stay in the Moment",
+    title: "Holding - Natural Exit",
+    meta: "3 sec exit",
     tone: COLORS.navy,
   },
   {
     label: "Scenario",
-    title: "Ordering at a cafe",
-    meta: "Conversation rehearsal",
+    title: "Ordering",
+    meta: "Conversation practice",
     tone: COLORS.lavender,
   },
 ];

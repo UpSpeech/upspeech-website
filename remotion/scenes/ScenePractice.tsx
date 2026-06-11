@@ -37,7 +37,7 @@ const ScenePractice = () => {
                   Tonight's practice · from your therapist
                 </div>
                 <h2 className="mt-2 font-heading text-[30px] font-bold tracking-tight text-calm-charcoal">
-                  Smooth Start
+                  Holding - Natural Exit
                 </h2>
               </div>
               <div className="flex gap-1.5">
