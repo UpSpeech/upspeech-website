@@ -151,7 +151,7 @@ const HeroOptionD = () => {
             {reducedMotion ? (
               <img
                 src="/videos/hero-demo-poster.jpg"
-                alt="UpSpeech product demo: session recording review"
+                alt="UpSpeech product demo: a therapist's personalised practice plan"
                 className="block w-full h-auto"
                 loading="eager"
               />
@@ -165,7 +165,7 @@ const HeroOptionD = () => {
                 muted
                 playsInline
                 preload="metadata"
-                aria-label="UpSpeech product demo: a session is recorded, the AI drafts the session report, the therapist reviews it, assigns a practice plan, and follows the patient's progress"
+                aria-label="UpSpeech product demo: a therapist assigns a personalised plan, the patient practises at home, the therapist follows progress on a dashboard, records a session, the report is drafted, and clinicians annotate the recording"
               />
             )}
           </div>
