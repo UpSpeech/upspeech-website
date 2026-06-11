@@ -38,7 +38,10 @@ const FEATURES: Feature[] = [
 ];
 
 const FeatureGallerySection = () => {
-  const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.15 });
+  const { ref, revealed } = useReveal<HTMLDivElement>({
+    threshold: 0.05,
+    rootMargin: "0px 0px 0px 0px",
+  });
 
   const headerStyle = (delay: number): React.CSSProperties => ({
     transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,

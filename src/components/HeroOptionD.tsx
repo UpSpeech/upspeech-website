@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { trackButtonClick } from "@/lib/analytics";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -28,10 +29,18 @@ const Line = ({
 
 const HeroOptionD = () => {
   const [loaded, setLoaded] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const t = window.setTimeout(() => setLoaded(true), 80);
-    return () => window.clearTimeout(t);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setReducedMotion(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => {
+      window.clearTimeout(t);
+      mq.removeEventListener("change", apply);
+    };
   }, []);
 
   return (
@@ -85,20 +94,50 @@ const HeroOptionD = () => {
           Structured practice between sessions. Clinical reports drafted from
           session data. Therapists keep the final say.
         </p>
+
+        <div
+          className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
+          style={{
+            transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
+            transitionDelay: "1500ms",
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? "translateY(0)" : "translateY(16px)",
+          }}
+        >
+          <a
+            href="#cta"
+            onClick={() =>
+              trackButtonClick("request_early_access_hero", "hero")
+            }
+            className="group inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)] hover:-translate-y-0.5"
+          >
+            Request early access
+            <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+          <a
+            href="#how-it-works"
+            onClick={() => trackButtonClick("see_how_it_works", "hero")}
+            className="inline-flex items-center gap-2 rounded-full border border-calm-navy/20 px-7 py-3.5 font-body font-semibold text-calm-navy transition-colors duration-500 hover:border-calm-navy/45 hover:bg-white"
+          >
+            See how it works
+          </a>
+        </div>
       </div>
 
-      {/* Product peek at bottom, half-cut browser frame invites scroll */}
+      {/* Product demo: frame top peeks above the fold, scroll reveals the full video */}
       <div
-        className="relative z-10 mt-10 px-[max(1.5rem,5vw)]"
+        className="relative z-10 mt-10 px-[max(1.5rem,5vw)] pb-16 sm:pb-24"
         style={{
           transition: `opacity 1200ms ${EASE}, transform 1200ms ${EASE}`,
-          transitionDelay: "1500ms",
+          transitionDelay: "1700ms",
           opacity: loaded ? 1 : 0,
           transform: loaded ? "translateY(0)" : "translateY(40px)",
         }}
       >
         <div className="mx-auto max-w-[1200px]">
-          <div className="relative rounded-t-[1.25rem] sm:rounded-t-[1.5rem] overflow-hidden border border-calm-navy/10 border-b-0 shadow-[0_-20px_60px_-20px_rgba(41,53,135,0.25)] bg-white">
+          <div className="relative rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden border border-calm-navy/10 shadow-[0_40px_80px_-32px_rgba(41,53,135,0.35)] bg-white">
             <div className="flex items-center gap-2 px-4 py-3 bg-calm-light/80 border-b border-calm-charcoal/5">
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
@@ -109,22 +148,26 @@ const HeroOptionD = () => {
                 </span>
               </div>
             </div>
-            <div
-              className="relative w-full"
-              style={{
-                aspectRatio: "16 / 9",
-                maxHeight: "38vh",
-                overflow: "hidden",
-              }}
-            >
+            {reducedMotion ? (
               <img
-                src="/screenshots/app/therapist-dashboard.png"
-                alt="UpSpeech therapist dashboard preview"
-                className="absolute inset-x-0 top-0 w-full h-auto"
+                src="/videos/hero-demo-poster.jpg"
+                alt="UpSpeech product demo: session recording review"
+                className="block w-full h-auto"
                 loading="eager"
               />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-calm-light via-calm-light/60 to-transparent" />
-            </div>
+            ) : (
+              <video
+                className="block w-full h-auto"
+                src="/videos/hero-demo.mp4"
+                poster="/videos/hero-demo-poster.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="UpSpeech product demo: a session is recorded, the AI drafts the clinical report, the therapist reviews it, assigns a practice plan, and follows the patient's progress"
+              />
+            )}
           </div>
         </div>
       </div>

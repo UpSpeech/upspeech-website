@@ -37,3 +37,6 @@ upspeech-website/*
 .claude
 **/CLAUDE.md
 !/CLAUDE.md
+
+# Local verification screenshots
+.screenshots

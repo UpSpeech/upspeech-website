@@ -163,7 +163,7 @@ const CycleScene = () => {
     <section
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: "240vh" }}
+      style={{ height: "200vh" }}
     >
       <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
         <div
@@ -477,19 +477,6 @@ const CycleScene = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Motif footer */}
-          <div
-            className="mt-[clamp(1.5rem,4vh,3rem)] font-body text-sm sm:text-base text-calm-charcoal/65"
-            style={reveal(revealed, 320)}
-          >
-            <span className="font-heading font-semibold text-calm-charcoal">
-              Drafted by AI.
-            </span>{" "}
-            <span className="font-heading font-semibold text-calm-lavender">
-              Reviewed by the clinician.
-            </span>
           </div>
         </div>
       </div>

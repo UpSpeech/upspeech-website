@@ -12,6 +12,17 @@ const GapSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  // On phones the pinned scroll story loses its labels and activity bars,
+  // so the section renders as a plain static comparison instead.
+  const [isStatic, setIsStatic] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const apply = () => setIsStatic(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -20,10 +31,12 @@ const GapSection = () => {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (prefersReduced) {
+    if (prefersReduced || isStatic) {
       setProgress(1);
-      setRevealed(true);
-      return;
+      if (prefersReduced) {
+        setRevealed(true);
+        return;
+      }
     }
 
     // Entry reveal, fires once when the section starts intersecting.
@@ -37,6 +50,10 @@ const GapSection = () => {
       { threshold: 0.05, rootMargin: "0px 0px -15% 0px" },
     );
     obs.observe(el);
+
+    if (isStatic) {
+      return () => obs.disconnect();
+    }
 
     let raf = 0;
     const update = () => {
@@ -59,7 +76,7 @@ const GapSection = () => {
       cancelAnimationFrame(raf);
       obs.disconnect();
     };
-  }, []);
+  }, [isStatic]);
 
   // Choreography:
   //  0.00           both rows visible, gap is the default state
@@ -75,11 +92,18 @@ const GapSection = () => {
 
   return (
     <section
+      id="how-it-works"
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: "320vh" }}
+      style={{ height: isStatic ? "auto" : "240vh" }}
     >
-      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
+      <div
+        className={
+          isStatic
+            ? "relative overflow-hidden py-20"
+            : "sticky top-20 h-[calc(100vh-5rem)] overflow-hidden"
+        }
+      >
         <div
           className="pointer-events-none absolute inset-0"
           style={{

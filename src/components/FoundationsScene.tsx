@@ -99,7 +99,7 @@ const FoundationsScene = () => {
         <div className="mt-[clamp(4rem,8vw,7rem)]">
           <div
             className="mb-8 sm:mb-10 flex items-baseline justify-between flex-wrap gap-4"
-            style={style(640)}
+            style={style(320)}
           >
             <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/60">
               Partners · Backers · Recognition
@@ -111,7 +111,7 @@ const FoundationsScene = () => {
 
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
-            style={style(720)}
+            style={style(380)}
           >
             {partners.map((p, i) => (
               <div
@@ -119,7 +119,7 @@ const FoundationsScene = () => {
                 className="bg-calm-light p-6 sm:p-8 flex flex-col items-start justify-between gap-6 min-h-[10rem] group transition-colors duration-500 hover:bg-white"
                 style={{
                   transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
-                  transitionDelay: `${800 + i * 90}ms`,
+                  transitionDelay: `${440 + i * 60}ms`,
                   opacity: revealed ? 1 : 0,
                   transform: revealed ? "translateY(0)" : "translateY(22px)",
                 }}
