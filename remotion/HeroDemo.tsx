@@ -6,11 +6,12 @@ import SceneReport from "./scenes/SceneReport";
 import ScenePlan from "./scenes/ScenePlan";
 import ScenePractice from "./scenes/ScenePractice";
 import SceneProgress from "./scenes/SceneProgress";
+import SceneAnnotation from "./scenes/SceneAnnotation";
 import SceneEnd from "./scenes/SceneEnd";
 
 const FADE = 12;
 
-export const SCENE_DURATIONS = [120, 150, 120, 130, 120, 80] as const;
+export const SCENE_DURATIONS = [120, 150, 120, 130, 120, 120, 80] as const;
 
 export const HERO_DEMO_DURATION =
   SCENE_DURATIONS.reduce((a, b) => a + b, 0) -
@@ -48,6 +49,10 @@ const HeroDemo = () => {
         </TransitionSeries.Sequence>
         {transition()}
         <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[5]}>
+          <SceneAnnotation />
+        </TransitionSeries.Sequence>
+        {transition()}
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[6]}>
           <SceneEnd />
         </TransitionSeries.Sequence>
       </TransitionSeries>
