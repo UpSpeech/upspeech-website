@@ -12,8 +12,8 @@ const EXERCISES = [
   },
   {
     label: "Technique",
-    title: "Easy onset drills",
-    meta: "Level 2 · 10 min",
+    title: "Smooth Start",
+    meta: "Holding · 10 min",
     tone: COLORS.navy,
   },
   {
@@ -101,7 +101,7 @@ const ScenePlan = () => {
         className="mt-6 font-body text-[12px] text-calm-charcoal/50"
         style={{ opacity: frame > 56 ? 1 : 0 }}
       >
-        No plan is assigned without clinical review.
+        No plan is assigned without therapist review.
       </div>
 
       <Cursor

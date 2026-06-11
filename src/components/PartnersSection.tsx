@@ -13,7 +13,7 @@ const partners: Partner[] = [
     name: "SpeechCare",
     logo: "/images/speechcare-logo.png",
     url: "https://speechcare.pt",
-    description: "Clinical Partner",
+    description: "Co-development Partner",
   },
   {
     name: "ElevenLabs Grants",

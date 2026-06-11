@@ -16,7 +16,7 @@ const NODES: Node[] = [
   {
     actor: "ai",
     verb: "drafts",
-    title: "AI drafts the clinical report.",
+    title: "AI drafts the session report.",
     body: "Session recording and notes turn into a structured draft.",
   },
   {
@@ -29,19 +29,19 @@ const NODES: Node[] = [
     actor: "ai",
     verb: "structures",
     title: "AI structures the practice plan.",
-    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises and changes to the therapeutical plan.",
+    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the therapist to approve.",
   },
   {
     actor: "clinician",
     verb: "calibrates",
     title: "The clinician calibrates it.",
-    body: "The therapist approves, adjusts difficulty, and swaps techniques. No plan is assigned without clinical review.",
+    body: "The therapist approves, adjusts difficulty, and swaps techniques. No plan is assigned without therapist review.",
   },
   {
     actor: "ai",
     verb: "listens",
     title: "AI helps between sessions.",
-    body: "Real-time fluency analysis runs on each practice attempt (sound, context, facial cues), recording progress over time.",
+    body: "Each practice attempt is captured and organised, building a record of activity between sessions.",
   },
   {
     actor: "clinician",

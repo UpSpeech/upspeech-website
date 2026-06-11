@@ -95,7 +95,7 @@ const FeatureGallerySection = () => {
           <div className="relative bg-calm-charcoal/[0.03] flex items-center justify-center p-3 sm:p-5 lg:p-6">
             <ZoomableImage
               src="/screenshots/app/researcher-annotation-tool.jpg"
-              alt="UpSpeech annotation tool with audio waveform, video review, and frame-by-frame disfluency tagging"
+              alt="UpSpeech annotation tool with audio waveform, video review, and frame-by-frame tagging by speech-language pathologists"
               className="w-full h-auto block rounded-lg"
               loading="lazy"
             />

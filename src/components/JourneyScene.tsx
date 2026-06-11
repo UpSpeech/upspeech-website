@@ -6,7 +6,7 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const stats = [
   { value: "11+", label: "Therapeutic techniques" },
   { value: "36+", label: "Structured steps" },
-  { value: "8", label: "Clinical milestones" },
+  { value: "8", label: "Therapy milestones" },
 ] as const;
 
 const JourneyScene = () => {

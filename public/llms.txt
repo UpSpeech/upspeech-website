@@ -1,6 +1,6 @@
 # UpSpeech
 
-> UpSpeech is an AI-powered speech therapy platform that helps speech-language pathologists and their patients manage stuttering. Patients get structured practice between sessions with therapist-linked feedback and progress tracking. AI automates clinical report writing.
+> UpSpeech is an AI-powered speech therapy platform that helps speech-language pathologists and their patients manage stuttering. Patients get structured practice between sessions with therapist-linked feedback and progress tracking. AI drafts session reports for the therapist to review.
 
 UpSpeech provides evidence-based information about stuttering and speech therapy techniques. The content below covers the therapeutic techniques used to treat stuttering.
 

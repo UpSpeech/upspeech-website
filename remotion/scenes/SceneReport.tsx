@@ -10,7 +10,7 @@ const SECTIONS = [
     start: 18,
   },
   {
-    heading: "Fluency analysis",
+    heading: "What we practised",
     lines: [0.9, 0.72],
     start: 44,
   },
@@ -36,7 +36,7 @@ const SceneReport = () => {
   return (
     <AppShell
       active="Reports"
-      title="Clinical report"
+      title="Session report"
       subtitle="Drafted from today's session · Miguel A."
       topRight={
         <div className="relative" style={useRise(6, 12)}>

@@ -14,7 +14,7 @@ const partners: Partner[] = [
   {
     name: "SpeechCare",
     logo: "/images/speechcare-logo.png",
-    context: "Clinical co-development partner",
+    context: "Co-development partner",
   },
   {
     name: "ElevenLabs Grants",

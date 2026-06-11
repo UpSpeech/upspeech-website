@@ -20,7 +20,7 @@ const BrandIntroduction = () => {
       borderColor: "border-calm-lavender/30",
       highlights: [
         { icon: SparklesIcon, text: "Scale Without Extra Staff" },
-        { icon: CheckCircleIcon, text: "Better Clinical Outcomes" },
+        { icon: CheckCircleIcon, text: "Better Continuity of Care" },
         { icon: CheckCircleIcon, text: "Reduce Paperwork" },
       ],
       points: [
@@ -39,7 +39,7 @@ const BrandIntroduction = () => {
       borderColor: "border-calm-lavender/30",
       highlights: [
         { icon: SparklesIcon, text: "Treatment Plans in Minutes" },
-        { icon: CheckCircleIcon, text: "Clinical Dashboard" },
+        { icon: CheckCircleIcon, text: "Therapist Dashboard" },
         { icon: CheckCircleIcon, text: "Automated Reports" },
       ],
       points: [
@@ -62,7 +62,7 @@ const BrandIntroduction = () => {
       ],
       points: [
         "Interactive scenario simulations and challenging exercises",
-        "Audio and video recording with automated analysis",
+        "Audio and video recording with automatic transcription",
         "Structured guidance from your therapist",
       ],
     },

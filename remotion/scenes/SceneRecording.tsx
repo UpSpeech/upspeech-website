@@ -6,10 +6,10 @@ const SAVE_FRAME = 34;
 const STEPS = [
   { label: "Recording uploaded", done: 44 },
   { label: "Transcribed", done: 66 },
-  { label: "Speech events analysed", done: 88 },
+  { label: "Notes drafted", done: 88 },
 ];
 
-const TAGS = ["Block", "Easy onset", "Prolongation", "Calm finish"];
+const TAGS = ["Transcript", "Draft notes", "Practice ideas"];
 
 const SceneRecording = () => {
   const frame = useCurrentFrame();
@@ -128,7 +128,7 @@ const SceneRecording = () => {
             style={useRise(30)}
           >
             <div className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-calm-charcoal/50">
-              Detected in this recording
+              From this recording
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {TAGS.map((tag, i) => (

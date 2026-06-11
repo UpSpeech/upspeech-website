@@ -12,7 +12,7 @@ const PatientScene = () => (
         </span>
       </>
     }
-    body="Each patient receives a plan from their clinician, with exercises matched to their stage of treatment. Real-time fluency feedback supports practice between visits."
+    body="Each patient receives a plan from their clinician, with exercises matched to their stage of treatment. Guided exercises support practice between visits."
     image="/screenshots/app/client-dashboard.png"
     imageAlt="UpSpeech patient dashboard with daily practice exercises and progress"
     url="app.upspeech.app"
@@ -24,8 +24,8 @@ const PatientScene = () => (
         copy: "Each step is selected by the clinician. Patients see only what they should practise.",
       },
       {
-        label: "Real-time feedback",
-        copy: "Fluency analysis from sound, context, and facial cues. Reviewed and adjusted by the therapist.",
+        label: "Every attempt, captured",
+        copy: "Each practice attempt is recorded and organised for the therapist to review and adjust.",
       },
       {
         label: "Progress, recorded",

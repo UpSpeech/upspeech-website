@@ -91,8 +91,8 @@ const HeroOptionD = () => {
             transform: loaded ? "translateY(0)" : "translateY(16px)",
           }}
         >
-          Structured practice between sessions. Clinical reports drafted from
-          session data. Therapists keep the final say.
+          Structured practice between sessions. Session reports drafted
+          automatically. Therapists keep the final say.
         </p>
 
         <div
@@ -165,7 +165,7 @@ const HeroOptionD = () => {
                 muted
                 playsInline
                 preload="metadata"
-                aria-label="UpSpeech product demo: a session is recorded, the AI drafts the clinical report, the therapist reviews it, assigns a practice plan, and follows the patient's progress"
+                aria-label="UpSpeech product demo: a session is recorded, the AI drafts the session report, the therapist reviews it, assigns a practice plan, and follows the patient's progress"
               />
             )}
           </div>

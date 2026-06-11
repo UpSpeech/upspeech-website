@@ -57,7 +57,7 @@ const EngineSection = () => {
         >
           We built an annotation tool in-house, used by practising
           speech-language pathologists to tag disfluencies, tensions, and blocks
-          frame by frame. The dataset is clinical from the start.
+          frame by frame. The dataset is expert-labelled from the start.
         </p>
 
         <div

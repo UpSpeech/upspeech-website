@@ -37,7 +37,7 @@ const ScenePractice = () => {
                   Tonight's practice · from your therapist
                 </div>
                 <h2 className="mt-2 font-heading text-[30px] font-bold tracking-tight text-calm-charcoal">
-                  Easy onset drills
+                  Smooth Start
                 </h2>
               </div>
               <div className="flex gap-1.5">
@@ -65,9 +65,9 @@ const ScenePractice = () => {
             style={useRise(14)}
           >
             <div className="font-body text-[15px] leading-relaxed text-calm-charcoal/80">
-              "Start the sentence gently, letting the first sound stretch:{" "}
+              "When a block comes, hold the position calmly,{" "}
               <span className="font-semibold text-calm-navy">
-                aaa-anyone seen my keys?
+                then release into the word with less tension.
               </span>
               "
             </div>

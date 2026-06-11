@@ -12,7 +12,7 @@ const TherapistScene = () => (
         </span>
       </>
     }
-    body="Clinical reports drafted from session data. Patient activity visible outside the appointment. Therapists arrive at each session with the context they need to plan it."
+    body="Session reports drafted from session data. Patient activity visible outside the appointment. Therapists arrive at each session with the context they need to plan it."
     image="/screenshots/app/therapist-patient-progress.jpg"
     imageAlt="UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step"
     url="app.upspeech.app/therapist"
@@ -25,7 +25,7 @@ const TherapistScene = () => (
       },
       {
         label: "Reports, drafted",
-        copy: "Session data becomes a structured clinical draft for the therapist to review and sign.",
+        copy: "Session data becomes a structured draft report for the therapist to review and approve.",
       },
       {
         label: "Therapist sign-off",
