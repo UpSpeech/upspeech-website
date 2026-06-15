@@ -13,6 +13,7 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
+const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
 const TechniquesIndexPage = React.lazy(() =>
   import("./pages/TechniquesIndexPage").then((m) => ({
     default: m.TechniquesIndexPage,
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="/delete-account" element={<DeleteAccount />} />
 
             {/* Technique Documentation Routes */}
             <Route path="/techniques" element={<TechniquesIndexPage />} />
