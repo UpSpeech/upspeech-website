@@ -13,6 +13,7 @@ const ROUTES = [
   "/privacy",
   "/terms",
   "/cookies",
+  "/delete-account",
   "/techniques",
   "/techniques/voluntary-stuttering",
   "/techniques/cancelation",
