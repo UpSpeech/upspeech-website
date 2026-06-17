@@ -168,7 +168,7 @@ const HeroOptionD = () => {
                   setPlaying(true);
                   trackButtonClick("hero_play_demo", "hero");
                 }}
-                className="group relative block w-full"
+                className="group relative block w-full focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-calm-navy/40"
                 aria-label="Play the UpSpeech product demo"
               >
                 <img
