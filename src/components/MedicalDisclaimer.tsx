@@ -15,7 +15,7 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
     return (
       <p
         className={cn(
-          "font-body text-xs leading-relaxed text-calm-charcoal/55",
+          "font-body text-xs leading-relaxed text-calm-charcoal/70",
           className,
         )}
       >
@@ -26,7 +26,7 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
   return (
     <aside
       className={cn(
-        "mx-auto max-w-3xl rounded-xl border border-calm-charcoal/10 bg-calm-light/60 px-5 py-4 font-body text-sm leading-relaxed text-calm-charcoal/65",
+        "mx-auto max-w-3xl rounded-xl border border-calm-charcoal/10 bg-calm-light/60 px-5 py-4 font-body text-sm leading-relaxed text-calm-charcoal/80",
         className,
       )}
     >
