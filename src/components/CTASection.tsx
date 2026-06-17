@@ -134,7 +134,9 @@ const CTASection = () => {
           className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          Tell us a little about your practice. We'll be in touch.
+          We're working with a cohort of clinics and would like to hear from
+          others working in stuttering. Tell us about your practice and we'll be
+          in touch.
         </p>
 
         <div

@@ -95,7 +95,7 @@ const GapSection = () => {
       id="how-it-works"
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: isStatic ? "auto" : "240vh" }}
+      style={{ height: isStatic ? "auto" : "180vh" }}
     >
       <div
         className={
