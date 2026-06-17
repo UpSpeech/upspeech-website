@@ -11,6 +11,7 @@ import {
   getTechniqueFAQStructuredData,
 } from "@/lib/seo-data";
 import { TechniqueFAQ } from "@/components/TechniqueFAQ";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 interface TechniquePageProps {
   slug: string;
@@ -291,6 +292,8 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {/* FAQ Section */}
               <TechniqueFAQ slug={slug} locale={locale} />
             </div>
+
+            <MedicalDisclaimer className="mt-12" />
 
             {/* Call to Action */}
             {/* <div className="mt-12 text-center">

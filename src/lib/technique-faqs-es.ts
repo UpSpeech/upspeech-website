@@ -10,7 +10,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Cómo ayuda el tartamudeo voluntario a reducir la tartamudez?",
       answer:
-        "El tartamudeo voluntario funciona desensibilizando al hablante ante la experiencia de tartamudear. Cuando tartamudeas a propósito, el miedo y la tensión que normalmente agravan la tartamudez se reducen. Con el tiempo, esto disminuye las conductas de evitación y hace que los momentos de tartamudez involuntaria sean menos intensos.",
+        "En logopedia, el tartamudeo voluntario se utiliza para ayudar a la persona a sensibilizarse menos ante la experiencia de tartamudear. Elegir tartamudear a propósito, de forma suave y controlada, puede reducir el miedo y la tensión que muchas personas asocian con el habla. Los logopedas lo emplean para favorecer la apertura y reducir la evitación con el tiempo. Tu logopeda te indicará si encaja en tus objetivos y cómo practicarlo.",
     },
     {
       question: "¿El tartamudeo voluntario es lo mismo que fingir tartamudear?",
@@ -88,7 +88,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
     {
       question: "¿Cómo ayuda el mantenimiento con los bloqueos de tartamudez?",
       answer:
-        "Durante un bloqueo, el instinto natural es forzar más o detenerse por completo. El mantenimiento te enseña a permanecer en el momento, sostener tu posición sin añadir tensión y luego soltar suavemente el resto de la palabra. Esto reduce la severidad de los bloqueos y aumenta la confianza.",
+        "Durante un bloqueo, el instinto natural es forzar más o detenerse por completo. El mantenimiento te enseña a permanecer en el momento, sostener tu posición sin añadir tensión y luego soltar suavemente el resto de la palabra. Los logopedas lo utilizan para ayudarte a gestionar los bloqueos con menos esfuerzo y a ganar confianza con el tiempo.",
     },
     {
       question:
@@ -197,7 +197,7 @@ export const TECHNIQUE_FAQS_ES: Record<string, FAQ[]> = {
       question:
         "¿Por qué es importante la desensibilización para las personas que tartamudean?",
       answer:
-        "Muchas de las dificultades asociadas a la tartamudez están impulsadas por reacciones emocionales: miedo a hablar, vergüenza por tartamudear, evitación de situaciones sociales. La desensibilización reduce estas reacciones, lo que a su vez suele disminuir la frecuencia y la severidad de la tartamudez.",
+        "Muchas de las dificultades asociadas a la tartamudez están impulsadas por reacciones emocionales: miedo a hablar, vergüenza por tartamudear, evitación de situaciones sociales. En logopedia, la desensibilización se utiliza para ayudar a reducir estas reacciones. Tu logopeda te guiará sobre cómo practicarla.",
     },
     {
       question: "¿Cómo ayuda la identificación a mejorar la fluidez del habla?",

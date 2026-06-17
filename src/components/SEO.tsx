@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const BASE_URL = "https://upspeech.app";
-const DEFAULT_TITLE = "UpSpeech - AI-Powered Stuttering Therapy";
+const DEFAULT_TITLE = "UpSpeech - Software for Stuttering Therapy Practices";
 const DEFAULT_DESCRIPTION =
   "Continuous support for stuttering therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.";
 

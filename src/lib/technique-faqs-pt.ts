@@ -10,7 +10,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Como é que a gaguez voluntária ajuda a reduzir a gaguez?",
       answer:
-        "A gaguez voluntária funciona ao dessensibilizar o falante em relação à experiência de gaguejar. Quando se gagueja de propósito, o medo e a tensão que habitualmente agravam a gaguez são reduzidos. Com o tempo, isto diminui os comportamentos de evitamento e torna os momentos de gaguez involuntária menos severos.",
+        "Na terapia da fala, a gaguez voluntária é usada para ajudar a pessoa a ficar menos sensível à experiência de gaguejar. Optar por gaguejar de propósito, de forma suave e controlada, pode reduzir o medo e a tensão que muitas pessoas associam ao falar. Os terapeutas da fala usam-na para apoiar a abertura e reduzir o evitamento ao longo do tempo. O teu terapeuta indicará se faz sentido para os teus objetivos e como praticar.",
     },
     {
       question: "Gaguez voluntária é o mesmo que fingir que se gagueja?",
@@ -85,7 +85,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
     {
       question: "Como é que o holding ajuda com os bloqueios de gaguez?",
       answer:
-        "Durante um bloqueio, o instinto natural é forçar mais ou parar completamente. O holding ensina a permanecer no momento, manter a posição sem adicionar tensão e, de seguida, libertar suavemente para o restante da palavra. Isto reduz a severidade dos bloqueios e constrói confiança.",
+        "Durante um bloqueio, o instinto natural é forçar mais ou parar completamente. O holding ensina a permanecer no momento, manter a posição sem adicionar tensão e, de seguida, libertar suavemente para o restante da palavra. Os terapeutas da fala usam-no para ajudar a gerir os bloqueios com menos esforço e a ganhar confiança ao longo do tempo.",
     },
     {
       question: "Holding é o mesmo que congelar durante um bloqueio?",
@@ -191,7 +191,7 @@ export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
       question:
         "Por que é que a dessensibilização é importante para pessoas que gaguejam?",
       answer:
-        "Muitas das dificuldades associadas à gaguez são impulsionadas por reações emocionais, medo de falar, vergonha de gaguejar, evitamento de situações sociais. A dessensibilização reduz estas reações, o que, por sua vez, frequentemente diminui a frequência e a severidade da própria gaguez.",
+        "Muitas das dificuldades associadas à gaguez são impulsionadas por reações emocionais: medo de falar, vergonha de gaguejar, evitamento de situações sociais. Na terapia da fala, a dessensibilização é usada para ajudar a reduzir estas reações. O teu terapeuta da fala orientará como praticá-la.",
     },
     {
       question:

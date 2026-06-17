@@ -101,10 +101,9 @@ export function getTechniqueStructuredData(
       "@id": `https://upspeech.app/techniques/${slug}/`,
     },
     about: {
-      "@type": "MedicalTherapy",
+      "@type": "Thing",
       name: name,
       description: description,
-      medicineSystem: "https://schema.org/WesternConventional",
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
@@ -159,7 +158,7 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
     "@type": "CollectionPage",
     name: "Speech Therapy Techniques for Stuttering",
     description:
-      "Browse evidence-based speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
+      "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     url: "https://upspeech.app/techniques/",
     inLanguage: locale,
     isPartOf: {

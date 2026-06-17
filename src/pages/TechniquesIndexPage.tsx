@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 export function TechniquesIndexPage() {
   const [searchParams] = useSearchParams();
@@ -70,7 +71,7 @@ export function TechniquesIndexPage() {
   const translations = {
     en: {
       title: "Speech Therapy Techniques",
-      subtitle: "Explore evidence-based techniques for stuttering therapy",
+      subtitle: "Explore established techniques for stuttering therapy",
       featured: "Featured",
       mainCategories: "Technique Categories",
       standalone: "Standalone Techniques",
@@ -82,8 +83,7 @@ export function TechniquesIndexPage() {
     },
     pt: {
       title: "Técnicas de Terapia da Fala",
-      subtitle:
-        "Explore técnicas baseadas em evidências para a terapia da gaguez",
+      subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
       featured: "Destaque",
       mainCategories: "Categorias de Técnicas",
       standalone: "Técnicas Independentes",
@@ -96,8 +96,7 @@ export function TechniquesIndexPage() {
     },
     es: {
       title: "Técnicas de Terapia del Habla",
-      subtitle:
-        "Explora técnicas basadas en evidencia para la terapia de tartamudeo",
+      subtitle: "Explora técnicas establecidas para la terapia de tartamudeo",
       featured: "Destacado",
       mainCategories: "Categorías de Técnicas",
       standalone: "Técnicas Independientes",
@@ -154,7 +153,7 @@ export function TechniquesIndexPage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO
         title="Speech Therapy Techniques"
-        description="Browse evidence-based speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches."
+        description="Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches."
         path="/techniques"
         locale={locale}
         structuredData={getTechniquesIndexStructuredData(locale)}
@@ -296,6 +295,8 @@ export function TechniquesIndexPage() {
               </div>
             </section>
           )}
+
+          <MedicalDisclaimer className="mt-12" />
 
           {/* Call to Action */}
           {/* <div className="mt-12 text-center">

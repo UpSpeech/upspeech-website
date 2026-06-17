@@ -16,7 +16,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How does voluntary stuttering help reduce stuttering?",
       answer:
-        "Voluntary stuttering works by desensitizing the speaker to the experience of stuttering. When you stutter on purpose, the fear and tension that typically worsen stuttering are reduced. Over time, this decreases avoidance behaviors and makes involuntary stuttering moments less severe.",
+        "In speech therapy, voluntary stuttering is used to help a person become less sensitive to the experience of stuttering. Choosing to stutter on purpose, in an easy and controlled way, can lower the fear and tension that many people associate with speaking. Speech-language pathologists use it to support openness and reduce avoidance over time. Your clinician will advise whether and how it fits your goals.",
     },
     {
       question: "Is voluntary stuttering the same as faking a stutter?",
@@ -90,7 +90,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How does holding help with stuttering blocks?",
       answer:
-        "During a block, the natural instinct is to push harder or stop entirely. Holding teaches you to stay in the moment, maintain your position without added tension, and then release into the rest of the word gently. This reduces the severity of blocks and builds confidence.",
+        "During a block, the natural instinct is to push harder or stop entirely. Holding teaches you to stay in the moment, maintain your position without added tension, and then release into the rest of the word gently. Clinicians use it to help you manage blocks with less struggle and build confidence over time.",
     },
     {
       question: "Is holding the same as freezing during a block?",
@@ -193,7 +193,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Why is desensitization important for people who stutter?",
       answer:
-        "Many of the difficulties associated with stuttering are driven by emotional reactions, fear of speaking, shame about stuttering, avoidance of social situations. Desensitization reduces these reactions, which in turn often reduces the frequency and severity of stuttering itself.",
+        "Many of the difficulties associated with stuttering are driven by emotional reactions: fear of speaking, shame about stuttering, avoidance of social situations. In speech therapy, desensitization is used to help reduce these reactions. Your speech-language pathologist will guide how it is practiced.",
     },
     {
       question: "How does identification help improve speech fluency?",
