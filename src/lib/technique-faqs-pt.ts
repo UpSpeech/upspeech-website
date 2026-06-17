@@ -1,4 +1,4 @@
-import { FAQ } from "./technique-faqs";
+import type { FAQ } from "./technique-faqs";
 
 export const TECHNIQUE_FAQS_PT: Record<string, FAQ[]> = {
   "voluntary-stuttering": [
