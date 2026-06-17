@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { EMAILJS_CONFIG, EmailTemplateParams } from "@/lib/emailjs";
 import { trackFormSubmit } from "@/lib/analytics";
 
 const CTASection = () => {
@@ -26,63 +25,6 @@ const CTASection = () => {
     email?: string;
     role?: string;
   }>({});
-
-  // Lazy-load emailjs only when needed
-  const getEmailJS = async () => {
-    const { default: emailjs } = await import("@emailjs/browser");
-    if (
-      EMAILJS_CONFIG.PUBLIC_KEY &&
-      EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
-    ) {
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    }
-    return emailjs;
-  };
-
-  const sendAutoReplyEmail = async (userData: typeof formData) => {
-    try {
-      // Validate EmailJS configuration
-      if (
-        !EMAILJS_CONFIG.SERVICE_ID ||
-        EMAILJS_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID"
-      ) {
-        throw new Error("EmailJS Service ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.TEMPLATE_ID ||
-        EMAILJS_CONFIG.TEMPLATE_ID === "YOUR_TEMPLATE_ID"
-      ) {
-        throw new Error("EmailJS Template ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.PUBLIC_KEY ||
-        EMAILJS_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY"
-      ) {
-        throw new Error("EmailJS Public Key not configured");
-      }
-
-      const templateParams: EmailTemplateParams = {
-        to_name: userData.name,
-        to_email: userData.email,
-        user_role: userData.role,
-        clinic_size: userData.clinicSize || "Not specified",
-        linkedin_url: "https://www.linkedin.com/company/upspeech/",
-        logo_url: "https://upspeech.app/images/logo.svg",
-        referral_link: "https://upspeech.app",
-        reply_to: "hello@upspeech.app",
-      };
-
-      const emailjs = await getEmailJS();
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY,
-      );
-    } catch (error) {
-      console.error("Failed to send auto-reply email:", error);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,8 +46,9 @@ const CTASection = () => {
     setFieldErrors({});
 
     try {
-      // Submit to Formspree for your records
-      const formspreeResponse = await fetch("https://formspree.io/f/mpwrpely", {
+      // Same-origin POST to the Netlify function, which sends the team
+      // notification and the applicant auto-reply through Resend.
+      const response = await fetch("/.netlify/functions/early-access", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,7 +56,7 @@ const CTASection = () => {
         body: JSON.stringify(formData),
       });
 
-      if (formspreeResponse.ok) {
+      if (response.ok) {
         trackFormSubmit("waitlist_form", true);
         // Reset form first (so user knows submission was successful)
         setFormData({
@@ -123,10 +66,6 @@ const CTASection = () => {
           clinicSize: "",
         });
 
-        // Try to send auto-reply email via EmailJS
-        // This is non-blocking, so if it fails, the user still gets registered
-        await sendAutoReplyEmail(formData);
-
         toast({
           title: "You're on the list.",
           description:
@@ -134,9 +73,9 @@ const CTASection = () => {
         });
       } else {
         trackFormSubmit("waitlist_form", false);
-        const errorText = await formspreeResponse.text();
-        console.error("Formspree error:", errorText);
-        throw new Error(`Form submission failed: ${formspreeResponse.status}`);
+        const errorText = await response.text();
+        console.error("Early-access submission error:", errorText);
+        throw new Error(`Form submission failed: ${response.status}`);
       }
     } catch (error) {
       trackFormSubmit("waitlist_form", false);

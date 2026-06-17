@@ -52,4 +52,11 @@ export default tseslint.config(
       "react-refresh/only-export-components": "off",
     },
   },
+  {
+    // Netlify functions run on Node, not the browser (process, console, fetch).
+    files: ["netlify/**/*.{ts,tsx}"],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 );

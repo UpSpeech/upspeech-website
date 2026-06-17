@@ -6,6 +6,7 @@ import GapSection from "@/components/GapSection";
 import InterstitialCTA from "@/components/InterstitialCTA";
 import TherapistScene from "@/components/TherapistScene";
 import PatientScene from "@/components/PatientScene";
+import MobileAppBand from "@/components/MobileAppBand";
 import FeatureGallerySection from "@/components/FeatureGallerySection";
 import CycleScene from "@/components/CycleScene";
 import JourneyScene from "@/components/JourneyScene";
@@ -28,6 +29,7 @@ const Index = () => {
           <TherapistScene />
           <PatientScene />
         </div>
+        <MobileAppBand />
         <CycleScene />
         <InterstitialCTA />
         <FeatureGallerySection />
