@@ -5,8 +5,7 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 import { useReveal } from "./useReveal";
-
-const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+import { reveal } from "./motion";
 
 type Point = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -38,17 +37,7 @@ const POINTS: Point[] = [
 ];
 
 const SecuritySection = () => {
-  const { ref, revealed } = useReveal<HTMLDivElement>({
-    threshold: 0.05,
-    rootMargin: "0px 0px 0px 0px",
-  });
-
-  const headerStyle = (delay: number): React.CSSProperties => ({
-    transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
-    transitionDelay: `${delay}ms`,
-    opacity: revealed ? 1 : 0,
-    transform: revealed ? "translateY(0)" : "translateY(24px)",
-  });
+  const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.05 });
 
   return (
     <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] overflow-hidden">
@@ -63,7 +52,7 @@ const SecuritySection = () => {
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <p
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
-          style={headerStyle(0)}
+          style={reveal(revealed, 0)}
         >
           Security and data
         </p>
@@ -72,14 +61,14 @@ const SecuritySection = () => {
           style={{
             fontSize: "clamp(2rem, 5vw, 3.75rem)",
             lineHeight: 1.08,
-            ...headerStyle(80),
+            ...reveal(revealed, 80),
           }}
         >
           Patient data, handled with care.
         </h2>
         <p
           className="mt-5 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed"
-          style={headerStyle(160)}
+          style={reveal(revealed, 160)}
         >
           Clinics trust us with sensitive recordings. We treat that data the way
           a clinic would, and a therapist always has the final say on what the
@@ -93,12 +82,7 @@ const SecuritySection = () => {
               <li
                 key={point.title}
                 className="flex gap-4 rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)]"
-                style={{
-                  transition: `opacity 800ms ${EASE}, transform 800ms ${EASE}`,
-                  transitionDelay: `${240 + index * 90}ms`,
-                  opacity: revealed ? 1 : 0,
-                  transform: revealed ? "translateY(0)" : "translateY(24px)",
-                }}
+                style={reveal(revealed, 240 + index * 90)}
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
                   <Icon className="h-6 w-6" aria-hidden="true" />
@@ -118,7 +102,7 @@ const SecuritySection = () => {
 
         <p
           className="mt-10 font-body text-sm text-calm-charcoal/70"
-          style={headerStyle(640)}
+          style={reveal(revealed, 640)}
         >
           <a
             href="/privacy"

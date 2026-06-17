@@ -1,4 +1,3 @@
-import React from "react";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Operator: fill with the live store listing URL once each app is public,
