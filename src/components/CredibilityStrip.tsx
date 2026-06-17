@@ -35,11 +35,11 @@ const CredibilityStrip = () => {
               <img
                 src={item.logo}
                 alt={item.name}
-                className="h-6 sm:h-7 w-auto object-contain opacity-55 grayscale"
+                className="h-6 sm:h-7 w-auto object-contain opacity-75 grayscale transition duration-300 hover:grayscale-0 hover:opacity-100"
                 loading="lazy"
               />
             ) : (
-              <span className="font-heading font-bold tracking-tight text-base sm:text-lg text-calm-charcoal/50">
+              <span className="font-heading font-bold tracking-tight text-base sm:text-lg text-calm-charcoal/70">
                 {item.wordmark}
               </span>
             )}
