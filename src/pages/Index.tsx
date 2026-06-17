@@ -9,7 +9,6 @@ import PatientScene from "@/components/PatientScene";
 import MobileAppBand from "@/components/MobileAppBand";
 import FeatureGallerySection from "@/components/FeatureGallerySection";
 import CycleScene from "@/components/CycleScene";
-import JourneyScene from "@/components/JourneyScene";
 import EngineSection from "@/components/EngineSection";
 import FoundationsScene from "@/components/FoundationsScene";
 import SecuritySection from "@/components/SecuritySection";
@@ -33,7 +32,6 @@ const Index = () => {
         <CycleScene />
         <InterstitialCTA />
         <FeatureGallerySection />
-        <JourneyScene />
         <div id="differentiation">
           <EngineSection />
         </div>

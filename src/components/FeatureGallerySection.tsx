@@ -33,9 +33,15 @@ const FEATURES: Feature[] = [
     copy: "Patients without recent practice appear at the top of the clinician's dashboard, so they can be checked on.",
     image: "/screenshots/app/therapist-inactive-patients.png",
     imageAlt:
-      "UpSpeech inactive patients alert showing a patient with no practice for 62 days",
+      "UpSpeech dashboard alert listing a patient with no recent practice, with a prompt to check in",
   },
 ];
+
+const STATS = [
+  { value: "11+", label: "Therapeutic techniques" },
+  { value: "36+", label: "Structured steps" },
+  { value: "8", label: "Therapy milestones" },
+] as const;
 
 const FeatureGallerySection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({
@@ -81,6 +87,29 @@ const FeatureGallerySection = () => {
             For clinicians and researchers.
           </span>
         </h2>
+        <p
+          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
+          style={headerStyle(140)}
+        >
+          The platform is built around a structured learning path, from
+          identifying stuttering moments through to real-world generalisation.
+        </p>
+
+        <div className="mt-[clamp(2rem,4vw,3rem)] grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl">
+          {STATS.map((stat, i) => (
+            <div key={stat.label} style={headerStyle(220 + i * 90)}>
+              <div
+                className="font-heading font-bold text-calm-navy tabular-nums leading-none"
+                style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+              >
+                {stat.value}
+              </div>
+              <div className="mt-2 font-body text-xs sm:text-sm text-calm-charcoal/65">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Featured: Annotation tool (cross-audience) */}
         <article
