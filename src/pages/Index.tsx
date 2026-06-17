@@ -12,6 +12,7 @@ import CycleScene from "@/components/CycleScene";
 import JourneyScene from "@/components/JourneyScene";
 import EngineSection from "@/components/EngineSection";
 import FoundationsScene from "@/components/FoundationsScene";
+import SecuritySection from "@/components/SecuritySection";
 import InvitationSection from "@/components/InvitationSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -41,6 +42,7 @@ const Index = () => {
           <FoundationsScene />
         </div>
         <InvitationSection />
+        <SecuritySection />
         <CTASection />
       </main>
       <Footer />

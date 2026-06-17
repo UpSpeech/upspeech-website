@@ -61,10 +61,10 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center space-x-6">
             <button
-              onClick={() => scrollToSection("about")}
+              onClick={() => scrollToSection("how-it-works")}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              About
+              How it works
             </button>
             <button
               onClick={() => scrollToSection("features")}
@@ -140,10 +140,10 @@ const Header = () => {
         >
           <nav className="flex flex-col p-4 gap-1">
             <button
-              onClick={() => scrollToSection("about")}
+              onClick={() => scrollToSection("how-it-works")}
               className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              About
+              How it works
             </button>
             <button
               onClick={() => scrollToSection("features")}
