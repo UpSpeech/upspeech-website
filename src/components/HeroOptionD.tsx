@@ -176,6 +176,7 @@ const HeroOptionD = () => {
                   alt="UpSpeech product demo: a therapist's personalised practice plan"
                   className="block w-full h-auto"
                   loading="eager"
+                  fetchPriority="high"
                 />
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="flex h-16 w-16 items-center justify-center rounded-full bg-calm-navy/90 text-white shadow-[0_12px_30px_-8px_rgba(41,53,135,0.6)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">

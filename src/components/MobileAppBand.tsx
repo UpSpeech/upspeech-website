@@ -3,18 +3,19 @@ import { useReveal } from "./useReveal";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 // Framed iPhone store screenshots (the device bezel is baked in, so they render
-// plain, no extra phone frame). Copied from app-mobile/fastlane/screenshots.
+// plain, no extra phone frame). Downscaled WebP copies of the app-mobile store
+// art; the width/height below are their intrinsic pixels (for layout stability).
 const SCREENSHOTS = [
   {
-    src: "/screenshots/mobile/patient-home.png",
+    src: "/screenshots/mobile/patient-home.webp",
     alt: "UpSpeech mobile app home screen showing the patient's exercise for the day",
   },
   {
-    src: "/screenshots/mobile/patient-journey.png",
+    src: "/screenshots/mobile/patient-journey.webp",
     alt: "UpSpeech mobile app learning path showing the steps the therapist set",
   },
   {
-    src: "/screenshots/mobile/patient-practice.png",
+    src: "/screenshots/mobile/patient-practice.webp",
     alt: "UpSpeech mobile app practice screen with guided stuttering exercises",
   },
 ];
@@ -51,12 +52,14 @@ const MobileAppBand = () => {
         </div>
 
         <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:overflow-visible">
-          {SCREENSHOTS.map((shot) => (
+          {SCREENSHOTS.map((screenshot) => (
             <img
-              key={shot.src}
-              src={shot.src}
-              alt={shot.alt}
+              key={screenshot.src}
+              src={screenshot.src}
+              alt={screenshot.alt}
               loading="lazy"
+              width={660}
+              height={1434}
               className="h-auto w-auto max-h-[520px] shrink-0"
             />
           ))}

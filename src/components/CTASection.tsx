@@ -18,6 +18,7 @@ const CTASection = () => {
     email: "",
     role: "",
     clinicSize: "",
+    company: "", // honeypot: must stay empty for real users
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<{
@@ -64,6 +65,7 @@ const CTASection = () => {
           email: "",
           role: "",
           clinicSize: "",
+          company: "",
         });
 
         toast({
@@ -72,12 +74,13 @@ const CTASection = () => {
             "Thanks, we'll be in touch. Check your email for a confirmation.",
         });
       } else {
-        trackFormSubmit("waitlist_form", false);
         const errorText = await response.text();
         console.error("Early-access submission error:", errorText);
         throw new Error(`Form submission failed: ${response.status}`);
       }
     } catch (error) {
+      // The catch owns all failure tracking (covers both the thrown non-2xx
+      // above and network errors), so it fires exactly once per failure.
       trackFormSubmit("waitlist_form", false);
       console.error("Submission error:", error);
 
@@ -139,6 +142,20 @@ const CTASection = () => {
           style={{ animationDelay: "0.6s" }}
         >
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot: hidden from people, tempting to bots. If filled, the
+                Netlify function silently drops the submission. */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({ ...formData, company: e.target.value })
+              }
+            />
             <div className="text-left">
               <Label
                 htmlFor="name"
