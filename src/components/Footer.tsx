@@ -52,6 +52,12 @@ const Footer = () => {
               Cookie Policy
             </a>
             <a
+              href="/support"
+              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+            >
+              Support
+            </a>
+            <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
               rel="noopener noreferrer"
