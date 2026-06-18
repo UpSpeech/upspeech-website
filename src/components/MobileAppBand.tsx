@@ -21,10 +21,8 @@ const SCREENSHOTS = [
 
 // The hero (centre) phone: a muted screen-recording of the real app composited
 // into the same bare bezel as the stills, so the live screen aligns to the pixel.
-const HERO_VIDEO = {
-  mp4: "/videos/app-loop.mp4",
-  poster: "/videos/app-loop-poster.jpg",
-};
+// No poster: it would flash over the loop seam.
+const HERO_VIDEO = { mp4: "/videos/app-loop.mp4" };
 
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
 // phone in the desktop fan. Side phones drop down and back so they fan out from
@@ -79,7 +77,7 @@ const MobileAppBand = () => {
   useStageTilt(stageRef);
 
   return (
-    <section className="bg-white py-20 sm:py-28 overflow-hidden">
+    <section className="bg-white py-12 sm:py-16 overflow-hidden">
       <div
         ref={ref}
         className="mx-auto grid max-w-6xl items-center gap-10 px-[max(1.5rem,5vw)] lg:grid-cols-[5fr_6fr]"
@@ -158,7 +156,6 @@ const MobileAppBand = () => {
                     <video
                       className="h-[560px] w-auto drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
                       src={HERO_VIDEO.mp4}
-                      poster={HERO_VIDEO.poster}
                       autoPlay
                       muted
                       loop
