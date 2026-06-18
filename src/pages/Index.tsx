@@ -8,7 +8,6 @@ import TherapistScene from "@/components/TherapistScene";
 import PatientScene from "@/components/PatientScene";
 import MobileAppBand from "@/components/MobileAppBand";
 import FeatureGallerySection from "@/components/FeatureGallerySection";
-import WorkflowStrip from "@/components/WorkflowStrip";
 import CycleScene from "@/components/CycleScene";
 import EngineSection from "@/components/EngineSection";
 import FoundationsScene from "@/components/FoundationsScene";
@@ -29,7 +28,6 @@ const Index = () => {
           <TherapistScene />
           <PatientScene />
         </div>
-        <WorkflowStrip />
         <MobileAppBand />
         <CycleScene />
         <InterstitialCTA />

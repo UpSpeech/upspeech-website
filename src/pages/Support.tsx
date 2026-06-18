@@ -86,7 +86,7 @@ const CONTENT: Record<Locale, SupportContent> = {
         q: "Is my data private?",
         a: (
           <>
-            Yes. Clinical data is encrypted and isolated per organization. See
+            Yes. Clinical data is encrypted and isolated per organisation. See
             our{" "}
             <a href="/privacy" className="text-indigo-600 hover:underline">
               Privacy Policy
@@ -345,7 +345,7 @@ const SUPPORT_FAQ_SCHEMA = {
       name: "Is my data private?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Clinical data is encrypted and isolated per organization. See our Privacy Policy for details.",
+        text: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
       },
     },
     {

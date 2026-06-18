@@ -16,8 +16,8 @@ type Point = {
 const POINTS: Point[] = [
   {
     icon: BuildingOffice2Icon,
-    title: "Per-organization isolation",
-    copy: "Every clinic's data is isolated at the database level. One organization can never see another's patients or recordings.",
+    title: "Per-organisation isolation",
+    copy: "Every clinic's data is isolated at the database level. One organisation can never see another's patients or recordings.",
   },
   {
     icon: LockClosedIcon,

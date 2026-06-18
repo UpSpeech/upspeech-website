@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { trackButtonClick } from "@/lib/analytics";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
 
   // Close drawer on Escape, and lock background scroll while open.
   useEffect(() => {
@@ -22,6 +25,11 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     trackButtonClick(`nav_${sectionId}`, "header");
     setMenuOpen(false);
+    // Off the homepage the section ids don't exist, so route home to the anchor.
+    if (!isHome) {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
     const element = document.getElementById(sectionId);
     if (!element) return;
     const headerOffset = 80;
@@ -42,11 +50,17 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           <button
             type="button"
-            aria-label="UpSpeech, scroll to top"
+            aria-label={
+              isHome ? "UpSpeech, scroll to top" : "UpSpeech, go to homepage"
+            }
             className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender rounded-lg"
             onClick={() => {
               trackButtonClick("logo", "header");
               setMenuOpen(false);
+              if (!isHome) {
+                window.location.href = "/";
+                return;
+              }
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
