@@ -13,6 +13,14 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   {
+    label: "Structured learning path",
+    title: "A plan built from milestones and steps.",
+    copy: "The clinician assembles each patient's path from established techniques, then unlocks each step as the patient is ready.",
+    image: "/screenshots/app/therapist-learning-path.png",
+    imageAlt:
+      "UpSpeech learning path showing a patient's therapy milestones and steps with completion status",
+  },
+  {
     label: "Practice scenarios",
     title: "Rehearsal with a virtual conversation partner.",
     copy: "Patients rehearse difficult conversations with a virtual counterpart. The clinician sets the scenario and difficulty.",
@@ -21,19 +29,12 @@ const FEATURES: Feature[] = [
       "UpSpeech practice scenario interface showing a job interview rehearsal with objectives and video call",
   },
   {
-    label: "Daily check-ins",
-    title: "A 30-second self-report from the patient.",
-    copy: "Patients log severity in a few taps. Trends are visible in the clinician's dashboard before the next session.",
-    image: "/screenshots/app/patient-daily-checkin.png",
-    imageAlt: "UpSpeech daily severity check-in scale from 0 to 10",
-  },
-  {
-    label: "Inactive-patient alerts",
-    title: "Patients without recent activity at the top of the dashboard.",
-    copy: "Patients without recent practice appear at the top of the clinician's dashboard, so they can be checked on.",
-    image: "/screenshots/app/therapist-inactive-patients.png",
+    label: "Severity tracking",
+    title: "Stuttering severity, measured over time.",
+    copy: "A short stuttering self-report is captured at intervals, so the therapist can see how severity trends across therapy.",
+    image: "/screenshots/app/cbsa-severity-trend.png",
     imageAlt:
-      "UpSpeech dashboard alert listing a patient with no recent practice, with a prompt to check in",
+      "UpSpeech severity score trend chart showing a patient's stuttering severity declining over several weeks",
   },
 ];
 
