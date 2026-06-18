@@ -20,6 +20,17 @@ const SCREENSHOTS = [
   },
 ];
 
+// A short, muted screen-recording of the real app, overlaid onto the hero
+// phone's screen so the centre device plays live.
+const HERO_VIDEO = {
+  mp4: "/videos/app-loop.mp4",
+  poster: "/videos/app-loop-poster.jpg",
+};
+
+// Screen rectangle inside the baked-in bezel of patient-practice.webp, as a
+// percentage of the image box. Insets the live video to sit on the device screen.
+const SCREEN_INSET = { top: 18, right: 18, bottom: 13.6, left: 18, radius: 7 };
+
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale for
 // each phone in the desktop fan. Side phones drop down and back so their baked
 // captions tuck behind the hero and they fan out from below it.
@@ -138,18 +149,38 @@ const MobileAppBand = () => {
                     opacity: revealed ? 1 : 0,
                   }}
                 >
-                  <img
-                    src={shot.src}
-                    alt=""
-                    loading="lazy"
-                    width={660}
-                    height={1434}
-                    className={`h-[520px] w-auto ${
-                      isHero
-                        ? "drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
-                        : "drop-shadow-[0_30px_60px_-30px_rgba(41,53,135,0.4)]"
-                    }`}
-                  />
+                  <div className="relative">
+                    <img
+                      src={shot.src}
+                      alt=""
+                      loading="lazy"
+                      width={660}
+                      height={1434}
+                      className={`h-[520px] w-auto ${
+                        isHero
+                          ? "drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
+                          : "drop-shadow-[0_30px_60px_-30px_rgba(41,53,135,0.4)]"
+                      }`}
+                    />
+                    {isHero && (
+                      <video
+                        className="absolute object-cover"
+                        style={{
+                          top: `${SCREEN_INSET.top}%`,
+                          right: `${SCREEN_INSET.right}%`,
+                          bottom: `${SCREEN_INSET.bottom}%`,
+                          left: `${SCREEN_INSET.left}%`,
+                          borderRadius: `${SCREEN_INSET.radius}%`,
+                        }}
+                        src={HERO_VIDEO.mp4}
+                        poster={HERO_VIDEO.poster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                    )}
+                  </div>
                 </div>
               );
             })}
