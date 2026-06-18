@@ -1,9 +1,5 @@
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-
-// Operator: fill with the live store listing URL once each app is public,
-// or leave "" to keep the badge hidden.
-const APP_STORE_URL = "";
-const PLAY_STORE_URL = "";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 
 const linkClass =
   "font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";

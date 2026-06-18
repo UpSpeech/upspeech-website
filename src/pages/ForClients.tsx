@@ -7,11 +7,7 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-
-// Operator: fill with the live store listing URL once each app is public,
-// or leave "" to keep the badge hidden.
-const APP_STORE_URL = "";
-const PLAY_STORE_URL = "";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 
 const STEPS = [
   {
@@ -91,7 +87,7 @@ export default function ForClients() {
     <div className="min-h-screen font-body bg-white">
       <SEO
         title="For Clients"
-        description="How clients practice speech therapy between sessions with UpSpeech, guided by their speech-language pathologist."
+        description="How clients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist."
         path="/for-clients"
         structuredData={FORCLIENTS_FAQ_SCHEMA}
       />

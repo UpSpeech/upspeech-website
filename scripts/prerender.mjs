@@ -105,7 +105,7 @@ async function prerender() {
   await page.setRequestInterception(true);
   page.on("request", (req) => {
     const type = req.resourceType();
-    // Block analytics — but allow fonts and images so the page renders fully
+    // Block analytics, but allow fonts and images so the page renders fully
     if (
       req.url().includes("googletagmanager.com") ||
       req.url().includes("clarity.ms") ||
