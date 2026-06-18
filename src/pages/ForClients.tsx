@@ -95,8 +95,16 @@ export default function ForClients() {
 
       <main id="main">
         {/* Intro */}
-        <section className="px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div className="max-w-3xl mx-auto">
+        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
+            }}
+          />
+          <div className="relative max-w-3xl mx-auto">
             <p className={eyebrowClass}>For clients</p>
             <h1
               className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -130,11 +138,19 @@ export default function ForClients() {
             </h2>
 
             <div className="mt-[clamp(2.5rem,5vw,3.5rem)] grid gap-8 sm:gap-10 md:grid-cols-3">
-              {STEPS.map((step) => (
+              {STEPS.map((step, i) => (
                 <div key={step.title}>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
-                    <step.icon className="h-6 w-6" aria-hidden="true" />
-                  </span>
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
+                      <step.icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    {i < STEPS.length - 1 && (
+                      <div
+                        aria-hidden="true"
+                        className="hidden h-px flex-1 bg-calm-navy/10 md:block"
+                      />
+                    )}
+                  </div>
                   <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                     {step.title}
                   </h3>
@@ -148,8 +164,16 @@ export default function ForClients() {
         </section>
 
         {/* The app */}
-        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-6xl mx-auto">
+        <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
+            }}
+          />
+          <div className="relative max-w-6xl mx-auto">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>The app</p>
               <h2
@@ -168,7 +192,7 @@ export default function ForClients() {
             </div>
 
             <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:overflow-visible">
-              {SCREENSHOTS.map((screenshot) => (
+              {SCREENSHOTS.map((screenshot, i) => (
                 <img
                   key={screenshot.src}
                   src={screenshot.src}
@@ -176,7 +200,9 @@ export default function ForClients() {
                   loading="lazy"
                   width={660}
                   height={1434}
-                  className="h-auto w-auto max-h-[480px] shrink-0"
+                  className={`h-auto w-auto max-h-[480px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
+                    i === 1 ? "sm:translate-y-5" : ""
+                  }`}
                 />
               ))}
             </div>

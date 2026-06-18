@@ -55,11 +55,19 @@ const WorkflowStrip = () => {
               className="relative"
               style={reveal(revealed, 160 + i * 80)}
             >
-              <div
-                className="font-heading font-bold text-calm-navy/25 tabular-nums leading-none"
-                style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}
-              >
-                {String(i + 1).padStart(2, "0")}
+              <div className="flex items-center gap-4">
+                <div
+                  className="font-heading font-bold text-calm-navy/25 tabular-nums leading-none"
+                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                {i < STEPS.length - 1 && (
+                  <div
+                    aria-hidden="true"
+                    className="hidden h-px flex-1 bg-calm-navy/10 md:block"
+                  />
+                )}
               </div>
               <div className="mt-3 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
                 {step.role}
