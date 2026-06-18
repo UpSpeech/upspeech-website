@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
-import { reveal } from "./motion";
+import { reveal, EASE } from "./motion";
 
 // Framed iPhone store screenshots (the device bezel is baked into the art, so
 // they render as real devices, no extra CSS frame). Downscaled WebP copies of
@@ -40,36 +40,48 @@ const FAN = [
   { x: 52, y: 54, z: -100, ry: -20, scale: 0.82, zIndex: 10 },
 ];
 
-/** Pointer-driven tilt of the whole stage, rAF-throttled, reduced-motion safe. */
-function useStageTilt() {
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
-  const frame = useRef(0);
-
+/**
+ * Pointer-driven tilt written straight to the stage element (no React re-render
+ * per frame), rAF-throttled and reduced-motion safe. The pointer listener is
+ * only attached while the stage is in view, so scrolling elsewhere costs nothing.
+ */
+function useStageTilt(stageRef: React.RefObject<HTMLDivElement | null>) {
   useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (window.matchMedia("(hover: none)").matches) return;
 
+    let frame = 0;
     const onMove = (e: PointerEvent) => {
-      cancelAnimationFrame(frame.current);
-      frame.current = requestAnimationFrame(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
         const nx = e.clientX / window.innerWidth - 0.5;
         const ny = e.clientY / window.innerHeight - 0.5;
-        setTilt({ rx: -ny * 5, ry: nx * 7 });
+        stage.style.transform = `rotateX(${-ny * 5}deg) rotateY(${nx * 7}deg)`;
       });
     };
-    window.addEventListener("pointermove", onMove, { passive: true });
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        window.addEventListener("pointermove", onMove, { passive: true });
+      } else {
+        window.removeEventListener("pointermove", onMove);
+        stage.style.transform = "";
+      }
+    });
+    io.observe(stage);
     return () => {
+      io.disconnect();
       window.removeEventListener("pointermove", onMove);
-      cancelAnimationFrame(frame.current);
+      cancelAnimationFrame(frame);
     };
-  }, []);
-
-  return tilt;
+  }, [stageRef]);
 }
 
 const MobileAppBand = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>();
-  const tilt = useStageTilt();
+  const stageRef = useRef<HTMLDivElement>(null);
+  useStageTilt(stageRef);
 
   return (
     <section className="bg-white py-20 sm:py-28 overflow-hidden">
@@ -125,27 +137,24 @@ const MobileAppBand = () => {
           aria-hidden="true"
         >
           <div
+            ref={stageRef}
             className="relative mx-auto h-[560px] max-w-3xl"
             style={{
               transformStyle: "preserve-3d",
-              transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
-              transition: `transform 400ms ${"cubic-bezier(0.22,1,0.36,1)"}`,
+              transition: `transform 400ms ${EASE}`,
             }}
           >
             {SCREENSHOTS.map((shot, i) => {
-              const f = FAN[i];
+              const fan = FAN[i];
               const isHero = i === 1;
               return (
-                /* hero (center) sits forward with a deeper shadow */
                 <div
                   key={shot.src}
                   className="absolute left-1/2 top-1/2"
                   style={{
-                    zIndex: f.zIndex,
-                    transform: `translate(-50%, -50%) translateX(${f.x}%) translateY(${f.y}px) translateZ(${f.z}px) rotateY(${f.ry}deg) scale(${f.scale})`,
-                    transition: `opacity 900ms ${"cubic-bezier(0.22,1,0.36,1)"} ${
-                      i * 90
-                    }ms, transform 900ms cubic-bezier(0.22,1,0.36,1) ${i * 90}ms`,
+                    zIndex: fan.zIndex,
+                    transform: `translate(-50%, -50%) translateX(${fan.x}%) translateY(${fan.y}px) translateZ(${fan.z}px) rotateY(${fan.ry}deg) scale(${fan.scale})`,
+                    transition: `opacity 900ms ${EASE} ${i * 90}ms, transform 900ms ${EASE} ${i * 90}ms`,
                     opacity: revealed ? 1 : 0,
                   }}
                 >
@@ -174,6 +183,7 @@ const MobileAppBand = () => {
                         }}
                         src={HERO_VIDEO.mp4}
                         poster={HERO_VIDEO.poster}
+                        preload="none"
                         autoPlay
                         muted
                         loop
