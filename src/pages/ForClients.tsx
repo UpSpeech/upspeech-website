@@ -29,15 +29,15 @@ const STEPS = [
 
 const SCREENSHOTS = [
   {
-    src: "/screenshots/mobile/patient-home.webp",
+    src: "/screenshots/mobile/patient-home-device.png",
     alt: "UpSpeech mobile app home screen showing the patient's exercise for the day",
   },
   {
-    src: "/screenshots/mobile/patient-journey.webp",
+    src: "/screenshots/mobile/patient-journey-device.png",
     alt: "UpSpeech mobile app learning path showing the steps the therapist set",
   },
   {
-    src: "/screenshots/mobile/patient-practice.webp",
+    src: "/screenshots/mobile/patient-practice-device.png",
     alt: "UpSpeech mobile app practice screen with guided stuttering exercises",
   },
 ];
@@ -104,25 +104,27 @@ export default function ForClients() {
                 "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-3xl mx-auto">
-            <p className={eyebrowClass}>For clients</p>
-            <h1
-              className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{
-                fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                lineHeight: 1.05,
-              }}
-            >
-              Your practice,
-              <br />
-              <span className="text-calm-lavender">between sessions.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed">
-              UpSpeech is how you keep practising the work you do with your
-              speech therapist, every day, not just in the appointment. Your
-              therapist sets the plan; you practise in the app; they follow your
-              progress.
-            </p>
+          <div className="relative max-w-6xl mx-auto">
+            <div className="max-w-3xl">
+              <p className={eyebrowClass}>For clients</p>
+              <h1
+                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
+                  lineHeight: 1.05,
+                }}
+              >
+                Your practice,
+                <br />
+                <span className="text-calm-lavender">between sessions.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed">
+                UpSpeech is how you keep practising the work you do with your
+                speech therapist, every day, not just in the appointment. Your
+                therapist sets the plan; you practise in the app; they follow
+                your progress.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -191,17 +193,15 @@ export default function ForClients() {
               </p>
             </div>
 
-            <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:overflow-visible">
+            <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((screenshot, i) => (
                 <img
                   key={screenshot.src}
                   src={screenshot.src}
                   alt={screenshot.alt}
                   loading="lazy"
-                  width={660}
-                  height={1434}
-                  className={`h-auto w-auto max-h-[480px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
-                    i === 1 ? "sm:translate-y-5" : ""
+                  className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                    i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
               ))}
