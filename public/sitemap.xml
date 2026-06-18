@@ -104,6 +104,13 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Client-facing -->
+  <url>
+    <loc>https://upspeech.app/for-clients/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Support & Account -->
   <url>
     <loc>https://upspeech.app/support/</loc>
