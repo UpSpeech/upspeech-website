@@ -17,7 +17,7 @@ const POINTS: Point[] = [
   {
     icon: BuildingOffice2Icon,
     title: "Per-organisation isolation",
-    copy: "Every clinic's data is isolated at the database level. One organisation can never see another's patients or recordings.",
+    copy: "Every clinic's data is kept separate by organisation. One organisation can never see another's patients or recordings.",
   },
   {
     icon: LockClosedIcon,
