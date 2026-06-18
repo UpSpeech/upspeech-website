@@ -19,23 +19,17 @@ const SCREENSHOTS = [
   },
 ];
 
-// The hero (centre) phone: the real device render (uncut bezel + screen) with a
-// bare screen-recording laid ON TOP of its screen. The bezel stays pixel-perfect;
-// the video just covers the static screen, with the real screen behind it so any
-// small misalignment shows app content, not a gap.
+// The hero (centre) phone: a bare screen-recording played BEHIND the official
+// open-source frameit device frame (transparent screen, real Natural Titanium
+// bezel + island). The frame's real edges mask the video, so the screen shape is
+// always perfect. Frame from fastlane/frameit-frames (same one the store shots use).
 const HERO_VIDEO = { mp4: "/videos/app-screen.mp4" };
-const HERO_DEVICE = "/screenshots/mobile/patient-practice-device.png";
+const PHONE_FRAME = "/screenshots/mobile/iphone-frame.png";
 
-// Where the live video sits over the screen, as a % of the phone box. TWEAK HERE:
-// top/left move it, width/height resize it, radius rounds its corners to match
-// the screen. Overshoot just covers the real screen edge, so err slightly large.
-const SCREEN = {
-  top: "1.2%",
-  left: "2.6%",
-  width: "94.8%",
-  height: "96.4%",
-  radius: "13%",
-};
+// Screen rectangle straight from frameit's offsets.json for this frame
+// (offset +75+66, screen width 1320 in the 1470x3000 frame), as % of the phone
+// box. Exact, no measuring. TWEAK only if you want a touch of overshoot.
+const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
 
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
 // phone in the desktop fan. Side phones drop down and back so they fan out from
@@ -166,17 +160,12 @@ const MobileAppBand = () => {
                   }}
                 >
                   {isHero ? (
-                    // phone box: fixed height, width from the device aspect ratio.
-                    // Real device render below, live screen laid over it.
+                    // phone box: fixed height, width from the frame aspect ratio.
+                    // Live screen behind, official device frame on top.
                     <div
                       className="relative"
-                      style={{ height: "560px", aspectRatio: "503 / 1036" }}
+                      style={{ height: "560px", aspectRatio: "1470 / 3000" }}
                     >
-                      <img
-                        src={HERO_DEVICE}
-                        alt=""
-                        className="absolute inset-0 h-full w-full drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
-                      />
                       <video
                         className="absolute object-cover"
                         style={{
@@ -184,13 +173,17 @@ const MobileAppBand = () => {
                           left: SCREEN.left,
                           width: SCREEN.width,
                           height: SCREEN.height,
-                          borderRadius: SCREEN.radius,
                         }}
                         src={HERO_VIDEO.mp4}
                         autoPlay
                         muted
                         loop
                         playsInline
+                      />
+                      <img
+                        src={PHONE_FRAME}
+                        alt=""
+                        className="absolute inset-0 h-full w-full drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
                       />
                     </div>
                   ) : (
