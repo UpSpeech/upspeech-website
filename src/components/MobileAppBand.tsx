@@ -2,39 +2,37 @@ import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
 
-// Framed iPhone store screenshots (the device bezel is baked into the art, so
-// they render as real devices, no extra CSS frame). Downscaled WebP copies of
-// the app-mobile store art; width/height are intrinsic pixels (layout stability).
+// Bare device renders (phone only, transparent background) so they float on the
+// section with no baked panel or caption. Cropped from the app-mobile store art.
 const SCREENSHOTS = [
   {
-    src: "/screenshots/mobile/patient-journey.webp",
+    src: "/screenshots/mobile/patient-journey-device.png",
     alt: "UpSpeech mobile app learning path showing the steps the therapist set",
   },
   {
-    src: "/screenshots/mobile/patient-practice.webp",
+    src: "/screenshots/mobile/patient-practice-device.png",
     alt: "UpSpeech mobile app practice screen with guided stuttering exercises",
   },
   {
-    src: "/screenshots/mobile/patient-home.webp",
+    src: "/screenshots/mobile/patient-home-device.png",
     alt: "UpSpeech mobile app home screen showing the patient's exercise for the day",
   },
 ];
 
 // The hero (centre) phone: a muted screen-recording of the real app composited
-// into the same bezel art as the stills, so the live screen aligns to the pixel
-// with no runtime overlay maths. Same intrinsic aspect as the stills.
+// into the same bare bezel as the stills, so the live screen aligns to the pixel.
 const HERO_VIDEO = {
   mp4: "/videos/app-loop.mp4",
   poster: "/videos/app-loop-poster.jpg",
 };
 
-// translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale for
-// each phone in the desktop fan. Side phones drop down and back so their baked
-// captions tuck behind the hero and they fan out from below it.
+// translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
+// phone in the desktop fan. Side phones drop down and back so they fan out from
+// behind and below the hero.
 const FAN = [
-  { x: -52, y: 54, z: -100, ry: 20, scale: 0.82, zIndex: 10 },
+  { x: -50, y: 48, z: -110, ry: 22, scale: 0.8, zIndex: 10 },
   { x: 0, y: 0, z: 70, ry: -6, scale: 1, zIndex: 30 },
-  { x: 52, y: 54, z: -100, ry: -20, scale: 0.82, zIndex: 10 },
+  { x: 50, y: 48, z: -110, ry: -22, scale: 0.8, zIndex: 10 },
 ];
 
 /**
@@ -82,8 +80,11 @@ const MobileAppBand = () => {
 
   return (
     <section className="bg-white py-20 sm:py-28 overflow-hidden">
-      <div ref={ref} className="mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
-        <div className="max-w-2xl">
+      <div
+        ref={ref}
+        className="mx-auto grid max-w-6xl items-center gap-10 px-[max(1.5rem,5vw)] lg:grid-cols-[5fr_6fr]"
+      >
+        <div className="max-w-xl">
           <span
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
             style={reveal(revealed, 0)}
@@ -93,7 +94,7 @@ const MobileAppBand = () => {
           <h2
             className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
             style={{
-              fontSize: "clamp(1.75rem, 4vw, 3rem)",
+              fontSize: "clamp(1.875rem, 3.4vw, 3.25rem)",
               lineHeight: 1.05,
               ...reveal(revealed, 80),
             }}
@@ -101,41 +102,39 @@ const MobileAppBand = () => {
             The practice happens in the app, between sessions.
           </h2>
           <p
-            className="mt-5 max-w-xl font-body text-lg text-calm-charcoal/80 leading-relaxed"
+            className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
             style={reveal(revealed, 160)}
           >
             Patients follow the plan their therapist set, practise with guided
             exercises, and check in from their phone. The therapist sees the
             activity behind it.
           </p>
-        </div>
 
-        {/* Mobile + tablet: a simple, accessible scroll row of the real devices. */}
-        <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">
-          {SCREENSHOTS.map((shot, i) => (
-            <img
-              key={shot.src}
-              src={shot.src}
-              alt={shot.alt}
-              loading="lazy"
-              width={660}
-              height={1434}
-              className={`h-auto w-auto max-h-[480px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
-                i === 1 ? "translate-y-4" : ""
-              }`}
-            />
-          ))}
+          {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
+          <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">
+            {SCREENSHOTS.map((shot, i) => (
+              <img
+                key={shot.src}
+                src={shot.src}
+                alt={shot.alt}
+                loading="lazy"
+                className={`h-auto w-auto max-h-[460px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
+                  i === 1 ? "translate-y-4" : ""
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Desktop: an overlapping 3D fan with depth + pointer parallax. */}
         <div
-          className="mt-16 hidden lg:block"
-          style={{ perspective: "1600px" }}
+          className="hidden lg:block"
+          style={{ perspective: "1700px" }}
           aria-hidden="true"
         >
           <div
             ref={stageRef}
-            className="relative mx-auto h-[560px] max-w-3xl"
+            className="relative mx-auto h-[600px]"
             style={{
               transformStyle: "preserve-3d",
               transition: `transform 400ms ${EASE}`,
@@ -157,10 +156,9 @@ const MobileAppBand = () => {
                 >
                   {isHero ? (
                     <video
-                      className="h-[520px] w-auto drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
+                      className="h-[560px] w-auto drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
                       src={HERO_VIDEO.mp4}
                       poster={HERO_VIDEO.poster}
-                      preload="none"
                       autoPlay
                       muted
                       loop
@@ -171,9 +169,7 @@ const MobileAppBand = () => {
                       src={shot.src}
                       alt=""
                       loading="lazy"
-                      width={660}
-                      height={1434}
-                      className="h-[520px] w-auto drop-shadow-[0_30px_60px_-30px_rgba(41,53,135,0.4)]"
+                      className="h-[560px] w-auto drop-shadow-[0_30px_60px_-30px_rgba(41,53,135,0.4)]"
                     />
                   )}
                 </div>
