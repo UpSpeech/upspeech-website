@@ -19,10 +19,16 @@ const SCREENSHOTS = [
   },
 ];
 
-// The hero (centre) phone: a muted screen-recording of the real app composited
-// into the same bare bezel as the stills, so the live screen aligns to the pixel.
-// No poster: it would flash over the loop seam.
-const HERO_VIDEO = { mp4: "/videos/app-loop.mp4" };
+// The hero (centre) phone: a bare screen-recording of the real app played BEHIND
+// a bezel-frame PNG whose screen is cut out (transparent). The frame's real edges
+// mask the video, so the visible screen shape is always perfect.
+const HERO_VIDEO = { mp4: "/videos/app-screen.mp4" };
+const PHONE_FRAME = "/screenshots/mobile/phone-frame.png";
+
+// Where the live video sits inside the frame, as a % of the phone box. The frame
+// masks any overshoot, so this only needs to fill the screen hole. TWEAK HERE to
+// align the recording: top/left move it, width/height resize it.
+const SCREEN = { top: "0.8%", left: "2.2%", width: "95.6%", height: "97.6%" };
 
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
 // phone in the desktop fan. Side phones drop down and back so they fan out from
@@ -153,14 +159,32 @@ const MobileAppBand = () => {
                   }}
                 >
                   {isHero ? (
-                    <video
-                      className="h-[560px] w-auto drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
-                      src={HERO_VIDEO.mp4}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
+                    // phone box: a fixed height, width derived from the frame's
+                    // aspect ratio. Video behind, frame PNG on top.
+                    <div
+                      className="relative"
+                      style={{ height: "560px", aspectRatio: "503 / 1036" }}
+                    >
+                      <video
+                        className="absolute object-cover"
+                        style={{
+                          top: SCREEN.top,
+                          left: SCREEN.left,
+                          width: SCREEN.width,
+                          height: SCREEN.height,
+                        }}
+                        src={HERO_VIDEO.mp4}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                      <img
+                        src={PHONE_FRAME}
+                        alt=""
+                        className="absolute inset-0 h-full w-full drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
+                      />
+                    </div>
                   ) : (
                     <img
                       src={shot.src}
