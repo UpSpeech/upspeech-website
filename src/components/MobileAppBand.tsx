@@ -19,16 +19,23 @@ const SCREENSHOTS = [
   },
 ];
 
-// The hero (centre) phone: a bare screen-recording of the real app played BEHIND
-// a bezel-frame PNG whose screen is cut out (transparent). The frame's real edges
-// mask the video, so the visible screen shape is always perfect.
+// The hero (centre) phone: the real device render (uncut bezel + screen) with a
+// bare screen-recording laid ON TOP of its screen. The bezel stays pixel-perfect;
+// the video just covers the static screen, with the real screen behind it so any
+// small misalignment shows app content, not a gap.
 const HERO_VIDEO = { mp4: "/videos/app-screen.mp4" };
-const PHONE_FRAME = "/screenshots/mobile/phone-frame.png";
+const HERO_DEVICE = "/screenshots/mobile/patient-practice-device.png";
 
-// Where the live video sits inside the frame, as a % of the phone box. The frame
-// masks any overshoot, so this only needs to fill the screen hole. TWEAK HERE to
-// align the recording: top/left move it, width/height resize it.
-const SCREEN = { top: "0.8%", left: "2.2%", width: "95.6%", height: "97.6%" };
+// Where the live video sits over the screen, as a % of the phone box. TWEAK HERE:
+// top/left move it, width/height resize it, radius rounds its corners to match
+// the screen. Overshoot just covers the real screen edge, so err slightly large.
+const SCREEN = {
+  top: "1.2%",
+  left: "2.6%",
+  width: "94.8%",
+  height: "96.4%",
+  radius: "13%",
+};
 
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
 // phone in the desktop fan. Side phones drop down and back so they fan out from
@@ -159,12 +166,17 @@ const MobileAppBand = () => {
                   }}
                 >
                   {isHero ? (
-                    // phone box: a fixed height, width derived from the frame's
-                    // aspect ratio. Video behind, frame PNG on top.
+                    // phone box: fixed height, width from the device aspect ratio.
+                    // Real device render below, live screen laid over it.
                     <div
                       className="relative"
                       style={{ height: "560px", aspectRatio: "503 / 1036" }}
                     >
+                      <img
+                        src={HERO_DEVICE}
+                        alt=""
+                        className="absolute inset-0 h-full w-full drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
+                      />
                       <video
                         className="absolute object-cover"
                         style={{
@@ -172,17 +184,13 @@ const MobileAppBand = () => {
                           left: SCREEN.left,
                           width: SCREEN.width,
                           height: SCREEN.height,
+                          borderRadius: SCREEN.radius,
                         }}
                         src={HERO_VIDEO.mp4}
                         autoPlay
                         muted
                         loop
                         playsInline
-                      />
-                      <img
-                        src={PHONE_FRAME}
-                        alt=""
-                        className="absolute inset-0 h-full w-full drop-shadow-[0_40px_70px_-25px_rgba(41,53,135,0.5)]"
                       />
                     </div>
                   ) : (
