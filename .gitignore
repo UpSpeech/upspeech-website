@@ -40,3 +40,9 @@ upspeech-website/*
 
 # Local verification screenshots
 .screenshots
+
+# Scratch PR screenshots (captured locally, attached via pr-assets branch)
+.pr-assets
+
+# Vite dependency cache
+.vite
