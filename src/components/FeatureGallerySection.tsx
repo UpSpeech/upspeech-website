@@ -29,12 +29,12 @@ const FEATURES: Feature[] = [
       "UpSpeech practice scenario interface showing a job interview rehearsal with objectives and video call",
   },
   {
-    label: "Severity tracking",
-    title: "Stuttering severity, measured over time.",
-    copy: "A short stuttering self-report is captured at intervals, so the therapist can see how severity trends across therapy.",
+    label: "Self-report check-ins",
+    title: "Self-reports the therapist reviews.",
+    copy: "A short stuttering self-report is captured at intervals, so the therapist can review how the patient describes their experience across therapy.",
     image: "/screenshots/app/cbsa-severity-trend.png",
     imageAlt:
-      "UpSpeech severity score trend chart showing a patient's stuttering severity declining over several weeks",
+      "UpSpeech chart of a patient's self-reported stuttering responses over several weeks",
   },
 ];
 
