@@ -66,7 +66,7 @@ const FAQ = [
   },
 ];
 
-const FORCLIENTS_FAQ_SCHEMA = {
+const FORPATIENTS_FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: FAQ.map((item) => ({
@@ -82,14 +82,14 @@ const FORCLIENTS_FAQ_SCHEMA = {
 const eyebrowClass =
   "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
 
-export default function ForClients() {
+export default function ForPatients() {
   return (
     <div className="min-h-screen font-body bg-white">
       <SEO
-        title="For Clients"
-        description="How clients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist."
-        path="/for-clients"
-        structuredData={FORCLIENTS_FAQ_SCHEMA}
+        title="For Patients"
+        description="How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist."
+        path="/for-patients"
+        structuredData={FORPATIENTS_FAQ_SCHEMA}
       />
       <Header />
 
@@ -106,7 +106,7 @@ export default function ForClients() {
           />
           <div className="relative max-w-6xl mx-auto">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>For clients</p>
+              <p className={eyebrowClass}>For patients</p>
               <h1
                 className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
                 style={{
@@ -252,7 +252,7 @@ export default function ForClients() {
               className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
               style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
             >
-              Common questions from clients.
+              Common questions from patients.
             </h2>
 
             <dl className="mt-8 divide-y divide-calm-charcoal/10">

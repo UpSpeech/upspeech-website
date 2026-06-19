@@ -70,8 +70,8 @@ const Footer = () => {
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
               Product
             </h2>
-            <a href="/for-clients" className={linkClass}>
-              For clients
+            <a href="/for-patients" className={linkClass}>
+              For patients
             </a>
             <a href="/techniques" className={linkClass}>
               Techniques

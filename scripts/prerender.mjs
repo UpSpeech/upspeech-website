@@ -14,7 +14,7 @@ const ROUTES = [
   "/terms",
   "/cookies",
   "/delete-account",
-  "/for-clients",
+  "/for-patients",
   "/techniques",
   "/techniques/voluntary-stuttering",
   "/techniques/cancelation",
