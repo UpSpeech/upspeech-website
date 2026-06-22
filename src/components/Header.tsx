@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
@@ -11,18 +11,59 @@ const Header = () => {
   const locale = useLocale();
   const t = useT().nav;
   const isHome = pathname === localizedPath("/", locale);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
-  // Close drawer on Escape, and lock background scroll while open.
+  // Trap focus within the open mobile drawer (WCAG 2.4.3): a modal dialog must
+  // not leak keyboard focus to the page behind it.
   useEffect(() => {
     if (!menuOpen) return;
+
+    const drawer = drawerRef.current;
+    const toggle = toggleRef.current;
+
+    const getFocusable = () =>
+      drawer
+        ? Array.from(
+            drawer.querySelectorAll<HTMLElement>(
+              'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            ),
+          ).filter((el) => el.offsetParent !== null)
+        : [];
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusable = getFocusable();
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first || !drawer?.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !drawer?.contains(active)) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     document.body.style.overflow = "hidden";
+    // Move focus into the drawer once it has mounted.
+    getFocusable()[0]?.focus();
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      toggle?.focus();
     };
   }, [menuOpen]);
 
@@ -115,6 +156,7 @@ const Header = () => {
           </Button>
 
           <button
+            ref={toggleRef}
             type="button"
             aria-label={menuOpen ? t.closeMenu : t.openMenu}
             aria-expanded={menuOpen}
@@ -152,7 +194,11 @@ const Header = () => {
 
       {menuOpen && (
         <div
+          ref={drawerRef}
           id="mobile-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t.mobileMenuLabel}
           className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto"
         >
           <nav className="flex flex-col p-4 gap-1">

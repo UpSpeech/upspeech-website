@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   GlobeAltIcon,
@@ -42,14 +42,21 @@ export function LocaleSwitcher({
 
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     if (!open) return;
     const onPointer = (e: PointerEvent) => {
       if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
     };
+    // Document-level Escape so the menu still closes once focus has Shift+Tabbed
+    // out of it (the per-element handlers no longer fire there).
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
     };
     document.addEventListener("pointerdown", onPointer);
     document.addEventListener("keydown", onKey);
@@ -58,6 +65,53 @@ export function LocaleSwitcher({
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
+
+  // On open, move focus to the active (or first) menu item.
+  useEffect(() => {
+    if (!open) return;
+    const activeIndex = SUPPORTED_LOCALES.indexOf(locale);
+    const target = activeIndex >= 0 ? activeIndex : 0;
+    itemRefs.current[target]?.focus();
+  }, [open, locale]);
+
+  const closeAndRestore = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
+  const focusItem = (index: number) => {
+    const count = SUPPORTED_LOCALES.length;
+    const next = ((index % count) + count) % count;
+    itemRefs.current[next]?.focus();
+  };
+
+  const onMenuKeyDown = (e: React.KeyboardEvent, index: number) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        focusItem(index + 1);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        focusItem(index - 1);
+        break;
+      case "Home":
+        e.preventDefault();
+        focusItem(0);
+        break;
+      case "End":
+        e.preventDefault();
+        focusItem(SUPPORTED_LOCALES.length - 1);
+        break;
+      case "Escape":
+        e.preventDefault();
+        e.stopPropagation();
+        closeAndRestore();
+        break;
+      default:
+        break;
+    }
+  };
 
   const choose = (l: Locale) => {
     setOpen(false);
@@ -103,11 +157,21 @@ export function LocaleSwitcher({
   return (
     <div ref={rootRef} className={cn("relative", className)}>
       <button
+        ref={triggerRef}
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`${t.localeSwitcher.label}: ${LABELS[locale]}`}
         onClick={() => setOpen((v) => !v)}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            e.preventDefault();
+            setOpen(true);
+          } else if (e.key === "Escape" && open) {
+            e.preventDefault();
+            setOpen(false);
+          }
+        }}
         className="inline-flex items-center gap-1.5 rounded-full border border-calm-charcoal/15 bg-white px-3 py-2 font-body text-sm font-medium text-calm-charcoal transition-colors hover:bg-calm-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy focus-visible:ring-offset-2"
       >
         <GlobeAltIcon className="h-4 w-4 text-calm-navy" aria-hidden="true" />
@@ -127,15 +191,19 @@ export function LocaleSwitcher({
           aria-label={t.localeSwitcher.label}
           className="absolute right-0 z-50 mt-2 min-w-[10rem] origin-top-right overflow-hidden rounded-xl border border-calm-navy/10 bg-white p-1 shadow-[0_20px_50px_-20px_rgba(41,53,135,0.25)] animate-in fade-in zoom-in-95 slide-in-from-top-1 duration-150"
         >
-          {SUPPORTED_LOCALES.map((l) => {
+          {SUPPORTED_LOCALES.map((l, index) => {
             const active = l === locale;
             return (
               <li key={l} role="none">
                 <button
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }}
                   type="button"
                   role="menuitem"
                   aria-current={active ? "true" : undefined}
                   onClick={() => choose(l)}
+                  onKeyDown={(e) => onMenuKeyDown(e, index)}
                   className={cn(
                     "flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-left font-body text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy",
                     active

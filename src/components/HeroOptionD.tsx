@@ -74,8 +74,8 @@ const HeroOptionD = () => {
           </div>
 
           <h1
-            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-[16ch]"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.0 }}
+            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-[18ch] sm:max-w-[16ch]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1 }}
           >
             <Line delay={80} loaded={loaded}>
               {t.headlineLine1}
