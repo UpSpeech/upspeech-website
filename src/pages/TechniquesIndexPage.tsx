@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 export function TechniquesIndexPage() {
   const [searchParams] = useSearchParams();
@@ -70,7 +71,7 @@ export function TechniquesIndexPage() {
   const translations = {
     en: {
       title: "Speech Therapy Techniques",
-      subtitle: "Explore evidence-based techniques for stuttering therapy",
+      subtitle: "Explore established techniques for stuttering therapy",
       featured: "Featured",
       mainCategories: "Technique Categories",
       standalone: "Standalone Techniques",
@@ -82,8 +83,7 @@ export function TechniquesIndexPage() {
     },
     pt: {
       title: "Técnicas de Terapia da Fala",
-      subtitle:
-        "Explore técnicas baseadas em evidências para a terapia da gaguez",
+      subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
       featured: "Destaque",
       mainCategories: "Categorias de Técnicas",
       standalone: "Técnicas Independentes",
@@ -96,8 +96,7 @@ export function TechniquesIndexPage() {
     },
     es: {
       title: "Técnicas de Terapia del Habla",
-      subtitle:
-        "Explora técnicas basadas en evidencia para la terapia de tartamudeo",
+      subtitle: "Explora técnicas establecidas para la terapia de tartamudeo",
       featured: "Destacado",
       mainCategories: "Categorías de Técnicas",
       standalone: "Técnicas Independientes",
@@ -117,7 +116,7 @@ export function TechniquesIndexPage() {
     return (
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
-        <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
@@ -135,7 +134,7 @@ export function TechniquesIndexPage() {
     return (
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
-        <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
               <h2 className="text-xl font-semibold text-red-800 mb-2">
@@ -154,14 +153,14 @@ export function TechniquesIndexPage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO
         title="Speech Therapy Techniques"
-        description="Browse evidence-based speech therapy techniques for stuttering — including fluency shaping, stuttering modification, and cognitive approaches."
+        description="Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches."
         path="/techniques"
         locale={locale}
         structuredData={getTechniquesIndexStructuredData(locale)}
       />
       <Header />
 
-      <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+      <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Language Switcher */}
           <div className="flex justify-end mb-6 gap-2">
@@ -297,6 +296,8 @@ export function TechniquesIndexPage() {
             </section>
           )}
 
+          <MedicalDisclaimer className="mt-12" />
+
           {/* Call to Action */}
           {/* <div className="mt-12 text-center">
             <p className="text-gray-600 mb-4">
@@ -304,7 +305,7 @@ export function TechniquesIndexPage() {
                 ? "Pronto para começar a praticar?"
                 : locale === "es"
                   ? "¿Listo para empezar a practicar?"
-                  : "Ready to start practicing?"}
+                  : "Ready to start practising?"}
             </p>
             <a
               href="https://upspeech.app/join"

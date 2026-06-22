@@ -8,13 +8,14 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
 import Index from "./pages/Index";
 
-// Lazy-loaded routes — split into separate chunks
+// Lazy-loaded routes, split into separate chunks
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
 const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
 const Support = React.lazy(() => import("./pages/Support"));
+const ForPatients = React.lazy(() => import("./pages/ForPatients"));
 const TechniquesIndexPage = React.lazy(() =>
   import("./pages/TechniquesIndexPage").then((m) => ({
     default: m.TechniquesIndexPage,
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/cookies" element={<CookiePolicy />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/support" element={<Support />} />
+            <Route path="/for-patients" element={<ForPatients />} />
 
             {/* Technique Documentation Routes */}
             <Route path="/techniques" element={<TechniquesIndexPage />} />

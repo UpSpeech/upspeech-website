@@ -86,7 +86,7 @@ const CONTENT: Record<Locale, SupportContent> = {
         q: "Is my data private?",
         a: (
           <>
-            Yes. Clinical data is encrypted and isolated per organization. See
+            Yes. Clinical data is encrypted and isolated per organisation. See
             our{" "}
             <a href="/privacy" className="text-indigo-600 hover:underline">
               Privacy Policy
@@ -309,6 +309,64 @@ const CONTENT: Record<Locale, SupportContent> = {
   },
 };
 
+// Plain-text FAQ schema for answer engines (the rendered `faq` answers are JSX
+// and cannot be reused directly). Built from the English content, which is the
+// canonical /support page (lang is a query param, not a separate URL).
+const SUPPORT_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I get help with my account?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Email us at ${SUPPORT_EMAIL} and our team will assist you.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "I forgot my password. What do I do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "On the sign-in screen, choose Forgot password and we will email you a link to set a new one.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Who is UpSpeech for?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is my data private?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I delete my account or data?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can request deletion at any time on our account deletion page.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "The app isn't working as expected.",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Sorry about that. Email ${SUPPORT_EMAIL} with your device, operating system, and what happened, and we will help you sort it out.`,
+      },
+    },
+  ],
+};
+
 export default function Support() {
   const [searchParams] = useSearchParams();
 
@@ -347,6 +405,7 @@ export default function Support() {
         description={seo.description}
         path="/support"
         locale={locale}
+        structuredData={SUPPORT_FAQ_SCHEMA}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex justify-end mb-6 gap-2">

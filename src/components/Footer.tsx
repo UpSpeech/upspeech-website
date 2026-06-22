@@ -1,4 +1,8 @@
-import React from "react";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
+
+const linkClass =
+  "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
 
 const Footer = () => {
   return (
@@ -10,12 +14,12 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center animate-fade-in-up">
-          <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start space-y-2">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)] animate-fade-in-up">
+          <div className="flex flex-col items-center md:items-start space-y-3">
             <img
               src="/images/logo-invert.svg"
               alt="UpSpeech"
-              className="h-12 w-auto mb-2 transition-transform duration-300 hover:scale-105"
+              className="h-12 w-auto transition-transform duration-300 hover:scale-105"
               width="164"
               height="48"
               loading="lazy"
@@ -23,56 +27,103 @@ const Footer = () => {
             <p className="font-body text-sm text-white/80">
               Guiding voices with care and tech
             </p>
+            {(APP_STORE_URL || PLAY_STORE_URL) && (
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {APP_STORE_URL && (
+                  <a
+                    href={APP_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download UpSpeech on the App Store"
+                  >
+                    <img
+                      src="/images/app-store.png"
+                      alt="Download on the App Store"
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                {PLAY_STORE_URL && (
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Get UpSpeech on Google Play"
+                  >
+                    <img
+                      src="/images/google-play.png"
+                      alt="Get it on Google Play"
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-2">
-            {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
-            {/* <a
-              href="/what-is-stuttering"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              What Is Stuttering?
-            </a> */}
-            <a
-              href="/privacy"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              Privacy Policy
+          <nav
+            aria-label="Product"
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              Product
+            </h2>
+            <a href="/for-patients" className={linkClass}>
+              For patients
             </a>
-            <a
-              href="/terms"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              Terms of Service
+            <a href="/techniques" className={linkClass}>
+              Techniques
             </a>
-            <a
-              href="/cookies"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              Cookie Policy
-            </a>
-            <a
-              href="/support"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
+            <a href="/support" className={linkClass}>
               Support
             </a>
+          </nav>
+
+          <nav
+            aria-label="Legal"
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              Legal
+            </h2>
+            <a href="/privacy" className={linkClass}>
+              Privacy Policy
+            </a>
+            <a href="/terms" className={linkClass}>
+              Terms of Service
+            </a>
+            <a href="/cookies" className={linkClass}>
+              Cookie Policy
+            </a>
+          </nav>
+
+          <nav
+            aria-label="Company"
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              Company
+            </h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              className={linkClass}
             >
               LinkedIn
             </a>
-            <a
-              href="mailto:hello@upspeech.app"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
+            <a href="mailto:hello@upspeech.app" className={linkClass}>
               Contact us
             </a>
-          </div>
+          </nav>
         </div>
+
+        <MedicalDisclaimer
+          variant="compact"
+          className="mt-10 max-w-3xl text-white/70"
+        />
 
         {/* Supported By Section */}
         {/* <div

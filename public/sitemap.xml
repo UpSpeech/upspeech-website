@@ -3,7 +3,7 @@
   <!-- Main Pages -->
   <url>
     <loc>https://upspeech.app/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -100,6 +100,26 @@
   <url>
     <loc>https://upspeech.app/cookies/</loc>
     <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Client-facing -->
+  <url>
+    <loc>https://upspeech.app/for-patients/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Support & Account -->
+  <url>
+    <loc>https://upspeech.app/support/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://upspeech.app/delete-account/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

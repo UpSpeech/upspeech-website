@@ -12,10 +12,12 @@
     "format": "prettier --write .",
     "typecheck": "tsc --project tsconfig.app.json --noEmit",
     "full_check": "npm run format && npm run lint:fix && npm run typecheck",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "video:studio": "remotion studio",
+    "video:render": "remotion render HeroDemo public/videos/hero-demo.mp4 --codec h264 --crf 23",
+    "video:poster": "remotion still HeroDemo public/videos/hero-demo-poster.jpg --frame 30"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-label": "^2.1.0",
@@ -39,6 +41,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@netlify/functions": "^5.3.0",
+    "@remotion/cli": "^4.0.475",
+    "@remotion/google-fonts": "^4.0.475",
+    "@remotion/tailwind": "^4.0.475",
+    "@remotion/transitions": "^4.0.475",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/dompurify": "^3.0.5",
@@ -57,6 +64,7 @@
     "postcss": "^8.4.47",
     "prettier": "^3.6.2",
     "puppeteer": "^24.39.1",
+    "remotion": "^4.0.475",
     "satori": "^0.25.0",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",

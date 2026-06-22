@@ -4,7 +4,9 @@
     "target": {
       "namespace": "android_app",
       "package_name": "app.upspeech.mobile",
-      "sha256_cert_fingerprints": ["10:B8:BF:29:2C:29:58:0E:8F:85:0D:BA:B8:16:F8:BE:FA:CA:D8:82:93:19:E9:9A:5C:7E:58:5B:07:AB:E5:70"]
+      "sha256_cert_fingerprints": [
+        "10:B8:BF:29:2C:29:58:0E:8F:85:0D:BA:B8:16:F8:BE:FA:CA:D8:82:93:19:E9:9A:5C:7E:58:5B:07:AB:E5:70"
+      ]
     }
   }
 ]

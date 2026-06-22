@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 
 const BASE_URL = "https://upspeech.app";
-const DEFAULT_TITLE = "UpSpeech - AI-Powered Speech Therapy Support";
+const DEFAULT_TITLE = "UpSpeech - Software for Stuttering Therapy Practices";
 const DEFAULT_DESCRIPTION =
-  "Transform your speech therapy practice with AI-powered training between sessions. Help patients practice effectively and see better results.";
+  "Continuous support for stuttering therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.";
 
 const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
 
@@ -53,7 +53,7 @@ export function SEO({
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: locale }}>
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />

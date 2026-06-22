@@ -11,6 +11,7 @@ import {
   getTechniqueFAQStructuredData,
 } from "@/lib/seo-data";
 import { TechniqueFAQ } from "@/components/TechniqueFAQ";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 interface TechniquePageProps {
   slug: string;
@@ -100,7 +101,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     technique?.description ||
     staticSeo?.description ||
     (technique
-      ? `Learn about ${technique.name} — a speech therapy technique for stuttering.`
+      ? `Learn about ${technique.name}, a speech therapy technique for stuttering.`
       : undefined);
   const structuredData = technique
     ? [
@@ -126,7 +127,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       <Header />
 
       {loading && (
-        <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
@@ -137,7 +138,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       )}
 
       {!loading && (error || !technique) && (
-        <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
               <h2 className="text-xl font-semibold text-red-800 mb-2">
@@ -156,7 +157,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       )}
 
       {!loading && !error && technique && (
-        <main className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Language Switcher */}
             <div className="flex justify-end mb-6 gap-2">
@@ -291,6 +292,8 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {/* FAQ Section */}
               <TechniqueFAQ slug={slug} locale={locale} />
             </div>
+
+            <MedicalDisclaimer className="mt-12" />
 
             {/* Call to Action */}
             {/* <div className="mt-12 text-center">

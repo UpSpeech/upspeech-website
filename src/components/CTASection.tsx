@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { EMAILJS_CONFIG, EmailTemplateParams } from "@/lib/emailjs";
 import { trackFormSubmit } from "@/lib/analytics";
 
 const CTASection = () => {
@@ -19,71 +18,25 @@ const CTASection = () => {
     email: "",
     role: "",
     clinicSize: "",
+    company: "", // honeypot: must stay empty for real users
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Lazy-load emailjs only when needed
-  const getEmailJS = async () => {
-    const { default: emailjs } = await import("@emailjs/browser");
-    if (
-      EMAILJS_CONFIG.PUBLIC_KEY &&
-      EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
-    ) {
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    }
-    return emailjs;
-  };
-
-  const sendAutoReplyEmail = async (userData: typeof formData) => {
-    try {
-      // Validate EmailJS configuration
-      if (
-        !EMAILJS_CONFIG.SERVICE_ID ||
-        EMAILJS_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID"
-      ) {
-        throw new Error("EmailJS Service ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.TEMPLATE_ID ||
-        EMAILJS_CONFIG.TEMPLATE_ID === "YOUR_TEMPLATE_ID"
-      ) {
-        throw new Error("EmailJS Template ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.PUBLIC_KEY ||
-        EMAILJS_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY"
-      ) {
-        throw new Error("EmailJS Public Key not configured");
-      }
-
-      const templateParams: EmailTemplateParams = {
-        to_name: userData.name,
-        to_email: userData.email,
-        user_role: userData.role,
-        clinic_size: userData.clinicSize || "Not specified",
-        linkedin_url: "https://www.linkedin.com/company/upspeech/",
-        logo_url: "https://upspeech.app/images/logo.svg",
-        referral_link: "https://upspeech.app",
-        reply_to: "hello@upspeech.app",
-      };
-
-      const emailjs = await getEmailJS();
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY,
-      );
-    } catch (error) {
-      console.error("Failed to send auto-reply email:", error);
-    }
-  };
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    role?: string;
+  }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     if (!formData.name || !formData.email || !formData.role) {
+      setFieldErrors({
+        name: formData.name ? undefined : "Please enter your name.",
+        email: formData.email ? undefined : "Please enter your email address.",
+        role: formData.role ? undefined : "Please choose your role.",
+      });
       toast({
         title: "Please fill in all required fields",
         variant: "destructive",
@@ -91,10 +44,12 @@ const CTASection = () => {
       setIsSubmitting(false);
       return;
     }
+    setFieldErrors({});
 
     try {
-      // Submit to Formspree for your records
-      const formspreeResponse = await fetch("https://formspree.io/f/mpwrpely", {
+      // Same-origin POST to the Netlify function, which sends the team
+      // notification and the applicant auto-reply through Resend.
+      const response = await fetch("/.netlify/functions/early-access", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +57,7 @@ const CTASection = () => {
         body: JSON.stringify(formData),
       });
 
-      if (formspreeResponse.ok) {
+      if (response.ok) {
         trackFormSubmit("waitlist_form", true);
         // Reset form first (so user knows submission was successful)
         setFormData({
@@ -110,24 +65,22 @@ const CTASection = () => {
           email: "",
           role: "",
           clinicSize: "",
+          company: "",
         });
-
-        // Try to send auto-reply email via EmailJS
-        // This is non-blocking, so if it fails, the user still gets registered
-        await sendAutoReplyEmail(formData);
 
         toast({
-          title: "Welcome to the UpSpeech waitlist!",
+          title: "You're on the list.",
           description:
-            "You've been successfully registered. Check your email for a confirmation message.",
+            "Thanks, we'll be in touch. Check your email for a confirmation.",
         });
       } else {
-        trackFormSubmit("waitlist_form", false);
-        const errorText = await formspreeResponse.text();
-        console.error("Formspree error:", errorText);
-        throw new Error(`Form submission failed: ${formspreeResponse.status}`);
+        const errorText = await response.text();
+        console.error("Early-access submission error:", errorText);
+        throw new Error(`Form submission failed: ${response.status}`);
       }
     } catch (error) {
+      // The catch owns all failure tracking (covers both the thrown non-2xx
+      // above and network errors), so it fires exactly once per failure.
       trackFormSubmit("waitlist_form", false);
       console.error("Submission error:", error);
 
@@ -155,7 +108,7 @@ const CTASection = () => {
   return (
     <section
       id="cta"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-mesh-calm relative overflow-hidden"
+      className="px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -175,25 +128,36 @@ const CTASection = () => {
           className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          Join us before we launch!
+          Request early access.
         </h2>
         <p
-          className="font-body text-xl text-calm-charcoal/80 mb-12 max-w-3xl mx-auto animate-fade-in"
+          className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          Join forward-thinking speech therapy clinics already revolutionizing
-          their practice with AI-powered continuous care solutions.
+          We're working with a cohort of clinics and would like to hear from
+          others working in stuttering. Tell us about your practice and we'll be
+          in touch.
         </p>
 
         <div
           className="bg-white rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <h3 className="font-heading font-bold text-xl text-calm-charcoal mb-6">
-            Request Early Access to UpSpeech
-          </h3>
-
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot: hidden from people, tempting to bots. If filled, the
+                Netlify function silently drops the submission. */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({ ...formData, company: e.target.value })
+              }
+            />
             <div className="text-left">
               <Label
                 htmlFor="name"
@@ -205,13 +169,26 @@ const CTASection = () => {
                 id="name"
                 type="text"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                  if (fieldErrors.name)
+                    setFieldErrors({ ...fieldErrors, name: undefined });
+                }}
+                aria-invalid={!!fieldErrors.name}
+                aria-describedby={fieldErrors.name ? "name-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
                 placeholder="Enter your name"
                 required
               />
+              {fieldErrors.name && (
+                <p
+                  id="name-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.name}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -225,13 +202,26 @@ const CTASection = () => {
                 id="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (fieldErrors.email)
+                    setFieldErrors({ ...fieldErrors, email: undefined });
+                }}
+                aria-invalid={!!fieldErrors.email}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
                 placeholder="your@email.com"
                 required
               />
+              {fieldErrors.email && (
+                <p
+                  id="email-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -242,12 +232,16 @@ const CTASection = () => {
                 Role *
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, role: value })
-                }
+                onValueChange={(value) => {
+                  setFormData({ ...formData, role: value });
+                  if (fieldErrors.role)
+                    setFieldErrors({ ...fieldErrors, role: undefined });
+                }}
               >
                 <SelectTrigger
                   aria-label="Choose your role"
+                  aria-invalid={!!fieldErrors.role}
+                  aria-describedby={fieldErrors.role ? "role-error" : undefined}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
                   <SelectValue placeholder="Choose your role" />
@@ -276,6 +270,15 @@ const CTASection = () => {
                   </SelectItem>
                 </SelectContent>
               </Select>
+              {fieldErrors.role && (
+                <p
+                  id="role-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.role}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -318,7 +321,7 @@ const CTASection = () => {
               disabled={isSubmitting}
               className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              {isSubmitting ? "Joining Waitlist..." : "Join the Waitlist"}
+              {isSubmitting ? "Submitting..." : "Request early access"}
             </Button>
           </form>
         </div>
