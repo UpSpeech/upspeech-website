@@ -105,8 +105,7 @@ export function getTechniqueStructuredData(
         url: "https://upspeech.app/icons/apple-touch-icon.png",
       },
     },
-    // TODO(113): per-locale OG image
-    image: `https://upspeech.app/og/techniques/${slug}.png`,
+    image: `${BASE_URL}/og${locale === "en" ? "" : `/${locale}`}/techniques/${slug}.png`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": localeAbsUrl(`/techniques/${slug}`, locale),
