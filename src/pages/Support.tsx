@@ -23,9 +23,11 @@ const SEO_DATA: Record<Locale, { title: string; description: string }> = {
   },
 };
 
+type FaqAnswer = React.ReactNode | ((locale: Locale) => React.ReactNode);
+
 interface FaqItem {
   q: string;
-  a: React.ReactNode;
+  a: FaqAnswer;
 }
 
 interface SupportContent {
@@ -82,11 +84,14 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Is my data private?",
-        a: (
+        a: (locale: Locale) => (
           <>
             Yes. Clinical data is encrypted and isolated per organisation. See
             our{" "}
-            <a href="/privacy" className="text-indigo-600 hover:underline">
+            <a
+              href={localizedPath("/privacy", locale)}
+              className="text-indigo-600 hover:underline"
+            >
               Privacy Policy
             </a>{" "}
             for details.
@@ -95,11 +100,11 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "How do I delete my account or data?",
-        a: (
+        a: (locale: Locale) => (
           <>
             You can request deletion at any time on our{" "}
             <a
-              href="/delete-account"
+              href={localizedPath("/delete-account", locale)}
               className="text-indigo-600 hover:underline"
             >
               account deletion page
@@ -168,11 +173,14 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Os meus dados são privados?",
-        a: (
+        a: (locale: Locale) => (
           <>
             Sim. Os dados clínicos são encriptados e isolados por organização.
             Consulte a nossa{" "}
-            <a href="/privacy" className="text-indigo-600 hover:underline">
+            <a
+              href={localizedPath("/privacy", locale)}
+              className="text-indigo-600 hover:underline"
+            >
               Política de Privacidade
             </a>{" "}
             para mais detalhes.
@@ -181,11 +189,11 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Como elimino a minha conta ou os meus dados?",
-        a: (
+        a: (locale: Locale) => (
           <>
             Pode solicitar a eliminação a qualquer momento na nossa{" "}
             <a
-              href="/delete-account"
+              href={localizedPath("/delete-account", locale)}
               className="text-indigo-600 hover:underline"
             >
               página de eliminação de conta
@@ -255,11 +263,14 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "¿Mis datos son privados?",
-        a: (
+        a: (locale: Locale) => (
           <>
             Sí. Los datos clínicos están cifrados y aislados por organización.
             Consulta nuestra{" "}
-            <a href="/privacy" className="text-indigo-600 hover:underline">
+            <a
+              href={localizedPath("/privacy", locale)}
+              className="text-indigo-600 hover:underline"
+            >
               Política de Privacidad
             </a>{" "}
             para más detalles.
@@ -268,11 +279,11 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "¿Cómo elimino mi cuenta o mis datos?",
-        a: (
+        a: (locale: Locale) => (
           <>
             Puedes solicitar la eliminación en cualquier momento en nuestra{" "}
             <a
-              href="/delete-account"
+              href={localizedPath("/delete-account", locale)}
               className="text-indigo-600 hover:underline"
             >
               página de eliminación de cuenta
@@ -307,63 +318,107 @@ const CONTENT: Record<Locale, SupportContent> = {
   },
 };
 
-// Plain-text FAQ schema for answer engines (the rendered `faq` answers are JSX
-// and cannot be reused directly). Built from the English content, which is the
-// canonical /support page (lang is a query param, not a separate URL).
-const SUPPORT_FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
+// Plain-text FAQ pairs for the FAQPage JSON-LD schema, maintained per locale.
+// The rendered `faq` answers are JSX (links, mailto), so they cannot be reused
+// directly; these mirror the visible Q&A as plain strings for answer engines.
+// IMPORTANT: keep these in sync MANUALLY with the visible FAQ copy in
+// CONTENT[locale].faq. They are plain-text duplicates of the same answers, so
+// any wording change to the visible copy must be mirrored here (and vice versa).
+const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
+  en: [
     {
-      "@type": "Question",
-      name: "How do I get help with my account?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Email us at ${SUPPORT_EMAIL} and our team will assist you.`,
-      },
+      q: "How do I get help with my account?",
+      a: `Email us at ${SUPPORT_EMAIL} and our team will assist you.`,
     },
     {
-      "@type": "Question",
-      name: "I forgot my password. What do I do?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "On the sign-in screen, choose Forgot password and we will email you a link to set a new one.",
-      },
+      q: "I forgot my password. What do I do?",
+      a: "On the sign-in screen, choose Forgot password and we will email you a link to set a new one.",
     },
     {
-      "@type": "Question",
-      name: "Who is UpSpeech for?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
-      },
+      q: "Who is UpSpeech for?",
+      a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
     },
     {
-      "@type": "Question",
-      name: "Is my data private?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
-      },
+      q: "Is my data private?",
+      a: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
     },
     {
-      "@type": "Question",
-      name: "How do I delete my account or data?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can request deletion at any time on our account deletion page.",
-      },
+      q: "How do I delete my account or data?",
+      a: "You can request deletion at any time on our account deletion page.",
     },
     {
-      "@type": "Question",
-      name: "The app isn't working as expected.",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Sorry about that. Email ${SUPPORT_EMAIL} with your device, operating system, and what happened, and we will help you sort it out.`,
-      },
+      q: "The app isn't working as expected.",
+      a: `Sorry about that. Email ${SUPPORT_EMAIL} with your device, operating system, and what happened, and we'll help you sort it out.`,
+    },
+  ],
+  pt: [
+    {
+      q: "Como obtenho ajuda com a minha conta?",
+      a: `Envie-nos um email para ${SUPPORT_EMAIL} e a nossa equipa irá ajudá-lo.`,
+    },
+    {
+      q: "Esqueci-me da palavra-passe. O que faço?",
+      a: "No ecrã de início de sessão, escolha Esqueci-me da palavra-passe e enviaremos um email com um link para definir uma nova.",
+    },
+    {
+      q: "Para quem é a UpSpeech?",
+      a: "A UpSpeech apoia terapeutas da fala e os seus pacientes. Os pacientes praticam entre sessões com exercícios estruturados e feedback, enquanto os terapeutas obtêm relatórios assistidos por IA e acompanhamento do progresso.",
+    },
+    {
+      q: "Os meus dados são privados?",
+      a: "Sim. Os dados clínicos são encriptados e isolados por organização. Consulte a nossa Política de Privacidade para mais detalhes.",
+    },
+    {
+      q: "Como elimino a minha conta ou os meus dados?",
+      a: "Pode solicitar a eliminação a qualquer momento na nossa página de eliminação de conta.",
+    },
+    {
+      q: "A aplicação não está a funcionar como esperado.",
+      a: `Lamentamos. Envie um email para ${SUPPORT_EMAIL} com o seu dispositivo, o sistema operativo e o que aconteceu, e ajudamos a resolver.`,
+    },
+  ],
+  es: [
+    {
+      q: "¿Cómo obtengo ayuda con mi cuenta?",
+      a: `Escríbenos a ${SUPPORT_EMAIL} y nuestro equipo te ayudará.`,
+    },
+    {
+      q: "Olvidé mi contraseña. ¿Qué hago?",
+      a: "En la pantalla de inicio de sesión, elige Olvidé mi contraseña y te enviaremos un correo con un enlace para establecer una nueva.",
+    },
+    {
+      q: "¿Para quién es UpSpeech?",
+      a: "UpSpeech apoya a logopedas y a sus pacientes. Los pacientes practican entre sesiones con ejercicios estructurados y feedback, mientras que los terapeutas obtienen informes asistidos por IA y seguimiento del progreso.",
+    },
+    {
+      q: "¿Mis datos son privados?",
+      a: "Sí. Los datos clínicos están cifrados y aislados por organización. Consulta nuestra Política de Privacidad para más detalles.",
+    },
+    {
+      q: "¿Cómo elimino mi cuenta o mis datos?",
+      a: "Puedes solicitar la eliminación en cualquier momento en nuestra página de eliminación de cuenta.",
+    },
+    {
+      q: "La aplicación no funciona como se espera.",
+      a: `Lo sentimos. Escribe a ${SUPPORT_EMAIL} con tu dispositivo, el sistema operativo y lo que ocurrió, y te ayudaremos a resolverlo.`,
     },
   ],
 };
+
+function buildSupportFaqSchema(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_SCHEMA_TEXT[locale].map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: a,
+      },
+    })),
+  };
+}
 
 export default function Support() {
   const locale = useLocale();
@@ -382,7 +437,7 @@ export default function Support() {
         description={seo.description}
         path="/support"
         locale={locale}
-        structuredData={SUPPORT_FAQ_SCHEMA}
+        structuredData={buildSupportFaqSchema(locale)}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex justify-end mb-6">
@@ -424,7 +479,9 @@ export default function Support() {
                     <dt className="font-medium text-gray-900 font-body">
                       {item.q}
                     </dt>
-                    <dd className="mt-1 text-gray-600 font-body">{item.a}</dd>
+                    <dd className="mt-1 text-gray-600 font-body">
+                      {typeof item.a === "function" ? item.a(locale) : item.a}
+                    </dd>
                   </div>
                 ))}
               </dl>
