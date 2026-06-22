@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { fetchTechnique, type Technique } from "@/lib/api";
 import {
   TECHNIQUE_SEO,
@@ -11,6 +11,7 @@ import {
   getTechniqueFAQStructuredData,
 } from "@/lib/seo-data";
 import { TechniqueFAQ } from "@/components/TechniqueFAQ";
+import { useLocale, useT, localizedPath } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 interface TechniquePageProps {
@@ -18,28 +19,11 @@ interface TechniquePageProps {
 }
 
 export function TechniquePage({ slug }: TechniquePageProps) {
-  const [searchParams] = useSearchParams();
+  const locale = useLocale();
+  const tt = useT().techniquePage;
   const [technique, setTechnique] = useState<Technique | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Get locale from URL param or browser language (fallback to 'en')
-  const getLocale = (): string => {
-    const urlLocale = searchParams.get("lang");
-    if (urlLocale && ["en", "pt", "es"].includes(urlLocale)) {
-      return urlLocale;
-    }
-
-    // Try to detect browser language
-    const browserLang = navigator.language.split("-")[0];
-    if (["en", "pt", "es"].includes(browserLang)) {
-      return browserLang;
-    }
-
-    return "en";
-  };
-
-  const [locale, setLocale] = useState(getLocale());
 
   useEffect(() => {
     const loadTechnique = async () => {
@@ -61,14 +45,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
     loadTechnique();
   }, [slug, locale]);
-
-  const changeLanguage = (newLocale: string) => {
-    setLocale(newLocale);
-    // Update URL without page reload
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("lang", newLocale);
-    window.history.replaceState({}, "", `?${newParams.toString()}`);
-  };
 
   const staticSeo = TECHNIQUE_SEO[slug];
 
@@ -131,7 +107,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-              <p className="mt-4 text-gray-600">Loading technique...</p>
+              <p className="mt-4 text-gray-600">{tt.loading}</p>
             </div>
           </div>
         </main>
@@ -142,14 +118,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
               <h2 className="text-xl font-semibold text-red-800 mb-2">
-                Error Loading Technique
+                {tt.error}
               </h2>
-              <p className="text-red-600">{error || "Technique not found"}</p>
+              <p className="text-red-600">{error || tt.notFound}</p>
               <a
-                href="/techniques"
+                href={localizedPath("/techniques", locale)}
                 className="inline-block mt-4 text-blue-600 hover:text-blue-700 font-medium"
               >
-                ← Back to all techniques
+                ← {tt.backToAll}
               </a>
             </div>
           </div>
@@ -160,37 +136,8 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Language Switcher */}
-            <div className="flex justify-end mb-6 gap-2">
-              <button
-                onClick={() => changeLanguage("en")}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                  locale === "en"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-                }`}
-              >
-                English
-              </button>
-              <button
-                onClick={() => changeLanguage("pt")}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                  locale === "pt"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-                }`}
-              >
-                Português
-              </button>
-              <button
-                onClick={() => changeLanguage("es")}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                  locale === "es"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-                }`}
-              >
-                Español
-              </button>
+            <div className="flex justify-end mb-6">
+              <LocaleSwitcher />
             </div>
 
             {/* Hero Section */}
@@ -216,11 +163,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {technique.practical_description && (
                 <Card className="p-6">
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {locale === "pt"
-                      ? "Descrição Prática"
-                      : locale === "es"
-                        ? "Descripción Práctica"
-                        : "Practical Description"}
+                    {tt.practicalDescription}
                   </h2>
                   <div className="text-gray-700 prose prose-lg max-w-none">
                     <p>{technique.practical_description}</p>
@@ -232,11 +175,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {technique.objective && (
                 <Card className="p-6">
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {locale === "pt"
-                      ? "Objetivo"
-                      : locale === "es"
-                        ? "Objetivo"
-                        : "Objective"}
+                    {tt.objective}
                   </h2>
                   <div className="text-gray-700 prose prose-lg max-w-none">
                     <p>{technique.objective}</p>
@@ -248,11 +187,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {technique.instructions && (
                 <Card className="p-6">
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {locale === "pt"
-                      ? "Como Praticar"
-                      : locale === "es"
-                        ? "Cómo Practicar"
-                        : "How to Practice"}
+                    {tt.howToPractice}
                   </h2>
                   <div className="text-gray-700 prose prose-lg max-w-none">
                     {formatInstructions(technique.instructions)}
@@ -265,17 +200,16 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 technique.sub_techniques.length > 0 && (
                   <Card className="p-6">
                     <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                      {locale === "pt"
-                        ? "Técnicas Relacionadas"
-                        : locale === "es"
-                          ? "Técnicas Relacionadas"
-                          : "Related Techniques"}
+                      {tt.relatedTechniques}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {technique.sub_techniques.map((subTech) => (
                         <a
                           key={subTech.slug}
-                          href={`/techniques/${subTech.slug}?lang=${locale}`}
+                          href={localizedPath(
+                            `/techniques/${subTech.slug}`,
+                            locale,
+                          )}
                           className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                         >
                           <h3 className="font-semibold text-gray-900 mb-2">

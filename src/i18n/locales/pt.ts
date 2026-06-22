@@ -36,6 +36,8 @@ export const pt: Dictionary = {
   techniquesIndex: {
     title: "Técnicas de Terapia da Fala",
     subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
+    seoDescription:
+      "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
     mainCategories: "Categorias de Técnicas",
     standalone: "Técnicas Independentes",

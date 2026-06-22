@@ -36,6 +36,8 @@ export const es: Dictionary = {
   techniquesIndex: {
     title: "Técnicas de Terapia del Habla",
     subtitle: "Explora técnicas establecidas para la terapia de tartamudeo",
+    seoDescription:
+      "Descubre técnicas establecidas de terapia del habla para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
     mainCategories: "Categorías de Técnicas",
     standalone: "Técnicas Independientes",

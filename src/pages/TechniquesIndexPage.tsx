@@ -1,36 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { fetchTechniques, type Technique } from "@/lib/api";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
+import { useLocale, useT, localizedPath } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 export function TechniquesIndexPage() {
-  const [searchParams] = useSearchParams();
+  const locale = useLocale();
   const [techniques, setTechniques] = useState<Technique[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Get locale from URL param or browser language (fallback to 'en')
-  const getLocale = (): string => {
-    const urlLocale = searchParams.get("lang");
-    if (urlLocale && ["en", "pt", "es"].includes(urlLocale)) {
-      return urlLocale;
-    }
-
-    // Try to detect browser language
-    const browserLang = navigator.language.split("-")[0];
-    if (["en", "pt", "es"].includes(browserLang)) {
-      return browserLang;
-    }
-
-    return "en";
-  };
-
-  const [locale, setLocale] = useState(getLocale());
 
   useEffect(() => {
     const loadTechniques = async () => {
@@ -53,63 +37,13 @@ export function TechniquesIndexPage() {
     loadTechniques();
   }, [locale]);
 
-  const changeLanguage = (newLocale: string) => {
-    setLocale(newLocale);
-    // Update URL without page reload
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("lang", newLocale);
-    window.history.replaceState({}, "", `?${newParams.toString()}`);
-  };
-
   // Group techniques by type
   const mainCategories = techniques.filter(
     (t) => t.category_type === "main_category",
   );
   const standalone = techniques.filter((t) => t.category_type === "standalone");
 
-  // Get translations
-  const translations = {
-    en: {
-      title: "Speech Therapy Techniques",
-      subtitle: "Explore established techniques for stuttering therapy",
-      featured: "Featured",
-      mainCategories: "Technique Categories",
-      standalone: "Standalone Techniques",
-      viewDetails: "View Details",
-      techniques: "techniques",
-      loading: "Loading techniques...",
-      error: "Error Loading Techniques",
-      tryAgain: "Failed to load techniques. Please try again later.",
-    },
-    pt: {
-      title: "Técnicas de Terapia da Fala",
-      subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
-      featured: "Destaque",
-      mainCategories: "Categorias de Técnicas",
-      standalone: "Técnicas Independentes",
-      viewDetails: "Ver Detalhes",
-      techniques: "técnicas",
-      loading: "A carregar técnicas...",
-      error: "Erro ao Carregar Técnicas",
-      tryAgain:
-        "Erro ao carregar técnicas. Por favor, tente novamente mais tarde.",
-    },
-    es: {
-      title: "Técnicas de Terapia del Habla",
-      subtitle: "Explora técnicas establecidas para la terapia de tartamudeo",
-      featured: "Destacado",
-      mainCategories: "Categorías de Técnicas",
-      standalone: "Técnicas Independientes",
-      viewDetails: "Ver Detalles",
-      techniques: "técnicas",
-      loading: "Cargando técnicas...",
-      error: "Error al Cargar Técnicas",
-      tryAgain:
-        "Error al cargar técnicas. Por favor, inténtalo de nuevo más tarde.",
-    },
-  };
-
-  const t = translations[locale as keyof typeof translations];
+  const t = useT().techniquesIndex;
 
   // Loading state
   if (loading) {
@@ -152,8 +86,8 @@ export function TechniquesIndexPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO
-        title="Speech Therapy Techniques"
-        description="Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches."
+        title={t.title}
+        description={t.seoDescription}
         path="/techniques"
         locale={locale}
         structuredData={getTechniquesIndexStructuredData(locale)}
@@ -163,37 +97,8 @@ export function TechniquesIndexPage() {
       <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Language Switcher */}
-          <div className="flex justify-end mb-6 gap-2">
-            <button
-              onClick={() => changeLanguage("en")}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                locale === "en"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              English
-            </button>
-            <button
-              onClick={() => changeLanguage("pt")}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                locale === "pt"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              Português
-            </button>
-            <button
-              onClick={() => changeLanguage("es")}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                locale === "es"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              Español
-            </button>
+          <div className="flex justify-end mb-6">
+            <LocaleSwitcher />
           </div>
 
           {/* Hero Section */}
@@ -225,7 +130,10 @@ export function TechniquesIndexPage() {
                           {category.sub_techniques.map((subTech) => (
                             <Link
                               key={subTech.slug}
-                              to={`/techniques/${subTech.slug}?lang=${locale}`}
+                              to={localizedPath(
+                                `/techniques/${subTech.slug}`,
+                                locale,
+                              )}
                               className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                             >
                               <div className="flex items-start justify-between">
@@ -285,7 +193,10 @@ export function TechniquesIndexPage() {
                       {technique.description}
                     </p>
                     <Link
-                      to={`/techniques/${technique.slug}?lang=${locale}`}
+                      to={localizedPath(
+                        `/techniques/${technique.slug}`,
+                        locale,
+                      )}
                       className="inline-block text-blue-600 hover:text-blue-700 font-medium"
                     >
                       {t.viewDetails} →

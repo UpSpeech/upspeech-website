@@ -34,6 +34,8 @@ export const en = {
   techniquesIndex: {
     title: "Speech Therapy Techniques",
     subtitle: "Explore established techniques for stuttering therapy",
+    seoDescription:
+      "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     featured: "Featured",
     mainCategories: "Technique Categories",
     standalone: "Standalone Techniques",
