@@ -38,12 +38,6 @@ const FEATURES: Feature[] = [
   },
 ];
 
-const STATS = [
-  { value: "11+", label: "Therapeutic techniques" },
-  { value: "36+", label: "Structured steps" },
-  { value: "8", label: "Therapy milestones" },
-] as const;
-
 const FeatureGallerySection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({
     threshold: 0.05,
@@ -95,33 +89,6 @@ const FeatureGallerySection = () => {
           The platform is built around a structured learning path, from
           identifying stuttering moments through to real-world generalisation.
         </p>
-
-        <div className="mt-[clamp(2rem,4vw,3rem)] grid max-w-2xl grid-cols-3 divide-x divide-calm-navy/10">
-          {STATS.map((stat, i) => (
-            <div
-              key={stat.label}
-              className="px-5 first:pl-0 last:pr-0"
-              style={headerStyle(220 + i * 90)}
-            >
-              <div
-                className="font-heading font-bold text-calm-navy tabular-nums leading-none"
-                style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
-              >
-                {stat.value.endsWith("+") ? (
-                  <>
-                    {stat.value.slice(0, -1)}
-                    <span className="text-calm-lavender">+</span>
-                  </>
-                ) : (
-                  stat.value
-                )}
-              </div>
-              <div className="mt-2 font-body text-xs sm:text-sm text-calm-charcoal/65">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Featured: Annotation tool (cross-audience) */}
         <article
