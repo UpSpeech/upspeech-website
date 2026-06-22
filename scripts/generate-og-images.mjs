@@ -740,8 +740,11 @@ async function main() {
         { width: 1200, height: 630, fonts },
       );
 
+      // Render at the native 1200x630 OG size. Feeds display cards around
+      // 500-600px wide, so 2x oversampling only quadrupled the file size with
+      // no visible gain, and big cards break WhatsApp/mobile chat previews.
       const resvg = new Resvg(svg, {
-        fitTo: { mode: "width", value: 2400 },
+        fitTo: { mode: "width", value: 1200 },
       });
       const png = resvg.render().asPng();
 
