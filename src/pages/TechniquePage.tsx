@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { fetchTechnique, type Technique } from "@/lib/api";
 import {
   TECHNIQUE_SEO,
@@ -135,11 +134,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       {!loading && !error && technique && (
         <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            {/* Language Switcher */}
-            <div className="flex justify-end mb-6">
-              <LocaleSwitcher />
-            </div>
-
             {/* Hero Section */}
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
