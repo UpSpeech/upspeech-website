@@ -2,7 +2,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 
 const linkClass =
-  "font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
+  "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
 
 const Footer = () => {
   return (
@@ -65,7 +65,7 @@ const Footer = () => {
 
           <nav
             aria-label="Product"
-            className="flex flex-col items-center md:items-start gap-3"
+            className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
               Product
@@ -83,7 +83,7 @@ const Footer = () => {
 
           <nav
             aria-label="Legal"
-            className="flex flex-col items-center md:items-start gap-3"
+            className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
               Legal
@@ -101,7 +101,7 @@ const Footer = () => {
 
           <nav
             aria-label="Company"
-            className="flex flex-col items-center md:items-start gap-3"
+            className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
               Company
