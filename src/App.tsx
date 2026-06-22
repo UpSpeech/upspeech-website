@@ -1,13 +1,44 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
-import { LocaleProvider } from "@/i18n";
+import { LocaleProvider, isLocale, localizedPath } from "@/i18n";
 import Index from "./pages/Index";
+
+// Backward compatibility: the site used to select locale with a ?lang=pt|es
+// query param. Redirect any such legacy/shared URL to the equivalent path URL
+// (/pt, /es) and strip the param, preserving any other query string.
+function LegacyLangRedirect() {
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const lang = params.get("lang");
+    if (!lang) return;
+    params.delete("lang");
+    const rest = params.toString();
+    const firstSegment = pathname.split("/").filter(Boolean)[0];
+    const targetPath =
+      isLocale(lang) && lang !== "en" && firstSegment !== lang
+        ? localizedPath(pathname, lang)
+        : pathname;
+    navigate(
+      { pathname: targetPath, search: rest ? `?${rest}` : "" },
+      { replace: true },
+    );
+  }, [pathname, search, navigate]);
+  return null;
+}
 
 // Lazy-loaded routes, split into separate chunks
 const NotFound = React.lazy(() => import("./pages/NotFound"));
@@ -97,6 +128,7 @@ const App = () => (
       <ConsentBanner />
       <BrowserRouter>
         <PageViewTracker />
+        <LegacyLangRedirect />
         <Suspense fallback={null}>
           <Routes>
             {/* Portuguese and Spanish live under a locale prefix; English stays

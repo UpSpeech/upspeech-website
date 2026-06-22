@@ -45,9 +45,12 @@ export function SEO({
   const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
   // Netlify serves every non-root URL with a trailing slash; match it in
   // canonical/og:url/hreflang so sitemap, canonical, and served URL all agree.
-  const canonicalPath =
+  const slashedPath =
     !path || path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`;
-  const canonicalUrl = `${BASE_URL}${canonicalPath}`;
+  // Build the absolute URL for any locale: en at the root, pt/es prefixed.
+  const localeUrl = (l: string) =>
+    `${BASE_URL}${l === "en" ? "" : `/${l}`}${slashedPath}`;
+  const canonicalUrl = localeUrl(locale);
   const resolvedImage = image ?? ogImageForPath(path);
   const resolvedImageAlt = imageAlt ?? fullTitle;
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
@@ -67,16 +70,11 @@ export function SEO({
         }
       />
 
-      {/* hreflang alternates */}
+      {/* hreflang alternates: one per locale, all pointing at path URLs */}
       {SUPPORTED_LOCALES.map((l) => (
-        <link
-          key={l}
-          rel="alternate"
-          hrefLang={l}
-          href={l === "en" ? canonicalUrl : `${canonicalUrl}?lang=${l}`}
-        />
+        <link key={l} rel="alternate" hrefLang={l} href={localeUrl(l)} />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={localeUrl("en")} />
 
       {/* OpenGraph */}
       <meta property="og:type" content={type} />
