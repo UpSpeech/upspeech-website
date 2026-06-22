@@ -119,6 +119,7 @@ We use the information we collect for the following purposes:
 - **Report automation** - Generate clinical reports using Google Gemini language models based on transcription and your clinical context
 - **Disfluency detection** - Automatically identify and classify stuttering behaviors in recordings
 - **Clinical insights** - Provide statistical analysis and trends to support treatment planning
+- **Optional model training (consent-based)** - With your explicit opt-in consent, anonymized voice recordings may be retained after you delete your account and used to train future versions of UpSpeech's speech-therapy AI models. This is optional, opt-in only, and you can change your mind at deletion time by selecting "Delete everything." Voice recordings are biometric data under GDPR Article 9; this processing only occurs with your specific, explicit consent
 
 ### 3. Communication
 
@@ -239,10 +240,12 @@ Under the General Data Protection Regulation (GDPR), you have the following righ
 
 ### 3. Deletion and Restriction
 
-- **Account deletion** - Request deletion of your account and associated data
+- **Account deletion** - Delete your account and associated data directly from the app (Settings → Account → Delete account), or by emailing us. Deletion is permanent and cannot be undone from inside the app
+- **Optional recording retention** - If you granted ML training consent (at signup or by contacting us), you may choose at deletion time to keep your recordings in an anonymized form (your user ID, name, filenames, transcripts, and reviewer notes are removed; the audio is retained for model training). If you did not grant this consent, recordings are deleted along with your account
 - **Recording deletion** - Delete individual audio/video recordings (also removes them from Google Cloud Storage)
 - **Report deletion** - Delete specific reports (therapists only)
 - **Processing restriction** - Request that we stop processing your data (with some exceptions for legal requirements)
+- **Withdraw training consent** - You can withdraw consent at any time before deletion by emailing **help@upspeech.app**, or at deletion time by selecting "Delete everything." Once recordings have been anonymized for training, they can no longer be identified back to you and therefore cannot be removed on an individual basis. For broader concerns, contact us at **help@upspeech.app**
 
 ### 4. Objection and Withdrawal
 
@@ -252,7 +255,7 @@ Under the General Data Protection Regulation (GDPR), you have the following righ
 
 ### 5. Complaint
 
-- **Supervisory authority** - Lodge a complaint with the Portuguese data protection authority (Comissão Nacional de Proteção de Dados — CNPD) or your local data protection authority
+- **Supervisory authority** - Lodge a complaint with the Portuguese data protection authority (Comissão Nacional de Proteção de Dados, CNPD) or your local data protection authority
 - **Contact us** - Reach out to us directly with privacy concerns at help@upspeech.app
 
 **To exercise these rights**, email us at **help@upspeech.app** with your request. We will respond within 30 days.
