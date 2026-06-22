@@ -28,17 +28,23 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.4.11",
     "marked": "^17.0.1",
-    "posthog-js": "^1.365.3",
+    "posthog-js": "^1.392.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.26.2",
+    "react-router-dom": "^6.30.4",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
+  },
+  "overrides": {
+    "micromatch": { "picomatch": "2.3.2" },
+    "anymatch": { "picomatch": "2.3.2" },
+    "readdirp": { "picomatch": "2.3.2" },
+    "tinyglobby": { "picomatch": "4.0.4" }
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
