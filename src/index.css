@@ -715,23 +715,23 @@
 }
 
 .legal-document h1 {
-  @apply text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white mt-8 first:mt-0 font-heading;
+  @apply text-3xl md:text-4xl font-bold mb-6 text-calm-navy dark:text-white mt-8 first:mt-0 font-heading;
 }
 
 .legal-document h2 {
-  @apply text-2xl md:text-3xl font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-b border-gray-200 dark:border-gray-700 pb-2 font-heading;
+  @apply text-2xl md:text-3xl font-semibold mb-4 text-calm-navy dark:text-white mt-8 border-b border-calm-navy/10 dark:border-gray-700 pb-2 font-heading;
 }
 
 .legal-document h3 {
-  @apply text-xl md:text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100 mt-6 font-heading;
+  @apply text-xl md:text-2xl font-semibold mb-3 text-calm-navy dark:text-gray-100 mt-6 font-heading;
 }
 
 .legal-document h4 {
-  @apply text-lg md:text-xl font-medium mb-2 text-gray-800 dark:text-gray-100 mt-4 font-heading;
+  @apply text-lg md:text-xl font-medium mb-2 text-calm-navy dark:text-gray-100 mt-4 font-heading;
 }
 
 .legal-document p {
-  @apply mb-4 text-gray-700 dark:text-gray-300;
+  @apply mb-4 text-calm-charcoal dark:text-gray-300;
 }
 
 .legal-document ul,
@@ -748,11 +748,11 @@
 }
 
 .legal-document li {
-  @apply text-gray-700 dark:text-gray-300;
+  @apply text-calm-charcoal dark:text-gray-300;
 }
 
 .legal-document strong {
-  @apply font-semibold text-gray-900 dark:text-white;
+  @apply font-semibold text-calm-navy dark:text-white;
 }
 
 .legal-document a {
