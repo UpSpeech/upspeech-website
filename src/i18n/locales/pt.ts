@@ -73,8 +73,8 @@ export const pt: Dictionary = {
     hero: {
       eyebrow: "Para clínicas com serviços de gaguez",
       headlineLine1: "A clínica",
-      headlineLine2: "que está aberta",
-      headlineLine3: "quando você não está.",
+      headlineLine2: "que continua aberta",
+      headlineLine3: "mesmo quando fecha.",
       body: "Prática estruturada entre sessões. Relatórios de sessão redigidos automaticamente. Os terapeutas mantêm a palavra final.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
@@ -145,7 +145,7 @@ export const pt: Dictionary = {
         },
         {
           label: "Progresso, registado",
-          copy: "Sequências e progresso ao longo do tempo mantêm os pacientes envolvidos. O terapeuta vê a atividade por detrás deles.",
+          copy: "Sequências e progresso ao longo do tempo mantêm os pacientes envolvidos. O terapeuta vê a atividade por trás desses números.",
         },
       ],
     },
@@ -362,7 +362,7 @@ export const pt: Dictionary = {
         },
         {
           title: "O seu terapeuta vê o seu progresso",
-          copy: "Ele acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão construa sobre a anterior.",
+          copy: "Acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
         },
       ],
     },
@@ -386,7 +386,7 @@ export const pt: Dictionary = {
         },
         {
           q: "O que vou praticar?",
-          a: "O seu terapeuta escolhe exercícios para si com base nos seus objetivos e na sua fase de terapia. Verá apenas o que ele atribuiu.",
+          a: "O seu terapeuta escolhe exercícios para si com base nos seus objetivos e na sua fase de terapia. Verá apenas o que o seu terapeuta atribuiu.",
         },
         {
           q: "Com que frequência devo praticar?",

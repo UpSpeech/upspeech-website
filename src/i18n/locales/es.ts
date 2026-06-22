@@ -73,7 +73,7 @@ export const es: Dictionary = {
     hero: {
       eyebrow: "Para clínicas con servicios de tartamudez",
       headlineLine1: "La clínica",
-      headlineLine2: "que está abierta",
+      headlineLine2: "que sigue abierta",
       headlineLine3: "cuando tú no estás.",
       body: "Práctica estructurada entre sesiones. Informes de sesión redactados automáticamente. Los terapeutas mantienen la última palabra.",
       requestAccess: "Solicitar acceso anticipado",
@@ -297,7 +297,7 @@ export const es: Dictionary = {
         },
         {
           title: "Grabaciones privadas",
-          copy: "A las grabaciones se accede mediante enlaces firmados y de corta duración, nunca desde una ubicación pública.",
+          copy: "Se accede a las grabaciones mediante enlaces firmados y de corta duración, nunca desde una ubicación pública.",
         },
       ],
       readPrivacy: "Lee nuestra Política de Privacidad",
@@ -362,7 +362,7 @@ export const es: Dictionary = {
         },
         {
           title: "Tu terapeuta ve tu progreso",
-          copy: "Sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión se construya sobre la anterior.",
+          copy: "Sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
         },
       ],
     },
