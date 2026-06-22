@@ -756,7 +756,7 @@
 }
 
 .legal-document a {
-  @apply text-primary underline;
+  @apply text-primary underline break-words;
 }
 
 .legal-document code {
