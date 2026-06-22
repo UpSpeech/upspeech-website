@@ -32,10 +32,12 @@ interface SEOProps {
   structuredData?: object | object[];
 }
 
-function ogImageForPath(path: string): string {
+function ogImageForPath(path: string, locale: string): string {
   const slug =
     path === "/" || path === "" ? "home" : path.replace(/^\/|\/$/g, "");
-  return `${BASE_URL}/og/${slug}.png`;
+  // English keeps the historical flat path; pt/es read from a locale folder.
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  return `${BASE_URL}/og${prefix}/${slug}.png`;
 }
 
 export function SEO({
@@ -60,7 +62,7 @@ export function SEO({
   const localeUrl = (l: string) =>
     `${BASE_URL}${l === "en" ? "" : `/${l}`}${slashedPath}`;
   const canonicalUrl = localeUrl(locale);
-  const resolvedImage = image ?? ogImageForPath(path);
+  const resolvedImage = image ?? ogImageForPath(path, locale);
   const resolvedImageAlt = imageAlt ?? fullTitle;
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
 
