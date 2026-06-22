@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
+import { LocaleProvider } from "@/i18n";
 import Index from "./pages/Index";
 
 // Lazy-loaded routes, split into separate chunks
@@ -45,6 +46,49 @@ const IdentificationDesensitization = React.lazy(
   () => import("./pages/techniques/IdentificationDesensitization"),
 );
 
+// The full route tree, with locale-agnostic relative paths so it can be mounted
+// under "/", "/pt", and "/es". Keep the catch-all NotFound inside this tree.
+const AppRoutes = () => (
+  <Routes>
+    <Route index element={<Index />} />
+    <Route path="privacy" element={<PrivacyPolicy />} />
+    <Route path="terms" element={<TermsOfService />} />
+    <Route path="cookies" element={<CookiePolicy />} />
+    <Route path="delete-account" element={<DeleteAccount />} />
+    <Route path="support" element={<Support />} />
+    <Route path="for-patients" element={<ForPatients />} />
+
+    {/* Technique Documentation Routes */}
+    <Route path="techniques" element={<TechniquesIndexPage />} />
+    <Route
+      path="techniques/voluntary-stuttering"
+      element={<VoluntaryStuttering />}
+    />
+    <Route path="techniques/cancelation" element={<Cancelation />} />
+    <Route path="techniques/pull-out" element={<PullOut />} />
+    <Route path="techniques/preparatory-set" element={<PreparatorySet />} />
+    <Route path="techniques/holding" element={<Holding />} />
+    <Route path="techniques/soft-starts" element={<SoftStarts />} />
+    <Route
+      path="techniques/soft-articulation-contact"
+      element={<SoftArticulationContact />}
+    />
+    <Route path="techniques/prolonged-speech" element={<ProlongedSpeech />} />
+    <Route
+      path="techniques/speech-speed-management"
+      element={<SpeechSpeedManagement />}
+    />
+    <Route path="techniques/pauses" element={<Pauses />} />
+    <Route
+      path="techniques/identification-desensitization"
+      element={<IdentificationDesensitization />}
+    />
+
+    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 const App = () => (
   <HelmetProvider>
     <TooltipProvider>
@@ -55,48 +99,32 @@ const App = () => (
         <PageViewTracker />
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsOfService />} />
-            <Route path="/cookies" element={<CookiePolicy />} />
-            <Route path="/delete-account" element={<DeleteAccount />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/for-patients" element={<ForPatients />} />
-
-            {/* Technique Documentation Routes */}
-            <Route path="/techniques" element={<TechniquesIndexPage />} />
+            {/* Portuguese and Spanish live under a locale prefix; English stays
+                at the root so every existing URL is unchanged. */}
             <Route
-              path="/techniques/voluntary-stuttering"
-              element={<VoluntaryStuttering />}
-            />
-            <Route path="/techniques/cancelation" element={<Cancelation />} />
-            <Route path="/techniques/pull-out" element={<PullOut />} />
-            <Route
-              path="/techniques/preparatory-set"
-              element={<PreparatorySet />}
-            />
-            <Route path="/techniques/holding" element={<Holding />} />
-            <Route path="/techniques/soft-starts" element={<SoftStarts />} />
-            <Route
-              path="/techniques/soft-articulation-contact"
-              element={<SoftArticulationContact />}
+              path="/pt/*"
+              element={
+                <LocaleProvider locale="pt">
+                  <AppRoutes />
+                </LocaleProvider>
+              }
             />
             <Route
-              path="/techniques/prolonged-speech"
-              element={<ProlongedSpeech />}
+              path="/es/*"
+              element={
+                <LocaleProvider locale="es">
+                  <AppRoutes />
+                </LocaleProvider>
+              }
             />
             <Route
-              path="/techniques/speech-speed-management"
-              element={<SpeechSpeedManagement />}
+              path="/*"
+              element={
+                <LocaleProvider locale="en">
+                  <AppRoutes />
+                </LocaleProvider>
+              }
             />
-            <Route path="/techniques/pauses" element={<Pauses />} />
-            <Route
-              path="/techniques/identification-desensitization"
-              element={<IdentificationDesensitization />}
-            />
-
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
