@@ -193,8 +193,8 @@ const Header = () => {
             >
               {t.requestAccess}
             </Button>
-            <div className="mt-3 flex justify-center">
-              <LocaleSwitcher />
+            <div className="mt-4 border-t border-calm-light pt-4">
+              <LocaleSwitcher variant="inline" />
             </div>
           </nav>
         </div>

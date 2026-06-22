@@ -24,7 +24,16 @@ const LABELS: Record<Locale, string> = {
 // Compact language menu: a globe trigger showing the active language, opening a
 // small popover of the three locales. Keeps the calm header uncluttered and
 // reads as a standard control. Navigating keeps the visitor on the same page.
-export function LocaleSwitcher({ className }: { className?: string }) {
+// The "inline" variant lays the three locales out as a row (no popover) for use
+// inside the already-expanded mobile menu, where a nested dropdown would be
+// clipped by the menu's own scroll container.
+export function LocaleSwitcher({
+  className,
+  variant = "dropdown",
+}: {
+  className?: string;
+  variant?: "dropdown" | "inline";
+}) {
   const locale = useLocale();
   const t = useT();
   const navigate = useNavigate();
@@ -54,6 +63,42 @@ export function LocaleSwitcher({ className }: { className?: string }) {
     setOpen(false);
     if (l !== locale) navigate({ pathname: localizedPath(path, l), hash });
   };
+
+  if (variant === "inline") {
+    return (
+      <div className={cn("flex flex-col gap-2", className)}>
+        <span className="flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-wider text-calm-charcoal/50">
+          <GlobeAltIcon className="h-4 w-4" aria-hidden="true" />
+          {t.localeSwitcher.label}
+        </span>
+        <div
+          role="group"
+          aria-label={t.localeSwitcher.label}
+          className="flex flex-wrap gap-2"
+        >
+          {SUPPORTED_LOCALES.map((l) => {
+            const active = l === locale;
+            return (
+              <button
+                key={l}
+                type="button"
+                aria-current={active ? "true" : undefined}
+                onClick={() => choose(l)}
+                className={cn(
+                  "rounded-full px-4 py-2 font-body text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy focus-visible:ring-offset-2",
+                  active
+                    ? "bg-calm-navy text-white"
+                    : "border border-calm-charcoal/15 bg-white text-calm-charcoal hover:bg-calm-light",
+                )}
+              >
+                {LABELS[l]}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={rootRef} className={cn("relative", className)}>
