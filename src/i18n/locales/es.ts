@@ -16,6 +16,7 @@ export const es: Dictionary = {
     logoGoHome: "UpSpeech, ir a la página de inicio",
     openMenu: "Abrir menú",
     closeMenu: "Cerrar menú",
+    mobileMenuLabel: "Navegación",
   },
   footer: {
     tagline: "Guiando voces con cuidado y tecnología",

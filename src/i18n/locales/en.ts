@@ -14,6 +14,7 @@ export const en = {
     logoGoHome: "UpSpeech, go to homepage",
     openMenu: "Open menu",
     closeMenu: "Close menu",
+    mobileMenuLabel: "Navigation",
   },
   footer: {
     tagline: "Guiding voices with care and tech",
