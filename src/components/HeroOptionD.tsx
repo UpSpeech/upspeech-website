@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { PlayIcon } from "@heroicons/react/24/outline";
 import { trackButtonClick } from "@/lib/analytics";
+import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -29,6 +30,7 @@ const Line = ({
 );
 
 const HeroOptionD = () => {
+  const t = useT().home.hero;
   const [loaded, setLoaded] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -67,7 +69,7 @@ const HeroOptionD = () => {
             }}
           >
             <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender">
-              For clinics with stuttering services
+              {t.eyebrow}
             </span>
           </div>
 
@@ -76,13 +78,13 @@ const HeroOptionD = () => {
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.0 }}
           >
             <Line delay={80} loaded={loaded}>
-              The clinic
+              {t.headlineLine1}
             </Line>
             <Line delay={200} loaded={loaded}>
-              that's open
+              {t.headlineLine2}
             </Line>
             <Line delay={320} loaded={loaded}>
-              <span className="text-calm-lavender">when you're not.</span>
+              <span className="text-calm-lavender">{t.headlineLine3}</span>
             </Line>
           </h1>
 
@@ -95,8 +97,7 @@ const HeroOptionD = () => {
               transform: loaded ? "translateY(0)" : "translateY(16px)",
             }}
           >
-            Structured practice between sessions. Session reports drafted
-            automatically. Therapists keep the final say.
+            {t.body}
           </p>
 
           <div
@@ -115,7 +116,7 @@ const HeroOptionD = () => {
               }
               className="group inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)] hover:-translate-y-0.5"
             >
-              Request early access
+              {t.requestAccess}
               <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
                 →
               </span>
@@ -125,7 +126,7 @@ const HeroOptionD = () => {
               onClick={() => trackButtonClick("see_how_it_works", "hero")}
               className="inline-flex items-center gap-2 rounded-full border border-calm-navy/20 px-7 py-3.5 font-body font-semibold text-calm-navy transition-colors duration-500 hover:border-calm-navy/45 hover:bg-white"
             >
-              See how it works
+              {t.seeHowItWorks}
             </a>
           </div>
         </div>
@@ -159,7 +160,7 @@ const HeroOptionD = () => {
                 autoPlay={!reducedMotion}
                 muted
                 playsInline
-                aria-label="UpSpeech product demo: a therapist assigns a personalised plan, the patient practises at home, the therapist follows progress on a dashboard, records a session, the report is drafted, and clinicians annotate the recording"
+                aria-label={t.videoAriaLabel}
               />
             ) : (
               <button
@@ -169,11 +170,11 @@ const HeroOptionD = () => {
                   trackButtonClick("hero_play_demo", "hero");
                 }}
                 className="group relative block w-full focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-calm-navy/40"
-                aria-label="Play the UpSpeech product demo"
+                aria-label={t.playAriaLabel}
               >
                 <img
                   src="/videos/hero-demo-poster.jpg"
-                  alt="UpSpeech product demo: a therapist's personalised practice plan"
+                  alt={t.posterAlt}
                   className="block w-full h-auto"
                   loading="eager"
                   fetchPriority="high"

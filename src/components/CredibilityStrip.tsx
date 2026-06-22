@@ -1,5 +1,6 @@
 import { useReveal } from "./useReveal";
 import { EASE } from "./motion";
+import { useT } from "@/i18n";
 
 const items = [
   { name: "SpeechCare", logo: "/images/speechcare-logo.png" },
@@ -9,6 +10,7 @@ const items = [
 ] as const;
 
 const CredibilityStrip = () => {
+  const t = useT().home.credibility;
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.4 });
 
   return (
@@ -18,7 +20,7 @@ const CredibilityStrip = () => {
         className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:justify-between"
       >
         <span className="w-full sm:w-auto text-center sm:text-left font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/40">
-          Partners &amp; recognition
+          {t.eyebrow}
         </span>
         {items.map((item, i) => (
           <span

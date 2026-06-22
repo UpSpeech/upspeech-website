@@ -1,38 +1,27 @@
 import ProductScene from "./ProductScene";
+import { useT } from "@/i18n";
 
-const TherapistScene = () => (
-  <ProductScene
-    eyebrow="In the room"
-    headline={
-      <>
-        The session belongs to the clinician.
-        <br />
-        <span className="text-calm-lavender">
-          The platform handles the rest.
-        </span>
-      </>
-    }
-    body="Reports drafted automatically from each session. Patient activity visible outside the appointment. Therapists arrive prepared, with the context they need."
-    image="/screenshots/app/therapist-patient-progress.jpg"
-    imageAlt="UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step"
-    url="app.upspeech.app/therapist"
-    tone="offwhite"
-    align="left"
-    points={[
-      {
-        label: "Session prep",
-        copy: "Walk into the appointment knowing what the patient practised since the last visit.",
-      },
-      {
-        label: "Reports, drafted",
-        copy: "Session data becomes a structured draft report for the therapist to review and approve.",
-      },
-      {
-        label: "Therapist sign-off",
-        copy: "Every report and treatment plan is a draft until the therapist reviews and signs it.",
-      },
-    ]}
-  />
-);
+const TherapistScene = () => {
+  const t = useT().home.therapist;
+  return (
+    <ProductScene
+      eyebrow={t.eyebrow}
+      headline={
+        <>
+          {t.headlineLine1}
+          <br />
+          <span className="text-calm-lavender">{t.headlineLine2}</span>
+        </>
+      }
+      body={t.body}
+      image="/screenshots/app/therapist-patient-progress.jpg"
+      imageAlt={t.imageAlt}
+      url="app.upspeech.app/therapist"
+      tone="offwhite"
+      align="left"
+      points={t.points}
+    />
+  );
+};
 
 export default TherapistScene;

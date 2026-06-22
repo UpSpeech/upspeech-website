@@ -1,54 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { EASE, reveal } from "./motion";
+import { useT } from "@/i18n";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
 type Actor = "ai" | "clinician";
 
-type Node = {
-  actor: Actor;
-  verb: string; // single punchy label on the ring
-  title: string;
-  body: string;
-};
-
-const NODES: Node[] = [
-  {
-    actor: "ai",
-    verb: "drafts",
-    title: "AI drafts the session report.",
-    body: "Session recording and notes turn into a structured draft.",
-  },
-  {
-    actor: "clinician",
-    verb: "approves",
-    title: "The clinician reads, edits, approves.",
-    body: "Nothing leaves the platform without therapist review. Corrections feed back into the model and improve the next draft.",
-  },
-  {
-    actor: "ai",
-    verb: "structures",
-    title: "AI structures the practice plan.",
-    body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the therapist to approve.",
-  },
-  {
-    actor: "clinician",
-    verb: "calibrates",
-    title: "The clinician calibrates it.",
-    body: "The therapist approves, adjusts difficulty, and swaps techniques. No plan is assigned without therapist review.",
-  },
-  {
-    actor: "ai",
-    verb: "listens",
-    title: "AI helps between sessions.",
-    body: "Each practice attempt is captured and organised, building a record of activity between sessions.",
-  },
-  {
-    actor: "clinician",
-    verb: "decides",
-    title: "The clinician decides what's next.",
-    body: "Aggregated signal appears on the therapist's dashboard. They select the next protocol with the data at hand.",
-  },
+// Actor sequence stays in code (drives colours/geometry); verb/title/body copy
+// comes from the dictionary by index (home.cycle.nodes).
+const NODE_ACTORS: Actor[] = [
+  "ai",
+  "clinician",
+  "ai",
+  "clinician",
+  "ai",
+  "clinician",
 ];
 
 // SVG viewBox is 100×100; geometry expressed in those units and overlaid with HTML.
@@ -58,7 +24,7 @@ const LABEL_RADIUS = 38;
 
 // compassDeg: 0 at top, rotates clockwise
 const nodePoint = (i: number, r = RADIUS) => {
-  const compassDeg = (i * 360) / NODES.length;
+  const compassDeg = (i * 360) / NODE_ACTORS.length;
   const rad = (compassDeg * Math.PI) / 180;
   return {
     x: CENTER + r * Math.sin(rad),
@@ -84,6 +50,8 @@ const labelAlignClass = (compassDeg: number): string => {
 };
 
 const CycleScene = () => {
+  const t = useT().home.cycle;
+  const nodes = t.nodes;
   const containerRef = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -141,16 +109,17 @@ const CycleScene = () => {
   const nodePhase = clamp01(progress / 0.9);
   const finalGlow = clamp01((progress - 0.9) / 0.1);
 
-  const nodeFloat = nodePhase * NODES.length;
+  const nodeFloat = nodePhase * NODE_ACTORS.length;
   const activeIndex = Math.min(
-    NODES.length - 1,
+    NODE_ACTORS.length - 1,
     Math.max(0, Math.floor(nodeFloat)),
   );
-  const active = NODES[activeIndex];
-  const activeIsAI = active.actor === "ai";
+  const activeActor = NODE_ACTORS[activeIndex];
+  const active = nodes[activeIndex];
+  const activeIsAI = activeActor === "ai";
 
   // Orbital satellite, rides the ring at the current nodeFloat position
-  const orbitDeg = (nodeFloat / NODES.length) * 360;
+  const orbitDeg = (nodeFloat / NODE_ACTORS.length) * 360;
   const orbitRad = (orbitDeg * Math.PI) / 180;
   const orbitX = CENTER + RADIUS * Math.sin(orbitRad);
   const orbitY = CENTER - RADIUS * Math.cos(orbitRad);
@@ -179,7 +148,7 @@ const CycleScene = () => {
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-5 sm:mb-6"
             style={reveal(revealed, 0)}
           >
-            The loop
+            {t.eyebrow}
           </p>
 
           <h2
@@ -190,8 +159,8 @@ const CycleScene = () => {
               ...reveal(revealed, 80),
             }}
           >
-            Every step{" "}
-            <span className="text-calm-lavender">reviewed by a clinician.</span>
+            {t.headlinePrefix}{" "}
+            <span className="text-calm-lavender">{t.headlineEmphasis}</span>
           </h2>
 
           <div
@@ -253,12 +222,12 @@ const CycleScene = () => {
                 )}
 
                 {/* Nodes */}
-                {NODES.map((node, i) => {
+                {NODE_ACTORS.map((actor, i) => {
                   const pos = nodePoint(i);
                   const isActive = i === activeIndex && nodePhase > 0;
                   const isPast = i < activeIndex && nodePhase > 0;
                   const lit = isActive || isPast || finalGlow > 0;
-                  const isClinician = node.actor === "clinician";
+                  const isClinician = actor === "clinician";
                   const fill = lit
                     ? isClinician
                       ? "#293587"
@@ -317,12 +286,12 @@ const CycleScene = () => {
               </svg>
 
               {/* HTML labels outside the ring, positioned per quadrant */}
-              {NODES.map((node, i) => {
+              {NODE_ACTORS.map((actor, i) => {
                 const pos = nodePoint(i, LABEL_RADIUS);
                 const isActive = i === activeIndex && nodePhase > 0;
                 const isPast = i < activeIndex && nodePhase > 0;
                 const lit = isActive || isPast || finalGlow > 0;
-                const isClinician = node.actor === "clinician";
+                const isClinician = actor === "clinician";
 
                 return (
                   <div
@@ -348,7 +317,7 @@ const CycleScene = () => {
                           transition: `opacity 500ms ${EASE}`,
                         }}
                       >
-                        {isClinician ? "Clinician" : "AI"}
+                        {isClinician ? t.clinician : t.ai}
                       </div>
                       <div
                         className="font-heading font-bold tracking-tight text-calm-charcoal"
@@ -367,7 +336,7 @@ const CycleScene = () => {
                           transition: `opacity 500ms ${EASE}, transform 500ms ${EASE}`,
                         }}
                       >
-                        {node.verb}
+                        {nodes[i].verb}
                       </div>
                     </div>
                   </div>
@@ -380,7 +349,7 @@ const CycleScene = () => {
                   className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/45"
                   style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
                 >
-                  The loop
+                  {t.eyebrow}
                 </div>
 
                 {/* Actor readout, swaps and recolors with each step */}
@@ -394,7 +363,7 @@ const CycleScene = () => {
                     animation: `optD-actor-swap 600ms ${EASE} both`,
                   }}
                 >
-                  {activeIsAI ? "AI" : "Clinician"}
+                  {activeIsAI ? t.ai : t.clinician}
                 </div>
 
                 <div
@@ -402,7 +371,9 @@ const CycleScene = () => {
                   style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
                 >
                   <span className="block h-px w-5 bg-calm-charcoal/30" />
-                  Step {String(activeIndex + 1).padStart(2, "0")} / 06
+                  {t.stepPrefix}
+                  {String(activeIndex + 1).padStart(2, "0")}
+                  {t.stepSuffix}
                   <span className="block h-px w-5 bg-calm-charcoal/30" />
                 </div>
               </div>
@@ -420,22 +391,22 @@ const CycleScene = () => {
                 <div className="flex items-center gap-2.5 mb-5">
                   <span
                     className={`inline-block h-2 w-2 rounded-full ${
-                      active.actor === "clinician"
+                      activeActor === "clinician"
                         ? "bg-calm-navy"
                         : "bg-calm-lavender"
                     }`}
                   />
                   <span
                     className={`font-body text-[11px] font-bold tracking-[0.28em] uppercase ${
-                      active.actor === "clinician"
+                      activeActor === "clinician"
                         ? "text-calm-navy"
                         : "text-calm-lavender"
                     }`}
                   >
-                    {active.actor === "clinician"
-                      ? "Clinician · step " +
+                    {activeActor === "clinician"
+                      ? t.clinicianStepPrefix +
                         (activeIndex + 1).toString().padStart(2, "0")
-                      : "AI · step " +
+                      : t.aiStepPrefix +
                         (activeIndex + 1).toString().padStart(2, "0")}
                   </span>
                 </div>
@@ -454,7 +425,7 @@ const CycleScene = () => {
 
                 {/* Progress pips */}
                 <div className="mt-9 flex items-center gap-1.5">
-                  {NODES.map((_, i) => (
+                  {NODE_ACTORS.map((_, i) => (
                     <span
                       key={i}
                       className="block h-1 rounded-full transition-all duration-500"

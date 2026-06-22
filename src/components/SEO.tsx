@@ -5,6 +5,14 @@ const DEFAULT_TITLE = "UpSpeech - Software for Stuttering Therapy Practices";
 const DEFAULT_DESCRIPTION =
   "Continuous support for stuttering therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.";
 
+// Locale-aware fallback title for pages that don't pass their own (the home
+// page). English is unchanged; pt/es get an in-language title tag.
+const DEFAULT_TITLE_BY_LOCALE: Record<string, string> = {
+  en: DEFAULT_TITLE,
+  pt: "UpSpeech - Software para clínicas de terapia da gaguez",
+  es: "UpSpeech - Software para clínicas de terapia de la tartamudez",
+};
+
 const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
 
 const LOCALE_TO_OG: Record<string, string> = {
@@ -42,7 +50,9 @@ export function SEO({
   locale = "en",
   structuredData,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
+  const fullTitle = title
+    ? `${title} | UpSpeech`
+    : (DEFAULT_TITLE_BY_LOCALE[locale] ?? DEFAULT_TITLE);
   // Netlify serves every non-root URL with a trailing slash; match it in
   // canonical/og:url/hreflang so sitemap, canonical, and served URL all agree.
   const slashedPath =

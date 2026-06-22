@@ -1,8 +1,10 @@
 import { useReveal } from "./useReveal";
 import { reveal } from "./motion";
 import { trackButtonClick } from "@/lib/analytics";
+import { useT } from "@/i18n";
 
 const InterstitialCTA = () => {
+  const t = useT().home.interstitial;
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.4 });
 
   return (
@@ -23,11 +25,9 @@ const InterstitialCTA = () => {
             className="font-heading font-bold text-calm-charcoal tracking-tight"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1 }}
           >
-            Continuous support,
+            {t.headlineLine1}
             <br />
-            <span className="text-calm-lavender">
-              starting with your clinic.
-            </span>
+            <span className="text-calm-lavender">{t.headlineLine2}</span>
           </h2>
         </div>
         <div className="shrink-0" style={reveal(revealed, 120)}>
@@ -41,7 +41,7 @@ const InterstitialCTA = () => {
             }
             className="group inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)] hover:-translate-y-0.5"
           >
-            Request early access
+            {t.requestAccess}
             <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
               →
             </span>

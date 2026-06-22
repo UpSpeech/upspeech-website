@@ -1,17 +1,10 @@
 import { useReveal } from "./useReveal";
+import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-const TAGS = [
-  "Block",
-  "Prolongation",
-  "Repetition",
-  "Tension",
-  "Side glance",
-  "Holding",
-];
-
 const EngineSection = () => {
+  const t = useT().home.engine;
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.25 });
 
   const textStyle = (delay: number): React.CSSProperties => ({
@@ -36,7 +29,7 @@ const EngineSection = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-6 sm:mb-8"
           style={textStyle(0)}
         >
-          UpSpeech Labs
+          {t.eyebrow}
         </p>
         <h2
           className="font-heading font-bold text-white tracking-tight max-w-4xl"
@@ -46,18 +39,16 @@ const EngineSection = () => {
             ...textStyle(80),
           }}
         >
-          Trained on
+          {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">clinician-annotated data.</span>
+          <span className="text-calm-lavender">{t.headlineLine2}</span>
         </h2>
 
         <p
           className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/65 leading-relaxed"
           style={textStyle(160)}
         >
-          We built an annotation tool in-house, used by practising
-          speech-language pathologists to tag disfluencies, tensions, and blocks
-          frame by frame. The dataset is expert-labelled from the start.
+          {t.body}
         </p>
 
         <div
@@ -82,7 +73,7 @@ const EngineSection = () => {
                   muted
                   playsInline
                   preload="none"
-                  aria-label="UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame"
+                  aria-label={t.videoAriaLabel}
                 >
                   <source
                     src="/videos/annotation-tool.webm"
@@ -93,14 +84,14 @@ const EngineSection = () => {
               ) : (
                 <img
                   src="/videos/annotation-tool.jpg"
-                  alt="UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame"
+                  alt={t.videoAriaLabel}
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
               )}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
-              {TAGS.map((tag, i) => (
+              {t.tags.map((tag, i) => (
                 <span
                   key={tag}
                   className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-body text-[11px] font-medium text-white/75"

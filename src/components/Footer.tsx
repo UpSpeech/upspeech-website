@@ -1,10 +1,13 @@
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
+import { useLocale, useT, localizedPath } from "@/i18n";
 
 const linkClass =
   "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
 
 const Footer = () => {
+  const locale = useLocale();
+  const t = useT();
   return (
     <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-primary text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -25,7 +28,7 @@ const Footer = () => {
               loading="lazy"
             />
             <p className="font-body text-sm text-white/80">
-              Guiding voices with care and tech
+              {t.footer.tagline}
             </p>
             {(APP_STORE_URL || PLAY_STORE_URL) && (
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -34,11 +37,11 @@ const Footer = () => {
                     href={APP_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Download UpSpeech on the App Store"
+                    aria-label={t.footer.appStoreAriaLabel}
                   >
                     <img
                       src="/images/app-store.png"
-                      alt="Download on the App Store"
+                      alt={t.footer.appStoreAlt}
                       className="h-10 w-auto"
                       loading="lazy"
                     />
@@ -49,11 +52,11 @@ const Footer = () => {
                     href={PLAY_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Get UpSpeech on Google Play"
+                    aria-label={t.footer.playStoreAriaLabel}
                   >
                     <img
                       src="/images/google-play.png"
-                      alt="Get it on Google Play"
+                      alt={t.footer.playStoreAlt}
                       className="h-10 w-auto"
                       loading="lazy"
                     />
@@ -64,47 +67,53 @@ const Footer = () => {
           </div>
 
           <nav
-            aria-label="Product"
+            aria-label={t.footer.product}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              Product
+              {t.footer.product}
             </h2>
-            <a href="/for-patients" className={linkClass}>
-              For patients
+            <a
+              href={localizedPath("/for-patients", locale)}
+              className={linkClass}
+            >
+              {t.footer.forPatients}
             </a>
-            <a href="/techniques" className={linkClass}>
-              Techniques
+            <a
+              href={localizedPath("/techniques", locale)}
+              className={linkClass}
+            >
+              {t.footer.techniques}
             </a>
-            <a href="/support" className={linkClass}>
-              Support
+            <a href={localizedPath("/support", locale)} className={linkClass}>
+              {t.footer.support}
             </a>
           </nav>
 
           <nav
-            aria-label="Legal"
+            aria-label={t.footer.legal}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              Legal
+              {t.footer.legal}
             </h2>
-            <a href="/privacy" className={linkClass}>
-              Privacy Policy
+            <a href={localizedPath("/privacy", locale)} className={linkClass}>
+              {t.footer.privacy}
             </a>
-            <a href="/terms" className={linkClass}>
-              Terms of Service
+            <a href={localizedPath("/terms", locale)} className={linkClass}>
+              {t.footer.terms}
             </a>
-            <a href="/cookies" className={linkClass}>
-              Cookie Policy
+            <a href={localizedPath("/cookies", locale)} className={linkClass}>
+              {t.footer.cookies}
             </a>
           </nav>
 
           <nav
-            aria-label="Company"
+            aria-label={t.footer.company}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              Company
+              {t.footer.company}
             </h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
@@ -112,10 +121,10 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={linkClass}
             >
-              LinkedIn
+              {t.footer.linkedin}
             </a>
             <a href="mailto:hello@upspeech.app" className={linkClass}>
-              Contact us
+              {t.footer.contact}
             </a>
           </nav>
         </div>
@@ -158,7 +167,7 @@ const Footer = () => {
           style={{ animationDelay: "0.4s" }}
         >
           <p className="font-body text-sm text-white/60">
-            © {new Date().getFullYear()} UpSpeech. All rights reserved.
+            © {new Date().getFullYear()} UpSpeech. {t.footer.rights}
           </p>
         </div>
       </div>
