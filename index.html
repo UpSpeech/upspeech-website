@@ -20,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.clarity.ms; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://upspeech.app https://c.bing.com https://*.clarity.ms; connect-src 'self' http://localhost:3050 https://app-backend-production-f30a.up.railway.app https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu.i.posthog.com https://eu-assets.i.posthog.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://eu-assets.i.posthog.com;"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://*.clarity.ms; font-src 'self'; img-src 'self' data: https://images.unsplash.com https://upspeech.app https://c.bing.com https://*.clarity.ms; connect-src 'self' http://localhost:3050 https://app-backend-production-f30a.up.railway.app https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu.i.posthog.com https://eu-assets.i.posthog.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://eu-assets.i.posthog.com;"
     />
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -47,34 +47,23 @@
     <!-- Per-locale hreflang/canonical are emitted per page by the SEO
          component (react-helmet-async); no static alternates here. -->
 
-    <!-- Preconnect to required origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- All fonts non-render-blocking; heading font uses display=optional (no CLS) -->
+    <!-- Self-hosted fonts (served from this origin, no Google Fonts CDN).
+         @font-face declarations live in src/fonts.css. Preload the few
+         render-critical latin faces; heading uses display:optional (no CLS). -->
     <link
       rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=optional"
+      as="font"
+      type="font/woff2"
+      href="/fonts/outfit-latin.woff2"
+      crossorigin
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=optional"
-      rel="stylesheet"
-      media="print"
-      onload="this.media = 'all'"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plus-jakarta-sans-latin.woff2"
+      crossorigin
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media = 'all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
 
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
