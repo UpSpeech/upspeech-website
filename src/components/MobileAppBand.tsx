@@ -111,8 +111,8 @@ const MobileAppBand = () => {
             style={reveal(revealed, 160)}
           >
             Patients follow the plan their therapist set, practise with guided
-            exercises, and check in from their phone. The therapist sees the
-            activity behind it.
+            exercises, and check in from their phone. Their therapist follows
+            along.
           </p>
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}

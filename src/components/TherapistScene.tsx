@@ -12,7 +12,7 @@ const TherapistScene = () => (
         </span>
       </>
     }
-    body="Session reports drafted from session data. Patient activity visible outside the appointment. Therapists arrive at each session with the context they need to plan it."
+    body="Reports drafted automatically from each session. Patient activity visible outside the appointment. Therapists arrive prepared, with the context they need."
     image="/screenshots/app/therapist-patient-progress.jpg"
     imageAlt="UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step"
     url="app.upspeech.app/therapist"

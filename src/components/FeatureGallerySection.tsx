@@ -125,8 +125,8 @@ const FeatureGallerySection = () => {
               moments.
             </h3>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
-              Frame-by-frame tagging of stuttering moments: core behavior,
-              secondary behaviors, tension level. Standard taxonomy. The same
+              Frame-by-frame tagging of stuttering moments: core behaviour,
+              secondary behaviours, tension level. Standard taxonomy. The same
               tool builds our dataset and supports research partnerships.
             </p>
             <div className="mt-5 flex flex-wrap gap-1.5">

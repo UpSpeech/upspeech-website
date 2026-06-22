@@ -11,7 +11,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "What is voluntary stuttering?",
       answer:
-        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviors associated with stuttering, and gains a greater sense of control over their speech.",
+        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviours associated with stuttering, and gains a greater sense of control over their speech.",
     },
     {
       question: "How does voluntary stuttering help reduce stuttering?",
@@ -180,7 +180,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Is pausing the same as avoiding words?",
       answer:
-        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behavior that reinforces fear.",
+        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behaviour that reinforces fear.",
     },
   ],
   "identification-desensitization": [
@@ -188,7 +188,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
       question:
         "What is identification and desensitization in stuttering therapy?",
       answer:
-        "Identification involves learning to recognize your specific stuttering patterns, the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
+        "Identification involves learning to recognise your specific stuttering patterns, the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
     },
     {
       question: "Why is desensitization important for people who stutter?",

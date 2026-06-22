@@ -305,7 +305,7 @@ export function TechniquesIndexPage() {
                 ? "Pronto para começar a praticar?"
                 : locale === "es"
                   ? "¿Listo para empezar a practicar?"
-                  : "Ready to start practicing?"}
+                  : "Ready to start practising?"}
             </p>
             <a
               href="https://upspeech.app/join"

@@ -62,7 +62,7 @@ export const TECHNIQUE_SEO: Record<
   "identification-desensitization": {
     title: "Identification & Desensitization for Stuttering",
     description:
-      "Learn identification and desensitization, recognize stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
+      "Learn identification and desensitization, recognise stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
   },
 };
 
