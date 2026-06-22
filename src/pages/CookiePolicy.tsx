@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { useLocale, localizedPath } from "@/i18n";
 
 marked.setOptions({
   gfm: true,
   breaks: true,
 });
-
-const SUPPORTED_LOCALES = ["en", "pt", "es"];
 
 const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
@@ -54,31 +53,10 @@ const RELOAD_TEXT: Record<string, string> = {
 };
 
 export default function CookiePolicy() {
-  const [searchParams] = useSearchParams();
+  const locale = useLocale();
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const getLocale = (): string => {
-    const urlLocale = searchParams.get("lang");
-    if (urlLocale && SUPPORTED_LOCALES.includes(urlLocale)) {
-      return urlLocale;
-    }
-    const browserLang = navigator.language.split("-")[0];
-    if (SUPPORTED_LOCALES.includes(browserLang)) {
-      return browserLang;
-    }
-    return "en";
-  };
-
-  const [locale, setLocale] = useState(getLocale());
-
-  const changeLanguage = (newLocale: string) => {
-    setLocale(newLocale);
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("lang", newLocale);
-    window.history.replaceState({}, "", `?${newParams.toString()}`);
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -108,20 +86,8 @@ export default function CookiePolicy() {
   const seo = SEO_DATA[locale] || SEO_DATA.en;
 
   const languageSwitcher = (
-    <div className="flex justify-end mb-6 gap-2">
-      {SUPPORTED_LOCALES.map((lang) => (
-        <button
-          key={lang}
-          onClick={() => changeLanguage(lang)}
-          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-            locale === lang
-              ? "bg-calm-navy text-white"
-              : "bg-white text-calm-charcoal border border-calm-charcoal/15 hover:bg-calm-light"
-          }`}
-        >
-          {lang === "en" ? "English" : lang === "pt" ? "Português" : "Español"}
-        </button>
-      ))}
+    <div className="flex justify-end mb-6">
+      <LocaleSwitcher />
     </div>
   );
 
@@ -178,7 +144,7 @@ export default function CookiePolicy() {
 
         <div className="mt-8 text-center">
           <a
-            href="/"
+            href={localizedPath("/", locale)}
             className="text-calm-navy hover:underline font-body font-medium"
           >
             &larr; {BACK_LINKS[locale] || BACK_LINKS.en}

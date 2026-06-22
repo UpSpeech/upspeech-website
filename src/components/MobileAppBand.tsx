@@ -1,22 +1,15 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
+import { useT } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
 // section with no baked panel or caption. Cropped from the app-mobile store art.
+// Alt text comes from the dictionary by index (home.mobile.screenshots).
 const SCREENSHOTS = [
-  {
-    src: "/screenshots/mobile/patient-journey-device.png",
-    alt: "UpSpeech mobile app learning path showing the steps the therapist set",
-  },
-  {
-    src: "/screenshots/mobile/patient-practice-device.png",
-    alt: "UpSpeech mobile app practice screen with guided stuttering exercises",
-  },
-  {
-    src: "/screenshots/mobile/patient-home-device.png",
-    alt: "UpSpeech mobile app home screen showing the patient's exercise for the day",
-  },
+  { src: "/screenshots/mobile/patient-journey-device.png" },
+  { src: "/screenshots/mobile/patient-practice-device.png" },
+  { src: "/screenshots/mobile/patient-home-device.png" },
 ];
 
 // The hero (centre) phone: a bare screen-recording played BEHIND the official
@@ -79,6 +72,7 @@ function useStageTilt(stageRef: React.RefObject<HTMLDivElement | null>) {
 }
 
 const MobileAppBand = () => {
+  const t = useT().home.mobile;
   const { ref, revealed } = useReveal<HTMLDivElement>();
   const stageRef = useRef<HTMLDivElement>(null);
   useStageTilt(stageRef);
@@ -94,7 +88,7 @@ const MobileAppBand = () => {
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
             style={reveal(revealed, 0)}
           >
-            In the patient's pocket
+            {t.eyebrow}
           </span>
           <h2
             className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -104,15 +98,13 @@ const MobileAppBand = () => {
               ...reveal(revealed, 80),
             }}
           >
-            The practice happens in the app, between sessions.
+            {t.headline}
           </h2>
           <p
             className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
             style={reveal(revealed, 160)}
           >
-            Patients follow the plan their therapist set, practise with guided
-            exercises, and check in from their phone. Their therapist follows
-            along.
+            {t.body}
           </p>
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
@@ -121,7 +113,7 @@ const MobileAppBand = () => {
               <img
                 key={shot.src}
                 src={shot.src}
-                alt={shot.alt}
+                alt={t.screenshots[i]}
                 loading="lazy"
                 className={`h-auto w-auto max-h-[460px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
                   i === 1 ? "translate-y-4" : ""

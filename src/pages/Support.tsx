@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
-
-const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
-type Locale = (typeof SUPPORTED_LOCALES)[number];
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { useLocale, localizedPath, type Locale } from "@/i18n";
 
 const SUPPORT_EMAIL = "support@upspeech.app";
 
@@ -368,28 +366,7 @@ const SUPPORT_FAQ_SCHEMA = {
 };
 
 export default function Support() {
-  const [searchParams] = useSearchParams();
-
-  const getLocale = (): Locale => {
-    const urlLocale = searchParams.get("lang");
-    if (urlLocale && SUPPORTED_LOCALES.includes(urlLocale as Locale)) {
-      return urlLocale as Locale;
-    }
-    const browserLang = navigator.language.split("-")[0];
-    if (SUPPORTED_LOCALES.includes(browserLang as Locale)) {
-      return browserLang as Locale;
-    }
-    return "en";
-  };
-
-  const [locale, setLocale] = useState<Locale>(getLocale());
-
-  const changeLanguage = (newLocale: Locale) => {
-    setLocale(newLocale);
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("lang", newLocale);
-    window.history.replaceState({}, "", `?${newParams.toString()}`);
-  };
+  const locale = useLocale();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -408,20 +385,8 @@ export default function Support() {
         structuredData={SUPPORT_FAQ_SCHEMA}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex justify-end mb-6 gap-2">
-          {SUPPORTED_LOCALES.map((lang) => (
-            <button
-              key={lang}
-              onClick={() => changeLanguage(lang)}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                locale === lang
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-              }`}
-            >
-              {c.langLabel[lang]}
-            </button>
-          ))}
+        <div className="flex justify-end mb-6">
+          <LocaleSwitcher />
         </div>
 
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -473,20 +438,23 @@ export default function Support() {
               <ul className="mt-3 space-y-2 font-body">
                 <li>
                   <a
-                    href="/privacy"
+                    href={localizedPath("/privacy", locale)}
                     className="text-indigo-600 hover:underline"
                   >
                     {c.privacy}
                   </a>
                 </li>
                 <li>
-                  <a href="/terms" className="text-indigo-600 hover:underline">
+                  <a
+                    href={localizedPath("/terms", locale)}
+                    className="text-indigo-600 hover:underline"
+                  >
                     {c.terms}
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/delete-account"
+                    href={localizedPath("/delete-account", locale)}
                     className="text-indigo-600 hover:underline"
                   >
                     {c.deleteAccount}
@@ -499,7 +467,10 @@ export default function Support() {
 
         {/* Back to Home Link */}
         <div className="mt-8 text-center">
-          <a href="/" className="text-indigo-600 hover:underline">
+          <a
+            href={localizedPath("/", locale)}
+            className="text-indigo-600 hover:underline"
+          >
             &larr; {c.back}
           </a>
         </div>

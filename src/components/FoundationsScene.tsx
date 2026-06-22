@@ -1,53 +1,59 @@
 import { useReveal } from "./useReveal";
+import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type Partner = {
   name: string;
-  context: string;
+  contextKey: keyof ReturnType<
+    typeof useT
+  >["home"]["foundations"]["partnerContext"];
   logo?: string;
   wordmarkFont?: "heading" | "body";
   wordmark?: string;
 };
 
+// Partner names/wordmarks/logos are proper nouns and stay in code; the context
+// line is localized via home.foundations.partnerContext[contextKey].
 const partners: Partner[] = [
   {
     name: "SpeechCare",
     logo: "/images/speechcare-logo.png",
-    context: "Co-development partner",
+    contextKey: "speechcare",
   },
   {
     name: "ElevenLabs Grants",
     logo: "/images/elevenlabs-grants.webp",
-    context: "AI infrastructure grant",
+    contextKey: "elevenlabs",
   },
   {
     name: "Lispolis Ignite",
     wordmark: "Lispolis · Ignite",
     wordmarkFont: "body",
-    context: "Acceleration program",
+    contextKey: "lispolis",
   },
   {
     name: "Unicorn Factory",
     wordmark: "Unicorn Factory",
     wordmarkFont: "heading",
-    context: "Most Promising Startup · Lisboa",
+    contextKey: "unicorn",
   },
   {
     name: "Innocatalyst Health Program",
     wordmark: "Innocatalyst Health",
     wordmarkFont: "heading",
-    context: "Health innovation programme",
+    contextKey: "innocatalyst",
   },
   {
     name: "HealthQUP",
     wordmark: "HealthQUP",
     wordmarkFont: "heading",
-    context: "Health acceleration programme",
+    contextKey: "healthqup",
   },
 ];
 
 const FoundationsScene = () => {
+  const t = useT().home.foundations;
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.18 });
 
   const style = (delay: number): React.CSSProperties => ({
@@ -72,7 +78,7 @@ const FoundationsScene = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={style(0)}
         >
-          Foundations
+          {t.eyebrow}
         </p>
         <h2
           className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
@@ -82,17 +88,15 @@ const FoundationsScene = () => {
             ...style(80),
           }}
         >
-          Clinical practice and AI engineering,
+          {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">in the same team.</span>
+          <span className="text-calm-lavender">{t.headlineLine2}</span>
         </h2>
         <p
           className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={style(160)}
         >
-          Clinicians and engineers work side by side. Product decisions are
-          reviewed by the practising speech-language pathologists who use the
-          platform with patients.
+          {t.body}
         </p>
 
         {/* Partners grid */}
@@ -102,10 +106,10 @@ const FoundationsScene = () => {
             style={style(320)}
           >
             <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/60">
-              Partners · Backers · Recognition
+              {t.partnersLabel}
             </span>
             <span className="font-body text-sm text-calm-charcoal/45">
-              Building alongside the people who know the work.
+              {t.partnersTagline}
             </span>
           </div>
 
@@ -150,7 +154,7 @@ const FoundationsScene = () => {
                     {p.name}
                   </div>
                   <div className="mt-1.5 font-body text-sm text-calm-charcoal/65 leading-snug">
-                    {p.context}
+                    {t.partnerContext[p.contextKey]}
                   </div>
                 </div>
               </div>

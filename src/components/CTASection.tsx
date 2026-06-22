@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
+import { useT } from "@/i18n";
 
 const CTASection = () => {
+  const t = useT().home.cta;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,12 +35,12 @@ const CTASection = () => {
 
     if (!formData.name || !formData.email || !formData.role) {
       setFieldErrors({
-        name: formData.name ? undefined : "Please enter your name.",
-        email: formData.email ? undefined : "Please enter your email address.",
-        role: formData.role ? undefined : "Please choose your role.",
+        name: formData.name ? undefined : t.nameError,
+        email: formData.email ? undefined : t.emailError,
+        role: formData.role ? undefined : t.roleError,
       });
       toast({
-        title: "Please fill in all required fields",
+        title: t.requiredFieldsTitle,
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -69,9 +71,8 @@ const CTASection = () => {
         });
 
         toast({
-          title: "You're on the list.",
-          description:
-            "Thanks, we'll be in touch. Check your email for a confirmation.",
+          title: t.successTitle,
+          description: t.successDescription,
         });
       } else {
         const errorText = await response.text();
@@ -84,19 +85,17 @@ const CTASection = () => {
       trackFormSubmit("waitlist_form", false);
       console.error("Submission error:", error);
 
-      let errorMessage = "Please try again later.";
+      let errorMessage = t.errorDefault;
       if (error instanceof Error) {
         if (error.message.includes("fetch")) {
-          errorMessage =
-            "Network error. Please check your connection and try again.";
+          errorMessage = t.errorNetwork;
         } else if (error.message.includes("Form submission failed")) {
-          errorMessage =
-            "There was an issue with the form submission. Please try again.";
+          errorMessage = t.errorSubmission;
         }
       }
 
       toast({
-        title: "Something went wrong",
+        title: t.errorTitle,
         description: errorMessage,
         variant: "destructive",
       });
@@ -128,15 +127,13 @@ const CTASection = () => {
           className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          Request early access.
+          {t.headline}
         </h2>
         <p
           className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          We're working with a cohort of clinics and would like to hear from
-          others working in stuttering. Tell us about your practice and we'll be
-          in touch.
+          {t.body}
         </p>
 
         <div
@@ -163,7 +160,7 @@ const CTASection = () => {
                 htmlFor="name"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Full Name *
+                {t.nameLabel}
               </Label>
               <Input
                 id="name"
@@ -177,7 +174,7 @@ const CTASection = () => {
                 aria-invalid={!!fieldErrors.name}
                 aria-describedby={fieldErrors.name ? "name-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
-                placeholder="Enter your name"
+                placeholder={t.namePlaceholder}
                 required
               />
               {fieldErrors.name && (
@@ -196,7 +193,7 @@ const CTASection = () => {
                 htmlFor="email"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Email Address *
+                {t.emailLabel}
               </Label>
               <Input
                 id="email"
@@ -210,7 +207,7 @@ const CTASection = () => {
                 aria-invalid={!!fieldErrors.email}
                 aria-describedby={fieldErrors.email ? "email-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
-                placeholder="your@email.com"
+                placeholder={t.emailPlaceholder}
                 required
               />
               {fieldErrors.email && (
@@ -229,7 +226,7 @@ const CTASection = () => {
                 htmlFor="role"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Role *
+                {t.roleLabel}
               </Label>
               <Select
                 onValueChange={(value) => {
@@ -239,34 +236,34 @@ const CTASection = () => {
                 }}
               >
                 <SelectTrigger
-                  aria-label="Choose your role"
+                  aria-label={t.rolePlaceholder}
                   aria-invalid={!!fieldErrors.role}
                   aria-describedby={fieldErrors.role ? "role-error" : undefined}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
-                  <SelectValue placeholder="Choose your role" />
+                  <SelectValue placeholder={t.rolePlaceholder} />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem
                     value="speech-therapist"
                     className="focus:bg-calm-navy/5"
                   >
-                    Speech Therapist
+                    {t.roleSpeechTherapist}
                   </SelectItem>
                   <SelectItem
                     value="clinic-director"
                     className="focus:bg-calm-navy/5"
                   >
-                    Clinic Director
+                    {t.roleClinicDirector}
                   </SelectItem>
                   <SelectItem
                     value="practice-owner"
                     className="focus:bg-calm-navy/5"
                   >
-                    Practice Owner
+                    {t.rolePracticeOwner}
                   </SelectItem>
                   <SelectItem value="other" className="focus:bg-calm-navy/5">
-                    Other
+                    {t.roleOther}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -286,7 +283,7 @@ const CTASection = () => {
                 htmlFor="clinic-size"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Clinic Size (Optional)
+                {t.clinicSizeLabel}
               </Label>
               <Select
                 onValueChange={(value) =>
@@ -294,23 +291,23 @@ const CTASection = () => {
                 }
               >
                 <SelectTrigger
-                  aria-label="Choose clinic size"
+                  aria-label={t.clinicSizePlaceholder}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
-                  <SelectValue placeholder="Choose clinic size" />
+                  <SelectValue placeholder={t.clinicSizePlaceholder} />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem value="solo" className="focus:bg-calm-navy/5">
-                    Solo Practice
+                    {t.clinicSizeSolo}
                   </SelectItem>
                   <SelectItem value="small" className="focus:bg-calm-navy/5">
-                    2-5 Therapists
+                    {t.clinicSizeSmall}
                   </SelectItem>
                   <SelectItem value="medium" className="focus:bg-calm-navy/5">
-                    6-15 Therapists
+                    {t.clinicSizeMedium}
                   </SelectItem>
                   <SelectItem value="large" className="focus:bg-calm-navy/5">
-                    15+ Therapists
+                    {t.clinicSizeLarge}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -321,7 +318,7 @@ const CTASection = () => {
               disabled={isSubmitting}
               className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              {isSubmitting ? "Submitting..." : "Request early access"}
+              {isSubmitting ? t.submitting : t.submit}
             </Button>
           </form>
         </div>

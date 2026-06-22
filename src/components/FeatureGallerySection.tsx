@@ -1,44 +1,19 @@
 import { useReveal } from "./useReveal";
 import ZoomableImage from "./ui/ZoomableImage";
+import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-type Feature = {
-  label: string;
-  title: string;
-  copy: string;
-  image: string;
-  imageAlt: string;
-};
-
-const FEATURES: Feature[] = [
-  {
-    label: "Structured learning path",
-    title: "A plan built from milestones and steps.",
-    copy: "The clinician assembles each patient's path from established techniques, then unlocks each step as the patient is ready.",
-    image: "/screenshots/app/therapist-learning-path.png",
-    imageAlt:
-      "UpSpeech learning path showing a patient's therapy milestones and steps with completion status",
-  },
-  {
-    label: "Practice scenarios",
-    title: "Rehearsal with a virtual conversation partner.",
-    copy: "Patients rehearse difficult conversations with a virtual counterpart. The clinician sets the scenario and difficulty.",
-    image: "/screenshots/app/patient-ai-scenario.png",
-    imageAlt:
-      "UpSpeech practice scenario interface showing a job interview rehearsal with objectives and video call",
-  },
-  {
-    label: "Self-report check-ins",
-    title: "Self-reports the therapist reviews.",
-    copy: "A short stuttering self-report is captured at intervals, so the therapist can review how the patient describes their experience across therapy.",
-    image: "/screenshots/app/cbsa-severity-trend.png",
-    imageAlt:
-      "UpSpeech chart of a patient's self-reported stuttering responses over several weeks",
-  },
+// Image sources stay in code; label/title/copy/imageAlt come from the dictionary
+// by index (home.gallery.features).
+const FEATURE_IMAGES = [
+  "/screenshots/app/therapist-learning-path.png",
+  "/screenshots/app/patient-ai-scenario.png",
+  "/screenshots/app/cbsa-severity-trend.png",
 ];
 
 const FeatureGallerySection = () => {
+  const t = useT().home.gallery;
   const { ref, revealed } = useReveal<HTMLDivElement>({
     threshold: 0.05,
     rootMargin: "0px 0px 0px 0px",
@@ -66,7 +41,7 @@ const FeatureGallerySection = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={headerStyle(0)}
         >
-          Inside the platform
+          {t.eyebrow}
         </p>
         <h2
           className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
@@ -76,18 +51,15 @@ const FeatureGallerySection = () => {
             ...headerStyle(80),
           }}
         >
-          Specific tools.
+          {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">
-            For clinicians and researchers.
-          </span>
+          <span className="text-calm-lavender">{t.headlineLine2}</span>
         </h2>
         <p
           className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
           style={headerStyle(140)}
         >
-          The platform is built around a structured learning path, from
-          identifying stuttering moments through to real-world generalisation.
+          {t.intro}
         </p>
 
         {/* Featured: Annotation tool (cross-audience) */}
@@ -103,7 +75,7 @@ const FeatureGallerySection = () => {
           <div className="relative bg-calm-charcoal/[0.03] flex items-center justify-center p-3 sm:p-5 lg:p-6">
             <ZoomableImage
               src="/screenshots/app/researcher-annotation-tool.jpg"
-              alt="UpSpeech annotation tool with audio waveform, video review, and frame-by-frame tagging by speech-language pathologists"
+              alt={t.annotationImageAlt}
               className="w-full h-auto block rounded-lg"
               loading="lazy"
             />
@@ -111,23 +83,20 @@ const FeatureGallerySection = () => {
           <div className="p-7 sm:p-9 lg:p-11 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-calm-navy/10">
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className="rounded-full bg-calm-lavender/15 px-2.5 py-1 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-navy">
-                For clinicians
+                {t.forClinicians}
               </span>
               <span className="rounded-full bg-calm-lavender/15 px-2.5 py-1 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-navy">
-                For researchers
+                {t.forResearchers}
               </span>
             </div>
             <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
-              Annotation tool
+              {t.annotationEyebrow}
             </div>
             <h3 className="mt-2 font-heading font-bold text-calm-charcoal tracking-tight text-2xl sm:text-3xl leading-tight">
-              The tool clinicians and researchers use to label stuttering
-              moments.
+              {t.annotationTitle}
             </h3>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
-              Frame-by-frame tagging of stuttering moments: core behaviour,
-              secondary behaviours, tension level. Standard taxonomy. The same
-              tool builds our dataset and supports research partnerships.
+              {t.annotationCopy}
             </p>
             <div className="mt-5 flex flex-wrap gap-1.5">
               {["SR", "ISR", "MUR", "Prolongation", "Block", "Tension 0-3"].map(
@@ -145,7 +114,7 @@ const FeatureGallerySection = () => {
         </article>
 
         <div className="mt-[clamp(2rem,4vw,3rem)] grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f, i) => (
+          {t.features.map((f, i) => (
             <article
               key={f.label}
               className="flex flex-col"
@@ -158,7 +127,7 @@ const FeatureGallerySection = () => {
             >
               <div className="rounded-2xl overflow-hidden border border-calm-navy/10 bg-white shadow-[0_24px_60px_-30px_rgba(41,53,135,0.3)]">
                 <ZoomableImage
-                  src={f.image}
+                  src={FEATURE_IMAGES[i]}
                   alt={f.imageAlt}
                   className="w-full h-auto block"
                   loading="lazy"

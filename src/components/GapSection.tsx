@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { EASE, reveal } from "./motion";
+import { useT } from "@/i18n";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
-const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
+const DAY_COUNT = 7;
 
 // Once-a-week clinic cadence: session on Thursday
 const SESSION_DAY = 3;
 
 const GapSection = () => {
+  const t = useT().home.gap;
   const containerRef = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -87,7 +89,7 @@ const GapSection = () => {
   const swap = clamp01((progress - 0.5) / 0.35);
   const footer = clamp01((progress - 0.8) / 0.15);
 
-  const daysLit = fillContinuous * DAYS.length;
+  const daysLit = fillContinuous * DAY_COUNT;
   const isFull = daysLit >= 6.95;
 
   return (
@@ -117,7 +119,7 @@ const GapSection = () => {
             className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-4 sm:mb-5"
             style={reveal(revealed, 0)}
           >
-            The patient's week
+            {t.eyebrow}
           </p>
 
           {/* Swapping headlines */}
@@ -138,7 +140,7 @@ const GapSection = () => {
                 transform: `translateY(${swap * -28}px)`,
               }}
             >
-              A patient's week, as it is today.
+              {t.headlineToday}
             </h2>
             <h2
               className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -150,8 +152,8 @@ const GapSection = () => {
                 transform: `translateY(${(1 - swap) * 28}px)`,
               }}
             >
-              A patient's week,{" "}
-              <span className="text-calm-lavender">with UpSpeech.</span>
+              {t.headlineWithPrefix}{" "}
+              <span className="text-calm-lavender">{t.headlineWithBrand}</span>
             </h2>
           </div>
 
@@ -164,10 +166,10 @@ const GapSection = () => {
             <div className="mb-6 sm:mb-10">
               <div className="mb-3 flex items-baseline justify-between">
                 <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/55">
-                  Traditional
+                  {t.traditional}
                 </span>
                 <span className="font-body text-xs sm:text-sm text-calm-charcoal/55 tabular-nums">
-                  1 session · 6 days without support
+                  {t.traditionalCadence}
                 </span>
               </div>
               <WeekRow variant="traditional" progress={1} />
@@ -177,7 +179,7 @@ const GapSection = () => {
             <div>
               <div className="mb-3 flex items-baseline justify-between">
                 <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-lavender">
-                  With UpSpeech
+                  {t.withUpspeech}
                 </span>
                 <span
                   className={`font-body text-xs sm:text-sm tabular-nums transition-colors duration-500 ${
@@ -187,8 +189,8 @@ const GapSection = () => {
                   }`}
                 >
                   {isFull
-                    ? "1 session · Every day, continuous care"
-                    : `1 session · ${Math.round(daysLit)} / 7 days of continuous care`}
+                    ? t.fullCadence
+                    : `${t.partialPrefix}${Math.round(daysLit)}${t.partialSuffix}`}
                 </span>
               </div>
               <WeekRow variant="continuous" progress={fillContinuous} />
@@ -204,9 +206,9 @@ const GapSection = () => {
               transform: `translateY(${(1 - footer) * 20}px)`,
             }}
           >
-            Continuous support for the patient,{" "}
+            {t.footerPrefix}{" "}
             <span className="text-calm-navy font-semibold">
-              without more work for the clinician.
+              {t.footerEmphasis}
             </span>
           </div>
         </div>
@@ -222,16 +224,17 @@ const WeekRow = ({
   variant: "traditional" | "continuous";
   progress: number;
 }) => {
+  const t = useT().home.gap;
   return (
     <div className="grid grid-cols-7 gap-2 sm:gap-3">
-      {DAYS.map((day, i) => {
+      {t.days.map((day, i) => {
         const isSession = i === SESSION_DAY;
         const lit =
           variant === "traditional"
             ? isSession
               ? 1
               : 0
-            : clamp01(progress * DAYS.length - i);
+            : clamp01(progress * DAY_COUNT - i);
 
         return (
           <div key={day} className="flex flex-col items-center gap-2 sm:gap-3">
@@ -247,7 +250,7 @@ const WeekRow = ({
               {variant === "traditional" && isSession && (
                 <div className="absolute inset-0 rounded-xl bg-calm-navy flex items-center justify-center">
                   <span className="hidden sm:inline font-body text-[10px] sm:text-xs font-semibold text-white">
-                    Session
+                    {t.session}
                   </span>
                 </div>
               )}
@@ -285,10 +288,10 @@ const WeekRow = ({
                       }}
                     >
                       <span className="rounded-md bg-calm-navy px-2 py-0.5 font-body text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_6px_-2px_rgba(41,53,135,0.4)] ring-1 ring-white/20">
-                        Session
+                        {t.session}
                       </span>
                       <span className="font-body text-[10px] sm:text-xs font-semibold text-white/95">
-                        + Practice
+                        {t.plusPractice}
                       </span>
                     </div>
                   ) : (
@@ -299,7 +302,7 @@ const WeekRow = ({
                           opacity: clamp01((lit - 0.4) / 0.4),
                         }}
                       >
-                        Practice
+                        {t.practice}
                       </span>
                     )
                   )}

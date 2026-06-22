@@ -6,37 +6,20 @@ import {
 } from "@heroicons/react/24/outline";
 import { useReveal } from "./useReveal";
 import { reveal } from "./motion";
+import { useLocale, useT, localizedPath } from "@/i18n";
 
-type Point = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  title: string;
-  copy: string;
-};
-
-const POINTS: Point[] = [
-  {
-    icon: BuildingOffice2Icon,
-    title: "Per-organisation isolation",
-    copy: "Every clinic's data is kept separate by organisation. One organisation can never see another's patients or recordings.",
-  },
-  {
-    icon: LockClosedIcon,
-    title: "Encrypted in transit and at rest",
-    copy: "Data travels over TLS, and recordings and databases are encrypted while stored.",
-  },
-  {
-    icon: GlobeEuropeAfricaIcon,
-    title: "Hosted in the EU",
-    copy: "Our servers and file storage are in the European Union, and we handle personal data under the GDPR.",
-  },
-  {
-    icon: ShieldCheckIcon,
-    title: "Private recordings",
-    copy: "Recordings are reached through short-lived, signed links, never from a public location.",
-  },
+// Icons stay in code; title/copy come from the dictionary by index
+// (home.security.points).
+const POINT_ICONS: React.ComponentType<React.SVGProps<SVGSVGElement>>[] = [
+  BuildingOffice2Icon,
+  LockClosedIcon,
+  GlobeEuropeAfricaIcon,
+  ShieldCheckIcon,
 ];
 
 const SecuritySection = () => {
+  const locale = useLocale();
+  const t = useT().home.security;
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.05 });
 
   return (
@@ -54,7 +37,7 @@ const SecuritySection = () => {
           className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
           style={reveal(revealed, 0)}
         >
-          Security and data
+          {t.eyebrow}
         </p>
         <h2
           className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
@@ -64,20 +47,18 @@ const SecuritySection = () => {
             ...reveal(revealed, 80),
           }}
         >
-          Patient data, handled with care.
+          {t.headline}
         </h2>
         <p
           className="mt-5 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed"
           style={reveal(revealed, 160)}
         >
-          Clinics trust us with sensitive recordings. We treat that data the way
-          a clinic would, and a therapist always has the final say on what the
-          AI produces.
+          {t.body}
         </p>
 
         <ul className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {POINTS.map((point, index) => {
-            const Icon = point.icon;
+          {t.points.map((point, index) => {
+            const Icon = POINT_ICONS[index];
             return (
               <li
                 key={point.title}
@@ -105,10 +86,10 @@ const SecuritySection = () => {
           style={reveal(revealed, 640)}
         >
           <a
-            href="/privacy"
+            href={localizedPath("/privacy", locale)}
             className="font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors hover:decoration-calm-navy"
           >
-            Read our Privacy Policy
+            {t.readPrivacy}
           </a>
         </p>
       </div>

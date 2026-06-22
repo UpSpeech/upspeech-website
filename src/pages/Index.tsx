@@ -14,11 +14,14 @@ import FoundationsScene from "@/components/FoundationsScene";
 import SecuritySection from "@/components/SecuritySection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { useLocale, useT } from "@/i18n";
 
 const Index = () => {
+  const locale = useLocale();
+  const t = useT();
   return (
     <div className="min-h-screen font-body">
-      <SEO path="/" />
+      <SEO path="/" locale={locale} description={t.home.seoDescription} />
       <Header />
       <main id="main">
         <HeroOptionD />

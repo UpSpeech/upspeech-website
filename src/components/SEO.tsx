@@ -1,11 +1,18 @@
 import { Helmet } from "react-helmet-async";
+import { SUPPORTED_LOCALES } from "@/i18n";
 
 const BASE_URL = "https://upspeech.app";
 const DEFAULT_TITLE = "UpSpeech - Software for Stuttering Therapy Practices";
 const DEFAULT_DESCRIPTION =
   "Continuous support for stuttering therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.";
 
-const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
+// Locale-aware fallback title for pages that don't pass their own (the home
+// page). English is unchanged; pt/es get an in-language title tag.
+const DEFAULT_TITLE_BY_LOCALE: Record<string, string> = {
+  en: DEFAULT_TITLE,
+  pt: "UpSpeech - Software para clínicas de terapia da gaguez",
+  es: "UpSpeech - Software para clínicas de terapia de la tartamudez",
+};
 
 const LOCALE_TO_OG: Record<string, string> = {
   en: "en_US",
@@ -42,12 +49,17 @@ export function SEO({
   locale = "en",
   structuredData,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | UpSpeech` : DEFAULT_TITLE;
+  const fullTitle = title
+    ? `${title} | UpSpeech`
+    : (DEFAULT_TITLE_BY_LOCALE[locale] ?? DEFAULT_TITLE);
   // Netlify serves every non-root URL with a trailing slash; match it in
   // canonical/og:url/hreflang so sitemap, canonical, and served URL all agree.
-  const canonicalPath =
+  const slashedPath =
     !path || path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`;
-  const canonicalUrl = `${BASE_URL}${canonicalPath}`;
+  // Build the absolute URL for any locale: en at the root, pt/es prefixed.
+  const localeUrl = (l: string) =>
+    `${BASE_URL}${l === "en" ? "" : `/${l}`}${slashedPath}`;
+  const canonicalUrl = localeUrl(locale);
   const resolvedImage = image ?? ogImageForPath(path);
   const resolvedImageAlt = imageAlt ?? fullTitle;
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
@@ -69,14 +81,9 @@ export function SEO({
 
       {/* hreflang alternates */}
       {SUPPORTED_LOCALES.map((l) => (
-        <link
-          key={l}
-          rel="alternate"
-          hrefLang={l}
-          href={l === "en" ? canonicalUrl : `${canonicalUrl}?lang=${l}`}
-        />
+        <link key={l} rel="alternate" hrefLang={l} href={localeUrl(l)} />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={localeUrl("en")} />
 
       {/* OpenGraph */}
       <meta property="og:type" content={type} />

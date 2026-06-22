@@ -3,31 +3,17 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname, extname } from "path";
 import { fileURLToPath } from "url";
 import puppeteer from "puppeteer";
+import { ROUTES, LOCALES, localePath } from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, "..", "dist");
 const PORT = 4173;
 
-const ROUTES = [
-  "/",
-  "/privacy",
-  "/terms",
-  "/cookies",
-  "/delete-account",
-  "/for-patients",
-  "/techniques",
-  "/techniques/voluntary-stuttering",
-  "/techniques/cancelation",
-  "/techniques/pull-out",
-  "/techniques/preparatory-set",
-  "/techniques/holding",
-  "/techniques/soft-starts",
-  "/techniques/soft-articulation-contact",
-  "/techniques/prolonged-speech",
-  "/techniques/speech-speed-management",
-  "/techniques/pauses",
-  "/techniques/identification-desensitization",
-];
+// The full prerender matrix: every route in every locale, as the in-app path
+// the SPA serves (en at the root, pt/es under a prefix).
+const RENDER_PATHS = LOCALES.flatMap((locale) =>
+  ROUTES.map((route) => localePath(route.path, locale)),
+);
 
 const MIME_TYPES = {
   ".html": "text/html",
@@ -91,7 +77,7 @@ function startServer() {
 }
 
 async function prerender() {
-  console.log("Prerendering %d routes...", ROUTES.length);
+  console.log("Prerendering %d routes...", RENDER_PATHS.length);
 
   const server = await startServer();
   const browser = await puppeteer.launch({
@@ -118,7 +104,7 @@ async function prerender() {
     }
   });
 
-  for (const route of ROUTES) {
+  for (const route of RENDER_PATHS) {
     const url = `http://localhost:${PORT}${route}`;
 
     await page.goto(url, { waitUntil: "networkidle0", timeout: 15000 });
@@ -168,7 +154,7 @@ async function prerender() {
 
   await browser.close();
   server.close();
-  console.log("Done! Prerendered %d pages.", ROUTES.length);
+  console.log("Done! Prerendered %d pages.", RENDER_PATHS.length);
 }
 
 prerender().catch((err) => {
