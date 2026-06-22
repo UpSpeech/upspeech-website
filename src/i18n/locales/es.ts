@@ -6,7 +6,7 @@ import type { Dictionary } from "./en";
 export const es: Dictionary = {
   nav: {
     howItWorks: "Cómo funciona",
-    features: "Funciones",
+    features: "Funcionalidades",
     whyUs: "Por qué UpSpeech",
     techniques: "Técnicas",
     forPatients: "Para pacientes",
@@ -43,10 +43,10 @@ export const es: Dictionary = {
     es: "Español",
   },
   techniquesIndex: {
-    title: "Técnicas de Terapia del Habla",
-    subtitle: "Explora técnicas establecidas para la terapia de tartamudeo",
+    title: "Técnicas de Logopedia",
+    subtitle: "Explora técnicas establecidas para la terapia de la tartamudez",
     seoDescription:
-      "Descubre técnicas establecidas de terapia del habla para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
     mainCategories: "Categorías de Técnicas",
     standalone: "Técnicas Independientes",
@@ -111,7 +111,7 @@ export const es: Dictionary = {
       headlineLine2: "La plataforma se encarga del resto.",
       body: "Informes redactados automáticamente a partir de cada sesión. Actividad del paciente visible fuera de la consulta. Los terapeutas llegan preparados, con el contexto que necesitan.",
       imageAlt:
-        "Vista del terapeuta en UpSpeech del progreso de un paciente: estadísticas de actividad, hito del itinerario de aprendizaje y paso actual",
+        "Vista del terapeuta en UpSpeech del progreso de un paciente: estadísticas de actividad, hito de la ruta de aprendizaje y paso actual",
       points: [
         {
           label: "Preparación de la sesión",
@@ -154,7 +154,7 @@ export const es: Dictionary = {
       headline: "La práctica ocurre en la app, entre sesiones.",
       body: "Los pacientes siguen el plan que definió su terapeuta, practican con ejercicios guiados y se registran desde el móvil. Su terapeuta los acompaña.",
       screenshots: [
-        "App móvil de UpSpeech mostrando el itinerario de aprendizaje con los pasos que fijó el terapeuta",
+        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de tartamudez",
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
@@ -212,23 +212,23 @@ export const es: Dictionary = {
       headlineLine1: "Herramientas específicas.",
       headlineLine2: "Para clínicos e investigadores.",
       intro:
-        "La plataforma se construye en torno a un itinerario de aprendizaje estructurado, desde la identificación de momentos de tartamudez hasta la generalización en el mundo real.",
+        "La plataforma se construye en torno a una ruta de aprendizaje estructurada, desde la identificación de momentos de tartamudez hasta la generalización en el mundo real.",
       forClinicians: "Para clínicos",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
         "La herramienta que clínicos e investigadores usan para etiquetar momentos de tartamudez.",
       annotationCopy:
-        "Etiquetado fotograma a fotograma de momentos de tartamudez: conducta nuclear, conductas secundarias, nivel de tensión. Taxonomía estándar. La misma herramienta construye nuestro conjunto de datos y respalda colaboraciones de investigación.",
+        "Etiquetado fotograma a fotograma de momentos de tartamudez: conducta principal, conductas secundarias, nivel de tensión. Taxonomía estándar. La misma herramienta construye nuestro conjunto de datos y respalda colaboraciones de investigación.",
       annotationImageAlt:
         "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y etiquetado fotograma a fotograma por logopedas",
       features: [
         {
-          label: "Itinerario de aprendizaje estructurado",
+          label: "Ruta de aprendizaje estructurada",
           title: "Un plan construido a partir de hitos y pasos.",
-          copy: "El clínico arma el itinerario de cada paciente a partir de técnicas establecidas y desbloquea cada paso a medida que el paciente está listo.",
+          copy: "El clínico arma la ruta de cada paciente a partir de técnicas establecidas y desbloquea cada paso a medida que el paciente está listo.",
           imageAlt:
-            "Itinerario de aprendizaje de UpSpeech mostrando los hitos y pasos de terapia de un paciente con su estado de finalización",
+            "Ruta de aprendizaje de UpSpeech mostrando los hitos y pasos de terapia de un paciente con su estado de finalización",
         },
         {
           label: "Escenarios de práctica",
@@ -341,12 +341,12 @@ export const es: Dictionary = {
   forPatients: {
     seoTitle: "Para Pacientes",
     seoDescription:
-      "Cómo los pacientes practican terapia del habla entre sesiones con UpSpeech, guiados por su logopeda.",
+      "Cómo los pacientes practican logopedia entre sesiones con UpSpeech, guiados por su logopeda.",
     intro: {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
-      body: "UpSpeech es la forma de seguir practicando el trabajo que haces con tu logopeda, cada día, no solo en la consulta. Tu terapeuta define el plan; tú practicas en la app; él sigue tu progreso.",
+      body: "UpSpeech es la forma de seguir practicando el trabajo que haces con tu logopeda, cada día, no solo en la consulta. Tu terapeuta define el plan; tú practicas en la app; tu terapeuta sigue tu progreso.",
     },
     howItWorks: {
       eyebrow: "Cómo funciona para ti",
@@ -372,7 +372,7 @@ export const es: Dictionary = {
       body: "Abre la app para ver el ejercicio de hoy, realizarlo y mantener una rutina constante entre sesiones.",
       screenshots: [
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
-        "App móvil de UpSpeech mostrando el itinerario de aprendizaje con los pasos que fijó el terapeuta",
+        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de tartamudez",
       ],
     },
@@ -386,7 +386,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Qué voy a practicar?",
-          a: "Tu terapeuta elige ejercicios para ti según tus objetivos y tu fase de terapia. Verás solo lo que él ha asignado.",
+          a: "Tu terapeuta elige ejercicios para ti según tus objetivos y tu fase de terapia. Verás solo lo que tu terapeuta haya asignado.",
         },
         {
           q: "¿Con qué frecuencia debo practicar?",

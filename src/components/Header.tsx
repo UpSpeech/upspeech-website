@@ -9,7 +9,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const locale = useLocale();
-  const t = useT();
+  const t = useT().nav;
   const isHome = pathname === localizedPath("/", locale);
 
   // Close drawer on Escape, and lock background scroll while open.
@@ -48,13 +48,13 @@ const Header = () => {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:font-body focus:text-calm-charcoal focus:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
       >
-        {t.nav.skipToContent}
+        {t.skipToContent}
       </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <button
             type="button"
-            aria-label={isHome ? t.nav.logoScrollTop : t.nav.logoGoHome}
+            aria-label={isHome ? t.logoScrollTop : t.logoGoHome}
             className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender rounded-lg"
             onClick={() => {
               trackButtonClick("logo", "header");
@@ -80,26 +80,26 @@ const Header = () => {
               onClick={() => scrollToSection("how-it-works")}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.howItWorks}
+              {t.howItWorks}
             </button>
             <button
               onClick={() => scrollToSection("features")}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.features}
+              {t.features}
             </button>
             <button
               onClick={() => scrollToSection("differentiation")}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.whyUs}
+              {t.whyUs}
             </button>
             <a
               href={localizedPath("/techniques", locale)}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
               onClick={() => trackButtonClick("nav_techniques", "header")}
             >
-              {t.nav.techniques}
+              {t.techniques}
             </a>
             <LocaleSwitcher />
           </nav>
@@ -111,12 +111,12 @@ const Header = () => {
             }}
             className="hidden md:inline-flex bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
-            {t.nav.requestAccess}
+            {t.requestAccess}
           </Button>
 
           <button
             type="button"
-            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            aria-label={menuOpen ? t.closeMenu : t.openMenu}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             onClick={() => setMenuOpen((v) => !v)}
@@ -160,19 +160,19 @@ const Header = () => {
               onClick={() => scrollToSection("how-it-works")}
               className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.howItWorks}
+              {t.howItWorks}
             </button>
             <button
               onClick={() => scrollToSection("features")}
               className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.features}
+              {t.features}
             </button>
             <button
               onClick={() => scrollToSection("differentiation")}
               className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
-              {t.nav.whyUs}
+              {t.whyUs}
             </button>
             <a
               href={localizedPath("/techniques", locale)}
@@ -182,7 +182,7 @@ const Header = () => {
                 setMenuOpen(false);
               }}
             >
-              {t.nav.techniques}
+              {t.techniques}
             </a>
             <Button
               onClick={() => {
@@ -191,7 +191,7 @@ const Header = () => {
               }}
               className="mt-2 bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-3 rounded-full shadow-button"
             >
-              {t.nav.requestAccess}
+              {t.requestAccess}
             </Button>
             <div className="mt-3 flex justify-center">
               <LocaleSwitcher />

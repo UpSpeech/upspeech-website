@@ -12,7 +12,12 @@ import {
 import { HelmetProvider } from "react-helmet-async";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { PageViewTracker } from "@/components/PageViewTracker";
-import { LocaleProvider, isLocale, localizedPath } from "@/i18n";
+import {
+  LocaleProvider,
+  isLocale,
+  localizedPath,
+  splitLocaleFromPath,
+} from "@/i18n";
 import Index from "./pages/Index";
 
 // Backward compatibility: the site used to select locale with a ?lang=pt|es
@@ -27,11 +32,11 @@ function LegacyLangRedirect() {
     if (!lang) return;
     params.delete("lang");
     const rest = params.toString();
-    const firstSegment = pathname.split("/").filter(Boolean)[0];
-    const targetPath =
-      isLocale(lang) && lang !== "en" && firstSegment !== lang
-        ? localizedPath(pathname, lang)
-        : pathname;
+    // Resolve against the locale-agnostic path so a stale ?lang on an already
+    // prefixed URL (e.g. /pt/x?lang=es) re-targets cleanly instead of stacking
+    // prefixes; ?lang=en sends the visitor back to the English root.
+    const { path } = splitLocaleFromPath(pathname);
+    const targetPath = isLocale(lang) ? localizedPath(path, lang) : pathname;
     navigate(
       { pathname: targetPath, search: rest ? `?${rest}` : "" },
       { replace: true },

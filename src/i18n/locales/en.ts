@@ -1,6 +1,6 @@
 // English is the source dictionary. Its shape defines the `Dictionary` type, so
-// pt.ts and es.ts fail typechecking if they miss a key. British spelling in
-// copy (practise, organised, behaviour). No em-dash characters anywhere.
+// pt.ts and es.ts fail typechecking if they miss a key. British spelling in copy
+// (practise, organised, behaviour).
 export const en = {
   nav: {
     howItWorks: "How it works",

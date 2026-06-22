@@ -8,11 +8,7 @@ import {
 } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-/**
- * Language pills that navigate to the same route under a different locale
- * prefix. Reads the active locale and the locale-agnostic path, so switching
- * keeps the visitor on the page they are viewing.
- */
+// Language pills that keep the visitor on the same page across locale switches.
 export function LocaleSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const t = useT();

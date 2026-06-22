@@ -219,7 +219,7 @@ export const pt: Dictionary = {
       annotationTitle:
         "A ferramenta que clínicos e investigadores usam para etiquetar momentos de gaguez.",
       annotationCopy:
-        "Etiquetagem fotograma a fotograma de momentos de gaguez: comportamento nuclear, comportamentos secundários, nível de tensão. Taxonomia padrão. A mesma ferramenta constrói o nosso conjunto de dados e apoia parcerias de investigação.",
+        "Etiquetagem fotograma a fotograma de momentos de gaguez: comportamento principal, comportamentos secundários, nível de tensão. Taxonomia padrão. A mesma ferramenta constrói o nosso conjunto de dados e apoia parcerias de investigação.",
       annotationImageAlt:
         "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e etiquetagem fotograma a fotograma por terapeutas da fala",
       features: [
@@ -346,7 +346,7 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A sua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continua a praticar o trabalho que faz com o seu terapeuta da fala, todos os dias, não apenas na consulta. O seu terapeuta define o plano; você pratica na app; ele acompanha o seu progresso.",
+      body: "A UpSpeech é como continua a praticar o trabalho que faz com o seu terapeuta da fala, todos os dias, não apenas na consulta. O seu terapeuta define o plano; pratica na app; o seu terapeuta acompanha o seu progresso.",
     },
     howItWorks: {
       eyebrow: "Como funciona para si",
@@ -357,7 +357,7 @@ export const pt: Dictionary = {
           copy: "O seu terapeuta da fala escolhe os exercícios e objetivos que correspondem à sua terapia e à sua fase de tratamento.",
         },
         {
-          title: "Você pratica na app",
+          title: "Pratica na app",
           copy: "Faça os exercícios guiados entre sessões, ao seu ritmo, a partir do telemóvel. Vê apenas o que o seu terapeuta atribuiu.",
         },
         {

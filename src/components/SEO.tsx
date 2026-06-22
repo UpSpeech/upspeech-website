@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { SUPPORTED_LOCALES } from "@/i18n";
 
 const BASE_URL = "https://upspeech.app";
 const DEFAULT_TITLE = "UpSpeech - Software for Stuttering Therapy Practices";
@@ -12,8 +13,6 @@ const DEFAULT_TITLE_BY_LOCALE: Record<string, string> = {
   pt: "UpSpeech - Software para clínicas de terapia da gaguez",
   es: "UpSpeech - Software para clínicas de terapia de la tartamudez",
 };
-
-const SUPPORTED_LOCALES = ["en", "pt", "es"] as const;
 
 const LOCALE_TO_OG: Record<string, string> = {
   en: "en_US",
@@ -80,7 +79,7 @@ export function SEO({
         }
       />
 
-      {/* hreflang alternates: one per locale, all pointing at path URLs */}
+      {/* hreflang alternates */}
       {SUPPORTED_LOCALES.map((l) => (
         <link key={l} rel="alternate" hrefLang={l} href={localeUrl(l)} />
       ))}

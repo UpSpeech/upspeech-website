@@ -7,7 +7,7 @@ const linkClass =
 
 const Footer = () => {
   const locale = useLocale();
-  const t = useT();
+  const t = useT().footer;
   return (
     <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-primary text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -27,9 +27,7 @@ const Footer = () => {
               height="48"
               loading="lazy"
             />
-            <p className="font-body text-sm text-white/80">
-              {t.footer.tagline}
-            </p>
+            <p className="font-body text-sm text-white/80">{t.tagline}</p>
             {(APP_STORE_URL || PLAY_STORE_URL) && (
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 {APP_STORE_URL && (
@@ -37,11 +35,11 @@ const Footer = () => {
                     href={APP_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={t.footer.appStoreAriaLabel}
+                    aria-label={t.appStoreAriaLabel}
                   >
                     <img
                       src="/images/app-store.png"
-                      alt={t.footer.appStoreAlt}
+                      alt={t.appStoreAlt}
                       className="h-10 w-auto"
                       loading="lazy"
                     />
@@ -52,11 +50,11 @@ const Footer = () => {
                     href={PLAY_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={t.footer.playStoreAriaLabel}
+                    aria-label={t.playStoreAriaLabel}
                   >
                     <img
                       src="/images/google-play.png"
-                      alt={t.footer.playStoreAlt}
+                      alt={t.playStoreAlt}
                       className="h-10 w-auto"
                       loading="lazy"
                     />
@@ -67,53 +65,53 @@ const Footer = () => {
           </div>
 
           <nav
-            aria-label={t.footer.product}
+            aria-label={t.product}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              {t.footer.product}
+              {t.product}
             </h2>
             <a
               href={localizedPath("/for-patients", locale)}
               className={linkClass}
             >
-              {t.footer.forPatients}
+              {t.forPatients}
             </a>
             <a
               href={localizedPath("/techniques", locale)}
               className={linkClass}
             >
-              {t.footer.techniques}
+              {t.techniques}
             </a>
             <a href={localizedPath("/support", locale)} className={linkClass}>
-              {t.footer.support}
+              {t.support}
             </a>
           </nav>
 
           <nav
-            aria-label={t.footer.legal}
+            aria-label={t.legal}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              {t.footer.legal}
+              {t.legal}
             </h2>
             <a href={localizedPath("/privacy", locale)} className={linkClass}>
-              {t.footer.privacy}
+              {t.privacy}
             </a>
             <a href={localizedPath("/terms", locale)} className={linkClass}>
-              {t.footer.terms}
+              {t.terms}
             </a>
             <a href={localizedPath("/cookies", locale)} className={linkClass}>
-              {t.footer.cookies}
+              {t.cookies}
             </a>
           </nav>
 
           <nav
-            aria-label={t.footer.company}
+            aria-label={t.company}
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
-              {t.footer.company}
+              {t.company}
             </h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
@@ -121,10 +119,10 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={linkClass}
             >
-              {t.footer.linkedin}
+              {t.linkedin}
             </a>
             <a href="mailto:hello@upspeech.app" className={linkClass}>
-              {t.footer.contact}
+              {t.contact}
             </a>
           </nav>
         </div>
@@ -167,7 +165,7 @@ const Footer = () => {
           style={{ animationDelay: "0.4s" }}
         >
           <p className="font-body text-sm text-white/60">
-            © {new Date().getFullYear()} UpSpeech. {t.footer.rights}
+            © {new Date().getFullYear()} UpSpeech. {t.rights}
           </p>
         </div>
       </div>
