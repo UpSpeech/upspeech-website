@@ -45,6 +45,11 @@ export function LocaleSwitcher({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  const closeAndRestore = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
   useEffect(() => {
     if (!open) return;
     const onPointer = (e: PointerEvent) => {
@@ -53,10 +58,7 @@ export function LocaleSwitcher({
     // Document-level Escape so the menu still closes once focus has Shift+Tabbed
     // out of it (the per-element handlers no longer fire there).
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        triggerRef.current?.focus();
-      }
+      if (e.key === "Escape") closeAndRestore();
     };
     document.addEventListener("pointerdown", onPointer);
     document.addEventListener("keydown", onKey);
@@ -73,11 +75,6 @@ export function LocaleSwitcher({
     const target = activeIndex >= 0 ? activeIndex : 0;
     itemRefs.current[target]?.focus();
   }, [open, locale]);
-
-  const closeAndRestore = () => {
-    setOpen(false);
-    triggerRef.current?.focus();
-  };
 
   const focusItem = (index: number) => {
     const count = SUPPORTED_LOCALES.length;
