@@ -5,6 +5,16 @@
 
 import { getTechniqueFAQs } from "./technique-faqs";
 
+const BASE_URL = "https://upspeech.app";
+
+/** Absolute URL for a locale-agnostic path, matching SEO.tsx canonical/hreflang exactly. */
+function localeAbsUrl(path: string, locale: string): string {
+  const pathWithSlash =
+    path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`;
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  return `${BASE_URL}${prefix}${pathWithSlash}`;
+}
+
 export const TECHNIQUE_SEO: Record<
   string,
   { title: string; description: string }
@@ -77,7 +87,7 @@ export function getTechniqueStructuredData(
     "@type": "Article",
     headline: name,
     description: description,
-    url: `https://upspeech.app/techniques/${slug}/`,
+    url: localeAbsUrl(`/techniques/${slug}`, locale),
     inLanguage: locale,
     datePublished: "2026-02-01",
     dateModified: "2026-03-03",
@@ -95,10 +105,11 @@ export function getTechniqueStructuredData(
         url: "https://upspeech.app/icons/apple-touch-icon.png",
       },
     },
+    // TODO(113): per-locale OG image
     image: `https://upspeech.app/og/techniques/${slug}.png`,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://upspeech.app/techniques/${slug}/`,
+      "@id": localeAbsUrl(`/techniques/${slug}`, locale),
     },
     about: {
       "@type": "Thing",
@@ -112,19 +123,19 @@ export function getTechniqueStructuredData(
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://upspeech.app/",
+          item: localeAbsUrl("/", locale),
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Techniques",
-          item: "https://upspeech.app/techniques/",
+          item: localeAbsUrl("/techniques", locale),
         },
         {
           "@type": "ListItem",
           position: 3,
           name: name,
-          item: `https://upspeech.app/techniques/${slug}/`,
+          item: localeAbsUrl(`/techniques/${slug}`, locale),
         },
       ],
     },
@@ -159,7 +170,7 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
     name: "Speech Therapy Techniques for Stuttering",
     description:
       "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
-    url: "https://upspeech.app/techniques/",
+    url: localeAbsUrl("/techniques", locale),
     inLanguage: locale,
     isPartOf: {
       "@id": "https://upspeech.app/#website",
@@ -171,7 +182,7 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
           "@type": "ListItem",
           position: index + 1,
           name: title,
-          url: `https://upspeech.app/techniques/${slug}/`,
+          url: localeAbsUrl(`/techniques/${slug}`, locale),
         }),
       ),
     },
@@ -182,13 +193,13 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://upspeech.app/",
+          item: localeAbsUrl("/", locale),
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Techniques",
-          item: "https://upspeech.app/techniques/",
+          item: localeAbsUrl("/techniques", locale),
         },
       ],
     },
