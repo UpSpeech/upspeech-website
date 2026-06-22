@@ -119,6 +119,7 @@ Utilizamos as informações que recolhemos para os seguintes fins:
 - **Automatização de relatórios** - Gerar relatórios clínicos utilizando modelos de linguagem Google Gemini com base na transcrição e no seu contexto clínico
 - **Deteção de disfluências** - Identificar e classificar automaticamente comportamentos de gaguez nas gravações
 - **Informações clínicas** - Fornecer análises estatísticas e tendências para apoiar o planeamento do tratamento
+- **Treino opcional de modelos (mediante consentimento)** - Com o seu consentimento explícito (opt-in), as gravações de voz anonimizadas podem ser mantidas após eliminar a sua conta e utilizadas para treinar futuras versões dos modelos de IA de terapia da fala da UpSpeech. É opcional, requer adesão explícita, e pode mudar de ideias no momento da eliminação, selecionando "Eliminar tudo". As gravações de voz são dados biométricos ao abrigo do artigo 9.º do RGPD; este tratamento só ocorre mediante o seu consentimento específico e explícito
 
 ### 3. Comunicação
 
@@ -239,10 +240,12 @@ Ao abrigo do Regulamento Geral sobre a Proteção de Dados (RGPD), tem os seguin
 
 ### 3. Eliminação e Restrição
 
-- **Eliminação da conta** - Solicitar a eliminação da sua conta e dados associados
+- **Eliminação da conta** - Elimine a sua conta e os dados associados diretamente na aplicação (Definições → Conta → Eliminar conta), ou contactando-nos. A eliminação é permanente e não pode ser desfeita a partir da aplicação
+- **Retenção opcional de gravações** - Se concedeu consentimento para treino de IA (no registo ou contactando-nos), pode escolher no momento da eliminação manter as suas gravações de forma anonimizada (ID de utilizador, nome, nomes de ficheiros, transcrições e notas do terapeuta são removidos; o áudio é mantido para treino do modelo). Se não concedeu este consentimento, as gravações são eliminadas juntamente com a conta
 - **Eliminação de gravações** - Eliminar gravações individuais de áudio/vídeo (também as remove do Google Cloud Storage)
 - **Eliminação de relatórios** - Eliminar relatórios específicos (apenas terapeutas)
 - **Restrição de processamento** - Solicitar que paremos de processar os seus dados (com algumas exceções para requisitos legais)
+- **Retirar consentimento para treino** - Pode retirar o consentimento a qualquer momento antes da eliminação enviando email para **help@upspeech.app**, ou no momento da eliminação selecionando "Eliminar tudo". Uma vez anonimizadas para treino, as gravações deixam de poder ser associadas a si e, por isso, não podem ser removidas individualmente. Para preocupações mais amplas, contacte-nos em **help@upspeech.app**
 
 ### 4. Oposição e Retirada
 
