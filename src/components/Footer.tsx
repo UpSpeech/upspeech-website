@@ -89,6 +89,9 @@ const Footer = () => {
             >
               {t.reducingDocumentationTime}
             </a>
+            <a href={localizedPath("/for-slps", locale)} className={linkClass}>
+              {t.forSlps}
+            </a>
             <a
               href={localizedPath("/techniques", locale)}
               className={linkClass}

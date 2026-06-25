@@ -31,6 +31,20 @@ const NAV_TIMEOUT_MS = 25000;
 const SELECTOR_TIMEOUT_MS = 15000;
 // -----------------------------------------------------------------------------
 
+// Routes whose visible content is fetched from the backend at render time and
+// therefore MUST prove it rendered (not its loading/error fallback) before we
+// write static HTML. Matched as a prefix against the in-app path. See plan 145.
+const DATA_DRIVEN_PREFIXES = ["/techniques"];
+
+/** True if `route` (locale-prefixed in-app path) is a data-driven content route. */
+function isDataDrivenRoute(route) {
+  // Strip a leading /pt or /es locale prefix before matching.
+  const withoutLocale = route.replace(/^\/(pt|es)(?=\/|$)/, "") || "/";
+  return DATA_DRIVEN_PREFIXES.some(
+    (p) => withoutLocale === p || withoutLocale.startsWith(`${p}/`),
+  );
+}
+
 // The full prerender matrix: every route in every locale, as the in-app path
 // the SPA serves (en at the root, pt/es under a prefix).
 const RENDER_PATHS = LOCALES.flatMap((locale) =>
@@ -149,6 +163,33 @@ async function renderRoute(page, route) {
     { timeout: SELECTOR_TIMEOUT_MS },
   );
 
+  // Content-integrity gate: for backend-driven routes, the Helmet SEO tags
+  // render even on the loading/error fallback, so they prove nothing. Wait for
+  // the page to settle into its `ready` state and fail if it settled into
+  // `loading`/`error` instead. This throws into renderRouteWithRetry, so a
+  // transient backend blip is retried; a persistent one fails the build LOUDLY
+  // instead of silently shipping "Error Loading Technique" HTML. See plan 145.
+  if (isDataDrivenRoute(route)) {
+    try {
+      await page.waitForFunction(
+        () => {
+          const m = document.querySelector("[data-prerender-state]");
+          return m && m.getAttribute("data-prerender-state") === "ready";
+        },
+        { timeout: SELECTOR_TIMEOUT_MS },
+      );
+    } catch {
+      const state = await page.evaluate(() => {
+        const m = document.querySelector("[data-prerender-state]");
+        return m ? m.getAttribute("data-prerender-state") : "missing";
+      });
+      throw new Error(
+        `Content gate failed for ${route}: data-prerender-state="${state}" (expected "ready"). ` +
+          `The backend API was likely unreachable at build time (check VITE_API_URL). See plan 145.`,
+      );
+    }
+  }
+
   // For pt/es routes, the canonical href should carry the locale prefix. Warn
   // (do not fail) if it does not, to surface a class of i18n regressions here.
   const locale = localeOf(route);
@@ -253,7 +294,12 @@ async function prerender() {
   const server = await startServer();
   const browser = await puppeteer.launch({
     headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    // --disable-web-security: the prerender renders the SPA on http://localhost:4173,
+    // but the SPA fetches the backend cross-origin. The prod backend only allows CORS
+    // from *.upspeech.app, so without this the build-time fetch is blocked and the
+    // techniques pages render empty. Safe here: this is a throwaway build-only browser
+    // rendering our own trusted dist/, never user input. See plan 145.
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-web-security"],
   });
 
   // Shared work queue; each worker pulls the next route until it drains.

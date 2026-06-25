@@ -57,6 +57,7 @@ const StutterPositive = React.lazy(() => import("./pages/StutterPositive"));
 const ReducingDocumentationTime = React.lazy(
   () => import("./pages/ReducingDocumentationTime"),
 );
+const ForSlps = React.lazy(() => import("./pages/ForSlps"));
 const TechniquesIndexPage = React.lazy(() =>
   import("./pages/TechniquesIndexPage").then((m) => ({
     default: m.TechniquesIndexPage,
@@ -102,6 +103,7 @@ const AppRoutes = () => (
       path="reducing-documentation-time"
       element={<ReducingDocumentationTime />}
     />
+    <Route path="for-slps" element={<ForSlps />} />
 
     {/* Technique Documentation Routes */}
     <Route path="techniques" element={<TechniquesIndexPage />} />

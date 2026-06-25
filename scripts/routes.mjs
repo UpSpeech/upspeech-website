@@ -99,6 +99,12 @@ export const ROUTES = [
     changefreq: "monthly",
     priority: "0.7",
   },
+  {
+    path: "/for-slps",
+    lastmod: "2026-06-25",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
   { path: "/support", changefreq: "monthly", priority: "0.5" },
   {
     path: "/privacy",

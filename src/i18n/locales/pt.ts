@@ -10,6 +10,7 @@ export const pt: Dictionary = {
     whyUs: "Porquê a UpSpeech",
     techniques: "Técnicas",
     forPatients: "Para pacientes",
+    forSlps: "Para terapeutas da fala",
     requestAccess: "Pedir acesso antecipado",
     skipToContent: "Saltar para o conteúdo",
     logoScrollTop: "UpSpeech, subir ao topo",
@@ -24,6 +25,7 @@ export const pt: Dictionary = {
     legal: "Legal",
     company: "Empresa",
     forPatients: "Para pacientes",
+    forSlps: "Para terapeutas da fala",
     techniques: "Técnicas",
     support: "Apoio",
     privacy: "Política de Privacidade",
@@ -526,11 +528,75 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Deixe a UpSpeech redigir as notas para se concentrar na sessão.",
+      headline:
+        "Deixe a UpSpeech redigir as notas para se concentrar na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que pretendem prática estruturada entre sessões e notas redigidas por IA. ",
       bodyLink: "Peça acesso aqui",
       bodySuffix: " para ver se se adequa à sua prática.",
+    },
+  },
+  forSlps: {
+    seoTitle: "Para terapeutas da fala",
+    seoDescription:
+      "A UpSpeech ajuda os terapeutas da fala a passar menos tempo a escrever relatórios de sessões de terapia da gaguez e dá aos pacientes prática estruturada entre sessões, com progresso que pode acompanhar.",
+    intro: {
+      eyebrow: "Para terapeutas da fala",
+      headlineLine1: "Menos tempo em documentação.",
+      headlineLine2: "Mais terapia entre sessões.",
+      body: "A UpSpeech redige as notas de sessão para si rever, e dá aos seus pacientes prática guiada que fazem de facto entre consultas, para entrar na próxima sessão já a saber como foi a semana.",
+    },
+    documentation: {
+      eyebrow: "Documentação",
+      headline: "Notas de sessão, redigidas para si rever.",
+      body: "Após uma sessão, a UpSpeech transforma-a num rascunho de relatório estruturado. O clínico revê, edita e valida. Mantém a palavra clínica final; deixa de começar de uma página em branco.",
+    },
+    betweenSessions: {
+      eyebrow: "Entre sessões",
+      headline: "Atribua prática. Veja o que aconteceu.",
+      steps: [
+        {
+          title: "Define o plano",
+          copy: "Escolhe as técnicas e exercícios de cada paciente, construídos em torno dos seus objetivos terapêuticos.",
+        },
+        {
+          title: "O paciente pratica na app",
+          copy: "Alguns minutos calmos por dia de prática guiada, na técnica que definiu.",
+        },
+        {
+          title: "Acompanha o progresso",
+          copy: "Sequências, pontuações de técnica e tendências chegam até si, para que a próxima sessão comece mais avançada.",
+        },
+      ],
+    },
+    stutterPositive: {
+      eyebrow: "A nossa abordagem",
+      headline: "Positivo face à gaguez, por princípio.",
+      body: "O objetivo na app é a confiança e ser ouvido, não soar de determinada forma. A prática é encorajadora, nunca corretiva de forma que envergonhe.",
+    },
+    faq: {
+      eyebrow: "Perguntas de clínicos",
+      headline: "Perguntas frequentes de terapeutas da fala.",
+      items: [
+        {
+          q: "A UpSpeech escreve os meus relatórios por mim?",
+          a: "Redige um rascunho de relatório estruturado a partir da sessão para si rever e editar. Mantém a responsabilidade clínica; elimina o trabalho da página em branco.",
+        },
+        {
+          q: "O que fazem os meus pacientes?",
+          a: "Praticam as técnicas que atribui, em sessões diárias curtas, e o seu progresso chega até si entre consultas.",
+        },
+        {
+          q: "Substitui a terapia?",
+          a: "Não. A UpSpeech funciona através da sua clínica e é usada em conjunto com as suas sessões, não em vez delas.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Traga a UpSpeech para a sua prática.",
+      bodyPrefix: "A UpSpeech funciona através da sua clínica. ",
+      bodyLink: "Peça acesso aqui",
+      bodySuffix: ".",
     },
   },
 };
