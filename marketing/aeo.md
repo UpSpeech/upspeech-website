@@ -106,6 +106,26 @@ want a hard citation on the card itself, add a small source line under the stat.
 
 ## Site issues blocking AEO (found 2026-06-25, fix first)
 
+> **Status 2026-06-25, both addressed, in review.** Three website PRs target
+> `preview/website-options` (the branch Netlify actually deploys to production;
+> `main` is a stale English-only line):
+> - **Issue #1 (broken technique pages): PR #18** adds a prerender content gate
+>   that hard-fails the build if a backend-driven page renders empty, plus the
+>   `--disable-web-security` CORS fix and `data-prerender-state` markers. Root
+>   cause turned out to be three-fold: `VITE_API_URL` likely unset on Netlify
+>   (still needs a maintainer dashboard check), the prerender only checked Helmet
+>   tags (present even on the error page), AND the prod backend only allows CORS
+>   from `*.upspeech.app` so the `localhost:4173` build origin was blocked. The
+>   pre-existing `prerender-resilience` retry logic did NOT fix this (it retries
+>   on missing Helmet tags, which the error page still has).
+> - **Issue #2 (no `/for-slps`): PR #19** adds the clinician landing page in
+>   en/pt/es.
+> - Bonus: **PR #20** adds `/stutter-positive` and `/reducing-documentation-time`
+>   articles (buyer-prompt whitespace, Article + FAQPage schema).
+>
+> Open maintainer action: set `VITE_API_URL` in the Netlify production build env;
+> review the pt/es copy on #19/#20 before merge.
+
 Checked what the live site actually serves to a crawler (`curl` as PerplexityBot).
 The site prerenders to static HTML (Puppeteer SSG) with good schema, sitemap,
 llms.txt, and hreflang. But:
@@ -308,3 +328,85 @@ or cites. Per prompt:
   the "best stuttering apps" roundups Perplexity pulls from is what moves it.
 - The Portugal localization is a reminder to re-run from the target locale and to
   prioritize the PT/ES pages.
+
+## Off-site citation runsheet (plan 147, Part B) — 2026-06-25
+
+The Actions list above is the strategy. This is the operational layer: what is
+now live to cite, the exact copy to submit, and when to re-measure. Pages get
+crawled; third-party citations get UpSpeech into answers. Both halves are needed.
+
+### Canonical URLs to point every citation at
+
+Once PRs #18/#19/#20 merge and deploy, these are the pages a roundup, directory,
+or community answer should link to. Until #18 deploys, the technique pages still
+render broken, so hold technique-specific links until then.
+
+- Patient story: `https://upspeech.app/for-patients`
+- Clinician story: `https://upspeech.app/for-slps`  (PR #19)
+- Stutter-positive explainer: `https://upspeech.app/stutter-positive`  (PR #20)
+- SLP documentation article: `https://upspeech.app/reducing-documentation-time`  (PR #20)
+- Technique hub: `https://upspeech.app/techniques`  (only after PR #18 deploys)
+- PT/ES variants exist for all of the above under `/pt/...` and `/es/...`.
+
+### Where to submit (concrete, check each accepts submissions)
+
+1. **AI-tool directories** (fast, self-serve, indexed by answer engines):
+   AlternativeTo, There's An AI For That (theresanaiforthat.com), Futurepedia,
+   ToolFinder, ProductRank.ai. Use the blurb below.
+2. **Stuttering-app roundups** ("best stuttering apps 2026", "apps for people who
+   stutter"): find the pages Perplexity actually cited in the in-UI pass above
+   (they were the loose set that listed Stamurai / Stutter Stars / SpeechEasy).
+   Identify each article's update/contact route; pitch a fair inclusion, never a
+   demand to top the list.
+3. **SLP-tool roundups** ("AI tools for SLPs", "AI session notes for speech
+   therapists"): SLP newsletters and digital-health review sites. Lead with the
+   stutter-linked + patient-practice angle, not head-on vs SLPFlow/PatientNotes.
+4. **Healthtech/app directories**: relevant Capterra/G2-style and SLP association
+   resource pages that accept a profile.
+
+### Ready-to-paste blurbs (brand-voice checked; edit per destination)
+
+Directory / short listing (under ~50 words):
+
+> UpSpeech is a stutter-positive speech therapy platform. People who stutter get
+> guided practice and progress tracking between sessions; their speech-language
+> pathologist sets the plan and gets AI-drafted session notes to review. Built
+> with SLPs. Web, iOS, and Android.
+
+Roundup inclusion pitch (one paragraph, for an editor):
+
+> UpSpeech might fit your roundup: it is a stutter-positive app where practice is
+> linked to the person's own therapist, not solo self-drill. People who stutter
+> practise techniques their SLP assigned and see their progress; the therapist
+> sees it too and gets a drafted session note to review and sign off. It is used
+> alongside therapy, not instead of it. Happy to provide screenshots or a
+> walkthrough. Canonical page: https://upspeech.app/for-patients
+
+Community answer (only where genuinely on-topic, disclose affiliation):
+
+> (Disclosure: I work on UpSpeech.) For practising between sessions, the thing
+> that helped most was tying practice to what my/their therapist actually set,
+> rather than a generic app. UpSpeech does that and is stutter-positive about it
+> (the goal is being heard, not sounding a certain way). Whatever you pick, the
+> therapist link is the part worth looking for.
+
+### Community presence — handle with care (do not skip this caveat)
+
+r/Stutter and similar are sensitive spaces, not link-drop targets. Rules:
+participate authentically, always disclose affiliation, never astroturf, never
+make outcome/cure claims, follow each community's self-promotion rules, and mention
+the product once and only where it genuinely answers the question. A bad citation
+here is worse for the brand than no citation. If the team cannot commit to doing
+this as a real member over time, leave community out of the runsheet entirely.
+
+### Re-measure schedule (and when rankscale earns its keep)
+
+1. After PR #18 deploys, re-`curl` the live technique pages as PerplexityBot and
+   confirm real content (no "Error Loading"); update the baseline at the top.
+2. After the first round of directory/roundup submissions lands (allow a few weeks
+   for crawl), re-run the free one-shotters (HubSpot AEO Grader, Ahrefs AI
+   Visibility, manual Perplexity 0/5 prompts). Append dated results so this file
+   keeps a trend, not just a snapshot.
+3. Only once that re-measure shows the number starting to move is it worth setting
+   up rankscale.ai's free tier for ongoing tracking. Before then there is nothing
+   to monitor but a flat zero. (Confirmed: skip rankscale until step 2 moves.)
