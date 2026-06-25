@@ -117,10 +117,48 @@ a paragraph.
 - [ ] "What does stutter-positive therapy actually mean?" — the awareness angle,
       which also feeds Instagram.
 
+## Measurement tools (free first)
+
+Use free tools for the baseline; only pay once we're actively moving the number.
+
+**Brand inputs to paste into any tool:**
+
+- Brand name: `UpSpeech`
+- Website: `https://upspeech.app`
+- One-line description: `AI-powered speech therapy for stuttering: between-session
+  practice for people who stutter, plus AI clinical report drafting for SLPs.`
+- Competitors (patient side): Stamurai, Eloquent, Stutter Stars
+- Competitors (SLP side): SLPFlow, PatientNotes, TheraSnap
+- Locale: run from the target market (set US first, then PT/ES for localized pages)
+
+**Runsheet:**
+
+1. **HubSpot AEO Grader** — https://www.hubspot.com/aeo-grader
+   Free, no account, one-time. Enter brand + site. Returns a *scored* read across
+   ChatGPT/Perplexity/Gemini (sentiment, presence, brand recognition, share of
+   voice, market position). Copy the scores into the baseline table at the top.
+
+2. **Ahrefs AI Visibility Checker** — https://ahrefs.com/ai-visibility-checker
+   Free, no signup. Enter the domain. Checks ChatGPT, Gemini, Perplexity, Copilot,
+   Google AI Overviews. Note mention + citation rate per engine (limited preview,
+   but covers every engine free).
+
+3. **Rankscale** — https://rankscale.ai  (free tier, for ongoing tracking)
+   Sign up for the free tier, add the 5 prompts below and the competitors, let it
+   track over time. This is the recurring monitor.
+
+4. *(optional, paid-with-trial)* **Otterly** — https://otterly.ai/pricing
+   14-day free trial, no card, then $29/mo Lite (15 prompts). Only if you want
+   richer competitor/citation tracking than Rankscale's free tier gives.
+
+Cross-check free one-shotters if a result looks off: Semrush AI Search Visibility
+checker (semrush.com/free-tools/ai-search-visibility-checker), ProductRank.ai,
+aeochecker.ai.
+
 ## What we're not doing yet
 
-- No paid AEO trackers until at least one quarterly re-run. The bottleneck is
-  content that doesn't exist yet, not measurement.
+- No paid trackers beyond a free trial until the free tools show the number
+  moving. The bottleneck is content that doesn't exist yet, not measurement.
 - No multi-language AEO push until the English baseline moves.
 - No efficacy or outcome claims to chase a prompt. Credibility is the moat;
   don't trade it for a ranking.
