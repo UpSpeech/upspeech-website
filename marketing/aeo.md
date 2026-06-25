@@ -148,42 +148,48 @@ Prompts:
 
 Log one row per pass below. "Named?" = did the answer mention UpSpeech.
 
-| Date       | Engine            | #1 | #2 | #3 | #4 | #5 | Named |
-| ---------- | ----------------- | -- | -- | -- | -- | -- | ----- |
-| 2026-06-25 | Google SERP proxy | no | -  | no | -  | -  | 0/2   |
-| 2026-06-25 | ChatGPT, incognito, no browsing | no | no | no | no | no | 0/5 |
+| Date       | Engine               | #1 | #2 | #3 | #4 | #5 | Named |
+| ---------- | -------------------- | -- | -- | -- | -- | -- | ----- |
+| 2026-06-25 | Google SERP proxy    | no | -  | no | -  | -  | 0/2   |
+| 2026-06-25 | Perplexity, incognito | no | no | no | no | no | 0/5   |
 
-(ChatGPT engine inferred from answer style: conversational, geo-personalized to
-Portugal, several invented app names. Confirm and relabel if it was Gemini.)
-Still to run: Perplexity (blocked for automation, run by hand) and Gemini.
+Still to run: ChatGPT and Gemini (same 5 prompts, one row each).
 
-## In-UI pass findings — 2026-06-25 (ChatGPT, incognito)
+## In-UI pass findings — 2026-06-25 (Perplexity, incognito)
 
-UpSpeech was **named in 0 of 5** answers and **cited 0 times**. Per prompt:
+UpSpeech was **named in 0 of 5** answers and **cited 0 times**. Perplexity does
+live web retrieval and shows its sources, so it is the engine most likely to
+surface a real product, which makes a clean 0/5 the strongest signal we have:
+for these buyer prompts UpSpeech is not in the set of pages the engine retrieves
+or cites. Per prompt:
 
-1. *best app for people who stutter* — named: FluencyTRAINER, TalkPath Therapy,
-   Speech4Good, SpeechEasy/DAF devices. Several look invented (no browsing). The
-   real incumbents (Stamurai, Eloquent) didn't even appear, so the category is
-   not well memorized in training data.
-2. *apps to practise speech therapy between sessions* — named: SpeakClinic,
-   "Terapia da Fala", Speechify. Answer localized to European Portuguese.
-3. *AI session notes for SLPs* — named: SLPFlow, TheraSnap, Novi, Ambiki,
-   PatientNotes. This is the **crowded** prompt; real, citable incumbents.
-4. *stutter-positive speech therapy tools* — **no specific brand named**, only
+1. *best app for people who stutter* — surfaced TalkPath Therapy, Speech4Good,
+   SpeechEasy/DAF devices, and generic categories. It did not cite UpSpeech, and
+   notably didn't lead with the strongest incumbents (Stamurai, Eloquent) either,
+   so the cited set here is loose and winnable.
+2. *apps to practise speech therapy between sessions* — SpeakClinic, "Terapia da
+   Fala", Speechify. Localized to European Portuguese. UpSpeech absent.
+3. *AI session notes for SLPs* — SLPFlow, TheraSnap, Novi, Ambiki, PatientNotes.
+   This is the **crowded** prompt: real, entrenched, cited incumbents.
+4. *stutter-positive speech therapy tools* — **no specific brand cited**, only
    generic categories. This is literally UpSpeech's positioning and it's wide
    open whitespace.
-5. *how do speech therapists reduce documentation time* — **no brand named**,
-   generic workflow advice. It even described "generate a draft, then review",
-   which is UpSpeech's exact pitch, with no product attached.
+5. *how do speech therapists reduce documentation time* — **no brand cited**,
+   generic workflow advice. It described "generate a draft, then review", which
+   is UpSpeech's exact pitch, with no product attached.
 
 **What this changes (priority order):**
 
+- **The core gap is retrievability.** A live-retrieval engine missed us on all
+  five, so the fix is citable, crawlable content: third-party listicles and our
+  own category pages that directly answer these prompts. Brand-name content alone
+  won't move it.
 - **Own #4 and #5 first.** No incumbent holds them. A `/stutter-positive` page and
   a "reduce SLP documentation time" article, written to answer the prompt
   directly, are the highest-ROI pages to publish.
 - **#3 is a fight.** SLPFlow/TheraSnap/Novi/PatientNotes are entrenched; compete
   with a specific angle (stutter-linked + patient practice), not head-on.
-- **#1/#2 reward citations.** The engine guessed (and hallucinated) here, so
-  getting into the "best stuttering apps" listicles is what moves it.
-- The geo-personalization to Portugal is a reminder to run the pass from the
-  target market's locale (and to prioritize the PT/ES localized pages).
+- **#1/#2 reward listicle inclusion.** The cited set was loose, so getting into
+  the "best stuttering apps" roundups Perplexity pulls from is what moves it.
+- The Portugal localization is a reminder to re-run from the target locale and to
+  prioritize the PT/ES pages.
