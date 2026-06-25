@@ -1221,7 +1221,29 @@ svg {
   margin-top: 40px;
   display: grid;
   gap: 24px;
-  max-width: 700px;
+  max-width: 540px;
+}
+
+.app-phone {
+  position: absolute;
+  right: 26px;
+  bottom: -64px;
+  height: 880px;
+  width: auto;
+  z-index: 0;
+  filter: drop-shadow(0 32px 60px rgba(20, 26, 68, 0.26));
+}
+
+.post-app .store-row {
+  flex-direction: column;
+  max-width: 440px;
+}
+
+.post-app .hero-stack,
+.post-app .brand-mark,
+.post-app .store-row {
+  position: relative;
+  z-index: 1;
 }
 
 .store-row {
