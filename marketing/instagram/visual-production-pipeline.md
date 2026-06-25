@@ -44,12 +44,15 @@ quick clean editorial drafts. Text always lives in the template.
 
 Three options, by how load-bearing the on-screen content is:
 
-- **CSS mock (default).** Use the `post-mock` templates. Honest, on-brand,
-  stylized stand-in. No external assets, never garbled, ships today.
+- **Browser frame + real screenshot (default).** The `post-mock` templates drop
+  a real, sanitized app screenshot into a clean browser frame. This is what the
+  current product-proof posts use. Screenshots are vendored under
+  `templates/assets/screenshots/` (the same ones the website ships); swap in a
+  newer sanitized capture and re-export. Crisp UI, real branding, ships today.
 - **Real screenshot composite.** Sanitize a real app screen (no client data, no
   real names), then composite it into a generated phone/desk plate with
-  ImageMagick perspective `-distort` so the UI stays crisp. Use this when the
-  actual product UI is the point.
+  ImageMagick perspective `-distort` so the UI stays crisp. Use this when you
+  want the screen sitting in a photographed scene, not a flat browser frame.
 - **AI edit.** `fal-ai/flux-2-pro/edit` (scene + screenshot) when the device
   sits near head-on. Fast, but small text regenerates and garbles, so only for
   posts where the screen is atmosphere, not content.

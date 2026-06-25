@@ -62,8 +62,8 @@ Keep them peer-to-peer, specific, and within the sensitivity rules in
 
 - **CTA / pilot (text)**
   > We're working with a small number of clinics to refine UpSpeech for real
-  > caseloads: AI report drafting plus a between-session practice app your
-  > patients actually use. If you're an SLP curious about a pilot, comment or DM.
+  > caseloads: AI report drafting plus a between-session practice app built for
+  > the technique you set. If you're an SLP curious about a pilot, comment or DM.
   > Happy to show you the report flow first.
 
 ## Notes

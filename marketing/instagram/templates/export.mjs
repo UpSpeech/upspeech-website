@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const htmlPath = path.join(__dirname, "index.html");
+const cssPath = path.join(__dirname, "styles.css");
 const outputDir = path.resolve(__dirname, "../exports");
 
 const chromeCandidates = [
@@ -41,6 +42,50 @@ function exportSize(name) {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isLocalAssetRef(ref) {
+  return (
+    ref &&
+    !ref.startsWith("#") &&
+    !ref.startsWith("data:") &&
+    !ref.startsWith("http://") &&
+    !ref.startsWith("https://") &&
+    !ref.startsWith("//")
+  );
+}
+
+async function reportMissingAssetRefs(sourceText) {
+  const refs = [
+    ...[...sourceText.matchAll(/\b(?:src|href)="([^"]+)"/g)].map((match) => match[1]),
+    ...[...sourceText.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map((match) => match[1]),
+  ]
+    .filter(isLocalAssetRef)
+    .map((ref) => ref.split("#")[0].split("?")[0]);
+
+  const missing = [];
+  for (const ref of new Set(refs)) {
+    const assetPath = path.resolve(__dirname, ref);
+    try {
+      await fs.access(assetPath);
+    } catch {
+      missing.push({ ref, assetPath });
+    }
+  }
+
+  if (missing.length === 0) return;
+
+  const message = [
+    "Missing local template assets:",
+    ...missing.map(({ ref, assetPath }) => `- ${ref} (${assetPath})`),
+    "Exports will use CSS fallbacks where available. Set STRICT_SOURCE_IMAGES=1 to fail instead.",
+  ].join("\n");
+
+  if (process.env.STRICT_SOURCE_IMAGES === "1") {
+    throw new Error(message);
+  }
+
+  console.warn(message);
 }
 
 async function waitForScreenshot(outputPath, timeoutMs) {
@@ -163,6 +208,9 @@ async function exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, 
 }
 
 const html = await fs.readFile(htmlPath, "utf8");
+const css = await fs.readFile(cssPath, "utf8");
+await reportMissingAssetRefs(`${html}\n${css}`);
+
 const names = [
   ...new Set(
     [...html.matchAll(/\sdata-export="([^"]+)"/g)]

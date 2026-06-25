@@ -43,7 +43,7 @@ Publish all six highlight covers before or during week 1.
   > Progress you can actually see.
   >
   > Streaks, technique scores, and trends, all shared with your therapist so
-  > your next session starts further ahead. Progress, not pressure.
+  > your next session starts with more context. Progress, not pressure.
 - **Wed carousel** `carousel-week-01-hero` → `02` → `03` → `04`
   > What a week with UpSpeech actually looks like. Swipe through, then save it
   > for the start of your next practice week.
@@ -51,7 +51,7 @@ Publish all six highlight covers before or during week 1.
   > A little encouragement, every single day.
   >
   > Meet the part of UpSpeech that just wants you to show up. Nice and slow.
-  > You showed up again. That was smoother. Small words, real difference.
+  > You showed up again. That felt steadier. Small words, real difference.
 - **Stories** `story-02-technique-poll` + `story-03-progress`.
 
 ## Week 3 — How it works
@@ -82,12 +82,11 @@ Publish all six highlight covers before or during week 1.
 - **Wed mock** `feed-mock-02-report.png`
   > From session to signed-off note.
   >
-  > Draft, edit, approve. The documentation that used to eat your evening.
+  > Draft, edit, approve. A calmer path from session to signed-off note.
 - **Fri feed** `feed-09-cta.png`
   > Speech therapy, supported all week.
   >
-  > Free for patients to start. Ask your therapist about UpSpeech, or begin
-  > practising today. Link in bio.
+  > Ask your therapist about UpSpeech, or begin practising today. Link in bio.
 - **Stories** `story-photo-01-calm` (once real imagery exists) + recap poll.
 
 ## Reels (once recordings / companion animations exist)
@@ -95,7 +94,7 @@ Publish all six highlight covers before or during week 1.
 - 10-15s: a single guided easy-onset rep, screen-recorded, calm voiceover.
 - Companion reaction loop: the character nodding / celebrating a streak.
 - "Myth in 15 seconds": one stutter-positive fact, captioned.
-- Therapist angle: "the note wrote itself" screen recording (for SLPs).
+- Therapist angle: "draft, review, approve" screen recording (for SLPs).
 
 Animate the strongest one or two stills per week, not the whole library. See
 `visual-production-pipeline.md`.

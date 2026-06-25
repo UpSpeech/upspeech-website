@@ -39,7 +39,7 @@ Each concept lists the **angle**, the **audience**, and the **why**.
 
 - **"Reframe the wait" sticker pack.** Turn the companion's encouragement
   states into a downloadable Instagram/iMessage sticker pack ("nice and slow",
-  "you showed up", "that was smoother"). Brand in people's everyday messages.
+  "you showed up", "that felt steadier"). Brand in people's everyday messages.
   *Audience: people who stutter. Why: organic distribution, low cost.*
 
 - **"A week of progress" UGC flywheel.** Add an in-app "share my streak" export
@@ -47,9 +47,10 @@ Each concept lists the **angle**, the **audience**, and the **why**.
   share is an ad we didn't make. Pairs with the Progress pillar.
   *Audience: people who stutter. Why: compounding, authentic proof.*
 
-- **Smooth-speech wins (consented).** A lightweight, opt-in series where users
-  share a real moment that went better than expected (a phone call, an order).
-  Strict consent, never a "before/cure" framing. Proof that respects the person.
+- **Confidence-in-context wins (consented).** A lightweight, opt-in series where
+  users share a real moment that went better than expected (a phone call, an
+  order). Strict consent, never a "before/cure" framing. Proof that respects the
+  person.
   *Audience: community + prospects. Why: trust, relatability.*
 
 ## Format experiments

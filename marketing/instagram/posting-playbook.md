@@ -56,7 +56,7 @@ Once screen recordings or companion animations exist:
 - A single guided rep, calm voiceover, captions on.
 - Companion reaction loops.
 - 15-second myth-busters.
-- A "the note wrote itself" SLP demo.
+- A "draft, review, approve" SLP demo.
 
 Do not force reels with generic clinic stock footage. Real product motion and
 genuinely useful practice tips earn more than mood video.
