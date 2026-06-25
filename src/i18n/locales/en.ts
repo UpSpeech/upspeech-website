@@ -34,6 +34,8 @@ export const en = {
     appStoreAriaLabel: "Download UpSpeech on the App Store",
     playStoreAlt: "Get it on Google Play",
     playStoreAriaLabel: "Get UpSpeech on Google Play",
+    stutterPositive: "Stutter-positive",
+    reducingDocumentationTime: "Documentation time",
   },
   localeSwitcher: {
     label: "Language",
@@ -411,6 +413,122 @@ export const en = {
     storeAppStoreAriaLabel: "Download UpSpeech on the App Store",
     storePlayAlt: "Get it on Google Play",
     storePlayAriaLabel: "Get UpSpeech on Google Play",
+  },
+  stutterPositive: {
+    seoTitle: "What Is Stutter-Positive?",
+    seoDescription:
+      "A plain-language guide to stutter-positive speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    intro: {
+      eyebrow: "Philosophy",
+      headlineLine1: "What does",
+      headlineLine2: "stutter-positive mean?",
+      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first, not eradicating disfluency. It means supporting people who stutter to be heard on their own terms, not chasing a standard of speech that may never feel natural.",
+    },
+    sections: [
+      {
+        heading: "Fluency is not the only goal",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Some people who stutter do want smoother speech, and techniques like voluntary stuttering or prolonged speech can help. Others find that reducing avoidance and building confidence matters more. Stutter-positive means the goals come from the person, not from an external norm.",
+      },
+      {
+        heading: "Being heard, not sounding a certain way",
+        body: "People who stutter often deal with more than disfluency: avoidance, anticipation, and the exhausting work of managing others' reactions. Stutter-positive therapy addresses these alongside any technique practice. The measure of a good session is not how many times someone stuttered. It is whether they communicated what they meant and felt confident doing it.",
+      },
+      {
+        heading: "How UpSpeech reflects this",
+        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The learning path and exercises are set by the clinician; the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. The platform does not assume fluency is the destination.",
+      },
+      {
+        heading: "A note on language",
+        body: "This page uses 'people who stutter' and 'person who stutters' throughout. Person-first language is the default here unless an individual prefers otherwise. What matters most is that the person feels seen, not labelled.",
+      },
+    ],
+    faq: {
+      eyebrow: "Questions",
+      headline: "Common questions.",
+      items: [
+        {
+          q: "Is stutter-positive the same as not helping someone improve?",
+          a: "No. Stutter-positive therapy still teaches techniques, addresses avoidance, and supports progress. It means those goals are shaped by the person, not by an assumption that fluency is always the right target.",
+        },
+        {
+          q: "Does UpSpeech only work for stutter-positive approaches?",
+          a: "No. UpSpeech supports the plan a speech-language pathologist creates. The app delivers what the clinician assigns, which can include traditional fluency-shaping, modification techniques, or confidence-focused work.",
+        },
+        {
+          q: "What techniques are used in stutter-positive therapy?",
+          a: "Voluntary stuttering, identification and desensitisation, and pull-out techniques are common in stutter-positive approaches. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
+        },
+        {
+          q: "Where can I learn more?",
+          a: "The Stuttering Foundation, the British Stammering Association, and the American Institute for Stuttering publish accessible guides on stutter-positive and person-centred approaches to stuttering therapy.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Work with a clinician who understands your goals.",
+      bodyPrefix:
+        "UpSpeech is used through speech-language pathologists. If you run a practice and want to use it with your patients, you can ",
+      bodyLink: "request access here",
+      bodySuffix: ".",
+    },
+  },
+  reducingDocumentationTime: {
+    seoTitle: "How SLPs Spend Less Time on Session Notes",
+    seoDescription:
+      "A practical guide for speech-language pathologists on reducing documentation time in stuttering therapy, with structured drafts that support clinical judgement.",
+    intro: {
+      eyebrow: "For speech-language pathologists",
+      headlineLine1: "Less time on notes,",
+      headlineLine2: "more time on therapy.",
+      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in stuttering therapy, including where structured drafts fit in.",
+    },
+    sections: [
+      {
+        heading: "The blank-page problem",
+        body: "After a session, you know what happened. Writing it down takes longer than it should. The blank page is the bottleneck, not your knowledge. Many SLPs report that documentation is the administrative burden most likely to compress preparation time, extend working hours, or delay care notes. It is a structural problem, not a skill gap.",
+      },
+      {
+        heading: "Structured drafts you review and edit",
+        body: "One way to address the blank page is a structured draft generated from the session's data: what the patient practised, how they progressed, and what the therapist observed. A draft gives you something to react to rather than create from scratch. You read it, adjust what needs adjusting, and sign off. The clinical judgement is still yours; the draft handles the scaffolding.",
+      },
+      {
+        heading: "What belongs in a good stuttering therapy note",
+        body: "A useful session note for stuttering therapy typically covers the technique practised, the patient's performance relative to their goals, any observations about avoidance or confidence, and the next steps. Structured templates for these elements make drafting faster whether or not you use AI assistance. The more consistently you capture the same data, the easier the note becomes.",
+      },
+      {
+        heading: "What UpSpeech does",
+        body: "UpSpeech captures structured data from the patient's practice between sessions: which exercises they completed, how they performed, and where they had difficulty. That data feeds a draft session note that the therapist reviews before signing off. The draft is a starting point, not a final document. The therapist's review and signature are required for every note.",
+      },
+    ],
+    faq: {
+      eyebrow: "Questions",
+      headline: "Common questions from clinicians.",
+      items: [
+        {
+          q: "How much time can SLPs realistically save on documentation?",
+          a: "It depends on your current workflow and how much time you spend on notes. A structured draft typically removes the hardest part, the blank page, and reduces total note time. Individual results vary based on the complexity of the session and how much editing the draft needs.",
+        },
+        {
+          q: "Does AI-assisted note drafting replace clinical observation?",
+          a: "No. A draft note is based on structured session data. Clinical observation, the judgements a therapist makes in the room, is what the therapist adds. The draft handles the scaffolding; the clinician supplies the expertise.",
+        },
+        {
+          q: "Is it clinically appropriate to use AI-drafted notes?",
+          a: "Drafted notes are appropriate when the therapist reviews and signs off on every note before it is used. No draft should enter a patient's record without clinician review. Check your local professional body's guidance on AI in clinical documentation.",
+        },
+        {
+          q: "How does UpSpeech collect the data that goes into the draft?",
+          a: "Patients practise assigned exercises in the app between sessions. The app captures completion and performance data. That structured data, not audio transcription, is what informs the draft note. The therapist sees all of it before any note is signed.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Let UpSpeech draft the notes so you focus on the session.",
+      bodyPrefix:
+        "UpSpeech works with speech-language pathologists who want structured between-session practice and AI-drafted notes. ",
+      bodyLink: "Request access here",
+      bodySuffix: " to see if it fits your practice.",
+    },
   },
 };
 

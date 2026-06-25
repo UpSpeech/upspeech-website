@@ -87,6 +87,18 @@ export const ROUTES = [
     changefreq: "monthly",
     priority: "0.7",
   },
+  {
+    path: "/stutter-positive",
+    lastmod: "2026-06-25",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    path: "/reducing-documentation-time",
+    lastmod: "2026-06-25",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
   { path: "/support", changefreq: "monthly", priority: "0.5" },
   {
     path: "/privacy",

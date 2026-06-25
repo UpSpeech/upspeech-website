@@ -36,6 +36,8 @@ export const es: Dictionary = {
     appStoreAriaLabel: "Descarga UpSpeech en la App Store",
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
+    stutterPositive: "Tartamudez positiva",
+    reducingDocumentationTime: "Tiempo de documentación",
   },
   localeSwitcher: {
     label: "Idioma",
@@ -414,5 +416,121 @@ export const es: Dictionary = {
     storeAppStoreAriaLabel: "Descarga UpSpeech en la App Store",
     storePlayAlt: "Disponible en Google Play",
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
+  },
+  stutterPositive: {
+    seoTitle: "¿Qué Significa Tartamudez Positiva?",
+    seoDescription:
+      "Una guía en lenguaje sencillo sobre la terapia de tartamudez positiva: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
+    intro: {
+      eyebrow: "Filosofía",
+      headlineLine1: "¿Qué significa",
+      headlineLine2: "tartamudez positiva?",
+      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación, no la eliminación de la disfluencia. Significa apoyar a las personas que tartamudean para que se expresen en sus propios términos, sin perseguir un estándar de habla que puede no sentirse natural.",
+    },
+    sections: [
+      {
+        heading: "La fluidez no es el único objetivo",
+        body: "La terapia del habla tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Algunas personas que tartamudean quieren un habla más fluida, y técnicas como la tartamudez voluntaria o el habla prolongada pueden ayudar. Para otras, reducir la evitación y ganar confianza es lo que más importa. Tartamudez positiva significa que los objetivos vienen de la persona, no de una norma externa.",
+      },
+      {
+        heading: "Ser escuchado, no sonar de cierta manera",
+        body: "Las personas que tartamudean a menudo enfrentan más que la disfluencia: evitación, anticipación y el agotador trabajo de gestionar las reacciones de los demás. La terapia de tartamudez positiva aborda estas cuestiones junto con la práctica de técnicas. La medida de una buena sesión no es cuántas veces tartamudeó alguien. Es si comunicó lo que quería decir y se sintió seguro al hacerlo.",
+      },
+      {
+        heading: "Cómo UpSpeech refleja este enfoque",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. El itinerario de aprendizaje y los ejercicios los establece el clínico; la aplicación apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la aplicación también lo apoya. La plataforma no asume que la fluidez es el destino.",
+      },
+      {
+        heading: "Una nota sobre el lenguaje",
+        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que un individuo prefiera otro. Lo que más importa es que la persona se sienta reconocida, no etiquetada.",
+      },
+    ],
+    faq: {
+      eyebrow: "Preguntas",
+      headline: "Preguntas frecuentes.",
+      items: [
+        {
+          q: "¿La tartamudez positiva es lo mismo que no ayudar a alguien a mejorar?",
+          a: "No. La terapia de tartamudez positiva sigue enseñando técnicas, abordando la evitación y apoyando el progreso. Significa que esos objetivos son moldeados por la persona, no por la suposición de que la fluidez es siempre el objetivo correcto.",
+        },
+        {
+          q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
+          a: "No. UpSpeech apoya el plan que crea el logopeda. La aplicación ofrece lo que el clínico asigna, que puede incluir técnicas de modelado de fluidez, técnicas de modificación o trabajo centrado en la confianza.",
+        },
+        {
+          q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de modelado de fluidez según los objetivos del individuo.",
+        },
+        {
+          q: "¿Dónde puedo aprender más?",
+          a: "La Stuttering Foundation, la British Stammering Association y el American Institute for Stuttering publican guías accesibles sobre enfoques de tartamudez positiva y centrados en la persona.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Trabaje con un clínico que entienda sus objetivos.",
+      bodyPrefix:
+        "UpSpeech se utiliza a través de logopedas. Si dirige una consulta y quiere usarlo con sus pacientes, puede ",
+      bodyLink: "solicitar acceso aquí",
+      bodySuffix: ".",
+    },
+  },
+  reducingDocumentationTime: {
+    seoTitle: "Cómo los Logopedas Reducen el Tiempo en Notas de Sesión",
+    seoDescription:
+      "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en la terapia de tartamudez, con borradores estructurados que apoyan el juicio clínico.",
+    intro: {
+      eyebrow: "Para logopedas",
+      headlineLine1: "Menos tiempo en notas,",
+      headlineLine2: "más tiempo en terapia.",
+      body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en la terapia de tartamudez, incluyendo dónde encajan los borradores estructurados.",
+    },
+    sections: [
+      {
+        heading: "El problema de la página en blanco",
+        body: "Después de una sesión, sabe lo que ocurrió. Escribirlo lleva más tiempo del necesario. La página en blanco es el cuello de botella, no sus conocimientos. Muchos logopedas señalan que la documentación es la carga administrativa que con más probabilidad comprime el tiempo de preparación, extiende el horario laboral o retrasa las notas de atención. Es un problema estructural, no una brecha de habilidades.",
+      },
+      {
+        heading: "Borradores estructurados que revisa y edita",
+        body: "Una forma de abordar la página en blanco es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo progresó y qué observó el terapeuta. Un borrador le da algo a lo que reaccionar en lugar de crear desde cero. Lo lee, ajusta lo que necesita ajuste y firma. El juicio clínico sigue siendo suyo; el borrador se encarga del andamiaje.",
+      },
+      {
+        heading: "Qué debe incluir una buena nota de terapia de tartamudez",
+        body: "Una nota de sesión útil para la terapia de tartamudez cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente capture los mismos datos, más fácil será la nota.",
+      },
+      {
+        heading: "Lo que hace UpSpeech",
+        body: "UpSpeech captura datos estructurados de la práctica del paciente entre sesiones: qué ejercicios completó, cómo rindió y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión que el terapeuta revisa antes de firmar. El borrador es un punto de partida, no un documento final. La revisión y firma del terapeuta son necesarias para cada nota.",
+      },
+    ],
+    faq: {
+      eyebrow: "Preguntas",
+      headline: "Preguntas frecuentes de clínicos.",
+      items: [
+        {
+          q: "¿Cuánto tiempo pueden ahorrar realmente los logopedas en documentación?",
+          a: "Depende de su flujo de trabajo actual y del tiempo que dedica a las notas. Un borrador estructurado suele eliminar la parte más difícil, la página en blanco, y reduce el tiempo total de las notas. Los resultados individuales varían según la complejidad de la sesión y la cantidad de ediciones que necesite el borrador.",
+        },
+        {
+          q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
+          a: "No. Una nota borrador se basa en datos estructurados de la sesión. La observación clínica, los juicios que el terapeuta hace en la consulta, es lo que el terapeuta añade. El borrador se encarga del andamiaje; el clínico aporta la experiencia.",
+        },
+        {
+          q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de utilizarla. Ningún borrador debe entrar en el expediente del paciente sin revisión del clínico. Consulte las orientaciones de su organismo profesional local sobre IA en la documentación clínica.",
+        },
+        {
+          q: "¿Cómo recopila UpSpeech los datos que informan el borrador?",
+          a: "Los pacientes practican los ejercicios asignados en la aplicación entre sesiones. La aplicación captura datos de finalización y rendimiento. Esos datos estructurados, no la transcripción de audio, son los que informan el borrador de la nota. El terapeuta los ve todos antes de firmar cualquier nota.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Deje que UpSpeech redacte las notas para centrarse en la sesión.",
+      bodyPrefix:
+        "UpSpeech trabaja con logopedas que quieren práctica estructurada entre sesiones y notas redactadas por IA. ",
+      bodyLink: "Solicite acceso aquí",
+      bodySuffix: " para ver si se adapta a su práctica.",
+    },
   },
 };

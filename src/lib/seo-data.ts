@@ -162,6 +162,106 @@ export function getTechniqueFAQStructuredData(
   };
 }
 
+export function getStutterPositiveStructuredData(locale: string = "en") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "What does stutter-positive mean?",
+    description:
+      "A plain-language guide to stutter-positive speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    url: localeAbsUrl("/stutter-positive", locale),
+    inLanguage: locale,
+    datePublished: "2026-06-25",
+    dateModified: "2026-06-25",
+    author: {
+      "@type": "Organization",
+      name: "UpSpeech",
+      url: "https://upspeech.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "UpSpeech",
+      url: "https://upspeech.app",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://upspeech.app/icons/apple-touch-icon.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": localeAbsUrl("/stutter-positive", locale),
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: localeAbsUrl("/", locale),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Stutter-positive",
+          item: localeAbsUrl("/stutter-positive", locale),
+        },
+      ],
+    },
+  };
+}
+
+export function getDocumentationArticleStructuredData(locale: string = "en") {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline:
+      "How speech-language pathologists spend less time on session notes",
+    description:
+      "A practical guide for speech-language pathologists on reducing documentation time in stuttering therapy, with structured drafts that support clinical judgement.",
+    url: localeAbsUrl("/reducing-documentation-time", locale),
+    inLanguage: locale,
+    datePublished: "2026-06-25",
+    dateModified: "2026-06-25",
+    author: {
+      "@type": "Organization",
+      name: "UpSpeech",
+      url: "https://upspeech.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "UpSpeech",
+      url: "https://upspeech.app",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://upspeech.app/icons/apple-touch-icon.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": localeAbsUrl("/reducing-documentation-time", locale),
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: localeAbsUrl("/", locale),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Reducing documentation time",
+          item: localeAbsUrl("/reducing-documentation-time", locale),
+        },
+      ],
+    },
+  };
+  return articleSchema;
+}
+
 export function getTechniquesIndexStructuredData(locale: string = "en") {
   return {
     "@context": "https://schema.org",

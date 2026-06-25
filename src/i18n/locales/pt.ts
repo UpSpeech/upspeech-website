@@ -36,6 +36,8 @@ export const pt: Dictionary = {
     appStoreAriaLabel: "Descarregar a UpSpeech na App Store",
     playStoreAlt: "Disponível no Google Play",
     playStoreAriaLabel: "Obter a UpSpeech no Google Play",
+    stutterPositive: "Gaguez positiva",
+    reducingDocumentationTime: "Tempo de documentação",
   },
   localeSwitcher: {
     label: "Idioma",
@@ -414,5 +416,121 @@ export const pt: Dictionary = {
     storeAppStoreAriaLabel: "Descarregar a UpSpeech na App Store",
     storePlayAlt: "Disponível no Google Play",
     storePlayAriaLabel: "Obter a UpSpeech no Google Play",
+  },
+  stutterPositive: {
+    seoTitle: "O Que Significa Gaguez Positiva?",
+    seoDescription:
+      "Um guia em linguagem simples sobre terapia de gaguez positiva: o que significa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
+    intro: {
+      eyebrow: "Filosofia",
+      headlineLine1: "O que significa",
+      headlineLine2: "gaguez positiva?",
+      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar, não a eliminação da disfluência. Significa apoiar as pessoas que gaguejam para se fazerem ouvir nos seus próprios termos, sem perseguir um padrão de fala que pode nunca parecer natural.",
+    },
+    sections: [
+      {
+        heading: "A fluência não é o único objetivo",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Algumas pessoas que gaguejam querem uma fala mais fluente, e técnicas como a gaguez voluntária ou a fala prolongada podem ajudar. Para outras, reduzir a evitação e ganhar confiança é o que mais importa. Gaguez positiva significa que os objetivos vêm da pessoa, não de uma norma externa.",
+      },
+      {
+        heading: "Ser ouvido, não soar de uma certa forma",
+        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência: evitação, antecipação e o esforço exaustivo de gerir as reações dos outros. A terapia de gaguez positiva aborda estas questões a par de qualquer prática de técnicas. A medida de uma boa sessão não é quantas vezes a pessoa gaguejou. É se comunicou o que pretendia e se sentiu confiante ao fazê-lo.",
+      },
+      {
+        heading: "Como a UpSpeech reflete esta abordagem",
+        body: "A UpSpeech apoia qualquer abordagem que o terapeuta da fala escolha. O percurso de aprendizagem e os exercícios são definidos pelo clínico; a app apoia a prática entre sessões. Se o objetivo é reduzir a evitação, o terapeuta inclui isso no plano. Se o objetivo é a prática de gaguez voluntária, a app apoia isso também. A plataforma não assume que a fluência é o destino.",
+      },
+      {
+        heading: "Uma nota sobre linguagem",
+        body: "Esta página usa 'pessoas que gaguejam' e 'pessoa que gagueja' ao longo do texto. A linguagem centrada na pessoa é o padrão aqui, a menos que um indivíduo prefira diferente. O que mais importa é que a pessoa se sinta reconhecida, não rotulada.",
+      },
+    ],
+    faq: {
+      eyebrow: "Perguntas",
+      headline: "Perguntas frequentes.",
+      items: [
+        {
+          q: "Gaguez positiva é o mesmo que não ajudar alguém a melhorar?",
+          a: "Não. A terapia de gaguez positiva ainda ensina técnicas, aborda a evitação e apoia o progresso. Significa que esses objetivos são moldados pela pessoa, não pela suposição de que a fluência é sempre o alvo certo.",
+        },
+        {
+          q: "A UpSpeech funciona apenas para abordagens de gaguez positiva?",
+          a: "Não. A UpSpeech apoia o plano que o terapeuta da fala cria. A app disponibiliza o que o clínico define, o que pode incluir técnicas de modelagem de fluência, técnicas de modificação ou trabalho focado na confiança.",
+        },
+        {
+          q: "Que técnicas são usadas na terapia de gaguez positiva?",
+          a: "A gaguez voluntária, a identificação e desensibilização, e as técnicas de pull-out são comuns nas abordagens de gaguez positiva. Muitos clínicos combinam estas com trabalho de modelagem de fluência, dependendo dos objetivos do indivíduo.",
+        },
+        {
+          q: "Onde posso aprender mais?",
+          a: "A Stuttering Foundation, a British Stammering Association e o American Institute for Stuttering publicam guias acessíveis sobre abordagens de gaguez positiva e centradas na pessoa.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Trabalhe com um clínico que entende os seus objetivos.",
+      bodyPrefix:
+        "A UpSpeech é utilizada por terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
+      bodyLink: "pedir acesso aqui",
+      bodySuffix: ".",
+    },
+  },
+  reducingDocumentationTime: {
+    seoTitle: "Como os Terapeutas da Fala Reduzem o Tempo em Notas de Sessão",
+    seoDescription:
+      "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da gaguez, com rascunhos estruturados que apoiam o julgamento clínico.",
+    intro: {
+      eyebrow: "Para terapeutas da fala",
+      headlineLine1: "Menos tempo em notas,",
+      headlineLine2: "mais tempo na terapia.",
+      body: "A documentação faz parte de uma boa prática clínica, mas não deve comprimir o tempo dedicado ao trabalho em si. Esta página aborda formas práticas de os terapeutas da fala reduzirem o tempo gasto em notas de sessão na terapia da gaguez, incluindo onde os rascunhos estruturados se encaixam.",
+    },
+    sections: [
+      {
+        heading: "O problema da página em branco",
+        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. A página em branco é o obstáculo, não o seu conhecimento. Muitos terapeutas referem que a documentação é o encargo administrativo que mais provavelmente comprime o tempo de preparação, prolonga o horário de trabalho ou atrasa as notas de cuidados. É um problema estrutural, não uma lacuna de competências.",
+      },
+      {
+        heading: "Rascunhos estruturados que revê e edita",
+        body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico é sempre seu; o rascunho trata do esqueleto.",
+      },
+      {
+        heading: "O que deve constar numa boa nota de terapia da gaguez",
+        body: "Uma nota de sessão útil para a terapia da gaguez cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Quanto mais consistentemente capturar os mesmos dados, mais fácil se torna a nota.",
+      },
+      {
+        heading: "O que a UpSpeech faz",
+        body: "A UpSpeech captura dados estruturados da prática do paciente entre sessões: quais os exercícios que completou, como se saiu e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão que o terapeuta revê antes de assinar. O rascunho é um ponto de partida, não um documento final. A revisão e assinatura do terapeuta são obrigatórias para cada nota.",
+      },
+    ],
+    faq: {
+      eyebrow: "Perguntas",
+      headline: "Perguntas frequentes de clínicos.",
+      items: [
+        {
+          q: "Quanto tempo podem os terapeutas poupar realisticamente na documentação?",
+          a: "Depende do seu fluxo de trabalho atual e do tempo que gasta em notas. Um rascunho estruturado remove tipicamente a parte mais difícil, a página em branco, e reduz o tempo total das notas. Os resultados individuais variam conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
+        },
+        {
+          q: "A redação de notas com assistência de IA substitui a observação clínica?",
+          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. A observação clínica, os julgamentos que o terapeuta faz durante a sessão, é o que o terapeuta acrescenta. O rascunho trata do esqueleto; o clínico fornece a especialização.",
+        },
+        {
+          q: "É clinicamente adequado usar notas redigidas por IA?",
+          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de ser utilizada. Nenhum rascunho deve constar do processo do paciente sem revisão do clínico. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
+        },
+        {
+          q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
+          a: "Os pacientes praticam exercícios atribuídos na app entre sessões. A app captura dados de conclusão e desempenho. Esses dados estruturados, não a transcrição de áudio, informam o rascunho da nota. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Deixe a UpSpeech redigir as notas para se concentrar na sessão.",
+      bodyPrefix:
+        "A UpSpeech trabalha com terapeutas da fala que pretendem prática estruturada entre sessões e notas redigidas por IA. ",
+      bodyLink: "Peça acesso aqui",
+      bodySuffix: " para ver se se adequa à sua prática.",
+    },
   },
 };

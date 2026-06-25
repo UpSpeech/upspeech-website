@@ -78,6 +78,18 @@ const Footer = () => {
               {t.forPatients}
             </a>
             <a
+              href={localizedPath("/stutter-positive", locale)}
+              className={linkClass}
+            >
+              {t.stutterPositive}
+            </a>
+            <a
+              href={localizedPath("/reducing-documentation-time", locale)}
+              className={linkClass}
+            >
+              {t.reducingDocumentationTime}
+            </a>
+            <a
               href={localizedPath("/techniques", locale)}
               className={linkClass}
             >
