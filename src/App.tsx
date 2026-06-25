@@ -53,6 +53,10 @@ const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
 const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
 const Support = React.lazy(() => import("./pages/Support"));
 const ForPatients = React.lazy(() => import("./pages/ForPatients"));
+const StutterPositive = React.lazy(() => import("./pages/StutterPositive"));
+const ReducingDocumentationTime = React.lazy(
+  () => import("./pages/ReducingDocumentationTime"),
+);
 const ForSlps = React.lazy(() => import("./pages/ForSlps"));
 const TechniquesIndexPage = React.lazy(() =>
   import("./pages/TechniquesIndexPage").then((m) => ({
@@ -94,6 +98,11 @@ const AppRoutes = () => (
     <Route path="delete-account" element={<DeleteAccount />} />
     <Route path="support" element={<Support />} />
     <Route path="for-patients" element={<ForPatients />} />
+    <Route path="stutter-positive" element={<StutterPositive />} />
+    <Route
+      path="reducing-documentation-time"
+      element={<ReducingDocumentationTime />}
+    />
     <Route path="for-slps" element={<ForSlps />} />
 
     {/* Technique Documentation Routes */}
