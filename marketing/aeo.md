@@ -16,7 +16,7 @@ who gets cited) plus a HubSpot AEO Grader run for scored numbers.
 | --------------- | ------------------------ | ---------------- | ---------- |
 | Google SERP     | #1 (upspeech.app ranks)  | Absent           | 2026-06-25 |
 | ChatGPT         | not yet tested           | not yet tested   | TODO       |
-| Perplexity      | not yet tested           | not yet tested   | TODO       |
+| Perplexity      | not tested               | Absent (0/5)     | 2026-06-25 |
 | Gemini          | not yet tested           | not yet tested   | TODO       |
 
 **Read:** UpSpeech is recognized on its own name (ranks #1 for "UpSpeech
@@ -24,6 +24,11 @@ stuttering therapy app") but has no share of voice on non-branded buyer prompts.
 Category prompts are owned by the competitors below. Same pattern the reference
 projects saw: discoverable when named, invisible when not. The fix is third-party
 citations and category pages, not more brand-name content.
+
+**Ahrefs AI Visibility Checker (2026-06-25):** **0 AI mentions** found across
+ChatGPT, Gemini, Perplexity, Copilot, and Google AI Overviews. An independent,
+multi-engine tool corroborates the manual Perplexity 0/5: UpSpeech has
+effectively zero AI visibility today. This is the clean starting number to beat.
 
 Re-run cadence: quarterly.
 
