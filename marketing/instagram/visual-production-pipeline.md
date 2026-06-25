@@ -18,8 +18,10 @@ this workspace via the MCP tools.
    real sanitized screenshot composited pixel-for-pixel. Never ask a model to
    redraw a readable progress screen or report.
 4. Animate from a finished still. Text-to-video is too loose for branded work.
-5. Source images are disposable inputs. The PNGs in `exports/` are the
-   publishing source of truth.
+5. Source plates are disposable inputs unless explicitly curated and tracked.
+   The PNGs in `exports/` are the publishing source of truth. Deterministic
+   renderer assets such as logos, local fonts, and sanitized screenshots live in
+   `templates/assets/`.
 6. Nothing generated may imply an outcome, a cure, or a real identifiable
    patient. See `../brand-voice.md`.
 
@@ -133,4 +135,7 @@ Name files to preserve publishing context, e.g.
 - Real alt text is written; video has captions.
 - Model endpoint, prompt, seed, and source path are logged in
   `source-images/prompts/`.
+- Missing source plates were reviewed. Run `STRICT_SOURCE_IMAGES=1 npm run
+  export` from `templates/` when fallback gradients should be treated as a
+  failure.
 - Premium video cost is checked before a batch run.

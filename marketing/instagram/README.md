@@ -9,11 +9,12 @@ and an exportable visual template engine.
 - `art-direction.md`: social visual rules derived from the product design system.
 - `content-calendar.md`: first four weeks of feed, carousel, story, and reel
   ideas with caption drafts.
+- `alt-text.md`: draft accessibility text for every starter export.
 - `posting-playbook.md`: cadence, channel guidance, and when to request a batch.
 - `visual-production-pipeline.md`: fal.ai source-image, screenshot-composite,
   reel, and companion-animation workflow.
-- `templates/`: browser-rendered layouts (`index.html` + `styles.css`) and the
-  PNG exporter (`export.mjs`).
+- `templates/`: browser-rendered layouts (`index.html` + `styles.css`), local
+  fonts/logo/screenshot assets, and the PNG exporter (`export.mjs`).
 - `exports/`: generated PNGs, ready to post.
 - `source-images/`: generated/curated source imagery before final layout.
 
@@ -32,14 +33,19 @@ and an exportable visual template engine.
    ```
 
 5. Review the PNGs in `exports/`.
-6. Use AI image generation only for atmospheric source imagery. Keep text,
-   numbers, UI, and the logo deterministic.
+6. Copy the relevant line from `alt-text.md` into the platform alt-text field.
+7. Use AI image generation only for atmospheric source imagery. Keep text,
+   numbers, UI, screenshots, fonts, and the logo deterministic.
 
 ## Export sizes
 
 - Feed posts and highlight covers: 1080 x 1080.
 - Stories: 1080 x 1920.
 - Profile grid preview: 3240 x 3240.
+
+Set `STRICT_SOURCE_IMAGES=1` when exporting if a batch should fail when any
+referenced source plate is missing. Without it, missing plates warn and use the
+template's gradient fallback.
 
 ## Current direction
 

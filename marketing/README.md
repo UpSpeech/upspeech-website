@@ -35,9 +35,10 @@ marketing/
 │   ├── strategy.md            positioning, audiences, content pillars, cadence
 │   ├── art-direction.md       social visual rules derived from the product design system
 │   ├── content-calendar.md    first weeks of feed, carousel, story, reel ideas + captions
+│   ├── alt-text.md            draft accessibility text for each starter export
 │   ├── posting-playbook.md     what to post where, how often, when to ask for more
 │   ├── visual-production-pipeline.md   fal.ai source-image, screenshot-composite, reel workflow
-│   ├── templates/             index.html + styles.css + export.mjs (PNG exporter)
+│   ├── templates/             index.html + styles.css + export.mjs + local assets
 │   ├── exports/               generated PNGs, ready to post
 │   └── source-images/         generated/curated source imagery before final layout
 └── linkedin/
@@ -63,8 +64,10 @@ exporter renders one at a time in headless Chrome and crops to the exact size:
 - Profile grid preview: 3240 × 3240
 
 Edit copy and layout in `index.html`, restyle in `styles.css`, re-run the
-export. Keep all final text, numbers, UI, and logos deterministic; use AI
-generation only for atmospheric source imagery (see the production pipeline).
+export. Keep all final text, numbers, UI, logos, fonts, and screenshots
+deterministic; use AI generation only for atmospheric source imagery (see the
+production pipeline). The exporter warns when referenced local source plates are
+missing; set `STRICT_SOURCE_IMAGES=1 npm run export` to fail instead.
 
 ## Non-negotiables
 

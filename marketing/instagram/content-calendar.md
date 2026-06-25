@@ -80,9 +80,9 @@ Publish all six highlight covers before or during week 1.
   > For the SLPs: UpSpeech drafts the clinical session report so you spend the
   > session with your client, not your keyboard. More on this over on LinkedIn.
 - **Wed mock** `feed-mock-02-report.png`
-  > From session to signed-off note.
+  > Draft, review, approve.
   >
-  > Draft, edit, approve. A calmer path from session to signed-off note.
+  > A calmer path from session to a report you can review and sign off.
 - **Fri feed** `feed-09-cta.png`
   > Speech therapy, supported all week.
   >
