@@ -1202,6 +1202,181 @@ svg {
   max-width: 3320px;
 }
 
+/* ── Launch kit: avatar, app, LinkedIn ────────────────────────────── */
+
+.post-avatar {
+  background: radial-gradient(120% 120% at 30% 20%, var(--navy) 0%, var(--navy-900) 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.avatar-glyph {
+  width: 560px;
+  height: auto;
+}
+
+/* App-download feed post */
+.post-app .hero-stack {
+  margin-top: 40px;
+  display: grid;
+  gap: 24px;
+  max-width: 700px;
+}
+
+.store-row {
+  margin-top: auto;
+  display: flex;
+  gap: 20px;
+}
+
+.store-row-stack {
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: auto;
+}
+
+.store-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 34px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 18px;
+}
+
+.store-ico {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  position: relative;
+}
+
+.ico-apple::before {
+  content: "";
+  position: absolute;
+  inset: 4px 6px;
+  background: #fff;
+  clip-path: polygon(50% 0, 62% 14%, 50% 24%, 38% 14%);
+}
+
+.ico-apple::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 4px;
+  top: 16px;
+  background: #fff;
+  border-radius: 46% 46% 42% 42%;
+}
+
+.ico-play {
+  background: #fff;
+  clip-path: polygon(16% 6%, 90% 50%, 16% 94%);
+}
+
+.store-text {
+  display: grid;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 1.05;
+}
+
+.store-text small {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  opacity: 0.86;
+}
+
+/* LinkedIn quote card */
+.post-li-quote {
+  background: linear-gradient(160deg, var(--navy), var(--navy-900));
+  color: #fff;
+  justify-content: center;
+  gap: 18px;
+}
+
+.quote-mark {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 220px;
+  line-height: 0.6;
+  color: var(--lavender);
+  height: 120px;
+}
+
+.post-li-quote h2 {
+  font-size: 76px;
+  max-width: 860px;
+}
+
+.quote-by {
+  color: rgba(238, 241, 251, 0.78);
+  font-size: 30px;
+  font-weight: 600;
+  max-width: 760px;
+}
+
+.post-li-quote .logo-lockup {
+  height: 52px;
+  margin-top: 30px;
+}
+
+/* LinkedIn stat card */
+.post-li-stat {
+  background: linear-gradient(180deg, #eef2ff, var(--bg));
+}
+
+.stat-stack {
+  margin-top: auto;
+  display: grid;
+  gap: 18px;
+}
+
+.stat-big {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 220px;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+.stat-big span {
+  font-size: 90px;
+  color: var(--sky);
+}
+
+.post-li-stat h2 {
+  font-size: 64px;
+  max-width: 720px;
+}
+
+/* App-download story */
+.story-app {
+  background: linear-gradient(180deg, #eef2ff, var(--bg));
+}
+
+.story-app .brand-mark {
+  margin-bottom: 30px;
+}
+
+.story-app .logo-lockup {
+  height: 56px;
+}
+
+.story-app-glyph {
+  width: 300px;
+  height: auto;
+  margin: 60px auto;
+  filter: drop-shadow(0 26px 50px rgba(41, 53, 135, 0.22));
+}
+
 /* ── Export mode ──────────────────────────────────────────────────── */
 
 html.exporting,
