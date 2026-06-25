@@ -7,6 +7,7 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedPath } from "@/i18n";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forSlps.betweenSessions.steps).
@@ -158,7 +159,10 @@ export default function ForSlps() {
             <p className={eyebrowClass}>{t.stutterPositive.eyebrow}</p>
             <h2
               className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", lineHeight: 1.1 }}
+              style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
+                lineHeight: 1.1,
+              }}
             >
               {t.stutterPositive.headline}
             </h2>
@@ -218,6 +222,8 @@ export default function ForSlps() {
             </p>
           </div>
         </section>
+
+        <MedicalDisclaimer className="mt-8" />
       </main>
 
       <Footer />
