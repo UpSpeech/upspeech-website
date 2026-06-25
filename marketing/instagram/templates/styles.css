@@ -1399,6 +1399,79 @@ svg {
   filter: drop-shadow(0 26px 50px rgba(41, 53, 135, 0.22));
 }
 
+/* ── Mobile: three-phone hero + app-shot carousel ─────────────────── */
+
+.post-trio {
+  background: linear-gradient(180deg, #e9eefc, var(--bg));
+  overflow: hidden;
+}
+
+.trio-copy {
+  position: relative;
+  z-index: 3;
+  margin-top: 40px;
+  display: grid;
+  gap: 22px;
+  max-width: 820px;
+}
+
+.phone-trio {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.trio-phone {
+  width: 300px;
+  height: auto;
+  filter: drop-shadow(0 30px 56px rgba(20, 26, 68, 0.24));
+}
+
+.trio-mid {
+  width: 344px;
+  z-index: 2;
+}
+
+.trio-left {
+  transform: rotate(-8deg) translateY(36px);
+  margin-right: -72px;
+  z-index: 1;
+}
+
+.trio-right {
+  transform: rotate(8deg) translateY(36px);
+  margin-left: -72px;
+  z-index: 1;
+}
+
+.post-appshot {
+  background: linear-gradient(180deg, #eef2ff, var(--bg));
+  overflow: hidden;
+}
+
+.appshot-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: 38px;
+  display: grid;
+  gap: 22px;
+  max-width: 560px;
+}
+
+.appshot-phone {
+  position: absolute;
+  right: -12px;
+  bottom: -70px;
+  height: 800px;
+  width: auto;
+  z-index: 0;
+  filter: drop-shadow(0 32px 60px rgba(20, 26, 68, 0.26));
+}
+
 /* ── Export mode ──────────────────────────────────────────────────── */
 
 html.exporting,
