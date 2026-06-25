@@ -32,6 +32,49 @@ effectively zero AI visibility today. This is the clean starting number to beat.
 
 Re-run cadence: quarterly.
 
+## HubSpot AEO Grader — 2026-06-25 (scored characterization)
+
+Engines: OpenAI GPT-5.4 mini (cutoff Aug 2025), Perplexity (live), Gemini 3 Flash
+Preview (cutoff Jan 2025). Inputs: United States, "AI speech therapy app for
+stuttering", Healthcare.
+
+| Metric (max)            | ChatGPT | Perplexity | Gemini |
+| ----------------------- | ------- | ---------- | ------ |
+| Overall AEO (100)       | 37      | 45         | 45     |
+| Brand recognition (20)  | 2       | 3          | 2      |
+| Market score (10)       | 6       | 6          | 6      |
+| Presence quality (20)   | 5       | 6          | 6      |
+| Brand sentiment (40)    | 22      | 29         | 31     |
+| Share of voice (10)     | 2       | 1          | 0      |
+| Recognition score (100) | 12      | 15         | 12     |
+| Sentiment total (100)   | 56      | 72         | 78     |
+
+**Caveat, read before trusting these.** The Grader asks each model to *characterize*
+UpSpeech once handed the name and competitors, so its "Market Position" pie (it
+reports 8-18% share of voice and 120-1,840 "mentions") is the model confabulating
+from thin training data, not a measurement. It contradicts the two real-retrieval
+checks (Ahrefs 0 mentions, manual Perplexity 0/5), which are the ones to trust for
+"are we actually retrieved or cited." Use the Grader only for the signals below.
+
+What it's genuinely useful for:
+
+- **Brand recognition is low** (12-15/100) and share of voice ~0-2/10. Consistent
+  with reality: we're not known.
+- **Latent sentiment is moderate-to-positive** (56 / 72 / 78) and the archetype
+  reads "Innovator, Niche". If we become visible, models are inclined to describe
+  us well, so the job is visibility, not reputation repair.
+- **What the models lean on:** ChatGPT admits "no robust review corpus" (0);
+  Perplexity cites r/Stutter, our own site, and an arXiv paper that validates
+  *Eloquent* and notes UpSpeech "lacks comparable peer-reviewed data"; Gemini
+  leans on app-store ratings and health-tech journals.
+- **Named growth gaps** (all double as content/PR angles): clinical
+  validation/evidence, clearer differentiation vs alternatives, and retention.
+- **Fuller competitor set surfaced:** Speech Easy, Proloquo2Go, enuncia.ai, Noona,
+  Speakin, BeneTalk, DAF Pro, on top of Stamurai / Eloquent / Stutter Stars.
+
+The throughline across all three checks: we are not retrieved or cited, but where
+models do see us the read is positive. Pure visibility problem.
+
 ## Landscape to benchmark against (verified 2026-06-25)
 
 UpSpeech sits at the intersection of two categories, so it competes for two
