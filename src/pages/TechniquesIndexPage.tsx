@@ -49,7 +49,7 @@ export function TechniquesIndexPage() {
     return (
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
-        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" data-prerender-state="loading" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
@@ -67,7 +67,7 @@ export function TechniquesIndexPage() {
     return (
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Header />
-        <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <main id="main" data-prerender-state="error" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
               <h2 className="text-xl font-semibold text-red-800 mb-2">
@@ -93,7 +93,7 @@ export function TechniquesIndexPage() {
       />
       <Header />
 
-      <main id="main" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+      <main id="main" data-prerender-state="ready" className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
