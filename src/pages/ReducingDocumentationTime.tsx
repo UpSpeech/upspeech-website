@@ -3,9 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedPath } from "@/i18n";
-import {
-  getDocumentationArticleStructuredData,
-} from "@/lib/seo-data";
+import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
   "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
