@@ -52,11 +52,9 @@ UpSpeech's distinct angle, and the one to make legible to the engines: it does
 *both*, and it is specifically stutter-positive and SLP-linked, not a generic
 fluency drill or a generic medical scribe. No competitor found spans both sides.
 
-**Note for the LinkedIn stat card:** the widely-cited figure is ~2 hours/day of
-SLP paperwork (multiple documentation-tool pages cite it). `li-stat-01` currently
-says ~1 hr/day attributed to "clinicians we build with"; either keep it as our
-own conservative anecdote or update to the ~2 hr industry figure with a real
-citation.
+**LinkedIn stat card:** `li-stat-01` now uses the ~2 hr/day figure, the load SLPs
+report spending on paperwork (cited across documentation-tool sources). If you
+want a hard citation on the card itself, add a small source line under the stat.
 
 ## Actions
 
@@ -127,15 +125,29 @@ a paragraph.
 - No efficacy or outcome claims to chase a prompt. Credibility is the moat;
   don't trade it for a ranking.
 
-## Manual spot-check (monthly)
+## Manual in-UI pass (the real baseline, ~10 min, monthly)
 
-Open Perplexity (free, no login) and run these. Note which cite UpSpeech.
+The web-search baseline above is a proxy. This is the actual answer-engine test;
+it has to be run by hand because it needs a logged-in session in each engine.
+
+Run each of the 5 prompts in **ChatGPT, Perplexity, and Gemini** (3 x 5 = 15
+runs). For each, record:
+
+- **Named?** Does the answer mention UpSpeech at all? (yes / no)
+- **Position:** if named, is it a lead recommendation or a footnote?
+- **Cited?** Does it link upspeech.app or a page that mentions us?
+- **Who won:** the top 2-3 competitors the engine recommended instead.
+
+Prompts:
 
 1. best app for people who stutter
 2. apps to practise speech therapy between sessions
 3. AI session notes for speech-language pathologists
 4. stutter-positive speech therapy tools
 5. how do speech therapists reduce documentation time
+
+Log one row per pass below (the 2026-06-25 row is the web-search proxy, not the
+in-UI run, so its engine is "Google SERP").
 
 | Date       | #1 | #2 | #3 | #4 | #5 | Notes |
 | ---------- | -- | -- | -- | -- | -- | ----- |
