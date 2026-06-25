@@ -424,6 +424,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-patients/" />
   </url>
   <url>
+    <loc>https://upspeech.app/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
     <loc>https://upspeech.app/support/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
