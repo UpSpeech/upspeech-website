@@ -104,6 +104,35 @@ fluency drill or a generic medical scribe. No competitor found spans both sides.
 report spending on paperwork (cited across documentation-tool sources). If you
 want a hard citation on the card itself, add a small source line under the stat.
 
+## Site issues blocking AEO (found 2026-06-25, fix first)
+
+Checked what the live site actually serves to a crawler (`curl` as PerplexityBot).
+The site prerenders to static HTML (Puppeteer SSG) with good schema, sitemap,
+llms.txt, and hreflang. But:
+
+1. **The technique pages are broken in production.** The build prerenders them
+   while fetching content from the backend API, and on the production build the
+   API was unreachable, so the deployed HTML is a failed state:
+   - `/techniques/` serves the loading spinner (0 technique names, no
+     `CollectionPage` schema).
+   - `/techniques/<slug>/` serves an `<h1>` reading **"Error Loading Technique"**
+     (confirmed on voluntary-stuttering and soft-starts).
+
+   So our 11 technique articles + index, our richest and most citable content
+   (Article + FAQPage schema), are invisible/broken to crawlers and answer
+   engines. This very likely contributes to the 0 visibility. The home and other
+   static pages prerender fine, so the pipeline works; only the backend-driven
+   pages fail. Fix: make prerender hard-fail (don't deploy) if the API is
+   unreachable, snapshot technique data at build time, or add a post-prerender
+   assertion that the content is present and "Error Loading" is absent. (A
+   `feat/prerender-resilience` branch exists, check whether it's merged/deployed.)
+
+2. **No `/for-slps` (or `/for-clients`) page.** Both return the SPA fallback, so
+   the SLP-documentation buyer prompt (#3) has no landing page to cite.
+
+These are higher ROI than any new content: #1 unlocks pages that already exist;
+#2 is the obvious gap for the B2B prompts.
+
 ## Actions
 
 Ordered by likely ROI. Adjust after the first grader run.
