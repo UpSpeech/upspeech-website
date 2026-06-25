@@ -8,6 +8,7 @@ export const en = {
     whyUs: "Why Us",
     techniques: "Techniques",
     forPatients: "For patients",
+    forSlps: "For SLPs",
     requestAccess: "Request early access",
     skipToContent: "Skip to content",
     logoScrollTop: "UpSpeech, scroll to top",
@@ -22,6 +23,7 @@ export const en = {
     legal: "Legal",
     company: "Company",
     forPatients: "For patients",
+    forSlps: "For SLPs",
     techniques: "Techniques",
     support: "Support",
     privacy: "Privacy Policy",
@@ -411,6 +413,69 @@ export const en = {
     storeAppStoreAriaLabel: "Download UpSpeech on the App Store",
     storePlayAlt: "Get it on Google Play",
     storePlayAriaLabel: "Get UpSpeech on Google Play",
+  },
+  forSlps: {
+    seoTitle: "For speech-language pathologists",
+    seoDescription:
+      "UpSpeech helps SLPs spend less time writing stuttering-therapy session notes and gives patients structured practice between sessions, with progress you can see.",
+    intro: {
+      eyebrow: "For speech-language pathologists",
+      headlineLine1: "Less time on notes.",
+      headlineLine2: "More therapy between sessions.",
+      body: "UpSpeech drafts your session notes for you to review, and gives your patients guided practice they actually do between appointments, so you walk into the next session already knowing how the week went.",
+    },
+    documentation: {
+      eyebrow: "Documentation",
+      headline: "Session notes, drafted for you to review.",
+      body: "After a session, UpSpeech turns it into a structured draft report. You review, edit, and sign off. You keep clinical judgement; you just stop starting from a blank page.",
+    },
+    betweenSessions: {
+      eyebrow: "Between sessions",
+      headline: "Assign practice. See what happened.",
+      steps: [
+        {
+          title: "You set the plan",
+          copy: "Choose the techniques and exercises each patient works on, built around your therapy goals.",
+        },
+        {
+          title: "They practise in the app",
+          copy: "A few calm minutes a day of guided practice, on the technique you set.",
+        },
+        {
+          title: "You see the progress",
+          copy: "Streaks, technique scores, and trends come back to you, so the next session starts further ahead.",
+        },
+      ],
+    },
+    stutterPositive: {
+      eyebrow: "Our approach",
+      headline: "Stutter-positive by design.",
+      body: "The goal in the app is confidence and being heard, not sounding a certain way. Practice is encouraging, never corrective in a way that shames.",
+    },
+    faq: {
+      eyebrow: "Questions from clinicians",
+      headline: "Common questions from SLPs.",
+      items: [
+        {
+          q: "Does UpSpeech write my reports for me?",
+          a: "It drafts a structured report from the session for you to review and edit. You stay the clinician of record; it removes the blank-page work.",
+        },
+        {
+          q: "What do my patients actually do?",
+          a: "They practise the techniques you assign, in short daily sessions, and their progress comes back to you between appointments.",
+        },
+        {
+          q: "Is it a replacement for therapy?",
+          a: "No. UpSpeech works through your clinic and is used alongside your sessions, not instead of them.",
+        },
+      ],
+    },
+    closing: {
+      headline: "Bring UpSpeech into your practice.",
+      bodyPrefix: "UpSpeech works through your clinic. ",
+      bodyLink: "Request access here",
+      bodySuffix: ".",
+    },
   },
 };
 
