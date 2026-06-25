@@ -4,37 +4,59 @@ How UpSpeech shows up in ChatGPT, Perplexity, and Gemini answers for
 buyer-intent prompts, and what to do about it. AEO compounds slowly but it is
 how a growing share of both patients and clinicians now find tools.
 
-## Baseline — TODO (run before acting)
+## Baseline — manual pass, 2026-06-25 (web search)
 
-We don't have a real baseline yet. Before working the action list, run a free
-AEO grader (HubSpot AEO Grader, or a manual Perplexity pass) and fill this in.
-Do not act on fabricated numbers.
+This is a first manual grounding via web search (Google SERP + the sources an
+answer engine would cite), not a grader run and not direct answer-engine
+testing. Treat the SERP/citation landscape as a proxy. The next step is still a
+real pass inside ChatGPT, Perplexity, and Gemini (log in, run the prompts, note
+who gets cited) plus a HubSpot AEO Grader run for scored numbers.
 
-| Engine     | Overall | Brand Recognition | Share of Voice | Reliable Data | Date |
-| ---------- | ------- | ----------------- | -------------- | ------------- | ---- |
-| ChatGPT    | TODO    | TODO              | TODO           | TODO          | TODO |
-| Perplexity | TODO    | TODO              | TODO           | TODO          | TODO |
-| Gemini     | TODO    | TODO              | TODO           | TODO          | TODO |
+| Engine          | Brand query ("UpSpeech") | Category prompts | Date       |
+| --------------- | ------------------------ | ---------------- | ---------- |
+| Google SERP     | #1 (upspeech.app ranks)  | Absent           | 2026-06-25 |
+| ChatGPT         | not yet tested           | not yet tested   | TODO       |
+| Perplexity      | not yet tested           | not yet tested   | TODO       |
+| Gemini          | not yet tested           | not yet tested   | TODO       |
+
+**Read:** UpSpeech is recognized on its own name (ranks #1 for "UpSpeech
+stuttering therapy app") but has no share of voice on non-branded buyer prompts.
+Category prompts are owned by the competitors below. Same pattern the reference
+projects saw: discoverable when named, invisible when not. The fix is third-party
+citations and category pages, not more brand-name content.
 
 Re-run cadence: quarterly.
 
-## Landscape to benchmark against
+## Landscape to benchmark against (verified 2026-06-25)
 
 UpSpeech sits at the intersection of two categories, so it competes for two
-different sets of prompts.
+different sets of prompts. Names below actually surfaced in the buyer-prompt
+searches.
 
-**Stuttering / speech-practice apps (patient-facing):** Stamurai, Speech Blubs
-(kids), Better Speech, Expressable, Constant Therapy, and the various
-DAF/FAF altered-feedback apps. Benchmark our share of voice on prompts like
+**Stuttering / speech-practice apps (patient-facing):** Stamurai (dominant,
+"world's biggest"), Eloquent (game-based, publishes pilot fluency data),
+Stutter Stars, BeneTalk, SpeechEasy, StopStutter. Benchmark share of voice on
 "best app for people who stutter."
 
-**Clinician documentation / AI scribes (SLP-facing):** Mentalyc, Freed, Heidi,
-and practice-management tools like SimplePractice and Clinicient that SLPs ask
-about for notes. Benchmark on "AI session notes for speech therapists."
+**Clinician documentation / AI scribes (SLP-facing):** SLPFlow (SLP-specific
+leader), PatientNotes, Sprypt, TheraPlatform, Zanda Health (BizzyAI), AizaMD,
+SOAPNoteAI. Benchmark on "AI session notes for speech-language pathologists."
+
+**Citation targets** (the listicles and bodies that rank and get cited, so
+getting included here is the highest-ROL move): stutterstars.com's "10
+stuttering apps" roundup, STAMMA (stamma.org) apps & devices page,
+trytwofold.com's "best AI note takers for SLPs", and the Sprypt documentation
+roundup.
 
 UpSpeech's distinct angle, and the one to make legible to the engines: it does
 *both*, and it is specifically stutter-positive and SLP-linked, not a generic
-fluency drill or a generic medical scribe.
+fluency drill or a generic medical scribe. No competitor found spans both sides.
+
+**Note for the LinkedIn stat card:** the widely-cited figure is ~2 hours/day of
+SLP paperwork (multiple documentation-tool pages cite it). `li-stat-01` currently
+says ~1 hr/day attributed to "clinicians we build with"; either keep it as our
+own conservative anecdote or update to the ~2 hr industry figure with a real
+citation.
 
 ## Actions
 
@@ -115,6 +137,6 @@ Open Perplexity (free, no login) and run these. Note which cite UpSpeech.
 4. stutter-positive speech therapy tools
 5. how do speech therapists reduce documentation time
 
-| Date | #1 | #2 | #3 | #4 | #5 | Notes |
-| ---- | -- | -- | -- | -- | -- | ----- |
-| TODO |    |    |    |    |    |       |
+| Date       | #1 | #2 | #3 | #4 | #5 | Notes |
+| ---------- | -- | -- | -- | -- | -- | ----- |
+| 2026-06-25 | no | -  | no | -  | -  | Web-search proxy (not Perplexity direct). #1 owned by Stamurai/Eloquent/Stutter Stars; #3 owned by SLPFlow/PatientNotes/Sprypt. UpSpeech absent from both. #2/#4/#5 not yet run. |
