@@ -1,0 +1,12 @@
+{
+  "name": "upspeech-instagram-templates",
+  "private": true,
+  "type": "module",
+  "description": "Browser-rendered Instagram post/story/highlight templates for UpSpeech, exported to PNG.",
+  "scripts": {
+    "export": "node export.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UpSpeech Instagram Templates</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      document.documentElement.classList.toggle(
+        "exporting",
+        new URLSearchParams(window.location.search).has("export"),
+      );
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const name = new URLSearchParams(window.location.search).get("export");
+        if (!name) return;
+
+        const target = document.querySelector(`[data-export="${CSS.escape(name)}"]`);
+        if (!target) {
+          document.body.replaceChildren();
+          document.body.textContent = `Missing export target: ${name}`;
+          return;
+        }
+
+        const width = target.offsetWidth;
+        const height = target.offsetHeight;
+        document.documentElement.style.setProperty("--export-w", `${width}px`);
+        document.documentElement.style.setProperty("--export-h", `${height}px`);
+        document.body.replaceChildren(target);
+        document.body.className = "export-body";
+        target.classList.add("is-export-target");
+      });
+    </script>
+  </head>
+  <body>
+    <header class="workspace-header">
+      <div>
+        <p class="eyebrow">UpSpeech Instagram</p>
+        <h1>Calm Practice Studio</h1>
+      </div>
+      <p>
+        Exportable first-grid, story, and highlight templates for a calm, encouraging
+        speech-therapy launch system. Calm, scientific, encouraging.
+      </p>
+    </header>
+
+    <main class="workspace">
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Profile landing grid</p>
+          <h2>First 9 posts</h2>
+        </div>
+
+        <div class="profile-grid" id="profile-grid" data-export="profile-grid">
+          <!-- 01 Manifesto -->
+          <article class="post post-manifesto" data-export="feed-01-manifesto">
+            <div class="dot-grid"></div>
+            <header class="brand-mark">
+              <img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" />
+            </header>
+            <div class="hero-stack">
+              <p class="kicker">Speech therapy, all week long</p>
+              <h2>Therapy that doesn't stop at the clinic door.</h2>
+              <p class="lede">
+                Guided practice, gentle feedback, and progress you can see, between every session.
+              </p>
+            </div>
+            <svg class="companion-glyph companion-float" viewBox="100 84 178 205" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="cg-figure" d="M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z"/><path class="cg-figure" d="M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z"/><circle class="cg-bubble" cx="238.066" cy="122.6" r="33"/></svg>
+            <div class="chip chip-streak"><strong>5</strong><span>day streak</span></div>
+            <div class="chip chip-win"><span class="chip-tick"></span>Calm start</div>
+          </article>
+
+          <!-- 02 Practice -->
+          <article class="post post-practice" data-export="feed-02-practice">
+            <p class="kicker">For people who stutter</p>
+            <h2>Practice that meets you where you are.</h2>
+            <div class="practice-list">
+              <div class="practice-row"><span class="bead bead-sky"></span><strong>Easy onset</strong><span class="practice-tag">Warm-up</span></div>
+              <div class="practice-row"><span class="bead bead-mint"></span><strong>Gentle pacing</strong><span class="practice-tag">Daily</span></div>
+              <div class="practice-row"><span class="bead bead-lav"></span><strong>Light contact</strong><span class="practice-tag">Technique</span></div>
+              <div class="practice-row"><span class="bead bead-gold"></span><strong>Real conversations</strong><span class="practice-tag">Apply</span></div>
+            </div>
+            <p class="lede">A few minutes a day, shaped around the technique your therapist set.</p>
+          </article>
+
+          <!-- 03 Progress -->
+          <article class="post post-progress" data-export="feed-03-progress">
+            <p class="kicker">Progress, not pressure</p>
+            <h2>Progress you can actually see.</h2>
+            <div class="progress-stage">
+              <div class="ring" style="--pct: 78">
+                <div class="ring-center"><strong>78%</strong><span>this week</span></div>
+              </div>
+              <div class="bars">
+                <span style="--h: 38%"></span>
+                <span style="--h: 55%"></span>
+                <span style="--h: 47%"></span>
+                <span style="--h: 70%"></span>
+                <span style="--h: 64%"></span>
+                <span style="--h: 86%"></span>
+                <span style="--h: 92%"></span>
+              </div>
+            </div>
+            <p class="lede">Streaks, technique scores, and trends, shared with your therapist.</p>
+          </article>
+
+          <!-- 04 Companion / encouragement -->
+          <article class="post post-companion" data-export="feed-04-companion">
+            <svg class="companion-glyph companion-big" viewBox="100 84 178 205" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="cg-figure" d="M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z"/><path class="cg-figure" d="M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z"/><circle class="cg-bubble" cx="238.066" cy="122.6" r="33"/></svg>
+            <div class="companion-copy">
+              <p class="kicker">Personality through polish</p>
+              <h2>A little encouragement, every single day.</h2>
+              <div class="bubbles">
+                <span class="bubble">Nice and slow.</span>
+                <span class="bubble bubble-2">You showed up again.</span>
+                <span class="bubble bubble-3">That felt steadier.</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05 For therapists -->
+          <article class="post post-clinician" data-export="feed-05-therapists">
+            <p class="kicker">For speech-language pathologists</p>
+            <h2>Notes written while you focus on the person.</h2>
+            <div class="report-card">
+              <div class="report-head"><span class="report-dot"></span>Session report</div>
+              <span class="report-line w90"></span>
+              <span class="report-line w70"></span>
+              <span class="report-line w80"></span>
+              <span class="report-line w50"></span>
+              <div class="report-ready"><span class="chip-tick"></span>Draft ready in seconds</div>
+            </div>
+          </article>
+
+          <!-- 06 Stutter-positive (the bold, brand-safe one) -->
+          <article class="post post-statement" data-export="feed-06-stutter-positive">
+            <div class="dot-grid dot-grid-light"></div>
+            <p class="kicker kicker-on-dark">Stutter-positive</p>
+            <h2>Speaking up matters more than speaking smoothly.</h2>
+            <p class="lede lede-on-dark">
+              We build confidence and tools, never a demand to hide how you talk.
+            </p>
+            <img class="logo-lockup" src="./assets/logo-invert.svg" alt="UpSpeech" />
+          </article>
+
+          <!-- 07 Learning path -->
+          <article class="post post-path" data-export="feed-07-path">
+            <p class="kicker">A clear path</p>
+            <h2>One step at a time.</h2>
+            <div class="path">
+              <div class="node done"><span>01</span><strong>Learn the technique</strong></div>
+              <div class="node done"><span>02</span><strong>Practice in app</strong></div>
+              <div class="node now"><span>03</span><strong>Try a real scenario</strong></div>
+              <div class="node"><span>04</span><strong>Review with your SLP</strong></div>
+            </div>
+          </article>
+
+          <!-- 08 Scenarios -->
+          <article class="post post-scenarios" data-export="feed-08-scenarios">
+            <p class="kicker">Scenario practice</p>
+            <h2>Rehearse the hard conversations, safely.</h2>
+            <div class="scenario-grid">
+              <div class="scenario"><span class="scenario-ico ico-phone"></span>Phone call</div>
+              <div class="scenario"><span class="scenario-ico ico-coffee"></span>Ordering out</div>
+              <div class="scenario"><span class="scenario-ico ico-people"></span>Introductions</div>
+              <div class="scenario"><span class="scenario-ico ico-mic"></span>Speaking up</div>
+            </div>
+            <p class="lede">Low-stakes reps now, so the real moment feels lighter.</p>
+          </article>
+
+          <!-- 09 CTA -->
+          <article class="post post-cta" data-export="feed-09-cta">
+            <div class="cta-card">
+              <svg class="companion-glyph" viewBox="100 84 178 205" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="cg-figure" d="M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z"/><path class="cg-figure" d="M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z"/><circle class="cg-bubble" cx="238.066" cy="122.6" r="33"/></svg>
+              <p class="kicker">Free for patients</p>
+              <h2>Speech therapy, supported all week.</h2>
+              <p class="lede">Ask your therapist about UpSpeech, or begin practising today.</p>
+              <span class="url">upspeech.app</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Photo + overlay feed</p>
+          <h2>Editorial proof posts</h2>
+        </div>
+
+        <div class="photo-row">
+          <article
+            class="post post-photo"
+            data-export="feed-photo-01-phone-practice"
+            style="--photo-bg: url('../source-images/phone-scenes/hand-phone-practice-plate-v01.jpg')"
+          >
+            <div class="photo-bg" aria-hidden="true"></div>
+            <header class="photo-brand"><img class="logo-lockup" src="./assets/logo-invert.svg" alt="UpSpeech" /></header>
+            <div class="photo-card">
+              <p class="kicker">Daily practice</p>
+              <h2>Five calm minutes, wherever you are.</h2>
+              <span class="photo-cta">Start your streak</span>
+            </div>
+          </article>
+
+          <article
+            class="post post-photo"
+            data-export="feed-photo-02-calm-desk"
+            style="--photo-bg: url('../source-images/backgrounds/calm-desk-morning-v01.jpg')"
+          >
+            <div class="photo-bg" aria-hidden="true"></div>
+            <header class="photo-brand"><img class="logo-lockup" src="./assets/logo-invert.svg" alt="UpSpeech" /></header>
+            <div class="photo-card photo-card-tr">
+              <p class="kicker">Between sessions</p>
+              <h2>The work continues, gently, at home.</h2>
+              <span class="photo-cta">See how it works</span>
+            </div>
+          </article>
+
+          <article
+            class="post post-photo"
+            data-export="feed-photo-03-clinician"
+            style="--photo-bg: url('../source-images/backgrounds/clinician-desk-v01.jpg')"
+          >
+            <div class="photo-bg" aria-hidden="true"></div>
+            <header class="photo-brand"><img class="logo-lockup" src="./assets/logo-invert.svg" alt="UpSpeech" /></header>
+            <div class="photo-card photo-card-tl">
+              <p class="kicker">For clinicians</p>
+              <h2>More minutes with the person, fewer on paperwork.</h2>
+              <span class="photo-cta">For SLPs</span>
+            </div>
+          </article>
+
+          <!-- Product proof posts using real, sanitized app screenshots -->
+          <article class="post post-mock" data-export="feed-mock-01-progress">
+            <header class="photo-brand"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="browser">
+              <div class="browser-bar"><i></i><i></i><i></i></div>
+              <img class="browser-shot" src="./assets/screenshots/web/client-dashboard.png" alt="UpSpeech patient dashboard showing weekly progress" />
+            </div>
+            <div class="mock-copy"><p class="kicker">Progress tracking</p><h2>Your week, at a glance.</h2><span class="photo-cta photo-cta-solid">Open the app</span></div>
+          </article>
+
+          <article class="post post-mock" data-export="feed-mock-02-report">
+            <header class="photo-brand"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="browser">
+              <div class="browser-bar"><i></i><i></i><i></i></div>
+              <img class="browser-shot" src="./assets/screenshots/web/therapist-report.png" alt="UpSpeech AI-drafted clinical session report" />
+            </div>
+            <div class="mock-copy"><p class="kicker">For therapists</p><h2>Draft, review, approve.</h2><span class="photo-cta photo-cta-solid">For SLPs</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Carousel</p>
+          <h2>A week with UpSpeech</h2>
+        </div>
+
+        <div class="carousel-row">
+          <article class="post post-carousel carousel-hero" data-export="carousel-week-01-hero">
+            <p class="kicker kicker-on-dark">4-slide carousel</p>
+            <h2>What a week with UpSpeech looks like.</h2>
+            <p class="lede lede-on-dark">Save this for the start of your next practice week.</p>
+            <span class="carousel-arrow">Swipe →</span>
+          </article>
+
+          <article class="post post-carousel carousel-step" data-export="carousel-week-02-practice">
+            <p class="kicker">Mon - Fri</p>
+            <h2>Short daily reps.</h2>
+            <p class="lede">A few guided minutes on the technique your therapist chose.</p>
+            <div class="carousel-step-number">01</div>
+          </article>
+
+          <article class="post post-carousel carousel-step" data-export="carousel-week-03-feedback">
+            <p class="kicker">Anytime</p>
+            <h2>Gentle, useful feedback.</h2>
+            <p class="lede">See what changed, send a note to your SLP when something clicks.</p>
+            <div class="carousel-step-number">02</div>
+          </article>
+
+          <article class="post post-carousel carousel-cta" data-export="carousel-week-04-cta">
+            <p class="kicker">Next session</p>
+            <h2>Arrive with a week of progress.</h2>
+            <p class="lede">Your therapist sees the trends. The session starts with more context.</p>
+            <span class="photo-cta photo-cta-solid">Start practising</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Stories</p>
+          <h2>Prep-day frames</h2>
+        </div>
+
+        <div class="stories-row">
+          <article class="story story-prep" data-export="story-01-streak">
+            <p class="kicker">Keep the streak</p>
+            <h2>Today's 5 minutes</h2>
+            <ul class="story-checklist">
+              <li>Warm up with easy onset</li>
+              <li>One pacing exercise</li>
+              <li>Say one real sentence out loud</li>
+              <li>Log how it felt</li>
+            </ul>
+            <span class="story-cta">Reply with today's word of the day</span>
+          </article>
+
+          <article class="story story-poll" data-export="story-02-technique-poll">
+            <p class="kicker">Quick poll</p>
+            <h2>Which moment feels hardest?</h2>
+            <div class="poll-options">
+              <div><span>A</span><strong>Phone calls</strong></div>
+              <div><span>B</span><strong>Introducing yourself</strong></div>
+            </div>
+            <p class="poll-note">Vote, then practise that exact scenario in app.</p>
+          </article>
+
+          <article class="story story-progress" data-export="story-03-progress">
+            <p class="kicker">Progress reveal</p>
+            <h2>Look how far this week went.</h2>
+            <div class="ring ring-lg" style="--pct: 84"><div class="ring-center"><strong>84%</strong><span>technique score</span></div></div>
+            <span class="story-cta">Share your streak with us</span>
+          </article>
+
+          <article class="story story-myth" data-export="story-04-myth">
+            <p class="kicker">Stutter facts</p>
+            <h2>Myth: stuttering means nervous.</h2>
+            <div class="myth-card">
+              <span class="myth-x">Myth</span>
+              <p>Stuttering is neurological, not a sign of anxiety or low confidence.</p>
+            </div>
+            <span class="story-cta">Save and share the fact</span>
+          </article>
+
+          <article
+            class="story story-photo"
+            data-export="story-photo-01-calm"
+            style="--photo-bg: url('../source-images/backgrounds/calm-desk-morning-v01.jpg')"
+          >
+            <div class="photo-bg" aria-hidden="true"></div>
+            <div class="story-photo-card">
+              <p class="kicker">Tonight's practice</p>
+              <h2>One technique, five calm minutes.</h2>
+              <span class="story-cta">Link sticker to start</span>
+            </div>
+          </article>
+
+          <article
+            class="story story-photo"
+            data-export="story-photo-02-phone"
+            style="--photo-bg: url('../source-images/phone-scenes/hand-phone-practice-plate-v01.jpg')"
+          >
+            <div class="photo-bg" aria-hidden="true"></div>
+            <div class="story-photo-card story-photo-card-bottom">
+              <p class="kicker">Anywhere works</p>
+              <h2>Practice on the bus, before the call, after lunch.</h2>
+              <span class="story-cta">Question sticker: where do you practise?</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Highlights</p>
+          <h2>Cover set</h2>
+        </div>
+
+        <div class="highlight-row">
+          <article class="highlight" data-export="highlight-practice"><span class="highlight-icon">5m</span><strong>Practice</strong></article>
+          <article class="highlight" data-export="highlight-progress"><span class="highlight-icon">%</span><strong>Progress</strong></article>
+          <article class="highlight" data-export="highlight-techniques"><span class="highlight-icon">Aa</span><strong>Techniques</strong></article>
+          <article class="highlight" data-export="highlight-therapists"><span class="highlight-icon">SLP</span><strong>For SLPs</strong></article>
+          <article class="highlight" data-export="highlight-stories"><span class="highlight-icon">+</span><strong>Stories</strong></article>
+          <article class="highlight" data-export="highlight-facts"><span class="highlight-icon">?</span><strong>Facts</strong></article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Launch kit</p>
+          <h2>Profile avatar + app + LinkedIn</h2>
+        </div>
+
+        <div class="photo-row">
+          <!-- Profile avatar (IG crops to a circle) -->
+          <article class="post post-avatar" data-export="profile-avatar">
+            <svg class="companion-glyph avatar-glyph on-dark" viewBox="100 84 178 205" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="cg-figure" d="M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z"/><path class="cg-figure" d="M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z"/><circle class="cg-bubble" cx="238.066" cy="122.6" r="33"/></svg>
+          </article>
+
+          <!-- App download feed post -->
+          <article class="post post-app" data-export="feed-10-app">
+            <div class="dot-grid"></div>
+            <img class="app-phone" src="./assets/screenshots/mobile/patient-practice-device.png" alt="UpSpeech practice screen on iPhone" />
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="hero-stack">
+              <p class="kicker">Now on iPhone and Android</p>
+              <h2>Your practice, in your pocket.</h2>
+              <p class="lede">Daily exercises, your streak, and your therapist's feedback, wherever you are.</p>
+            </div>
+            <div class="store-row">
+              <span class="store-pill"><span class="store-ico ico-apple"></span><span class="store-text"><small>Download on the</small>App Store</span></span>
+              <span class="store-pill"><span class="store-ico ico-play"></span><span class="store-text"><small>Get it on</small>Google Play</span></span>
+            </div>
+          </article>
+
+          <!-- LinkedIn quote card (square) -->
+          <article class="post post-li-quote" data-export="li-quote-01">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <h2>An hour a day writing notes is an hour not spent with the person.</h2>
+            <p class="quote-by">The documentation problem UpSpeech was built to take off your plate.</p>
+            <img class="logo-lockup" src="./assets/logo-invert.svg" alt="UpSpeech" />
+          </article>
+
+          <!-- LinkedIn stat card (square) -->
+          <article class="post post-li-stat" data-export="li-stat-01">
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="stat-stack">
+              <p class="kicker">For speech-language pathologists</p>
+              <strong class="stat-big">~2 hr<span>/day</span></strong>
+              <h2>spent writing session notes by hand.</h2>
+              <p class="lede">That's the documentation load SLPs report. UpSpeech drafts the note so the session stays about the person.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Stories</p>
+          <h2>App download</h2>
+        </div>
+
+        <div class="stories-row">
+          <article class="story story-app" data-export="story-05-app">
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <p class="kicker">Take it with you</p>
+            <h2>UpSpeech is on your phone now.</h2>
+            <svg class="companion-glyph story-app-glyph" viewBox="100 84 178 205" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="cg-figure" d="M106.667 158C106.667 132.816 127.082 112.4 152.266 112.4H153.466C177.988 112.4 197.867 132.279 197.867 156.8C197.867 181.322 177.988 201.2 153.466 201.2H106.667V158Z"/><path class="cg-figure" d="M106.667 210.8H185.866C199.121 210.8 209.867 221.545 209.867 234.8V258.8C209.867 272.055 199.121 282.8 185.867 282.8H130.667C117.412 282.8 106.667 272.055 106.667 258.8V210.8Z"/><circle class="cg-bubble" cx="238.066" cy="122.6" r="33"/></svg>
+            <div class="store-row store-row-stack">
+              <span class="store-pill"><span class="store-ico ico-apple"></span><span class="store-text"><small>Download on the</small>App Store</span></span>
+              <span class="store-pill"><span class="store-ico ico-play"></span><span class="store-text"><small>Get it on</small>Google Play</span></span>
+            </div>
+            <span class="story-cta">Link sticker to download</span>
+          </article>
+        </div>
+      </section>
+      <section class="template-section">
+        <div class="section-title">
+          <p class="eyebrow">Mobile</p>
+          <h2>Inside the app</h2>
+        </div>
+
+        <div class="photo-row">
+          <!-- Three-phone hero -->
+          <article class="post post-trio" data-export="feed-11-mobile-trio">
+            <div class="dot-grid"></div>
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="trio-copy">
+              <p class="kicker">Inside the app</p>
+              <h2>Your whole practice, in one place.</h2>
+              <p class="lede">Home, your journey, and daily practice, all in your pocket.</p>
+            </div>
+            <div class="phone-trio" aria-hidden="false">
+              <img class="trio-phone trio-left" src="./assets/screenshots/mobile/patient-journey-device.png" alt="UpSpeech journey screen" />
+              <img class="trio-phone trio-mid" src="./assets/screenshots/mobile/patient-home-device.png" alt="UpSpeech home screen" />
+              <img class="trio-phone trio-right" src="./assets/screenshots/mobile/patient-practice-device.png" alt="UpSpeech practice screen" />
+            </div>
+          </article>
+
+          <!-- 3-slide carousel: Home / Journey / Practice -->
+          <article class="post post-appshot" data-export="carousel-app-01-home">
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="appshot-copy">
+              <p class="kicker">Home</p>
+              <h2>Open to a calm starting point.</h2>
+              <p class="lede">Your streak, today's practice, and what comes next.</p>
+            </div>
+            <img class="appshot-phone" src="./assets/screenshots/mobile/patient-home-device.png" alt="UpSpeech home screen on iPhone" />
+          </article>
+
+          <article class="post post-appshot" data-export="carousel-app-02-journey">
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="appshot-copy">
+              <p class="kicker">Your journey</p>
+              <h2>See the whole path, and how far you've come.</h2>
+              <p class="lede">Milestones, techniques, and progress over time.</p>
+            </div>
+            <img class="appshot-phone" src="./assets/screenshots/mobile/patient-journey-device.png" alt="UpSpeech journey screen on iPhone" />
+          </article>
+
+          <article class="post post-appshot" data-export="carousel-app-03-practice">
+            <header class="brand-mark"><img class="logo-lockup" src="./assets/logo.svg" alt="UpSpeech" /></header>
+            <div class="appshot-copy">
+              <p class="kicker">Practice</p>
+              <h2>Guided reps, a tap away.</h2>
+              <p class="lede">Easy onset, pacing, pull-outs, shaped around your plan.</p>
+            </div>
+            <img class="appshot-phone" src="./assets/screenshots/mobile/patient-practice-device.png" alt="UpSpeech practice screen on iPhone" />
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
