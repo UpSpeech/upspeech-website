@@ -74,17 +74,28 @@ export default function StutterPositive() {
 
         {/* Content sections */}
         <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-10">
-              {t.sections.map((section) => (
-                <div key={section.heading}>
-                  <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
-                    {section.heading}
-                  </h2>
-                  <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-6 sm:gap-8">
+              {t.sections.map((section, i) => (
+                <article
+                  key={section.heading}
+                  className="rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)] sm:p-8"
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="font-heading text-2xl font-bold text-calm-lavender sm:text-3xl"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
+                      {section.heading}
+                    </h2>
+                  </div>
+                  <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed sm:pl-[3.25rem]">
                     {section.body}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
