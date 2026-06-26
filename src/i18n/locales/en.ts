@@ -545,6 +545,8 @@ export const en = {
       eyebrow: "Documentation",
       headline: "Session notes, drafted for you to review.",
       body: "After a session, UpSpeech turns it into a structured draft report. You review, edit, and sign off. You keep clinical judgement; you just stop starting from a blank page.",
+      screenshotAlt:
+        "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },
     betweenSessions: {
       eyebrow: "Between sessions",

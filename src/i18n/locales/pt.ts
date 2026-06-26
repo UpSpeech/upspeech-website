@@ -549,6 +549,8 @@ export const pt: Dictionary = {
       eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas para si rever.",
       body: "Após uma sessão, a UpSpeech transforma-a num rascunho de relatório estruturado. O clínico revê, edita e valida. Mantém a palavra clínica final; deixa de começar de uma página em branco.",
+      screenshotAlt:
+        "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
     betweenSessions: {
       eyebrow: "Entre sessões",
