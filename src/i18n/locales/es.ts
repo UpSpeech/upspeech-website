@@ -10,7 +10,6 @@ export const es: Dictionary = {
     whyUs: "Por qué UpSpeech",
     techniques: "Técnicas",
     forPatients: "Para pacientes",
-    forSlps: "Para logopedas",
     requestAccess: "Solicitar acceso anticipado",
     skipToContent: "Saltar al contenido",
     logoScrollTop: "UpSpeech, subir al inicio",

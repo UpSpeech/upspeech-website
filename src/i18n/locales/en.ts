@@ -8,7 +8,6 @@ export const en = {
     whyUs: "Why Us",
     techniques: "Techniques",
     forPatients: "For patients",
-    forSlps: "For SLPs",
     requestAccess: "Request early access",
     skipToContent: "Skip to content",
     logoScrollTop: "UpSpeech, scroll to top",

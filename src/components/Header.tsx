@@ -142,13 +142,6 @@ const Header = () => {
             >
               {t.techniques}
             </a>
-            <a
-              href={localizedPath("/for-slps", locale)}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
-              onClick={() => trackButtonClick("nav_for_slps", "header")}
-            >
-              {t.forSlps}
-            </a>
             <LocaleSwitcher />
           </nav>
 
@@ -236,16 +229,6 @@ const Header = () => {
               }}
             >
               {t.techniques}
-            </a>
-            <a
-              href={localizedPath("/for-slps", locale)}
-              className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
-              onClick={() => {
-                trackButtonClick("nav_for_slps", "header");
-                setMenuOpen(false);
-              }}
-            >
-              {t.forSlps}
             </a>
             <Button
               onClick={() => {
