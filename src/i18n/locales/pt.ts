@@ -10,7 +10,6 @@ export const pt: Dictionary = {
     whyUs: "Porquê a UpSpeech",
     techniques: "Técnicas",
     forPatients: "Para pacientes",
-    forSlps: "Para terapeutas da fala",
     requestAccess: "Pedir acesso antecipado",
     skipToContent: "Saltar para o conteúdo",
     logoScrollTop: "UpSpeech, subir ao topo",
