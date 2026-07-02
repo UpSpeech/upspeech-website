@@ -70,5 +70,7 @@ if (prev !== body) {
   writeFileSync(OUT, body);
   console.log(`asset manifest: ${sorted.length} localized asset(s)`);
 } else {
-  console.log(`asset manifest: up to date (${sorted.length} localized asset(s))`);
+  console.log(
+    `asset manifest: up to date (${sorted.length} localized asset(s))`,
+  );
 }

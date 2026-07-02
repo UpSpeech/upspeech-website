@@ -15,7 +15,9 @@ const FEATURE_IMAGES = [
 const FeatureGallerySection = () => {
   const t = useT().home.gallery;
   const locale = useLocale();
-  const featureImages = FEATURE_IMAGES.map((src) => localizedAsset(src, locale));
+  const featureImages = FEATURE_IMAGES.map((src) =>
+    localizedAsset(src, locale),
+  );
   const annotationImage = localizedAsset(
     "/screenshots/app/researcher-annotation-tool.jpg",
     locale,

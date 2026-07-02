@@ -141,8 +141,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <ConsentBanner />
       <BrowserRouter>
+        <ConsentBanner />
         <PageViewTracker />
         <LegacyLangRedirect />
         <Suspense fallback={null}>

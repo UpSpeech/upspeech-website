@@ -12,7 +12,7 @@ const SceneAnnotation = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = useStrings();
-  const TAGS = TAG_X.map((x, i) => ({ label: s.annotation.tags[i], x }));
+  const tags = TAG_X.map((x, i) => ({ label: s.annotation.tags[i], x }));
 
   const progress = interpolate(frame, [PLAY_START, PLAY_END], [0, 1], {
     extrapolateLeft: "clamp",
@@ -93,7 +93,7 @@ const SceneAnnotation = () => {
                     className="absolute inset-y-0 left-0 rounded-full bg-calm-lavender/70"
                     style={{ width: `${progress * 100}%` }}
                   />
-                  {TAGS.map((tag) => {
+                  {tags.map((tag) => {
                     const placed = progress >= tag.x;
                     const pop = spring({
                       frame,
@@ -131,7 +131,7 @@ const SceneAnnotation = () => {
                 {s.annotation.tagged}
               </div>
               <div className="mt-3 flex flex-col gap-2.5">
-                {TAGS.map((tag) => {
+                {tags.map((tag) => {
                   const placed = progress >= tag.x;
                   return (
                     <div

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -15,6 +16,7 @@ import { getDictionary, splitLocaleFromPath } from "@/i18n";
  */
 export const ConsentBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     // Check if user has already made a consent choice
@@ -51,7 +53,8 @@ export const ConsentBanner = () => {
   }
 
   // Rendered outside the LocaleProvider tree, so derive the locale from the URL.
-  const { locale } = splitLocaleFromPath(window.location.pathname);
+  // useLocation keeps this in sync across client-side language switches.
+  const { locale } = splitLocaleFromPath(pathname);
   const t = getDictionary(locale).consent;
 
   return (

@@ -2,7 +2,83 @@ import { createContext, useContext } from "react";
 
 export type RemotionLocale = "en" | "pt" | "es";
 
-export const STRINGS = {
+type Exercise = { cat: string; title: string; meta: string };
+
+// Fixed-length tuples where the value is index-coupled to a code-side constant
+// (tag positions, colours, step timings, section layouts). The tuple lengths
+// force every locale to stay in lockstep, so a dropped or added entry in one
+// language is a type error rather than a silently misaligned label.
+type HeroStrings = {
+  nav: {
+    dashboard: string;
+    myPatients: string;
+    learningPaths: string;
+    reports: string;
+    recordingReviews: string;
+    exercises: string;
+  };
+  role: string;
+  plan: {
+    title: string;
+    subtitle: string;
+    assign: string;
+    assigned: string;
+    scheduled: string;
+    pending: string;
+    reassurance: string;
+    exercises: [Exercise, Exercise, Exercise];
+  };
+  practice: {
+    days: [string, string, string, string, string, string, string];
+    eyebrow: string;
+    technique: string;
+    quotePre: string;
+    quoteBold: string;
+    recording: string;
+    sent: string;
+    attempt: string;
+    footer: string;
+  };
+  progress: {
+    title: string;
+    subtitle: string;
+    nextSession: string;
+    stats: [string, string, string, string];
+    dailyPractice: string;
+    monToSun: string;
+  };
+  recording: {
+    title: string;
+    subtitle: string;
+    saved: string;
+    steps: [string, string, string];
+    after: string;
+    from: string;
+    tags: [string, string, string];
+  };
+  report: {
+    title: string;
+    subtitle: string;
+    ready: string;
+    draft: string;
+    sections: [string, string, string];
+    reassurance: string;
+    readyToShare: string;
+    markReady: string;
+  };
+  annotation: {
+    labs: string;
+    headline: string;
+    annotating: string;
+    tagged: string;
+    tags: [string, string, string, string, string];
+    clinician: string;
+    body: string;
+  };
+  end: { line1: string; line2: string };
+};
+
+export const STRINGS: Record<RemotionLocale, HeroStrings> = {
   en: {
     nav: {
       dashboard: "Dashboard",
@@ -281,7 +357,7 @@ export const STRINGS = {
       line2: "cuando tú no estás.",
     },
   },
-} as const;
+};
 
 export const LocaleContext = createContext<RemotionLocale>("en");
 export const useStrings = () => STRINGS[useContext(LocaleContext)];

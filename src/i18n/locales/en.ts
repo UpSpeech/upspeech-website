@@ -599,7 +599,7 @@ export const en = {
   consent: {
     title: "Your Privacy Matters",
     description:
-      "We use cookies to improve your experience and analyze site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
+      "We use cookies to improve your experience and analyse site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
     learnMore: "Learn more about cookies",
     decline: "Decline",
     accept: "Accept",
