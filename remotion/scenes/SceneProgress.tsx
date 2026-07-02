@@ -1,35 +1,37 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { AppShell, CountUp, noise, rise, useRise } from "../ui";
+import { useStrings } from "../strings";
 
 const STATS = [
-  { label: "Practice days", value: 6, suffix: "/7" },
-  { label: "Exercises done", value: 18, suffix: "" },
-  { label: "Practice time", value: 54, suffix: " min" },
-  { label: "Self check-ins", value: 7, suffix: "" },
+  { value: 6, suffix: "/7" },
+  { value: 18, suffix: "" },
+  { value: 54, suffix: " min" },
+  { value: 7, suffix: "" },
 ];
 
 const SceneProgress = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const s = useStrings();
 
   return (
     <AppShell
-      active="My Patients"
-      title="Miguel A. · This week"
-      subtitle="Activity since the last session"
+      activeKey="myPatients"
+      title={s.progress.title}
+      subtitle={s.progress.subtitle}
       topRight={
         <div
           className="rounded-full bg-calm-lavender/15 px-4 py-2 font-body text-[12px] font-semibold text-calm-navy"
           style={useRise(8, 10)}
         >
-          Next session: Thursday
+          {s.progress.nextSession}
         </div>
       }
     >
       <div className="mt-7 grid grid-cols-4 gap-4">
         {STATS.map((stat, i) => (
           <div
-            key={stat.label}
+            key={s.progress.stats[i]}
             className="rounded-2xl border border-calm-navy/10 bg-white p-5 shadow-[0_18px_40px_-28px_rgba(41,53,135,0.35)]"
             style={rise(frame, fps, 8 + i * 8)}
           >
@@ -41,7 +43,7 @@ const SceneProgress = () => {
               />
             </div>
             <div className="mt-2 font-body text-[12px] text-calm-charcoal/60">
-              {stat.label}
+              {s.progress.stats[i]}
             </div>
           </div>
         ))}
@@ -53,10 +55,10 @@ const SceneProgress = () => {
       >
         <div className="flex items-center justify-between">
           <span className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-calm-charcoal/50">
-            Daily practice
+            {s.progress.dailyPractice}
           </span>
           <span className="font-body text-[12px] text-calm-charcoal/50">
-            Mon to Sun
+            {s.progress.monToSun}
           </span>
         </div>
         <div className="mt-4 flex h-[240px] items-end gap-3">

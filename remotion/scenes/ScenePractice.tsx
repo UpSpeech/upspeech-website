@@ -1,12 +1,13 @@
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Waveform, useRise } from "../ui";
-
-const DAYS = ["M", "T", "W", "T", "F", "S", "S"];
+import { useStrings } from "../strings";
 
 /** Patient view: practising at home between sessions. */
 const ScenePractice = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const s = useStrings();
+  const DAYS = s.practice.days;
 
   const SENT_FRAME = 84;
   const sent = frame >= SENT_FRAME;
@@ -34,10 +35,10 @@ const ScenePractice = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="font-body text-[11px] font-semibold uppercase tracking-[0.25em] text-calm-lavender">
-                  Tonight's practice · from your therapist
+                  {s.practice.eyebrow}
                 </div>
                 <h2 className="mt-2 font-heading text-[30px] font-bold tracking-tight text-calm-charcoal">
-                  Holding - Natural Exit
+                  {s.practice.technique}
                 </h2>
               </div>
               <div className="flex gap-1.5">
@@ -65,9 +66,9 @@ const ScenePractice = () => {
             style={useRise(14)}
           >
             <div className="font-body text-[15px] leading-relaxed text-calm-charcoal/80">
-              "When a block comes, hold the position calmly,{" "}
+              "{s.practice.quotePre}
               <span className="font-semibold text-calm-navy">
-                then release into the word with less tension.
+                {s.practice.quoteBold}
               </span>
               "
             </div>
@@ -82,7 +83,7 @@ const ScenePractice = () => {
                     style={{ opacity: 0.4 + recPulse * 0.6 }}
                   />
                   <span className="font-body text-[13px] font-semibold text-calm-charcoal/60">
-                    Recording your attempt
+                    {s.practice.recording}
                   </span>
                 </div>
               ) : (
@@ -93,11 +94,11 @@ const ScenePractice = () => {
                     transform: `scale(${0.7 + chipPop * 0.3})`,
                   }}
                 >
-                  ✓ Sent to your therapist
+                  {s.practice.sent}
                 </div>
               )}
               <span className="font-body text-[12px] text-calm-charcoal/45">
-                Attempt 3 of 5
+                {s.practice.attempt}
               </span>
             </div>
           </div>
@@ -106,7 +107,7 @@ const ScenePractice = () => {
             className="mt-5 text-center font-body text-[12px] text-calm-charcoal/50"
             style={useRise(30, 10)}
           >
-            Reviewed and adjusted by your therapist
+            {s.practice.footer}
           </div>
         </div>
       </div>
