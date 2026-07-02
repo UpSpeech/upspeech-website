@@ -7,6 +7,6 @@ export {
   type Locale,
 } from "./locale";
 export { localizedAsset } from "./assets";
-export { LocaleProvider } from "./LocaleProvider";
+export { LocaleProvider, getDictionary } from "./LocaleProvider";
 export { useLocale, useT } from "./context";
 export type { Dictionary } from "./locales/en";

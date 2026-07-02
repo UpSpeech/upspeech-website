@@ -8,6 +8,10 @@ import { LocaleContext, type LocaleContextValue } from "./context";
 
 const DICTIONARIES: Record<Locale, Dictionary> = { en, pt, es };
 
+/** The dictionary for a locale. For use outside the LocaleProvider tree
+ * (e.g. the global consent banner, which derives locale from the URL). */
+export const getDictionary = (locale: Locale): Dictionary => DICTIONARIES[locale];
+
 export function LocaleProvider({
   locale,
   children,
