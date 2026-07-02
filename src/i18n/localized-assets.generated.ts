@@ -4,5 +4,16 @@
 // under public/. The resolver in ./assets.ts uses it to decide fallback.
 
 export const LOCALIZED_ASSETS: ReadonlySet<string> = new Set([
-
+  "es|/screenshots/app/cbsa-severity-trend.png",
+  "es|/screenshots/app/client-dashboard.png",
+  "es|/screenshots/app/therapist-dashboard.png",
+  "es|/screenshots/app/therapist-learning-path.png",
+  "es|/screenshots/app/therapist-patient-progress.jpg",
+  "es|/screenshots/app/therapist-report.png",
+  "pt|/screenshots/app/cbsa-severity-trend.png",
+  "pt|/screenshots/app/client-dashboard.png",
+  "pt|/screenshots/app/therapist-dashboard.png",
+  "pt|/screenshots/app/therapist-learning-path.png",
+  "pt|/screenshots/app/therapist-patient-progress.jpg",
+  "pt|/screenshots/app/therapist-report.png",
 ]);
