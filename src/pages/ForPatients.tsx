@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forPatients.howItWorks.steps).
@@ -160,10 +160,10 @@ export default function ForPatients() {
             </div>
 
             <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
-              {SCREENSHOTS.map((src, i) => (
+              {SCREENSHOTS.map((base, i) => (
                 <img
-                  key={src}
-                  src={src}
+                  key={base}
+                  src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
                   className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${

@@ -6,7 +6,7 @@ import {
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
@@ -113,7 +113,7 @@ export default function ForSlps() {
 
             <div className="relative mt-12 overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
               <img
-                src="/screenshots/app/therapist-report.png"
+                src={localizedAsset("/screenshots/app/therapist-report.png", locale)}
                 alt={t.documentation.screenshotAlt}
                 loading="lazy"
                 className="block h-auto w-full"

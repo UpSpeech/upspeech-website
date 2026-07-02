@@ -1,8 +1,9 @@
 import ProductScene from "./ProductScene";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const PatientScene = () => {
   const t = useT().home.patient;
+  const locale = useLocale();
   return (
     <ProductScene
       eyebrow={t.eyebrow}
@@ -14,7 +15,7 @@ const PatientScene = () => {
         </>
       }
       body={t.body}
-      image="/screenshots/app/client-dashboard.png"
+      image={localizedAsset("/screenshots/app/client-dashboard.png", locale)}
       imageAlt={t.imageAlt}
       url="app.upspeech.app"
       tone="light"

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
 // section with no baked panel or caption. Cropped from the app-mobile store art.
@@ -73,6 +73,13 @@ function useStageTilt(stageRef: React.RefObject<HTMLDivElement | null>) {
 
 const MobileAppBand = () => {
   const t = useT().home.mobile;
+  const locale = useLocale();
+  // Localized variants when present, else the English base (see i18n/assets).
+  // The device frame is UI-neutral and stays shared across locales.
+  const screenshots = SCREENSHOTS.map((shot) => ({
+    src: localizedAsset(shot.src, locale),
+  }));
+  const heroVideo = localizedAsset(HERO_VIDEO.mp4, locale);
   const { ref, revealed } = useReveal<HTMLDivElement>();
   const stageRef = useRef<HTMLDivElement>(null);
   useStageTilt(stageRef);
@@ -109,7 +116,7 @@ const MobileAppBand = () => {
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
           <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">
-            {SCREENSHOTS.map((shot, i) => (
+            {screenshots.map((shot, i) => (
               <img
                 key={shot.src}
                 src={shot.src}
@@ -137,7 +144,7 @@ const MobileAppBand = () => {
               transition: `transform 400ms ${EASE}`,
             }}
           >
-            {SCREENSHOTS.map((shot, i) => {
+            {screenshots.map((shot, i) => {
               const fan = FAN[i];
               const isHero = i === 1;
               return (
@@ -166,7 +173,7 @@ const MobileAppBand = () => {
                           width: SCREEN.width,
                           height: SCREEN.height,
                         }}
-                        src={HERO_VIDEO.mp4}
+                        src={heroVideo}
                         autoPlay
                         muted
                         loop

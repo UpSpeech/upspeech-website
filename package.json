@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-routes.mjs && node scripts/generate-og-images.mjs && node scripts/generate-sitemap.mjs && vite build && npx puppeteer browsers install chrome && node scripts/prerender.mjs",
-    "build:dev": "node scripts/check-routes.mjs && vite build --mode development",
+    "build": "node scripts/check-routes.mjs && node scripts/generate-asset-manifest.mjs && node scripts/generate-og-images.mjs && node scripts/generate-sitemap.mjs && vite build && npx puppeteer browsers install chrome && node scripts/prerender.mjs",
+    "build:dev": "node scripts/check-routes.mjs && node scripts/generate-asset-manifest.mjs && vite build --mode development",
     "check:routes": "node scripts/check-routes.mjs",
+    "manifest:assets": "node scripts/generate-asset-manifest.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
