@@ -7,6 +7,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { useStrings } from "./strings";
 
 export const COLORS = {
   navy: "#293587",
@@ -83,29 +84,32 @@ export const Waveform = ({
   );
 };
 
-const NAV_ITEMS = [
-  "Dashboard",
-  "My Patients",
-  "Learning Paths",
-  "Reports",
-  "Recording Reviews",
-  "Exercises",
+const NAV_KEYS = [
+  "dashboard",
+  "myPatients",
+  "learningPaths",
+  "reports",
+  "recordingReviews",
+  "exercises",
 ] as const;
+
+type NavKey = (typeof NAV_KEYS)[number];
 
 /** Therapist app shell: sidebar + topbar, mirrors the real product chrome. */
 export const AppShell = ({
-  active,
+  activeKey,
   title,
   subtitle,
   topRight,
   children,
 }: {
-  active: (typeof NAV_ITEMS)[number];
+  activeKey: NavKey;
   title: string;
   subtitle?: string;
   topRight?: ReactNode;
   children: ReactNode;
 }) => {
+  const s = useStrings();
   return (
     <div className="absolute inset-0 flex bg-white">
       <aside className="w-[230px] shrink-0 border-r border-calm-charcoal/10 bg-calm-light/60 px-5 py-6 flex flex-col gap-7">
@@ -125,21 +129,21 @@ export const AppShell = ({
               Sarah Johnson
             </div>
             <div className="font-body text-[11px] text-calm-charcoal/55">
-              Therapist
+              {s.role}
             </div>
           </div>
         </div>
         <nav className="flex flex-col gap-1.5">
-          {NAV_ITEMS.map((item) => (
+          {NAV_KEYS.map((key) => (
             <div
-              key={item}
+              key={key}
               className={`rounded-lg px-3 py-2 font-body text-[13px] ${
-                item === active
+                key === activeKey
                   ? "bg-calm-navy/10 font-semibold text-calm-navy"
                   : "text-calm-charcoal/65"
               }`}
             >
-              {item}
+              {s.nav[key]}
             </div>
           ))}
         </nav>

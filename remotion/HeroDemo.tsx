@@ -8,6 +8,7 @@ import SceneRecording from "./scenes/SceneRecording";
 import SceneReport from "./scenes/SceneReport";
 import SceneAnnotation from "./scenes/SceneAnnotation";
 import SceneEnd from "./scenes/SceneEnd";
+import { LocaleContext, type RemotionLocale } from "./strings";
 
 const FADE = 12;
 
@@ -25,39 +26,41 @@ const transition = () => (
   />
 );
 
-const HeroDemo = () => {
+const HeroDemo = ({ locale = "en" }: { locale?: RemotionLocale }) => {
   return (
-    <AbsoluteFill className="bg-calm-light">
-      <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[0]}>
-          <ScenePlan />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[1]}>
-          <ScenePractice />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[2]}>
-          <SceneProgress />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[3]}>
-          <SceneRecording />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[4]}>
-          <SceneReport />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[5]}>
-          <SceneAnnotation />
-        </TransitionSeries.Sequence>
-        {transition()}
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[6]}>
-          <SceneEnd />
-        </TransitionSeries.Sequence>
-      </TransitionSeries>
-    </AbsoluteFill>
+    <LocaleContext.Provider value={locale}>
+      <AbsoluteFill className="bg-calm-light">
+        <TransitionSeries>
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[0]}>
+            <ScenePlan />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[1]}>
+            <ScenePractice />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[2]}>
+            <SceneProgress />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[3]}>
+            <SceneRecording />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[4]}>
+            <SceneReport />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[5]}>
+            <SceneAnnotation />
+          </TransitionSeries.Sequence>
+          {transition()}
+          <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS[6]}>
+            <SceneEnd />
+          </TransitionSeries.Sequence>
+        </TransitionSeries>
+      </AbsoluteFill>
+    </LocaleContext.Provider>
   );
 };
 

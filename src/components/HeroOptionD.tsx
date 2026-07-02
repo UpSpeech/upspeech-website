@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { PlayIcon } from "@heroicons/react/24/outline";
 import { trackButtonClick } from "@/lib/analytics";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -31,6 +31,9 @@ const Line = ({
 
 const HeroOptionD = () => {
   const t = useT().home.hero;
+  const locale = useLocale();
+  const heroVideo = localizedAsset("/videos/hero-demo.mp4", locale);
+  const heroPoster = localizedAsset("/videos/hero-demo-poster.jpg", locale);
   const [loaded, setLoaded] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -154,8 +157,8 @@ const HeroOptionD = () => {
             {playing ? (
               <video
                 className="block w-full h-auto"
-                src="/videos/hero-demo.mp4"
-                poster="/videos/hero-demo-poster.jpg"
+                src={heroVideo}
+                poster={heroPoster}
                 controls
                 autoPlay={!reducedMotion}
                 muted
@@ -173,7 +176,7 @@ const HeroOptionD = () => {
                 aria-label={t.playAriaLabel}
               >
                 <img
-                  src="/videos/hero-demo-poster.jpg"
+                  src={heroPoster}
                   alt={t.posterAlt}
                   className="block w-full h-auto"
                   loading="eager"

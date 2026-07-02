@@ -1,6 +1,6 @@
 import { useReveal } from "./useReveal";
 import ZoomableImage from "./ui/ZoomableImage";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -14,6 +14,14 @@ const FEATURE_IMAGES = [
 
 const FeatureGallerySection = () => {
   const t = useT().home.gallery;
+  const locale = useLocale();
+  const featureImages = FEATURE_IMAGES.map((src) =>
+    localizedAsset(src, locale),
+  );
+  const annotationImage = localizedAsset(
+    "/screenshots/app/researcher-annotation-tool.jpg",
+    locale,
+  );
   const { ref, revealed } = useReveal<HTMLDivElement>({
     threshold: 0.05,
     rootMargin: "0px 0px 0px 0px",
@@ -74,7 +82,7 @@ const FeatureGallerySection = () => {
         >
           <div className="relative bg-calm-charcoal/[0.03] flex items-center justify-center p-3 sm:p-5 lg:p-6">
             <ZoomableImage
-              src="/screenshots/app/researcher-annotation-tool.jpg"
+              src={annotationImage}
               alt={t.annotationImageAlt}
               className="w-full h-auto block rounded-lg"
               loading="lazy"
@@ -127,7 +135,7 @@ const FeatureGallerySection = () => {
             >
               <div className="rounded-2xl overflow-hidden border border-calm-navy/10 bg-white shadow-[0_24px_60px_-30px_rgba(41,53,135,0.3)]">
                 <ZoomableImage
-                  src={FEATURE_IMAGES[i]}
+                  src={featureImages[i]}
                   alt={f.imageAlt}
                   className="w-full h-auto block"
                   loading="lazy"

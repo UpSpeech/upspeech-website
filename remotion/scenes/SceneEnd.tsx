@@ -1,7 +1,9 @@
 import { Img, staticFile } from "remotion";
 import { useRise } from "../ui";
+import { useStrings } from "../strings";
 
 const SceneEnd = () => {
+  const s = useStrings();
   return (
     <div className="absolute inset-0 bg-calm-light">
       <div
@@ -22,8 +24,8 @@ const SceneEnd = () => {
           className="max-w-[700px] text-center font-heading text-[44px] font-bold leading-tight tracking-tight text-calm-charcoal"
           style={useRise(10)}
         >
-          The clinic that's open{" "}
-          <span className="text-calm-lavender">when you're not.</span>
+          {s.end.line1}
+          <span className="text-calm-lavender">{s.end.line2}</span>
         </h2>
         <div
           className="font-body text-[15px] text-calm-charcoal/55"

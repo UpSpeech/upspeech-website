@@ -1,10 +1,14 @@
 import { useReveal } from "./useReveal";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 const EngineSection = () => {
   const t = useT().home.engine;
+  const locale = useLocale();
+  const poster = localizedAsset("/videos/annotation-tool.jpg", locale);
+  const videoWebm = localizedAsset("/videos/annotation-tool.webm", locale);
+  const videoMp4 = localizedAsset("/videos/annotation-tool.mp4", locale);
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.25 });
 
   const textStyle = (delay: number): React.CSSProperties => ({
@@ -67,7 +71,7 @@ const EngineSection = () => {
               {revealed ? (
                 <video
                   className="absolute inset-0 h-full w-full object-cover"
-                  poster="/videos/annotation-tool.jpg"
+                  poster={poster}
                   autoPlay
                   loop
                   muted
@@ -75,15 +79,12 @@ const EngineSection = () => {
                   preload="none"
                   aria-label={t.videoAriaLabel}
                 >
-                  <source
-                    src="/videos/annotation-tool.webm"
-                    type="video/webm"
-                  />
-                  <source src="/videos/annotation-tool.mp4" type="video/mp4" />
+                  <source src={videoWebm} type="video/webm" />
+                  <source src={videoMp4} type="video/mp4" />
                 </video>
               ) : (
                 <img
-                  src="/videos/annotation-tool.jpg"
+                  src={poster}
                   alt={t.videoAriaLabel}
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"

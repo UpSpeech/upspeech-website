@@ -1,13 +1,8 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { useStrings } from "../strings";
 
-/** Tags a clinician places as the playhead moves; x is timeline position 0..1. */
-const TAGS = [
-  { label: "Block", x: 0.16 },
-  { label: "Prolongation", x: 0.34 },
-  { label: "Repetition", x: 0.52 },
-  { label: "Tension", x: 0.7 },
-  { label: "Holding", x: 0.86 },
-];
+/** Timeline positions 0..1 where a clinician places each tag. */
+const TAG_X = [0.16, 0.34, 0.52, 0.7, 0.86];
 
 const PLAY_START = 14;
 const PLAY_END = 104;
@@ -16,6 +11,8 @@ const PLAY_END = 104;
 const SceneAnnotation = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const s = useStrings();
+  const tags = TAG_X.map((x, i) => ({ label: s.annotation.tags[i], x }));
 
   const progress = interpolate(frame, [PLAY_START, PLAY_END], [0, 1], {
     extrapolateLeft: "clamp",
@@ -46,7 +43,7 @@ const SceneAnnotation = () => {
           className="font-body text-[12px] font-semibold uppercase tracking-[0.3em] text-calm-lavender"
           style={{ opacity: intro(2) }}
         >
-          UpSpeech Labs
+          {s.annotation.labs}
         </div>
         <h2
           className="mt-3 font-heading text-[34px] font-bold tracking-tight text-white"
@@ -55,7 +52,7 @@ const SceneAnnotation = () => {
             transform: `translateY(${(1 - intro(8)) * 18}px)`,
           }}
         >
-          Clinician-annotated, frame by frame
+          {s.annotation.headline}
         </h2>
 
         <div
@@ -85,7 +82,7 @@ const SceneAnnotation = () => {
               <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/30 px-3 py-1.5 backdrop-blur">
                 <span className="h-2 w-2 rounded-full bg-calm-lavender" />
                 <span className="font-body text-[11px] font-semibold text-white/80">
-                  Annotating
+                  {s.annotation.annotating}
                 </span>
               </div>
 
@@ -96,7 +93,7 @@ const SceneAnnotation = () => {
                     className="absolute inset-y-0 left-0 rounded-full bg-calm-lavender/70"
                     style={{ width: `${progress * 100}%` }}
                   />
-                  {TAGS.map((tag) => {
+                  {tags.map((tag) => {
                     const placed = progress >= tag.x;
                     const pop = spring({
                       frame,
@@ -131,10 +128,10 @@ const SceneAnnotation = () => {
             {/* Tag list the clinician applies */}
             <div className="flex flex-col">
               <div className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">
-                Tagged moments
+                {s.annotation.tagged}
               </div>
               <div className="mt-3 flex flex-col gap-2.5">
-                {TAGS.map((tag) => {
+                {tags.map((tag) => {
                   const placed = progress >= tag.x;
                   return (
                     <div
@@ -168,7 +165,7 @@ const SceneAnnotation = () => {
                   SJ
                 </div>
                 <span className="font-body text-[12px] text-white/55">
-                  Sarah Johnson, SLP
+                  {s.annotation.clinician}
                 </span>
               </div>
             </div>
@@ -179,8 +176,7 @@ const SceneAnnotation = () => {
           className="mt-5 max-w-2xl font-body text-[13px] text-white/55"
           style={{ opacity: intro(22) }}
         >
-          Speech-language pathologists label every recording by hand. The
-          dataset is expert-annotated from the start.
+          {s.annotation.body}
         </div>
       </div>
     </div>

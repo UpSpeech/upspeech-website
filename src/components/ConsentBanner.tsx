@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -7,6 +8,7 @@ import {
   denyConsent,
   getConsentState,
 } from "@/lib/consent";
+import { getDictionary, splitLocaleFromPath } from "@/i18n";
 
 /**
  * Cookie Consent Banner with Google Consent Mode v2 integration
@@ -14,6 +16,7 @@ import {
  */
 export const ConsentBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     // Check if user has already made a consent choice
@@ -49,6 +52,11 @@ export const ConsentBanner = () => {
     return null;
   }
 
+  // Rendered outside the LocaleProvider tree, so derive the locale from the URL.
+  // useLocation keeps this in sync across client-side language switches.
+  const { locale } = splitLocaleFromPath(pathname);
+  const t = getDictionary(locale).consent;
+
   return (
     <div
       className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300"
@@ -63,22 +71,20 @@ export const ConsentBanner = () => {
               id="consent-banner-title"
               className="text-lg font-semibold text-gray-900"
             >
-              Your Privacy Matters
+              {t.title}
             </h2>
             <p
               id="consent-banner-description"
               className="text-sm text-gray-600"
             >
-              We use cookies to improve your experience and analyze site usage.
-              By accepting, you agree to our use of analytics cookies. You can
-              decline if you prefer.{" "}
+              {t.description}{" "}
               <a
                 href="https://policies.google.com/technologies/cookies"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-gray-900"
               >
-                Learn more about cookies
+                {t.learnMore}
               </a>
             </p>
           </div>
@@ -89,7 +95,7 @@ export const ConsentBanner = () => {
               onClick={handleDecline}
               className="sm:order-1"
             >
-              Decline
+              {t.decline}
             </Button>
             <Button
               type="button"
@@ -97,7 +103,7 @@ export const ConsentBanner = () => {
               onClick={handleAccept}
               className="sm:order-2"
             >
-              Accept
+              {t.accept}
             </Button>
           </div>
         </div>

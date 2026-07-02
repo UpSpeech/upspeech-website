@@ -600,4 +600,12 @@ export const pt: Dictionary = {
       bodySuffix: ".",
     },
   },
+  consent: {
+    title: "A tua privacidade é importante",
+    description:
+      "Usamos cookies para melhorar a tua experiência e analisar a utilização do site. Ao aceitares, concordas com a utilização de cookies de análise. Podes recusar se preferires.",
+    learnMore: "Saber mais sobre cookies",
+    decline: "Recusar",
+    accept: "Aceitar",
+  },
 };

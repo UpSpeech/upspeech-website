@@ -1,12 +1,7 @@
 import React, { useMemo } from "react";
-import type { Dictionary } from "./locales/en";
-import { en } from "./locales/en";
-import { pt } from "./locales/pt";
-import { es } from "./locales/es";
 import { type Locale } from "./locale";
 import { LocaleContext, type LocaleContextValue } from "./context";
-
-const DICTIONARIES: Record<Locale, Dictionary> = { en, pt, es };
+import { DICTIONARIES } from "./dictionaries";
 
 export function LocaleProvider({
   locale,

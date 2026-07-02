@@ -1,21 +1,19 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { AppShell, Cursor, useRise } from "../ui";
+import { useStrings } from "../strings";
 
 const CLICK_FRAME = 102;
 
 const SECTIONS = [
   {
-    heading: "Session summary",
     lines: [0.95, 0.88, 0.6],
     start: 18,
   },
   {
-    heading: "What we practised",
     lines: [0.9, 0.72],
     start: 44,
   },
   {
-    heading: "Recommendations",
     lines: [0.85, 0.78, 0.5],
     start: 66,
   },
@@ -24,6 +22,7 @@ const SECTIONS = [
 const SceneReport = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const s = useStrings();
   const ready = frame >= CLICK_FRAME + 4;
   const badgePop = spring({
     frame,
@@ -35,9 +34,9 @@ const SceneReport = () => {
 
   return (
     <AppShell
-      active="Reports"
-      title="Session report"
-      subtitle="Drafted from today's session · Miguel A."
+      activeKey="reports"
+      title={s.report.title}
+      subtitle={s.report.subtitle}
       topRight={
         <div className="relative" style={useRise(6, 12)}>
           <span
@@ -52,7 +51,7 @@ const SceneReport = () => {
                 : undefined
             }
           >
-            {ready ? "✓ Ready" : "Draft"}
+            {ready ? s.report.ready : s.report.draft}
           </span>
         </div>
       }
@@ -62,13 +61,13 @@ const SceneReport = () => {
         style={useRise(8)}
       >
         <div className="flex flex-col gap-8">
-          {SECTIONS.map((section) => (
-            <div key={section.heading}>
+          {SECTIONS.map((section, si) => (
+            <div key={s.report.sections[si]}>
               <div
                 className="font-heading text-[17px] font-bold text-calm-charcoal"
                 style={{ opacity: frame > section.start ? 1 : 0 }}
               >
-                {section.heading}
+                {s.report.sections[si]}
               </div>
               <div className="mt-3 flex flex-col gap-3">
                 {section.lines.map((width, i) => {
@@ -93,7 +92,7 @@ const SceneReport = () => {
 
         <div className="mt-10 flex items-center justify-between border-t border-calm-charcoal/10 pt-7">
           <span className="font-body text-[12px] text-calm-charcoal/50">
-            Nothing leaves the platform without therapist review.
+            {s.report.reassurance}
           </span>
           <div
             className={`rounded-full px-5 py-2.5 font-body text-[13px] font-semibold text-white ${
@@ -101,7 +100,7 @@ const SceneReport = () => {
             }`}
             style={{ opacity: frame > 80 ? 1 : 0.001 }}
           >
-            {ready ? "✓ Ready to share" : "Mark as ready"}
+            {ready ? s.report.readyToShare : s.report.markReady}
           </div>
         </div>
       </div>

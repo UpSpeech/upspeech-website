@@ -1,19 +1,15 @@
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { AppShell, Waveform, useRise, COLORS } from "../ui";
+import { useStrings } from "../strings";
 
 const SAVE_FRAME = 34;
 
-const STEPS = [
-  { label: "Recording uploaded", done: 44 },
-  { label: "Transcribed", done: 66 },
-  { label: "Notes drafted", done: 88 },
-];
-
-const TAGS = ["Transcript", "Draft notes", "Practice ideas"];
+const STEP_DONE = [44, 66, 88];
 
 const SceneRecording = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const s = useStrings();
   const saved = frame >= SAVE_FRAME;
   const seconds = 31 * 60 + 42 + Math.floor(Math.min(frame, SAVE_FRAME) / 30);
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -22,9 +18,9 @@ const SceneRecording = () => {
 
   return (
     <AppShell
-      active="Recording Reviews"
-      title="Session recording"
-      subtitle="Miguel A. · Weekly session"
+      activeKey="recordingReviews"
+      title={s.recording.title}
+      subtitle={s.recording.subtitle}
       topRight={
         <div
           className={`flex items-center gap-2 rounded-full px-4 py-2 ${
@@ -39,7 +35,7 @@ const SceneRecording = () => {
             />
           )}
           <span className="font-body text-[13px] font-semibold tabular-nums text-white">
-            {saved ? "✓ Saved · 32 min" : `${mm}:${ss}`}
+            {saved ? s.recording.saved : `${mm}:${ss}`}
           </span>
         </div>
       }
@@ -77,21 +73,22 @@ const SceneRecording = () => {
             style={useRise(18)}
           >
             <div className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-calm-lavender">
-              After the session
+              {s.recording.after}
             </div>
             <div className="mt-4 flex flex-col gap-4">
-              {STEPS.map((step, i) => {
-                const done = frame >= step.done;
+              {s.recording.steps.map((label, i) => {
+                const stepDone = STEP_DONE[i];
+                const done = frame >= stepDone;
                 const pop = spring({
                   frame,
                   fps,
-                  delay: step.done,
+                  delay: stepDone,
                   config: { damping: 13, stiffness: 180 },
                   durationInFrames: 20,
                 });
                 return (
                   <div
-                    key={step.label}
+                    key={label}
                     className="flex items-center gap-3"
                     style={{ opacity: frame > SAVE_FRAME + i * 6 ? 1 : 0.25 }}
                   >
@@ -116,7 +113,7 @@ const SceneRecording = () => {
                           : "text-calm-charcoal/55"
                       }`}
                     >
-                      {step.label}
+                      {label}
                     </span>
                   </div>
                 );
@@ -128,10 +125,10 @@ const SceneRecording = () => {
             style={useRise(30)}
           >
             <div className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-calm-charcoal/50">
-              From this recording
+              {s.recording.from}
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              {TAGS.map((tag, i) => (
+              {s.recording.tags.map((tag, i) => (
                 <span
                   key={tag}
                   className="rounded-full border border-calm-navy/15 bg-white px-2.5 py-1 font-body text-[11px] font-medium text-calm-charcoal/75"
