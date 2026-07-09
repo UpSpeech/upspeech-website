@@ -21,7 +21,7 @@ declare global {
 if (
   typeof window !== "undefined" &&
   import.meta.env.VITE_POSTHOG_KEY &&
-  import.meta.env.VITE_NODE_ENV === "production"
+  import.meta.env.PROD
 ) {
   posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
     api_host: import.meta.env.VITE_POSTHOG_HOST || "https://eu.i.posthog.com",
