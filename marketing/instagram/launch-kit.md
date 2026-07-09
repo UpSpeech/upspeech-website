@@ -18,23 +18,23 @@ no mocking, no fear hooks.
 - **Bio (under 150 chars):**
 
   ```text
-  Speech therapy that keeps going between sessions.
+  Continuous support for stuttering therapy.
   Stutter-positive. Built with SLPs.
-  Practice free 👇
+  Ask your therapist 👇
   ```
 
   (If you want zero emoji per the in-product rule, drop the 👇 and end with
-  "Practice free".)
+  "Ask your therapist".)
 
 - **Link:** one destination to start. Use the link-in-bio page below, or point
-  straight at the signup / for-patients page.
+  straight at the for-patients page.
 
 ## Link-in-bio plan
 
 Start with one link. When you need more than one, a simple list page beats a
 third-party tool and keeps the brand. Suggested order:
 
-1. **Start practising free** -> patient signup
+1. **Ask your therapist about UpSpeech** -> `/for-patients`
 2. **For therapists** -> `/for-slps`
 3. **Download the app** -> App Store / Google Play
 4. **What is stutter-positive?** -> the awareness explainer
@@ -160,8 +160,8 @@ reps now, so the real moment feels a little lighter.
 ```text
 Your practice, in your pocket.
 
-UpSpeech is on iPhone and Android. Daily exercises, your streak, and your
-therapist's feedback, wherever you are. Download free, link in bio.
+UpSpeech is on iPhone and Android. The plan your therapist set, your streak,
+and their feedback, wherever you are. Link in bio.
 
 #SpeechTherapy #Stuttering #StutterPositive #SpeechApp #PeopleWhoStutter
 ```

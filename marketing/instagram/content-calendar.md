@@ -23,7 +23,7 @@ Publish all six highlight covers before or during week 1.
   > progress you can see between every session, shaped around the technique your
   > therapist set.
   >
-  > Calm, encouraging, and on your side. Link in bio to start.
+  > Calm, encouraging, and on your side. Link in bio.
 - **Wed feed** `feed-06-stutter-positive.png`
   > Speaking up matters more than speaking smoothly.
   >
@@ -86,7 +86,7 @@ Publish all six highlight covers before or during week 1.
 - **Fri feed** `feed-09-cta.png`
   > Speech therapy, supported all week.
   >
-  > Ask your therapist about UpSpeech, or begin practising today. Link in bio.
+  > Ask your therapist about UpSpeech. Link in bio.
 - **Stories** `story-photo-01-calm` (once real imagery exists) + recap poll.
 
 ## Reels (once recordings / companion animations exist)

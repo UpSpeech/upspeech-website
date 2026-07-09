@@ -13,7 +13,7 @@ SLPs" posts and the For SLPs highlight), not the lead message.
 
 ## Positioning
 
-**Speech therapy that keeps going between sessions.**
+**Continuous support for stuttering therapy.**
 
 Supporting messages:
 
@@ -120,4 +120,4 @@ Avoid stigmatizing tags and avoid spammy 30-tag blocks. Five to eight is enough.
 - Replies to story prompts (word of the day, scenario polls).
 - Profile clicks from awareness and progress posts.
 - DMs from people who stutter and from parents (qualitative signal).
-- Signup / "ask your therapist" link clicks once the link is live.
+- "Ask your therapist" / for-patients link clicks once the link is live.
