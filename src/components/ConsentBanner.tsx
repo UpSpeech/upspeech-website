@@ -6,6 +6,8 @@ import {
   grantConsent,
   denyConsent,
   getConsentState,
+  isGpcEnabled,
+  applyGpcDenial,
 } from "@/lib/consent";
 
 /**
@@ -16,23 +18,28 @@ export const ConsentBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a consent choice
-    const hasUserConsent = hasConsent();
-
-    if (!hasUserConsent) {
-      // Show banner after a short delay for better UX
-      const timer = setTimeout(() => {
-        setShowBanner(true);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    } else {
-      // User has already consented, apply their saved preference
+    // If the user already made a choice, respect it and apply their saved
+    // preference rather than showing the banner again.
+    if (hasConsent()) {
       const consentState = getConsentState();
       if (consentState?.analytics) {
         grantConsent();
       }
+      return;
     }
+
+    // Honor Global Privacy Control as a deny signal without prompting.
+    if (isGpcEnabled()) {
+      applyGpcDenial();
+      return;
+    }
+
+    // Show banner after a short delay for better UX
+    const timer = setTimeout(() => {
+      setShowBanner(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleAccept = () => {
