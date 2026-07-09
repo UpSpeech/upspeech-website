@@ -88,13 +88,10 @@ export const grantConsent = (): void => {
 };
 
 /**
- * Deny all consent
- * Updates Google Consent Mode, Microsoft Clarity, and stores preference
+ * Push a denied state to all trackers (GA4 Consent Mode, Clarity, PostHog).
+ * Shared by explicit decline and the GPC deny path.
  */
-export const denyConsent = (): void => {
-  if (typeof window === "undefined") return;
-
-  // Update Google Consent Mode (keep denied)
+const pushDeniedSignals = (): void => {
   if (window.gtag) {
     window.gtag("consent", "update", {
       ad_storage: "denied",
@@ -104,7 +101,6 @@ export const denyConsent = (): void => {
     });
   }
 
-  // Update Microsoft Clarity Consent (v2 API)
   if (window.clarity) {
     window.clarity("consentv2", {
       ad_Storage: "denied",
@@ -112,8 +108,17 @@ export const denyConsent = (): void => {
     });
   }
 
-  // Disable PostHog tracking
   posthog.opt_out_capturing();
+};
+
+/**
+ * Deny all consent
+ * Updates Google Consent Mode, Microsoft Clarity, and stores preference
+ */
+export const denyConsent = (): void => {
+  if (typeof window === "undefined") return;
+
+  pushDeniedSignals();
 
   // Store consent preference
   const consentState: ConsentState = {
@@ -122,6 +127,28 @@ export const denyConsent = (): void => {
     timestamp: Date.now(),
   };
   localStorage.setItem(CONSENT_KEY, JSON.stringify(consentState));
+};
+
+/**
+ * Whether the browser is sending a Global Privacy Control signal. GPC is a
+ * recognized opt-out signal (CCPA and others); when present we treat it as a
+ * deny for analytics/advertising and never prompt.
+ */
+export const isGpcEnabled = (): boolean => {
+  if (typeof navigator === "undefined") return false;
+  return (
+    (navigator as Navigator & { globalPrivacyControl?: boolean })
+      .globalPrivacyControl === true
+  );
+};
+
+/**
+ * Honor a GPC signal by denying all trackers, without persisting a choice.
+ * Re-applied on every load so that turning GPC off later restores the banner.
+ */
+export const applyGpcDenial = (): void => {
+  if (typeof window === "undefined") return;
+  pushDeniedSignals();
 };
 
 /**

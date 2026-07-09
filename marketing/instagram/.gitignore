@@ -1,0 +1,16 @@
+# Node deps for the export engine
+templates/node_modules/
+
+# Transient capture files from export.mjs
+exports/.*.capture.png
+
+# Heavy generated/curated source media (regenerate from prompts/ instead).
+# Keep the lightweight final exports/ PNGs tracked.
+source-images/backgrounds/
+source-images/phone-scenes/
+source-images/composites/
+source-images/video-stills/
+source-images/screenshots/
+source-images/reels/
+*.mp4
+*.mov
