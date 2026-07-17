@@ -11,7 +11,7 @@ import { useStrings } from "./strings";
 
 export const COLORS = {
   navy: "#293587",
-  lavender: "#98A5FE",
+  lavender: "#958AF0",
   charcoal: "#4B4E4E",
   light: "#F6F6F6",
 } as const;
