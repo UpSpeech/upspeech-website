@@ -161,7 +161,7 @@ const HeroSection = () => {
           />
           <path
             d="M0,60 Q200,30 400,60 T800,60 T1200,60 V100 H0 Z"
-            fill="#98A5FE"
+            fill="#958AF0"
             opacity="0.1"
           />
         </svg>
