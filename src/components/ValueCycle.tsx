@@ -140,7 +140,7 @@ const ValueCycle = () => {
             <path
               key={arrow.id}
               d={arrow.path}
-              stroke="#98A5FE"
+              stroke="#958AF0"
               strokeWidth="0.4"
               strokeLinecap="round"
               opacity={
@@ -159,7 +159,7 @@ const ValueCycle = () => {
               y2="100%"
             >
               <stop offset="0%" stopColor="#293587" />
-              <stop offset="50%" stopColor="#98A5FE" />
+              <stop offset="50%" stopColor="#958AF0" />
               <stop offset="100%" stopColor="#4B4E4E" />
             </linearGradient>
           </defs>
