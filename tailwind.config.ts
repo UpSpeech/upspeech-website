@@ -59,7 +59,7 @@ export default {
 
         // Accent (Lavender)
         accent: {
-          DEFAULT: "#98A5FE",
+          DEFAULT: "#958AF0",
           foreground: "#293587",
         },
 
@@ -89,7 +89,7 @@ export default {
         calm: {
           navy: "#293587",
           charcoal: "#4B4E4E",
-          lavender: "#98A5FE",
+          lavender: "#958AF0",
           light: "#F6F6F6",
           sky: "#e0f2fe",
           mint: "#d1fae5",
