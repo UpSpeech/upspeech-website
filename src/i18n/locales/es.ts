@@ -73,9 +73,9 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo para la terapia de la tartamudez. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
+      "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
     hero: {
-      eyebrow: "Para clínicas con servicios de tartamudez",
+      eyebrow: "Para clínicas de logopedia",
       headlineLine1: "La clínica",
       headlineLine2: "que sigue abierta",
       headlineLine3: "cuando tú no estás.",
@@ -159,7 +159,7 @@ export const es: Dictionary = {
       body: "Los pacientes siguen el plan que definió su terapeuta, practican con ejercicios guiados y se registran desde el móvil. Su terapeuta los acompaña.",
       screenshots: [
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
-        "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de tartamudez",
+        "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
     },
@@ -308,7 +308,7 @@ export const es: Dictionary = {
     },
     cta: {
       headline: "Solicitar acceso anticipado.",
-      body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la tartamudez. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
+      body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la logopedia. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
       nameLabel: "Nombre Completo *",
       namePlaceholder: "Introduce tu nombre",
       nameError: "Por favor, introduce tu nombre.",
@@ -377,7 +377,7 @@ export const es: Dictionary = {
       screenshots: [
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
-        "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de tartamudez",
+        "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
       ],
     },
     faq: {
@@ -479,12 +479,12 @@ export const es: Dictionary = {
   reducingDocumentationTime: {
     seoTitle: "Cómo los Logopedas Reducen el Tiempo en Notas de Sesión",
     seoDescription:
-      "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en la terapia de tartamudez, con borradores estructurados que apoyan el juicio clínico.",
+      "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en la terapia del habla, con borradores estructurados que apoyan el juicio clínico.",
     intro: {
       eyebrow: "Para logopedas",
       headlineLine1: "Menos tiempo en notas,",
       headlineLine2: "más tiempo en terapia.",
-      body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en la terapia de tartamudez, incluyendo dónde encajan los borradores estructurados.",
+      body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en la terapia del habla, incluyendo dónde encajan los borradores estructurados.",
     },
     sections: [
       {
@@ -496,8 +496,8 @@ export const es: Dictionary = {
         body: "Una forma de abordar la página en blanco es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo progresó y qué observó el terapeuta. Un borrador le da algo a lo que reaccionar en lugar de crear desde cero. Lo lee, ajusta lo que necesita ajuste y firma. El juicio clínico sigue siendo suyo; el borrador se encarga del andamiaje.",
       },
       {
-        heading: "Qué debe incluir una buena nota de terapia de tartamudez",
-        body: "Una nota de sesión útil para la terapia de tartamudez cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente capture los mismos datos, más fácil será la nota.",
+        heading: "Qué debe incluir una buena nota de terapia del habla",
+        body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente capture los mismos datos, más fácil será la nota.",
       },
       {
         heading: "Lo que hace UpSpeech",
@@ -538,7 +538,7 @@ export const es: Dictionary = {
   forSlps: {
     seoTitle: "Para logopedas",
     seoDescription:
-      "UpSpeech ayuda a los logopedas a pasar menos tiempo escribiendo notas de sesiones de terapia de la tartamudez y da a los pacientes práctica estructurada entre sesiones, con progreso que puedes ver.",
+      "UpSpeech ayuda a los logopedas a pasar menos tiempo escribiendo notas de sesiones y da a los pacientes práctica estructurada entre sesiones, con progreso que puedes ver.",
     intro: {
       eyebrow: "Para logopedas",
       headlineLine1: "Menos tiempo en documentación.",
