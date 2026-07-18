@@ -70,9 +70,9 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Continuous support for stuttering therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.",
+      "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.",
     hero: {
-      eyebrow: "For clinics with stuttering services",
+      eyebrow: "For speech therapy clinics",
       headlineLine1: "The clinic",
       headlineLine2: "that's open",
       headlineLine3: "when you're not.",

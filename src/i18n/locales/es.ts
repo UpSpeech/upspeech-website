@@ -73,9 +73,9 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo para la terapia de la tartamudez. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
+      "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
     hero: {
-      eyebrow: "Para clínicas con servicios de tartamudez",
+      eyebrow: "Para clínicas de logopedia",
       headlineLine1: "La clínica",
       headlineLine2: "que sigue abierta",
       headlineLine3: "cuando tú no estás.",

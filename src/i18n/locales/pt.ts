@@ -73,9 +73,9 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo para a terapia da gaguez. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
+      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
     hero: {
-      eyebrow: "Para clínicas com serviços de gaguez",
+      eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A clínica",
       headlineLine2: "que continua aberta",
       headlineLine3: "mesmo quando fecha.",
