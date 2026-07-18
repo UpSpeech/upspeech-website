@@ -156,7 +156,7 @@ export const en = {
       body: "Patients follow the plan their therapist set, practise with guided exercises, and check in from their phone. Their therapist follows along.",
       screenshots: [
         "UpSpeech mobile app learning path showing the steps the therapist set",
-        "UpSpeech mobile app practice screen with guided stuttering exercises",
+        "UpSpeech mobile app practice screen with guided practice exercises",
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
       ],
     },
@@ -305,7 +305,7 @@ export const en = {
     },
     cta: {
       headline: "Request early access.",
-      body: "We're working with a cohort of clinics and would like to hear from others working in stuttering. Tell us about your practice and we'll be in touch.",
+      body: "We're working with a cohort of clinics and would like to hear from others working in speech therapy. Tell us about your practice and we'll be in touch.",
       nameLabel: "Full Name *",
       namePlaceholder: "Enter your name",
       nameError: "Please enter your name.",
@@ -374,7 +374,7 @@ export const en = {
       screenshots: [
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
         "UpSpeech mobile app learning path showing the steps the therapist set",
-        "UpSpeech mobile app practice screen with guided stuttering exercises",
+        "UpSpeech mobile app practice screen with guided practice exercises",
       ],
     },
     faq: {
@@ -476,12 +476,12 @@ export const en = {
   reducingDocumentationTime: {
     seoTitle: "How SLPs Spend Less Time on Session Notes",
     seoDescription:
-      "A practical guide for speech-language pathologists on reducing documentation time in stuttering therapy, with structured drafts that support clinical judgement.",
+      "A practical guide for speech-language pathologists on reducing documentation time in speech therapy, with structured drafts that support clinical judgement.",
     intro: {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "Less time on notes,",
       headlineLine2: "more time on therapy.",
-      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in stuttering therapy, including where structured drafts fit in.",
+      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy, including where structured drafts fit in.",
     },
     sections: [
       {
@@ -493,8 +493,8 @@ export const en = {
         body: "One way to address the blank page is a structured draft generated from the session's data: what the patient practised, how they progressed, and what the therapist observed. A draft gives you something to react to rather than create from scratch. You read it, adjust what needs adjusting, and sign off. The clinical judgement is still yours; the draft handles the scaffolding.",
       },
       {
-        heading: "What belongs in a good stuttering therapy note",
-        body: "A useful session note for stuttering therapy typically covers the technique practised, the patient's performance relative to their goals, any observations about avoidance or confidence, and the next steps. Structured templates for these elements make drafting faster whether or not you use AI assistance. The more consistently you capture the same data, the easier the note becomes.",
+        heading: "What belongs in a good speech therapy note",
+        body: "A useful session note typically covers the technique practised, the patient's performance relative to their goals, any observations about avoidance or confidence, and the next steps. Structured templates for these elements make drafting faster whether or not you use AI assistance. The more consistently you capture the same data, the easier the note becomes.",
       },
       {
         heading: "What UpSpeech does",
@@ -534,7 +534,7 @@ export const en = {
   forSlps: {
     seoTitle: "For speech-language pathologists",
     seoDescription:
-      "UpSpeech helps SLPs spend less time writing stuttering-therapy session notes and gives patients structured practice between sessions, with progress you can see.",
+      "UpSpeech helps SLPs spend less time writing session notes and gives patients structured practice between sessions, with progress you can see.",
     intro: {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "Less time on notes.",
