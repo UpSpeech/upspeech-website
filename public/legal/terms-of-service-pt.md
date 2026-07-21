@@ -1,10 +1,10 @@
 # Termos de Serviço
 
-**Última Atualização:** 11 de março de 2026
+**Última Atualização:** 21 de julho de 2026
 
 ## 1. Aceitação dos Termos
 
-Bem-vindo à UpSpeech. Estes Termos de Serviço ("Termos") regem o seu acesso e utilização da plataforma UpSpeech, incluindo o nosso website, aplicação web e serviços relacionados (coletivamente, o "Serviço").
+Bem-vindo à UpSpeech. Estes Termos de Serviço ("Termos") regem o seu acesso e utilização da plataforma UpSpeech, incluindo o nosso website, aplicação web, aplicações móveis para iOS e Android e serviços relacionados (coletivamente, o "Serviço").
 
 **Ao aceder ou utilizar a UpSpeech, concorda em ficar vinculado a estes Termos.** Se não concordar com estes Termos, não poderá aceder nem utilizar o Serviço.
 
@@ -14,12 +14,13 @@ Bem-vindo à UpSpeech. Estes Termos de Serviço ("Termos") regem o seu acesso e 
 
 ## 2. Descrição do Serviço
 
-A UpSpeech é uma plataforma multi-tenant de software-como-serviço (SaaS) concebida para terapeutas da fala e indivíduos em terapia da gaguez. O Serviço fornece:
+A UpSpeech é uma plataforma multi-tenant de software-como-serviço (SaaS) concebida para terapeutas da fala e os seus pacientes em todo o espetro da terapia da fala, sendo a gaguez a primeira condição abrangida. O Serviço está disponível como aplicação web e como aplicações móveis para iOS e Android, e fornece:
 
 - **Geração de relatórios com IA** - Transcrição automatizada e redação de relatórios clínicos utilizando inteligência artificial
 - **Ferramentas de análise de fala** - Deteção de disfluências, anotação e análise estatística de gravações de fala
+- **Cenários de prática interativos** - Conversas de prática faladas em tempo real com um parceiro de prática de IA
 - **Colaboração paciente-terapeuta** - Ferramentas para os terapeutas gerirem atribuições de pacientes, exercícios e acompanhamento de progresso
-- **Biblioteca de exercícios** - Mini jogos e exercícios de consulta para prática de terapia da gaguez
+- **Biblioteca de exercícios** - Jogos e exercícios de consulta para prática de terapia da fala
 - **Monitorização de progresso** - Acompanhamento da evolução do paciente ao longo do tempo com estatísticas e visualizações
 - **Organização multi-tenant** - Ambientes seguros e isolados para organizações de saúde e os seus utilizadores
 
@@ -132,7 +133,7 @@ Concorda em utilizar o Serviço apenas para fins legais e de acordo com estes Te
 
 ### 6.1 Utilizações Permitidas
 
-- Documentação clínica e geração de relatórios para terapia da gaguez
+- Documentação clínica e geração de relatórios para terapia da fala
 - Utilização educativa por terapeutas da fala licenciados
 - Prática e acompanhamento de progresso por pacientes sob orientação do terapeuta
 - Fins de investigação com consentimento adequado e aprovação ética
@@ -223,16 +224,16 @@ Ao utilizar o Serviço, consente o processamento de dados conforme descrito na P
 
 A UpSpeech integra-se com serviços de terceiros para fornecer funcionalidades:
 
-### 9.1 ElevenLabs (Fala para Texto)
+### 9.1 ElevenLabs (Fala para Texto e Voz)
 
-Utilizamos a ElevenLabs para transcrição de áudio (Scribe v2 fala para texto). As suas gravações de áudio são enviadas para a ElevenLabs para processamento. Consulte os termos e política de privacidade da ElevenLabs:
+Utilizamos a ElevenLabs para transcrição de áudio (Scribe v2 fala para texto) e para geração de voz em tempo real nas conversas de prática interativas. As suas gravações de áudio e o áudio em direto são enviados para a ElevenLabs para processamento. Consulte os termos e política de privacidade da ElevenLabs:
 
 - [https://elevenlabs.io/terms-of-service](https://elevenlabs.io/terms-of-service)
 - [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 
 ### 9.2 Google AI — Gemini (Geração de Relatórios)
 
-Utilizamos os modelos de linguagem Google Gemini para geração de relatórios clínicos e funcionalidades assistidas por IA. Consulte os termos e política de privacidade da Google:
+Utilizamos os modelos de linguagem Google Gemini para geração de relatórios clínicos, funcionalidades assistidas por IA e conversas de prática em tempo real. Consulte os termos e política de privacidade da Google:
 
 - [https://cloud.google.com/terms](https://cloud.google.com/terms)
 - [https://policies.google.com/privacy](https://policies.google.com/privacy)
@@ -250,6 +251,21 @@ A nossa aplicação está alojada na Railway. Consulte os termos da Railway:
 
 - [https://railway.app/legal/terms](https://railway.app/legal/terms)
 - [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
+
+### 9.5 Lojas de Aplicações e Aplicações Móveis
+
+As nossas aplicações móveis são distribuídas através da Apple App Store e do Google Play. A transferência e utilização das aplicações estão também sujeitas aos termos da loja de aplicações aplicável, e deve cumprir quaisquer termos de terceiros aplicáveis (por exemplo, o acordo de dados do seu operador de telecomunicações) ao utilizá-las.
+
+Os seguintes termos adicionais aplicam-se na medida em que obteve a aplicação através da **Apple App Store**:
+
+- Estes Termos são celebrados apenas entre si e a UpSpeech, não com a Apple, e a Apple não é responsável pela aplicação nem pelo seu conteúdo.
+- A Apple não tem qualquer obrigação de fornecer serviços de manutenção ou suporte para a aplicação.
+- Caso a aplicação não esteja em conformidade com qualquer garantia aplicável, pode notificar a Apple, e a Apple poderá reembolsar o preço de compra (se aplicável). Na máxima medida permitida por lei, a Apple não terá qualquer outra obrigação de garantia relativamente à aplicação.
+- A Apple não é responsável por resolver quaisquer reclamações apresentadas por si ou por terceiros relativamente à aplicação, incluindo reclamações de responsabilidade pelo produto, reclamações de não conformidade com requisitos legais ou regulamentares, reclamações ao abrigo da proteção do consumidor e reclamações de que a aplicação viola direitos de propriedade intelectual de terceiros.
+- A Apple e as suas subsidiárias são beneficiárias terceiras destes Termos e, após a sua aceitação, terão o direito de os fazer cumprir contra si.
+- Declara que não se encontra num país sujeito a embargo do Governo dos EUA e que não consta de qualquer lista do Governo dos EUA de partes proibidas ou restringidas.
+
+Para aplicações obtidas através do **Google Play**, a sua utilização é também regida pelos Termos de Serviço do Google Play.
 
 **Não somos responsáveis pelas práticas ou políticas de serviços de terceiros.** A sua utilização de serviços de terceiros está sujeita aos respetivos termos.
 
@@ -502,4 +518,4 @@ Estes Termos são redigidos em inglês. Quaisquer traduções são fornecidas ap
 
 **Ao utilizar a UpSpeech, reconhece que leu, compreendeu e concorda em ficar vinculado a estes Termos de Serviço.**
 
-**Última Atualização:** 11 de março de 2026
+**Última Atualização:** 21 de julho de 2026
