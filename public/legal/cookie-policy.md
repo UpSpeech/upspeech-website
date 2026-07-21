@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last Updated:** April 8, 2026
+**Last Updated:** July 21, 2026
 
 ## Introduction
 
@@ -151,6 +151,16 @@ The application platform uses the same analytics services as our marketing websi
 When you first use the application, you'll see a consent banner allowing you to accept or decline analytics cookies. Your choice is stored in Local Storage and respected for all future visits to that subdomain.
 
 **Note:** Each tenant subdomain (e.g., `speechcare.upspeech.app`, `demo.upspeech.app`) maintains its own consent preferences separately
+
+### Mobile Applications (iOS and Android)
+
+Our native mobile apps do not use browser cookies. Instead, they rely on the following on-device technologies and identifiers:
+
+- **Secure device storage** - Your authentication token, cached profile, and language preference are stored in the device's secure storage (Keychain on iOS, Keystore on Android) to keep you signed in. This is essential to operating the app.
+- **Crash and error diagnostics (Sentry)** - The app uses Sentry to capture crash reports and technical error information so we can fix problems. This collects technical diagnostic data, not advertising identifiers.
+- **Push notifications (Apple Push Notification service and Firebase Cloud Messaging)** - If you enable notifications, a device push token is used to deliver reminders and updates.
+
+The mobile apps do not use advertising cookies, cross-site trackers, or behavioral advertising SDKs. See our [Privacy Policy](/privacy) for the full list of processors and data categories.
 
 ## Cookie Consent and Your Choices
 

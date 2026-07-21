@@ -1,10 +1,10 @@
 # Terms of Service
 
-**Last Updated:** March 11, 2026
+**Last Updated:** July 21, 2026
 
 ## 1. Agreement to Terms
 
-Welcome to UpSpeech. These Terms of Service ("Terms") govern your access to and use of the UpSpeech platform, including our website, web application, and related services (collectively, the "Service").
+Welcome to UpSpeech. These Terms of Service ("Terms") govern your access to and use of the UpSpeech platform, including our website, web application, mobile applications for iOS and Android, and related services (collectively, the "Service").
 
 **By accessing or using UpSpeech, you agree to be bound by these Terms.** If you do not agree to these Terms, you may not access or use the Service.
 
@@ -14,12 +14,13 @@ Welcome to UpSpeech. These Terms of Service ("Terms") govern your access to and 
 
 ## 2. Service Description
 
-UpSpeech is a multi-tenant software-as-a-service (SaaS) platform designed for speech-language pathologists (SLPs) and individuals receiving stuttering therapy. The Service provides:
+UpSpeech is a multi-tenant software-as-a-service (SaaS) platform designed for speech-language pathologists (SLPs) and their patients across the speech-therapy spectrum, with stuttering as the first condition covered. The Service is available as a web application and as mobile apps for iOS and Android, and provides:
 
 - **AI-powered report generation** - Automated transcription and clinical report writing using artificial intelligence
 - **Speech analysis tools** - Disfluency detection, annotation, and statistical analysis of speech recordings
+- **Interactive practice scenarios** - Real-time spoken practice conversations with an AI practice partner
 - **Patient-therapist collaboration** - Tools for therapists to manage patient assignments, exercises, and progress tracking
-- **Exercise library** - Mini games and consultation exercises for stuttering therapy practice
+- **Exercise library** - Games and consultation exercises for speech-therapy practice
 - **Progress monitoring** - Tracking of patient progress over time with statistics and visualizations
 - **Multi-tenant organization** - Secure, isolated environments for healthcare organizations and their users
 
@@ -132,7 +133,7 @@ You agree to use the Service only for lawful purposes and in accordance with the
 
 ### 6.1 Permitted Uses
 
-- Clinical documentation and report generation for stuttering therapy
+- Clinical documentation and report generation for speech therapy
 - Educational use by licensed speech-language pathologists
 - Practice and progress tracking by patients under therapist guidance
 - Research purposes with appropriate consent and ethical approval
@@ -223,16 +224,16 @@ By using the Service, you consent to data processing as described in the Privacy
 
 UpSpeech integrates with third-party services to provide functionality:
 
-### 9.1 ElevenLabs (Speech-to-Text)
+### 9.1 ElevenLabs (Speech-to-Text and Voice)
 
-We use ElevenLabs for audio transcription (Scribe v2 speech-to-text). Your audio recordings are sent to ElevenLabs for processing. See ElevenLabs' terms and privacy policy:
+We use ElevenLabs for audio transcription (Scribe v2 speech-to-text) and for real-time voice generation in interactive practice conversations. Your audio recordings and live audio are sent to ElevenLabs for processing. See ElevenLabs' terms and privacy policy:
 
 - [https://elevenlabs.io/terms-of-service](https://elevenlabs.io/terms-of-service)
 - [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 
 ### 9.2 Google AI — Gemini (Report Generation)
 
-We use Google Gemini language models for clinical report generation and AI-assisted features. See Google's terms and privacy policy:
+We use Google Gemini language models for clinical report generation, AI-assisted features, and real-time practice conversations. See Google's terms and privacy policy:
 
 - [https://cloud.google.com/terms](https://cloud.google.com/terms)
 - [https://policies.google.com/privacy](https://policies.google.com/privacy)
@@ -250,6 +251,21 @@ Our application is hosted on Railway. See Railway's terms:
 
 - [https://railway.app/legal/terms](https://railway.app/legal/terms)
 - [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
+
+### 9.5 App Stores and Mobile Applications
+
+Our mobile apps are distributed through the Apple App Store and Google Play. Your download and use of the apps are also subject to the terms of the applicable app store, and you must comply with any applicable third-party terms (for example, your wireless carrier's data agreement) when using them.
+
+The following additional terms apply to the extent you obtained the app from the **Apple App Store**:
+
+- These Terms are between you and UpSpeech only, not with Apple, and Apple is not responsible for the app or its content.
+- Apple has no obligation to furnish any maintenance or support services for the app.
+- In the event the app fails to conform to any applicable warranty, you may notify Apple, and Apple may refund the purchase price (if any). To the maximum extent permitted by law, Apple has no other warranty obligation with respect to the app.
+- Apple is not responsible for addressing any claims by you or a third party relating to the app, including product liability claims, claims that the app fails to conform to any legal or regulatory requirement, consumer protection claims, and claims that the app infringes a third party's intellectual property rights.
+- Apple and its subsidiaries are third-party beneficiaries of these Terms and, upon your acceptance, will have the right to enforce them against you.
+- You represent that you are not located in a country subject to a U.S. Government embargo, and that you are not listed on any U.S. Government list of prohibited or restricted parties.
+
+For apps obtained from **Google Play**, your use is also governed by the Google Play Terms of Service.
 
 **We are not responsible for the practices or policies of third-party services.** Your use of third-party services is subject to their respective terms.
 
@@ -502,4 +518,4 @@ These Terms are written in English. Any translations are provided for convenienc
 
 **By using UpSpeech, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**
 
-**Last Updated:** March 11, 2026
+**Last Updated:** July 21, 2026
