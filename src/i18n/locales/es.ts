@@ -19,7 +19,7 @@ export const es: Dictionary = {
     mobileMenuLabel: "Navegación",
   },
   footer: {
-    tagline: "Guiando voces con cuidado y tecnología",
+    tagline: "Acompañamos voces con cuidado y tecnología",
     product: "Producto",
     legal: "Legal",
     company: "Empresa",
@@ -47,39 +47,39 @@ export const es: Dictionary = {
     es: "Español",
   },
   techniquesIndex: {
-    title: "Técnicas de Logopedia",
+    title: "Técnicas de logopedia",
     subtitle: "Explora técnicas establecidas para la terapia de la tartamudez",
     seoDescription:
       "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
-    mainCategories: "Categorías de Técnicas",
-    standalone: "Técnicas Independientes",
-    viewDetails: "Ver Detalles",
+    mainCategories: "Categorías de técnicas",
+    standalone: "Técnicas independientes",
+    viewDetails: "Ver detalles",
     techniques: "técnicas",
     loading: "Cargando técnicas...",
-    error: "Error al Cargar Técnicas",
+    error: "Error al cargar técnicas",
     tryAgain:
       "Error al cargar técnicas. Por favor, inténtalo de nuevo más tarde.",
   },
   techniquePage: {
     loading: "Cargando técnica...",
-    error: "Error al Cargar Técnica",
+    error: "Error al cargar técnica",
     notFound: "Técnica no encontrada",
     backToAll: "Volver a todas las técnicas",
-    practicalDescription: "Descripción Práctica",
+    practicalDescription: "Descripción práctica",
     objective: "Objetivo",
-    howToPractice: "Cómo Practicar",
-    relatedTechniques: "Técnicas Relacionadas",
+    howToPractice: "Cómo practicar",
+    relatedTechniques: "Técnicas relacionadas",
   },
   home: {
     seoDescription:
-      "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
+      "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas, siempre al tanto.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "La terapia",
       headlineLine2: "que sigue",
       headlineLine3: "entre sesiones.",
-      body: "Práctica estructurada entre sesiones. Informes de sesión redactados automáticamente. Los terapeutas mantienen la última palabra.",
+      body: "Práctica estructurada entre sesiones. Informes de sesión redactados automáticamente. Los terapeutas tienen la última palabra.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
       videoAriaLabel:
@@ -100,9 +100,9 @@ export const es: Dictionary = {
       traditional: "Tradicional",
       traditionalCadence: "1 sesión · 6 días sin apoyo",
       withUpspeech: "Con UpSpeech",
-      fullCadence: "1 sesión · Todos los días, cuidado continuo",
+      fullCadence: "1 sesión · Todos los días, atención continua",
       partialPrefix: "1 sesión · ",
-      partialSuffix: " / 7 días de cuidado continuo",
+      partialSuffix: " / 7 días de atención continua",
       session: "Sesión",
       practice: "Práctica",
       plusPractice: "+ Práctica",
@@ -292,7 +292,7 @@ export const es: Dictionary = {
           copy: "Los datos de cada clínica se mantienen separados por organización. Una organización nunca puede ver los pacientes ni las grabaciones de otra.",
         },
         {
-          title: "Cifrados en tránsito y en reposo",
+          title: "Cifrado en tránsito y en reposo",
           copy: "Los datos viajan por TLS, y las grabaciones y bases de datos se cifran mientras están almacenadas.",
         },
         {
@@ -309,31 +309,31 @@ export const es: Dictionary = {
     cta: {
       headline: "Solicitar acceso anticipado.",
       body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la logopedia. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
-      nameLabel: "Nombre Completo *",
+      nameLabel: "Nombre completo *",
       namePlaceholder: "Introduce tu nombre",
       nameError: "Por favor, introduce tu nombre.",
-      emailLabel: "Correo Electrónico *",
+      emailLabel: "Correo electrónico *",
       emailPlaceholder: "tu@email.com",
       emailError: "Por favor, introduce tu correo electrónico.",
-      roleLabel: "Función *",
-      rolePlaceholder: "Elige tu función",
-      roleError: "Por favor, elige tu función.",
+      roleLabel: "Cargo *",
+      rolePlaceholder: "Elige tu cargo",
+      roleError: "Por favor, elige tu cargo.",
       roleSpeechTherapist: "Logopeda",
-      roleClinicDirector: "Director de Clínica",
-      rolePracticeOwner: "Propietario de Consulta",
+      roleClinicDirector: "Director de clínica",
+      rolePracticeOwner: "Propietario de consulta",
       roleOther: "Otro",
-      clinicSizeLabel: "Tamaño de la Clínica (Opcional)",
+      clinicSizeLabel: "Tamaño de la clínica (opcional)",
       clinicSizePlaceholder: "Elige el tamaño de la clínica",
-      clinicSizeSolo: "Consulta Individual",
-      clinicSizeSmall: "2-5 Terapeutas",
-      clinicSizeMedium: "6-15 Terapeutas",
-      clinicSizeLarge: "15+ Terapeutas",
+      clinicSizeSolo: "Consulta individual",
+      clinicSizeSmall: "2-5 terapeutas",
+      clinicSizeMedium: "6-15 terapeutas",
+      clinicSizeLarge: "15+ terapeutas",
       submit: "Solicitar acceso anticipado",
       submitting: "Enviando...",
       requiredFieldsTitle: "Por favor, rellena todos los campos obligatorios",
       successTitle: "Estás en la lista.",
       successDescription:
-        "Gracias, nos pondremos en contacto. Revisa tu correo para una confirmación.",
+        "Gracias, nos pondremos en contacto. Te hemos enviado una confirmación por correo.",
       errorTitle: "Algo salió mal",
       errorDefault: "Por favor, inténtalo de nuevo más tarde.",
       errorNetwork:
@@ -426,7 +426,7 @@ export const es: Dictionary = {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué significa",
       headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación, no la eliminación de la disfluencia. Significa apoyar a las personas que tartamudean para que se expresen en sus propios términos, sin perseguir un estándar de habla que puede no sentirse natural.",
+      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se expresen en sus propios términos, con objetivos definidos por la persona y no por una idea fija de cómo debería sonar el habla.",
     },
     sections: [
       {
@@ -434,16 +434,16 @@ export const es: Dictionary = {
         body: "La terapia del habla tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Algunas personas que tartamudean quieren un habla más fluida, y técnicas como la tartamudez voluntaria o el habla prolongada pueden ayudar. Para otras, reducir la evitación y ganar confianza es lo que más importa. Tartamudez positiva significa que los objetivos vienen de la persona, no de una norma externa.",
       },
       {
-        heading: "Ser escuchado, no sonar de cierta manera",
-        body: "Las personas que tartamudean a menudo enfrentan más que la disfluencia: evitación, anticipación y el agotador trabajo de gestionar las reacciones de los demás. La terapia de tartamudez positiva aborda estas cuestiones junto con la práctica de técnicas. La medida de una buena sesión no es cuántas veces tartamudeó alguien. Es si comunicó lo que quería decir y se sintió seguro al hacerlo.",
+        heading: "Ser escuchado en tus propios términos",
+        body: "Las personas que tartamudean a menudo se enfrentan a más que la disfluencia: evitación, anticipación y el esfuerzo de gestionar las reacciones de los demás. La terapia de tartamudez positiva aborda estas cuestiones junto con la práctica de técnicas, de modo que una buena sesión se mide por si la persona comunicó lo que quería decir y se sintió segura al hacerlo.",
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
-        body: "UpSpeech apoya el enfoque que elija el logopeda. El itinerario de aprendizaje y los ejercicios los establece el clínico; la aplicación apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la aplicación también lo apoya. La plataforma no asume que la fluidez es el destino.",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el clínico; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. La plataforma no asume que la fluidez es el destino.",
       },
       {
         heading: "Una nota sobre el lenguaje",
-        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que un individuo prefiera otro. Lo que más importa es que la persona se sienta reconocida, no etiquetada.",
+        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que un individuo prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
       },
     ],
     faq: {
@@ -456,11 +456,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
-          a: "No. UpSpeech apoya el plan que crea el logopeda. La aplicación ofrece lo que el clínico asigna, que puede incluir técnicas de modelado de fluidez, técnicas de modificación o trabajo centrado en la confianza.",
+          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de modelado de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
           q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de modelado de fluidez según los objetivos del individuo.",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de modelado de la fluidez según los objetivos del individuo.",
         },
         {
           q: "¿Dónde puedo aprender más?",
@@ -469,9 +469,9 @@ export const es: Dictionary = {
       ],
     },
     closing: {
-      headline: "Trabaje con un clínico que entienda sus objetivos.",
+      headline: "Trabaja con un clínico que entienda tus objetivos.",
       bodyPrefix:
-        "UpSpeech se utiliza a través de logopedas. Si dirige una consulta y quiere usarlo con sus pacientes, puede ",
+        "UpSpeech se utiliza a través de logopedas. Si diriges una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
@@ -489,15 +489,15 @@ export const es: Dictionary = {
     sections: [
       {
         heading: "El problema de la página en blanco",
-        body: "Después de una sesión, sabe lo que ocurrió. Escribirlo lleva más tiempo del necesario. La página en blanco es el cuello de botella, no sus conocimientos. Muchos logopedas señalan que la documentación es la carga administrativa que con más probabilidad comprime el tiempo de preparación, extiende el horario laboral o retrasa las notas de atención. Es un problema estructural, no una brecha de habilidades.",
+        body: "Después de una sesión, sabes lo que ocurrió. Escribirlo lleva más tiempo del necesario. El obstáculo es la propia página en blanco, ya que el razonamiento clínico ya está hecho. Muchos logopedas señalan que la documentación es la tarea administrativa que más tiende a consumir el tiempo de preparación y a alargar la jornada laboral. Es un problema estructural, y la solución pasa por tener un mejor punto de partida.",
       },
       {
         heading: "Borradores estructurados que revisa y edita",
-        body: "Una forma de abordar la página en blanco es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo progresó y qué observó el terapeuta. Un borrador le da algo a lo que reaccionar en lugar de crear desde cero. Lo lee, ajusta lo que necesita ajuste y firma. El juicio clínico sigue siendo suyo; el borrador se encarga del andamiaje.",
+        body: "Una forma de abordar la página en blanco es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo progresó y qué observó el terapeuta. Un borrador te da algo a lo que reaccionar en lugar de crear desde cero. Lo lees, ajustas lo que necesita ajuste y firmas. El juicio clínico sigue siendo tuyo, y el borrador se encarga de la estructura.",
       },
       {
         heading: "Qué debe incluir una buena nota de terapia del habla",
-        body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente capture los mismos datos, más fácil será la nota.",
+        body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente captures los mismos datos, más fácil será la nota.",
       },
       {
         heading: "Lo que hace UpSpeech",
@@ -509,30 +509,30 @@ export const es: Dictionary = {
       headline: "Preguntas frecuentes de clínicos.",
       items: [
         {
-          q: "¿Cuánto tiempo pueden ahorrar realmente los logopedas en documentación?",
-          a: "Depende de su flujo de trabajo actual y del tiempo que dedica a las notas. Un borrador estructurado suele eliminar la parte más difícil, la página en blanco, y reduce el tiempo total de las notas. Los resultados individuales varían según la complejidad de la sesión y la cantidad de ediciones que necesite el borrador.",
+          q: "¿Cuánto tiempo pueden ahorrar de forma realista los logopedas en documentación?",
+          a: "Depende de tu flujo de trabajo actual y del tiempo que dedicas a las notas. Un borrador estructurado suele eliminar la parte más difícil, la página en blanco, y reduce el tiempo total de las notas. Los resultados individuales varían según la complejidad de la sesión y la cantidad de ediciones que necesite el borrador.",
         },
         {
           q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
-          a: "No. Una nota borrador se basa en datos estructurados de la sesión. La observación clínica, los juicios que el terapeuta hace en la consulta, es lo que el terapeuta añade. El borrador se encarga del andamiaje; el clínico aporta la experiencia.",
+          a: "No. Una nota borrador se basa en datos estructurados de la sesión. La observación clínica, los juicios que el terapeuta hace en la consulta, es lo que el terapeuta añade. El borrador se encarga de la estructura para que el clínico pueda centrarse en la experiencia.",
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de utilizarla. Ningún borrador debe entrar en el expediente del paciente sin revisión del clínico. Consulte las orientaciones de su organismo profesional local sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de utilizarla. Ningún borrador debe entrar en el expediente del paciente sin revisión del clínico. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
         },
         {
           q: "¿Cómo recopila UpSpeech los datos que informan el borrador?",
-          a: "Los pacientes practican los ejercicios asignados en la aplicación entre sesiones. La aplicación captura datos de finalización y rendimiento. Esos datos estructurados, no la transcripción de audio, son los que informan el borrador de la nota. El terapeuta los ve todos antes de firmar cualquier nota.",
+          a: "Los pacientes practican los ejercicios asignados en la app entre sesiones. La app captura datos de finalización y rendimiento. Esos datos estructurados, no la transcripción de audio, son los que informan el borrador de la nota. El terapeuta los ve todos antes de firmar cualquier nota.",
         },
       ],
     },
     closing: {
       headline:
-        "Deje que UpSpeech redacte las notas para centrarse en la sesión.",
+        "Deja que UpSpeech redacte las notas para que te centres en la sesión.",
       bodyPrefix:
         "UpSpeech trabaja con logopedas que quieren práctica estructurada entre sesiones y notas redactadas por IA. ",
-      bodyLink: "Solicite acceso aquí",
-      bodySuffix: " para ver si se adapta a su práctica.",
+      bodyLink: "Solicita acceso aquí",
+      bodySuffix: " para ver si se adapta a tu consulta.",
     },
   },
   forSlps: {
@@ -572,8 +572,8 @@ export const es: Dictionary = {
     },
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
-      headline: "Positivo ante la tartamudez, por principio.",
-      body: "El objetivo en la app es la confianza y ser escuchado, no sonar de una determinada manera. La práctica es motivadora, nunca correctiva de forma que avergüence.",
+      headline: "Tartamudez positiva, desde el diseño.",
+      body: "El objetivo en la app es la confianza y ser escuchado. La práctica es siempre motivadora y nunca avergüenza al paciente por su forma de hablar.",
     },
     faq: {
       eyebrow: "Preguntas de clínicos",
@@ -603,7 +603,7 @@ export const es: Dictionary = {
   consent: {
     title: "Tu privacidad importa",
     description:
-      "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Al aceptar, aceptas el uso de cookies de análisis. Puedes rechazarlas si lo prefieres.",
+      "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Al aceptar, consientes el uso de cookies de análisis. Puedes rechazarlas si lo prefieres.",
     learnMore: "Más información sobre las cookies",
     decline: "Rechazar",
     accept: "Aceptar",

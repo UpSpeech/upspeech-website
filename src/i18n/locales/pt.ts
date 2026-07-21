@@ -73,7 +73,7 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
+      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre a par.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A terapia",
@@ -274,7 +274,7 @@ export const pt: Dictionary = {
       partnersLabel: "Parceiros · Apoiantes · Reconhecimento",
       partnersTagline: "A construir ao lado de quem conhece o trabalho.",
       partnerContext: {
-        speechcare: "Parceiro de codesenvolvimento",
+        speechcare: "Parceiro de desenvolvimento conjunto",
         elevenlabs: "Bolsa de infraestrutura de IA",
         lispolis: "Programa de aceleração",
         unicorn: "Startup Mais Promissora · Lisboa",
@@ -426,7 +426,7 @@ export const pt: Dictionary = {
       eyebrow: "Filosofia",
       headlineLine1: "O que significa",
       headlineLine2: "gaguez positiva?",
-      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar, não a eliminação da disfluência. Significa apoiar as pessoas que gaguejam para se fazerem ouvir nos seus próprios termos, sem perseguir um padrão de fala que pode nunca parecer natural.",
+      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir nos seus próprios termos, com objetivos definidos pela pessoa e não por uma ideia fixa de como a fala deve soar.",
     },
     sections: [
       {
@@ -434,8 +434,8 @@ export const pt: Dictionary = {
         body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Algumas pessoas que gaguejam querem uma fala mais fluente, e técnicas como a gaguez voluntária ou a fala prolongada podem ajudar. Para outras, reduzir a evitação e ganhar confiança é o que mais importa. Gaguez positiva significa que os objetivos vêm da pessoa, não de uma norma externa.",
       },
       {
-        heading: "Ser ouvido, não soar de uma certa forma",
-        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência: evitação, antecipação e o esforço exaustivo de gerir as reações dos outros. A terapia de gaguez positiva aborda estas questões a par de qualquer prática de técnicas. A medida de uma boa sessão não é quantas vezes a pessoa gaguejou. É se comunicou o que pretendia e se sentiu confiante ao fazê-lo.",
+        heading: "Ser ouvido nos seus próprios termos",
+        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência: evitação, antecipação e o esforço de gerir as reações dos outros. A terapia de gaguez positiva aborda estas questões a par de qualquer prática de técnicas, por isso uma boa sessão mede-se pela capacidade de a pessoa comunicar o que pretendia e de se sentir confiante ao fazê-lo.",
       },
       {
         heading: "Como a UpSpeech reflete esta abordagem",
@@ -443,7 +443,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Uma nota sobre linguagem",
-        body: "Esta página usa 'pessoas que gaguejam' e 'pessoa que gagueja' ao longo do texto. A linguagem centrada na pessoa é o padrão aqui, a menos que um indivíduo prefira diferente. O que mais importa é que a pessoa se sinta reconhecida, não rotulada.",
+        body: "Esta página usa 'pessoas que gaguejam' e 'pessoa que gagueja' ao longo do texto. A linguagem centrada na pessoa é o padrão aqui, a menos que um indivíduo prefira diferente. O objetivo é descrever as pessoas com respeito, usando as palavras que escolhem para si próprias.",
       },
     ],
     faq: {
@@ -456,11 +456,11 @@ export const pt: Dictionary = {
         },
         {
           q: "A UpSpeech funciona apenas para abordagens de gaguez positiva?",
-          a: "Não. A UpSpeech apoia o plano que o terapeuta da fala cria. A app disponibiliza o que o clínico define, o que pode incluir técnicas de modelagem de fluência, técnicas de modificação ou trabalho focado na confiança.",
+          a: "Não. A UpSpeech apoia o plano que o terapeuta da fala cria. A app disponibiliza o que o clínico define, o que pode incluir técnicas de modelagem da fluência, técnicas de modificação ou trabalho focado na confiança.",
         },
         {
           q: "Que técnicas são usadas na terapia de gaguez positiva?",
-          a: "A gaguez voluntária, a identificação e desensibilização, e as técnicas de pull-out são comuns nas abordagens de gaguez positiva. Muitos clínicos combinam estas com trabalho de modelagem de fluência, dependendo dos objetivos do indivíduo.",
+          a: "A gaguez voluntária, a identificação e dessensibilização, e as técnicas de pull-out (sair de forma controlada de um momento de gaguez) são comuns nas abordagens de gaguez positiva. Muitos clínicos combinam estas com trabalho de modelagem da fluência, dependendo dos objetivos do indivíduo.",
         },
         {
           q: "Onde posso aprender mais?",
@@ -489,11 +489,11 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. A página em branco é o obstáculo, não o seu conhecimento. Muitos terapeutas referem que a documentação é o encargo administrativo que mais provavelmente comprime o tempo de preparação, prolonga o horário de trabalho ou atrasa as notas de cuidados. É um problema estrutural, não uma lacuna de competências.",
+        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. O entrave é a própria página em branco, já que o raciocínio clínico já está feito. Muitos terapeutas dizem que a documentação é a tarefa administrativa que mais tende a consumir o tempo de preparação e a prolongar o dia de trabalho. É um problema estrutural, e a solução passa por ter um melhor ponto de partida.",
       },
       {
         heading: "Rascunhos estruturados que revê e edita",
-        body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico é sempre seu; o rascunho trata do esqueleto.",
+        body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico continua a ser seu, e o rascunho trata da estrutura.",
       },
       {
         heading: "O que deve constar numa boa nota de terapia da fala",
@@ -514,7 +514,7 @@ export const pt: Dictionary = {
         },
         {
           q: "A redação de notas com assistência de IA substitui a observação clínica?",
-          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. A observação clínica, os julgamentos que o terapeuta faz durante a sessão, é o que o terapeuta acrescenta. O rascunho trata do esqueleto; o clínico fornece a especialização.",
+          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. A observação clínica, os julgamentos que o terapeuta faz durante a sessão, é o que o terapeuta acrescenta. O rascunho trata da estrutura, para que o clínico se possa focar na especialização.",
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
@@ -572,8 +572,8 @@ export const pt: Dictionary = {
     },
     stutterPositive: {
       eyebrow: "A nossa abordagem",
-      headline: "Positivo face à gaguez, por princípio.",
-      body: "O objetivo na app é a confiança e ser ouvido, não soar de determinada forma. A prática é encorajadora, nunca corretiva de forma que envergonhe.",
+      headline: "Gaguez positiva, desde a conceção.",
+      body: "O objetivo na app é a confiança e ser ouvido. A prática é sempre encorajadora e nunca envergonha o paciente pela forma como fala.",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",
@@ -601,9 +601,9 @@ export const pt: Dictionary = {
     },
   },
   consent: {
-    title: "A tua privacidade é importante",
+    title: "A sua privacidade é importante",
     description:
-      "Usamos cookies para melhorar a tua experiência e analisar a utilização do site. Ao aceitares, concordas com a utilização de cookies de análise. Podes recusar se preferires.",
+      "Usamos cookies para melhorar a sua experiência e analisar a utilização do site. Ao aceitar, concorda com a utilização de cookies de análise. Pode recusar se preferir.",
     learnMore: "Saber mais sobre cookies",
     decline: "Recusar",
     accept: "Aceitar",
