@@ -182,7 +182,7 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El clínico lee, edita, aprueba.",
-          body: "Nada sale de la plataforma sin revisión del terapeuta. Las correcciones retroalimentan el modelo y mejoran el siguiente borrador.",
+          body: "Nada sale de la plataforma sin revisión del terapeuta. Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
         },
         {
           verb: "estructura",
@@ -538,12 +538,12 @@ export const es: Dictionary = {
   forSlps: {
     seoTitle: "Para logopedas",
     seoDescription:
-      "UpSpeech ayuda a los logopedas a pasar menos tiempo escribiendo notas de sesiones y da a los pacientes práctica estructurada entre sesiones, con progreso que puedes ver.",
+      "UpSpeech da a los pacientes práctica estructurada entre sesiones y redacta las notas de sesión para que las revises, con progreso que puedes ver.",
     intro: {
       eyebrow: "Para logopedas",
-      headlineLine1: "Menos tiempo en documentación.",
-      headlineLine2: "Más terapia entre sesiones.",
-      body: "UpSpeech redacta las notas de sesión para que las revises, y da a tus pacientes práctica guiada que realmente hacen entre consultas, para que entres en la siguiente sesión ya sabiendo cómo fue la semana.",
+      headlineLine1: "Más terapia entre sesiones.",
+      headlineLine2: "Menos tiempo en documentación.",
+      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises, para que entres en la siguiente sesión ya sabiendo cómo fue la semana.",
     },
     documentation: {
       eyebrow: "Documentación",

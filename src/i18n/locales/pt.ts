@@ -182,7 +182,7 @@ export const pt: Dictionary = {
         {
           verb: "aprova",
           title: "O clínico lê, edita, aprova.",
-          body: "Nada sai da plataforma sem revisão do terapeuta. As correções alimentam o modelo e melhoram o rascunho seguinte.",
+          body: "Nada sai da plataforma sem revisão do terapeuta. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
         },
         {
           verb: "estrutura",
@@ -538,12 +538,12 @@ export const pt: Dictionary = {
   forSlps: {
     seoTitle: "Para terapeutas da fala",
     seoDescription:
-      "A UpSpeech ajuda os terapeutas da fala a passar menos tempo a escrever relatórios de sessões e dá aos pacientes prática estruturada entre sessões, com progresso que pode acompanhar.",
+      "A UpSpeech dá aos pacientes prática estruturada entre sessões e redige as notas de sessão para si rever, com progresso que pode acompanhar.",
     intro: {
       eyebrow: "Para terapeutas da fala",
-      headlineLine1: "Menos tempo em documentação.",
-      headlineLine2: "Mais terapia entre sessões.",
-      body: "A UpSpeech redige as notas de sessão para si rever, e dá aos seus pacientes prática guiada que fazem de facto entre consultas, para entrar na próxima sessão já a saber como foi a semana.",
+      headlineLine1: "Mais terapia entre sessões.",
+      headlineLine2: "Menos tempo em documentação.",
+      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para si rever, para entrar na próxima sessão já a saber como foi a semana.",
     },
     documentation: {
       eyebrow: "Documentação",
