@@ -1,6 +1,6 @@
 # Política de Cookies
 
-**Última Actualización:** 8 de abril de 2026
+**Última Actualización:** 21 de julio de 2026
 
 ## Introducción
 
@@ -151,6 +151,16 @@ La plataforma de aplicación utiliza los mismos servicios de análisis que nuest
 Cuando utiliza la aplicación por primera vez, verá un banner de consentimiento que le permite aceptar o rechazar las cookies de análisis. Su elección se almacena en el Almacenamiento Local y se respeta en todas las visitas futuras a ese subdominio.
 
 **Nota:** Cada subdominio de tenant (p. ej.: `speechcare.upspeech.app`, `demo.upspeech.app`) mantiene sus propias preferencias de consentimiento por separado
+
+### Aplicaciones Móviles (iOS y Android)
+
+Nuestras aplicaciones móviles nativas no utilizan cookies de navegador. En su lugar, se basan en las siguientes tecnologías e identificadores en el dispositivo:
+
+- **Almacenamiento seguro del dispositivo** - Su token de autenticación, perfil en caché y preferencia de idioma se almacenan en el almacenamiento seguro del dispositivo (Keychain en iOS, Keystore en Android) para mantener su sesión iniciada. Esto es esencial para el funcionamiento de la aplicación.
+- **Diagnóstico de errores y fallos (Sentry)** - La aplicación utiliza Sentry para capturar informes de fallos e información técnica de errores, de modo que podamos corregir problemas. Esto recopila datos técnicos de diagnóstico, no identificadores publicitarios.
+- **Notificaciones push (Apple Push Notification service y Firebase Cloud Messaging)** - Si activa las notificaciones, se utiliza un token push del dispositivo para entregar recordatorios y actualizaciones.
+
+Las aplicaciones móviles no utilizan cookies publicitarias, rastreadores entre sitios ni SDK de publicidad comportamental. Consulte nuestra [Política de Privacidad](/privacy) para la lista completa de encargados del tratamiento y categorías de datos.
 
 ## Consentimiento de Cookies y Sus Opciones
 
