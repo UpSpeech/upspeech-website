@@ -42,9 +42,21 @@ export default tseslint.config(
   },
   {
     // Allow non-component exports in UI components (shadcn pattern)
-    files: ["src/components/ui/**/*.{ts,tsx}", "src/hooks/**/*.{ts,tsx}"],
+    // and in Remotion files (bundled by Remotion's webpack, no Vite fast refresh)
+    files: [
+      "src/components/ui/**/*.{ts,tsx}",
+      "src/hooks/**/*.{ts,tsx}",
+      "remotion/**/*.{ts,tsx}",
+    ],
     rules: {
       "react-refresh/only-export-components": "off",
+    },
+  },
+  {
+    // Netlify functions run on Node, not the browser (process, console, fetch).
+    files: ["netlify/**/*.{ts,tsx}"],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 );

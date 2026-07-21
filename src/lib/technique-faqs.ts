@@ -11,22 +11,22 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "What is voluntary stuttering?",
       answer:
-        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviors associated with stuttering, and gains a greater sense of control over their speech.",
+        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviours associated with stuttering, and gains a greater sense of control over their speech.",
     },
     {
       question: "How does voluntary stuttering help reduce stuttering?",
       answer:
-        "Voluntary stuttering works by desensitizing the speaker to the experience of stuttering. When you stutter on purpose, the fear and tension that typically worsen stuttering are reduced. Over time, this decreases avoidance behaviors and makes involuntary stuttering moments less severe.",
+        "In speech therapy, voluntary stuttering is used to help a person become less sensitive to the experience of stuttering. Choosing to stutter on purpose, in an easy and controlled way, can lower the fear and tension that many people associate with speaking. Speech-language pathologists use it to support openness and reduce avoidance over time. Your clinician will advise whether and how it fits your goals.",
     },
     {
       question: "Is voluntary stuttering the same as faking a stutter?",
       answer:
-        "No. Voluntary stuttering is a therapeutic technique practiced under the guidance of a speech-language pathologist. It involves producing easy, relaxed repetitions or prolongations — not imitating or mocking stuttering. The goal is to build openness, reduce tension, and improve overall communication.",
+        "No. Voluntary stuttering is a therapeutic technique practiced under the guidance of a speech-language pathologist. It involves producing easy, relaxed repetitions or prolongations, not imitating or mocking stuttering. The goal is to build openness, reduce tension, and improve overall communication.",
     },
     {
       question: "When should I practice voluntary stuttering?",
       answer:
-        "Your speech-language pathologist will guide you on when and how to practice. Typically, you start in low-pressure situations — such as with a trusted friend or during a therapy session — and gradually progress to more challenging speaking contexts as your confidence grows.",
+        "Your speech-language pathologist will guide you on when and how to practice. Typically, you start in low-pressure situations, such as with a trusted friend or during a therapy session, and gradually progress to more challenging speaking contexts as your confidence grows.",
     },
   ],
   cancelation: [
@@ -38,12 +38,12 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do you practice the cancellation technique?",
       answer:
-        "After you stutter on a word, stop completely. Take a moment to feel what your mouth, jaw, and throat were doing during the stutter. Then, deliberately repeat the word using a slower, more relaxed approach — such as a gentle onset or light articulatory contact.",
+        "After you stutter on a word, stop completely. Take a moment to feel what your mouth, jaw, and throat were doing during the stutter. Then, deliberately repeat the word using a slower, more relaxed approach, such as a gentle onset or light articulatory contact.",
     },
     {
       question: "What is the difference between cancellation and pull-out?",
       answer:
-        "Cancellation happens after the stutter — you finish the stuttered word, pause, then retry it with easier speech. Pull-out happens during the stutter — you modify the stutter in real time while you are still on the word, transitioning into smoother speech mid-moment.",
+        "Cancellation happens after the stutter, you finish the stuttered word, pause, then retry it with easier speech. Pull-out happens during the stutter, you modify the stutter in real time while you are still on the word, transitioning into smoother speech mid-moment.",
     },
   ],
   "pull-out": [
@@ -55,7 +55,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do you perform a pull-out during a stutter?",
       answer:
-        "When you feel yourself stuttering on a word, slow down rather than forcing through. Gradually relax the muscles involved in speech — your lips, tongue, jaw, or vocal folds — and ease into the rest of the word with a slower, lighter touch. The goal is to finish the word smoothly.",
+        "When you feel yourself stuttering on a word, slow down rather than forcing through. Gradually relax the muscles involved in speech, your lips, tongue, jaw, or vocal folds, and ease into the rest of the word with a slower, lighter touch. The goal is to finish the word smoothly.",
     },
     {
       question: "Is the pull-out technique difficult to learn?",
@@ -67,13 +67,13 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "What is a preparatory set in speech therapy?",
       answer:
-        "A preparatory set is a technique where you plan how you will say a word before you begin speaking it. You mentally and physically prepare your articulators — lips, tongue, jaw — for a relaxed, easy start, reducing the likelihood of a stuttering block.",
+        "A preparatory set is a technique where you plan how you will say a word before you begin speaking it. You mentally and physically prepare your articulators, lips, tongue, jaw, for a relaxed, easy start, reducing the likelihood of a stuttering block.",
     },
     {
       question:
         "How does preparatory set differ from other stuttering techniques?",
       answer:
-        "Preparatory set is proactive — it happens before you speak the word. Cancellation is used after a stutter, and pull-out is used during a stutter. Preparatory set aims to prevent the stutter from occurring in the first place by preparing for smooth speech production.",
+        "Preparatory set is proactive, it happens before you speak the word. Cancellation is used after a stutter, and pull-out is used during a stutter. Preparatory set aims to prevent the stutter from occurring in the first place by preparing for smooth speech production.",
     },
     {
       question: "When should I use preparatory set?",
@@ -90,7 +90,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How does holding help with stuttering blocks?",
       answer:
-        "During a block, the natural instinct is to push harder or stop entirely. Holding teaches you to stay in the moment, maintain your position without added tension, and then release into the rest of the word gently. This reduces the severity of blocks and builds confidence.",
+        "During a block, the natural instinct is to push harder or stop entirely. Holding teaches you to stay in the moment, maintain your position without added tension, and then release into the rest of the word gently. Clinicians use it to help you manage blocks with less struggle and build confidence over time.",
     },
     {
       question: "Is holding the same as freezing during a block?",
@@ -124,7 +124,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How does soft articulation contact differ from soft starts?",
       answer:
-        "Soft starts focus on how you initiate voicing — beginning gently with relaxed vocal folds. Soft articulation contact focuses on how your articulators physically touch during consonant production. Both reduce tension, but they target different parts of the speech mechanism.",
+        "Soft starts focus on how you initiate voicing, beginning gently with relaxed vocal folds. Soft articulation contact focuses on how your articulators physically touch during consonant production. Both reduce tension, but they target different parts of the speech mechanism.",
     },
     {
       question: "Which sounds benefit most from soft articulation contact?",
@@ -141,7 +141,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Does prolonged speech sound natural?",
       answer:
-        "Initially, prolonged speech may sound slow or exaggerated. With practice, you learn to use it more subtly — applying slight prolongations that maintain fluency without sounding unnatural. The goal is to gradually increase your speaking rate while maintaining the smoothness.",
+        "Initially, prolonged speech may sound slow or exaggerated. With practice, you learn to use it more subtly, applying slight prolongations that maintain fluency without sounding unnatural. The goal is to gradually increase your speaking rate while maintaining the smoothness.",
     },
     {
       question: "Is prolonged speech the same as speaking slowly?",
@@ -163,7 +163,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do I manage my speech speed without sounding unnatural?",
       answer:
-        "Focus on natural phrasing — break your speech into shorter thought groups with brief pauses between them. This sounds conversational and is how many fluent speakers naturally talk. You are not slowing every word; you are organizing your speech into manageable chunks.",
+        "Focus on natural phrasing, break your speech into shorter thought groups with brief pauses between them. This sounds conversational and is how many fluent speakers naturally talk. You are not slowing every word; you are organizing your speech into manageable chunks.",
     },
   ],
   pauses: [
@@ -175,12 +175,12 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Where should I place pauses in my speech?",
       answer:
-        "Place pauses at natural linguistic boundaries — between phrases, clauses, or sentences. Pause after a complete thought, before starting a new idea, or before a word you anticipate difficulty with. Natural pauses make your speech sound thoughtful and organized, not hesitant.",
+        "Place pauses at natural linguistic boundaries, between phrases, clauses, or sentences. Pause after a complete thought, before starting a new idea, or before a word you anticipate difficulty with. Natural pauses make your speech sound thoughtful and organized, not hesitant.",
     },
     {
       question: "Is pausing the same as avoiding words?",
       answer:
-        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behavior that reinforces fear.",
+        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behaviour that reinforces fear.",
     },
   ],
   "identification-desensitization": [
@@ -188,17 +188,17 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
       question:
         "What is identification and desensitization in stuttering therapy?",
       answer:
-        "Identification involves learning to recognize your specific stuttering patterns — the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
+        "Identification involves learning to recognise your specific stuttering patterns, the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
     },
     {
       question: "Why is desensitization important for people who stutter?",
       answer:
-        "Many of the difficulties associated with stuttering are driven by emotional reactions — fear of speaking, shame about stuttering, avoidance of social situations. Desensitization reduces these reactions, which in turn often reduces the frequency and severity of stuttering itself.",
+        "Many of the difficulties associated with stuttering are driven by emotional reactions: fear of speaking, shame about stuttering, avoidance of social situations. In speech therapy, desensitization is used to help reduce these reactions. Your speech-language pathologist will guide how it is practiced.",
     },
     {
       question: "How does identification help improve speech fluency?",
       answer:
-        "When you can identify exactly what happens during your stuttering moments — which muscles tense, which sounds are difficult, what situations trigger anxiety — you can apply targeted techniques more effectively. Self-awareness is the foundation for all stuttering modification strategies.",
+        "When you can identify exactly what happens during your stuttering moments, which muscles tense, which sounds are difficult, what situations trigger anxiety, you can apply targeted techniques more effectively. Self-awareness is the foundation for all stuttering modification strategies.",
     },
     {
       question:

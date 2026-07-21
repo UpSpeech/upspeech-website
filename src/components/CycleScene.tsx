@@ -1,0 +1,469 @@
+import { useEffect, useRef, useState } from "react";
+import { EASE, reveal } from "./motion";
+import { useT } from "@/i18n";
+
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
+
+type Actor = "ai" | "clinician";
+
+// Actor sequence stays in code (drives colours/geometry); verb/title/body copy
+// comes from the dictionary by index (home.cycle.nodes).
+const NODE_ACTORS: Actor[] = [
+  "ai",
+  "clinician",
+  "ai",
+  "clinician",
+  "ai",
+  "clinician",
+];
+
+// SVG viewBox is 100×100; geometry expressed in those units and overlaid with HTML.
+const CENTER = 50;
+const RADIUS = 27;
+const LABEL_RADIUS = 38;
+
+// compassDeg: 0 at top, rotates clockwise
+const nodePoint = (i: number, r = RADIUS) => {
+  const compassDeg = (i * 360) / NODE_ACTORS.length;
+  const rad = (compassDeg * Math.PI) / 180;
+  return {
+    x: CENTER + r * Math.sin(rad),
+    y: CENTER - r * Math.cos(rad),
+    compassDeg,
+  };
+};
+
+// Per-quadrant transform keeps label anchored OUTSIDE the ring
+// so long words never cross the circumference.
+const labelTransform = (compassDeg: number): string => {
+  if (compassDeg < 30 || compassDeg >= 330) return "translate(-50%, -115%)";
+  if (compassDeg >= 30 && compassDeg <= 150) return "translate(12%, -50%)";
+  if (compassDeg > 150 && compassDeg < 210) return "translate(-50%, 15%)";
+  return "translate(-112%, -50%)";
+};
+
+const labelAlignClass = (compassDeg: number): string => {
+  if (compassDeg < 30 || compassDeg >= 330) return "text-center";
+  if (compassDeg > 150 && compassDeg < 210) return "text-center";
+  if (compassDeg >= 30 && compassDeg <= 150) return "text-left";
+  return "text-right";
+};
+
+const CycleScene = () => {
+  const t = useT().home.cycle;
+  const nodes = t.nodes;
+  const containerRef = useRef<HTMLElement | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReduced) {
+      setProgress(1);
+      setRevealed(true);
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -15% 0px" },
+    );
+    obs.observe(el);
+
+    let raf = 0;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const scrollable = rect.height - vh;
+      const scrolled = Math.max(0, Math.min(scrollable, -rect.top));
+      setProgress(scrollable > 0 ? scrolled / scrollable : 0);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+      obs.disconnect();
+    };
+  }, []);
+
+  // Structural chrome (eyebrow, headline, labels, center, description, footer)
+  // is visible from the start, the cycle reads as 'ready to go' at scroll 0
+  // defaulting to step 01 (AI drafts). Scroll drives only the progression.
+  const nodePhase = clamp01(progress / 0.9);
+  const finalGlow = clamp01((progress - 0.9) / 0.1);
+
+  const nodeFloat = nodePhase * NODE_ACTORS.length;
+  const activeIndex = Math.min(
+    NODE_ACTORS.length - 1,
+    Math.max(0, Math.floor(nodeFloat)),
+  );
+  const activeActor = NODE_ACTORS[activeIndex];
+  const active = nodes[activeIndex];
+  const activeIsAI = activeActor === "ai";
+
+  // Orbital satellite, rides the ring at the current nodeFloat position
+  const orbitDeg = (nodeFloat / NODE_ACTORS.length) * 360;
+  const orbitRad = (orbitDeg * Math.PI) / 180;
+  const orbitX = CENTER + RADIUS * Math.sin(orbitRad);
+  const orbitY = CENTER - RADIUS * Math.cos(orbitRad);
+
+  // Progress arc, continuous loop drawn from top clockwise
+  const circumference = 2 * Math.PI * RADIUS;
+  const arcDrawn = nodePhase * circumference;
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative bg-white"
+      style={{ height: "200vh" }}
+    >
+      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(900px 700px at 75% 25%, rgba(152,165,254,0.16), transparent 58%), radial-gradient(700px 600px at 12% 85%, rgba(41,53,135,0.09), transparent 60%)",
+          }}
+        />
+
+        <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)] py-[clamp(2rem,6vh,4rem)]">
+          <p
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-5 sm:mb-6"
+            style={reveal(revealed, 0)}
+          >
+            {t.eyebrow}
+          </p>
+
+          <h2
+            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 3rem)",
+              lineHeight: 1.1,
+              ...reveal(revealed, 80),
+            }}
+          >
+            {t.headlinePrefix}{" "}
+            <span className="text-calm-lavender">{t.headlineEmphasis}</span>
+          </h2>
+
+          <div
+            className="grid grid-cols-1 lg:grid-cols-[1.15fr,1fr] gap-6 lg:gap-16 items-center"
+            style={reveal(revealed, 160)}
+          >
+            {/* Cycle */}
+            <div
+              className="relative mx-auto aspect-square"
+              style={{ width: "min(520px, 52vh, 78vw)" }}
+            >
+              <svg
+                viewBox="0 0 100 100"
+                className="absolute inset-0 w-full h-full"
+                aria-hidden="true"
+                overflow="visible"
+              >
+                {/* Track ring */}
+                <circle
+                  cx={CENTER}
+                  cy={CENTER}
+                  r={RADIUS}
+                  fill="none"
+                  stroke="rgba(41,53,135,0.12)"
+                  strokeWidth="0.6"
+                />
+
+                {/* Progress arc, continuous loop, from top clockwise */}
+                <circle
+                  cx={CENTER}
+                  cy={CENTER}
+                  r={RADIUS}
+                  fill="none"
+                  stroke="#958AF0"
+                  strokeWidth="1.1"
+                  strokeLinecap="round"
+                  strokeDasharray={`${arcDrawn} ${circumference}`}
+                  transform={`rotate(-90 ${CENTER} ${CENTER})`}
+                  style={{ transition: `stroke-dasharray 450ms ${EASE}` }}
+                />
+
+                {/* Orbital satellite, subtle position indicator */}
+                {nodePhase > 0 && (
+                  <g style={{ transition: `transform 450ms ${EASE}` }}>
+                    <circle
+                      cx={orbitX}
+                      cy={orbitY}
+                      r={2.4}
+                      fill={activeIsAI ? "#958AF0" : "#293587"}
+                      opacity={0.12}
+                    />
+                    <circle
+                      cx={orbitX}
+                      cy={orbitY}
+                      r={1.1}
+                      fill={activeIsAI ? "#958AF0" : "#293587"}
+                    />
+                  </g>
+                )}
+
+                {/* Nodes */}
+                {NODE_ACTORS.map((actor, i) => {
+                  const pos = nodePoint(i);
+                  const isActive = i === activeIndex && nodePhase > 0;
+                  const isPast = i < activeIndex && nodePhase > 0;
+                  const lit = isActive || isPast || finalGlow > 0;
+                  const isClinician = actor === "clinician";
+                  const fill = lit
+                    ? isClinician
+                      ? "#293587"
+                      : "#958AF0"
+                    : "#FFFFFF";
+                  const stroke = isClinician ? "#293587" : "#958AF0";
+                  const r = isActive ? 5.4 : 4.3;
+
+                  return (
+                    <g key={i}>
+                      {isActive && (
+                        <circle
+                          cx={pos.x}
+                          cy={pos.y}
+                          r={8.5}
+                          fill={stroke}
+                          opacity={0.16}
+                          style={{ transition: `opacity 500ms ${EASE}` }}
+                        />
+                      )}
+                      <circle
+                        cx={pos.x}
+                        cy={pos.y}
+                        r={r}
+                        fill={fill}
+                        stroke={stroke}
+                        strokeWidth={isActive ? 1.1 : 0.85}
+                        style={{
+                          transition: `r 500ms ${EASE}, fill 500ms ${EASE}, stroke-width 500ms ${EASE}`,
+                        }}
+                      />
+                      <text
+                        x={pos.x}
+                        y={pos.y + 1.1}
+                        textAnchor="middle"
+                        style={{
+                          fontSize: "3.2px",
+                          fontWeight: 800,
+                          fontFamily:
+                            "Outfit, ui-sans-serif, system-ui, sans-serif",
+                          letterSpacing: "-0.02em",
+                        }}
+                        fill={
+                          lit
+                            ? isClinician
+                              ? "#FFFFFF"
+                              : "#293587"
+                            : "#293587"
+                        }
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+
+              {/* HTML labels outside the ring, positioned per quadrant */}
+              {NODE_ACTORS.map((actor, i) => {
+                const pos = nodePoint(i, LABEL_RADIUS);
+                const isActive = i === activeIndex && nodePhase > 0;
+                const isPast = i < activeIndex && nodePhase > 0;
+                const lit = isActive || isPast || finalGlow > 0;
+                const isClinician = actor === "clinician";
+
+                return (
+                  <div
+                    key={`lbl-${i}`}
+                    className="pointer-events-none hidden lg:block absolute"
+                    style={{
+                      left: `${pos.x}%`,
+                      top: `${pos.y}%`,
+                      transform: labelTransform(pos.compassDeg),
+                    }}
+                  >
+                    <div
+                      className={labelAlignClass(pos.compassDeg)}
+                      style={{ maxWidth: "10rem" }}
+                    >
+                      <div
+                        className={`font-body font-bold tracking-[0.22em] uppercase ${
+                          isClinician ? "text-calm-navy" : "text-calm-lavender"
+                        }`}
+                        style={{
+                          fontSize: "clamp(9px, 0.82vw, 11px)",
+                          opacity: lit ? 1 : 0.55,
+                          transition: `opacity 500ms ${EASE}`,
+                        }}
+                      >
+                        {isClinician ? t.clinician : t.ai}
+                      </div>
+                      <div
+                        className="font-heading font-bold tracking-tight text-calm-charcoal"
+                        style={{
+                          fontSize: "clamp(13px, 1.15vw, 15.5px)",
+                          lineHeight: 1.1,
+                          marginTop: "3px",
+                          opacity: lit ? 1 : 0.4,
+                          transform: isActive ? "scale(1.04)" : "scale(1)",
+                          transformOrigin:
+                            pos.compassDeg >= 210 && pos.compassDeg < 330
+                              ? "right center"
+                              : pos.compassDeg >= 30 && pos.compassDeg <= 150
+                                ? "left center"
+                                : "center",
+                          transition: `opacity 500ms ${EASE}, transform 500ms ${EASE}`,
+                        }}
+                      >
+                        {nodes[i].verb}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Center scoreboard, live actor readout */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
+                <div
+                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/45"
+                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
+                >
+                  {t.eyebrow}
+                </div>
+
+                {/* Actor readout, swaps and recolors with each step */}
+                <div
+                  key={`actor-${activeIndex}`}
+                  className="font-heading font-bold tracking-tight mt-2 mb-2.5"
+                  style={{
+                    fontSize: "clamp(1.25rem, 2.4vw, 1.625rem)",
+                    lineHeight: 1,
+                    color: activeIsAI ? "#958AF0" : "#293587",
+                    animation: `optD-actor-swap 600ms ${EASE} both`,
+                  }}
+                >
+                  {activeIsAI ? t.ai : t.clinician}
+                </div>
+
+                <div
+                  className="inline-flex items-center gap-2 font-body font-bold tracking-[0.3em] uppercase tabular-nums text-calm-charcoal/60"
+                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
+                >
+                  <span className="block h-px w-5 bg-calm-charcoal/30" />
+                  {t.stepPrefix}
+                  {String(activeIndex + 1).padStart(2, "0")}
+                  {t.stepSuffix}
+                  <span className="block h-px w-5 bg-calm-charcoal/30" />
+                </div>
+              </div>
+            </div>
+
+            {/* Description panel, shows step 01 by default, swaps with scroll */}
+            <div className="relative min-h-[10rem] lg:min-h-[18rem]">
+              <div
+                key={activeIndex}
+                className="absolute inset-0 flex flex-col justify-center"
+                style={{
+                  animation: `optD-reveal 600ms ${EASE} both`,
+                }}
+              >
+                <div className="flex items-center gap-2.5 mb-5">
+                  <span
+                    className={`inline-block h-2 w-2 rounded-full ${
+                      activeActor === "clinician"
+                        ? "bg-calm-navy"
+                        : "bg-calm-lavender"
+                    }`}
+                  />
+                  <span
+                    className={`font-body text-[11px] font-bold tracking-[0.28em] uppercase ${
+                      activeActor === "clinician"
+                        ? "text-calm-navy"
+                        : "text-calm-lavender"
+                    }`}
+                  >
+                    {activeActor === "clinician"
+                      ? t.clinicianStepPrefix +
+                        (activeIndex + 1).toString().padStart(2, "0")
+                      : t.aiStepPrefix +
+                        (activeIndex + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
+                <h3
+                  className="font-heading font-extrabold text-calm-charcoal tracking-tight mb-5"
+                  style={{
+                    fontSize: "clamp(1.6rem, 3.2vw, 2.5rem)",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {active.title}
+                </h3>
+                <p className="font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed max-w-md">
+                  {active.body}
+                </p>
+
+                {/* Progress pips */}
+                <div className="mt-9 flex items-center gap-1.5">
+                  {NODE_ACTORS.map((_, i) => (
+                    <span
+                      key={i}
+                      className="block h-1 rounded-full transition-all duration-500"
+                      style={{
+                        width:
+                          i === activeIndex
+                            ? "2.5rem"
+                            : i < activeIndex
+                              ? "1.25rem"
+                              : "0.5rem",
+                        backgroundColor:
+                          i === activeIndex
+                            ? "#293587"
+                            : i < activeIndex
+                              ? "#958AF0"
+                              : "rgba(41,53,135,0.15)",
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes optD-reveal {
+          from { opacity: 0; transform: translateY(14px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes optD-actor-swap {
+          from { opacity: 0; letter-spacing: 0.02em; transform: translateY(8px); }
+          to { opacity: 1; letter-spacing: -0.02em; transform: translateY(0); }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+export default CycleScene;

@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { useLocale, localizedPath } from "@/i18n";
 
 marked.setOptions({
   gfm: true,
   breaks: true,
 });
-
-const SUPPORTED_LOCALES = ["en", "pt", "es"];
 
 const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
@@ -54,31 +53,10 @@ const RELOAD_TEXT: Record<string, string> = {
 };
 
 export default function TermsOfService() {
-  const [searchParams] = useSearchParams();
+  const locale = useLocale();
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const getLocale = (): string => {
-    const urlLocale = searchParams.get("lang");
-    if (urlLocale && SUPPORTED_LOCALES.includes(urlLocale)) {
-      return urlLocale;
-    }
-    const browserLang = navigator.language.split("-")[0];
-    if (SUPPORTED_LOCALES.includes(browserLang)) {
-      return browserLang;
-    }
-    return "en";
-  };
-
-  const [locale, setLocale] = useState(getLocale());
-
-  const changeLanguage = (newLocale: string) => {
-    setLocale(newLocale);
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("lang", newLocale);
-    window.history.replaceState({}, "", `?${newParams.toString()}`);
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -108,29 +86,17 @@ export default function TermsOfService() {
   const seo = SEO_DATA[locale] || SEO_DATA.en;
 
   const languageSwitcher = (
-    <div className="flex justify-end mb-6 gap-2">
-      {SUPPORTED_LOCALES.map((lang) => (
-        <button
-          key={lang}
-          onClick={() => changeLanguage(lang)}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            locale === lang
-              ? "bg-blue-600 text-white"
-              : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-          }`}
-        >
-          {lang === "en" ? "English" : lang === "pt" ? "Português" : "Español"}
-        </button>
-      ))}
+    <div className="flex justify-end mb-6">
+      <LocaleSwitcher />
     </div>
   );
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-calm-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {languageSwitcher}
-          <div className="text-lg text-gray-600 text-center">
+          <div className="text-lg text-calm-charcoal/70 text-center font-body">
             {LOADING_TEXT[locale] || LOADING_TEXT.en}
           </div>
         </div>
@@ -140,14 +106,14 @@ export default function TermsOfService() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-calm-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {languageSwitcher}
           <div className="text-center max-w-md mx-auto">
             <div className="text-red-600 text-lg mb-4">{error}</div>
             <button
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+              className="px-4 py-2 bg-calm-navy text-white rounded-full hover:bg-calm-charcoal transition-colors"
             >
               {RELOAD_TEXT[locale] || RELOAD_TEXT.en}
             </button>
@@ -158,7 +124,7 @@ export default function TermsOfService() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-calm-light">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -167,7 +133,7 @@ export default function TermsOfService() {
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {languageSwitcher}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-2xl border border-calm-navy/10 shadow-[0_30px_80px_-30px_rgba(41,53,135,0.18)] overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">
             <div
               className="legal-document prose prose-gray max-w-none"
@@ -177,7 +143,10 @@ export default function TermsOfService() {
         </div>
 
         <div className="mt-8 text-center">
-          <a href="/" className="text-indigo-600 hover:underline">
+          <a
+            href={localizedPath("/", locale)}
+            className="text-calm-navy hover:underline font-body font-medium"
+          >
             &larr; {BACK_LINKS[locale] || BACK_LINKS.en}
           </a>
         </div>

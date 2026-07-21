@@ -139,8 +139,8 @@ Need: 6 feed posts, 2 carousels, 4 stories, 1 reel script, captions, exports.
 ## Practical publishing notes
 
 - Pin the manifesto, one progress/proof post, and one CTA post.
-- Bio states it plainly: "Speech therapy that keeps going between sessions.
+- Bio states it plainly: "Continuous support for stuttering therapy.
   Stutter-positive. Built with SLPs."
-- One link destination at first: signup or the "ask your therapist" page.
+- One link destination at first: the "ask your therapist" / for-patients page.
 - Keep hashtags specific and minimal (5 to 8).
 - Reply to every early comment and DM. With this audience, trust is the metric.

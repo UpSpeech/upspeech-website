@@ -28,7 +28,7 @@ short, and free of sales language. Update it whenever the exported image changes
 - `carousel-week-01-hero.png`: Navy carousel cover reading "What a week with UpSpeech looks like".
 - `carousel-week-02-practice.png`: Carousel slide reading "Short daily reps" with step number 01.
 - `carousel-week-03-feedback.png`: Carousel slide reading "Gentle, useful feedback" with step number 02.
-- `carousel-week-04-cta.png`: Carousel slide reading "Arrive with a week of progress" and "Start practising".
+- `carousel-week-04-cta.png`: Carousel slide reading "Arrive with a week of progress" and "Ask your therapist".
 
 ## Stories
 

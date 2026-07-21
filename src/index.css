@@ -1,3 +1,5 @@
+@import "./fonts.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,7 +50,7 @@
     --color-primary-foreground: #ffffff;
     --color-secondary: #4b4e4e;
     --color-secondary-foreground: #ffffff;
-    --color-accent: #958AF0;
+    --color-accent: #958af0;
     --color-accent-foreground: #293587;
 
     /* ==========================================
@@ -106,7 +108,7 @@
        ========================================== */
     --gradient-primary: linear-gradient(135deg, #293587 0%, #4b5dc9 100%);
     --gradient-primary-soft: linear-gradient(135deg, #eceefb 0%, #f5f6fc 100%);
-    --gradient-accent: linear-gradient(135deg, #958AF0 0%, #c4cafe 100%);
+    --gradient-accent: linear-gradient(135deg, #958af0 0%, #c4cafe 100%);
     --gradient-warm: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
     --gradient-calm: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
     --gradient-celebrate: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
@@ -240,6 +242,8 @@
   /* Scroll Behavior */
   html {
     scroll-behavior: smooth;
+    /* Reserve scrollbar space so toggling overflow doesn't shift layout. */
+    scrollbar-gutter: stable;
   }
 
   /* Selection Color */
@@ -583,7 +587,7 @@
   }
 
   .bg-gradient-accent {
-    background: linear-gradient(135deg, #958AF0 0%, #c4cafe 100%);
+    background: linear-gradient(135deg, #958af0 0%, #c4cafe 100%);
   }
 
   .bg-gradient-calm {
@@ -713,23 +717,23 @@
 }
 
 .legal-document h1 {
-  @apply text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white mt-8 first:mt-0 font-heading;
+  @apply text-3xl md:text-4xl font-bold mb-6 text-calm-navy dark:text-white mt-8 first:mt-0 font-heading;
 }
 
 .legal-document h2 {
-  @apply text-2xl md:text-3xl font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-b border-gray-200 dark:border-gray-700 pb-2 font-heading;
+  @apply text-2xl md:text-3xl font-semibold mb-4 text-calm-navy dark:text-white mt-8 border-b border-calm-navy/10 dark:border-gray-700 pb-2 font-heading;
 }
 
 .legal-document h3 {
-  @apply text-xl md:text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100 mt-6 font-heading;
+  @apply text-xl md:text-2xl font-semibold mb-3 text-calm-navy dark:text-gray-100 mt-6 font-heading;
 }
 
 .legal-document h4 {
-  @apply text-lg md:text-xl font-medium mb-2 text-gray-800 dark:text-gray-100 mt-4 font-heading;
+  @apply text-lg md:text-xl font-medium mb-2 text-calm-navy dark:text-gray-100 mt-4 font-heading;
 }
 
 .legal-document p {
-  @apply mb-4 text-gray-700 dark:text-gray-300;
+  @apply mb-4 text-calm-charcoal dark:text-gray-300;
 }
 
 .legal-document ul,
@@ -746,15 +750,15 @@
 }
 
 .legal-document li {
-  @apply text-gray-700 dark:text-gray-300;
+  @apply text-calm-charcoal dark:text-gray-300;
 }
 
 .legal-document strong {
-  @apply font-semibold text-gray-900 dark:text-white;
+  @apply font-semibold text-calm-navy dark:text-white;
 }
 
 .legal-document a {
-  @apply text-primary underline;
+  @apply text-primary underline break-words;
 }
 
 .legal-document code {

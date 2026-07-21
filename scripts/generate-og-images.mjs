@@ -104,7 +104,7 @@ const PAGES = [
     title: "Speech Therapy Techniques",
     subtitle: null,
     description:
-      "Evidence-based techniques for stuttering — fluency shaping, modification, and cognitive approaches.",
+      "Evidence-based techniques for stuttering: fluency shaping, modification, and cognitive approaches.",
     category: null,
     showScreenshot: true,
   },
@@ -116,15 +116,6 @@ const PAGES = [
     category: data.category,
     showScreenshot: true,
   })),
-  {
-    slug: "what-is-stuttering",
-    title: "What Is Stuttering?",
-    subtitle: "Types, Causes & Treatment",
-    description:
-      "A comprehensive guide to understanding stuttering and evidence-based treatment approaches.",
-    category: "Guide",
-    showScreenshot: false,
-  },
   {
     slug: "privacy",
     title: "Privacy Policy",
@@ -149,7 +140,287 @@ const PAGES = [
     category: "Legal",
     showScreenshot: false,
   },
+  {
+    slug: "for-patients",
+    title: "For Patients",
+    subtitle: null,
+    description:
+      "How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
+    category: null,
+    showScreenshot: true,
+  },
+  {
+    slug: "support",
+    title: "Support",
+    subtitle: null,
+    description:
+      "Get help with UpSpeech. Contact our team, find answers to common questions, and manage your account and data.",
+    category: null,
+    showScreenshot: false,
+  },
+  {
+    slug: "delete-account",
+    title: "Delete Your Account or Data",
+    subtitle: null,
+    description:
+      "How to delete your UpSpeech account or specific data, and what happens to your information when you do.",
+    category: "Legal",
+    showScreenshot: false,
+  },
 ];
+
+// -- Per-locale card copy --
+//
+// The card text is a second home for marketing strings: this script is a plain
+// ESM module and cannot import the TypeScript i18n dictionary. PT/ES copy below
+// is seeded from the real page copy (src/i18n/locales/{pt,es}.ts, Support.tsx)
+// and the established technique terminology in technique-faqs-{pt,es}.ts. Any
+// future locale or copy change must be mirrored here (see plan 116).
+//
+// English is the source set in PAGES above and stays byte-identical, so it is
+// not duplicated here. Each entry overrides title/description/category for one
+// slug; the `category` value is the translated badge word.
+
+const CATEGORY_PT = {
+  "Stuttering Modification": "Modificação da Gaguez",
+  "Fluency Shaping": "Modelagem da Fluência",
+  Standalone: "Técnica Independente",
+  Cognitive: "Abordagem Cognitiva",
+  Legal: "Legal", // same in PT/ES
+};
+
+const CATEGORY_ES = {
+  "Stuttering Modification": "Modificación de la Tartamudez",
+  "Fluency Shaping": "Modelado de la Fluidez",
+  Standalone: "Técnica Independiente",
+  Cognitive: "Enfoque Cognitivo",
+  Legal: "Legal", // same in PT/ES
+};
+
+const TRANSLATIONS = {
+  pt: {
+    home: {
+      title: "Apoio à terapia da fala com IA",
+      description:
+        "Apoio contínuo para a terapia da gaguez. Prática estruturada entre sessões, relatórios redigidos por IA. Os terapeutas estão sempre no controlo.",
+    },
+    techniques: {
+      title: "Técnicas de Terapia da Fala",
+      description:
+        "Técnicas estabelecidas para a gaguez: modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
+    },
+    "techniques/voluntary-stuttering": {
+      title: "Gaguez Voluntária",
+      description:
+        "Gaguejar intencionalmente para reduzir o medo e ganhar mais controlo sobre os momentos de gaguez.",
+      category: CATEGORY_PT["Stuttering Modification"],
+    },
+    "techniques/cancelation": {
+      title: "Cancelamento",
+      description:
+        "Pausar depois de uma palavra gaguejada e repeti-la com uma fala controlada e mais fácil.",
+      category: CATEGORY_PT["Stuttering Modification"],
+    },
+    "techniques/pull-out": {
+      title: "Pull-Out",
+      description:
+        "Modificar uma gaguez a meio da palavra, suavizando a fala em tempo real.",
+      category: CATEGORY_PT["Stuttering Modification"],
+    },
+    "techniques/preparatory-set": {
+      title: "Pré-Ajuste Articulatório",
+      description:
+        "Planear os movimentos articulatórios antes de falar para reduzir a gaguez de forma proativa.",
+      category: CATEGORY_PT["Stuttering Modification"],
+    },
+    "techniques/holding": {
+      title: "Retenção",
+      description:
+        "Manter a posição articulatória durante um bloqueio para libertar a tensão gradualmente.",
+      category: CATEGORY_PT["Stuttering Modification"],
+    },
+    "techniques/soft-starts": {
+      title: "Inícios Suaves",
+      description:
+        "Iniciar a voz com suavidade e cordas vocais relaxadas para reduzir ataques glóticos duros.",
+      category: CATEGORY_PT["Fluency Shaping"],
+    },
+    "techniques/soft-articulation-contact": {
+      title: "Contacto Articulatório Suave",
+      description:
+        "Usar contacto leve e relaxado entre os articuladores para reduzir a tensão e melhorar o fluxo.",
+      category: CATEGORY_PT["Fluency Shaping"],
+    },
+    "techniques/prolonged-speech": {
+      title: "Fala Prolongada",
+      description:
+        "Prolongar vogais e consoantes contínuas para abrandar o ritmo e aumentar a fluência.",
+      category: CATEGORY_PT["Fluency Shaping"],
+    },
+    "techniques/speech-speed-management": {
+      title: "Gestão da Velocidade de Fala",
+      description:
+        "Controlar o ritmo da fala para manter a fluência perante diferentes exigências de comunicação.",
+      category: CATEGORY_PT["Fluency Shaping"],
+    },
+    "techniques/pauses": {
+      title: "Pausas",
+      description:
+        "Incorporar pausas naturais na fala para reduzir a pressão do tempo e melhorar a fluência.",
+      category: CATEGORY_PT["Standalone"],
+    },
+    "techniques/identification-desensitization": {
+      title: "Identificação e Dessensibilização",
+      description:
+        "Reconhecer padrões de gaguez e reduzir as reações emocionais à disfluência.",
+      category: CATEGORY_PT["Cognitive"],
+    },
+    privacy: {
+      title: "Política de Privacidade",
+      description: "Como protegemos os seus dados e respeitamos a sua privacidade.",
+      category: CATEGORY_PT["Legal"],
+    },
+    terms: {
+      title: "Termos de Serviço",
+      description: "Termos e condições de utilização da plataforma UpSpeech.",
+      category: CATEGORY_PT["Legal"],
+    },
+    cookies: {
+      title: "Política de Cookies",
+      description: "Como usamos cookies para melhorar a sua experiência.",
+      category: CATEGORY_PT["Legal"],
+    },
+    "for-patients": {
+      title: "Para Pacientes",
+      description:
+        "Como os pacientes praticam terapia da fala entre sessões com a UpSpeech, orientados pelo seu terapeuta da fala.",
+      // no category badge
+    },
+    support: {
+      title: "Suporte",
+      description:
+        "Obtenha ajuda com a UpSpeech. Contacte a nossa equipa, encontre respostas e faça a gestão da sua conta e dados.",
+      // no category badge
+    },
+    "delete-account": {
+      title: "Eliminar a Conta ou os Dados",
+      description:
+        "Como eliminar a sua conta UpSpeech ou dados específicos, e o que acontece à sua informação.",
+      category: CATEGORY_PT["Legal"],
+    },
+  },
+  es: {
+    home: {
+      title: "Apoyo a la logopedia con IA",
+      description:
+        "Apoyo continuo para la terapia de la tartamudez. Práctica estructurada entre sesiones, informes redactados por IA. Los terapeutas siempre tienen el control.",
+    },
+    techniques: {
+      title: "Técnicas de Logopedia",
+      description:
+        "Técnicas establecidas para la tartamudez: modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+    },
+    "techniques/voluntary-stuttering": {
+      title: "Tartamudeo Voluntario",
+      description:
+        "Tartamudear de forma intencionada para reducir el miedo y ganar control sobre los momentos de tartamudeo.",
+      category: CATEGORY_ES["Stuttering Modification"],
+    },
+    "techniques/cancelation": {
+      title: "Cancelación",
+      description:
+        "Pausar tras una palabra tartamudeada y repetirla con un habla controlada y más fácil.",
+      category: CATEGORY_ES["Stuttering Modification"],
+    },
+    "techniques/pull-out": {
+      title: "Pull-Out",
+      description:
+        "Modificar un tartamudeo a mitad de palabra, suavizando el habla en tiempo real.",
+      category: CATEGORY_ES["Stuttering Modification"],
+    },
+    "techniques/preparatory-set": {
+      title: "Set Preparatorio",
+      description:
+        "Planificar los movimientos articulatorios antes de hablar para reducir el tartamudeo de forma proactiva.",
+      category: CATEGORY_ES["Stuttering Modification"],
+    },
+    "techniques/holding": {
+      title: "Retención",
+      description:
+        "Mantener la posición articulatoria durante un bloqueo para liberar la tensión de forma gradual.",
+      category: CATEGORY_ES["Stuttering Modification"],
+    },
+    "techniques/soft-starts": {
+      title: "Inicios Suaves",
+      description:
+        "Iniciar la voz con suavidad y cuerdas vocales relajadas para reducir los ataques glóticos duros.",
+      category: CATEGORY_ES["Fluency Shaping"],
+    },
+    "techniques/soft-articulation-contact": {
+      title: "Contacto Articulatorio Suave",
+      description:
+        "Usar contacto ligero y relajado entre los articuladores para reducir la tensión y mejorar el flujo.",
+      category: CATEGORY_ES["Fluency Shaping"],
+    },
+    "techniques/prolonged-speech": {
+      title: "Habla Prolongada",
+      description:
+        "Alargar vocales y consonantes continuas para reducir la velocidad y aumentar la fluidez.",
+      category: CATEGORY_ES["Fluency Shaping"],
+    },
+    "techniques/speech-speed-management": {
+      title: "Gestión de la Velocidad del Habla",
+      description:
+        "Controlar la velocidad del habla para mantener la fluidez ante distintas exigencias de comunicación.",
+      category: CATEGORY_ES["Fluency Shaping"],
+    },
+    "techniques/pauses": {
+      title: "Pausas",
+      description:
+        "Incorporar pausas naturales en el habla para reducir la presión del tiempo y mejorar la fluidez.",
+      category: CATEGORY_ES["Standalone"],
+    },
+    "techniques/identification-desensitization": {
+      title: "Identificación y Desensibilización",
+      description:
+        "Reconocer patrones de tartamudeo y reducir las reacciones emocionales ante la disfluencia.",
+      category: CATEGORY_ES["Cognitive"],
+    },
+    privacy: {
+      title: "Política de Privacidad",
+      description: "Cómo protegemos tus datos y respetamos tu privacidad.",
+      category: CATEGORY_ES["Legal"],
+    },
+    terms: {
+      title: "Términos del Servicio",
+      description: "Términos y condiciones de uso de la plataforma UpSpeech.",
+      category: CATEGORY_ES["Legal"],
+    },
+    cookies: {
+      title: "Política de Cookies",
+      description: "Cómo usamos cookies para mejorar tu experiencia.",
+      category: CATEGORY_ES["Legal"],
+    },
+    "for-patients": {
+      title: "Para Pacientes",
+      description:
+        "Cómo los pacientes practican logopedia entre sesiones con UpSpeech, guiados por su logopeda.",
+      // no category badge
+    },
+    support: {
+      title: "Soporte",
+      description:
+        "Obtén ayuda con UpSpeech. Contacta con nuestro equipo, encuentra respuestas y gestiona tu cuenta y tus datos.",
+      // no category badge
+    },
+    "delete-account": {
+      title: "Eliminar tu Cuenta o Datos",
+      description:
+        "Cómo eliminar tu cuenta de UpSpeech o datos concretos, y qué ocurre con tu información.",
+      category: CATEGORY_ES["Legal"],
+    },
+  },
+};
 
 // -- Font loading --
 
@@ -244,7 +515,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
   const textMaxWidth = showScreenshot ? 600 : 800;
   const children = [];
 
-  // Background gradient overlay — subtle purple glow
+  // Background gradient overlay (subtle purple glow)
   children.push({
     type: "div",
     props: {
@@ -438,34 +709,57 @@ async function main() {
     mkdirSync(OUT_DIR, { recursive: true });
   }
 
-  console.log(`Generating ${PAGES.length} OG images...`);
+  const LOCALES = ["en", "pt", "es"];
+  console.log(
+    `Generating ${PAGES.length * LOCALES.length} OG images (${PAGES.length} pages x ${LOCALES.length} locales)...`,
+  );
 
-  for (const page of PAGES) {
-    const svg = await satori(
-      OGImage({
-        title: page.title,
-        subtitle: page.subtitle,
-        description: page.description,
-        category: page.category,
-        showScreenshot: page.showScreenshot,
-      }),
-      { width: 1200, height: 630, fonts },
-    );
+  for (const locale of LOCALES) {
+    // English keeps the historical flat path (public/og/<slug>.png); pt/es get
+    // a locale folder (public/og/<locale>/<slug>.png). ogImageForPath() mirrors
+    // this in SEO.tsx.
+    const localeDir = locale === "en" ? OUT_DIR : join(OUT_DIR, locale);
 
-    const resvg = new Resvg(svg, {
-      fitTo: { mode: "width", value: 2400 },
-    });
-    const png = resvg.render().asPng();
+    for (const page of PAGES) {
+      // English uses the source copy in PAGES; pt/es override from TRANSLATIONS,
+      // falling back to the English string for any unset field.
+      const t = locale === "en" ? undefined : TRANSLATIONS[locale]?.[page.slug];
+      const title = t?.title ?? page.title;
+      const description = t?.description ?? page.description;
+      const category =
+        t && "category" in t ? t.category : page.category;
 
-    // Create subdirectories if needed (e.g. techniques/)
-    const outPath = join(OUT_DIR, `${page.slug}.png`);
-    const outDir = dirname(outPath);
-    if (!existsSync(outDir)) {
-      mkdirSync(outDir, { recursive: true });
+      const svg = await satori(
+        OGImage({
+          title,
+          subtitle: page.subtitle,
+          description,
+          category,
+          showScreenshot: page.showScreenshot,
+        }),
+        { width: 1200, height: 630, fonts },
+      );
+
+      // Render at the native 1200x630 OG size. Feeds display cards around
+      // 500-600px wide, so 2x oversampling only quadrupled the file size with
+      // no visible gain, and big cards break WhatsApp/mobile chat previews.
+      const resvg = new Resvg(svg, {
+        fitTo: { mode: "width", value: 1200 },
+      });
+      const png = resvg.render().asPng();
+
+      // Create subdirectories if needed (e.g. <locale>/ and techniques/)
+      const outPath = join(localeDir, `${page.slug}.png`);
+      const outDir = dirname(outPath);
+      if (!existsSync(outDir)) {
+        mkdirSync(outDir, { recursive: true });
+      }
+
+      // PNG compression (plan 113 Step 4) was deferred; an optimizer
+      // (e.g. sharp/pngquant) could run on `png` here before writing.
+      writeFileSync(outPath, png);
+      console.log(`  ${locale === "en" ? "" : `${locale}/`}${page.slug}.png`);
     }
-
-    writeFileSync(outPath, png);
-    console.log(`  ${page.slug}.png`);
   }
 
   console.log("Done!");

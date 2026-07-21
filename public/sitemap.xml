@@ -1,106 +1,600 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Pages -->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
   <url>
     <loc>https://upspeech.app/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/" />
   </url>
-
-  <!-- Techniques Index -->
+  <url>
+    <loc>https://upspeech.app/pt/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/" />
+  </url>
   <url>
     <loc>https://upspeech.app/techniques/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/" />
   </url>
-
-  <!-- Individual Technique Pages -->
+  <url>
+    <loc>https://upspeech.app/pt/techniques/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/" />
+  </url>
   <url>
     <loc>https://upspeech.app/techniques/voluntary-stuttering/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/voluntary-stuttering/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/voluntary-stuttering/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/voluntary-stuttering/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/voluntary-stuttering/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/voluntary-stuttering/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/voluntary-stuttering/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/cancelation/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/cancelation/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/cancelation/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/cancelation/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/cancelation/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/cancelation/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/cancelation/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/pull-out/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pull-out/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/pull-out/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pull-out/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/pull-out/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pull-out/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pull-out/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/preparatory-set/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/preparatory-set/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/preparatory-set/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/preparatory-set/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/preparatory-set/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/preparatory-set/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/preparatory-set/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/holding/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/holding/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/holding/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/holding/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/holding/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/holding/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/holding/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/soft-starts/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-starts/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/soft-starts/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-starts/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/soft-starts/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-starts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-starts/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/soft-articulation-contact/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-articulation-contact/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/soft-articulation-contact/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-articulation-contact/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/soft-articulation-contact/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/soft-articulation-contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/soft-articulation-contact/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/prolonged-speech/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/prolonged-speech/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/prolonged-speech/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/prolonged-speech/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/prolonged-speech/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/prolonged-speech/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/prolonged-speech/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/speech-speed-management/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/speech-speed-management/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/speech-speed-management/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/speech-speed-management/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/speech-speed-management/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/speech-speed-management/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/speech-speed-management/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/pauses/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pauses/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/techniques/pauses/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pauses/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/pauses/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/pauses/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/pauses/" />
   </url>
   <url>
     <loc>https://upspeech.app/techniques/identification-desensitization/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/identification-desensitization/" />
   </url>
-
-  <!-- Legal Pages -->
+  <url>
+    <loc>https://upspeech.app/pt/techniques/identification-desensitization/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/identification-desensitization/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/techniques/identification-desensitization/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/techniques/identification-desensitization/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/techniques/identification-desensitization/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/for-patients/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-patients/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/for-patients/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-patients/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/for-patients/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-patients/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-patients/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/for-slps/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/for-slps/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-slps/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/support/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/support/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/support/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/support/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/support/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/support/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/support/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/support/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/support/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/support/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/support/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/support/" />
+  </url>
   <url>
     <loc>https://upspeech.app/privacy/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/privacy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/privacy/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/privacy/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/privacy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/privacy/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/privacy/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/privacy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/privacy/" />
   </url>
   <url>
     <loc>https://upspeech.app/terms/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/terms/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/terms/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/terms/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/terms/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/terms/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/terms/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/terms/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/terms/" />
   </url>
   <url>
     <loc>https://upspeech.app/cookies/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/cookies/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/cookies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/cookies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/cookies/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/cookies/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/cookies/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/cookies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/cookies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/cookies/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/cookies/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/cookies/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/cookies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/cookies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/cookies/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/delete-account/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/delete-account/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/delete-account/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/delete-account/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/delete-account/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/delete-account/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/delete-account/" />
   </url>
 </urlset>

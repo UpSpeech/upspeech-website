@@ -1,316 +1,106 @@
-# UpSpeech - Development Environment
+# UpSpeech marketing website
 
-**Main repository for UpSpeech development** - A multi-tenant SaaS platform for speech-language pathologists (SLPs) and their patients, focused on stuttering therapy. Uses AI to automate clinical report writing and provide speech analysis tools.
+> Platform and monorepo setup lives in the umbrella repo. This README is website-specific.
 
-## 🚀 Quick Start
+The public marketing site at https://upspeech.app. React 18 + TypeScript + Vite, prerendered to static HTML and served by Netlify. This README is mainly about how localisation works, because that is where most of the maintenance traps are.
 
-This repository contains orchestration scripts to manage all UpSpeech services. Start here for development!
-
-### Prerequisites
-
-- Docker and Docker Compose
-- Git
-- SSH access to GitHub (for cloning private repos)
-
-### First Time Setup
+## Running it
 
 ```bash
-# 1. Clone this repository
-git clone git@github.com:UpSpeech/upspeech-website.git
-cd upspeech-website
-
-# 2. Clone all other repositories
-./bootstrap.sh
-
-# 3. Configure environment variables
-cp .env.docker.example .env.docker
-nano .env.docker  # Set GROQ_API_KEY, RAILS_MASTER_KEY, SECRET_KEY_BASE
-
-# 4. Initialize and start all services
-./dev.sh setup
-
-# 5. Verify everything is working
-./dev.sh health
-./dev.sh env:check
+npm run dev          # local dev server on http://localhost:3052
+npm run typecheck    # tsc, no emit
+npm run lint         # eslint
+npm run build        # full static build (see "Build pipeline" below)
 ```
 
-After setup, services will be available at:
+There is no unit test framework. Verification is `typecheck` + `lint` + a successful `build`.
 
-- **Frontend**: http://localhost:3051
-- **Backend API**: http://localhost:3050
-- **AI Service**: http://localhost:3053
+## Localisation model
 
-## 📁 Repository Structure
+The site ships in three locales: English, Portuguese, Spanish.
 
-This is a **multi-repository project**:
+- **English is at the root.** `/`, `/techniques`, `/privacy`, and so on. Every English URL that ever existed is unchanged.
+- **Portuguese and Spanish live under a prefix.** `/pt/...` and `/es/...`. So the Portuguese privacy page is `/pt/privacy`, the Spanish techniques index is `/es/techniques`.
+- Locale is derived from the URL path by the router, not from a cookie or a header. `src/App.tsx` mounts the same route tree three times, once per locale, wrapping each in a `LocaleProvider` that sets the active locale.
+- A legacy `?lang=pt|es` query param is still honoured: `LegacyLangRedirect` in `App.tsx` rewrites it to the equivalent `/pt` or `/es` path URL.
 
+### The i18n API (`src/i18n/`)
+
+Everything you need is re-exported from `src/i18n`:
+
+- `useT()` returns the resolved dictionary for the active locale. Use it inside components: `const t = useT(); ... {t.nav.techniques}`.
+- `useLocale()` returns the active `Locale` (`"en" | "pt" | "es"`).
+- `localizedPath(path, locale)` prefixes a locale-agnostic path with the locale. `localizedPath("/techniques", "pt")` is `/pt/techniques`; for English it is a no-op. Always build internal links with this so they stay inside the active locale.
+- `SUPPORTED_LOCALES`, `DEFAULT_LOCALE`, `isLocale`, `splitLocaleFromPath` for the lower-level path handling.
+
+`src/i18n/locale.ts` has no React imports, so scripts (sitemap, prerender) can import it too.
+
+### EN is the source dictionary
+
+`src/i18n/locales/en.ts` is the source of truth for UI copy. Its shape defines the `Dictionary` type:
+
+```ts
+export type Dictionary = typeof en;
 ```
-parent-directory/
-├── app-backend/          # Rails 8 API (Ruby 3.4.7)
-├── app-frontend/         # React 19 + TypeScript + Vite
-├── upspeech-ai/          # FastAPI Python service
-└── upspeech-website/     # This repo (orchestration + docs)
-    ├── bootstrap.sh      # Clone all repositories
-    ├── dev.sh           # Manage all services
-    └── docs/            # Complete documentation
-```
 
-## 🛠️ Development Commands
+`pt.ts` and `es.ts` are typed as `Dictionary`, so if either is missing a key that `en.ts` has, or has the wrong shape, it **fails `npm run typecheck`**. That is the safety net: you cannot ship a half-translated dictionary. Add a key to `en.ts` first, then the typechecker tells you exactly what pt/es are missing.
 
-All development is managed through `./dev.sh`:
+**British spelling in EN copy** (practise, organised, behaviour, centre). Keep it consistent.
 
-### Service Management
+## Where copy lives
+
+Marketing copy is not all in one place. When you edit a string, work out which home it belongs to:
+
+1. **UI chrome and page copy: `src/i18n/locales/{en,pt,es}.ts`.** Nav, footer, hero, page meta, the techniques index and technique-page shells. This is the central typed dictionary. Most edits go here.
+2. **Technique FAQ content: `src/lib/technique-faqs.ts` (EN) + `technique-faqs-pt.ts` + `technique-faqs-es.ts`.** `getTechniqueFAQs(slug, locale)` picks the locale set. This copy is NOT in the central dictionary. It is a large, structured content set kept separate on purpose. (Folding it into the central dictionary is possible future work, not done yet.)
+3. **Open Graph card copy: `scripts/generate-og-images.mjs`.** The titles and descriptions baked into the social-share preview images are a third, separate copy home inside the build script. If you rename a page or change its pitch, update the OG entry too.
+
+If you add a fourth copy home (say a per-locale email template), add it to this list.
+
+## The byte-identical-EN rule
+
+Refactors to the i18n plumbing must not change the rendered English output by a single byte. EN is the live production site and its HTML is what search engines have indexed. When you move a string into the dictionary, copy the English value across verbatim. When in doubt, diff the prerendered HTML before and after.
+
+### `public/googlef0504871445df5e1.html`
+
+This is the Google Search Console verification file. It must stay byte-exact. `npm run format` (Prettier) will rewrite it and break verification. After running `full_check` (which runs Prettier), restore it:
 
 ```bash
-./dev.sh start              # Start all services
-./dev.sh stop               # Stop all services
-./dev.sh restart            # Restart all services
-./dev.sh status             # Show service status
-./dev.sh logs [service]     # View logs
-./dev.sh shell [service]    # Open shell in container
-./dev.sh rebuild [service]  # Rebuild specific service
+git checkout -- public/googlef0504871445df5e1.html
 ```
 
-### Testing
+Never edit this file.
+
+## Routes are a single source of truth
+
+`scripts/routes.mjs` exports `ROUTES`, the canonical list of static page paths plus sitemap metadata (lastmod, changefreq, priority). The sitemap generator and the prerenderer both read it, so they never drift from each other.
+
+But the SPA router in `src/App.tsx` keeps its own hand-written list of `<Route>` elements (deliberately, so each page is a lazy import and code-splits). That second list can drift from `routes.mjs`: add a page to one and forget the other, and you get either a route that renders but is missing from the sitemap and prerender (no SEO), or a sitemap/prerender entry that 404s in the app.
+
+`scripts/check-routes.mjs` guards against this. It imports `ROUTES`, parses the `path="..."` literals out of `App.tsx` (normalising the relative paths and the `index` route, ignoring the `*` catch-all), and fails the build if the two path sets disagree, printing exactly which paths are missing from which side.
 
 ```bash
-./dev.sh test                      # Run all tests
-./dev.sh test:backend [path]       # Backend RSpec tests
-./dev.sh test:backend:coverage     # Backend with coverage
-./dev.sh test:frontend [path]      # Frontend Vitest tests
-./dev.sh test:frontend:coverage    # Frontend with coverage
-./dev.sh test:frontend:watch       # Watch mode
+npm run check:routes
 ```
 
-### Code Quality
+It runs first in `npm run build`, so a route mismatch fails the build loudly instead of silently shipping. When you add a page, add it to **both** `App.tsx` and `routes.mjs`; the guard will remind you if you miss one.
 
-```bash
-./dev.sh lint                  # Run all linters
-./dev.sh lint:backend          # RuboCop only
-./dev.sh lint:frontend         # ESLint + Prettier
-./dev.sh lint:fix:backend      # Auto-fix Ruby issues
-./dev.sh lint:fix:frontend     # Auto-fix JS/TS issues
-```
+## Build pipeline
 
-### Database
+`npm run build` runs, in order:
 
-```bash
-./dev.sh migrate         # Run migrations
-./dev.sh seed            # Seed database
-./dev.sh db:reset        # Drop, create, migrate, seed
-./dev.sh db:drop         # Drop database
-./dev.sh db:console      # Open psql console
-```
+1. `check-routes.mjs`: fail fast if App.tsx and routes.mjs disagree.
+2. `generate-og-images.mjs`: render the Open Graph share images.
+3. `generate-sitemap.mjs`: emit `sitemap.xml` from `ROUTES` x locales.
+4. `vite build`: the app bundle.
+5. `prerender.mjs`: render each route x locale to static HTML (drives SEO and first paint).
 
-### Git Operations (Multi-Repo)
+`routes.mjs` is the route source of truth; `check-routes`, `generate-sitemap`, and `prerender` all read it.
 
-```bash
-./dev.sh git:pull        # Pull all repositories
-./dev.sh git:status      # Status of all repositories
-./dev.sh git:branch      # Current branch for all repos
-./dev.sh git:fetch       # Fetch all repositories
-```
+## Adding a fourth locale
 
-### Utilities
-
-```bash
-./dev.sh health          # Check all services (Docker + HTTP)
-./dev.sh env:check       # Validate environment variables
-./dev.sh help            # Show all commands
-```
-
-## 🔑 Environment Variables
-
-All environment variables for Docker development are configured in `.env.docker` (not in individual service `.env` files).
-
-### Required Variables
-
-| Variable               | Purpose                          | How to Get                                   |
-| ---------------------- | -------------------------------- | -------------------------------------------- |
-| `ELEVENLABS_API_KEY`   | AI speech-to-text transcription  | https://elevenlabs.io/app/settings/api-keys  |
-| `GOOGLE_API_KEY`       | AI report generation (Gemini)    | https://aistudio.google.com/apikey           |
-| `RAILS_MASTER_KEY`     | Rails encrypted credentials      | `openssl rand -hex 32`                       |
-| `SECRET_KEY_BASE`      | Secure session cookies           | `openssl rand -hex 64`                       |
-| `JWT_SECRET_KEY`       | JWT authentication               | `openssl rand -hex 64`                       |
-| `DEVISE_SECRET_KEY`    | Devise sessions                  | `openssl rand -hex 64`                       |
-| `GCS_BUCKET`           | Google Cloud Storage bucket name | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_PROJECT_ID`       | GCP project ID                   | See [GCS Setup](#google-cloud-storage-setup) |
-| `GCS_CREDENTIALS_PATH` | Path to GCS service account JSON | See [GCS Setup](#google-cloud-storage-setup) |
-
-### Optional Variables (with defaults)
-
-| Variable                     | Default | Purpose                            |
-| ---------------------------- | ------- | ---------------------------------- |
-| `CLIP_BUFFER_SECONDS`        | 5       | Audio/video clip extraction buffer |
-| `CHAT_MESSAGE_HISTORY_LIMIT` | 15      | Backend chatbot history limit      |
-| `VITE_CHAT_MESSAGE_LIMIT`    | 15      | Frontend chatbot message limit     |
-| `VITE_APP_VERSION`           | 1.0.0   | Application version                |
-
-**Important:** Individual service `.env` files (like `app-backend/.env`) are **NOT** used in Docker development. All configuration comes from `.env.docker` in the `upspeech-website/` directory.
-
-## ☁️ Google Cloud Storage Setup
-
-GCS is used for storing exercise videos, audio clips, and tenant logos.
-
-**Required configuration:**
-
-```bash
-# In .env.docker
-GCS_BUCKET=upspeech-dev                              # Your GCS bucket name
-GCS_PROJECT_ID=serious-bearing-478818-q8            # GCP project ID
-GCS_CREDENTIALS_PATH=config/gcp/service-account-key.json  # Path to service account JSON
-```
-
-**Service account setup:**
-
-1. The service account key should already exist at `app-backend/config/gcp/service-account-key.json`
-2. If missing, contact the team to get the credentials
-3. **Never commit this file to git** (already in .gitignore)
-
-**For production (Railway/Heroku):**
-
-Use base64-encoded credentials instead of file path:
-
-```bash
-# Encode the JSON file
-cat app-backend/config/gcp/service-account-key.json | base64
-
-# Set in production environment
-GCS_CREDENTIALS_JSON=<base64_encoded_json>
-GCS_PROJECT_ID=serious-bearing-478818-q8
-GCS_BUCKET=upspeech-production
-```
-
-**Note:** The service includes safety checks to prevent using production buckets in development.
-
-## 📚 Documentation
-
-Complete documentation in the `docs/` directory:
-
-### Getting Started
-
-- **[docs/README.md](docs/README.md)** - Documentation index
-- **[docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Development workflow
-- **[docs/CHANGELOG.md](docs/CHANGELOG.md)** - Sprint completions
-
-### Planning
-
-- **[docs/planning/MVP_ROADMAP.md](docs/planning/MVP_ROADMAP.md)** - 7-phase MVP plan
-- **[docs/planning/TODO.md](docs/planning/TODO.md)** - Current sprint tasks
-
-### Architecture
-
-- **[docs/architecture/SYSTEM_DESIGN.md](docs/architecture/SYSTEM_DESIGN.md)** - System architecture
-- **[docs/architecture/SERVICE_COMMUNICATION.md](docs/architecture/SERVICE_COMMUNICATION.md)** - API endpoints
-- **[docs/architecture/TESTING_STRATEGY.md](docs/architecture/TESTING_STRATEGY.md)** - Testing guidelines
-- **[docs/architecture/MULTI_TENANCY.md](docs/architecture/MULTI_TENANCY.md)** - Multi-tenancy
-- **[docs/architecture/AUTH_FLOW.md](docs/architecture/AUTH_FLOW.md)** - Authentication
-- **[docs/architecture/PERMISSIONS.md](docs/architecture/PERMISSIONS.md)** - Authorization (5 roles)
-- **[docs/architecture/REPORT_TEMPLATES.md](docs/architecture/REPORT_TEMPLATES.md)** - Report templates
-- **[docs/architecture/I18N_TRANSLATIONS.md](docs/architecture/I18N_TRANSLATIONS.md)** - i18n support
-
-## 🏗️ Tech Stack
-
-- **Backend**: Rails 8, PostgreSQL 16, Solid Queue
-- **Frontend**: React 19, TypeScript, Vite, TailwindCSS v4
-- **AI Service**: FastAPI, ElevenLabs (Scribe v2), Google Gemini
-- **Infrastructure**: Docker, Railway
-- **Runtime**: Ruby 3.4.7, Node 22.17.1, Python 3.11+
-
-## 🧪 Testing
-
-Tests are required for all code changes:
-
-```bash
-# Backend (RSpec) - 80%+ coverage required
-./dev.sh test:backend:coverage
-
-# Frontend (Vitest) - 80%+ coverage required
-./dev.sh test:frontend:coverage
-```
-
-See [TESTING_STRATEGY.md](docs/architecture/TESTING_STRATEGY.md) for guidelines.
-
-## 📝 Pre-Commit Checklist
-
-Before committing:
-
-- ✅ All tests passing (`./dev.sh test`)
-- ✅ Linters passing (`./dev.sh lint`)
-- ✅ Coverage maintained (≥80%, 95% for critical paths)
-- ✅ No TypeScript errors
-- ✅ Follow conventional commits (feat:, fix:, docs:, etc.)
-
-See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for detailed workflow.
-
-## 🚢 Common Workflows
-
-### Daily Development
-
-```bash
-./dev.sh start              # Start services
-./dev.sh logs backend       # Watch logs
-./dev.sh test:frontend:watch # TDD workflow
-```
-
-### After Pulling Changes
-
-```bash
-./dev.sh git:pull          # Pull all repos
-./dev.sh build             # Rebuild if dependencies changed
-./dev.sh migrate           # Run new migrations
-./dev.sh restart           # Restart services
-```
-
-### Debugging
-
-```bash
-./dev.sh health            # Check service health
-./dev.sh logs backend      # View backend logs
-./dev.sh shell backend     # Open Rails console
-./dev.sh db:console        # Open psql console
-```
-
-### Working on Specific Service
-
-```bash
-./dev.sh rebuild backend   # Rebuild after Gemfile changes
-./dev.sh restart backend   # Restart after code changes
-./dev.sh test:backend      # Run backend tests
-./dev.sh lint:backend      # Check code quality
-```
-
-## 🤝 Contributing
-
-1. Read [CONTRIBUTING.md](docs/CONTRIBUTING.md)
-2. Check [TODO.md](docs/planning/TODO.md) for current priorities
-3. Create feature branch: `feature/phase-X-feature-name`
-4. Write tests for all changes
-5. Run full test suite and linters
-6. Submit pull request
-
-## 📊 Current Status (November 2025)
-
-- **Phase 1** (Foundation): 100% ✅
-- **Phase 2** (Report Writing): 100% ✅
-- **Phase 3** (Speech Analysis): 50% 🚧
-- **Phase 4** (Exercise Assignment): 100% ✅
-- **Phase 5** (Progress Dashboard): 75% ✅
-- **Phase 7** (Therapist Portal): 100% ✅
-
-See [MVP_ROADMAP.md](docs/planning/MVP_ROADMAP.md) for details.
-
-## 📞 Support
-
-- **Issues**: Report bugs/features in GitHub Issues
-- **Questions**: Check documentation first, then ask the team
-- **Health Check**: Run `./dev.sh health` to diagnose issues
-
-## 📄 License
-
-[Your License Here]
-
----
-
-**Last Updated**: 2025-11-26
-**Ruby**: 3.4.7 | **Node**: 22.17.1 | **PostgreSQL**: 16
+1. Add the code to `SUPPORTED_LOCALES` in `src/i18n/locale.ts` (and `LOCALES` in `scripts/routes.mjs`).
+2. Add `src/i18n/locales/<code>.ts`, typed as `Dictionary`, translating every key from `en.ts`. The typechecker will not pass until it is complete.
+3. Mount the locale in `src/App.tsx` (another `<Route path="/<code>/*">` wrapping `AppRoutes` in a `LocaleProvider`).
+4. Add the locale's strings to the technique FAQ files (`technique-faqs-<code>.ts`) and to the OG translations in `generate-og-images.mjs`.
+5. The sitemap generator and prerenderer pick up the new locale automatically from `LOCALES`/`SUPPORTED_LOCALES`.

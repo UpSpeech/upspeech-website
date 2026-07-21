@@ -1,6 +1,13 @@
-import React from "react";
+import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
+import { useLocale, useT, localizedPath } from "@/i18n";
+
+const linkClass =
+  "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
 
 const Footer = () => {
+  const locale = useLocale();
+  const t = useT().footer;
   return (
     <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-primary text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -10,69 +17,135 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center animate-fade-in-up">
-          <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start space-y-2">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)] animate-fade-in-up">
+          <div className="flex flex-col items-center md:items-start space-y-3">
             <img
               src="/images/logo-invert.svg"
               alt="UpSpeech"
-              className="h-12 w-auto mb-2 transition-transform duration-300 hover:scale-105"
+              className="h-12 w-auto transition-transform duration-300 hover:scale-105"
               width="164"
               height="48"
               loading="lazy"
             />
-            <p className="font-body text-sm text-white/80">
-              Guiding voices with care and tech
-            </p>
+            <p className="font-body text-sm text-white/80">{t.tagline}</p>
+            {(APP_STORE_URL || PLAY_STORE_URL) && (
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {APP_STORE_URL && (
+                  <a
+                    href={APP_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t.appStoreAriaLabel}
+                  >
+                    <img
+                      src="/images/app-store.png"
+                      alt={t.appStoreAlt}
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                {PLAY_STORE_URL && (
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t.playStoreAriaLabel}
+                  >
+                    <img
+                      src="/images/google-play.png"
+                      alt={t.playStoreAlt}
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-2">
-            {/* TODO: Re-enable when "What Is Stuttering" page is ready for production */}
-            {/* <a
-              href="/what-is-stuttering"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              What Is Stuttering?
-            </a> */}
+          <nav
+            aria-label={t.product}
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              {t.product}
+            </h2>
             <a
-              href="/privacy"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              href={localizedPath("/for-patients", locale)}
+              className={linkClass}
             >
-              Privacy Policy
+              {t.forPatients}
             </a>
             <a
-              href="/terms"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              href={localizedPath("/stutter-positive", locale)}
+              className={linkClass}
             >
-              Terms of Service
+              {t.stutterPositive}
             </a>
             <a
-              href="/cookies"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              href={localizedPath("/reducing-documentation-time", locale)}
+              className={linkClass}
             >
-              Cookie Policy
+              {t.reducingDocumentationTime}
+            </a>
+            <a href={localizedPath("/for-slps", locale)} className={linkClass}>
+              {t.forSlps}
             </a>
             <a
-              href="/support"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              href={localizedPath("/techniques", locale)}
+              className={linkClass}
             >
-              Support
+              {t.techniques}
             </a>
+            <a href={localizedPath("/support", locale)} className={linkClass}>
+              {t.support}
+            </a>
+          </nav>
+
+          <nav
+            aria-label={t.legal}
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              {t.legal}
+            </h2>
+            <a href={localizedPath("/privacy", locale)} className={linkClass}>
+              {t.privacy}
+            </a>
+            <a href={localizedPath("/terms", locale)} className={linkClass}>
+              {t.terms}
+            </a>
+            <a href={localizedPath("/cookies", locale)} className={linkClass}>
+              {t.cookies}
+            </a>
+          </nav>
+
+          <nav
+            aria-label={t.company}
+            className="flex flex-col items-center md:items-start gap-1"
+          >
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+              {t.company}
+            </h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
+              className={linkClass}
             >
-              LinkedIn
+              {t.linkedin}
             </a>
-            <a
-              href="mailto:hello@upspeech.app"
-              className="hover:underline font-body text-sm text-white/90 hover:text-white transition-all duration-200"
-            >
-              Contact us
+            <a href="mailto:hello@upspeech.app" className={linkClass}>
+              {t.contact}
             </a>
-          </div>
+          </nav>
         </div>
+
+        <MedicalDisclaimer
+          variant="compact"
+          className="mt-10 max-w-3xl text-white/70"
+        />
 
         {/* Supported By Section */}
         {/* <div
@@ -107,7 +180,7 @@ const Footer = () => {
           style={{ animationDelay: "0.4s" }}
         >
           <p className="font-body text-sm text-white/60">
-            © {new Date().getFullYear()} UpSpeech. All rights reserved.
+            © {new Date().getFullYear()} UpSpeech. {t.rights}
           </p>
         </div>
       </div>
