@@ -123,7 +123,7 @@ Utilizamos la información que recopilamos para los siguientes fines:
 - **Automatización de informes** - Generar informes clínicos mediante modelos de lenguaje Google Gemini basándose en la transcripción y su contexto clínico
 - **Detección de disfluencias** - Identificar y clasificar automáticamente comportamientos de tartamudez en las grabaciones
 - **Información clínica** - Proporcionar análisis estadísticos y tendencias para apoyar la planificación del tratamiento
-- **Entrenamiento opcional del modelo (con consentimiento)** - Con su consentimiento explícito (opt-in), las grabaciones de voz anonimizadas pueden conservarse después de que elimine su cuenta y utilizarse para entrenar futuras versiones de los modelos de IA de terapia del habla de UpSpeech. Es opcional, requiere adhesión explícita, y puede cambiar de opinión en el momento de la eliminación seleccionando "Eliminar todo". Las grabaciones de voz son datos biométricos en virtud del artículo 9 del RGPD; este tratamiento solo se realiza con su consentimiento específico y explícito
+- **Entrenamiento opcional del modelo (con consentimiento)** - Con su consentimiento explícito (opt-in), las grabaciones de voz anonimizadas pueden conservarse después de que elimine su cuenta y utilizarse para entrenar futuras versiones de los modelos de IA de logopedia de UpSpeech. Es opcional, requiere adhesión explícita, y puede cambiar de opinión en el momento de la eliminación seleccionando "Eliminar todo". Las grabaciones de voz son datos biométricos en virtud del artículo 9 del RGPD; este tratamiento solo se realiza con su consentimiento específico y explícito
 
 ### 3. Comunicación
 
