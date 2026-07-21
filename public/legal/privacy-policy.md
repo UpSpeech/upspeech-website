@@ -1,12 +1,12 @@
 # Privacy Policy
 
-**Last Updated:** April 8, 2026
+**Last Updated:** July 21, 2026
 
 ## Introduction
 
 Welcome to UpSpeech ("we," "our," or "us"). We are committed to protecting your privacy and handling your personal information with care and transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our speech therapy platform.
 
-UpSpeech is a multi-tenant software-as-a-service (SaaS) platform designed for speech-language pathologists (SLPs) and their patients, focusing on stuttering therapy and clinical report automation.
+UpSpeech is a multi-tenant software-as-a-service (SaaS) platform designed for speech-language pathologists (SLPs) and their patients across the speech-therapy spectrum, with stuttering as the first condition covered. It supports structured between-session practice, therapist feedback, and AI-assisted clinical report automation. UpSpeech is available as a web application and as mobile apps for iOS and Android.
 
 By using UpSpeech, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our platform.
 
@@ -44,6 +44,7 @@ We use third-party artificial intelligence services to process your audio record
 - **AI-generated reports** - Clinical reports automatically generated using large language models (Google Gemini)
 - **Disfluency annotations** - Automated detection and classification of speech disfluencies (repetitions, prolongations, blocks)
 - **Speech analysis data** - Statistical analysis of speech patterns and stuttering severity
+- **Real-time practice conversations** - In interactive practice scenarios ("realistic mode"), your live microphone audio is streamed in real time to AI voice services so you can hold a spoken conversation with an AI practice partner. The live audio is processed transiently to generate the AI's spoken responses; a transcript and summary of the conversation may be retained as part of your practice history
 
 ### 4. Clinical Reports and Notes
 
@@ -87,8 +88,10 @@ Users can provide feedback within the platform:
 
 We automatically collect certain technical information:
 
-- **Authentication tokens** - JWT tokens stored in your browser's localStorage for 24 hours
+- **Authentication tokens** - JWT tokens stored in your browser's localStorage (web) or the device's secure storage (Keychain on iOS, Keystore on Android) on our mobile apps, to keep you signed in
 - **Browser information** - Browser type, version, and device type (for compatibility and troubleshooting)
+- **Mobile device information** - When you use our iOS or Android apps, we collect the app version, device model, and operating system version for compatibility and troubleshooting
+- **Push notification tokens** - If you enable notifications in the mobile app, we store a device push token so we can deliver reminders and updates (see Apple Push Notification service and Firebase Cloud Messaging under "How We Share Your Information")
 - **IP address** - For security monitoring and geographic analytics
 - **Access logs** - Timestamps and actions performed within the platform (for security auditing)
 
@@ -116,6 +119,7 @@ We use the information we collect for the following purposes:
 ### 2. AI Processing and Report Generation
 
 - **Transcription** - Send your audio recordings to ElevenLabs for speech-to-text conversion
+- **Real-time practice conversations** - Stream your live audio to AI voice services (ElevenLabs and Google Gemini) to power interactive spoken practice scenarios
 - **Report automation** - Generate clinical reports using Google Gemini language models based on transcription and your clinical context
 - **Disfluency detection** - Automatically identify and classify stuttering behaviors in recordings
 - **Clinical insights** - Provide statistical analysis and trends to support treatment planning
@@ -125,6 +129,7 @@ We use the information we collect for the following purposes:
 
 - **Service notifications** - Send important updates about your account, assignments, or platform changes
 - **Therapist invitations** - Email invite codes to prospective patients on behalf of therapists
+- **Push notifications** - If you use our mobile app and opt in, send reminders and updates about your practice, assignments, and account to your device
 - **Support responses** - Respond to your questions, feedback, and support requests
 - **Administrative communications** - Send account-related information, security alerts, or policy updates
 
@@ -151,13 +156,15 @@ We do not sell your personal information to third parties. We share your informa
 
 We use trusted third-party services to operate our platform:
 
-- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2). Audio recordings are sent to ElevenLabs for processing. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
-- **Google AI (Gemini)** - Provides large language models for clinical report generation and AI-assisted features. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
+- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2) and real-time voice generation for interactive practice conversations. Audio recordings and live audio are sent to ElevenLabs for processing. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
+- **Google AI (Gemini)** - Provides large language models for clinical report generation, AI-assisted features, and real-time practice conversations. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
 - **PostHog** - Provides product analytics to understand how users interact with our platform. Data is processed and stored in the European Union. See PostHog's privacy policy at [https://posthog.com/privacy](https://posthog.com/privacy)
 - **Sentry** - Provides error tracking and performance monitoring to help us identify and fix bugs. Collects technical error information (error messages, stack traces, browser/device info) but not personal data. See Sentry's privacy policy at [https://sentry.io/privacy/](https://sentry.io/privacy/)
-- **Email service providers** - Deliver transactional emails (invitations, password resets, notifications)
+- **Cloudflare** - Provides real-time media relay (TURN/STUN) that carries the live audio for interactive practice conversations when a direct connection cannot be established. See Cloudflare's privacy policy at [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
+- **Apple Push Notification service, Firebase Cloud Messaging (Google), and Expo** - Deliver push notifications to your mobile device. We send a device push token to these services to route reminders and updates. See Apple's ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), Google's ([https://policies.google.com/privacy](https://policies.google.com/privacy)), and Expo's ([https://expo.dev/privacy](https://expo.dev/privacy)) privacy policies
+- **Resend** - Delivers transactional emails such as invitations, password resets, and notifications. See Resend's privacy policy at [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
 
 These providers are contractually obligated to protect your information and use it only for the purposes we specify.
 
@@ -306,6 +313,8 @@ We store the following in your browser's localStorage:
 - **Authentication token** - JWT token for maintaining your login session (expires after 24 hours)
 - **User profile data** - Cached copy of your user information for faster page loads
 - **Language preference** - Your selected interface language
+
+On our mobile apps, the equivalent information (authentication token, cached profile, and language preference) is stored in the device's secure storage (Keychain on iOS, Keystore on Android) rather than in browser localStorage.
 
 ### Analytics Cookies
 
