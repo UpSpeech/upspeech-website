@@ -84,7 +84,7 @@ export default function ForSlps() {
           </div>
         </section>
 
-        {/* Documentation */}
+        {/* Between sessions */}
         <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
           <div
             aria-hidden="true"
@@ -95,39 +95,6 @@ export default function ForSlps() {
             }}
           />
           <div className="relative max-w-6xl mx-auto">
-            <div className="max-w-2xl">
-              <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
-              <h2
-                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                  lineHeight: 1.1,
-                }}
-              >
-                {t.documentation.headline}
-              </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
-                {t.documentation.body}
-              </p>
-            </div>
-
-            <div className="relative mt-12 overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
-              <img
-                src={localizedAsset(
-                  "/screenshots/app/therapist-report.png",
-                  locale,
-                )}
-                alt={t.documentation.screenshotAlt}
-                loading="lazy"
-                className="block h-auto w-full"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Between sessions */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto">
             <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
             <h2
               className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
@@ -161,6 +128,39 @@ export default function ForSlps() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Documentation */}
+        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-2xl">
+              <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
+              <h2
+                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                  lineHeight: 1.1,
+                }}
+              >
+                {t.documentation.headline}
+              </h2>
+              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+                {t.documentation.body}
+              </p>
+            </div>
+
+            <div className="relative mt-12 overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
+              <img
+                src={localizedAsset(
+                  "/screenshots/app/therapist-report.png",
+                  locale,
+                )}
+                alt={t.documentation.screenshotAlt}
+                loading="lazy"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
         </section>

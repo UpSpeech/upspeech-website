@@ -179,7 +179,7 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician reads, edits, approves.",
-          body: "Nothing leaves the platform without therapist review. Corrections feed back into the model and improve the next draft.",
+          body: "Nothing leaves the platform without therapist review. Those corrections train the model and improve the next draft.",
         },
         {
           verb: "structures",
@@ -534,12 +534,12 @@ export const en = {
   forSlps: {
     seoTitle: "For speech-language pathologists",
     seoDescription:
-      "UpSpeech helps SLPs spend less time writing stuttering-therapy session notes and gives patients structured practice between sessions, with progress you can see.",
+      "UpSpeech gives patients structured practice between sessions and drafts your stuttering-therapy session notes for review, with progress you can see.",
     intro: {
       eyebrow: "For speech-language pathologists",
-      headlineLine1: "Less time on notes.",
-      headlineLine2: "More therapy between sessions.",
-      body: "UpSpeech drafts your session notes for you to review, and gives your patients guided practice they actually do between appointments, so you walk into the next session already knowing how the week went.",
+      headlineLine1: "More therapy between sessions.",
+      headlineLine2: "Less time on notes.",
+      body: "UpSpeech gives your patients guided practice they actually do between appointments, and drafts your session notes for you to review, so you walk into the next session already knowing how the week went.",
     },
     documentation: {
       eyebrow: "Documentation",
