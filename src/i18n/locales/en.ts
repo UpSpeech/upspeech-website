@@ -273,7 +273,7 @@ export const en = {
       partnerContext: {
         speechcare: "Co-development partner",
         elevenlabs: "AI infrastructure grant",
-        lispolis: "Acceleration program",
+        lispolis: "Acceleration programme",
         unicorn: "Most Promising Startup · Lisboa",
         innocatalyst: "Health innovation programme",
         healthqup: "Health acceleration programme",
@@ -423,7 +423,7 @@ export const en = {
       eyebrow: "Philosophy",
       headlineLine1: "What does",
       headlineLine2: "stutter-positive mean?",
-      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first, not eradicating disfluency. It means supporting people who stutter to be heard on their own terms, not chasing a standard of speech that may never feel natural.",
+      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It supports people who stutter to be heard on their own terms, with goals set by the person rather than by a fixed idea of how speech should sound.",
     },
     sections: [
       {
@@ -431,8 +431,8 @@ export const en = {
         body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Some people who stutter do want smoother speech, and techniques like voluntary stuttering or prolonged speech can help. Others find that reducing avoidance and building confidence matters more. Stutter-positive means the goals come from the person, not from an external norm.",
       },
       {
-        heading: "Being heard, not sounding a certain way",
-        body: "People who stutter often deal with more than disfluency: avoidance, anticipation, and the exhausting work of managing others' reactions. Stutter-positive therapy addresses these alongside any technique practice. The measure of a good session is not how many times someone stuttered. It is whether they communicated what they meant and felt confident doing it.",
+        heading: "Being heard on your own terms",
+        body: "People who stutter often deal with more than disfluency: avoidance, anticipation, and the effort of managing how others react. Stutter-positive therapy addresses these alongside any technique practice, so a good session is measured by whether the person communicated what they meant and felt confident doing it.",
       },
       {
         heading: "How UpSpeech reflects this",
@@ -440,7 +440,7 @@ export const en = {
       },
       {
         heading: "A note on language",
-        body: "This page uses 'people who stutter' and 'person who stutters' throughout. Person-first language is the default here unless an individual prefers otherwise. What matters most is that the person feels seen, not labelled.",
+        body: "This page uses 'people who stutter' and 'person who stutters' throughout. Person-first language is the default here unless an individual prefers otherwise. The aim is to describe people respectfully, in the words they choose for themselves.",
       },
     ],
     faq: {
@@ -457,7 +457,7 @@ export const en = {
         },
         {
           q: "What techniques are used in stutter-positive therapy?",
-          a: "Voluntary stuttering, identification and desensitisation, and pull-out techniques are common in stutter-positive approaches. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
+          a: "Voluntary stuttering, identification and desensitisation, and pull-out techniques (easing out of a moment of stuttering) are common in stutter-positive approaches. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
         },
         {
           q: "Where can I learn more?",
@@ -486,11 +486,11 @@ export const en = {
     sections: [
       {
         heading: "The blank-page problem",
-        body: "After a session, you know what happened. Writing it down takes longer than it should. The blank page is the bottleneck, not your knowledge. Many SLPs report that documentation is the administrative burden most likely to compress preparation time, extend working hours, or delay care notes. It is a structural problem, not a skill gap.",
+        body: "After a session, you know what happened. Writing it down takes longer than it should. The hold-up is the blank page itself, since the clinical thinking is already done. Many SLPs say documentation is the admin task most likely to eat into preparation time and stretch the working day. That is a structural problem, and the fix is a better starting point.",
       },
       {
         heading: "Structured drafts you review and edit",
-        body: "One way to address the blank page is a structured draft generated from the session's data: what the patient practised, how they progressed, and what the therapist observed. A draft gives you something to react to rather than create from scratch. You read it, adjust what needs adjusting, and sign off. The clinical judgement is still yours; the draft handles the scaffolding.",
+        body: "One way to address the blank page is a structured draft generated from the session's data: what the patient practised, how they progressed, and what the therapist observed. A draft gives you something to react to rather than create from scratch. You read it, adjust what needs adjusting, and sign off. You keep the clinical judgement, and the draft takes care of the structure.",
       },
       {
         heading: "What belongs in a good speech therapy note",
@@ -511,7 +511,7 @@ export const en = {
         },
         {
           q: "Does AI-assisted note drafting replace clinical observation?",
-          a: "No. A draft note is based on structured session data. Clinical observation, the judgements a therapist makes in the room, is what the therapist adds. The draft handles the scaffolding; the clinician supplies the expertise.",
+          a: "No. A draft note is based on structured session data. Clinical observation, the judgements a therapist makes in the room, is what the therapist adds. The draft covers the structure so the clinician can focus on the expertise.",
         },
         {
           q: "Is it clinically appropriate to use AI-drafted notes?",
@@ -569,7 +569,7 @@ export const en = {
     stutterPositive: {
       eyebrow: "Our approach",
       headline: "Stutter-positive by design.",
-      body: "The goal in the app is confidence and being heard, not sounding a certain way. Practice is encouraging, never corrective in a way that shames.",
+      body: "The goal in the app is confidence and being heard. Practice is always encouraging, and never shames the patient for how they speak.",
     },
     faq: {
       eyebrow: "Questions from clinicians",

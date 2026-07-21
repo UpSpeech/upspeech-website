@@ -76,11 +76,11 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "I forgot my password. What do I do?",
-        a: 'On the sign-in screen, choose "Forgot password" and we’ll email you a link to set a new one.',
+        a: 'On the sign-in screen, choose "Forgot password" and we\'ll email you a link to set a new one.',
       },
       {
         q: "Who is UpSpeech for?",
-        a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+        a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
       },
       {
         q: "Is my data private?",
@@ -336,7 +336,7 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "Who is UpSpeech for?",
-      a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+      a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
     },
     {
       q: "Is my data private?",
