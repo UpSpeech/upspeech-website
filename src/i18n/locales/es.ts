@@ -76,9 +76,9 @@ export const es: Dictionary = {
       "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas siempre tienen el control.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
-      headlineLine1: "La clínica",
-      headlineLine2: "que sigue abierta",
-      headlineLine3: "cuando tú no estás.",
+      headlineLine1: "La terapia",
+      headlineLine2: "que sigue",
+      headlineLine3: "entre sesiones.",
       body: "Práctica estructurada entre sesiones. Informes de sesión redactados automáticamente. Los terapeutas mantienen la última palabra.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
