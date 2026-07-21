@@ -194,7 +194,7 @@ const CycleScene = () => {
                   cy={CENTER}
                   r={RADIUS}
                   fill="none"
-                  stroke="#98A5FE"
+                  stroke="#958AF0"
                   strokeWidth="1.1"
                   strokeLinecap="round"
                   strokeDasharray={`${arcDrawn} ${circumference}`}
@@ -209,14 +209,14 @@ const CycleScene = () => {
                       cx={orbitX}
                       cy={orbitY}
                       r={2.4}
-                      fill={activeIsAI ? "#98A5FE" : "#293587"}
+                      fill={activeIsAI ? "#958AF0" : "#293587"}
                       opacity={0.12}
                     />
                     <circle
                       cx={orbitX}
                       cy={orbitY}
                       r={1.1}
-                      fill={activeIsAI ? "#98A5FE" : "#293587"}
+                      fill={activeIsAI ? "#958AF0" : "#293587"}
                     />
                   </g>
                 )}
@@ -231,9 +231,9 @@ const CycleScene = () => {
                   const fill = lit
                     ? isClinician
                       ? "#293587"
-                      : "#98A5FE"
+                      : "#958AF0"
                     : "#FFFFFF";
-                  const stroke = isClinician ? "#293587" : "#98A5FE";
+                  const stroke = isClinician ? "#293587" : "#958AF0";
                   const r = isActive ? 5.4 : 4.3;
 
                   return (
@@ -359,7 +359,7 @@ const CycleScene = () => {
                   style={{
                     fontSize: "clamp(1.25rem, 2.4vw, 1.625rem)",
                     lineHeight: 1,
-                    color: activeIsAI ? "#98A5FE" : "#293587",
+                    color: activeIsAI ? "#958AF0" : "#293587",
                     animation: `optD-actor-swap 600ms ${EASE} both`,
                   }}
                 >
@@ -440,7 +440,7 @@ const CycleScene = () => {
                           i === activeIndex
                             ? "#293587"
                             : i < activeIndex
-                              ? "#98A5FE"
+                              ? "#958AF0"
                               : "rgba(41,53,135,0.15)",
                       }}
                     />

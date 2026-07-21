@@ -1,10 +1,10 @@
 # Términos de Servicio
 
-**Última Actualización:** 11 de marzo de 2026
+**Última Actualización:** 21 de julio de 2026
 
 ## 1. Aceptación de los Términos
 
-Bienvenido a UpSpeech. Estos Términos de Servicio ("Términos") rigen su acceso y uso de la plataforma UpSpeech, incluyendo nuestro sitio web, aplicación web y servicios relacionados (colectivamente, el "Servicio").
+Bienvenido a UpSpeech. Estos Términos de Servicio ("Términos") rigen su acceso y uso de la plataforma UpSpeech, incluyendo nuestro sitio web, aplicación web, aplicaciones móviles para iOS y Android y servicios relacionados (colectivamente, el "Servicio").
 
 **Al acceder o utilizar UpSpeech, acepta quedar vinculado por estos Términos.** Si no está de acuerdo con estos Términos, no podrá acceder ni utilizar el Servicio.
 
@@ -14,12 +14,13 @@ Bienvenido a UpSpeech. Estos Términos de Servicio ("Términos") rigen su acceso
 
 ## 2. Descripción del Servicio
 
-UpSpeech es una plataforma multi-tenant de software como servicio (SaaS) diseñada para logopedas e individuos que reciben terapia de la tartamudez. El Servicio proporciona:
+UpSpeech es una plataforma multi-tenant de software como servicio (SaaS) diseñada para logopedas y sus pacientes en todo el espectro de la logopedia, siendo la tartamudez la primera condición cubierta. El Servicio está disponible como aplicación web y como aplicaciones móviles para iOS y Android, y proporciona:
 
 - **Generación de informes con IA** - Transcripción automatizada y redacción de informes clínicos mediante inteligencia artificial
 - **Herramientas de análisis del habla** - Detección de disfluencias, anotación y análisis estadístico de grabaciones de habla
+- **Escenarios de práctica interactivos** - Conversaciones de práctica habladas en tiempo real con un compañero de práctica de IA
 - **Colaboración paciente-logopeda** - Herramientas para que los logopedas gestionen asignaciones de pacientes, ejercicios y seguimiento de progreso
-- **Biblioteca de ejercicios** - Minijuegos y ejercicios de consulta para práctica de terapia de la tartamudez
+- **Biblioteca de ejercicios** - Juegos y ejercicios de consulta para práctica de logopedia
 - **Monitorización de progreso** - Seguimiento de la evolución del paciente a lo largo del tiempo con estadísticas y visualizaciones
 - **Organización multi-tenant** - Entornos seguros y aislados para organizaciones sanitarias y sus usuarios
 
@@ -132,7 +133,7 @@ Acepta utilizar el Servicio únicamente con fines legales y de acuerdo con estos
 
 ### 6.1 Usos Permitidos
 
-- Documentación clínica y generación de informes para terapia de la tartamudez
+- Documentación clínica y generación de informes para logopedia
 - Uso educativo por logopedas colegiados
 - Práctica y seguimiento de progreso por pacientes bajo la orientación del logopeda
 - Fines de investigación con consentimiento adecuado y aprobación ética
@@ -223,16 +224,16 @@ Al utilizar el Servicio, consiente el tratamiento de datos según se describe en
 
 UpSpeech se integra con servicios de terceros para proporcionar funcionalidades:
 
-### 9.1 ElevenLabs (Habla a Texto)
+### 9.1 ElevenLabs (Habla a Texto y Voz)
 
-Utilizamos ElevenLabs para transcripción de audio (Scribe v2 habla a texto). Sus grabaciones de audio se envían a ElevenLabs para su procesamiento. Consulte los términos y política de privacidad de ElevenLabs:
+Utilizamos ElevenLabs para transcripción de audio (Scribe v2 habla a texto) y para generación de voz en tiempo real en las conversaciones de práctica interactivas. Sus grabaciones de audio y el audio en directo se envían a ElevenLabs para su procesamiento. Consulte los términos y política de privacidad de ElevenLabs:
 
 - [https://elevenlabs.io/terms-of-service](https://elevenlabs.io/terms-of-service)
 - [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 
 ### 9.2 Google AI — Gemini (Generación de Informes)
 
-Utilizamos los modelos de lenguaje Google Gemini para generación de informes clínicos y funcionalidades asistidas por IA. Consulte los términos y política de privacidad de Google:
+Utilizamos los modelos de lenguaje Google Gemini para generación de informes clínicos, funcionalidades asistidas por IA y conversaciones de práctica en tiempo real. Consulte los términos y política de privacidad de Google:
 
 - [https://cloud.google.com/terms](https://cloud.google.com/terms)
 - [https://policies.google.com/privacy](https://policies.google.com/privacy)
@@ -250,6 +251,21 @@ Nuestra aplicación está alojada en Railway. Consulte los términos de Railway:
 
 - [https://railway.app/legal/terms](https://railway.app/legal/terms)
 - [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
+
+### 9.5 Tiendas de Aplicaciones y Aplicaciones Móviles
+
+Nuestras aplicaciones móviles se distribuyen a través de la Apple App Store y Google Play. La descarga y el uso de las aplicaciones están también sujetos a los términos de la tienda de aplicaciones correspondiente, y usted debe cumplir con cualquier término de terceros aplicable (por ejemplo, el acuerdo de datos de su operador de telecomunicaciones) al utilizarlas.
+
+Los siguientes términos adicionales se aplican en la medida en que haya obtenido la aplicación a través de la **Apple App Store**:
+
+- Estos Términos se celebran únicamente entre usted y UpSpeech, no con Apple, y Apple no es responsable de la aplicación ni de su contenido.
+- Apple no tiene ninguna obligación de proporcionar servicios de mantenimiento o soporte para la aplicación.
+- En caso de que la aplicación no se ajuste a cualquier garantía aplicable, usted puede notificar a Apple, y Apple podrá reembolsar el precio de compra (si lo hubiera). En la máxima medida permitida por la ley, Apple no tendrá ninguna otra obligación de garantía con respecto a la aplicación.
+- Apple no es responsable de atender ninguna reclamación presentada por usted o por un tercero en relación con la aplicación, incluidas las reclamaciones de responsabilidad por productos, las reclamaciones por incumplimiento de cualquier requisito legal o reglamentario, las reclamaciones en materia de protección del consumidor y las reclamaciones de que la aplicación infringe los derechos de propiedad intelectual de un tercero.
+- Apple y sus subsidiarias son terceros beneficiarios de estos Términos y, tras su aceptación, tendrán derecho a hacerlos cumplir contra usted.
+- Usted declara que no se encuentra en un país sujeto a un embargo del Gobierno de los EE. UU. y que no figura en ninguna lista del Gobierno de los EE. UU. de partes prohibidas o restringidas.
+
+Para las aplicaciones obtenidas a través de **Google Play**, su uso también se rige por los Términos de Servicio de Google Play.
 
 **No somos responsables de las prácticas o políticas de servicios de terceros.** Su uso de servicios de terceros está sujeto a sus respectivos términos.
 
@@ -502,4 +518,4 @@ Estos Términos están redactados en inglés. Cualquier traducción se proporcio
 
 **Al utilizar UpSpeech, reconoce que ha leído, comprendido y acepta quedar vinculado por estos Términos de Servicio.**
 
-**Última Actualización:** 11 de marzo de 2026
+**Última Actualización:** 21 de julio de 2026

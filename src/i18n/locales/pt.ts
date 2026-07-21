@@ -73,9 +73,9 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo para a terapia da gaguez. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
+      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
     hero: {
-      eyebrow: "Para clínicas com serviços de gaguez",
+      eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A clínica",
       headlineLine2: "que continua aberta",
       headlineLine3: "mesmo quando fecha.",
@@ -159,7 +159,7 @@ export const pt: Dictionary = {
       body: "Os pacientes seguem o plano definido pelo terapeuta, praticam com exercícios guiados e fazem o seu registo a partir do telemóvel. O terapeuta acompanha.",
       screenshots: [
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
-        "Ecrã de prática da app móvel UpSpeech com exercícios guiados de gaguez",
+        "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
       ],
     },
@@ -308,7 +308,7 @@ export const pt: Dictionary = {
     },
     cta: {
       headline: "Pedir acesso antecipado.",
-      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da gaguez. Conte-nos sobre a sua prática e entraremos em contacto.",
+      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua prática e entraremos em contacto.",
       nameLabel: "Nome Completo *",
       namePlaceholder: "Introduza o seu nome",
       nameError: "Por favor, introduza o seu nome.",
@@ -377,7 +377,7 @@ export const pt: Dictionary = {
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
-        "Ecrã de prática da app móvel UpSpeech com exercícios guiados de gaguez",
+        "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
       ],
     },
     faq: {
@@ -479,12 +479,12 @@ export const pt: Dictionary = {
   reducingDocumentationTime: {
     seoTitle: "Como os Terapeutas da Fala Reduzem o Tempo em Notas de Sessão",
     seoDescription:
-      "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da gaguez, com rascunhos estruturados que apoiam o julgamento clínico.",
+      "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da fala, com rascunhos estruturados que apoiam o julgamento clínico.",
     intro: {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Menos tempo em notas,",
       headlineLine2: "mais tempo na terapia.",
-      body: "A documentação faz parte de uma boa prática clínica, mas não deve comprimir o tempo dedicado ao trabalho em si. Esta página aborda formas práticas de os terapeutas da fala reduzirem o tempo gasto em notas de sessão na terapia da gaguez, incluindo onde os rascunhos estruturados se encaixam.",
+      body: "A documentação faz parte de uma boa prática clínica, mas não deve comprimir o tempo dedicado ao trabalho em si. Esta página aborda formas práticas de os terapeutas da fala reduzirem o tempo gasto em notas de sessão na terapia da fala, incluindo onde os rascunhos estruturados se encaixam.",
     },
     sections: [
       {
@@ -496,8 +496,8 @@ export const pt: Dictionary = {
         body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico é sempre seu; o rascunho trata do esqueleto.",
       },
       {
-        heading: "O que deve constar numa boa nota de terapia da gaguez",
-        body: "Uma nota de sessão útil para a terapia da gaguez cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Quanto mais consistentemente capturar os mesmos dados, mais fácil se torna a nota.",
+        heading: "O que deve constar numa boa nota de terapia da fala",
+        body: "Uma nota de sessão útil cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Quanto mais consistentemente capturar os mesmos dados, mais fácil se torna a nota.",
       },
       {
         heading: "O que a UpSpeech faz",
@@ -538,7 +538,7 @@ export const pt: Dictionary = {
   forSlps: {
     seoTitle: "Para terapeutas da fala",
     seoDescription:
-      "A UpSpeech dá aos pacientes prática estruturada entre sessões e redige as notas de sessões de terapia da gaguez para si rever, com progresso que pode acompanhar.",
+      "A UpSpeech dá aos pacientes prática estruturada entre sessões e redige as notas de sessão para si rever, com progresso que pode acompanhar.",
     intro: {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Mais terapia entre sessões.",

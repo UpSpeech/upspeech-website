@@ -50,7 +50,7 @@
     --color-primary-foreground: #ffffff;
     --color-secondary: #4b4e4e;
     --color-secondary-foreground: #ffffff;
-    --color-accent: #98a5fe;
+    --color-accent: #958af0;
     --color-accent-foreground: #293587;
 
     /* ==========================================
@@ -108,7 +108,7 @@
        ========================================== */
     --gradient-primary: linear-gradient(135deg, #293587 0%, #4b5dc9 100%);
     --gradient-primary-soft: linear-gradient(135deg, #eceefb 0%, #f5f6fc 100%);
-    --gradient-accent: linear-gradient(135deg, #98a5fe 0%, #c4cafe 100%);
+    --gradient-accent: linear-gradient(135deg, #958af0 0%, #c4cafe 100%);
     --gradient-warm: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
     --gradient-calm: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
     --gradient-celebrate: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
@@ -587,7 +587,7 @@
   }
 
   .bg-gradient-accent {
-    background: linear-gradient(135deg, #98a5fe 0%, #c4cafe 100%);
+    background: linear-gradient(135deg, #958af0 0%, #c4cafe 100%);
   }
 
   .bg-gradient-calm {

@@ -218,7 +218,7 @@ export function getDocumentationArticleStructuredData(locale: string = "en") {
     headline:
       "How speech-language pathologists spend less time on session notes",
     description:
-      "A practical guide for speech-language pathologists on reducing documentation time in stuttering therapy, with structured drafts that support clinical judgement.",
+      "A practical guide for speech-language pathologists on reducing documentation time in speech therapy, with structured drafts that support clinical judgement.",
     url: localeAbsUrl("/reducing-documentation-time", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",

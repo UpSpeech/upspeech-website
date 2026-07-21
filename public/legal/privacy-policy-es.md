@@ -1,12 +1,12 @@
 # Política de Privacidad
 
-**Última Actualización:** 8 de abril de 2026
+**Última Actualización:** 21 de julio de 2026
 
 ## Introducción
 
 Bienvenido a UpSpeech ("nosotros" o "nuestro/a"). Estamos comprometidos con la protección de su privacidad y el tratamiento de su información personal con cuidado y transparencia. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información cuando utiliza nuestra plataforma de logopedia.
 
-UpSpeech es una plataforma multi-tenant de software como servicio (SaaS) diseñada para logopedas y sus pacientes, centrada en la terapia de la tartamudez y la automatización de informes clínicos.
+UpSpeech es una plataforma multi-tenant de software como servicio (SaaS) diseñada para logopedas y sus pacientes en todo el espectro de la logopedia, siendo la tartamudez la primera condición cubierta. Da soporte a la práctica estructurada entre sesiones, a la retroalimentación del logopeda y a la automatización de informes clínicos asistida por IA. UpSpeech está disponible como aplicación web y como aplicaciones móviles para iOS y Android.
 
 Al utilizar UpSpeech, acepta la recopilación y el uso de información de acuerdo con esta política. Si no está de acuerdo con nuestras políticas y prácticas, por favor no utilice nuestra plataforma.
 
@@ -44,6 +44,7 @@ Utilizamos servicios de inteligencia artificial de terceros para procesar sus gr
 - **Informes generados por IA** - Informes clínicos generados automáticamente mediante modelos de lenguaje de gran escala (Google Gemini)
 - **Anotaciones de disfluencias** - Detección y clasificación automatizadas de disfluencias del habla (repeticiones, prolongaciones, bloqueos)
 - **Datos de análisis del habla** - Análisis estadístico de patrones del habla y gravedad de la tartamudez
+- **Conversaciones de práctica en tiempo real** - En escenarios de práctica interactivos ("modo realista"), el audio en directo de su micrófono se transmite en tiempo real a servicios de voz por IA para que pueda mantener una conversación hablada con un compañero de práctica de IA. El audio en directo se procesa de forma transitoria para generar las respuestas habladas de la IA; una transcripción y un resumen de la conversación pueden conservarse como parte de su historial de práctica
 
 ### 4. Informes Clínicos y Notas
 
@@ -87,8 +88,10 @@ Los usuarios pueden proporcionar comentarios dentro de la plataforma:
 
 Recopilamos automáticamente determinada información técnica:
 
-- **Tokens de autenticación** - Tokens JWT almacenados en el localStorage de su navegador durante 24 horas
+- **Tokens de autenticación** - Tokens JWT almacenados en el localStorage de su navegador (web) o en el almacenamiento seguro del dispositivo (Keychain en iOS, Keystore en Android) en nuestras aplicaciones móviles, para mantener su sesión iniciada
 - **Información del navegador** - Tipo de navegador, versión y tipo de dispositivo (para compatibilidad y resolución de problemas)
+- **Información del dispositivo móvil** - Cuando utiliza nuestras aplicaciones iOS o Android, recopilamos la versión de la aplicación, el modelo del dispositivo y la versión del sistema operativo, para compatibilidad y resolución de problemas
+- **Tokens de notificaciones push** - Si activa las notificaciones en la aplicación móvil, almacenamos un token push del dispositivo para poder entregarle recordatorios y actualizaciones (consulte Apple Push Notification service y Firebase Cloud Messaging en "Cómo Compartimos Su Información")
 - **Dirección IP** - Para monitorización de seguridad y análisis geográfico
 - **Registros de acceso** - Marcas de tiempo y acciones realizadas dentro de la plataforma (para auditoría de seguridad)
 
@@ -116,6 +119,7 @@ Utilizamos la información que recopilamos para los siguientes fines:
 ### 2. Procesamiento por IA y Generación de Informes
 
 - **Transcripción** - Enviar sus grabaciones de audio a ElevenLabs para conversión de habla a texto
+- **Conversaciones de práctica en tiempo real** - Transmitir su audio en directo a servicios de voz por IA (ElevenLabs y Google Gemini) para posibilitar escenarios de práctica hablada interactivos
 - **Automatización de informes** - Generar informes clínicos mediante modelos de lenguaje Google Gemini basándose en la transcripción y su contexto clínico
 - **Detección de disfluencias** - Identificar y clasificar automáticamente comportamientos de tartamudez en las grabaciones
 - **Información clínica** - Proporcionar análisis estadísticos y tendencias para apoyar la planificación del tratamiento
@@ -125,6 +129,7 @@ Utilizamos la información que recopilamos para los siguientes fines:
 
 - **Notificaciones del servicio** - Enviar actualizaciones importantes sobre su cuenta, asignaciones o cambios en la plataforma
 - **Invitaciones de logopedas** - Enviar códigos de invitación por correo electrónico a potenciales pacientes en nombre de los logopedas
+- **Notificaciones push** - Si utiliza nuestra aplicación móvil y da su consentimiento, enviar recordatorios y actualizaciones sobre su práctica, asignaciones y cuenta a su dispositivo
 - **Respuestas de soporte** - Responder a sus preguntas, comentarios y solicitudes de soporte
 - **Comunicaciones administrativas** - Enviar información relacionada con la cuenta, alertas de seguridad o actualizaciones de políticas
 
@@ -151,13 +156,15 @@ No vendemos su información personal a terceros. Compartimos su información ún
 
 Utilizamos servicios de terceros de confianza para operar nuestra plataforma:
 
-- **ElevenLabs** - Proporciona transcripción de habla a texto mediante IA (Scribe v2). Las grabaciones de audio se envían a ElevenLabs para su procesamiento. Consulte la política de privacidad de ElevenLabs en [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
-- **Google AI (Gemini)** - Proporciona modelos de lenguaje de gran escala para generación de informes clínicos y funcionalidades asistidas por IA. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
+- **ElevenLabs** - Proporciona transcripción de habla a texto mediante IA (Scribe v2) y generación de voz en tiempo real para conversaciones de práctica interactivas. Las grabaciones de audio y el audio en directo se envían a ElevenLabs para su procesamiento. Consulte la política de privacidad de ElevenLabs en [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
+- **Google AI (Gemini)** - Proporciona modelos de lenguaje de gran escala para generación de informes clínicos, funcionalidades asistidas por IA y conversaciones de práctica en tiempo real. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Almacena ficheros de audio/vídeo y logotipos en Google Cloud Storage con cifrado. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Aloja nuestra infraestructura de aplicaciones. Consulte la política de privacidad de Railway en [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
 - **PostHog** - Proporciona análisis de producto para comprender cómo los usuarios interactúan con nuestra plataforma. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de PostHog en [https://posthog.com/privacy](https://posthog.com/privacy)
 - **Sentry** - Proporciona seguimiento de errores y monitorización de rendimiento para ayudarnos a identificar y corregir bugs. Recopila información técnica de errores (mensajes de error, stack traces, información del navegador/dispositivo) pero no datos personales. Consulte la política de privacidad de Sentry en [https://sentry.io/privacy/](https://sentry.io/privacy/)
-- **Proveedores de servicios de correo electrónico** - Entregan correos electrónicos transaccionales (invitaciones, recuperación de contraseñas, notificaciones)
+- **Cloudflare** - Proporciona la retransmisión de medios en tiempo real (TURN/STUN) que transporta el audio en directo de las conversaciones de práctica interactivas cuando no es posible establecer una conexión directa. Consulte la política de privacidad de Cloudflare en [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
+- **Apple Push Notification service, Firebase Cloud Messaging (Google) y Expo** - Entregan notificaciones push a su dispositivo móvil. Enviamos un token push del dispositivo a estos servicios para encaminar recordatorios y actualizaciones. Consulte las políticas de privacidad de Apple ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), de Google ([https://policies.google.com/privacy](https://policies.google.com/privacy)) y de Expo ([https://expo.dev/privacy](https://expo.dev/privacy))
+- **Resend** - Entrega correos electrónicos transaccionales como invitaciones, recuperación de contraseñas y notificaciones. Consulte la política de privacidad de Resend en [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
 
 Estos proveedores están contractualmente obligados a proteger su información y a utilizarla únicamente para los fines que especificamos.
 
@@ -306,6 +313,8 @@ Almacenamos lo siguiente en el localStorage de su navegador:
 - **Token de autenticación** - Token JWT para mantener su sesión (expira a las 24 horas)
 - **Datos del perfil del usuario** - Copia en caché de su información de usuario para cargas de página más rápidas
 - **Preferencia de idioma** - El idioma de interfaz seleccionado
+
+En nuestras aplicaciones móviles, la información equivalente (token de autenticación, perfil en caché y preferencia de idioma) se almacena en el almacenamiento seguro del dispositivo (Keychain en iOS, Keystore en Android) en lugar del localStorage del navegador.
 
 ### Cookies de Análisis
 
