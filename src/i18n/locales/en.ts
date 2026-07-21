@@ -73,9 +73,9 @@ export const en = {
       "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.",
     hero: {
       eyebrow: "For speech therapy clinics",
-      headlineLine1: "The clinic",
-      headlineLine2: "that's open",
-      headlineLine3: "when you're not.",
+      headlineLine1: "Therapy that",
+      headlineLine2: "keeps going",
+      headlineLine3: "between sessions.",
       body: "Structured practice between sessions. Session reports drafted automatically. Therapists keep the final say.",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",

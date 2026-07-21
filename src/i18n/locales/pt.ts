@@ -76,9 +76,9 @@ export const pt: Dictionary = {
       "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre no controlo.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
-      headlineLine1: "A clínica",
-      headlineLine2: "que continua aberta",
-      headlineLine3: "mesmo quando fecha.",
+      headlineLine1: "A terapia",
+      headlineLine2: "que continua",
+      headlineLine3: "entre sessões.",
       body: "Prática estruturada entre sessões. Relatórios de sessão redigidos automaticamente. Os terapeutas mantêm a palavra final.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",

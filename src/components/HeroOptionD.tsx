@@ -14,13 +14,16 @@ const Line = ({
   delay: number;
   loaded: boolean;
 }) => (
-  <span className="block overflow-hidden">
+  // Bottom padding gives the clip box room for descenders (e.g. the "g" in
+  // "going"); the matching negative margin keeps the tight line rhythm. The
+  // pre-reveal offset clears the padded box so no glyph peeks through.
+  <span className="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
     <span
       className="block will-change-transform"
       style={{
         transition: `transform 700ms ${EASE}, opacity 700ms ${EASE}`,
         transitionDelay: `${delay}ms`,
-        transform: loaded ? "translateY(0)" : "translateY(110%)",
+        transform: loaded ? "translateY(0)" : "translateY(130%)",
         opacity: loaded ? 1 : 0,
       }}
     >
