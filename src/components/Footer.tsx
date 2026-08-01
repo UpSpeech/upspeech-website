@@ -1,4 +1,5 @@
 import React from "react";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 
 const Footer = () => {
   return (
@@ -23,6 +24,40 @@ const Footer = () => {
             <p className="font-body text-sm text-white/80">
               Guiding voices with care and tech
             </p>
+            {(APP_STORE_URL || PLAY_STORE_URL) && (
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {APP_STORE_URL && (
+                  <a
+                    href={APP_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download UpSpeech on the App Store"
+                  >
+                    <img
+                      src="/images/app-store.png"
+                      alt="Download on the App Store"
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                {PLAY_STORE_URL && (
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Get UpSpeech on Google Play"
+                  >
+                    <img
+                      src="/images/google-play.png"
+                      alt="Get it on Google Play"
+                      className="h-10 w-auto"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-2">
