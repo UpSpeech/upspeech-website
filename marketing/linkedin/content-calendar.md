@@ -66,6 +66,38 @@ Keep them peer-to-peer, specific, and within the sensitivity rules in
   > the technique you set. If you're an SLP curious about a pilot, comment or DM.
   > Happy to show you the report flow first.
 
+## Ready to post: the referral carousel
+
+**Document carousel** — `exports/doc-refer-early.pdf` (7 pages, 1080 x 1350).
+Upload the PDF directly as a LinkedIn document post.
+
+Aimed at pediatricians rather than SLPs, which makes it the one asset here that
+travels: it is built for SLPs to share with the doctors who refer to them.
+Clinical content is our own synthesis of established guidance on early
+stuttering, written so it carries no outcome claim and never frames fluency as
+the goal.
+
+> Pediatricians are usually the first professionals a parent asks about a
+> child's repetitions and hesitations.
+>
+> That conversation is hard to get right. Typical developmental disfluency and
+> early stuttering overlap, and the difference is not obvious in a short
+> appointment.
+>
+> So we put together what separates them, plus the five factors associated with
+> persistence, in something you can keep.
+>
+> The short version: signs of stuttering, or any risk factor present, warrant a
+> full speech-therapy assessment. And when it looks like typical disfluency but
+> the parents are worried, a referral still earns its place. Reassurance lands
+> better when it follows an assessment.
+>
+> SLPs: this one is made to be shared with the pediatricians who refer to you.
+
+LinkedIn has no per-page alt text on document posts, so the caption above
+carries the substance. Post the page-by-page text as the first comment when the
+post is used in an accessibility-sensitive context.
+
 ## Notes
 
 - Lead with the observation, not the product. Mention UpSpeech once, in context.

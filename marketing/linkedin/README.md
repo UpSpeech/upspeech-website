@@ -14,13 +14,24 @@ proof, told peer-to-peer and evidence-aware.
 
 ## Graphics
 
-LinkedIn is text-first. When a post needs a graphic (a quote card, a stat, a
-document carousel cover), reuse the Instagram template engine: add an
-`<article data-export="li-...">` in `../instagram/templates/index.html`, style
-it, and export. LinkedIn single images read well at 1200 x 1200 (square) or
-1200 x 627 (landscape); document carousels are 1080 x 1350 portrait pages
-uploaded as a PDF. The export script crops to 1080 x 1080 by default, which
-posts cleanly.
+LinkedIn is text-first. When a post needs a graphic, reuse the Instagram
+template engine in `../instagram/templates/`: add an `<article data-export="...">`
+to `index.html`, style it, and export.
+
+**Single images.** Name them `li-...`. They export at 1080 x 1080, which posts
+cleanly (LinkedIn reads squares at 1200 x 1200 and landscape at 1200 x 627).
+
+**Document carousels.** Name the pages
+`doc-<carousel>-<nn>-<slug>`, for example `doc-refer-early-01-cover`. The `doc-`
+prefix exports each page at 1080 x 1350 portrait, and the exporter then
+assembles every page of a carousel, in slide-number order, into
+`exports/doc-<carousel>.pdf`. Upload that PDF as a LinkedIn document post.
+
+Re-render one carousel without rebuilding the whole set:
+
+```bash
+npm run export -- doc-refer-early
+```
 
 ## Voice
 
