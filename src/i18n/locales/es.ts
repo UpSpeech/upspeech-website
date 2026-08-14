@@ -58,8 +58,7 @@ export const es: Dictionary = {
     techniques: "técnicas",
     loading: "Cargando técnicas...",
     error: "Error al cargar técnicas",
-    tryAgain:
-      "Error al cargar técnicas. Inténtalo de nuevo más tarde.",
+    tryAgain: "Error al cargar técnicas. Inténtalo de nuevo más tarde.",
   },
   techniquePage: {
     loading: "Cargando técnica...",
@@ -336,8 +335,7 @@ export const es: Dictionary = {
         "Gracias, nos pondremos en contacto. Te hemos enviado una confirmación por correo.",
       errorTitle: "Algo ha salido mal",
       errorDefault: "Inténtalo de nuevo más tarde.",
-      errorNetwork:
-        "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
+      errorNetwork: "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
       errorSubmission:
         "Ha habido un problema con el envío del formulario. Inténtalo de nuevo.",
     },
