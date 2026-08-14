@@ -50,7 +50,7 @@ export const es: Dictionary = {
     title: "Técnicas de logopedia",
     subtitle: "Técnicas establecidas para la terapia de la tartamudez",
     seoDescription:
-      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
     mainCategories: "Categorías de técnicas",
     standalone: "Técnicas independientes",
@@ -59,11 +59,11 @@ export const es: Dictionary = {
     loading: "Cargando técnicas...",
     error: "Error al cargar técnicas",
     tryAgain:
-      "Error al cargar técnicas. Por favor, inténtalo de nuevo más tarde.",
+      "Error al cargar técnicas. Inténtalo de nuevo más tarde.",
   },
   techniquePage: {
     loading: "Cargando técnica...",
-    error: "Error al cargar técnica",
+    error: "Error al cargar la técnica",
     notFound: "Técnica no encontrada",
     backToAll: "Volver a todas las técnicas",
     practicalDescription: "Descripción práctica",
@@ -192,7 +192,7 @@ export const es: Dictionary = {
         {
           verb: "calibra",
           title: "El clínico lo calibra.",
-          body: "El terapeuta ajusta la dificultad e intercambia técnicas cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
         },
         {
           verb: "escucha",
@@ -221,11 +221,11 @@ export const es: Dictionary = {
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
-        "La herramienta que clínicos e investigadores usan para etiquetar momentos de tartamudez.",
+        "La herramienta que clínicos e investigadores usan para anotar momentos de tartamudez.",
       annotationCopy:
-        "Los clínicos etiquetan momentos de tartamudez fotograma a fotograma con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
+        "Los clínicos anotan momentos de tartamudez con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
       annotationImageAlt:
-        "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y etiquetado fotograma a fotograma por logopedas",
+        "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y anotación por logopedas",
       features: [
         {
           label: "Ruta de aprendizaje estructurada",
@@ -254,9 +254,9 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por clínicos.",
-      body: "Construimos nuestra propia herramienta de anotación, y logopedas en ejercicio la usan para etiquetar disfluencias y bloqueos fotograma a fotograma. Las etiquetas del conjunto de datos vienen de esos clínicos, no de anotadores de crowdsourcing.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias y bloqueos. Las anotaciones del conjunto de datos proceden de esos clínicos, no de anotadores sin formación clínica.",
       videoAriaLabel:
-        "Herramienta de anotación de UpSpeech usada por clínicos para etiquetar disfluencias fotograma a fotograma",
+        "Herramienta de anotación de UpSpeech usada por clínicos para anotar disfluencias",
       tags: [
         "Bloqueo",
         "Prolongación",
@@ -270,7 +270,7 @@ export const es: Dictionary = {
       eyebrow: "Fundamentos",
       headlineLine1: "Práctica clínica e ingeniería de IA,",
       headlineLine2: "en el mismo equipo.",
-      body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas en ejercicio que usan la plataforma con pacientes.",
+      body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
       partnersLabel: "Socios · Apoyos · Reconocimiento",
       partnersTagline: "Con quién trabajamos",
       partnerContext: {
@@ -311,13 +311,13 @@ export const es: Dictionary = {
       body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la logopedia. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
       nameLabel: "Nombre completo *",
       namePlaceholder: "Introduce tu nombre",
-      nameError: "Por favor, introduce tu nombre.",
+      nameError: "Introduce tu nombre.",
       emailLabel: "Correo electrónico *",
       emailPlaceholder: "tu@email.com",
-      emailError: "Por favor, introduce tu correo electrónico.",
+      emailError: "Introduce tu correo electrónico.",
       roleLabel: "Cargo *",
       rolePlaceholder: "Elige tu cargo",
-      roleError: "Por favor, elige tu cargo.",
+      roleError: "Elige tu cargo.",
       roleSpeechTherapist: "Logopeda",
       roleClinicDirector: "Director de clínica",
       rolePracticeOwner: "Propietario de consulta",
@@ -330,20 +330,20 @@ export const es: Dictionary = {
       clinicSizeLarge: "15+ terapeutas",
       submit: "Solicitar acceso anticipado",
       submitting: "Enviando...",
-      requiredFieldsTitle: "Por favor, rellena todos los campos obligatorios",
+      requiredFieldsTitle: "Rellena todos los campos obligatorios",
       successTitle: "Estás en la lista.",
       successDescription:
         "Gracias, nos pondremos en contacto. Te hemos enviado una confirmación por correo.",
-      errorTitle: "Algo salió mal",
-      errorDefault: "Por favor, inténtalo de nuevo más tarde.",
+      errorTitle: "Algo ha salido mal",
+      errorDefault: "Inténtalo de nuevo más tarde.",
       errorNetwork:
-        "Error de red. Por favor, comprueba tu conexión e inténtalo de nuevo.",
+        "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
       errorSubmission:
-        "Hubo un problema con el envío del formulario. Por favor, inténtalo de nuevo.",
+        "Ha habido un problema con el envío del formulario. Inténtalo de nuevo.",
     },
   },
   forPatients: {
-    seoTitle: "Para Pacientes",
+    seoTitle: "Para pacientes",
     seoDescription:
       "Cómo los pacientes practican la terapia del habla entre sesiones con UpSpeech, guiados por su logopeda.",
     intro: {
@@ -366,7 +366,7 @@ export const es: Dictionary = {
         },
         {
           title: "Tu terapeuta ve tu progreso",
-          copy: "Sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
+          copy: "Tu logopeda sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
         },
       ],
     },
@@ -398,7 +398,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Mi información es privada?",
-          a: "Sí. Tus datos están cifrados y se mantienen privados en el marco de tu atención. Consulta la Política de Privacidad para más detalles.",
+          a: "Sí. Tus datos están cifrados y solo los ve quien participa en tu tratamiento. Consulta la Política de Privacidad para más detalles.",
         },
         {
           q: "¿Cómo consigo UpSpeech?",
@@ -409,7 +409,7 @@ export const es: Dictionary = {
     closing: {
       headline: "Pregunta a tu logopeda sobre UpSpeech.",
       bodyPrefix:
-        "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarla con tus pacientes, puedes ",
+        "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
@@ -419,19 +419,19 @@ export const es: Dictionary = {
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
   stutterPositive: {
-    seoTitle: "¿Qué Significa Tartamudez Positiva?",
+    seoTitle: "¿Qué significa tartamudez positiva?",
     seoDescription:
       "Una guía en lenguaje sencillo sobre la terapia de tartamudez positiva: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
     intro: {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué significa",
       headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se las escuche en sus propios términos, con objetivos que fija la propia persona.",
+      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que fija la propia persona.",
     },
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de modelado de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -456,11 +456,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
-          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de modelado de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
+          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
           q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de modelado de la fluidez según los objetivos del individuo.",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de moldeamiento de la fluidez según los objetivos del individuo.",
         },
         {
           q: "¿Dónde puedo aprender más?",
@@ -477,7 +477,7 @@ export const es: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle: "Cómo los Logopedas Reducen el Tiempo en Notas de Sesión",
+    seoTitle: "Cómo los logopedas reducen el tiempo en notas de sesión",
     seoDescription:
       "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en logopedia, con borradores estructurados que apoyan el juicio clínico.",
     intro: {
@@ -493,7 +493,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Borradores estructurados que revisas y editas",
-        body: "Una forma de abordarla es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
+        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
       },
       {
         heading: "Qué debe incluir una buena nota de logopedia",
@@ -510,7 +510,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿Cuánto tiempo pueden ahorrar de forma realista los logopedas en documentación?",
-          a: "Depende de tu flujo de trabajo actual y del tiempo que dedicas a las notas. Un borrador te quita la página en blanco, que suele ser la parte más lenta de escribir una nota. Cuánto ahorra varía según la complejidad de la sesión y la cantidad de ediciones que necesite el borrador.",
+          a: "Depende de tu flujo de trabajo actual y del tiempo que dedicas a las notas. Un borrador te quita la página en blanco, que suele ser la parte más lenta de escribir una nota. Cuánto ahorra varía según la complejidad de la sesión y de cuánto haya que retocar el borrador.",
         },
         {
           q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
@@ -518,10 +518,10 @@ export const es: Dictionary = {
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
         },
         {
-          q: "¿Cómo recopila UpSpeech los datos que informan el borrador?",
+          q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
           a: "Los pacientes practican los ejercicios asignados en la app entre sesiones. La app captura datos de finalización y rendimiento, y el borrador se construye a partir de ahí. No interviene ninguna transcripción de audio. El terapeuta lo ve todo antes de firmar cualquier nota.",
         },
       ],
@@ -543,7 +543,7 @@ export const es: Dictionary = {
       eyebrow: "Para logopedas",
       headlineLine1: "Más terapia entre sesiones.",
       headlineLine2: "Menos tiempo en documentación.",
-      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que se siente.",
+      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
     },
     documentation: {
       eyebrow: "Documentación",

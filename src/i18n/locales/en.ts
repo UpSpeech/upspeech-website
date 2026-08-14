@@ -124,7 +124,7 @@ export const en = {
         },
         {
           label: "Therapist sign-off",
-          copy: "Every report and treatment plan is a draft until the therapist reviews and signs it.",
+          copy: "Every report and therapy plan is a draft until the therapist reviews and signs it.",
         },
       ],
     },
@@ -132,7 +132,7 @@ export const en = {
       eyebrow: "Outside the room",
       headlineLine1: "Structured practice between visits,",
       headlineLine2: "guided by the therapist throughout.",
-      body: "Each patient gets a plan from their clinician, with exercises matched to where they are in treatment, and works through it between visits with guidance at each step.",
+      body: "Each patient gets a plan from their clinician, with exercises matched to where they are in therapy, and works through it between visits with guidance at each step.",
       imageAlt:
         "UpSpeech patient dashboard with daily practice exercises and progress",
       points: [
@@ -298,7 +298,7 @@ export const en = {
         },
         {
           title: "Private recordings",
-          copy: "Recordings are reached through short-lived, signed links, never from a public location.",
+          copy: "Recordings are served through short-lived, signed links, never from a public location.",
         },
       ],
       readPrivacy: "Read our Privacy Policy",
@@ -355,7 +355,7 @@ export const en = {
       steps: [
         {
           title: "Your therapist sets your plan",
-          copy: "Your speech-language pathologist chooses the exercises and goals that match your therapy and your stage of treatment.",
+          copy: "Your speech-language pathologist chooses the exercises and goals that match where you are in your therapy.",
         },
         {
           title: "You practise in the app",
@@ -395,7 +395,7 @@ export const en = {
         },
         {
           q: "Is my information private?",
-          a: "Yes. Your data is encrypted and kept private to your care. See the Privacy Policy for details.",
+          a: "Yes. Your data is encrypted and only visible to the people involved in your care. See the Privacy Policy for details.",
         },
         {
           q: "How do I get UpSpeech?",
