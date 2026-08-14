@@ -51,7 +51,7 @@ const CONTENT: Record<Locale, SupportContent> = {
   en: {
     heading: "Support",
     intro:
-      "Need help with UpSpeech? We're here for you. Most questions are answered below, and you can always reach us directly by email.",
+      "Need help with UpSpeech? Most questions are answered below, and you can always reach us by email.",
     contactHeading: "Contact us",
     contactBody:
       "Email our support team and we'll get back to you. Please include your device, operating system, and a short description of what you need help with.",
@@ -140,7 +140,7 @@ const CONTENT: Record<Locale, SupportContent> = {
   pt: {
     heading: "Suporte",
     intro:
-      "Precisa de ajuda com a UpSpeech? Estamos aqui para si. A maioria das perguntas tem resposta abaixo e pode sempre contactar-nos diretamente por email.",
+      "Precisa de ajuda com a UpSpeech? A maioria das perguntas tem resposta abaixo e pode sempre contactar-nos por email.",
     contactHeading: "Contacte-nos",
     contactBody:
       "Envie um email à nossa equipa de suporte e responderemos. Indique o seu dispositivo, o sistema operativo e uma breve descrição do que precisa.",
@@ -229,7 +229,7 @@ const CONTENT: Record<Locale, SupportContent> = {
   es: {
     heading: "Soporte",
     intro:
-      "¿Necesitas ayuda con UpSpeech? Estamos aquí para ayudarte. La mayoría de las preguntas se responden a continuación y siempre puedes contactarnos directamente por correo electrónico.",
+      "¿Necesitas ayuda con UpSpeech? Abajo respondemos a la mayoría de las preguntas y siempre puedes escribirnos por correo.",
     contactHeading: "Contáctanos",
     contactBody:
       "Escribe a nuestro equipo de soporte y te responderemos. Incluye tu dispositivo, el sistema operativo y una breve descripción de lo que necesitas.",

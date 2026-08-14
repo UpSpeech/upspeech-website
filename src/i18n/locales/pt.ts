@@ -19,7 +19,7 @@ export const pt: Dictionary = {
     mobileMenuLabel: "Navegação",
   },
   footer: {
-    tagline: "Guiar vozes com cuidado e tecnologia",
+    tagline: "Apoio à terapia da fala, entre sessões",
     product: "Produto",
     legal: "Legal",
     company: "Empresa",
@@ -48,7 +48,7 @@ export const pt: Dictionary = {
   },
   techniquesIndex: {
     title: "Técnicas de Terapia da Fala",
-    subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
+    subtitle: "Técnicas estabelecidas para a terapia da gaguez",
     seoDescription:
       "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
@@ -73,13 +73,13 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre a par.",
+      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta, e os relatórios de sessão são redigidos para o terapeuta rever e assinar.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
-      headlineLine1: "A terapia",
-      headlineLine2: "que continua",
+      headlineLine1: "A sua terapia",
+      headlineLine2: "continua",
       headlineLine3: "entre sessões.",
-      body: "Prática estruturada entre sessões. Relatórios de sessão redigidos automaticamente. Os terapeutas mantêm a palavra final.",
+      body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. A UpSpeech redige os relatórios de sessão; o terapeuta aprova-os.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
       videoAriaLabel:
@@ -100,20 +100,20 @@ export const pt: Dictionary = {
       traditional: "Tradicional",
       traditionalCadence: "1 sessão · 6 dias sem apoio",
       withUpspeech: "Com a UpSpeech",
-      fullCadence: "1 sessão · Todos os dias, cuidado contínuo",
+      fullCadence: "1 sessão · Todos os dias, apoio contínuo",
       partialPrefix: "1 sessão · ",
-      partialSuffix: " / 7 dias de cuidado contínuo",
+      partialSuffix: " / 7 dias de apoio contínuo",
       session: "Sessão",
       practice: "Prática",
       plusPractice: "+ Prática",
-      footerPrefix: "Apoio contínuo para o paciente,",
-      footerEmphasis: "sem mais trabalho para o clínico.",
+      footerPrefix: "O paciente mantém o seu apoio todos os dias,",
+      footerEmphasis: "e não acrescenta trabalho para o clínico.",
     },
     therapist: {
       eyebrow: "Na consulta",
-      headlineLine1: "A sessão pertence ao clínico.",
-      headlineLine2: "A plataforma trata do resto.",
-      body: "Relatórios redigidos automaticamente a partir de cada sessão. Atividade do paciente visível fora da consulta. Os terapeutas chegam preparados, com o contexto de que precisam.",
+      headlineLine1: "O clínico conduz a sessão.",
+      headlineLine2: "A UpSpeech trata do resto.",
+      body: "Cada sessão dá origem a um rascunho de relatório, e pode ver o que os pacientes praticaram entre consultas.",
       imageAlt:
         "Vista do terapeuta na UpSpeech do progresso de um paciente: estatísticas de atividade, marco do percurso de aprendizagem e passo atual",
       points: [
@@ -123,11 +123,11 @@ export const pt: Dictionary = {
         },
         {
           label: "Relatórios redigidos",
-          copy: "Os dados da sessão tornam-se um rascunho de relatório estruturado para o terapeuta rever e aprovar.",
+          copy: "Os dados de cada sessão tornam-se um rascunho de relatório, pronto para editar.",
         },
         {
           label: "Validação do terapeuta",
-          copy: "Cada relatório e plano de tratamento é um rascunho até o terapeuta o rever e assinar.",
+          copy: "Cada relatório e cada plano de tratamento é um rascunho até o terapeuta o rever e assinar.",
         },
       ],
     },
@@ -135,17 +135,17 @@ export const pt: Dictionary = {
       eyebrow: "Fora da consulta",
       headlineLine1: "Prática estruturada entre visitas,",
       headlineLine2: "orientada pelo terapeuta do início ao fim.",
-      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à sua fase de tratamento. Exercícios guiados apoiam a prática entre visitas.",
+      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à fase de tratamento em que está, e vai cumprindo-o entre visitas com orientação em cada passo.",
       imageAlt:
         "Painel do paciente na UpSpeech com exercícios de prática diários e progresso",
       points: [
         {
           label: "Um plano, definido pelo terapeuta",
-          copy: "Cada passo é selecionado pelo clínico. Os pacientes veem apenas o que devem praticar.",
+          copy: "Cada passo é selecionado pelo terapeuta. Os pacientes veem apenas o que devem praticar.",
         },
         {
           label: "Cada tentativa, registada",
-          copy: "Cada tentativa de prática é gravada e organizada para o terapeuta rever e ajustar.",
+          copy: "Cada tentativa é gravada e organizada para o terapeuta rever e ajustar.",
         },
         {
           label: "Progresso, registado",
@@ -156,7 +156,7 @@ export const pt: Dictionary = {
     mobile: {
       eyebrow: "No bolso do paciente",
       headline: "A prática acontece na app, entre sessões.",
-      body: "Os pacientes seguem o plano definido pelo terapeuta, praticam com exercícios guiados e fazem o seu registo a partir do telemóvel. O terapeuta acompanha.",
+      body: "Os pacientes seguem no telemóvel o plano definido pelo terapeuta, entre sessões, e o terapeuta consegue ver como está a correr.",
       screenshots: [
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
         "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
@@ -181,8 +181,8 @@ export const pt: Dictionary = {
         },
         {
           verb: "aprova",
-          title: "O clínico lê, edita, aprova.",
-          body: "Nada sai da plataforma sem revisão do terapeuta. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
+          title: "O clínico edita e aprova.",
+          body: "Essas correções treinam o modelo e melhoram o rascunho seguinte.",
         },
         {
           verb: "estrutura",
@@ -192,17 +192,17 @@ export const pt: Dictionary = {
         {
           verb: "calibra",
           title: "O clínico calibra-o.",
-          body: "O terapeuta aprova, ajusta a dificuldade e troca técnicas. Nenhum plano é atribuído sem revisão do terapeuta.",
+          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o terapeuta reveja e assine.",
         },
         {
           verb: "ouve",
           title: "A IA ajuda entre sessões.",
-          body: "Cada tentativa de prática é captada e organizada, construindo um registo de atividade entre sessões.",
+          body: "As tentativas ficam guardadas com a técnica, a data e a avaliação que o paciente fez do esforço.",
         },
         {
           verb: "decide",
           title: "O clínico decide o que vem a seguir.",
-          body: "O sinal agregado aparece no painel do terapeuta. Este seleciona o próximo protocolo com os dados em mãos.",
+          body: "O painel reúne a atividade da semana. A partir daí, o clínico escolhe o passo seguinte.",
         },
       ],
     },
@@ -216,14 +216,14 @@ export const pt: Dictionary = {
       headlineLine1: "Ferramentas específicas.",
       headlineLine2: "Para clínicos e investigadores.",
       intro:
-        "A plataforma é construída em torno de um percurso de aprendizagem estruturado, desde a identificação de momentos de gaguez até à generalização no mundo real.",
+        "A plataforma é construída em torno de um percurso de aprendizagem estruturado, desde a identificação de momentos de gaguez até levar o trabalho para conversas reais.",
       forClinicians: "Para clínicos",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Ferramenta de anotação",
       annotationTitle:
         "A ferramenta que clínicos e investigadores usam para etiquetar momentos de gaguez.",
       annotationCopy:
-        "Etiquetagem fotograma a fotograma de momentos de gaguez: comportamento principal, comportamentos secundários, nível de tensão. Taxonomia padrão. A mesma ferramenta constrói o nosso conjunto de dados e apoia parcerias de investigação.",
+        "Os clínicos etiquetam momentos de gaguez fotograma a fotograma com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
       annotationImageAlt:
         "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e etiquetagem fotograma a fotograma por terapeutas da fala",
       features: [
@@ -244,7 +244,7 @@ export const pt: Dictionary = {
         {
           label: "Autorrelatos periódicos",
           title: "Autorrelatos que o terapeuta revê.",
-          copy: "Um breve autorrelato de gaguez é captado a intervalos, para que o terapeuta possa rever como o paciente descreve a sua experiência ao longo da terapia.",
+          copy: "Um breve autorrelato de gaguez é captado a intervalos. O clínico pode ver como o paciente descreve a sua própria experiência ao longo do tempo.",
           imageAlt:
             "Gráfico UpSpeech das respostas de gaguez autorrelatadas de um paciente ao longo de várias semanas",
         },
@@ -254,7 +254,7 @@ export const pt: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
-      body: "Construímos uma ferramenta de anotação internamente, usada por terapeutas da fala em exercício para etiquetar disfluências, tensões e bloqueios fotograma a fotograma. O conjunto de dados é etiquetado por especialistas desde o início.",
+      body: "Construímos a nossa própria ferramenta de anotação, e terapeutas da fala em exercício usam-na para etiquetar disfluências e bloqueios fotograma a fotograma. As etiquetas do conjunto de dados vêm desses clínicos e não de anotadores de crowdsourcing.",
       videoAriaLabel:
         "Ferramenta de anotação UpSpeech usada por clínicos para etiquetar disfluências fotograma a fotograma",
       tags: [
@@ -272,7 +272,7 @@ export const pt: Dictionary = {
       headlineLine2: "na mesma equipa.",
       body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala em exercício que usam a plataforma com pacientes.",
       partnersLabel: "Parceiros · Apoiantes · Reconhecimento",
-      partnersTagline: "A construir ao lado de quem conhece o trabalho.",
+      partnersTagline: "Com quem trabalhamos",
       partnerContext: {
         speechcare: "Parceiro de desenvolvimento conjunto",
         elevenlabs: "Bolsa de infraestrutura de IA",
@@ -284,7 +284,7 @@ export const pt: Dictionary = {
     },
     security: {
       eyebrow: "Segurança e dados",
-      headline: "Dados dos pacientes, tratados com cuidado.",
+      headline: "Como tratamos os dados dos pacientes.",
       body: "As clínicas confiam-nos gravações sensíveis. Tratamos esses dados como uma clínica o faria, e o terapeuta tem sempre a palavra final sobre o que a IA produz.",
       points: [
         {
@@ -308,7 +308,7 @@ export const pt: Dictionary = {
     },
     cta: {
       headline: "Pedir acesso antecipado.",
-      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua prática e entraremos em contacto.",
+      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua clínica e entraremos em contacto.",
       nameLabel: "Nome Completo *",
       namePlaceholder: "Introduza o seu nome",
       nameError: "Por favor, introduza o seu nome.",
@@ -350,7 +350,7 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A sua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continua a praticar o trabalho que faz com o seu terapeuta da fala, todos os dias, não apenas na consulta. O seu terapeuta define o plano; pratica na app; o seu terapeuta acompanha o seu progresso.",
+      body: "A UpSpeech é como continua a praticar, entre consultas, o trabalho que faz com o seu terapeuta da fala. O seu terapeuta define o plano e acompanha como está a correr enquanto pratica na app.",
     },
     howItWorks: {
       eyebrow: "Como funciona para si",
@@ -362,18 +362,18 @@ export const pt: Dictionary = {
         },
         {
           title: "Pratica na app",
-          copy: "Faça os exercícios guiados entre sessões, ao seu ritmo, a partir do telemóvel. Vê apenas o que o seu terapeuta atribuiu.",
+          copy: "Faça os exercícios guiados no telemóvel, ao ritmo que lhe der jeito entre sessões. Vê apenas o que o seu terapeuta atribuiu.",
         },
         {
           title: "O seu terapeuta vê o seu progresso",
-          copy: "Acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
+          copy: "O seu terapeuta acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
         },
       ],
     },
     app: {
       eyebrow: "A app",
       headline: "O seu plano, no seu bolso.",
-      body: "Abra a app para ver o exercício de hoje, fazê-lo e manter uma rotina constante entre sessões.",
+      body: "Abra a app e o exercício do dia está lá à sua espera.",
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
@@ -386,11 +386,11 @@ export const pt: Dictionary = {
       items: [
         {
           q: "Preciso de um terapeuta da fala para usar a UpSpeech?",
-          a: "Sim. A UpSpeech é usada em conjunto com um terapeuta da fala que define o seu plano e revê o seu progresso. Não substitui a terapia.",
+          a: "Sim. A UpSpeech é usada em conjunto com o seu terapeuta da fala, que define o seu plano e revê o seu progresso. Não substitui a terapia.",
         },
         {
           q: "O que vou praticar?",
-          a: "O seu terapeuta escolhe exercícios para si com base nos seus objetivos e na sua fase de terapia. Verá apenas o que o seu terapeuta atribuiu.",
+          a: "O seu terapeuta escolhe exercícios para si com base nos seus objetivos e na sua fase de terapia.",
         },
         {
           q: "Com que frequência devo praticar?",
@@ -426,20 +426,20 @@ export const pt: Dictionary = {
       eyebrow: "Filosofia",
       headlineLine1: "O que significa",
       headlineLine2: "gaguez positiva?",
-      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir nos seus próprios termos, com objetivos definidos pela pessoa e não por uma ideia fixa de como a fala deve soar.",
+      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir nos seus próprios termos, com objetivos que a própria pessoa define.",
     },
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Algumas pessoas que gaguejam querem uma fala mais fluente, e técnicas como a gaguez voluntária ou a fala prolongada podem ajudar. Para outras, reduzir a evitação e ganhar confiança é o que mais importa. Gaguez positiva significa que os objetivos vêm da pessoa, não de uma norma externa.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir a evitação é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
       },
       {
         heading: "Ser ouvido nos seus próprios termos",
-        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência: evitação, antecipação e o esforço de gerir as reações dos outros. A terapia de gaguez positiva aborda estas questões a par de qualquer prática de técnicas, por isso uma boa sessão mede-se pela capacidade de a pessoa comunicar o que pretendia e de se sentir confiante ao fazê-lo.",
+        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência. Há o telefonema que se adia e o café que se pede de outra forma porque é mais fácil do que a palavra que se queria dizer. A terapia de gaguez positiva aborda isso a par de qualquer prática de técnicas.",
       },
       {
         heading: "Como a UpSpeech reflete esta abordagem",
-        body: "A UpSpeech apoia qualquer abordagem que o terapeuta da fala escolha. O percurso de aprendizagem e os exercícios são definidos pelo clínico; a app apoia a prática entre sessões. Se o objetivo é reduzir a evitação, o terapeuta inclui isso no plano. Se o objetivo é a prática de gaguez voluntária, a app apoia isso também. A plataforma não assume que a fluência é o destino.",
+        body: "A UpSpeech apoia qualquer abordagem que o terapeuta da fala escolha. O percurso de aprendizagem e os exercícios são definidos pelo clínico; a app apoia a prática entre sessões. Se o objetivo é reduzir a evitação, o terapeuta inclui isso no plano. Se o objetivo é a prática de gaguez voluntária, a app apoia isso também. Se a fluência faz parte do plano é algo que o clínico e a pessoa decidem.",
       },
       {
         heading: "Uma nota sobre linguagem",
@@ -452,7 +452,7 @@ export const pt: Dictionary = {
       items: [
         {
           q: "Gaguez positiva é o mesmo que não ajudar alguém a melhorar?",
-          a: "Não. A terapia de gaguez positiva ainda ensina técnicas, aborda a evitação e apoia o progresso. Significa que esses objetivos são moldados pela pessoa, não pela suposição de que a fluência é sempre o alvo certo.",
+          a: "Não. A terapia de gaguez positiva continua a ensinar técnicas e a trabalhar a evitação. O que muda é quem define o alvo: a pessoa decide o que significa progresso para si, e a fluência não é a resposta automática.",
         },
         {
           q: "A UpSpeech funciona apenas para abordagens de gaguez positiva?",
@@ -464,14 +464,14 @@ export const pt: Dictionary = {
         },
         {
           q: "Onde posso aprender mais?",
-          a: "A Stuttering Foundation, a British Stammering Association e o American Institute for Stuttering publicam guias acessíveis sobre abordagens de gaguez positiva e centradas na pessoa.",
+          a: "A STAMMA (British Stammering Association), a Stuttering Foundation e o American Institute for Stuttering publicam guias acessíveis sobre abordagens de gaguez positiva e centradas na pessoa.",
         },
       ],
     },
     closing: {
       headline: "Trabalhe com um clínico que entende os seus objetivos.",
       bodyPrefix:
-        "A UpSpeech é utilizada por terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
+        "A UpSpeech é utilizada através de terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -482,26 +482,26 @@ export const pt: Dictionary = {
       "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da fala, com rascunhos estruturados que apoiam o julgamento clínico.",
     intro: {
       eyebrow: "Para terapeutas da fala",
-      headlineLine1: "Menos tempo em notas,",
-      headlineLine2: "mais tempo na terapia.",
+      headlineLine1: "As notas começam",
+      headlineLine2: "já escritas.",
       body: "A documentação faz parte de uma boa prática clínica, mas não deve comprimir o tempo dedicado ao trabalho em si. Esta página aborda formas práticas de os terapeutas da fala reduzirem o tempo gasto em notas de sessão na terapia da fala, incluindo onde os rascunhos estruturados se encaixam.",
     },
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. O entrave é a própria página em branco, já que o raciocínio clínico já está feito. Muitos terapeutas dizem que a documentação é a tarefa administrativa que mais tende a consumir o tempo de preparação e a prolongar o dia de trabalho. É um problema estrutural, e a solução passa por ter um melhor ponto de partida.",
+        body: "Após uma sessão, sabe o que aconteceu. Escrever é a parte que demora, porque começa de uma página vazia com o raciocínio clínico já feito. Numa agenda cheia de pacientes isso acumula-se, e sai normalmente do tempo de preparação ou do fim do dia.",
       },
       {
         heading: "Rascunhos estruturados que revê e edita",
-        body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico continua a ser seu, e o rascunho trata da estrutura.",
+        body: "Uma solução é um rascunho construído a partir dos dados da própria sessão, cobrindo o que o paciente praticou e como evoluiu. Edita o que precisa de edição e assina. O julgamento clínico continua a ser seu do início ao fim.",
       },
       {
         heading: "O que deve constar numa boa nota de terapia da fala",
-        body: "Uma nota de sessão útil cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Quanto mais consistentemente capturar os mesmos dados, mais fácil se torna a nota.",
+        body: "Uma nota de sessão útil cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos para estes elementos tornam a redação mais rápida, com ou sem assistência de IA.",
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech captura dados estruturados da prática do paciente entre sessões: quais os exercícios que completou, como se saiu e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão que o terapeuta revê antes de assinar. O rascunho é um ponto de partida, não um documento final. A revisão e assinatura do terapeuta são obrigatórias para cada nota.",
+        body: "A UpSpeech captura dados estruturados da prática entre sessões, incluindo os exercícios que o paciente completou e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão. Nada chega ao paciente sem que o terapeuta reveja e assine.",
       },
     ],
     faq: {
@@ -509,20 +509,20 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes de clínicos.",
       items: [
         {
-          q: "Quanto tempo podem os terapeutas poupar realisticamente na documentação?",
-          a: "Depende do seu fluxo de trabalho atual e do tempo que gasta em notas. Um rascunho estruturado remove tipicamente a parte mais difícil, a página em branco, e reduz o tempo total das notas. Os resultados individuais variam conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
+          q: "Quanto tempo podem os terapeutas da fala poupar realisticamente na documentação?",
+          a: "Depende do seu fluxo de trabalho atual e do tempo que gasta em notas. Um rascunho tira do caminho a página em branco, que é normalmente a parte mais lenta de escrever uma nota. Quanto poupa varia conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
         },
         {
           q: "A redação de notas com assistência de IA substitui a observação clínica?",
-          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. A observação clínica, os julgamentos que o terapeuta faz durante a sessão, é o que o terapeuta acrescenta. O rascunho trata da estrutura, para que o clínico se possa focar na especialização.",
+          a: "Não. Uma nota de rascunho é construída a partir dos dados da sessão. Os julgamentos que o terapeuta faz durante a consulta são o que o terapeuta acrescenta.",
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
-          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de ser utilizada. Nenhum rascunho deve constar do processo do paciente sem revisão do clínico. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
+          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Os pacientes praticam exercícios atribuídos na app entre sessões. A app captura dados de conclusão e desempenho. Esses dados estruturados, não a transcrição de áudio, informam o rascunho da nota. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Os pacientes praticam exercícios atribuídos na app entre sessões. A app captura dados de conclusão e desempenho, e o rascunho é construído a partir daí. Não há transcrição de áudio envolvida. O terapeuta vê tudo antes de qualquer nota ser assinada.",
         },
       ],
     },
@@ -532,7 +532,7 @@ export const pt: Dictionary = {
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que pretendem prática estruturada entre sessões e notas redigidas por IA. ",
       bodyLink: "Peça acesso aqui",
-      bodySuffix: " para ver se se adequa à sua prática.",
+      bodySuffix: " para ver se se adequa à sua clínica.",
     },
   },
   forSlps: {
@@ -543,12 +543,12 @@ export const pt: Dictionary = {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Mais terapia entre sessões.",
       headlineLine2: "Menos tempo em documentação.",
-      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para si rever, para entrar na próxima sessão já a saber como foi a semana.",
+      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para si rever. Saberá como correu a semana antes de o paciente se sentar.",
     },
     documentation: {
       eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas para si rever.",
-      body: "Após uma sessão, a UpSpeech transforma-a num rascunho de relatório estruturado. O clínico revê, edita e valida. Mantém a palavra clínica final; deixa de começar de uma página em branco.",
+      body: "Após uma sessão, a UpSpeech redige o relatório. Edita-o e assina-o, sem começar de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
@@ -566,14 +566,14 @@ export const pt: Dictionary = {
         },
         {
           title: "Acompanha o progresso",
-          copy: "Sequências, pontuações de técnica e tendências chegam até si, para que a próxima sessão comece mais avançada.",
+          copy: "Sequências, regularidade da prática e tendências chegam até si entre consultas.",
         },
       ],
     },
     stutterPositive: {
       eyebrow: "A nossa abordagem",
       headline: "Gaguez positiva, desde a conceção.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é sempre encorajadora e nunca envergonha o paciente pela forma como fala.",
+      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",
@@ -594,14 +594,14 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Traga a UpSpeech para a sua prática.",
+      headline: "Traga a UpSpeech para a sua clínica.",
       bodyPrefix: "A UpSpeech funciona através da sua clínica. ",
       bodyLink: "Peça acesso aqui",
       bodySuffix: ".",
     },
   },
   consent: {
-    title: "A sua privacidade é importante",
+    title: "Cookies neste site",
     description:
       "Usamos cookies para melhorar a sua experiência e analisar a utilização do site. Ao aceitar, concorda com a utilização de cookies de análise. Pode recusar se preferir.",
     learnMore: "Saber mais sobre cookies",
