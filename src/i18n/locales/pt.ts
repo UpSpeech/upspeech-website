@@ -48,7 +48,7 @@ export const pt: Dictionary = {
   },
   techniquesIndex: {
     title: "Técnicas de Terapia da Fala",
-    subtitle: "Explore técnicas estabelecidas para a terapia da gaguez",
+    subtitle: "Técnicas estabelecidas para a terapia da gaguez",
     seoDescription:
       "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
@@ -113,7 +113,7 @@ export const pt: Dictionary = {
       eyebrow: "Na consulta",
       headlineLine1: "O clínico conduz a sessão.",
       headlineLine2: "A UpSpeech trata do resto.",
-      body: "Cada sessão dá origem a um rascunho de relatório, e vê o que os pacientes praticaram entre consultas.",
+      body: "Cada sessão dá origem a um rascunho de relatório, e pode ver o que os pacientes praticaram entre consultas.",
       imageAlt:
         "Vista do terapeuta na UpSpeech do progresso de um paciente: estatísticas de atividade, marco do percurso de aprendizagem e passo atual",
       points: [
@@ -182,7 +182,7 @@ export const pt: Dictionary = {
         {
           verb: "aprova",
           title: "O clínico edita e aprova.",
-          body: "Nada chega ao paciente sem que o terapeuta reveja e assine. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
+          body: "Essas correções treinam o modelo e melhoram o rascunho seguinte.",
         },
         {
           verb: "estrutura",
@@ -244,7 +244,7 @@ export const pt: Dictionary = {
         {
           label: "Autorrelatos periódicos",
           title: "Autorrelatos que o terapeuta revê.",
-          copy: "Um breve autorrelato de gaguez é captado a intervalos. O clínico vê como o paciente descreve a sua própria experiência ao longo do tempo.",
+          copy: "Um breve autorrelato de gaguez é captado a intervalos. O clínico pode ver como o paciente descreve a sua própria experiência ao longo do tempo.",
           imageAlt:
             "Gráfico UpSpeech das respostas de gaguez autorrelatadas de um paciente ao longo de várias semanas",
         },
@@ -308,7 +308,7 @@ export const pt: Dictionary = {
     },
     cta: {
       headline: "Pedir acesso antecipado.",
-      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua prática e entraremos em contacto.",
+      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua clínica e entraremos em contacto.",
       nameLabel: "Nome Completo *",
       namePlaceholder: "Introduza o seu nome",
       nameError: "Por favor, introduza o seu nome.",
@@ -366,14 +366,14 @@ export const pt: Dictionary = {
         },
         {
           title: "O seu terapeuta vê o seu progresso",
-          copy: "Acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
+          copy: "O seu terapeuta acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
         },
       ],
     },
     app: {
       eyebrow: "A app",
       headline: "O seu plano, no seu bolso.",
-      body: "Abre a app e o exercício do dia está lá à sua espera.",
+      body: "Abra a app e o exercício do dia está lá à sua espera.",
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
@@ -431,7 +431,7 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada, com esse objetivo. Quando reduzir a evitação é o que mais importa, a gaguez voluntária e a dessensibilização são as técnicas usadas em terapia para esse fim. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir a evitação é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
       },
       {
         heading: "Ser ouvido nos seus próprios termos",
@@ -471,7 +471,7 @@ export const pt: Dictionary = {
     closing: {
       headline: "Trabalhe com um clínico que entende os seus objetivos.",
       bodyPrefix:
-        "A UpSpeech é utilizada por terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
+        "A UpSpeech é utilizada através de terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -509,7 +509,7 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes de clínicos.",
       items: [
         {
-          q: "Quanto tempo podem os terapeutas poupar realisticamente na documentação?",
+          q: "Quanto tempo podem os terapeutas da fala poupar realisticamente na documentação?",
           a: "Depende do seu fluxo de trabalho atual e do tempo que gasta em notas. Um rascunho tira do caminho a página em branco, que é normalmente a parte mais lenta de escrever uma nota. Quanto poupa varia conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
         },
         {
@@ -532,7 +532,7 @@ export const pt: Dictionary = {
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que pretendem prática estruturada entre sessões e notas redigidas por IA. ",
       bodyLink: "Peça acesso aqui",
-      bodySuffix: " para ver se se adequa à sua prática.",
+      bodySuffix: " para ver se se adequa à sua clínica.",
     },
   },
   forSlps: {
@@ -543,7 +543,7 @@ export const pt: Dictionary = {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Mais terapia entre sessões.",
       headlineLine2: "Menos tempo em documentação.",
-      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para si rever. Terá lido a semana antes de o paciente se sentar.",
+      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para si rever. Saberá como correu a semana antes de o paciente se sentar.",
     },
     documentation: {
       eyebrow: "Documentação",
@@ -573,7 +573,7 @@ export const pt: Dictionary = {
     stutterPositive: {
       eyebrow: "A nossa abordagem",
       headline: "Gaguez positiva, desde a conceção.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para ser encorajadora em vez de corretiva quanto à forma como a pessoa fala.",
+      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",
@@ -594,7 +594,7 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Traga a UpSpeech para a sua prática.",
+      headline: "Traga a UpSpeech para a sua clínica.",
       bodyPrefix: "A UpSpeech funciona através da sua clínica. ",
       bodyLink: "Peça acesso aqui",
       bodySuffix: ".",

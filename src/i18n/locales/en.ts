@@ -46,7 +46,7 @@ export const en = {
   },
   techniquesIndex: {
     title: "Speech Therapy Techniques",
-    subtitle: "Established techniques used in stuttering therapy",
+    subtitle: "Established techniques for stuttering therapy",
     seoDescription:
       "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     featured: "Featured",
@@ -70,13 +70,13 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Continuous support for speech therapy. Patients practise between sessions to a plan their therapist set, and session reports are drafted for the therapist to review and sign.",
+      "Continuous support for speech therapy. Patients practise between sessions, following a plan their therapist set, and session reports are drafted for the therapist to review and sign.",
     hero: {
       eyebrow: "For speech therapy clinics",
       headlineLine1: "Your therapy",
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
-      body: "Patients practise between sessions to a plan their therapist set. UpSpeech drafts the session reports; the therapist approves them.",
+      body: "Patients practise between sessions, following a plan their therapist set. UpSpeech drafts the session reports; the therapist approves them.",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
       videoAriaLabel:
@@ -179,7 +179,7 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician edits and approves it.",
-          body: "Nothing reaches a patient until the therapist reviews and signs it. Those corrections train the model and improve the next draft.",
+          body: "Those corrections train the model and improve the next draft.",
         },
         {
           verb: "structures",
@@ -428,7 +428,7 @@ export const en = {
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech towards that goal. Where reducing avoidance matters more, voluntary stuttering and desensitisation are the techniques used in therapy for that. Stutter-positive means those goals are the person's to set.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitisation. Stutter-positive means those goals are the person's to set.",
       },
       {
         heading: "Being heard on your own terms",
@@ -539,7 +539,7 @@ export const en = {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "More therapy between sessions.",
       headlineLine2: "Less time on notes.",
-      body: "UpSpeech gives your patients guided practice they actually do between appointments, and drafts your session notes for you to review. You will have read the week before the patient sits down.",
+      body: "UpSpeech gives your patients guided practice they actually do between appointments, and drafts your session notes for you to review. You will know how their week went before they sit down.",
     },
     documentation: {
       eyebrow: "Documentation",
@@ -569,7 +569,7 @@ export const en = {
     stutterPositive: {
       eyebrow: "Our approach",
       headline: "Stutter-positive by design.",
-      body: "The app is built around confidence and being heard. The practice is designed to be encouraging rather than corrective about how someone speaks.",
+      body: "The app is built around confidence and being heard. The practice is designed to encourage rather than correct.",
     },
     faq: {
       eyebrow: "Questions from clinicians",

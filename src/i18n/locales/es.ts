@@ -48,7 +48,7 @@ export const es: Dictionary = {
   },
   techniquesIndex: {
     title: "Técnicas de logopedia",
-    subtitle: "Explora técnicas establecidas para la terapia de la tartamudez",
+    subtitle: "Técnicas establecidas para la terapia de la tartamudez",
     seoDescription:
       "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
@@ -73,13 +73,13 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo a la terapia del habla. Los pacientes practican entre sesiones siguiendo el plan que fijó su terapeuta, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
+      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que fijó su terapeuta, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
-      body: "Los pacientes practican entre sesiones siguiendo el plan que fijó su terapeuta. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
+      body: "Los pacientes practican entre sesiones, siguiendo el plan que fijó su terapeuta. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
       videoAriaLabel:
@@ -182,7 +182,7 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El clínico lo edita y lo aprueba.",
-          body: "Nada llega al paciente sin que el terapeuta lo revise y lo firme. Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
+          body: "Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
         },
         {
           verb: "estructura",
@@ -271,11 +271,11 @@ export const es: Dictionary = {
       headlineLine1: "Práctica clínica e ingeniería de IA,",
       headlineLine2: "en el mismo equipo.",
       body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas en ejercicio que usan la plataforma con pacientes.",
-      partnersLabel: "Socios · Inversores · Reconocimiento",
+      partnersLabel: "Socios · Apoyos · Reconocimiento",
       partnersTagline: "Con quién trabajamos",
       partnerContext: {
         speechcare: "Socio de codesarrollo",
-        elevenlabs: "Beca de infraestructura de IA",
+        elevenlabs: "Subvención de infraestructura de IA",
         lispolis: "Programa de aceleración",
         unicorn: "Startup Más Prometedora · Lisboa",
         innocatalyst: "Programa de innovación en salud",
@@ -345,7 +345,7 @@ export const es: Dictionary = {
   forPatients: {
     seoTitle: "Para Pacientes",
     seoDescription:
-      "Cómo los pacientes practican logopedia entre sesiones con UpSpeech, guiados por su logopeda.",
+      "Cómo los pacientes practican la terapia del habla entre sesiones con UpSpeech, guiados por su logopeda.",
     intro: {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
@@ -431,7 +431,7 @@ export const es: Dictionary = {
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La terapia del habla tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de modelado de la fluidez, como el habla prolongada, con ese objetivo. Cuando lo que más importa es reducir la evitación, la tartamudez voluntaria y la desensibilización son las técnicas que se usan en terapia para eso. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de modelado de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -479,12 +479,12 @@ export const es: Dictionary = {
   reducingDocumentationTime: {
     seoTitle: "Cómo los Logopedas Reducen el Tiempo en Notas de Sesión",
     seoDescription:
-      "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en la terapia del habla, con borradores estructurados que apoyan el juicio clínico.",
+      "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en logopedia, con borradores estructurados que apoyan el juicio clínico.",
     intro: {
       eyebrow: "Para logopedas",
       headlineLine1: "Las notas empiezan",
       headlineLine2: "ya escritas.",
-      body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en la terapia del habla, incluyendo dónde encajan los borradores estructurados.",
+      body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en logopedia, incluyendo dónde encajan los borradores estructurados.",
     },
     sections: [
       {
@@ -492,11 +492,11 @@ export const es: Dictionary = {
         body: "Después de una sesión, sabes lo que ocurrió. Escribirlo es la parte que lleva tiempo, porque empiezas desde una página vacía con el razonamiento clínico ya hecho. Con una agenda llena eso se acumula, y suele salir del tiempo de preparación o del final de la jornada.",
       },
       {
-        heading: "Borradores estructurados que revisa y edita",
+        heading: "Borradores estructurados que revisas y editas",
         body: "Una forma de abordarla es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
       },
       {
-        heading: "Qué debe incluir una buena nota de terapia del habla",
+        heading: "Qué debe incluir una buena nota de logopedia",
         body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA.",
       },
       {
@@ -543,7 +543,7 @@ export const es: Dictionary = {
       eyebrow: "Para logopedas",
       headlineLine1: "Más terapia entre sesiones.",
       headlineLine2: "Menos tiempo en documentación.",
-      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Habrás leído cómo fue la semana antes de que el paciente se siente.",
+      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que se siente.",
     },
     documentation: {
       eyebrow: "Documentación",
@@ -573,7 +573,7 @@ export const es: Dictionary = {
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
       headline: "Tartamudez positiva, desde el diseño.",
-      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica está diseñada para ser motivadora en lugar de correctiva respecto a la forma de hablar de cada persona.",
+      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
     },
     faq: {
       eyebrow: "Preguntas de clínicos",
