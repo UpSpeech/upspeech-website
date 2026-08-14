@@ -17,7 +17,7 @@ export const en = {
     mobileMenuLabel: "Navigation",
   },
   footer: {
-    tagline: "Guiding voices with care and tech",
+    tagline: "Therapy that continues between sessions",
     product: "Product",
     legal: "Legal",
     company: "Company",
@@ -46,7 +46,7 @@ export const en = {
   },
   techniquesIndex: {
     title: "Speech Therapy Techniques",
-    subtitle: "Explore established techniques for stuttering therapy",
+    subtitle: "Established techniques used in stuttering therapy",
     seoDescription:
       "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     featured: "Featured",
@@ -70,13 +70,13 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.",
+      "Speech therapy that continues between sessions. Patients practise to a plan their therapist set, session reports are drafted for review, and therapists approve everything.",
     hero: {
       eyebrow: "For speech therapy clinics",
       headlineLine1: "Therapy that",
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
-      body: "Structured practice between sessions. Session reports drafted automatically. Therapists keep the final say.",
+      body: "Patients practise between sessions to a plan their therapist set. UpSpeech drafts the session reports; the therapist approves them.",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
       videoAriaLabel:
@@ -103,14 +103,14 @@ export const en = {
       session: "Session",
       practice: "Practice",
       plusPractice: "+ Practice",
-      footerPrefix: "Continuous support for the patient,",
-      footerEmphasis: "without more work for the clinician.",
+      footerPrefix: "The patient keeps their support every day,",
+      footerEmphasis: "and it adds no work for the clinician.",
     },
     therapist: {
       eyebrow: "In the room",
-      headlineLine1: "The session belongs to the clinician.",
-      headlineLine2: "The platform handles the rest.",
-      body: "Reports drafted automatically from each session. Patient activity visible outside the appointment. Therapists arrive prepared, with the context they need.",
+      headlineLine1: "The clinician runs the session.",
+      headlineLine2: "UpSpeech takes it from there.",
+      body: "Each session becomes a draft report. You can see how patients practised between appointments, so you walk in already knowing where they are.",
       imageAlt:
         "UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step",
       points: [
@@ -120,11 +120,11 @@ export const en = {
         },
         {
           label: "Reports, drafted",
-          copy: "Session data becomes a structured draft report for the therapist to review and approve.",
+          copy: "Each session's data becomes a draft report you review and approve.",
         },
         {
           label: "Therapist sign-off",
-          copy: "Every report and treatment plan is a draft until the therapist reviews and signs it.",
+          copy: "Every report and treatment plan stays a draft until you review and sign it.",
         },
       ],
     },
@@ -132,13 +132,13 @@ export const en = {
       eyebrow: "Outside the room",
       headlineLine1: "Structured practice between visits,",
       headlineLine2: "guided by the therapist throughout.",
-      body: "Each patient receives a plan from their clinician, with exercises matched to their stage of treatment. Guided exercises support practice between visits.",
+      body: "Each patient gets a plan from their clinician, with exercises matched to where they are in treatment. They practise between visits, guided step by step.",
       imageAlt:
         "UpSpeech patient dashboard with daily practice exercises and progress",
       points: [
         {
           label: "A plan, set by the therapist",
-          copy: "Each step is selected by the clinician. Patients see only what they should practise.",
+          copy: "The clinician chooses each step. Patients see only what they should practise.",
         },
         {
           label: "Every attempt, captured",
@@ -146,14 +146,14 @@ export const en = {
         },
         {
           label: "Progress, recorded",
-          copy: "Streaks and progress over time keep patients engaged. The therapist sees the activity behind them.",
+          copy: "Streaks and progress over time keep patients going, and the therapist sees the activity behind them.",
         },
       ],
     },
     mobile: {
       eyebrow: "In the patient's pocket",
       headline: "The practice happens in the app, between sessions.",
-      body: "Patients follow the plan their therapist set, practise with guided exercises, and check in from their phone. Their therapist follows along.",
+      body: "Patients work through the plan their therapist set, right from their phone, and keep it going between sessions. The therapist follows along.",
       screenshots: [
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
@@ -174,11 +174,11 @@ export const en = {
         {
           verb: "drafts",
           title: "AI drafts the session report.",
-          body: "Session recording and notes turn into a structured draft.",
+          body: "The session recording and notes turn into a structured draft.",
         },
         {
           verb: "approves",
-          title: "The clinician reads, edits, approves.",
+          title: "The clinician edits and approves it.",
           body: "Nothing leaves the platform without therapist review. Those corrections train the model and improve the next draft.",
         },
         {
@@ -189,17 +189,17 @@ export const en = {
         {
           verb: "calibrates",
           title: "The clinician calibrates it.",
-          body: "The therapist approves, adjusts difficulty, and swaps techniques. No plan is assigned without therapist review.",
+          body: "The therapist adjusts the difficulty and swaps techniques where needed. No plan goes out without their review.",
         },
         {
           verb: "listens",
           title: "AI helps between sessions.",
-          body: "Each practice attempt is captured and organised, building a record of activity between sessions.",
+          body: "Each practice attempt is captured and organised into a record the therapist can look back on.",
         },
         {
           verb: "decides",
           title: "The clinician decides what's next.",
-          body: "Aggregated signal appears on the therapist's dashboard. They select the next protocol with the data at hand.",
+          body: "The dashboard pulls the activity together, so the therapist chooses the next step with the full picture in front of them.",
         },
       ],
     },
@@ -213,14 +213,14 @@ export const en = {
       headlineLine1: "Specific tools.",
       headlineLine2: "For clinicians and researchers.",
       intro:
-        "The platform is built around a structured learning path, from identifying stuttering moments through to real-world generalisation.",
+        "The platform is built around a structured learning path, from identifying stuttering moments through to carrying the work into real conversations.",
       forClinicians: "For clinicians",
       forResearchers: "For researchers",
       annotationEyebrow: "Annotation tool",
       annotationTitle:
         "The tool clinicians and researchers use to label stuttering moments.",
       annotationCopy:
-        "Frame-by-frame tagging of stuttering moments: core behaviour, secondary behaviours, tension level. Standard taxonomy. The same tool builds our dataset and supports research partnerships.",
+        "Clinicians tag stuttering moments frame by frame with a standard taxonomy, from core behaviours to secondary behaviours and tension level. The same tool builds our dataset and backs our research partnerships.",
       annotationImageAlt:
         "UpSpeech annotation tool with audio waveform, video review, and frame-by-frame tagging by speech-language pathologists",
       features: [
@@ -241,7 +241,7 @@ export const en = {
         {
           label: "Self-report check-ins",
           title: "Self-reports the therapist reviews.",
-          copy: "A short stuttering self-report is captured at intervals, so the therapist can review how the patient describes their experience across therapy.",
+          copy: "A short stuttering self-report is captured at intervals, so the therapist can see how the patient describes their own experience over time.",
           imageAlt:
             "UpSpeech chart of a patient's self-reported stuttering responses over several weeks",
         },
@@ -251,7 +251,7 @@ export const en = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Trained on",
       headlineLine2: "clinician-annotated data.",
-      body: "We built an annotation tool in-house, used by practising speech-language pathologists to tag disfluencies, tensions, and blocks frame by frame. The dataset is expert-labelled from the start.",
+      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies and blocks frame by frame. Every label in the dataset comes from a clinician.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
       tags: [
@@ -267,7 +267,7 @@ export const en = {
       eyebrow: "Foundations",
       headlineLine1: "Clinical practice and AI engineering,",
       headlineLine2: "in the same team.",
-      body: "Clinicians and engineers work side by side. Product decisions are reviewed by the practising speech-language pathologists who use the platform with patients.",
+      body: "Clinicians and engineers work side by side. The speech-language pathologists who use the platform with patients review the product decisions we make.",
       partnersLabel: "Partners · Backers · Recognition",
       partnersTagline: "Building alongside the people who know the work.",
       partnerContext: {
@@ -281,7 +281,7 @@ export const en = {
     },
     security: {
       eyebrow: "Security and data",
-      headline: "Patient data, handled with care.",
+      headline: "How patient data is handled.",
       body: "Clinics trust us with sensitive recordings. We treat that data the way a clinic would, and a therapist always has the final say on what the AI produces.",
       points: [
         {
@@ -347,7 +347,7 @@ export const en = {
       eyebrow: "For patients",
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
-      body: "UpSpeech is how you keep practising the work you do with your speech therapist, every day, not just in the appointment. Your therapist sets the plan; you practise in the app; they follow your progress.",
+      body: "UpSpeech is how you keep practising the work you do with your speech therapist between appointments. Your therapist sets the plan, you practise in the app, and they follow how it's going.",
     },
     howItWorks: {
       eyebrow: "How it works for you",
@@ -370,7 +370,7 @@ export const en = {
     app: {
       eyebrow: "The app",
       headline: "Your plan, in your pocket.",
-      body: "Open the app to see today's exercise, work through it, and keep a steady routine between sessions.",
+      body: "Each day the app shows your exercise, so it's easy to keep the routine going between sessions.",
       screenshots: [
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
         "UpSpeech mobile app learning path showing the steps the therapist set",
@@ -423,20 +423,20 @@ export const en = {
       eyebrow: "Philosophy",
       headlineLine1: "What does",
       headlineLine2: "stutter-positive mean?",
-      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It supports people who stutter to be heard on their own terms, with goals set by the person rather than by a fixed idea of how speech should sound.",
+      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It backs people who stutter to be heard on their own terms, with goals they set themselves rather than a fixed idea of how speech should sound.",
     },
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Some people who stutter do want smoother speech, and techniques like voluntary stuttering or prolonged speech can help. Others find that reducing avoidance and building confidence matters more. Stutter-positive means the goals come from the person, not from an external norm.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Some people who stutter do want smoother speech, and techniques like voluntary stuttering or prolonged speech can help. Others find that reducing avoidance and building confidence matters more. Stutter-positive means those goals are the person's to set.",
       },
       {
         heading: "Being heard on your own terms",
-        body: "People who stutter often deal with more than disfluency: avoidance, anticipation, and the effort of managing how others react. Stutter-positive therapy addresses these alongside any technique practice, so a good session is measured by whether the person communicated what they meant and felt confident doing it.",
+        body: "People who stutter often deal with more than disfluency. There's the avoidance, the anticipation, the effort of managing how others react. Stutter-positive therapy takes those on alongside any technique practice, and counts a session as good when the person said what they meant and felt heard doing it.",
       },
       {
         heading: "How UpSpeech reflects this",
-        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The learning path and exercises are set by the clinician; the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. The platform does not assume fluency is the destination.",
+        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The clinician sets the learning path and exercises; the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. Fluency is one possible goal here, never the assumed one.",
       },
       {
         heading: "A note on language",
@@ -479,26 +479,26 @@ export const en = {
       "A practical guide for speech-language pathologists on reducing documentation time in speech therapy, with structured drafts that support clinical judgement.",
     intro: {
       eyebrow: "For speech-language pathologists",
-      headlineLine1: "Less time on notes,",
-      headlineLine2: "more time on therapy.",
+      headlineLine1: "The notes start",
+      headlineLine2: "already written.",
       body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy, including where structured drafts fit in.",
     },
     sections: [
       {
         heading: "The blank-page problem",
-        body: "After a session, you know what happened. Writing it down takes longer than it should. The hold-up is the blank page itself, since the clinical thinking is already done. Many SLPs say documentation is the admin task most likely to eat into preparation time and stretch the working day. That is a structural problem, and the fix is a better starting point.",
+        body: "After a session, you know what happened. Writing it down takes longer than it should. The hold-up is the blank page, because the clinical thinking is already done. Many SLPs say documentation is the admin task most likely to eat into preparation time and stretch the working day. The thinking's done. It's the writing that drags.",
       },
       {
         heading: "Structured drafts you review and edit",
-        body: "One way to address the blank page is a structured draft generated from the session's data: what the patient practised, how they progressed, and what the therapist observed. A draft gives you something to react to rather than create from scratch. You read it, adjust what needs adjusting, and sign off. You keep the clinical judgement, and the draft takes care of the structure.",
+        body: "One fix is a structured draft built from the session's data: what the patient practised, how it went, what you observed. Now you're reacting to something instead of facing an empty page. You edit what needs editing and sign it off, and the clinical judgement stays yours the whole way through.",
       },
       {
         heading: "What belongs in a good speech therapy note",
-        body: "A useful session note typically covers the technique practised, the patient's performance relative to their goals, any observations about avoidance or confidence, and the next steps. Structured templates for these elements make drafting faster whether or not you use AI assistance. The more consistently you capture the same data, the easier the note becomes.",
+        body: "A useful session note typically covers the technique practised, the patient's performance against their goals, any observations about avoidance or confidence, and the next steps. Structured templates for these elements make drafting faster whether or not you use AI assistance. Capturing the same fields each time makes each note quicker to write.",
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from the patient's practice between sessions: which exercises they completed, how they performed, and where they had difficulty. That data feeds a draft session note that the therapist reviews before signing off. The draft is a starting point, not a final document. The therapist's review and signature are required for every note.",
+        body: "UpSpeech captures structured data from practice between sessions: the exercises the patient completed, how they performed, where they had difficulty. That data feeds a draft session note the therapist reviews before signing off. Every note needs the therapist's review and signature before it is used.",
       },
     ],
     faq: {
@@ -511,7 +511,7 @@ export const en = {
         },
         {
           q: "Does AI-assisted note drafting replace clinical observation?",
-          a: "No. A draft note is based on structured session data. Clinical observation, the judgements a therapist makes in the room, is what the therapist adds. The draft covers the structure so the clinician can focus on the expertise.",
+          a: "No. A draft note is based on structured session data. The judgements a therapist makes in the room are what the therapist adds. The draft handles the write-up; the clinical read is yours.",
         },
         {
           q: "Is it clinically appropriate to use AI-drafted notes?",
@@ -519,7 +519,7 @@ export const en = {
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Patients practise assigned exercises in the app between sessions. The app captures completion and performance data. That structured data, not audio transcription, is what informs the draft note. The therapist sees all of it before any note is signed.",
+          a: "Patients practise assigned exercises in the app between sessions. The app captures completion and performance data. The draft is built from that structured data rather than any audio transcription. The therapist sees all of it before any note is signed.",
         },
       ],
     },
@@ -544,7 +544,7 @@ export const en = {
     documentation: {
       eyebrow: "Documentation",
       headline: "Session notes, drafted for you to review.",
-      body: "After a session, UpSpeech turns it into a structured draft report. You review, edit, and sign off. You keep clinical judgement; you just stop starting from a blank page.",
+      body: "After a session, UpSpeech drafts the report. You edit it and approve it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },
@@ -562,14 +562,14 @@ export const en = {
         },
         {
           title: "You see the progress",
-          copy: "Streaks, technique scores, and trends come back to you, so the next session starts further ahead.",
+          copy: "Streaks, technique scores and trends come back to you, so you're not starting the next session from scratch.",
         },
       ],
     },
     stutterPositive: {
       eyebrow: "Our approach",
       headline: "Stutter-positive by design.",
-      body: "The goal in the app is confidence and being heard. Practice is always encouraging, and never shames the patient for how they speak.",
+      body: "The app is built around confidence and being heard. The practice stays encouraging and never makes a patient feel judged for how they speak.",
     },
     faq: {
       eyebrow: "Questions from clinicians",
@@ -577,7 +577,7 @@ export const en = {
       items: [
         {
           q: "Does UpSpeech write my reports for me?",
-          a: "It drafts a structured report from the session for you to review and edit. You stay the clinician of record; it removes the blank-page work.",
+          a: "It drafts a structured report from the session for you to review and edit. You stay the clinician of record, and it takes the blank-page work off your plate.",
         },
         {
           q: "What do my patients actually do?",
@@ -597,7 +597,7 @@ export const en = {
     },
   },
   consent: {
-    title: "Your Privacy Matters",
+    title: "Cookies on this site",
     description:
       "We use cookies to improve your experience and analyse site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
     learnMore: "Learn more about cookies",

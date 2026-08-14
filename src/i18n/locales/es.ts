@@ -19,7 +19,7 @@ export const es: Dictionary = {
     mobileMenuLabel: "Navegación",
   },
   footer: {
-    tagline: "Acompañamos voces con cuidado y tecnología",
+    tagline: "Terapia que continúa entre sesiones",
     product: "Producto",
     legal: "Legal",
     company: "Empresa",
@@ -73,13 +73,13 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo para la terapia del habla. Práctica estructurada entre sesiones, informes de sesión redactados por IA. Los terapeutas, siempre al tanto.",
+      "Terapia del habla que continúa entre sesiones. Los pacientes practican siguiendo el plan que fijó su terapeuta, los informes de sesión se redactan para que el terapeuta los revise, y el terapeuta lo aprueba todo.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "La terapia",
       headlineLine2: "que sigue",
       headlineLine3: "entre sesiones.",
-      body: "Práctica estructurada entre sesiones. Informes de sesión redactados automáticamente. Los terapeutas tienen la última palabra.",
+      body: "Los pacientes practican entre sesiones siguiendo el plan que fijó su terapeuta. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
       videoAriaLabel:
@@ -106,14 +106,14 @@ export const es: Dictionary = {
       session: "Sesión",
       practice: "Práctica",
       plusPractice: "+ Práctica",
-      footerPrefix: "Apoyo continuo para el paciente,",
-      footerEmphasis: "sin más trabajo para el clínico.",
+      footerPrefix: "El paciente mantiene su apoyo cada día,",
+      footerEmphasis: "y no supone más trabajo para el clínico.",
     },
     therapist: {
       eyebrow: "En la consulta",
-      headlineLine1: "La sesión pertenece al clínico.",
-      headlineLine2: "La plataforma se encarga del resto.",
-      body: "Informes redactados automáticamente a partir de cada sesión. Actividad del paciente visible fuera de la consulta. Los terapeutas llegan preparados, con el contexto que necesitan.",
+      headlineLine1: "El clínico dirige la sesión.",
+      headlineLine2: "UpSpeech se encarga del resto.",
+      body: "Cada sesión se convierte en un borrador de informe. Puedes ver cómo han practicado tus pacientes entre citas, así que llegas sabiendo ya en qué punto están.",
       imageAlt:
         "Vista del terapeuta en UpSpeech del progreso de un paciente: estadísticas de actividad, hito de la ruta de aprendizaje y paso actual",
       points: [
@@ -123,11 +123,11 @@ export const es: Dictionary = {
         },
         {
           label: "Informes redactados",
-          copy: "Los datos de la sesión se convierten en un borrador de informe estructurado para que el terapeuta lo revise y apruebe.",
+          copy: "Los datos de cada sesión se convierten en un borrador de informe que revisas y apruebas.",
         },
         {
           label: "Validación del terapeuta",
-          copy: "Cada informe y plan de tratamiento es un borrador hasta que el terapeuta lo revisa y lo firma.",
+          copy: "Cada informe y plan de tratamiento es un borrador hasta que lo revisas y lo firmas.",
         },
       ],
     },
@@ -135,7 +135,7 @@ export const es: Dictionary = {
       eyebrow: "Fuera de la consulta",
       headlineLine1: "Práctica estructurada entre visitas,",
       headlineLine2: "guiada por el terapeuta en todo momento.",
-      body: "Cada paciente recibe un plan de su clínico, con ejercicios adaptados a su fase de tratamiento. Los ejercicios guiados apoyan la práctica entre visitas.",
+      body: "Cada paciente recibe un plan de su clínico, con ejercicios adaptados a su fase de tratamiento. Practican entre visitas, guiados paso a paso.",
       imageAlt:
         "Panel del paciente en UpSpeech con ejercicios de práctica diarios y progreso",
       points: [
@@ -156,7 +156,7 @@ export const es: Dictionary = {
     mobile: {
       eyebrow: "En el bolsillo del paciente",
       headline: "La práctica ocurre en la app, entre sesiones.",
-      body: "Los pacientes siguen el plan que definió su terapeuta, practican con ejercicios guiados y se registran desde el móvil. Su terapeuta los acompaña.",
+      body: "Los pacientes siguen desde el móvil el plan que fijó su terapeuta y lo mantienen entre sesiones. Su terapeuta los acompaña.",
       screenshots: [
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
@@ -181,7 +181,7 @@ export const es: Dictionary = {
         },
         {
           verb: "aprueba",
-          title: "El clínico lee, edita, aprueba.",
+          title: "El clínico lo edita y lo aprueba.",
           body: "Nada sale de la plataforma sin revisión del terapeuta. Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
         },
         {
@@ -192,17 +192,17 @@ export const es: Dictionary = {
         {
           verb: "calibra",
           title: "El clínico lo calibra.",
-          body: "El terapeuta aprueba, ajusta la dificultad e intercambia técnicas. Ningún plan se asigna sin revisión del terapeuta.",
+          body: "El terapeuta ajusta la dificultad e intercambia técnicas cuando hace falta. Ningún plan se asigna sin su revisión.",
         },
         {
           verb: "escucha",
           title: "La IA ayuda entre sesiones.",
-          body: "Cada intento de práctica se captura y se organiza, construyendo un registro de actividad entre sesiones.",
+          body: "Cada intento de práctica se captura y se organiza en un registro que el terapeuta puede consultar más tarde.",
         },
         {
           verb: "decide",
           title: "El clínico decide qué sigue.",
-          body: "La señal agregada aparece en el panel del terapeuta. Este selecciona el siguiente protocolo con los datos a mano.",
+          body: "El panel reúne toda la actividad, así que el terapeuta elige el siguiente paso con el cuadro completo delante.",
         },
       ],
     },
@@ -216,14 +216,14 @@ export const es: Dictionary = {
       headlineLine1: "Herramientas específicas.",
       headlineLine2: "Para clínicos e investigadores.",
       intro:
-        "La plataforma se construye en torno a una ruta de aprendizaje estructurada, desde la identificación de momentos de tartamudez hasta la generalización en el mundo real.",
+        "La plataforma se construye en torno a una ruta de aprendizaje estructurada, desde identificar momentos de tartamudez hasta llevar el trabajo a conversaciones reales.",
       forClinicians: "Para clínicos",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
         "La herramienta que clínicos e investigadores usan para etiquetar momentos de tartamudez.",
       annotationCopy:
-        "Etiquetado fotograma a fotograma de momentos de tartamudez: conducta principal, conductas secundarias, nivel de tensión. Taxonomía estándar. La misma herramienta construye nuestro conjunto de datos y respalda colaboraciones de investigación.",
+        "Los clínicos etiquetan momentos de tartamudez fotograma a fotograma con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y respalda nuestras colaboraciones de investigación.",
       annotationImageAlt:
         "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y etiquetado fotograma a fotograma por logopedas",
       features: [
@@ -254,7 +254,7 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por clínicos.",
-      body: "Construimos una herramienta de anotación internamente, usada por logopedas en ejercicio para etiquetar disfluencias, tensiones y bloqueos fotograma a fotograma. El conjunto de datos está etiquetado por expertos desde el principio.",
+      body: "Construimos nuestra propia herramienta de anotación, y logopedas en ejercicio la usan para etiquetar disfluencias y bloqueos fotograma a fotograma. Cada etiqueta del conjunto de datos viene de un clínico.",
       videoAriaLabel:
         "Herramienta de anotación de UpSpeech usada por clínicos para etiquetar disfluencias fotograma a fotograma",
       tags: [
@@ -284,7 +284,7 @@ export const es: Dictionary = {
     },
     security: {
       eyebrow: "Seguridad y datos",
-      headline: "Datos de los pacientes, tratados con cuidado.",
+      headline: "Cómo se tratan los datos de los pacientes.",
       body: "Las clínicas nos confían grabaciones sensibles. Tratamos esos datos como lo haría una clínica, y un terapeuta siempre tiene la última palabra sobre lo que produce la IA.",
       points: [
         {
@@ -350,7 +350,7 @@ export const es: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
-      body: "UpSpeech es la forma de seguir practicando el trabajo que haces con tu logopeda, cada día, no solo en la consulta. Tu terapeuta define el plan; tú practicas en la app; tu terapeuta sigue tu progreso.",
+      body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan, tú practicas en la app y tu terapeuta ve cómo va todo.",
     },
     howItWorks: {
       eyebrow: "Cómo funciona para ti",
@@ -373,7 +373,7 @@ export const es: Dictionary = {
     app: {
       eyebrow: "La app",
       headline: "Tu plan, en tu bolsillo.",
-      body: "Abre la app para ver el ejercicio de hoy, realizarlo y mantener una rutina constante entre sesiones.",
+      body: "Cada día la app te muestra tu ejercicio, así que mantener la rutina entre sesiones es fácil.",
       screenshots: [
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
@@ -435,11 +435,11 @@ export const es: Dictionary = {
       },
       {
         heading: "Ser escuchado en tus propios términos",
-        body: "Las personas que tartamudean a menudo se enfrentan a más que la disfluencia: evitación, anticipación y el esfuerzo de gestionar las reacciones de los demás. La terapia de tartamudez positiva aborda estas cuestiones junto con la práctica de técnicas, de modo que una buena sesión se mide por si la persona comunicó lo que quería decir y se sintió segura al hacerlo.",
+        body: "Las personas que tartamudean a menudo se enfrentan a más que la disfluencia: evitación, anticipación y el esfuerzo de gestionar las reacciones de los demás. La terapia de tartamudez positiva aborda estas cuestiones junto con la práctica de técnicas, de modo que una buena sesión se mide por si la persona dijo lo que quería decir y se sintió escuchada al hacerlo.",
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
-        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el clínico; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. La plataforma no asume que la fluidez es el destino.",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el clínico; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. La fluidez es aquí uno de los objetivos posibles, nunca el que se da por hecho.",
       },
       {
         heading: "Una nota sobre el lenguaje",
@@ -482,26 +482,26 @@ export const es: Dictionary = {
       "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en la terapia del habla, con borradores estructurados que apoyan el juicio clínico.",
     intro: {
       eyebrow: "Para logopedas",
-      headlineLine1: "Menos tiempo en notas,",
-      headlineLine2: "más tiempo en terapia.",
+      headlineLine1: "Las notas empiezan",
+      headlineLine2: "ya escritas.",
       body: "La documentación es parte de una buena práctica clínica, pero no debería comprimir el tiempo dedicado al trabajo en sí. Esta página cubre formas prácticas en que los logopedas reducen el tiempo dedicado a las notas de sesión en la terapia del habla, incluyendo dónde encajan los borradores estructurados.",
     },
     sections: [
       {
         heading: "El problema de la página en blanco",
-        body: "Después de una sesión, sabes lo que ocurrió. Escribirlo lleva más tiempo del necesario. El obstáculo es la propia página en blanco, ya que el razonamiento clínico ya está hecho. Muchos logopedas señalan que la documentación es la tarea administrativa que más tiende a consumir el tiempo de preparación y a alargar la jornada laboral. Es un problema estructural, y la solución pasa por tener un mejor punto de partida.",
+        body: "Después de una sesión, sabes lo que ocurrió. Escribirlo lleva más tiempo del necesario. El obstáculo es la página en blanco, porque el razonamiento clínico ya está hecho. Muchos logopedas señalan que la documentación es la tarea administrativa que más tiende a consumir el tiempo de preparación y a alargar la jornada. El razonamiento ya está hecho; lo que cuesta es escribirlo.",
       },
       {
         heading: "Borradores estructurados que revisa y edita",
-        body: "Una forma de abordar la página en blanco es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo progresó y qué observó el terapeuta. Un borrador te da algo a lo que reaccionar en lugar de crear desde cero. Lo lees, ajustas lo que necesita ajuste y firmas. El juicio clínico sigue siendo tuyo, y el borrador se encarga de la estructura.",
+        body: "Una forma de abordarla es un borrador estructurado generado a partir de los datos de la sesión: qué practicó el paciente, cómo fue y qué observaste. Ahora reaccionas a algo en lugar de enfrentarte a una página vacía. Editas lo que haga falta y lo firmas, y el juicio clínico sigue siendo tuyo de principio a fin.",
       },
       {
         heading: "Qué debe incluir una buena nota de terapia del habla",
-        body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Cuanto más consistentemente captures los mismos datos, más fácil será la nota.",
+        body: "Una nota de sesión útil cubre típicamente la técnica practicada, el rendimiento del paciente en relación con sus objetivos, observaciones sobre la evitación o la confianza, y los próximos pasos. Las plantillas estructuradas para estos elementos hacen la redacción más rápida, con o sin asistencia de IA. Capturar los mismos campos cada vez hace que cada nota se escriba más rápido.",
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech captura datos estructurados de la práctica del paciente entre sesiones: qué ejercicios completó, cómo rindió y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión que el terapeuta revisa antes de firmar. El borrador es un punto de partida, no un documento final. La revisión y firma del terapeuta son necesarias para cada nota.",
+        body: "UpSpeech captura datos estructurados de la práctica entre sesiones: qué ejercicios completó el paciente, cómo rindió y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión que el terapeuta revisa antes de firmar. Cada nota necesita la revisión y la firma del terapeuta antes de usarse.",
       },
     ],
     faq: {
@@ -514,7 +514,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
-          a: "No. Una nota borrador se basa en datos estructurados de la sesión. La observación clínica, los juicios que el terapeuta hace en la consulta, es lo que el terapeuta añade. El borrador se encarga de la estructura para que el clínico pueda centrarse en la experiencia.",
+          a: "No. Una nota borrador se basa en datos estructurados de la sesión. Los juicios que el terapeuta hace en la consulta son lo que el terapeuta añade. El borrador se encarga de la redacción; la lectura clínica es tuya.",
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
@@ -548,7 +548,7 @@ export const es: Dictionary = {
     documentation: {
       eyebrow: "Documentación",
       headline: "Notas de sesión, redactadas para que las revises.",
-      body: "Tras una sesión, UpSpeech la convierte en un borrador de informe estructurado. El clínico revisa, edita y firma. Mantienes el criterio clínico; dejas de empezar desde una página en blanco.",
+      body: "Tras una sesión, UpSpeech redacta el informe. Lo editas y lo apruebas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",
     },
@@ -573,7 +573,7 @@ export const es: Dictionary = {
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
       headline: "Tartamudez positiva, desde el diseño.",
-      body: "El objetivo en la app es la confianza y ser escuchado. La práctica es siempre motivadora y nunca avergüenza al paciente por su forma de hablar.",
+      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica es siempre motivadora y nunca hace que el paciente se sienta juzgado por su forma de hablar.",
     },
     faq: {
       eyebrow: "Preguntas de clínicos",
@@ -601,7 +601,7 @@ export const es: Dictionary = {
     },
   },
   consent: {
-    title: "Tu privacidad importa",
+    title: "Cookies en este sitio",
     description:
       "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Al aceptar, consientes el uso de cookies de análisis. Puedes rechazarlas si lo prefieres.",
     learnMore: "Más información sobre las cookies",

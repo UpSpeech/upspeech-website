@@ -19,7 +19,7 @@ export const pt: Dictionary = {
     mobileMenuLabel: "Navegação",
   },
   footer: {
-    tagline: "Guiar vozes com cuidado e tecnologia",
+    tagline: "Terapia que continua entre sessões",
     product: "Produto",
     legal: "Legal",
     company: "Empresa",
@@ -73,13 +73,13 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo para a terapia da fala. Prática estruturada entre sessões, relatórios de sessão redigidos por IA. Os terapeutas estão sempre a par.",
+      "Terapia da fala que continua entre sessões. Os pacientes praticam segundo um plano definido pelo terapeuta, os relatórios de sessão são redigidos para revisão, e o terapeuta aprova tudo.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A terapia",
       headlineLine2: "que continua",
       headlineLine3: "entre sessões.",
-      body: "Prática estruturada entre sessões. Relatórios de sessão redigidos automaticamente. Os terapeutas mantêm a palavra final.",
+      body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. A UpSpeech redige os relatórios de sessão; o terapeuta aprova-os.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
       videoAriaLabel:
@@ -106,14 +106,14 @@ export const pt: Dictionary = {
       session: "Sessão",
       practice: "Prática",
       plusPractice: "+ Prática",
-      footerPrefix: "Apoio contínuo para o paciente,",
-      footerEmphasis: "sem mais trabalho para o clínico.",
+      footerPrefix: "O paciente mantém o seu apoio todos os dias,",
+      footerEmphasis: "e não acrescenta trabalho para o clínico.",
     },
     therapist: {
       eyebrow: "Na consulta",
-      headlineLine1: "A sessão pertence ao clínico.",
-      headlineLine2: "A plataforma trata do resto.",
-      body: "Relatórios redigidos automaticamente a partir de cada sessão. Atividade do paciente visível fora da consulta. Os terapeutas chegam preparados, com o contexto de que precisam.",
+      headlineLine1: "O clínico conduz a sessão.",
+      headlineLine2: "A UpSpeech trata do resto.",
+      body: "Cada sessão dá origem a um rascunho de relatório. Vê como os pacientes praticaram entre consultas, por isso chega à sessão já a saber onde estão.",
       imageAlt:
         "Vista do terapeuta na UpSpeech do progresso de um paciente: estatísticas de atividade, marco do percurso de aprendizagem e passo atual",
       points: [
@@ -135,7 +135,7 @@ export const pt: Dictionary = {
       eyebrow: "Fora da consulta",
       headlineLine1: "Prática estruturada entre visitas,",
       headlineLine2: "orientada pelo terapeuta do início ao fim.",
-      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à sua fase de tratamento. Exercícios guiados apoiam a prática entre visitas.",
+      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à fase de tratamento em que está. Praticam entre visitas, guiados passo a passo.",
       imageAlt:
         "Painel do paciente na UpSpeech com exercícios de prática diários e progresso",
       points: [
@@ -156,7 +156,7 @@ export const pt: Dictionary = {
     mobile: {
       eyebrow: "No bolso do paciente",
       headline: "A prática acontece na app, entre sessões.",
-      body: "Os pacientes seguem o plano definido pelo terapeuta, praticam com exercícios guiados e fazem o seu registo a partir do telemóvel. O terapeuta acompanha.",
+      body: "Os pacientes seguem o plano definido pelo terapeuta a partir do telemóvel e mantêm-no entre sessões. O terapeuta acompanha.",
       screenshots: [
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
         "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
@@ -181,7 +181,7 @@ export const pt: Dictionary = {
         },
         {
           verb: "aprova",
-          title: "O clínico lê, edita, aprova.",
+          title: "O clínico edita e aprova.",
           body: "Nada sai da plataforma sem revisão do terapeuta. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
         },
         {
@@ -192,17 +192,17 @@ export const pt: Dictionary = {
         {
           verb: "calibra",
           title: "O clínico calibra-o.",
-          body: "O terapeuta aprova, ajusta a dificuldade e troca técnicas. Nenhum plano é atribuído sem revisão do terapeuta.",
+          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nenhum plano é atribuído sem a sua revisão.",
         },
         {
           verb: "ouve",
           title: "A IA ajuda entre sessões.",
-          body: "Cada tentativa de prática é captada e organizada, construindo um registo de atividade entre sessões.",
+          body: "Cada tentativa de prática é captada e organizada num registo que o terapeuta pode consultar mais tarde.",
         },
         {
           verb: "decide",
           title: "O clínico decide o que vem a seguir.",
-          body: "O sinal agregado aparece no painel do terapeuta. Este seleciona o próximo protocolo com os dados em mãos.",
+          body: "O painel reúne toda a atividade, por isso o terapeuta escolhe o passo seguinte com o quadro completo à frente.",
         },
       ],
     },
@@ -216,14 +216,14 @@ export const pt: Dictionary = {
       headlineLine1: "Ferramentas específicas.",
       headlineLine2: "Para clínicos e investigadores.",
       intro:
-        "A plataforma é construída em torno de um percurso de aprendizagem estruturado, desde a identificação de momentos de gaguez até à generalização no mundo real.",
+        "A plataforma é construída em torno de um percurso de aprendizagem estruturado, desde a identificação de momentos de gaguez até levar o trabalho para conversas reais.",
       forClinicians: "Para clínicos",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Ferramenta de anotação",
       annotationTitle:
         "A ferramenta que clínicos e investigadores usam para etiquetar momentos de gaguez.",
       annotationCopy:
-        "Etiquetagem fotograma a fotograma de momentos de gaguez: comportamento principal, comportamentos secundários, nível de tensão. Taxonomia padrão. A mesma ferramenta constrói o nosso conjunto de dados e apoia parcerias de investigação.",
+        "Os clínicos etiquetam momentos de gaguez fotograma a fotograma com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
       annotationImageAlt:
         "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e etiquetagem fotograma a fotograma por terapeutas da fala",
       features: [
@@ -254,7 +254,7 @@ export const pt: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
-      body: "Construímos uma ferramenta de anotação internamente, usada por terapeutas da fala em exercício para etiquetar disfluências, tensões e bloqueios fotograma a fotograma. O conjunto de dados é etiquetado por especialistas desde o início.",
+      body: "Construímos a nossa própria ferramenta de anotação, e terapeutas da fala em exercício usam-na para etiquetar disfluências e bloqueios fotograma a fotograma. Cada etiqueta no conjunto de dados vem de um clínico.",
       videoAriaLabel:
         "Ferramenta de anotação UpSpeech usada por clínicos para etiquetar disfluências fotograma a fotograma",
       tags: [
@@ -284,7 +284,7 @@ export const pt: Dictionary = {
     },
     security: {
       eyebrow: "Segurança e dados",
-      headline: "Dados dos pacientes, tratados com cuidado.",
+      headline: "Como tratamos os dados dos pacientes.",
       body: "As clínicas confiam-nos gravações sensíveis. Tratamos esses dados como uma clínica o faria, e o terapeuta tem sempre a palavra final sobre o que a IA produz.",
       points: [
         {
@@ -350,7 +350,7 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A sua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continua a praticar o trabalho que faz com o seu terapeuta da fala, todos os dias, não apenas na consulta. O seu terapeuta define o plano; pratica na app; o seu terapeuta acompanha o seu progresso.",
+      body: "A UpSpeech é como continua a praticar, entre consultas, o trabalho que faz com o seu terapeuta da fala. O seu terapeuta define o plano, pratica na app, e o seu terapeuta acompanha como está a correr.",
     },
     howItWorks: {
       eyebrow: "Como funciona para si",
@@ -373,7 +373,7 @@ export const pt: Dictionary = {
     app: {
       eyebrow: "A app",
       headline: "O seu plano, no seu bolso.",
-      body: "Abra a app para ver o exercício de hoje, fazê-lo e manter uma rotina constante entre sessões.",
+      body: "Todos os dias a app mostra o seu exercício, por isso é fácil manter a rotina entre sessões.",
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
@@ -482,26 +482,26 @@ export const pt: Dictionary = {
       "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da fala, com rascunhos estruturados que apoiam o julgamento clínico.",
     intro: {
       eyebrow: "Para terapeutas da fala",
-      headlineLine1: "Menos tempo em notas,",
-      headlineLine2: "mais tempo na terapia.",
+      headlineLine1: "As notas começam",
+      headlineLine2: "já escritas.",
       body: "A documentação faz parte de uma boa prática clínica, mas não deve comprimir o tempo dedicado ao trabalho em si. Esta página aborda formas práticas de os terapeutas da fala reduzirem o tempo gasto em notas de sessão na terapia da fala, incluindo onde os rascunhos estruturados se encaixam.",
     },
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. O entrave é a própria página em branco, já que o raciocínio clínico já está feito. Muitos terapeutas dizem que a documentação é a tarefa administrativa que mais tende a consumir o tempo de preparação e a prolongar o dia de trabalho. É um problema estrutural, e a solução passa por ter um melhor ponto de partida.",
+        body: "Após uma sessão, sabe o que aconteceu. Escrever demora mais do que deveria. O entrave é a própria página em branco, já que o raciocínio clínico já está feito. Muitos terapeutas dizem que a documentação é a tarefa administrativa que mais tende a consumir o tempo de preparação e a prolongar o dia de trabalho. O raciocínio está feito. O que se arrasta é a escrita.",
       },
       {
         heading: "Rascunhos estruturados que revê e edita",
-        body: "Uma forma de resolver a página em branco é um rascunho estruturado gerado a partir dos dados da sessão: o que o paciente praticou, como progrediu e o que o terapeuta observou. Um rascunho dá-lhe algo a que reagir em vez de criar de raiz. Lê-o, ajusta o que precisa de ajuste e assina. O julgamento clínico continua a ser seu, e o rascunho trata da estrutura.",
+        body: "Uma solução é um rascunho estruturado construído a partir dos dados da sessão: o que o paciente praticou, como correu e o que observou. Agora reage a algo em vez de enfrentar uma página vazia. Edita o que precisa de edição e assina, e o julgamento clínico continua a ser seu de uma ponta à outra.",
       },
       {
         heading: "O que deve constar numa boa nota de terapia da fala",
-        body: "Uma nota de sessão útil cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Quanto mais consistentemente capturar os mesmos dados, mais fácil se torna a nota.",
+        body: "Uma nota de sessão útil cobre tipicamente a técnica praticada, o desempenho do paciente em relação aos seus objetivos, observações sobre evitação ou confiança, e os próximos passos. Modelos estruturados para estes elementos tornam a redação mais rápida, com ou sem assistência de IA. Capturar os mesmos campos de cada vez torna cada nota mais rápida de escrever.",
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech captura dados estruturados da prática do paciente entre sessões: quais os exercícios que completou, como se saiu e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão que o terapeuta revê antes de assinar. O rascunho é um ponto de partida, não um documento final. A revisão e assinatura do terapeuta são obrigatórias para cada nota.",
+        body: "A UpSpeech captura dados estruturados da prática entre sessões: os exercícios que o paciente completou, como se saiu e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão que o terapeuta revê antes de assinar. Cada nota precisa da revisão e assinatura do terapeuta antes de ser usada.",
       },
     ],
     faq: {
@@ -514,7 +514,7 @@ export const pt: Dictionary = {
         },
         {
           q: "A redação de notas com assistência de IA substitui a observação clínica?",
-          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. A observação clínica, os julgamentos que o terapeuta faz durante a sessão, é o que o terapeuta acrescenta. O rascunho trata da estrutura, para que o clínico se possa focar na especialização.",
+          a: "Não. Uma nota de rascunho baseia-se em dados estruturados da sessão. Os julgamentos que o terapeuta faz durante a consulta são o que o terapeuta acrescenta. O rascunho trata da redação; a leitura clínica é sua.",
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
@@ -548,7 +548,7 @@ export const pt: Dictionary = {
     documentation: {
       eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas para si rever.",
-      body: "Após uma sessão, a UpSpeech transforma-a num rascunho de relatório estruturado. O clínico revê, edita e valida. Mantém a palavra clínica final; deixa de começar de uma página em branco.",
+      body: "Após uma sessão, a UpSpeech redige o relatório. Edita-o e aprova-o, sem começar de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
@@ -601,7 +601,7 @@ export const pt: Dictionary = {
     },
   },
   consent: {
-    title: "A sua privacidade é importante",
+    title: "Cookies neste site",
     description:
       "Usamos cookies para melhorar a sua experiência e analisar a utilização do site. Ao aceitar, concorda com a utilização de cookies de análise. Pode recusar se preferir.",
     learnMore: "Saber mais sobre cookies",
