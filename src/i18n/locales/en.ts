@@ -298,7 +298,7 @@ export const en = {
         },
         {
           title: "Private recordings",
-          copy: "Recordings are reached through short-lived, signed links, never from a public location.",
+          copy: "Recordings are served through short-lived, signed links, never from a public location.",
         },
       ],
       readPrivacy: "Read our Privacy Policy",
@@ -395,7 +395,7 @@ export const en = {
         },
         {
           q: "Is my information private?",
-          a: "Yes. Your data is encrypted and kept private to your care. See the Privacy Policy for details.",
+          a: "Yes. Your data is encrypted and only visible to the people involved in your care. See the Privacy Policy for details.",
         },
         {
           q: "How do I get UpSpeech?",
