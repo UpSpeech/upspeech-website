@@ -47,29 +47,29 @@ export const pt: Dictionary = {
     es: "Español",
   },
   techniquesIndex: {
-    title: "Técnicas de Terapia da Fala",
+    title: "Técnicas de terapia da fala",
     subtitle: "Técnicas estabelecidas para a terapia da gaguez",
     seoDescription:
       "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
-    mainCategories: "Categorias de Técnicas",
-    standalone: "Técnicas Independentes",
-    viewDetails: "Ver Detalhes",
+    mainCategories: "Categorias de técnicas",
+    standalone: "Técnicas independentes",
+    viewDetails: "Ver detalhes",
     techniques: "técnicas",
     loading: "A carregar técnicas...",
-    error: "Erro ao Carregar Técnicas",
+    error: "Erro ao carregar técnicas",
     tryAgain:
-      "Erro ao carregar técnicas. Por favor, tente novamente mais tarde.",
+      "Erro ao carregar técnicas. Tente novamente mais tarde.",
   },
   techniquePage: {
     loading: "A carregar técnica...",
-    error: "Erro ao Carregar Técnica",
+    error: "Erro ao carregar a técnica",
     notFound: "Técnica não encontrada",
     backToAll: "Voltar a todas as técnicas",
-    practicalDescription: "Descrição Prática",
+    practicalDescription: "Descrição prática",
     objective: "Objetivo",
-    howToPractice: "Como Praticar",
-    relatedTechniques: "Técnicas Relacionadas",
+    howToPractice: "Como praticar",
+    relatedTechniques: "Técnicas relacionadas",
   },
   home: {
     seoDescription:
@@ -275,7 +275,7 @@ export const pt: Dictionary = {
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {
         speechcare: "Parceiro de desenvolvimento conjunto",
-        elevenlabs: "Bolsa de infraestrutura de IA",
+        elevenlabs: "Subvenção de infraestrutura de IA",
         lispolis: "Programa de aceleração",
         unicorn: "Startup Mais Promissora · Lisboa",
         innocatalyst: "Programa de inovação em saúde",
@@ -309,41 +309,41 @@ export const pt: Dictionary = {
     cta: {
       headline: "Pedir acesso antecipado.",
       body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Conte-nos sobre a sua clínica e entraremos em contacto.",
-      nameLabel: "Nome Completo *",
+      nameLabel: "Nome completo *",
       namePlaceholder: "Introduza o seu nome",
-      nameError: "Por favor, introduza o seu nome.",
-      emailLabel: "Endereço de Email *",
+      nameError: "Introduza o seu nome.",
+      emailLabel: "Endereço de email *",
       emailPlaceholder: "o-seu@email.com",
-      emailError: "Por favor, introduza o seu endereço de email.",
+      emailError: "Introduza o seu endereço de email.",
       roleLabel: "Função *",
       rolePlaceholder: "Escolha a sua função",
-      roleError: "Por favor, escolha a sua função.",
-      roleSpeechTherapist: "Terapeuta da Fala",
-      roleClinicDirector: "Diretor de Clínica",
-      rolePracticeOwner: "Proprietário de Consultório",
+      roleError: "Escolha a sua função.",
+      roleSpeechTherapist: "Terapeuta da fala",
+      roleClinicDirector: "Diretor de clínica",
+      rolePracticeOwner: "Proprietário de consultório",
       roleOther: "Outro",
-      clinicSizeLabel: "Dimensão da Clínica (Opcional)",
+      clinicSizeLabel: "Dimensão da clínica (opcional)",
       clinicSizePlaceholder: "Escolha a dimensão da clínica",
-      clinicSizeSolo: "Consultório Individual",
+      clinicSizeSolo: "Consultório individual",
       clinicSizeSmall: "2-5 Terapeutas",
       clinicSizeMedium: "6-15 Terapeutas",
       clinicSizeLarge: "15+ Terapeutas",
       submit: "Pedir acesso antecipado",
       submitting: "A enviar...",
-      requiredFieldsTitle: "Por favor, preencha todos os campos obrigatórios",
+      requiredFieldsTitle: "Preencha todos os campos obrigatórios",
       successTitle: "Está na lista.",
       successDescription:
         "Obrigado, entraremos em contacto. Verifique o seu email para uma confirmação.",
       errorTitle: "Algo correu mal",
-      errorDefault: "Por favor, tente novamente mais tarde.",
+      errorDefault: "Tente novamente mais tarde.",
       errorNetwork:
-        "Erro de rede. Por favor, verifique a sua ligação e tente novamente.",
+        "Erro de rede. Verifique a sua ligação e tente novamente.",
       errorSubmission:
-        "Ocorreu um problema com o envio do formulário. Por favor, tente novamente.",
+        "Ocorreu um problema com o envio do formulário. Tente novamente.",
     },
   },
   forPatients: {
-    seoTitle: "Para Pacientes",
+    seoTitle: "Para pacientes",
     seoDescription:
       "Como os pacientes praticam terapia da fala entre sessões com a UpSpeech, orientados pelo seu terapeuta da fala.",
     intro: {
@@ -419,7 +419,7 @@ export const pt: Dictionary = {
     storePlayAriaLabel: "Obter a UpSpeech no Google Play",
   },
   stutterPositive: {
-    seoTitle: "O Que Significa Gaguez Positiva?",
+    seoTitle: "O que significa gaguez positiva?",
     seoDescription:
       "Um guia em linguagem simples sobre terapia de gaguez positiva: o que significa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
     intro: {
@@ -477,7 +477,7 @@ export const pt: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle: "Como os Terapeutas da Fala Reduzem o Tempo em Notas de Sessão",
+    seoTitle: "Como os terapeutas da fala reduzem o tempo gasto em notas de sessão",
     seoDescription:
       "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da fala, com rascunhos estruturados que apoiam o juízo clínico.",
     intro: {
@@ -518,7 +518,7 @@ export const pt: Dictionary = {
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
-          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
+          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulte as orientações da sua ordem profissional sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",

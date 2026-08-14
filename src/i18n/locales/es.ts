@@ -50,7 +50,7 @@ export const es: Dictionary = {
     title: "Técnicas de logopedia",
     subtitle: "Técnicas establecidas para la terapia de la tartamudez",
     seoDescription:
-      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo modelado de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
     mainCategories: "Categorías de técnicas",
     standalone: "Técnicas independientes",
@@ -59,11 +59,11 @@ export const es: Dictionary = {
     loading: "Cargando técnicas...",
     error: "Error al cargar técnicas",
     tryAgain:
-      "Error al cargar técnicas. Por favor, inténtalo de nuevo más tarde.",
+      "Error al cargar técnicas. Inténtalo de nuevo más tarde.",
   },
   techniquePage: {
     loading: "Cargando técnica...",
-    error: "Error al cargar técnica",
+    error: "Error al cargar la técnica",
     notFound: "Técnica no encontrada",
     backToAll: "Volver a todas las técnicas",
     practicalDescription: "Descripción práctica",
@@ -311,13 +311,13 @@ export const es: Dictionary = {
       body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la logopedia. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
       nameLabel: "Nombre completo *",
       namePlaceholder: "Introduce tu nombre",
-      nameError: "Por favor, introduce tu nombre.",
+      nameError: "Introduce tu nombre.",
       emailLabel: "Correo electrónico *",
       emailPlaceholder: "tu@email.com",
-      emailError: "Por favor, introduce tu correo electrónico.",
+      emailError: "Introduce tu correo electrónico.",
       roleLabel: "Cargo *",
       rolePlaceholder: "Elige tu cargo",
-      roleError: "Por favor, elige tu cargo.",
+      roleError: "Elige tu cargo.",
       roleSpeechTherapist: "Logopeda",
       roleClinicDirector: "Director de clínica",
       rolePracticeOwner: "Propietario de consulta",
@@ -330,20 +330,20 @@ export const es: Dictionary = {
       clinicSizeLarge: "15+ terapeutas",
       submit: "Solicitar acceso anticipado",
       submitting: "Enviando...",
-      requiredFieldsTitle: "Por favor, rellena todos los campos obligatorios",
+      requiredFieldsTitle: "Rellena todos los campos obligatorios",
       successTitle: "Estás en la lista.",
       successDescription:
         "Gracias, nos pondremos en contacto. Te hemos enviado una confirmación por correo.",
-      errorTitle: "Algo salió mal",
-      errorDefault: "Por favor, inténtalo de nuevo más tarde.",
+      errorTitle: "Algo ha salido mal",
+      errorDefault: "Inténtalo de nuevo más tarde.",
       errorNetwork:
-        "Error de red. Por favor, comprueba tu conexión e inténtalo de nuevo.",
+        "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
       errorSubmission:
-        "Hubo un problema con el envío del formulario. Por favor, inténtalo de nuevo.",
+        "Ha habido un problema con el envío del formulario. Inténtalo de nuevo.",
     },
   },
   forPatients: {
-    seoTitle: "Para Pacientes",
+    seoTitle: "Para pacientes",
     seoDescription:
       "Cómo los pacientes practican la terapia del habla entre sesiones con UpSpeech, guiados por su logopeda.",
     intro: {
@@ -419,7 +419,7 @@ export const es: Dictionary = {
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
   stutterPositive: {
-    seoTitle: "¿Qué Significa Tartamudez Positiva?",
+    seoTitle: "¿Qué significa tartamudez positiva?",
     seoDescription:
       "Una guía en lenguaje sencillo sobre la terapia de tartamudez positiva: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
     intro: {
@@ -431,7 +431,7 @@ export const es: Dictionary = {
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de modelado de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -456,11 +456,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
-          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de modelado de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
+          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
           q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de modelado de la fluidez según los objetivos del individuo.",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de moldeamiento de la fluidez según los objetivos del individuo.",
         },
         {
           q: "¿Dónde puedo aprender más?",
@@ -477,7 +477,7 @@ export const es: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle: "Cómo los Logopedas Reducen el Tiempo en Notas de Sesión",
+    seoTitle: "Cómo los logopedas reducen el tiempo en notas de sesión",
     seoDescription:
       "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en logopedia, con borradores estructurados que apoyan el juicio clínico.",
     intro: {
@@ -518,7 +518,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
