@@ -192,7 +192,7 @@ export const es: Dictionary = {
         {
           verb: "calibra",
           title: "El clínico lo calibra.",
-          body: "El terapeuta ajusta la dificultad e intercambia técnicas cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
         },
         {
           verb: "escucha",
@@ -221,11 +221,11 @@ export const es: Dictionary = {
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
-        "La herramienta que clínicos e investigadores usan para etiquetar momentos de tartamudez.",
+        "La herramienta que clínicos e investigadores usan para anotar momentos de tartamudez.",
       annotationCopy:
-        "Los clínicos etiquetan momentos de tartamudez fotograma a fotograma con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
+        "Los clínicos anotan momentos de tartamudez con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
       annotationImageAlt:
-        "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y etiquetado fotograma a fotograma por logopedas",
+        "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y anotación por logopedas",
       features: [
         {
           label: "Ruta de aprendizaje estructurada",
@@ -254,9 +254,9 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por clínicos.",
-      body: "Construimos nuestra propia herramienta de anotación, y logopedas en ejercicio la usan para etiquetar disfluencias y bloqueos fotograma a fotograma. Las etiquetas del conjunto de datos vienen de esos clínicos, no de anotadores de crowdsourcing.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias y bloqueos. Las anotaciones del conjunto de datos proceden de esos clínicos, no de anotadores sin formación clínica.",
       videoAriaLabel:
-        "Herramienta de anotación de UpSpeech usada por clínicos para etiquetar disfluencias fotograma a fotograma",
+        "Herramienta de anotación de UpSpeech usada por clínicos para anotar disfluencias",
       tags: [
         "Bloqueo",
         "Prolongación",
@@ -270,7 +270,7 @@ export const es: Dictionary = {
       eyebrow: "Fundamentos",
       headlineLine1: "Práctica clínica e ingeniería de IA,",
       headlineLine2: "en el mismo equipo.",
-      body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas en ejercicio que usan la plataforma con pacientes.",
+      body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
       partnersLabel: "Socios · Apoyos · Reconocimiento",
       partnersTagline: "Con quién trabajamos",
       partnerContext: {
@@ -366,7 +366,7 @@ export const es: Dictionary = {
         },
         {
           title: "Tu terapeuta ve tu progreso",
-          copy: "Sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
+          copy: "Tu logopeda sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
         },
       ],
     },
@@ -398,7 +398,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Mi información es privada?",
-          a: "Sí. Tus datos están cifrados y se mantienen privados en el marco de tu atención. Consulta la Política de Privacidad para más detalles.",
+          a: "Sí. Tus datos están cifrados y solo los ve quien participa en tu tratamiento. Consulta la Política de Privacidad para más detalles.",
         },
         {
           q: "¿Cómo consigo UpSpeech?",
@@ -409,7 +409,7 @@ export const es: Dictionary = {
     closing: {
       headline: "Pregunta a tu logopeda sobre UpSpeech.",
       bodyPrefix:
-        "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarla con tus pacientes, puedes ",
+        "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
@@ -426,7 +426,7 @@ export const es: Dictionary = {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué significa",
       headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se las escuche en sus propios términos, con objetivos que fija la propia persona.",
+      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que fija la propia persona.",
     },
     sections: [
       {
@@ -493,7 +493,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Borradores estructurados que revisas y editas",
-        body: "Una forma de abordarla es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
+        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
       },
       {
         heading: "Qué debe incluir una buena nota de logopedia",
@@ -510,7 +510,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿Cuánto tiempo pueden ahorrar de forma realista los logopedas en documentación?",
-          a: "Depende de tu flujo de trabajo actual y del tiempo que dedicas a las notas. Un borrador te quita la página en blanco, que suele ser la parte más lenta de escribir una nota. Cuánto ahorra varía según la complejidad de la sesión y la cantidad de ediciones que necesite el borrador.",
+          a: "Depende de tu flujo de trabajo actual y del tiempo que dedicas a las notas. Un borrador te quita la página en blanco, que suele ser la parte más lenta de escribir una nota. Cuánto ahorra varía según la complejidad de la sesión y de cuánto haya que retocar el borrador.",
         },
         {
           q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
@@ -521,7 +521,7 @@ export const es: Dictionary = {
           a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
         },
         {
-          q: "¿Cómo recopila UpSpeech los datos que informan el borrador?",
+          q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
           a: "Los pacientes practican los ejercicios asignados en la app entre sesiones. La app captura datos de finalización y rendimiento, y el borrador se construye a partir de ahí. No interviene ninguna transcripción de audio. El terapeuta lo ve todo antes de firmar cualquier nota.",
         },
       ],
@@ -543,7 +543,7 @@ export const es: Dictionary = {
       eyebrow: "Para logopedas",
       headlineLine1: "Más terapia entre sesiones.",
       headlineLine2: "Menos tiempo en documentación.",
-      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que se siente.",
+      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
     },
     documentation: {
       eyebrow: "Documentación",
