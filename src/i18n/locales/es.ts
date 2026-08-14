@@ -19,7 +19,7 @@ export const es: Dictionary = {
     mobileMenuLabel: "Navegación",
   },
   footer: {
-    tagline: "Terapia que continúa entre sesiones",
+    tagline: "Apoyo a la logopedia, entre sesiones",
     product: "Producto",
     legal: "Legal",
     company: "Empresa",
@@ -73,7 +73,7 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Terapia del habla que continúa entre sesiones. Los pacientes practican siguiendo el plan que fijó su terapeuta, los informes de sesión se redactan para que el terapeuta los revise, y el terapeuta lo aprueba todo.",
+      "Apoyo continuo a la terapia del habla. Los pacientes practican entre sesiones siguiendo el plan que fijó su terapeuta, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "La terapia",
@@ -127,7 +127,7 @@ export const es: Dictionary = {
         },
         {
           label: "Validación del terapeuta",
-          copy: "Nada llega al paciente sin la revisión del terapeuta.",
+          copy: "Cada informe y cada plan de tratamiento es un borrador hasta que el terapeuta lo revisa y lo firma.",
         },
       ],
     },
@@ -182,7 +182,7 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El clínico lo edita y lo aprueba.",
-          body: "Nada llega al paciente sin la revisión del terapeuta. Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
+          body: "Nada llega al paciente sin que el terapeuta lo revise y lo firme. Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
         },
         {
           verb: "estructura",
@@ -192,7 +192,7 @@ export const es: Dictionary = {
         {
           verb: "calibra",
           title: "El clínico lo calibra.",
-          body: "El terapeuta ajusta la dificultad e intercambia técnicas cuando hace falta. Nada llega al paciente sin la revisión del terapeuta.",
+          body: "El terapeuta ajusta la dificultad e intercambia técnicas cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
         },
         {
           verb: "escucha",
@@ -431,7 +431,7 @@ export const es: Dictionary = {
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La terapia del habla tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Algunas personas que tartamudean sí quieren un habla más fluida, y las técnicas de modelado de la fluidez, como el habla prolongada, pueden ayudar con eso. Para otras, lo que más importa es reducir la evitación, que es el trabajo que hacen la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La terapia del habla tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de modelado de la fluidez, como el habla prolongada, con ese objetivo. Cuando lo que más importa es reducir la evitación, la tartamudez voluntaria y la desensibilización son las técnicas que se usan en terapia para eso. Tartamudez positiva significa que esos objetivos los fija la persona.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -501,7 +501,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech captura datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin la revisión del terapeuta.",
+        body: "UpSpeech captura datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
       },
     ],
     faq: {
@@ -518,7 +518,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de utilizarla. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu organismo profesional local sobre IA en la documentación clínica.",
         },
         {
           q: "¿Cómo recopila UpSpeech los datos que informan el borrador?",
@@ -548,7 +548,7 @@ export const es: Dictionary = {
     documentation: {
       eyebrow: "Documentación",
       headline: "Notas de sesión, redactadas para que las revises.",
-      body: "Tras una sesión, UpSpeech redacta el informe. Lo editas y lo apruebas, sin empezar desde una página vacía.",
+      body: "Tras una sesión, UpSpeech redacta el informe. Lo editas y lo firmas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",
     },
@@ -573,7 +573,7 @@ export const es: Dictionary = {
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
       headline: "Tartamudez positiva, desde el diseño.",
-      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica es siempre motivadora y nunca hace que el paciente se sienta juzgado por su forma de hablar.",
+      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica está diseñada para ser motivadora en lugar de correctiva respecto a la forma de hablar de cada persona.",
     },
     faq: {
       eyebrow: "Preguntas de clínicos",

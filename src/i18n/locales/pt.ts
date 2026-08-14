@@ -19,7 +19,7 @@ export const pt: Dictionary = {
     mobileMenuLabel: "Navegação",
   },
   footer: {
-    tagline: "Terapia que continua entre sessões",
+    tagline: "Apoio à terapia da fala, entre sessões",
     product: "Produto",
     legal: "Legal",
     company: "Empresa",
@@ -73,7 +73,7 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Terapia da fala que continua entre sessões. Os pacientes praticam segundo um plano definido pelo terapeuta, os relatórios de sessão são redigidos para revisão, e o terapeuta aprova tudo.",
+      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta, e os relatórios de sessão são redigidos para o terapeuta rever e assinar.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A terapia",
@@ -127,7 +127,7 @@ export const pt: Dictionary = {
         },
         {
           label: "Validação do terapeuta",
-          copy: "Nada chega ao paciente sem revisão do terapeuta.",
+          copy: "Cada relatório e cada plano de tratamento é um rascunho até o terapeuta o rever e assinar.",
         },
       ],
     },
@@ -182,7 +182,7 @@ export const pt: Dictionary = {
         {
           verb: "aprova",
           title: "O clínico edita e aprova.",
-          body: "Nada chega ao paciente sem revisão do terapeuta. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
+          body: "Nada chega ao paciente sem que o terapeuta reveja e assine. Essas correções treinam o modelo e melhoram o rascunho seguinte.",
         },
         {
           verb: "estrutura",
@@ -192,7 +192,7 @@ export const pt: Dictionary = {
         {
           verb: "calibra",
           title: "O clínico calibra-o.",
-          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem revisão do terapeuta.",
+          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o terapeuta reveja e assine.",
         },
         {
           verb: "ouve",
@@ -431,7 +431,7 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Algumas pessoas que gaguejam querem uma fala mais fluente, e técnicas de modelagem da fluência como a fala prolongada podem ajudar nisso. Para outras, reduzir a evitação é o que mais importa, e é esse o trabalho da gaguez voluntária e da dessensibilização. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada, com esse objetivo. Quando reduzir a evitação é o que mais importa, a gaguez voluntária e a dessensibilização são as técnicas usadas em terapia para esse fim. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
       },
       {
         heading: "Ser ouvido nos seus próprios termos",
@@ -501,7 +501,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech captura dados estruturados da prática entre sessões, incluindo os exercícios que o paciente completou e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão. Nada chega ao paciente sem revisão do terapeuta.",
+        body: "A UpSpeech captura dados estruturados da prática entre sessões, incluindo os exercícios que o paciente completou e onde teve dificuldades. Esses dados alimentam um rascunho de nota de sessão. Nada chega ao paciente sem que o terapeuta reveja e assine.",
       },
     ],
     faq: {
@@ -518,7 +518,7 @@ export const pt: Dictionary = {
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
-          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de ser utilizada. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
+          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulte as orientações do seu organismo profissional local sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
@@ -548,7 +548,7 @@ export const pt: Dictionary = {
     documentation: {
       eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas para si rever.",
-      body: "Após uma sessão, a UpSpeech redige o relatório. Edita-o e aprova-o, sem começar de uma página em branco.",
+      body: "Após uma sessão, a UpSpeech redige o relatório. Edita-o e assina-o, sem começar de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
@@ -573,7 +573,7 @@ export const pt: Dictionary = {
     stutterPositive: {
       eyebrow: "A nossa abordagem",
       headline: "Gaguez positiva, desde a conceção.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é sempre encorajadora e nunca envergonha o paciente pela forma como fala.",
+      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para ser encorajadora em vez de corretiva quanto à forma como a pessoa fala.",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",

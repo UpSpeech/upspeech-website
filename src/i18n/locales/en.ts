@@ -17,7 +17,7 @@ export const en = {
     mobileMenuLabel: "Navigation",
   },
   footer: {
-    tagline: "Therapy that continues between sessions",
+    tagline: "Support for speech therapy, between sessions",
     product: "Product",
     legal: "Legal",
     company: "Company",
@@ -70,7 +70,7 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Speech therapy that continues between sessions. Patients practise to a plan their therapist set, session reports are drafted for review, and therapists approve everything.",
+      "Continuous support for speech therapy. Patients practise between sessions to a plan their therapist set, and session reports are drafted for the therapist to review and sign.",
     hero: {
       eyebrow: "For speech therapy clinics",
       headlineLine1: "Therapy that",
@@ -124,7 +124,7 @@ export const en = {
         },
         {
           label: "Therapist sign-off",
-          copy: "Nothing goes to a patient without therapist review.",
+          copy: "Every report and treatment plan is a draft until the therapist reviews and signs it.",
         },
       ],
     },
@@ -179,7 +179,7 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician edits and approves it.",
-          body: "Nothing goes to a patient without therapist review. Those corrections train the model and improve the next draft.",
+          body: "Nothing reaches a patient until the therapist reviews and signs it. Those corrections train the model and improve the next draft.",
         },
         {
           verb: "structures",
@@ -189,7 +189,7 @@ export const en = {
         {
           verb: "calibrates",
           title: "The clinician calibrates it.",
-          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing goes to a patient without therapist review.",
+          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the therapist reviews and signs it.",
         },
         {
           verb: "listens",
@@ -428,7 +428,7 @@ export const en = {
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Some people who stutter do want smoother speech, and fluency-shaping techniques like prolonged speech can help with that. Others find that reducing avoidance matters more, which is the work voluntary stuttering and desensitisation do. Stutter-positive means those goals are the person's to set.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech towards that goal. Where reducing avoidance matters more, voluntary stuttering and desensitisation are the techniques used in therapy for that. Stutter-positive means those goals are the person's to set.",
       },
       {
         heading: "Being heard on your own terms",
@@ -498,7 +498,7 @@ export const en = {
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing goes to a patient without therapist review.",
+        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist reviews and signs it.",
       },
     ],
     faq: {
@@ -515,7 +515,7 @@ export const en = {
         },
         {
           q: "Is it clinically appropriate to use AI-drafted notes?",
-          a: "Drafted notes are appropriate when the therapist reviews and signs off on every note before it is used. Check your local professional body's guidance on AI in clinical documentation.",
+          a: "Drafted notes are appropriate when the therapist reviews and signs off on every note before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
@@ -544,7 +544,7 @@ export const en = {
     documentation: {
       eyebrow: "Documentation",
       headline: "Session notes, drafted for you to review.",
-      body: "After a session, UpSpeech drafts the report. You edit it and approve it, without starting from an empty page.",
+      body: "After a session, UpSpeech drafts the report. You edit it and sign it off, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },
@@ -569,7 +569,7 @@ export const en = {
     stutterPositive: {
       eyebrow: "Our approach",
       headline: "Stutter-positive by design.",
-      body: "The app is built around confidence and being heard. The practice stays encouraging and never makes a patient feel judged for how they speak.",
+      body: "The app is built around confidence and being heard. The practice is designed to be encouraging rather than corrective about how someone speaks.",
     },
     faq: {
       eyebrow: "Questions from clinicians",
