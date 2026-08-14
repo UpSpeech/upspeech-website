@@ -24,7 +24,11 @@ if (
   import.meta.env.PROD
 ) {
   posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-    api_host: import.meta.env.VITE_POSTHOG_HOST || "https://eu.i.posthog.com",
+    // Same-origin tunnel (Netlify redirect in netlify.toml) so ad-blockers and
+    // tracking protection can't drop analytics by domain. ui_host keeps the
+    // toolbar and replay links pointed at the real PostHog app.
+    api_host: "/relay-Qz4t",
+    ui_host: "https://eu.posthog.com",
     capture_pageview: false,
     capture_pageleave: true,
     persistence: "localStorage+cookie",

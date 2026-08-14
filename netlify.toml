@@ -49,6 +49,25 @@
   status = 302
   force = true
 
+# PostHog same-origin tunnel. Ad-blockers and Firefox tracking protection drop
+# requests to eu.i.posthog.com by domain, so ~20-30% of visitors send no
+# analytics at all. Proxying through a same-origin, filter-neutral path recovers
+# core events and pageviews for those users. Session replay and dead-click
+# autocapture stay blocked regardless (uBlock matches those filenames, not the
+# host), so this only buys back the basic analytics. The SDK points api_host at
+# /relay-Qz4t in src/lib/analytics.ts. Must precede the /* SPA fallback.
+[[redirects]]
+  from = "/relay-Qz4t/static/*"
+  to = "https://eu-assets.i.posthog.com/static/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/relay-Qz4t/*"
+  to = "https://eu.i.posthog.com/:splat"
+  status = 200
+  force = true
+
 # SPA fallback: serve index.html for all routes (must be last)
 [[redirects]]
   from = "/*"
