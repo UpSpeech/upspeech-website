@@ -58,8 +58,7 @@ export const pt: Dictionary = {
     techniques: "técnicas",
     loading: "A carregar técnicas...",
     error: "Erro ao carregar técnicas",
-    tryAgain:
-      "Erro ao carregar técnicas. Tente novamente mais tarde.",
+    tryAgain: "Erro ao carregar técnicas. Tente novamente mais tarde.",
   },
   techniquePage: {
     loading: "A carregar técnica...",
@@ -336,8 +335,7 @@ export const pt: Dictionary = {
         "Obrigado, entraremos em contacto. Verifique o seu email para uma confirmação.",
       errorTitle: "Algo correu mal",
       errorDefault: "Tente novamente mais tarde.",
-      errorNetwork:
-        "Erro de rede. Verifique a sua ligação e tente novamente.",
+      errorNetwork: "Erro de rede. Verifique a sua ligação e tente novamente.",
       errorSubmission:
         "Ocorreu um problema com o envio do formulário. Tente novamente.",
     },
@@ -477,7 +475,8 @@ export const pt: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle: "Como os terapeutas da fala reduzem o tempo gasto em notas de sessão",
+    seoTitle:
+      "Como os terapeutas da fala reduzem o tempo gasto em notas de sessão",
     seoDescription:
       "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação na terapia da fala, com rascunhos estruturados que apoiam o juízo clínico.",
     intro: {
