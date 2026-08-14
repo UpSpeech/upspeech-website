@@ -221,18 +221,18 @@ export const pt: Dictionary = {
       forResearchers: "Para investigadores",
       annotationEyebrow: "Ferramenta de anotação",
       annotationTitle:
-        "A ferramenta que clínicos e investigadores usam para etiquetar momentos de gaguez.",
+        "A ferramenta que clínicos e investigadores usam para anotar momentos de gaguez.",
       annotationCopy:
-        "Os clínicos etiquetam momentos de gaguez fotograma a fotograma com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
+        "Os clínicos anotam momentos de gaguez com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
       annotationImageAlt:
-        "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e etiquetagem fotograma a fotograma por terapeutas da fala",
+        "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e anotação por terapeutas da fala",
       features: [
         {
           label: "Percurso de aprendizagem estruturado",
-          title: "Um plano construído a partir de marcos e passos.",
+          title: "Um plano construído a partir de objetivos e passos.",
           copy: "O clínico monta o percurso de cada paciente a partir de técnicas estabelecidas e desbloqueia cada passo à medida que o paciente está pronto.",
           imageAlt:
-            "Percurso de aprendizagem UpSpeech a mostrar os marcos e passos de terapia de um paciente com o estado de conclusão",
+            "Percurso de aprendizagem UpSpeech a mostrar os objetivos e passos de terapia de um paciente com o estado de conclusão",
         },
         {
           label: "Cenários de prática",
@@ -244,9 +244,9 @@ export const pt: Dictionary = {
         {
           label: "Autorrelatos periódicos",
           title: "Autorrelatos que o terapeuta revê.",
-          copy: "Um breve autorrelato de gaguez é captado a intervalos. O clínico pode ver como o paciente descreve a sua própria experiência ao longo do tempo.",
+          copy: "O paciente regista periodicamente uma breve reflexão sobre a sua gaguez. O clínico pode ver como descreve a própria experiência ao longo do tempo.",
           imageAlt:
-            "Gráfico UpSpeech das respostas de gaguez autorrelatadas de um paciente ao longo de várias semanas",
+            "Gráfico UpSpeech das reflexões de um paciente sobre a sua gaguez ao longo de várias semanas",
         },
       ],
     },
@@ -254,9 +254,9 @@ export const pt: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
-      body: "Construímos a nossa própria ferramenta de anotação, e terapeutas da fala em exercício usam-na para etiquetar disfluências e bloqueios fotograma a fotograma. As etiquetas do conjunto de dados vêm desses clínicos e não de anotadores de crowdsourcing.",
+      body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências e bloqueios. As anotações do conjunto de dados vêm destes clínicos, não de anotadores sem formação clínica.",
       videoAriaLabel:
-        "Ferramenta de anotação UpSpeech usada por clínicos para etiquetar disfluências fotograma a fotograma",
+        "Ferramenta de anotação UpSpeech usada por clínicos para anotar disfluências",
       tags: [
         "Bloqueio",
         "Prolongamento",
@@ -270,7 +270,7 @@ export const pt: Dictionary = {
       eyebrow: "Fundamentos",
       headlineLine1: "Prática clínica e engenharia de IA,",
       headlineLine2: "na mesma equipa.",
-      body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala em exercício que usam a plataforma com pacientes.",
+      body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala que usam a plataforma com pacientes.",
       partnersLabel: "Parceiros · Apoiantes · Reconhecimento",
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {
