@@ -28,7 +28,7 @@ export const es: Dictionary = {
     techniques: "Técnicas",
     support: "Soporte",
     privacy: "Política de Privacidad",
-    terms: "Términos del Servicio",
+    terms: "Condiciones del servicio",
     cookies: "Política de Cookies",
     linkedin: "LinkedIn",
     contact: "Contáctanos",
@@ -73,17 +73,17 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que fijó su terapeuta, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
+      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
-      body: "Los pacientes practican entre sesiones, siguiendo el plan que fijó su terapeuta. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
+      body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
       videoAriaLabel:
-        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión, se redacta el informe y los clínicos anotan la grabación",
+        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión, se redacta el informe y los logopedas anotan la grabación",
       posterAlt:
         "Demostración del producto UpSpeech: el plan de práctica personalizado de un terapeuta",
       playAriaLabel: "Reproducir la demostración del producto UpSpeech",
@@ -106,12 +106,12 @@ export const es: Dictionary = {
       session: "Sesión",
       practice: "Práctica",
       plusPractice: "+ Práctica",
-      footerPrefix: "El paciente mantiene su apoyo cada día,",
-      footerEmphasis: "y no supone más trabajo para el clínico.",
+      footerPrefix: "El paciente cuenta con apoyo todos los días,",
+      footerEmphasis: "y no supone más trabajo para el logopeda.",
     },
     therapist: {
       eyebrow: "En la consulta",
-      headlineLine1: "El clínico dirige la sesión.",
+      headlineLine1: "El logopeda dirige la sesión.",
       headlineLine2: "UpSpeech se encarga del resto.",
       body: "Cada sesión se convierte en un borrador de informe, y puedes ver qué han practicado tus pacientes entre citas.",
       imageAlt:
@@ -135,7 +135,7 @@ export const es: Dictionary = {
       eyebrow: "Fuera de la consulta",
       headlineLine1: "Práctica estructurada entre visitas,",
       headlineLine2: "guiada por el terapeuta en todo momento.",
-      body: "Cada paciente recibe un plan de su clínico, con ejercicios adaptados a su fase de tratamiento, y lo va completando entre visitas con orientación en cada paso.",
+      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de tratamiento, y lo va completando entre visitas con orientación en cada paso.",
       imageAlt:
         "Panel del paciente en UpSpeech con ejercicios de práctica diarios y progreso",
       points: [
@@ -156,9 +156,9 @@ export const es: Dictionary = {
     mobile: {
       eyebrow: "En el bolsillo del paciente",
       headline: "La práctica ocurre en la app, entre sesiones.",
-      body: "Los pacientes siguen desde el móvil, entre sesiones, el plan que fijó su terapeuta, y el terapeuta puede ver cómo va.",
+      body: "Los pacientes siguen desde el móvil, entre sesiones, el plan que les ha pautado su logopeda, y el terapeuta puede ver cómo va.",
       screenshots: [
-        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
+        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
@@ -166,10 +166,10 @@ export const es: Dictionary = {
     cycle: {
       eyebrow: "El ciclo",
       headlinePrefix: "Cada paso",
-      headlineEmphasis: "revisado por un clínico.",
-      clinician: "Clínico",
+      headlineEmphasis: "revisado por un logopeda.",
+      clinician: "Logopeda",
       ai: "IA",
-      clinicianStepPrefix: "Clínico · paso ",
+      clinicianStepPrefix: "Logopeda · paso ",
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
@@ -181,7 +181,7 @@ export const es: Dictionary = {
         },
         {
           verb: "aprueba",
-          title: "El clínico lo edita y lo aprueba.",
+          title: "El logopeda lo edita y lo aprueba.",
           body: "Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
         },
         {
@@ -191,7 +191,7 @@ export const es: Dictionary = {
         },
         {
           verb: "calibra",
-          title: "El clínico lo calibra.",
+          title: "El logopeda lo calibra.",
           body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
         },
         {
@@ -201,8 +201,8 @@ export const es: Dictionary = {
         },
         {
           verb: "decide",
-          title: "El clínico decide qué sigue.",
-          body: "El panel reúne la actividad de la semana. El clínico elige desde ahí el siguiente paso.",
+          title: "El logopeda decide qué sigue.",
+          body: "El panel reúne la actividad de la semana. El logopeda elige desde ahí el siguiente paso.",
         },
       ],
     },
@@ -214,49 +214,49 @@ export const es: Dictionary = {
     gallery: {
       eyebrow: "Dentro de la plataforma",
       headlineLine1: "Herramientas específicas.",
-      headlineLine2: "Para clínicos e investigadores.",
+      headlineLine2: "Para logopedas e investigadores.",
       intro:
-        "La plataforma se construye en torno a una ruta de aprendizaje estructurada, desde identificar momentos de tartamudez hasta llevar el trabajo a conversaciones reales.",
-      forClinicians: "Para clínicos",
+        "La plataforma gira en torno a una ruta de aprendizaje estructurada, desde identificar momentos de tartamudez hasta llevar el trabajo a conversaciones reales.",
+      forClinicians: "Para logopedas",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
-        "La herramienta que clínicos e investigadores usan para anotar momentos de tartamudez.",
+        "La herramienta que logopedas e investigadores usan para anotar momentos de tartamudez.",
       annotationCopy:
-        "Los clínicos anotan momentos de tartamudez con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
+        "Los logopedas anotan momentos de tartamudez con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
       annotationImageAlt:
         "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y anotación por logopedas",
       features: [
         {
           label: "Ruta de aprendizaje estructurada",
           title: "Un plan construido a partir de hitos y pasos.",
-          copy: "El clínico arma la ruta de cada paciente a partir de técnicas establecidas y desbloquea cada paso a medida que el paciente está listo.",
+          copy: "El logopeda monta la ruta de cada paciente a partir de técnicas establecidas y va desbloqueando cada paso cuando el paciente está preparado.",
           imageAlt:
             "Ruta de aprendizaje de UpSpeech mostrando los hitos y pasos de terapia de un paciente con su estado de finalización",
         },
         {
           label: "Escenarios de práctica",
           title: "Ensayo con un interlocutor de conversación virtual.",
-          copy: "Los pacientes ensayan conversaciones difíciles con un interlocutor virtual. El clínico define el escenario y la dificultad.",
+          copy: "Los pacientes ensayan conversaciones difíciles con un interlocutor virtual. El logopeda define el escenario y la dificultad.",
           imageAlt:
             "Interfaz de escenario de práctica de UpSpeech mostrando el ensayo de una entrevista de trabajo con objetivos y videollamada",
         },
         {
-          label: "Autoinformes periódicos",
-          title: "Autoinformes que el terapeuta revisa.",
-          copy: "Un breve autoinforme de tartamudez se captura a intervalos. El clínico puede ver cómo describe el paciente su propia experiencia con el paso del tiempo.",
+          label: "Cuestionarios de seguimiento",
+          title: "Cuestionarios que el terapeuta revisa.",
+          copy: "Cada cierto tiempo, el paciente rellena un breve cuestionario sobre su tartamudez. Así el logopeda ve cómo describe el paciente su propia experiencia con el paso del tiempo.",
           imageAlt:
-            "Gráfico de UpSpeech de las respuestas de tartamudez autoinformadas de un paciente a lo largo de varias semanas",
+            "Gráfico de UpSpeech con las respuestas de un paciente al cuestionario de tartamudez a lo largo de varias semanas",
         },
       ],
     },
     engine: {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
-      headlineLine2: "datos anotados por clínicos.",
-      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias y bloqueos. Las anotaciones del conjunto de datos proceden de esos clínicos, no de anotadores sin formación clínica.",
+      headlineLine2: "datos anotados por logopedas.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias y bloqueos. Las anotaciones del conjunto de datos proceden de esos profesionales, no de anotadores sin formación clínica.",
       videoAriaLabel:
-        "Herramienta de anotación de UpSpeech usada por clínicos para anotar disfluencias",
+        "Herramienta de anotación de UpSpeech usada por logopedas para anotar disfluencias",
       tags: [
         "Bloqueo",
         "Prolongación",
@@ -270,7 +270,7 @@ export const es: Dictionary = {
       eyebrow: "Fundamentos",
       headlineLine1: "Práctica clínica e ingeniería de IA,",
       headlineLine2: "en el mismo equipo.",
-      body: "Clínicos e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
+      body: "Logopedas e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
       partnersLabel: "Socios · Apoyos · Reconocimiento",
       partnersTagline: "Con quién trabajamos",
       partnerContext: {
@@ -308,7 +308,7 @@ export const es: Dictionary = {
     },
     cta: {
       headline: "Solicitar acceso anticipado.",
-      body: "Estamos trabajando con un grupo de clínicas y nos gustaría saber de otras que trabajan en el ámbito de la logopedia. Cuéntanos sobre tu consulta y nos pondremos en contacto.",
+      body: "Estamos trabajando con un grupo de clínicas y nos gustaría que nos escribieran otras que trabajan en el ámbito de la logopedia. Háblanos de tu consulta y nos pondremos en contacto.",
       nameLabel: "Nombre completo *",
       namePlaceholder: "Introduce tu nombre",
       nameError: "Introduce tu nombre.",
@@ -376,7 +376,7 @@ export const es: Dictionary = {
       body: "Abres la app y ahí está el ejercicio del día.",
       screenshots: [
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
-        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que fijó el terapeuta",
+        "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
       ],
     },
@@ -426,12 +426,12 @@ export const es: Dictionary = {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué significa",
       headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una forma de pensar sobre la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que fija la propia persona.",
+      body: "La tartamudez positiva es una manera de entender la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que fija la propia persona.",
     },
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los clínicos recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -439,11 +439,11 @@ export const es: Dictionary = {
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
-        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el clínico; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el clínico y la persona.",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el terapeuta; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el logopeda y la persona.",
       },
       {
         heading: "Una nota sobre el lenguaje",
-        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que un individuo prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
+        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que la propia persona prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
       },
     ],
     faq: {
@@ -456,11 +456,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
-          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el clínico asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
+          a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el terapeuta asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
           q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudeo) son comunes en los enfoques de tartamudez positiva. Muchos clínicos combinan estas con trabajo de moldeamiento de la fluidez según los objetivos del individuo.",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudez) son comunes en los enfoques de tartamudez positiva. Muchos logopedas combinan estas con trabajo de moldeamiento de la fluidez según los objetivos de cada persona.",
         },
         {
           q: "¿Dónde puedo aprender más?",
@@ -469,7 +469,7 @@ export const es: Dictionary = {
       ],
     },
     closing: {
-      headline: "Trabaja con un clínico que entienda tus objetivos.",
+      headline: "Trabaja con un logopeda que entienda tus objetivos.",
       bodyPrefix:
         "UpSpeech se utiliza a través de logopedas. Si diriges una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
@@ -501,12 +501,12 @@ export const es: Dictionary = {
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech captura datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
       },
     ],
     faq: {
       eyebrow: "Preguntas",
-      headline: "Preguntas frecuentes de clínicos.",
+      headline: "Preguntas frecuentes de logopedas.",
       items: [
         {
           q: "¿Cuánto tiempo pueden ahorrar de forma realista los logopedas en documentación?",
@@ -514,7 +514,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿La redacción de notas con asistencia de IA reemplaza la observación clínica?",
-          a: "No. Una nota borrador se construye a partir de los datos de la sesión. Los juicios que el terapeuta hace en la consulta son lo que el terapeuta añade.",
+          a: "No. El borrador de la nota se genera a partir de los datos de la sesión. Los juicios que el terapeuta hace en la consulta son lo que el terapeuta añade.",
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
@@ -522,7 +522,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Los pacientes practican los ejercicios asignados en la app entre sesiones. La app captura datos de finalización y rendimiento, y el borrador se construye a partir de ahí. No interviene ninguna transcripción de audio. El terapeuta lo ve todo antes de firmar cualquier nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina; la transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
         },
       ],
     },
@@ -573,10 +573,10 @@ export const es: Dictionary = {
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
       headline: "Tartamudez positiva, desde el diseño.",
-      body: "La app se construye en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
+      body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
     },
     faq: {
-      eyebrow: "Preguntas de clínicos",
+      eyebrow: "Preguntas de profesionales",
       headline: "Preguntas frecuentes de logopedas.",
       items: [
         {
