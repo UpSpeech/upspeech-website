@@ -519,7 +519,7 @@ export const en = {
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Patients practise assigned exercises in the app between sessions. The app captures completion and performance data, and the draft is built from that. No audio transcription is involved. The therapist sees all of it before any note is signed.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted; the transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
         },
       ],
     },
