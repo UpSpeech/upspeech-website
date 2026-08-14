@@ -106,7 +106,7 @@ export const es: Dictionary = {
       practice: "Práctica",
       plusPractice: "+ Práctica",
       footerPrefix: "El paciente cuenta con apoyo todos los días,",
-      footerEmphasis: "y no supone más trabajo para el logopeda.",
+      footerEmphasis: "sin añadir sesiones a la agenda del logopeda.",
     },
     therapist: {
       eyebrow: "En la consulta",
@@ -181,7 +181,7 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El logopeda lo edita y lo aprueba.",
-          body: "Esas correcciones entrenan el modelo y mejoran el siguiente borrador.",
+          body: "Esas correcciones mejoran el siguiente borrador. Todo lo que se use para entrenar nuestros modelos necesita antes el consentimiento del paciente.",
         },
         {
           verb: "estructura",
@@ -301,6 +301,10 @@ export const es: Dictionary = {
         {
           title: "Grabaciones privadas",
           copy: "Se accede a las grabaciones mediante enlaces firmados y de corta duración, nunca desde una ubicación pública.",
+        },
+        {
+          title: "Mejorar la IA, con consentimiento",
+          copy: "Las grabaciones se usan para mejorar nuestros modelos solo cuando el paciente lo ha autorizado expresamente. Antes se eliminan los datos identificativos, las grabaciones no salen de UpSpeech y el paciente puede retirar su consentimiento en cualquier momento.",
         },
       ],
       readPrivacy: "Lee nuestra Política de Privacidad",
@@ -424,12 +428,12 @@ export const es: Dictionary = {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué significa",
       headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una manera de entender la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que fija la propia persona.",
+      body: "La tartamudez positiva es una manera de entender la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que la propia persona ayuda a definir.",
     },
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que esos objetivos los fija la persona.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que la persona tiene mucho que decir sobre cuáles son esos objetivos.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
@@ -450,7 +454,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿La tartamudez positiva es lo mismo que no ayudar a alguien a mejorar?",
-          a: "No. La terapia de tartamudez positiva sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona decide qué significa progresar para ella, y la fluidez no es la respuesta automática.",
+          a: "No. La terapia de tartamudez positiva sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona y el logopeda acuerdan qué significa progresar, y la fluidez no es la respuesta automática.",
         },
         {
           q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",

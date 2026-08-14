@@ -104,7 +104,7 @@ export const en = {
       practice: "Practice",
       plusPractice: "+ Practice",
       footerPrefix: "The patient keeps their support every day,",
-      footerEmphasis: "and it adds no work for the clinician.",
+      footerEmphasis: "without adding sessions to the clinician's week.",
     },
     therapist: {
       eyebrow: "In the room",
@@ -179,7 +179,7 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician edits and approves it.",
-          body: "Those corrections train the model and improve the next draft.",
+          body: "Those corrections improve the next draft. Anything used to train our models needs the patient's opt-in first.",
         },
         {
           verb: "structures",
@@ -299,6 +299,10 @@ export const en = {
         {
           title: "Private recordings",
           copy: "Recordings are served through short-lived, signed links, never from a public location.",
+        },
+        {
+          title: "Improving the AI, with consent",
+          copy: "Recordings are used to improve our models only where the patient has opted in. Identifying details are removed first, the recordings stay inside UpSpeech, and a patient can withdraw at any time.",
         },
       ],
       readPrivacy: "Read our Privacy Policy",
@@ -423,12 +427,12 @@ export const en = {
       eyebrow: "Philosophy",
       headlineLine1: "What does",
       headlineLine2: "stutter-positive mean?",
-      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It supports people who stutter to be heard on their own terms, with goals the person sets for themselves.",
+      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It supports people who stutter to be heard on their own terms, with goals the person helps shape.",
     },
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitisation. Stutter-positive means those goals are the person's to set.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitisation. Stutter-positive means the person has a real say in what those goals are.",
       },
       {
         heading: "Being heard on your own terms",
@@ -449,7 +453,7 @@ export const en = {
       items: [
         {
           q: "Is stutter-positive the same as not helping someone improve?",
-          a: "No. Stutter-positive therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person decides what progress looks like for them, and fluency is not the automatic answer.",
+          a: "No. Stutter-positive therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person and the clinician agree what progress looks like, and fluency is not the automatic answer.",
         },
         {
           q: "Does UpSpeech only work for stutter-positive approaches?",

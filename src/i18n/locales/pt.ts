@@ -106,7 +106,7 @@ export const pt: Dictionary = {
       practice: "Prática",
       plusPractice: "+ Prática",
       footerPrefix: "O paciente mantém o seu apoio todos os dias,",
-      footerEmphasis: "e não acrescenta trabalho para o clínico.",
+      footerEmphasis: "sem acrescentar sessões à semana do clínico.",
     },
     therapist: {
       eyebrow: "Na consulta",
@@ -181,7 +181,7 @@ export const pt: Dictionary = {
         {
           verb: "aprova",
           title: "O clínico edita e aprova.",
-          body: "Essas correções treinam o modelo e melhoram o rascunho seguinte.",
+          body: "Essas correções melhoram o rascunho seguinte. Qualquer conteúdo usado para treinar os nossos modelos exige o consentimento prévio do paciente.",
         },
         {
           verb: "estrutura",
@@ -301,6 +301,10 @@ export const pt: Dictionary = {
         {
           title: "Gravações privadas",
           copy: "As gravações são acedidas através de ligações assinadas e de curta duração, nunca a partir de um endereço público.",
+        },
+        {
+          title: "Melhorar a IA, com consentimento",
+          copy: "As gravações só são usadas para melhorar os nossos modelos quando o paciente deu o seu consentimento explícito. Os elementos identificativos são removidos antes disso, as gravações não saem da UpSpeech, e o paciente pode retirar o consentimento a qualquer momento.",
         },
       ],
       readPrivacy: "Ler a nossa Política de Privacidade",
@@ -424,12 +428,12 @@ export const pt: Dictionary = {
       eyebrow: "Filosofia",
       headlineLine1: "O que significa",
       headlineLine2: "gaguez positiva?",
-      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir à sua maneira, com objetivos que a própria pessoa define.",
+      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir à sua maneira, com objetivos que a própria pessoa ajuda a definir.",
     },
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir o evitamento é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. Gaguez positiva significa que esses objetivos cabem à pessoa definir.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir o evitamento é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. Gaguez positiva significa que a pessoa tem realmente uma palavra a dizer sobre quais são esses objetivos.",
       },
       {
         heading: "Ser ouvido à sua maneira",
@@ -450,7 +454,7 @@ export const pt: Dictionary = {
       items: [
         {
           q: "Gaguez positiva é o mesmo que não ajudar alguém a melhorar?",
-          a: "Não. A terapia de gaguez positiva continua a ensinar técnicas e a trabalhar o evitamento. O que muda é quem define a meta: a pessoa decide o que significa progresso para si, e a fluência não é a resposta automática.",
+          a: "Não. A terapia de gaguez positiva continua a ensinar técnicas e a trabalhar o evitamento. O que muda é quem define a meta: a pessoa e o clínico acordam o que significa progresso, e a fluência não é a resposta automática.",
         },
         {
           q: "A UpSpeech funciona apenas para abordagens de gaguez positiva?",
