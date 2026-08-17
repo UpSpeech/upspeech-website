@@ -25,7 +25,6 @@ export const es: Dictionary = {
     company: "Empresa",
     forPatients: "Para pacientes",
     forSlps: "Para logopedas",
-    techniques: "Técnicas",
     support: "Soporte",
     privacy: "Política de Privacidad",
     terms: "Condiciones del servicio",
@@ -37,7 +36,7 @@ export const es: Dictionary = {
     appStoreAriaLabel: "Descarga UpSpeech en la App Store",
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
-    stutterPositive: "Tartamudez positiva",
+    personCentred: "Centrada en la persona",
     reducingDocumentationTime: "Tiempo de documentación",
   },
   localeSwitcher: {
@@ -420,24 +419,24 @@ export const es: Dictionary = {
     storePlayAlt: "Disponible en Google Play",
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
-  stutterPositive: {
-    seoTitle: "¿Qué significa tartamudez positiva?",
+  personCentred: {
+    seoTitle: "¿Qué es la logopedia centrada en la persona?",
     seoDescription:
-      "Una guía en lenguaje sencillo sobre la terapia de tartamudez positiva: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
+      "Una guía en lenguaje sencillo sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
     intro: {
       eyebrow: "Filosofía",
-      headlineLine1: "¿Qué significa",
-      headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una manera de entender la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que la propia persona ayuda a definir.",
+      headlineLine1: "¿Qué es la terapia",
+      headlineLine2: "centrada en la persona?",
+      body: "La terapia centrada en la persona prioriza la confianza y la comunicación, y es la propia persona quien ayuda a definir los objetivos. En la terapia de la tartamudez, este enfoque se llama a veces tartamudez positiva.",
     },
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que la persona tiene mucho que decir sobre cuáles son esos objetivos.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. El enfoque centrado en la persona amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Lo que lo hace centrado en la persona es que es ella quien tiene mucho que decir sobre cuáles de esos objetivos se aplican.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
-        body: "Las personas que tartamudean a menudo se enfrentan a algo más que la disfluencia. Está la llamada que vas dejando para más adelante, o el café que acabas pidiendo de otra forma porque es más fácil que la palabra que ibas a decir. La terapia de tartamudez positiva aborda eso junto con la práctica de técnicas.",
+        body: "Las personas que tartamudean a menudo se enfrentan a algo más que la disfluencia. Está la llamada que vas dejando para más adelante, o el café que acabas pidiendo de otra forma porque es más fácil que la palabra que ibas a decir. La terapia centrada en la persona aborda eso junto con la práctica de técnicas.",
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
@@ -445,7 +444,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Una nota sobre el lenguaje",
-        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que la propia persona prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
+        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje que pone a la persona antes de la condición es el estándar aquí, a menos que la propia persona prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
       },
     ],
     faq: {
@@ -453,20 +452,20 @@ export const es: Dictionary = {
       headline: "Preguntas frecuentes.",
       items: [
         {
-          q: "¿La tartamudez positiva es lo mismo que no ayudar a alguien a mejorar?",
-          a: "No. La terapia de tartamudez positiva sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona y el logopeda acuerdan qué significa progresar, y la fluidez no es la respuesta automática.",
+          q: "¿La terapia centrada en la persona es lo mismo que no ayudar a alguien a mejorar?",
+          a: "No. La terapia centrada en la persona sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona y el logopeda acuerdan qué significa progresar, y la fluidez no es la respuesta automática.",
         },
         {
-          q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
+          q: "¿UpSpeech solo funciona para enfoques centrados en la persona?",
           a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el terapeuta asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
-          q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudez) son comunes en los enfoques de tartamudez positiva. Muchos logopedas combinan estas con trabajo de moldeamiento de la fluidez según los objetivos de cada persona.",
+          q: "¿Qué técnicas se usan en la terapia de la tartamudez centrada en la persona?",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudez) son comunes. Muchos logopedas combinan estas con trabajo de moldeamiento de la fluidez según los objetivos de cada persona.",
         },
         {
           q: "¿Dónde puedo aprender más?",
-          a: "STAMMA (the British Stammering Association), la Stuttering Foundation y el American Institute for Stuttering publican guías accesibles sobre enfoques de tartamudez positiva y centrados en la persona.",
+          a: "STAMMA (the British Stammering Association), la Stuttering Foundation y el American Institute for Stuttering publican guías accesibles sobre enfoques centrados en la persona y de tartamudez positiva.",
         },
       ],
     },
@@ -572,7 +571,7 @@ export const es: Dictionary = {
         },
       ],
     },
-    stutterPositive: {
+    personCentred: {
       eyebrow: "Nuestro enfoque",
       headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",

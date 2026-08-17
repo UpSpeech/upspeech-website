@@ -25,7 +25,6 @@ export const pt: Dictionary = {
     company: "Empresa",
     forPatients: "Para pacientes",
     forSlps: "Para terapeutas da fala",
-    techniques: "Técnicas",
     support: "Suporte",
     privacy: "Política de Privacidade",
     terms: "Termos de Serviço",
@@ -37,7 +36,7 @@ export const pt: Dictionary = {
     appStoreAriaLabel: "Descarregar a UpSpeech na App Store",
     playStoreAlt: "Disponível no Google Play",
     playStoreAriaLabel: "Obter a UpSpeech no Google Play",
-    stutterPositive: "Gaguez positiva",
+    personCentred: "Centrada na pessoa",
     reducingDocumentationTime: "Tempo de documentação",
   },
   localeSwitcher: {
@@ -420,24 +419,24 @@ export const pt: Dictionary = {
     storePlayAlt: "Disponível no Google Play",
     storePlayAriaLabel: "Obter a UpSpeech no Google Play",
   },
-  stutterPositive: {
-    seoTitle: "O que significa gaguez positiva?",
+  personCentred: {
+    seoTitle: "O que é a terapia centrada na pessoa?",
     seoDescription:
-      "Um guia em linguagem simples sobre terapia de gaguez positiva: o que significa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
+      "Um guia em linguagem simples sobre terapia da fala centrada na pessoa: o que significa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
     intro: {
       eyebrow: "Filosofia",
-      headlineLine1: "O que significa",
-      headlineLine2: "gaguez positiva?",
-      body: "Gaguez positiva é uma forma de pensar sobre a gaguez que coloca a confiança e a comunicação em primeiro lugar. Apoia as pessoas que gaguejam a fazerem-se ouvir à sua maneira, com objetivos que a própria pessoa ajuda a definir.",
+      headlineLine1: "O que é a terapia",
+      headlineLine2: "centrada na pessoa?",
+      body: "A terapia centrada na pessoa coloca a confiança e a comunicação em primeiro lugar, e é a própria pessoa que ajuda a definir os objetivos. Na terapia da gaguez, esta abordagem é por vezes chamada gaguez positiva.",
     },
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem de gaguez positiva alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir o evitamento é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. Gaguez positiva significa que a pessoa tem realmente uma palavra a dizer sobre quais são esses objetivos.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem centrada na pessoa alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir o evitamento é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é que é ela que tem uma palavra a dizer sobre quais desses objetivos se aplicam.",
       },
       {
         heading: "Ser ouvido à sua maneira",
-        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência. Há o telefonema que se adia e o café que se pede de outra forma porque é mais fácil do que a palavra que se queria dizer. A terapia de gaguez positiva aborda isso a par de qualquer prática de técnicas.",
+        body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência. Há o telefonema que se adia e o café que se pede de outra forma porque é mais fácil do que a palavra que se queria dizer. A terapia centrada na pessoa aborda isso a par de qualquer prática de técnicas.",
       },
       {
         heading: "Como a UpSpeech reflete esta abordagem",
@@ -445,7 +444,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Uma nota sobre linguagem",
-        body: "Esta página usa 'pessoas que gaguejam' e 'pessoa que gagueja' ao longo do texto. A linguagem centrada na pessoa é o padrão aqui, a menos que um indivíduo prefira diferente. O objetivo é descrever as pessoas com respeito, usando as palavras que escolhem para si próprias.",
+        body: "Esta página usa 'pessoas que gaguejam' e 'pessoa que gagueja' ao longo do texto. A linguagem que coloca a pessoa antes da condição é o padrão aqui, a menos que a própria pessoa prefira outra. O objetivo é descrever as pessoas com respeito, usando as palavras que escolhem para si próprias.",
       },
     ],
     faq: {
@@ -453,20 +452,20 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes.",
       items: [
         {
-          q: "Gaguez positiva é o mesmo que não ajudar alguém a melhorar?",
-          a: "Não. A terapia de gaguez positiva continua a ensinar técnicas e a trabalhar o evitamento. O que muda é quem define a meta: a pessoa e o clínico acordam o que significa progresso, e a fluência não é a resposta automática.",
+          q: "A terapia centrada na pessoa é o mesmo que não ajudar alguém a melhorar?",
+          a: "Não. A terapia centrada na pessoa continua a ensinar técnicas e a trabalhar o evitamento. O que muda é quem define a meta: a pessoa e o clínico acordam o que significa progresso, e a fluência não é a resposta automática.",
         },
         {
-          q: "A UpSpeech funciona apenas para abordagens de gaguez positiva?",
+          q: "A UpSpeech funciona apenas para abordagens centradas na pessoa?",
           a: "Não. A UpSpeech apoia o plano que o terapeuta da fala cria. A app disponibiliza o que o clínico define, o que pode incluir técnicas de modelagem da fluência, técnicas de modificação ou trabalho focado na confiança.",
         },
         {
-          q: "Que técnicas são usadas na terapia de gaguez positiva?",
-          a: "A gaguez voluntária, a identificação e dessensibilização, e as técnicas de pull-out (sair de forma controlada de um momento de gaguez) são comuns nas abordagens de gaguez positiva. Muitos clínicos combinam estas com trabalho de modelagem da fluência, dependendo dos objetivos do indivíduo.",
+          q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
+          a: "A gaguez voluntária, a identificação e dessensibilização, e as técnicas de pull-out (sair de forma controlada de um momento de gaguez) são comuns. Muitos clínicos combinam estas com trabalho de modelagem da fluência, dependendo dos objetivos do indivíduo.",
         },
         {
           q: "Onde posso aprender mais?",
-          a: "A STAMMA (British Stammering Association), a Stuttering Foundation e o American Institute for Stuttering publicam guias acessíveis sobre abordagens de gaguez positiva e centradas na pessoa.",
+          a: "A STAMMA (British Stammering Association), a Stuttering Foundation e o American Institute for Stuttering publicam guias acessíveis sobre abordagens centradas na pessoa e de gaguez positiva.",
         },
       ],
     },
@@ -573,7 +572,7 @@ export const pt: Dictionary = {
         },
       ],
     },
-    stutterPositive: {
+    personCentred: {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
       body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",

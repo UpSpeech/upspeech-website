@@ -165,10 +165,10 @@ export default function ForSlps() {
           </div>
         </section>
 
-        {/* Stutter-positive */}
+        {/* Person-centred */}
         <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
           <div className="max-w-6xl mx-auto rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
-            <p className={eyebrowClass}>{t.stutterPositive.eyebrow}</p>
+            <p className={eyebrowClass}>{t.personCentred.eyebrow}</p>
             <h2
               className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
               style={{
@@ -176,10 +176,10 @@ export default function ForSlps() {
                 lineHeight: 1.1,
               }}
             >
-              {t.stutterPositive.headline}
+              {t.personCentred.headline}
             </h2>
             <p className="mt-4 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
-              {t.stutterPositive.body}
+              {t.personCentred.body}
             </p>
           </div>
         </section>

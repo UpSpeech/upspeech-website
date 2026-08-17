@@ -3,16 +3,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedPath } from "@/i18n";
-import { getStutterPositiveStructuredData } from "@/lib/seo-data";
+import { getPersonCentredStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
   "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
 
-export default function StutterPositive() {
+export default function PersonCentred() {
   const locale = useLocale();
-  const t = useT().stutterPositive;
+  const t = useT().personCentred;
 
-  const articleSchema = getStutterPositiveStructuredData(locale);
+  const articleSchema = getPersonCentredStructuredData(locale);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -32,7 +32,7 @@ export default function StutterPositive() {
       <SEO
         title={t.seoTitle}
         description={t.seoDescription}
-        path="/stutter-positive"
+        path="/person-centred-therapy"
         locale={locale}
         structuredData={[articleSchema, faqSchema]}
       />
