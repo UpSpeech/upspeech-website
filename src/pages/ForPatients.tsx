@@ -159,20 +159,6 @@ export default function ForPatients() {
               </p>
             </div>
 
-            <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
-              {SCREENSHOTS.map((base, i) => (
-                <img
-                  key={base}
-                  src={localizedAsset(base, locale)}
-                  alt={t.app.screenshots[i]}
-                  loading="lazy"
-                  className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
-                    i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
-                  }`}
-                />
-              ))}
-            </div>
-
             {(APP_STORE_URL || PLAY_STORE_URL) && (
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 {APP_STORE_URL && (
@@ -207,6 +193,19 @@ export default function ForPatients() {
                 )}
               </div>
             )}
+            <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
+              {SCREENSHOTS.map((base, i) => (
+                <img
+                  key={base}
+                  src={localizedAsset(base, locale)}
+                  alt={t.app.screenshots[i]}
+                  loading="lazy"
+                  className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                    i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
