@@ -8,5 +8,10 @@ http://www.upspeech.app/* https://upspeech.app/:splat 301!
 https://www.upspeechapp.com/* https://upspeech.app/:splat 301!
 http://www.upspeechapp.com/* https://upspeech.app/:splat 301!
 
+# Renamed page: /stutter-positive is now /person-centred-therapy
+/stutter-positive        /person-centred-therapy      301!
+/pt/stutter-positive     /pt/person-centred-therapy   301!
+/es/stutter-positive     /es/person-centred-therapy   301!
+
 # SPA fallback: serve index.html for all routes (must be last)
 /*    /index.html   200

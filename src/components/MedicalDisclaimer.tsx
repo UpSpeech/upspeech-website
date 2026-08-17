@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
-
-const DISCLAIMER_TEXT =
-  "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.";
+import { useT } from "@/i18n";
 
 type Props = {
   // "section" renders a bordered block for mid-page use (default).
@@ -11,6 +9,8 @@ type Props = {
 };
 
 const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
+  const text = useT().medicalDisclaimer;
+
   if (variant === "compact") {
     return (
       <p
@@ -19,18 +19,23 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
           className,
         )}
       >
-        {DISCLAIMER_TEXT}
+        {text}
       </p>
     );
   }
   return (
     <aside
       className={cn(
-        "mx-auto max-w-3xl rounded-xl border border-calm-charcoal/10 bg-calm-light/60 px-5 py-4 font-body text-sm leading-relaxed text-calm-charcoal/80",
+        // A hairline rule and small print rather than a card. The rule matches
+        // the FAQ dividers (divide-calm-charcoal/10) so it reads as part of the
+        // page. Text at /85 measures 5.57:1 on white, up from 4.74:1 for /80 on
+        // the old translucent card. Deliberately not darker than that: page body
+        // copy runs at /70, and the disclaimer should not outshout the content.
+        "mx-auto max-w-3xl border-t border-calm-charcoal/10 pt-6 font-body text-sm leading-relaxed text-calm-charcoal/85",
         className,
       )}
     >
-      {DISCLAIMER_TEXT}
+      {text}
     </aside>
   );
 };

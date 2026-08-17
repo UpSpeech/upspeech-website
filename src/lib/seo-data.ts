@@ -162,14 +162,14 @@ export function getTechniqueFAQStructuredData(
   };
 }
 
-export function getStutterPositiveStructuredData(locale: string = "en") {
+export function getPersonCentredStructuredData(locale: string = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "What does stutter-positive mean?",
+    headline: "What does person-centred mean?",
     description:
-      "A plain-language guide to stutter-positive speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
-    url: localeAbsUrl("/stutter-positive", locale),
+      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    url: localeAbsUrl("/person-centred-therapy", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
     dateModified: "2026-06-25",
@@ -189,7 +189,7 @@ export function getStutterPositiveStructuredData(locale: string = "en") {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": localeAbsUrl("/stutter-positive", locale),
+      "@id": localeAbsUrl("/person-centred-therapy", locale),
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
@@ -203,8 +203,8 @@ export function getStutterPositiveStructuredData(locale: string = "en") {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Stutter-positive",
-          item: localeAbsUrl("/stutter-positive", locale),
+          name: "Person-centred",
+          item: localeAbsUrl("/person-centred-therapy", locale),
         },
       ],
     },

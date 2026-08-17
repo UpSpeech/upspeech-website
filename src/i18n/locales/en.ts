@@ -23,7 +23,6 @@ export const en = {
     company: "Company",
     forPatients: "For patients",
     forSlps: "For SLPs",
-    techniques: "Techniques",
     support: "Support",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
@@ -35,7 +34,7 @@ export const en = {
     appStoreAriaLabel: "Download UpSpeech on the App Store",
     playStoreAlt: "Get it on Google Play",
     playStoreAriaLabel: "Get UpSpeech on Google Play",
-    stutterPositive: "Stutter-positive",
+    personCentred: "Person-centred",
     reducingDocumentationTime: "Documentation time",
   },
   localeSwitcher: {
@@ -44,6 +43,8 @@ export const en = {
     pt: "Português",
     es: "Español",
   },
+  medicalDisclaimer:
+    "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.",
   techniquesIndex: {
     title: "Speech Therapy Techniques",
     subtitle: "Established techniques used in speech and language therapy",
@@ -251,7 +252,7 @@ export const en = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Trained on",
       headlineLine2: "clinician-annotated data.",
-      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame. The labels in the dataset come from those clinicians rather than from crowd workers.",
+      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
       tags: [
@@ -363,7 +364,7 @@ export const en = {
         },
         {
           title: "You practise in the app",
-          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions. You see only what your therapist has assigned.",
+          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions.",
         },
         {
           title: "Your therapist sees your progress",
@@ -403,7 +404,7 @@ export const en = {
         },
         {
           q: "How do I get UpSpeech?",
-          a: "Ask your speech therapist whether they use UpSpeech. Clinics request access through this site.",
+          a: "Ask your speech therapist whether they use UpSpeech.",
         },
       ],
     },
@@ -419,28 +420,28 @@ export const en = {
     storePlayAlt: "Get it on Google Play",
     storePlayAriaLabel: "Get UpSpeech on Google Play",
   },
-  stutterPositive: {
-    seoTitle: "What Is Stutter-Positive?",
+  personCentred: {
+    seoTitle: "What Is Person-Centred Speech Therapy?",
     seoDescription:
-      "A plain-language guide to stutter-positive speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
     intro: {
       eyebrow: "Philosophy",
       headlineLine1: "What does",
-      headlineLine2: "stutter-positive mean?",
-      body: "Stutter-positive is a way of thinking about stuttering that puts confidence and communication first. It supports people who stutter to be heard on their own terms, with goals the person helps shape.",
+      headlineLine2: "person-centred mean?",
+      body: "Person-centred therapy puts confidence and communication first, and the person helps set the goals. In stuttering therapy this is sometimes called a stutter-positive approach.",
     },
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Stutter-positive therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitisation. Stutter-positive means the person has a real say in what those goals are.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Person-centred therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitisation. What makes it person-centred is that the person has a real say in which of those goals apply.",
       },
       {
         heading: "Being heard on your own terms",
-        body: "People who stutter often deal with more than disfluency. There is the phone call you put off and the coffee order you change because it is easier than the word you meant to say. Stutter-positive therapy takes that on alongside any technique practice.",
+        body: "People who stutter often deal with more than disfluency. There is the phone call you put off and the coffee order you change because it is easier than the word you meant to say. Person-centred therapy takes that on alongside any technique practice.",
       },
       {
         heading: "How UpSpeech reflects this",
-        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The clinician sets the learning path and exercises; the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. Whether fluency belongs in the plan is for the clinician and the person to decide.",
+        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The clinician sets the learning path and exercises, and the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. Whether fluency belongs in the plan is for the clinician and the person to decide.",
       },
       {
         heading: "A note on language",
@@ -452,20 +453,20 @@ export const en = {
       headline: "Common questions.",
       items: [
         {
-          q: "Is stutter-positive the same as not helping someone improve?",
-          a: "No. Stutter-positive therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person and the clinician agree what progress looks like, and fluency is not the automatic answer.",
+          q: "Is person-centred therapy the same as not helping someone improve?",
+          a: "No. Person-centred therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person and the clinician agree what progress looks like, and fluency is not the automatic answer.",
         },
         {
-          q: "Does UpSpeech only work for stutter-positive approaches?",
+          q: "Does UpSpeech only work for person-centred approaches?",
           a: "No. UpSpeech supports the plan a speech-language pathologist creates. The app delivers what the clinician assigns, which can include traditional fluency-shaping, modification techniques, or confidence-focused work.",
         },
         {
-          q: "What techniques are used in stutter-positive therapy?",
-          a: "Voluntary stuttering, identification and desensitisation, and pull-out techniques (easing out of a moment of stuttering) are common in stutter-positive approaches. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
+          q: "What techniques are used in person-centred stuttering therapy?",
+          a: "Voluntary stuttering, identification and desensitisation, and pull-out techniques (easing out of a moment of stuttering) are common. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
         },
         {
           q: "Where can I learn more?",
-          a: "STAMMA (the British Stammering Association), the Stuttering Foundation, and the American Institute for Stuttering publish accessible guides on stutter-positive and person-centred approaches to stuttering therapy.",
+          a: "STAMMA (the British Stammering Association), the Stuttering Foundation, and the American Institute for Stuttering publish accessible guides on person-centred and stutter-positive approaches to stuttering therapy.",
         },
       ],
     },
@@ -523,7 +524,7 @@ export const en = {
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted; the transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
         },
       ],
     },
@@ -570,7 +571,7 @@ export const en = {
         },
       ],
     },
-    stutterPositive: {
+    personCentred: {
       eyebrow: "Our approach",
       headline: "Encouraging by design.",
       body: "The app is built around confidence and being heard. The practice is designed to encourage rather than correct.",
@@ -581,7 +582,7 @@ export const en = {
       items: [
         {
           q: "Does UpSpeech write my reports for me?",
-          a: "It drafts a structured report from the session for you to review and edit. You stay the clinician of record, and it takes the blank-page work off your plate.",
+          a: "It drafts a structured report from the session for you to review and edit, and takes the blank-page work off your plate.",
         },
         {
           q: "What do my patients actually do?",

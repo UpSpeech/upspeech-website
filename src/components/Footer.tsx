@@ -78,10 +78,10 @@ const Footer = () => {
               {t.forPatients}
             </a>
             <a
-              href={localizedPath("/stutter-positive", locale)}
+              href={localizedPath("/person-centred-therapy", locale)}
               className={linkClass}
             >
-              {t.stutterPositive}
+              {t.personCentred}
             </a>
             <a
               href={localizedPath("/reducing-documentation-time", locale)}
@@ -91,12 +91,6 @@ const Footer = () => {
             </a>
             <a href={localizedPath("/for-slps", locale)} className={linkClass}>
               {t.forSlps}
-            </a>
-            <a
-              href={localizedPath("/techniques", locale)}
-              className={linkClass}
-            >
-              {t.techniques}
             </a>
             <a href={localizedPath("/support", locale)} className={linkClass}>
               {t.support}

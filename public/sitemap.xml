@@ -424,6 +424,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/for-patients/" />
   </url>
   <url>
+    <loc>https://upspeech.app/person-centred-therapy/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/person-centred-therapy/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/person-centred-therapy/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/person-centred-therapy/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/person-centred-therapy/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/person-centred-therapy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/person-centred-therapy/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/reducing-documentation-time/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/reducing-documentation-time/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/pt/reducing-documentation-time/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/reducing-documentation-time/" />
+  </url>
+  <url>
+    <loc>https://upspeech.app/es/reducing-documentation-time/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://upspeech.app/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://upspeech.app/pt/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://upspeech.app/es/reducing-documentation-time/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://upspeech.app/reducing-documentation-time/" />
+  </url>
+  <url>
     <loc>https://upspeech.app/for-slps/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>

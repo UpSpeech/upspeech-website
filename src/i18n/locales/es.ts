@@ -25,7 +25,6 @@ export const es: Dictionary = {
     company: "Empresa",
     forPatients: "Para pacientes",
     forSlps: "Para logopedas",
-    techniques: "Técnicas",
     support: "Soporte",
     privacy: "Política de Privacidad",
     terms: "Condiciones del servicio",
@@ -37,7 +36,7 @@ export const es: Dictionary = {
     appStoreAriaLabel: "Descarga UpSpeech en la App Store",
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
-    stutterPositive: "Tartamudez positiva",
+    personCentred: "Centrada en la persona",
     reducingDocumentationTime: "Tiempo de documentación",
   },
   localeSwitcher: {
@@ -46,6 +45,8 @@ export const es: Dictionary = {
     pt: "Português",
     es: "Español",
   },
+  medicalDisclaimer:
+    "UpSpeech es una herramienta de práctica y de productividad clínica para su uso por y con logopedas cualificados. No es un dispositivo médico y no diagnostica, trata ni cura ninguna condición. El contenido educativo de este sitio no sustituye el asesoramiento clínico profesional.",
   techniquesIndex: {
     title: "Técnicas de logopedia",
     subtitle: "Técnicas establecidas usadas en logopedia",
@@ -126,7 +127,7 @@ export const es: Dictionary = {
         },
         {
           label: "Validación del terapeuta",
-          copy: "Cada informe y cada plan de tratamiento es un borrador hasta que el terapeuta lo revisa y lo firma.",
+          copy: "Cada informe y cada plan de terapia es un borrador hasta que el terapeuta lo revisa y lo firma.",
         },
       ],
     },
@@ -134,7 +135,7 @@ export const es: Dictionary = {
       eyebrow: "Fuera de la consulta",
       headlineLine1: "Práctica estructurada entre visitas,",
       headlineLine2: "guiada por el terapeuta en todo momento.",
-      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de tratamiento, y lo va completando entre visitas con orientación en cada paso.",
+      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de terapia, y lo va completando entre visitas con orientación en cada paso.",
       imageAlt:
         "Panel del paciente en UpSpeech con ejercicios de práctica diarios y progreso",
       points: [
@@ -253,7 +254,7 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por logopedas.",
-      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias. Las anotaciones del conjunto de datos proceden de esos profesionales, no de anotadores sin formación clínica.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias.",
       videoAriaLabel:
         "Herramienta de anotación de UpSpeech usada por logopedas para anotar disfluencias",
       tags: [
@@ -360,11 +361,11 @@ export const es: Dictionary = {
       steps: [
         {
           title: "Tu terapeuta define tu plan",
-          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a tu terapia y a tu fase de tratamiento.",
+          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a la fase de terapia en la que estás.",
         },
         {
           title: "Practicas en la app",
-          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones. Ves solo lo que tu terapeuta ha asignado.",
+          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones.",
         },
         {
           title: "Tu terapeuta ve tu progreso",
@@ -400,11 +401,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿Mi información es privada?",
-          a: "Sí. Tus datos están cifrados y solo los ve quien participa en tu tratamiento. Consulta la Política de Privacidad para más detalles.",
+          a: "Sí. Tus datos están cifrados y solo los ve quien te atiende. Consulta la Política de Privacidad para más detalles.",
         },
         {
           q: "¿Cómo consigo UpSpeech?",
-          a: "Pregunta a tu logopeda si usa UpSpeech. Las clínicas solicitan acceso a través de este sitio.",
+          a: "Pregunta a tu logopeda si usa UpSpeech.",
         },
       ],
     },
@@ -420,32 +421,32 @@ export const es: Dictionary = {
     storePlayAlt: "Disponible en Google Play",
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
-  stutterPositive: {
-    seoTitle: "¿Qué significa tartamudez positiva?",
+  personCentred: {
+    seoTitle: "¿Qué es la logopedia centrada en la persona?",
     seoDescription:
-      "Una guía en lenguaje sencillo sobre la terapia de tartamudez positiva: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
+      "Una guía en lenguaje sencillo sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
     intro: {
       eyebrow: "Filosofía",
-      headlineLine1: "¿Qué significa",
-      headlineLine2: "tartamudez positiva?",
-      body: "La tartamudez positiva es una manera de entender la tartamudez que prioriza la confianza y la comunicación. Apoya a las personas que tartamudean para que se les escuche en sus propios términos, con objetivos que la propia persona ayuda a definir.",
+      headlineLine1: "¿Qué es la terapia",
+      headlineLine2: "centrada en la persona?",
+      body: "La terapia centrada en la persona prioriza la confianza y la comunicación, y es la propia persona quien ayuda a definir los objetivos. En la terapia de la tartamudez, este enfoque se llama a veces tartamudez positiva.",
     },
     sections: [
       {
         heading: "La fluidez no es el único objetivo",
-        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. La tartamudez positiva amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Tartamudez positiva significa que la persona tiene mucho que decir sobre cuáles son esos objetivos.",
+        body: "La logopedia tradicional a veces trata la fluidez como la definición del éxito. El enfoque centrado en la persona amplía esa perspectiva. Cuando alguien sí quiere un habla más fluida, los logopedas recurren a técnicas de moldeamiento de la fluidez, como el habla prolongada. Cuando lo que más importa es reducir la evitación, optan por la tartamudez voluntaria y la desensibilización. Lo que lo hace centrado en la persona es que es ella quien tiene mucho que decir sobre cuáles de esos objetivos se aplican.",
       },
       {
         heading: "Ser escuchado en tus propios términos",
-        body: "Las personas que tartamudean a menudo se enfrentan a algo más que la disfluencia. Está la llamada que vas dejando para más adelante, o el café que acabas pidiendo de otra forma porque es más fácil que la palabra que ibas a decir. La terapia de tartamudez positiva aborda eso junto con la práctica de técnicas.",
+        body: "Las personas que tartamudean a menudo se enfrentan a algo más que la disfluencia. Está la llamada que vas dejando para más adelante, o el café que acabas pidiendo de otra forma porque es más fácil que la palabra que ibas a decir. La terapia centrada en la persona aborda eso junto con la práctica de técnicas.",
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
-        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el terapeuta; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el logopeda y la persona.",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el terapeuta, y la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el logopeda y la persona.",
       },
       {
         heading: "Una nota sobre el lenguaje",
-        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje centrado en la persona es el estándar aquí, a menos que la propia persona prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
+        body: "Esta página utiliza 'personas que tartamudean' y 'persona que tartamudea' en todo el texto. El lenguaje que pone a la persona antes de la condición es el estándar aquí, a menos que la propia persona prefiera otro. El objetivo es describir a las personas con respeto, con las palabras que ellas eligen para sí mismas.",
       },
     ],
     faq: {
@@ -453,20 +454,20 @@ export const es: Dictionary = {
       headline: "Preguntas frecuentes.",
       items: [
         {
-          q: "¿La tartamudez positiva es lo mismo que no ayudar a alguien a mejorar?",
-          a: "No. La terapia de tartamudez positiva sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona y el logopeda acuerdan qué significa progresar, y la fluidez no es la respuesta automática.",
+          q: "¿La terapia centrada en la persona es lo mismo que no ayudar a alguien a mejorar?",
+          a: "No. La terapia centrada en la persona sigue enseñando técnicas y trabajando la evitación. Lo que cambia es quién fija el objetivo: la persona y el logopeda acuerdan qué significa progresar, y la fluidez no es la respuesta automática.",
         },
         {
-          q: "¿UpSpeech solo funciona para enfoques de tartamudez positiva?",
+          q: "¿UpSpeech solo funciona para enfoques centrados en la persona?",
           a: "No. UpSpeech apoya el plan que crea el logopeda. La app ofrece lo que el terapeuta asigna, que puede incluir técnicas de moldeamiento de la fluidez, técnicas de modificación o trabajo centrado en la confianza.",
         },
         {
-          q: "¿Qué técnicas se usan en la terapia de tartamudez positiva?",
-          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudez) son comunes en los enfoques de tartamudez positiva. Muchos logopedas combinan estas con trabajo de moldeamiento de la fluidez según los objetivos de cada persona.",
+          q: "¿Qué técnicas se usan en la terapia de la tartamudez centrada en la persona?",
+          a: "La tartamudez voluntaria, la identificación y desensibilización, y las técnicas de pull-out (salir de forma controlada de un momento de tartamudez) son comunes. Muchos logopedas combinan estas con trabajo de moldeamiento de la fluidez según los objetivos de cada persona.",
         },
         {
           q: "¿Dónde puedo aprender más?",
-          a: "STAMMA (the British Stammering Association), la Stuttering Foundation y el American Institute for Stuttering publican guías accesibles sobre enfoques de tartamudez positiva y centrados en la persona.",
+          a: "STAMMA (the British Stammering Association), la Stuttering Foundation y el American Institute for Stuttering publican guías accesibles sobre enfoques centrados en la persona y de tartamudez positiva.",
         },
       ],
     },
@@ -524,7 +525,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina; la transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
         },
       ],
     },
@@ -572,7 +573,7 @@ export const es: Dictionary = {
         },
       ],
     },
-    stutterPositive: {
+    personCentred: {
       eyebrow: "Nuestro enfoque",
       headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
@@ -583,7 +584,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿UpSpeech escribe mis informes por mí?",
-          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites. Mantienes la responsabilidad clínica; eliminas el trabajo de la página en blanco.",
+          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites, y te ahorra el trabajo de la página en blanco.",
         },
         {
           q: "¿Qué hacen mis pacientes?",
