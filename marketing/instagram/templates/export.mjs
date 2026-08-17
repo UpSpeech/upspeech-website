@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import sharp from "sharp";
+import { PDFDocument } from "pdf-lib";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,7 +38,48 @@ async function findChrome() {
 function exportSize(name) {
   if (name === "profile-grid") return { width: 3240, height: 3240 };
   if (name.startsWith("story-")) return { width: 1080, height: 1920 };
+  // LinkedIn document carousels are portrait pages uploaded as a single PDF.
+  if (name.startsWith("doc-")) return { width: 1080, height: 1350 };
   return { width: 1080, height: 1080 };
+}
+
+// doc-<carousel>-<nn>-<slug> groups every page of one document carousel.
+const DOC_PAGE = /^doc-(.+?)-(\d{2})(?:-|$)/;
+
+function docCarouselName(name) {
+  return name.match(DOC_PAGE)?.[1] ?? null;
+}
+
+async function buildDocCarousels(names) {
+  const carousels = new Map();
+  for (const name of names) {
+    const carousel = docCarouselName(name);
+    if (!carousel) continue;
+    if (!carousels.has(carousel)) carousels.set(carousel, []);
+    carousels.get(carousel).push(name);
+  }
+
+  for (const [carousel, pages] of carousels) {
+    // Page order follows the two-digit slide number, not document order.
+    pages.sort((a, b) => a.match(DOC_PAGE)[2].localeCompare(b.match(DOC_PAGE)[2]));
+
+    const pdf = await PDFDocument.create();
+    for (const page of pages) {
+      const png = await pdf.embedPng(await fs.readFile(path.join(outputDir, `${page}.png`)));
+      pdf.addPage([png.width, png.height]).drawImage(png, {
+        x: 0,
+        y: 0,
+        width: png.width,
+        height: png.height,
+      });
+    }
+
+    const pdfPath = path.join(outputDir, `doc-${carousel}.pdf`);
+    await fs.writeFile(pdfPath, await pdf.save());
+    console.log(
+      `Assembled ${path.relative(process.cwd(), pdfPath)} (${pages.length} pages)`,
+    );
+  }
 }
 
 function sleep(ms) {
@@ -211,13 +253,21 @@ const html = await fs.readFile(htmlPath, "utf8");
 const css = await fs.readFile(cssPath, "utf8");
 await reportMissingAssetRefs(`${html}\n${css}`);
 
+// Optional name filters: `npm run export -- doc-refer-early` re-renders one
+// carousel instead of the whole set.
+const filters = process.argv.slice(2);
+
 const names = [
   ...new Set(
     [...html.matchAll(/\sdata-export="([^"]+)"/g)]
       .map((match) => match[1])
       .filter((name) => /^[a-z0-9-]+$/.test(name)),
   ),
-];
+].filter((name) => filters.length === 0 || filters.some((filter) => name.includes(filter)));
+
+if (names.length === 0) {
+  throw new Error(`No export targets matched: ${filters.join(", ")}`);
+}
 
 await fs.mkdir(outputDir, { recursive: true });
 
@@ -231,3 +281,5 @@ for (const name of names) {
   await exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, height });
   console.log(`Exported ${path.relative(process.cwd(), outputPath)}`);
 }
+
+await buildDocCarousels(names);
