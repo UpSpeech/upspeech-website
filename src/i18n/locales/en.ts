@@ -364,7 +364,7 @@ export const en = {
         },
         {
           title: "You practise in the app",
-          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions. You see only what your therapist has assigned.",
+          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions.",
         },
         {
           title: "Your therapist sees your progress",
@@ -404,7 +404,7 @@ export const en = {
         },
         {
           q: "How do I get UpSpeech?",
-          a: "Ask your speech therapist whether they use UpSpeech. Clinics request access through this site.",
+          a: "Ask your speech therapist whether they use UpSpeech.",
         },
       ],
     },
@@ -441,7 +441,7 @@ export const en = {
       },
       {
         heading: "How UpSpeech reflects this",
-        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The clinician sets the learning path and exercises; the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. Whether fluency belongs in the plan is for the clinician and the person to decide.",
+        body: "UpSpeech supports whatever approach a speech-language pathologist chooses. The clinician sets the learning path and exercises, and the app supports practice between sessions. If the goal is reduced avoidance, the therapist builds that into the plan. If the goal is voluntary stuttering practice, the app supports that too. Whether fluency belongs in the plan is for the clinician and the person to decide.",
       },
       {
         heading: "A note on language",
@@ -524,7 +524,7 @@ export const en = {
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted; the transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
         },
       ],
     },
@@ -582,7 +582,7 @@ export const en = {
       items: [
         {
           q: "Does UpSpeech write my reports for me?",
-          a: "It drafts a structured report from the session for you to review and edit. You stay the clinician of record, and it takes the blank-page work off your plate.",
+          a: "It drafts a structured report from the session for you to review and edit, and takes the blank-page work off your plate.",
         },
         {
           q: "What do my patients actually do?",

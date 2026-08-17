@@ -365,7 +365,7 @@ export const es: Dictionary = {
         },
         {
           title: "Practicas en la app",
-          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones. Ves solo lo que tu terapeuta ha asignado.",
+          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones.",
         },
         {
           title: "Tu terapeuta ve tu progreso",
@@ -405,7 +405,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Cómo consigo UpSpeech?",
-          a: "Pregunta a tu logopeda si usa UpSpeech. Las clínicas solicitan acceso a través de este sitio.",
+          a: "Pregunta a tu logopeda si usa UpSpeech.",
         },
       ],
     },
@@ -442,7 +442,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Cómo UpSpeech refleja este enfoque",
-        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el terapeuta; la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el logopeda y la persona.",
+        body: "UpSpeech apoya el enfoque que elija el logopeda. La ruta de aprendizaje y los ejercicios los establece el terapeuta, y la app apoya la práctica entre sesiones. Si el objetivo es reducir la evitación, el terapeuta lo incluye en el plan. Si el objetivo es practicar la tartamudez voluntaria, la app también lo apoya. Que la fluidez entre o no en el plan lo deciden el logopeda y la persona.",
       },
       {
         heading: "Una nota sobre el lenguaje",
@@ -525,7 +525,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina; la transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
         },
       ],
     },
@@ -584,7 +584,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿UpSpeech escribe mis informes por mí?",
-          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites. Mantienes la responsabilidad clínica; eliminas el trabajo de la página en blanco.",
+          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites, y te ahorra el trabajo de la página en blanco.",
         },
         {
           q: "¿Qué hacen mis pacientes?",

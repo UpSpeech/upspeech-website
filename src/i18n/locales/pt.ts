@@ -365,7 +365,7 @@ export const pt: Dictionary = {
         },
         {
           title: "Pratica na app",
-          copy: "Faça os exercícios guiados no telemóvel, ao ritmo que lhe der jeito entre sessões. Vê apenas o que o seu terapeuta atribuiu.",
+          copy: "Faça os exercícios guiados no telemóvel, ao ritmo que lhe der jeito entre sessões.",
         },
         {
           title: "O seu terapeuta vê o seu progresso",
@@ -405,7 +405,7 @@ export const pt: Dictionary = {
         },
         {
           q: "Como obtenho a UpSpeech?",
-          a: "Pergunte ao seu terapeuta da fala se usa a UpSpeech. As clínicas pedem acesso através deste site.",
+          a: "Pergunte ao seu terapeuta da fala se usa a UpSpeech.",
         },
       ],
     },
@@ -442,7 +442,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Como a UpSpeech reflete esta abordagem",
-        body: "A UpSpeech apoia qualquer abordagem que o terapeuta da fala escolha. O percurso de aprendizagem e os exercícios são definidos pelo clínico; a app apoia a prática entre sessões. Se o objetivo é reduzir o evitamento, o terapeuta inclui isso no plano. Se o objetivo é a prática de gaguez voluntária, a app apoia isso também. Se a fluência faz parte do plano é algo que o clínico e a pessoa decidem.",
+        body: "A UpSpeech apoia qualquer abordagem que o terapeuta da fala escolha. O percurso de aprendizagem e os exercícios são definidos pelo clínico, e a app apoia a prática entre sessões. Se o objetivo é reduzir o evitamento, o terapeuta inclui isso no plano. Se o objetivo é a prática de gaguez voluntária, a app apoia isso também. Se a fluência faz parte do plano é algo que o clínico e a pessoa decidem.",
       },
       {
         heading: "Uma nota sobre linguagem",
@@ -526,7 +526,7 @@ export const pt: Dictionary = {
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finaliza o relatório, o ficheiro de áudio é eliminado; a transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finaliza o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
         },
       ],
     },
@@ -585,7 +585,7 @@ export const pt: Dictionary = {
       items: [
         {
           q: "A UpSpeech escreve os meus relatórios por mim?",
-          a: "Redige um rascunho de relatório estruturado a partir da sessão para rever e editar. Mantém a responsabilidade clínica; elimina o trabalho da página em branco.",
+          a: "Redige um rascunho de relatório estruturado a partir da sessão para rever e editar, e poupa-lhe o trabalho da página em branco.",
         },
         {
           q: "O que fazem os meus pacientes?",
