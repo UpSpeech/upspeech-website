@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
-
-const DISCLAIMER_TEXT =
-  "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.";
+import { useT } from "@/i18n";
 
 type Props = {
   // "section" renders a bordered block for mid-page use (default).
@@ -11,6 +9,8 @@ type Props = {
 };
 
 const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
+  const text = useT().medicalDisclaimer;
+
   if (variant === "compact") {
     return (
       <p
@@ -19,7 +19,7 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
           className,
         )}
       >
-        {DISCLAIMER_TEXT}
+        {text}
       </p>
     );
   }
@@ -30,7 +30,7 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
         className,
       )}
     >
-      {DISCLAIMER_TEXT}
+      {text}
     </aside>
   );
 };

@@ -233,9 +233,9 @@ export default function ForSlps() {
               {t.closing.bodySuffix}
             </p>
           </div>
-        </section>
 
-        <MedicalDisclaimer className="mt-8" />
+          <MedicalDisclaimer className="mt-8" />
+        </section>
       </main>
 
       <Footer />

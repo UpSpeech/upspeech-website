@@ -45,6 +45,8 @@ export const es: Dictionary = {
     pt: "Português",
     es: "Español",
   },
+  medicalDisclaimer:
+    "UpSpeech es una herramienta de práctica y de productividad clínica para su uso por y con logopedas cualificados. No es un dispositivo médico y no diagnostica, trata ni cura ninguna condición. El contenido educativo de este sitio no sustituye el asesoramiento clínico profesional.",
   techniquesIndex: {
     title: "Técnicas de logopedia",
     subtitle: "Técnicas establecidas usadas en logopedia",

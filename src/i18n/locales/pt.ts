@@ -45,6 +45,8 @@ export const pt: Dictionary = {
     pt: "Português",
     es: "Español",
   },
+  medicalDisclaimer:
+    "A UpSpeech é uma ferramenta de prática e de produtividade clínica para utilização por e com terapeutas da fala qualificados. Não é um dispositivo médico e não diagnostica, trata nem cura qualquer condição. O conteúdo educativo deste site não substitui o aconselhamento clínico profissional.",
   techniquesIndex: {
     title: "Técnicas de terapia da fala",
     subtitle: "Técnicas estabelecidas usadas em terapia da fala",

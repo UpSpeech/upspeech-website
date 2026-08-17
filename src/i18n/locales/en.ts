@@ -43,6 +43,8 @@ export const en = {
     pt: "Português",
     es: "Español",
   },
+  medicalDisclaimer:
+    "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.",
   techniquesIndex: {
     title: "Speech Therapy Techniques",
     subtitle: "Established techniques used in speech and language therapy",
