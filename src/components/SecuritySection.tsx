@@ -3,18 +3,22 @@ import {
   LockClosedIcon,
   GlobeEuropeAfricaIcon,
   ShieldCheckIcon,
+  HandRaisedIcon,
 } from "@heroicons/react/24/outline";
 import { useReveal } from "./useReveal";
 import { reveal } from "./motion";
 import { useLocale, useT, localizedPath } from "@/i18n";
 
 // Icons stay in code; title/copy come from the dictionary by index
-// (home.security.points).
+// (home.security.points). Keep this list as long as that one. The fallback at
+// the render site means a future mismatch degrades to a generic icon instead of
+// rendering `undefined`, which throws and blanks the whole page.
 const POINT_ICONS: React.ComponentType<React.SVGProps<SVGSVGElement>>[] = [
   BuildingOffice2Icon,
   LockClosedIcon,
   GlobeEuropeAfricaIcon,
   ShieldCheckIcon,
+  HandRaisedIcon,
 ];
 
 const SecuritySection = () => {
@@ -58,7 +62,7 @@ const SecuritySection = () => {
 
         <ul className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-1 gap-6 sm:grid-cols-2">
           {t.points.map((point, index) => {
-            const Icon = POINT_ICONS[index];
+            const Icon = POINT_ICONS[index] ?? ShieldCheckIcon;
             return (
               <li
                 key={point.title}
