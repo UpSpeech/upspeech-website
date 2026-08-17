@@ -57,11 +57,23 @@ npm run export     # renders every template to ../exports/*.png
 ```
 
 Each post is an `<article data-export="...">` in `templates/index.html`. The
-exporter renders one at a time in headless Chrome and crops to the exact size:
+exporter renders one at a time in headless Chrome and crops to the exact size,
+which it picks from the name:
 
 - Feed posts / highlights: 1080 × 1080
-- Stories: 1080 × 1920
-- Profile grid preview: 3240 × 3240
+- `story-*`: 1080 × 1920
+- `doc-*`: 1080 × 1350, LinkedIn document-carousel pages
+- `profile-grid`: 3240 × 3240
+
+Pages named `doc-<carousel>-<nn>-<slug>` are also assembled, in slide order,
+into `exports/doc-<carousel>.pdf` for upload as a LinkedIn document post.
+
+Pass names or prefixes to re-render part of the set instead of all of it:
+
+```bash
+npm run export -- doc-refer-early     # one carousel
+npm run export -- story- li-          # every story and LinkedIn card
+```
 
 Edit copy and layout in `index.html`, restyle in `styles.css`, re-run the
 export. Keep all final text, numbers, UI, logos, fonts, and screenshots
