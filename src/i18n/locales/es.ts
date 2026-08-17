@@ -48,7 +48,7 @@ export const es: Dictionary = {
   },
   techniquesIndex: {
     title: "Técnicas de logopedia",
-    subtitle: "Técnicas establecidas para la terapia de la tartamudez",
+    subtitle: "Técnicas establecidas usadas en logopedia",
     seoDescription:
       "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
@@ -72,17 +72,17 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda, y los informes de sesión se redactan para que el terapeuta los revise y los firme.",
+      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda, y todo lo que hacen vuelve al terapeuta para su revisión.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
-      body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. UpSpeech redacta los informes de sesión y el terapeuta los aprueba.",
+      body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
       videoAriaLabel:
-        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión, se redacta el informe y los logopedas anotan la grabación",
+        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión y los logopedas anotan la grabación",
       posterAlt:
         "Demostración del producto UpSpeech: el plan de práctica personalizado de un terapeuta",
       playAriaLabel: "Reproducir la demostración del producto UpSpeech",
@@ -112,7 +112,7 @@ export const es: Dictionary = {
       eyebrow: "En la consulta",
       headlineLine1: "El logopeda dirige la sesión.",
       headlineLine2: "UpSpeech se encarga del resto.",
-      body: "Cada sesión se convierte en un borrador de informe, y puedes ver qué han practicado tus pacientes entre citas.",
+      body: "Puedes ver qué han practicado tus pacientes entre citas, y cómo ha ido cada intento.",
       imageAlt:
         "Vista del terapeuta en UpSpeech del progreso de un paciente: estadísticas de actividad, hito de la ruta de aprendizaje y paso actual",
       points: [
@@ -121,8 +121,8 @@ export const es: Dictionary = {
           copy: "Entra en la consulta sabiendo qué ha practicado el paciente desde la última visita.",
         },
         {
-          label: "Informes redactados",
-          copy: "Los datos de cada sesión se convierten en un borrador de informe, listo para que lo edites.",
+          label: "El siguiente plan, listo",
+          copy: "Ajusta la práctica de la semana siguiente sin volver a construirla desde cero.",
         },
         {
           label: "Validación del terapeuta",
@@ -215,14 +215,14 @@ export const es: Dictionary = {
       headlineLine1: "Herramientas específicas.",
       headlineLine2: "Para logopedas e investigadores.",
       intro:
-        "La plataforma gira en torno a una ruta de aprendizaje estructurada, desde identificar momentos de tartamudez hasta llevar el trabajo a conversaciones reales.",
+        "La plataforma gira en torno a una ruta de aprendizaje estructurada, desde identificar momentos de disfluencia hasta llevar el trabajo a conversaciones reales.",
       forClinicians: "Para logopedas",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Herramienta de anotación",
       annotationTitle:
-        "La herramienta que logopedas e investigadores usan para anotar momentos de tartamudez.",
+        "La herramienta que logopedas e investigadores usan para anotar momentos de disfluencia.",
       annotationCopy:
-        "Los logopedas anotan momentos de tartamudez con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
+        "Los logopedas anotan momentos de disfluencia con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
       annotationImageAlt:
         "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y anotación por logopedas",
       features: [
@@ -243,9 +243,9 @@ export const es: Dictionary = {
         {
           label: "Cuestionarios de seguimiento",
           title: "Cuestionarios que el terapeuta revisa.",
-          copy: "Cada cierto tiempo, el paciente rellena un breve cuestionario sobre su tartamudez. Así el logopeda ve cómo describe el paciente su propia experiencia con el paso del tiempo.",
+          copy: "Cada cierto tiempo, el paciente rellena un breve cuestionario sobre su experiencia. Así el logopeda ve cómo describe el paciente su propia experiencia con el paso del tiempo.",
           imageAlt:
-            "Gráfico de UpSpeech con las respuestas de un paciente al cuestionario de tartamudez a lo largo de varias semanas",
+            "Gráfico de UpSpeech con las respuestas de un paciente al cuestionario a lo largo de varias semanas",
         },
       ],
     },
@@ -253,7 +253,7 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por logopedas.",
-      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias y bloqueos. Las anotaciones del conjunto de datos proceden de esos profesionales, no de anotadores sin formación clínica.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias. Las anotaciones del conjunto de datos proceden de esos profesionales, no de anotadores sin formación clínica.",
       videoAriaLabel:
         "Herramienta de anotación de UpSpeech usada por logopedas para anotar disfluencias",
       tags: [
@@ -540,12 +540,12 @@ export const es: Dictionary = {
   forSlps: {
     seoTitle: "Para logopedas",
     seoDescription:
-      "UpSpeech da a los pacientes práctica estructurada entre sesiones y redacta las notas de sesión para que las revises, con progreso que puedes ver.",
+      "UpSpeech da a los pacientes práctica estructurada entre sesiones. Tú defines en qué trabajan y ves cómo ha ido antes de la siguiente cita.",
     intro: {
       eyebrow: "Para logopedas",
       headlineLine1: "Más terapia entre sesiones.",
-      headlineLine2: "Menos tiempo en documentación.",
-      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, y redacta las notas de sesión para que las revises. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
+      headlineLine2: "Y todo lo diriges tú.",
+      body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
     },
     documentation: {
       eyebrow: "Documentación",
@@ -574,7 +574,7 @@ export const es: Dictionary = {
     },
     stutterPositive: {
       eyebrow: "Nuestro enfoque",
-      headline: "Tartamudez positiva, desde el diseño.",
+      headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
     },
     faq: {

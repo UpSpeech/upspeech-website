@@ -48,7 +48,7 @@ export const pt: Dictionary = {
   },
   techniquesIndex: {
     title: "Técnicas de terapia da fala",
-    subtitle: "Técnicas estabelecidas para a terapia da gaguez",
+    subtitle: "Técnicas estabelecidas usadas em terapia da fala",
     seoDescription:
       "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
@@ -72,17 +72,17 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta, e os relatórios de sessão são redigidos para o terapeuta rever e assinar.",
+      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta, e tudo o que fazem volta ao terapeuta para revisão.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A sua terapia",
       headlineLine2: "continua",
       headlineLine3: "entre sessões.",
-      body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. A UpSpeech redige os relatórios de sessão; o terapeuta aprova-os.",
+      body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
       videoAriaLabel:
-        "Demonstração do produto UpSpeech: um terapeuta atribui um plano personalizado, o paciente pratica em casa, o terapeuta acompanha o progresso num painel, grava uma sessão, o relatório é redigido e os clínicos anotam a gravação",
+        "Demonstração do produto UpSpeech: um terapeuta atribui um plano personalizado, o paciente pratica em casa, o terapeuta acompanha o progresso num painel, grava uma sessão e os clínicos anotam a gravação",
       posterAlt:
         "Demonstração do produto UpSpeech: o plano de prática personalizado de um terapeuta",
       playAriaLabel: "Reproduzir a demonstração do produto UpSpeech",
@@ -112,7 +112,7 @@ export const pt: Dictionary = {
       eyebrow: "Na consulta",
       headlineLine1: "O clínico conduz a sessão.",
       headlineLine2: "A UpSpeech trata do resto.",
-      body: "Cada sessão dá origem a um rascunho de relatório, e pode ver o que os pacientes praticaram entre consultas.",
+      body: "Pode ver o que os pacientes praticaram entre consultas, e como correu cada tentativa.",
       imageAlt:
         "Vista do terapeuta na UpSpeech do progresso de um paciente: estatísticas de atividade, objetivo do percurso de aprendizagem e passo atual",
       points: [
@@ -121,8 +121,8 @@ export const pt: Dictionary = {
           copy: "Entre na consulta sabendo o que o paciente praticou desde a última consulta.",
         },
         {
-          label: "Relatórios redigidos",
-          copy: "Os dados de cada sessão tornam-se um rascunho de relatório, pronto para editar.",
+          label: "O plano seguinte, pronto",
+          copy: "Ajuste a prática da semana seguinte sem a construir do zero.",
         },
         {
           label: "Validação do terapeuta",
@@ -215,14 +215,14 @@ export const pt: Dictionary = {
       headlineLine1: "Ferramentas específicas.",
       headlineLine2: "Para clínicos e investigadores.",
       intro:
-        "A plataforma assenta num percurso de aprendizagem estruturado, desde a identificação de momentos de gaguez até levar o trabalho para conversas reais.",
+        "A plataforma assenta num percurso de aprendizagem estruturado, desde a identificação de momentos de disfluência até levar o trabalho para conversas reais.",
       forClinicians: "Para clínicos",
       forResearchers: "Para investigadores",
       annotationEyebrow: "Ferramenta de anotação",
       annotationTitle:
-        "A ferramenta que clínicos e investigadores usam para anotar momentos de gaguez.",
+        "A ferramenta que clínicos e investigadores usam para anotar momentos de disfluência.",
       annotationCopy:
-        "Os clínicos anotam momentos de gaguez com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
+        "Os clínicos anotam momentos de disfluência com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
       annotationImageAlt:
         "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e anotação por terapeutas da fala",
       features: [
@@ -243,9 +243,9 @@ export const pt: Dictionary = {
         {
           label: "Reflexões periódicas",
           title: "Reflexões que o terapeuta revê.",
-          copy: "O paciente regista periodicamente uma breve reflexão sobre a sua gaguez. O clínico pode ver como descreve a própria experiência ao longo do tempo.",
+          copy: "O paciente regista periodicamente uma breve reflexão sobre a sua experiência. O clínico pode ver como descreve a própria experiência ao longo do tempo.",
           imageAlt:
-            "Gráfico UpSpeech das reflexões de um paciente sobre a sua gaguez ao longo de várias semanas",
+            "Gráfico UpSpeech das reflexões de um paciente ao longo de várias semanas",
         },
       ],
     },
@@ -253,7 +253,7 @@ export const pt: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
-      body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências e bloqueios. As anotações do conjunto de dados vêm destes clínicos, não de anotadores sem formação clínica.",
+      body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências. As anotações do conjunto de dados vêm destes clínicos, não de anotadores sem formação clínica.",
       videoAriaLabel:
         "Ferramenta de anotação UpSpeech usada por clínicos para anotar disfluências",
       tags: [
@@ -541,12 +541,12 @@ export const pt: Dictionary = {
   forSlps: {
     seoTitle: "Para terapeutas da fala",
     seoDescription:
-      "A UpSpeech dá aos pacientes prática estruturada entre sessões e redige as notas de sessão, prontas para revisão, com progresso que pode acompanhar.",
+      "A UpSpeech dá aos pacientes prática estruturada entre sessões. Define o que trabalham e vê como correu antes da consulta seguinte.",
     intro: {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Mais terapia entre sessões.",
-      headlineLine2: "Menos tempo em documentação.",
-      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, e redige as notas de sessão para as rever. Saberá como correu a semana antes de o paciente se sentar.",
+      headlineLine2: "Tudo orientado por si.",
+      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolher. Saberá como correu a semana antes de o paciente se sentar.",
     },
     documentation: {
       eyebrow: "Documentação",
@@ -575,7 +575,7 @@ export const pt: Dictionary = {
     },
     stutterPositive: {
       eyebrow: "A nossa abordagem",
-      headline: "Gaguez positiva, desde a conceção.",
+      headline: "Feito para encorajar.",
       body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
     },
     faq: {

@@ -17,7 +17,7 @@ export const en = {
     mobileMenuLabel: "Navigation",
   },
   footer: {
-    tagline: "Support for speech therapy, between sessions",
+    tagline: "Support for speech and language therapy, between sessions",
     product: "Product",
     legal: "Legal",
     company: "Company",
@@ -46,7 +46,7 @@ export const en = {
   },
   techniquesIndex: {
     title: "Speech Therapy Techniques",
-    subtitle: "Established techniques for stuttering therapy",
+    subtitle: "Established techniques used in speech and language therapy",
     seoDescription:
       "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
     featured: "Featured",
@@ -70,17 +70,17 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Continuous support for speech therapy. Patients practise between sessions, following a plan their therapist set, and session reports are drafted for the therapist to review and sign.",
+      "Continuous support for speech and language therapy. Patients practise between sessions, following a plan their therapist set, and everything they do comes back to the therapist to review.",
     hero: {
-      eyebrow: "For speech therapy clinics",
+      eyebrow: "For speech and language therapy clinics",
       headlineLine1: "Your therapy",
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
-      body: "Patients practise between sessions, following a plan their therapist set. UpSpeech drafts the session reports; the therapist approves them.",
+      body: "Patients practise between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
       videoAriaLabel:
-        "UpSpeech product demo: a therapist assigns a personalised plan, the patient practises at home, the therapist follows progress on a dashboard, records a session, the report is drafted, and clinicians annotate the recording",
+        "UpSpeech product demo: a therapist assigns a personalised plan, the patient practises at home, the therapist follows progress on a dashboard, records a session, and clinicians annotate the recording",
       posterAlt:
         "UpSpeech product demo: a therapist's personalised practice plan",
       playAriaLabel: "Play the UpSpeech product demo",
@@ -110,7 +110,7 @@ export const en = {
       eyebrow: "In the room",
       headlineLine1: "The clinician runs the session.",
       headlineLine2: "UpSpeech takes it from there.",
-      body: "Each session becomes a draft report, and you can see what patients practised between appointments.",
+      body: "You can see what patients practised between appointments, and how each attempt went.",
       imageAlt:
         "UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step",
       points: [
@@ -119,8 +119,8 @@ export const en = {
           copy: "Walk into the appointment knowing what the patient practised since the last visit.",
         },
         {
-          label: "Reports, drafted",
-          copy: "Each session's data becomes a draft report, ready for you to edit.",
+          label: "The next plan, ready",
+          copy: "Adjust the coming week's practice without building it from scratch.",
         },
         {
           label: "Therapist sign-off",
@@ -213,14 +213,14 @@ export const en = {
       headlineLine1: "Specific tools.",
       headlineLine2: "For clinicians and researchers.",
       intro:
-        "The platform is built around a structured learning path, from identifying stuttering moments through to carrying the work into real conversations.",
+        "The platform is built around a structured learning path, from identifying moments of disfluency through to carrying the work into real conversations.",
       forClinicians: "For clinicians",
       forResearchers: "For researchers",
       annotationEyebrow: "Annotation tool",
       annotationTitle:
-        "The tool clinicians and researchers use to label stuttering moments.",
+        "The tool clinicians and researchers use to label moments of disfluency.",
       annotationCopy:
-        "Clinicians tag stuttering moments frame by frame with a standard taxonomy, from core behaviours to secondary behaviours and tension level. The same tool builds our dataset and supports our research partnerships.",
+        "Clinicians tag moments of disfluency frame by frame with a standard taxonomy, from core behaviours to secondary behaviours and tension level. The same tool builds our dataset and supports our research partnerships.",
       annotationImageAlt:
         "UpSpeech annotation tool with audio waveform, video review, and frame-by-frame tagging by speech-language pathologists",
       features: [
@@ -241,9 +241,9 @@ export const en = {
         {
           label: "Self-report check-ins",
           title: "Self-reports the therapist reviews.",
-          copy: "A short stuttering self-report is captured at intervals. The clinician can see how the patient describes their own experience over time.",
+          copy: "A short self-report is captured at intervals. The clinician can see how the patient describes their own experience over time.",
           imageAlt:
-            "UpSpeech chart of a patient's self-reported stuttering responses over several weeks",
+            "UpSpeech chart of a patient's self-reported responses over several weeks",
         },
       ],
     },
@@ -251,7 +251,7 @@ export const en = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Trained on",
       headlineLine2: "clinician-annotated data.",
-      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies and blocks frame by frame. The labels in the dataset come from those clinicians rather than from crowd workers.",
+      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame. The labels in the dataset come from those clinicians rather than from crowd workers.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
       tags: [
@@ -538,12 +538,12 @@ export const en = {
   forSlps: {
     seoTitle: "For speech-language pathologists",
     seoDescription:
-      "UpSpeech gives patients structured practice between sessions and drafts your session notes for review, with progress you can see.",
+      "UpSpeech gives patients structured practice between sessions. You set what they work on, and you see how it went before the next appointment.",
     intro: {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "More therapy between sessions.",
-      headlineLine2: "Less time on notes.",
-      body: "UpSpeech gives your patients guided practice they actually do between appointments, and drafts your session notes for you to review. You will know how their week went before they sit down.",
+      headlineLine2: "All of it directed by you.",
+      body: "UpSpeech gives your patients guided practice they actually do between appointments, on the techniques you choose. You will know how their week went before they sit down.",
     },
     documentation: {
       eyebrow: "Documentation",
@@ -572,7 +572,7 @@ export const en = {
     },
     stutterPositive: {
       eyebrow: "Our approach",
-      headline: "Stutter-positive by design.",
+      headline: "Encouraging by design.",
       body: "The app is built around confidence and being heard. The practice is designed to encourage rather than correct.",
     },
     faq: {
