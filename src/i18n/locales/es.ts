@@ -401,7 +401,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Mi información es privada?",
-          a: "Sí. Tus datos están cifrados y solo los ve quien participa en tu tratamiento. Consulta la Política de Privacidad para más detalles.",
+          a: "Sí. Tus datos están cifrados y solo los ve quien te atiende. Consulta la Política de Privacidad para más detalles.",
         },
         {
           q: "¿Cómo consigo UpSpeech?",
