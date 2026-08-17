@@ -134,7 +134,7 @@ export const pt: Dictionary = {
       eyebrow: "Fora da consulta",
       headlineLine1: "Prática estruturada entre consultas,",
       headlineLine2: "orientada pelo terapeuta do início ao fim.",
-      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à fase de tratamento em que está, e vai cumprindo-o entre consultas com orientação em cada passo.",
+      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à fase de terapia em que está, e vai cumprindo-o entre consultas com orientação em cada passo.",
       imageAlt:
         "Painel do paciente na UpSpeech com exercícios de prática diários e progresso",
       points: [
@@ -253,7 +253,7 @@ export const pt: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
-      body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências. As anotações do conjunto de dados vêm destes clínicos, não de anotadores sem formação clínica.",
+      body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências.",
       videoAriaLabel:
         "Ferramenta de anotação UpSpeech usada por clínicos para anotar disfluências",
       tags: [
@@ -360,7 +360,7 @@ export const pt: Dictionary = {
       steps: [
         {
           title: "O seu terapeuta define o seu plano",
-          copy: "O seu terapeuta da fala escolhe os exercícios e objetivos que correspondem à sua terapia e à sua fase de tratamento.",
+          copy: "O seu terapeuta da fala escolhe os exercícios e objetivos que correspondem à fase da terapia em que está.",
         },
         {
           title: "Pratica na app",

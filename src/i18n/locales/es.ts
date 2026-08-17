@@ -134,7 +134,7 @@ export const es: Dictionary = {
       eyebrow: "Fuera de la consulta",
       headlineLine1: "Práctica estructurada entre visitas,",
       headlineLine2: "guiada por el terapeuta en todo momento.",
-      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de tratamiento, y lo va completando entre visitas con orientación en cada paso.",
+      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de terapia, y lo va completando entre visitas con orientación en cada paso.",
       imageAlt:
         "Panel del paciente en UpSpeech con ejercicios de práctica diarios y progreso",
       points: [
@@ -253,7 +253,7 @@ export const es: Dictionary = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por logopedas.",
-      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias. Las anotaciones del conjunto de datos proceden de esos profesionales, no de anotadores sin formación clínica.",
+      body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias.",
       videoAriaLabel:
         "Herramienta de anotación de UpSpeech usada por logopedas para anotar disfluencias",
       tags: [
@@ -360,7 +360,7 @@ export const es: Dictionary = {
       steps: [
         {
           title: "Tu terapeuta define tu plan",
-          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a tu terapia y a tu fase de tratamiento.",
+          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a la fase de terapia en la que estás.",
         },
         {
           title: "Practicas en la app",
