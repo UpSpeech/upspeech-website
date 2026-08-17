@@ -126,7 +126,7 @@ export const pt: Dictionary = {
         },
         {
           label: "Validação do terapeuta",
-          copy: "Cada relatório e cada plano de tratamento é um rascunho até o terapeuta o rever e assinar.",
+          copy: "Cada relatório e cada plano de terapia é um rascunho até o terapeuta o rever e assinar.",
         },
       ],
     },

@@ -126,7 +126,7 @@ export const es: Dictionary = {
         },
         {
           label: "Validación del terapeuta",
-          copy: "Cada informe y cada plan de tratamiento es un borrador hasta que el terapeuta lo revisa y lo firma.",
+          copy: "Cada informe y cada plan de terapia es un borrador hasta que el terapeuta lo revisa y lo firma.",
         },
       ],
     },
