@@ -68,6 +68,47 @@
   status = 200
   force = true
 
+# Renamed page: /stutter-positive is now /person-centered-therapy.
+# Both old spellings point straight at the final URL so there is no 301 chain.
+# These live here rather than in a _redirects file: the publish directory is
+# `dist`, and a root-level _redirects is never copied there by Vite, so its
+# rules never reach Netlify. netlify.toml is the single source of truth.
+[[redirects]]
+  from = "/stutter-positive"
+  to = "/person-centered-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/stutter-positive"
+  to = "/pt/person-centered-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/stutter-positive"
+  to = "/es/person-centered-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/person-centred-therapy"
+  to = "/person-centered-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/person-centred-therapy"
+  to = "/pt/person-centered-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/person-centred-therapy"
+  to = "/es/person-centered-therapy"
+  status = 301
+  force = true
+
 # SPA fallback: serve index.html for all routes (must be last)
 [[redirects]]
   from = "/*"

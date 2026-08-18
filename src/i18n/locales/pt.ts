@@ -73,7 +73,7 @@ export const pt: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta, e tudo o que fazem volta ao terapeuta para revisão.",
+      "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo o plano do terapeuta, e cada tentativa volta para revisão.",
     hero: {
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A sua terapia",
