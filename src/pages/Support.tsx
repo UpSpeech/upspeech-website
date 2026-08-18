@@ -64,7 +64,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Email us at{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -88,7 +88,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             our{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               Privacy Policy
             </a>{" "}
@@ -103,7 +103,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             You can request deletion at any time on our{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               account deletion page
             </a>
@@ -118,7 +118,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Sorry about that. Email{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -152,7 +152,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Envie-nos um email para{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -176,7 +176,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Consulte a nossa{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               Política de Privacidade
             </a>{" "}
@@ -191,7 +191,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Pode solicitar a eliminação a qualquer momento na nossa{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               página de eliminação de conta
             </a>
@@ -206,7 +206,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Lamentamos. Envie um email para{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -241,7 +241,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Escríbenos a{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -265,7 +265,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Consulta nuestra{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               Política de Privacidad
             </a>{" "}
@@ -280,7 +280,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Puedes solicitar la eliminación en cualquier momento en nuestra{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               página de eliminación de cuenta
             </a>
@@ -295,7 +295,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Lo sentimos. Escribe a{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-indigo-600 hover:underline"
+              className="text-calm-navy hover:underline"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -435,42 +435,44 @@ export default function Support() {
         structuredData={buildSupportFaqSchema(locale)}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="rounded-2xl border border-calm-charcoal/10 bg-white overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">
-            <h1 className="text-3xl font-bold text-gray-900 font-heading">
+            <h1 className="text-3xl font-bold text-calm-charcoal font-heading">
               {c.heading}
             </h1>
-            <p className="mt-4 text-gray-600 font-body">{c.intro}</p>
+            <p className="mt-4 text-calm-charcoal/70 font-body">{c.intro}</p>
 
             {/* Contact */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-gray-900 font-heading">
+              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
                 {c.contactHeading}
               </h2>
-              <p className="mt-2 text-gray-600 font-body">{c.contactBody}</p>
+              <p className="mt-2 text-calm-charcoal/70 font-body">
+                {c.contactBody}
+              </p>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
                 className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 transition-colors"
               >
                 {c.emailLabel}: {SUPPORT_EMAIL}
               </a>
-              <p className="mt-3 text-sm text-gray-500 font-body">
+              <p className="mt-3 text-sm text-calm-charcoal/60 font-body">
                 {c.responseTime}
               </p>
             </section>
 
             {/* FAQ */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-gray-900 font-heading">
+              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
                 {c.faqHeading}
               </h2>
               <dl className="mt-4 divide-y divide-gray-100">
                 {c.faq.map((item, i) => (
                   <div key={i} className="py-4">
-                    <dt className="font-medium text-gray-900 font-body">
+                    <dt className="font-medium text-calm-charcoal font-body">
                       {item.q}
                     </dt>
-                    <dd className="mt-1 text-gray-600 font-body">
+                    <dd className="mt-1 text-calm-charcoal/70 font-body">
                       {typeof item.a === "function" ? item.a(locale) : item.a}
                     </dd>
                   </div>
@@ -480,14 +482,14 @@ export default function Support() {
 
             {/* More info */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-gray-900 font-heading">
+              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
                 {c.moreHeading}
               </h2>
               <ul className="mt-3 space-y-2 font-body">
                 <li>
                   <a
                     href={localizedPath("/privacy", locale)}
-                    className="text-indigo-600 hover:underline"
+                    className="text-calm-navy hover:underline"
                   >
                     {c.privacy}
                   </a>
@@ -495,7 +497,7 @@ export default function Support() {
                 <li>
                   <a
                     href={localizedPath("/terms", locale)}
-                    className="text-indigo-600 hover:underline"
+                    className="text-calm-navy hover:underline"
                   >
                     {c.terms}
                   </a>
@@ -503,7 +505,7 @@ export default function Support() {
                 <li>
                   <a
                     href={localizedPath("/delete-account", locale)}
-                    className="text-indigo-600 hover:underline"
+                    className="text-calm-navy hover:underline"
                   >
                     {c.deleteAccount}
                   </a>

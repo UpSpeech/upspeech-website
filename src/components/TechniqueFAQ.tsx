@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card } from "@/components/ui/card";
 import { getTechniqueFAQs } from "@/lib/technique-faqs";
 
 const TITLES: Record<string, string> = {
@@ -23,8 +22,8 @@ export function TechniqueFAQ({ slug, locale = "en" }: TechniqueFAQProps) {
   if (!faqs?.length) return null;
 
   return (
-    <Card className="p-6">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+    <section className="rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8">
+      <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl mb-5">
         {TITLES[locale] || TITLES.en}
       </h2>
       <Accordion type="single" collapsible className="space-y-3">
@@ -32,17 +31,21 @@ export function TechniqueFAQ({ slug, locale = "en" }: TechniqueFAQProps) {
           <AccordionItem
             key={index}
             value={`faq-${index}`}
-            className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden"
+            className="rounded-xl border border-calm-charcoal/10 bg-white/70 overflow-hidden"
           >
-            <AccordionTrigger className="px-4 py-3 text-left hover:no-underline hover:bg-gray-100">
-              <span className="font-medium text-gray-900">{faq.question}</span>
+            <AccordionTrigger className="min-h-[44px] px-4 py-3 text-left hover:no-underline hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
+              <span className="font-body font-semibold text-calm-charcoal">
+                {faq.question}
+              </span>
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-3">
-              <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+              <p className="font-body text-calm-charcoal/75 leading-relaxed">
+                {faq.answer}
+              </p>
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
-    </Card>
+    </section>
   );
 }

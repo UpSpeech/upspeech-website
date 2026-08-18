@@ -129,7 +129,7 @@ export function TechniquesIndexPage() {
           />
           <div className="relative max-w-6xl mx-auto">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.mainCategories}</p>
+              <p className={eyebrowClass}>{t.techniques}</p>
               <h1
                 className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
                 style={{
