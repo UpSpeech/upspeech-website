@@ -13,19 +13,10 @@ type Partner = {
 // Partner names are proper nouns and stay in code; the context line is
 // localized via home.foundations.partnerContext[contextKey].
 //
-// No logos or wordmarks here on purpose. CredibilityStrip already shows the
-// marks above the fold, and repeating four of them ~1500px later was the
-// same logos twice on one page. This section carries the relationship, which
-// is the part the strip cannot say.
+// Programs, backers and awards. The two logo partners (SpeechCare,
+// ElevenLabs) live in CredibilityStrip above the fold, so nothing is named
+// in both places.
 const partners: Partner[] = [
-  {
-    name: "SpeechCare",
-    contextKey: "speechcare",
-  },
-  {
-    name: "ElevenLabs Grants",
-    contextKey: "elevenlabs",
-  },
   {
     name: "Lispolis Ignite",
     contextKey: "lispolis",
@@ -106,7 +97,7 @@ const FoundationsScene = () => {
           </div>
 
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
             style={style(380)}
           >
             {partners.map((p, i) => (
@@ -117,8 +108,8 @@ const FoundationsScene = () => {
                   transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
                   transitionDelay: `${440 + i * 60}ms`,
                   opacity: revealed ? 1 : 0,
-                  // Alternate the axis so a six-card grid does not arrive
-                  // as six identical rises.
+                  // Alternate the axis so the cards do not all arrive as the
+                  // same rise.
                   transform: revealed
                     ? "none"
                     : i % 2 === 0

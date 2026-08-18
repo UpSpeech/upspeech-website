@@ -14,13 +14,16 @@ const GapSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  // On phones the pinned scroll story loses its labels and activity bars,
-  // so the section renders as a plain static comparison instead.
-  const [isStatic, setIsStatic] = useState(false);
+  // A 7-across tile grid leaves ~48px per day on a phone, too narrow for the
+  // session badge, the activity bars or the per-day labels, which is why they
+  // were all hidden below sm and the scroll story was switched off with them.
+  // The narrow layout draws the week as a bar chart instead, so the same story
+  // runs on a phone.
+  const [isNarrow, setIsNarrow] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 639px)");
-    const apply = () => setIsStatic(mq.matches);
+    const apply = () => setIsNarrow(mq.matches);
     apply();
     mq.addEventListener("change", apply);
     return () => mq.removeEventListener("change", apply);
@@ -33,12 +36,10 @@ const GapSection = () => {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (prefersReduced || isStatic) {
+    if (prefersReduced) {
       setProgress(1);
-      if (prefersReduced) {
-        setRevealed(true);
-        return;
-      }
+      setRevealed(true);
+      return;
     }
 
     // Entry reveal, fires once when the section starts intersecting.
@@ -52,10 +53,6 @@ const GapSection = () => {
       { threshold: 0.05, rootMargin: "0px 0px -15% 0px" },
     );
     obs.observe(el);
-
-    if (isStatic) {
-      return () => obs.disconnect();
-    }
 
     let raf = 0;
     const update = () => {
@@ -78,7 +75,7 @@ const GapSection = () => {
       cancelAnimationFrame(raf);
       obs.disconnect();
     };
-  }, [isStatic]);
+  }, []);
 
   // Choreography:
   //  0.00           both rows visible, gap is the default state
@@ -89,6 +86,14 @@ const GapSection = () => {
   const swap = clamp01((progress - 0.5) / 0.35);
   const footer = clamp01((progress - 0.8) / 0.15);
 
+  // The two headlines are stacked absolutely in the same place. Crossfading
+  // them put two different strings on top of each other at half opacity, which
+  // is unreadable at any width and worse at 390px, where they wrap to a
+  // different number of lines. The old line is fully gone before the new one
+  // starts. End states are unchanged.
+  const swapOut = clamp01(swap / 0.45);
+  const swapIn = clamp01((swap - 0.55) / 0.45);
+
   const daysLit = fillContinuous * DAY_COUNT;
   const isFull = daysLit >= 6.95;
 
@@ -97,14 +102,10 @@ const GapSection = () => {
       id="how-it-works"
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: isStatic ? "auto" : "180vh" }}
+      style={{ height: isNarrow ? "190vh" : "180vh" }}
     >
       <div
-        className={
-          isStatic
-            ? "relative overflow-hidden py-20"
-            : "sticky top-20 h-[calc(100vh-5rem)] overflow-hidden"
-        }
+        className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden"
       >
         <div
           className="pointer-events-none absolute inset-0"
@@ -126,7 +127,7 @@ const GapSection = () => {
           <div
             className="relative max-w-4xl"
             style={{
-              minHeight: "clamp(3.5rem, 6vw, 5rem)",
+              minHeight: isNarrow ? "7rem" : "clamp(3.5rem, 6vw, 5rem)",
               ...reveal(revealed, 80),
             }}
           >
@@ -136,8 +137,8 @@ const GapSection = () => {
                 fontSize: "clamp(1.75rem, 4vw, 3rem)",
                 lineHeight: 1.1,
                 transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
-                opacity: 1 - swap,
-                transform: `translateY(${swap * -28}px)`,
+                opacity: 1 - swapOut,
+                transform: `translateY(${swapOut * -28}px)`,
               }}
             >
               {t.headlineToday}
@@ -148,8 +149,8 @@ const GapSection = () => {
                 fontSize: "clamp(1.75rem, 4vw, 3rem)",
                 lineHeight: 1.1,
                 transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
-                opacity: swap,
-                transform: `translateY(${(1 - swap) * 28}px)`,
+                opacity: swapIn,
+                transform: `translateY(${(1 - swapIn) * 28}px)`,
               }}
             >
               {t.headlineWithPrefix}{" "}
@@ -164,7 +165,7 @@ const GapSection = () => {
           >
             {/* Traditional row */}
             <div className="mb-6 sm:mb-10">
-              <div className="mb-3 flex items-baseline justify-between">
+              <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
                 <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/55">
                   {t.traditional}
                 </span>
@@ -172,12 +173,12 @@ const GapSection = () => {
                   {t.traditionalCadence}
                 </span>
               </div>
-              <WeekRow variant="traditional" progress={1} />
+              <WeekRow variant="traditional" progress={1} compact={isNarrow} />
             </div>
 
             {/* Continuous row */}
             <div>
-              <div className="mb-3 flex items-baseline justify-between">
+              <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
                 <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-lavender">
                   {t.withUpspeech}
                 </span>
@@ -193,7 +194,11 @@ const GapSection = () => {
                     : `${t.partialPrefix}${Math.round(daysLit)}${t.partialSuffix}`}
                 </span>
               </div>
-              <WeekRow variant="continuous" progress={fillContinuous} />
+              <WeekRow
+                variant="continuous"
+                progress={fillContinuous}
+                compact={isNarrow}
+              />
             </div>
           </div>
 
@@ -220,11 +225,66 @@ const GapSection = () => {
 const WeekRow = ({
   variant,
   progress,
+  compact,
 }: {
   variant: "traditional" | "continuous";
   progress: number;
+  compact: boolean;
 }) => {
   const t = useT().home.gap;
+
+  // Narrow viewports: bar heights carry the state, so nothing has to be
+  // written inside a 48px tile.
+  if (compact) {
+    return (
+      <div className="flex h-[4.5rem] items-stretch gap-1.5">
+        {t.days.map((day, i) => {
+          const isSession = i === SESSION_DAY;
+          const lit =
+            variant === "traditional"
+              ? isSession
+                ? 1
+                : 0
+              : clamp01(progress * DAY_COUNT - i);
+          const height =
+            variant === "traditional" ? (isSession ? 100 : 14) : 14 + lit * 86;
+
+          return (
+            <div key={day} className="flex flex-1 flex-col items-center gap-1.5">
+              <div className="flex w-full flex-1 items-end">
+                <div
+                  className="w-full rounded-md"
+                  style={{
+                    height: `${height}%`,
+                    background:
+                      variant === "traditional"
+                        ? isSession
+                          ? "#293587"
+                          : "rgba(75,78,78,0.10)"
+                        : `linear-gradient(180deg, rgba(152,165,254,${0.2 + 0.7 * lit}) 0%, rgba(152,165,254,${0.12 + 0.5 * lit}) 100%)`,
+                    transition: `height 600ms ${EASE}, background 600ms ${EASE}`,
+                  }}
+                />
+              </div>
+              <span className="font-body text-[10px] font-medium uppercase tracking-wider text-calm-charcoal/40">
+                {day}
+              </span>
+              {/* Session day marker, so Thursday stays identifiable once the
+                  in-tile badge is gone. */}
+              <span
+                aria-hidden="true"
+                className="h-1 w-1 rounded-full"
+                style={{
+                  background: isSession ? "#293587" : "transparent",
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-7 gap-2 sm:gap-3">
       {t.days.map((day, i) => {
