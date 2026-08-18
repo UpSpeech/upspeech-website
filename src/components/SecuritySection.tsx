@@ -27,7 +27,7 @@ const SecuritySection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.05 });
 
   return (
-    <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] overflow-hidden">
+    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(3.25rem,8vw,10rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{

@@ -8,46 +8,38 @@ type Partner = {
   contextKey: keyof ReturnType<
     typeof useT
   >["home"]["foundations"]["partnerContext"];
-  logo?: string;
-  wordmarkFont?: "heading" | "body";
-  wordmark?: string;
 };
 
-// Partner names/wordmarks/logos are proper nouns and stay in code; the context
-// line is localized via home.foundations.partnerContext[contextKey].
+// Partner names are proper nouns and stay in code; the context line is
+// localized via home.foundations.partnerContext[contextKey].
+//
+// No logos or wordmarks here on purpose. CredibilityStrip already shows the
+// marks above the fold, and repeating four of them ~1500px later was the
+// same logos twice on one page. This section carries the relationship, which
+// is the part the strip cannot say.
 const partners: Partner[] = [
   {
     name: "SpeechCare",
-    logo: "/images/speechcare-logo.png",
     contextKey: "speechcare",
   },
   {
     name: "ElevenLabs Grants",
-    logo: "/images/elevenlabs-grants.webp",
     contextKey: "elevenlabs",
   },
   {
     name: "Lispolis Ignite",
-    wordmark: "Lispolis · Ignite",
-    wordmarkFont: "body",
     contextKey: "lispolis",
   },
   {
     name: "Unicorn Factory",
-    wordmark: "Unicorn Factory",
-    wordmarkFont: "heading",
     contextKey: "unicorn",
   },
   {
     name: "Innocatalyst Health Program",
-    wordmark: "Innocatalyst Health",
-    wordmarkFont: "heading",
     contextKey: "innocatalyst",
   },
   {
     name: "HealthQUP",
-    wordmark: "HealthQUP",
-    wordmarkFont: "heading",
     contextKey: "healthqup",
   },
 ];
@@ -64,7 +56,7 @@ const FoundationsScene = () => {
   });
 
   return (
-    <section className="relative bg-calm-light py-[clamp(5rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
+    <section className="relative bg-calm-light py-[clamp(3.25rem,8vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -125,30 +117,15 @@ const FoundationsScene = () => {
                   transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
                   transitionDelay: `${440 + i * 60}ms`,
                   opacity: revealed ? 1 : 0,
-                  transform: revealed ? "translateY(0)" : "translateY(22px)",
+                  // Alternate the axis so a six-card grid does not arrive
+                  // as six identical rises.
+                  transform: revealed
+                    ? "none"
+                    : i % 2 === 0
+                      ? "translateX(-18px)"
+                      : "translateX(18px)",
                 }}
               >
-                <div className="flex-1 flex items-center w-full min-h-[3rem]">
-                  {p.logo ? (
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      className="max-h-12 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span
-                      className={`${
-                        p.wordmarkFont === "heading"
-                          ? "font-heading"
-                          : "font-body"
-                      } font-bold tracking-tight text-calm-charcoal/80 group-hover:text-calm-charcoal transition-colors duration-500`}
-                      style={{ fontSize: "clamp(1.25rem, 2vw, 1.6rem)" }}
-                    >
-                      {p.wordmark}
-                    </span>
-                  )}
-                </div>
                 <div>
                   <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
                     {p.name}

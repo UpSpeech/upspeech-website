@@ -19,7 +19,7 @@ const EngineSection = () => {
   });
 
   return (
-    <section className="relative bg-calm-charcoal overflow-hidden py-[clamp(5rem,10vw,10rem)] px-[max(1.5rem,5vw)]">
+    <section className="relative bg-calm-charcoal overflow-hidden py-[clamp(3.25rem,8vw,10rem)] px-[max(1.5rem,5vw)]">
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
