@@ -89,7 +89,11 @@ export const pt: Dictionary = {
       playAriaLabel: "Reproduzir a demonstração do produto UpSpeech",
     },
     credibility: {
-      eyebrow: "Parceiros e reconhecimento",
+      eyebrow: "Parceiros",
+      partnerContext: {
+        speechcare: "Parceiro de desenvolvimento conjunto",
+        elevenlabs: "Subvenção de infraestrutura de IA",
+      },
     },
     gap: {
       eyebrow: "A semana do paciente",
@@ -271,11 +275,9 @@ export const pt: Dictionary = {
       headlineLine1: "Prática clínica e engenharia de IA,",
       headlineLine2: "na mesma equipa.",
       body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala que usam a plataforma com pacientes.",
-      partnersLabel: "Parceiros · Apoiantes · Reconhecimento",
+      partnersLabel: "Programas · Apoiantes · Reconhecimento",
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {
-        speechcare: "Parceiro de desenvolvimento conjunto",
-        elevenlabs: "Subvenção de infraestrutura de IA",
         lispolis: "Programa de aceleração",
         unicorn: "Startup Mais Promissora · Lisboa",
         innocatalyst: "Programa de inovação em saúde",

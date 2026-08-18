@@ -107,7 +107,7 @@ const CTASection = () => {
   return (
     <section
       id="cta"
-      className="px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
+      className="px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">

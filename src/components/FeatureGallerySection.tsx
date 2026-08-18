@@ -35,7 +35,7 @@ const FeatureGallerySection = () => {
   });
 
   return (
-    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] overflow-hidden">
+    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-50"
         style={{

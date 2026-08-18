@@ -8,46 +8,29 @@ type Partner = {
   contextKey: keyof ReturnType<
     typeof useT
   >["home"]["foundations"]["partnerContext"];
-  logo?: string;
-  wordmarkFont?: "heading" | "body";
-  wordmark?: string;
 };
 
-// Partner names/wordmarks/logos are proper nouns and stay in code; the context
-// line is localized via home.foundations.partnerContext[contextKey].
+// Partner names are proper nouns and stay in code; the context line is
+// localized via home.foundations.partnerContext[contextKey].
+//
+// Programs, backers and awards. The two logo partners (SpeechCare,
+// ElevenLabs) live in CredibilityStrip above the fold, so nothing is named
+// in both places.
 const partners: Partner[] = [
   {
-    name: "SpeechCare",
-    logo: "/images/speechcare-logo.png",
-    contextKey: "speechcare",
-  },
-  {
-    name: "ElevenLabs Grants",
-    logo: "/images/elevenlabs-grants.webp",
-    contextKey: "elevenlabs",
-  },
-  {
     name: "Lispolis Ignite",
-    wordmark: "Lispolis · Ignite",
-    wordmarkFont: "body",
     contextKey: "lispolis",
   },
   {
     name: "Unicorn Factory",
-    wordmark: "Unicorn Factory",
-    wordmarkFont: "heading",
     contextKey: "unicorn",
   },
   {
     name: "Innocatalyst Health Program",
-    wordmark: "Innocatalyst Health",
-    wordmarkFont: "heading",
     contextKey: "innocatalyst",
   },
   {
     name: "HealthQUP",
-    wordmark: "HealthQUP",
-    wordmarkFont: "heading",
     contextKey: "healthqup",
   },
 ];
@@ -64,7 +47,7 @@ const FoundationsScene = () => {
   });
 
   return (
-    <section className="relative bg-calm-light py-[clamp(5rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
+    <section className="relative bg-calm-light py-[clamp(3.25rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -114,43 +97,30 @@ const FoundationsScene = () => {
           </div>
 
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-calm-charcoal/10 border border-calm-charcoal/10 rounded-2xl overflow-hidden"
             style={style(380)}
           >
             {partners.map((p, i) => (
               <div
                 key={p.name}
-                className="bg-calm-light p-6 sm:p-8 flex flex-col items-start justify-between gap-6 min-h-[10rem] group transition-colors duration-500 hover:bg-white"
+                className="bg-calm-light p-6 sm:p-8 flex flex-col items-start justify-center group transition-colors duration-500 hover:bg-white"
                 style={{
                   transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
                   transitionDelay: `${440 + i * 60}ms`,
                   opacity: revealed ? 1 : 0,
-                  transform: revealed ? "translateY(0)" : "translateY(22px)",
+                  // Alternate the axis so the cards do not all arrive as the
+                  // same rise.
+                  transform: revealed
+                    ? "none"
+                    : i % 2 === 0
+                      ? "translateX(-18px)"
+                      : "translateX(18px)",
                 }}
               >
-                <div className="flex-1 flex items-center w-full min-h-[3rem]">
-                  {p.logo ? (
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      className="max-h-12 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span
-                      className={`${
-                        p.wordmarkFont === "heading"
-                          ? "font-heading"
-                          : "font-body"
-                      } font-bold tracking-tight text-calm-charcoal/80 group-hover:text-calm-charcoal transition-colors duration-500`}
-                      style={{ fontSize: "clamp(1.25rem, 2vw, 1.6rem)" }}
-                    >
-                      {p.wordmark}
-                    </span>
-                  )}
-                </div>
                 <div>
-                  <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
+                  {/* Two lines reserved: one name wraps and the rest do not,
+                      which dropped that card's context line below the others. */}
+                  <div className="flex min-h-[2.4em] items-start font-body text-[11px] font-semibold tracking-[0.2em] uppercase leading-[1.2] text-calm-lavender">
                     {p.name}
                   </div>
                   <div className="mt-1.5 font-body text-sm text-calm-charcoal/65 leading-snug">

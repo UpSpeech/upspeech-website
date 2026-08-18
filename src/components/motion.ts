@@ -24,3 +24,29 @@ export const reveal = (
   opacity: revealed ? 1 : 0,
   transform: revealed ? "translateY(0)" : `translateY(${offset}px)`,
 });
+
+/**
+ * Same reveal, but along a chosen axis. The homepage runs ~140 revealed
+ * elements and all but a handful used one fade-and-rise, which is what makes
+ * a long mobile scroll feel like the same beat over and over. Sections that
+ * sit next to each other can alternate axis so arrival is not identical.
+ */
+export const revealFrom = (
+  revealed: boolean,
+  axis: "up" | "left" | "right" | "scale" = "up",
+  delay = 0,
+  offset = 20,
+): CSSProperties => {
+  const from = {
+    up: `translateY(${offset}px)`,
+    left: `translateX(-${offset}px)`,
+    right: `translateX(${offset}px)`,
+    scale: `scale(${1 - offset / 500})`,
+  }[axis];
+  return {
+    transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
+    transitionDelay: `${delay}ms`,
+    opacity: revealed ? 1 : 0,
+    transform: revealed ? "none" : from,
+  };
+};

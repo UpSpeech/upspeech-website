@@ -87,7 +87,11 @@ export const en = {
       playAriaLabel: "Play the UpSpeech product demo",
     },
     credibility: {
-      eyebrow: "Partners & recognition",
+      eyebrow: "Partners",
+      partnerContext: {
+        speechcare: "Co-development partner",
+        elevenlabs: "AI infrastructure grant",
+      },
     },
     gap: {
       eyebrow: "The patient's week",
@@ -269,11 +273,9 @@ export const en = {
       headlineLine1: "Clinical practice and AI engineering,",
       headlineLine2: "in the same team.",
       body: "Clinicians and engineers work side by side. The speech-language pathologists who use the platform with patients review the product decisions we make.",
-      partnersLabel: "Partners · Backers · Recognition",
+      partnersLabel: "Programs · Backers · Recognition",
       partnersTagline: "Who we work with",
       partnerContext: {
-        speechcare: "Co-development partner",
-        elevenlabs: "AI infrastructure grant",
         lispolis: "Acceleration program",
         unicorn: "Most Promising Startup · Lisboa",
         innocatalyst: "Health innovation program",

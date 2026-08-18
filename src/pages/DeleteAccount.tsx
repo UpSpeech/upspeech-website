@@ -41,7 +41,7 @@ export default function DeleteAccount() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-lg text-gray-600 text-center">Loading...</div>
         </div>
@@ -51,7 +51,7 @@ export default function DeleteAccount() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center max-w-md mx-auto">
             <div className="text-red-600 text-lg mb-4">{error}</div>
@@ -68,7 +68,7 @@ export default function DeleteAccount() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-white">
       <SEO
         title="Delete Your Account or Data"
         description="How to delete your UpSpeech account or specific data, and what happens to your information when you do."
@@ -83,13 +83,6 @@ export default function DeleteAccount() {
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
-        </div>
-
-        {/* Back to Home Link */}
-        <div className="mt-8 text-center">
-          <a href="/" className="text-indigo-600 hover:underline">
-            &larr; Back to Home
-          </a>
         </div>
       </div>
     </div>

@@ -34,18 +34,46 @@ const FAN = [
 ];
 
 /**
- * Pointer-driven tilt written straight to the stage element (no React re-render
- * per frame), rAF-throttled and reduced-motion safe. The pointer listener is
- * only attached while the stage is in view, so scrolling elsewhere costs nothing.
+ * Tilt written straight to the stage element (no React re-render per frame),
+ * rAF-throttled and reduced-motion safe.
+ *
+ * A phone has no pointer to follow, so touch gets the same tilt driven by the
+ * stage's position in the viewport instead. Without it the fan sat completely
+ * still on mobile, which is the one place the section is about.
  */
 function useStageTilt(stageRef: React.RefObject<HTMLDivElement | null>) {
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (window.matchMedia("(hover: none)").matches) return;
 
     let frame = 0;
+
+    if (window.matchMedia("(hover: none)").matches) {
+      // -1 entering from the bottom, 0 centred, 1 leaving the top.
+      const update = () => {
+        const rect = stage.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const p = Math.max(
+          -1,
+          Math.min(1, (rect.top + rect.height / 2 - vh / 2) / (vh / 2)),
+        );
+        stage.style.transform = `rotateX(${p * 4}deg) rotateY(${-p * 6}deg)`;
+      };
+      const onScroll = () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(update);
+      };
+      update();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+        cancelAnimationFrame(frame);
+      };
+    }
+
     const onMove = (e: PointerEvent) => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
