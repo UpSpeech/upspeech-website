@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
@@ -16,6 +15,16 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 interface TechniquePageProps {
   slug: string;
 }
+
+// Shared with the redesigned pages so this reads as the same site.
+const eyebrowClass =
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+const cardClass =
+  "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
+const cardHeadingClass =
+  "font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl";
+const proseClass =
+  "mt-4 font-body text-base text-calm-charcoal/75 leading-relaxed";
 
 export function TechniquePage({ slug }: TechniquePageProps) {
   const locale = useLocale();
@@ -54,10 +63,18 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
     if (isNumberedList) {
       return (
-        <ol className="list-decimal list-inside space-y-3">
+        <ol className="mt-4 space-y-3 font-body text-base text-calm-charcoal/75">
           {lines.map((line, index) => (
-            <li key={index} className="leading-relaxed">
-              {line.replace(/^\d+[.)]\s*/, "")}
+            <li key={index} className="flex gap-3 leading-relaxed">
+              {/* Instructions are a real sequence, so the number carries
+                  information here and is worth showing. */}
+              <span
+                aria-hidden="true"
+                className="mt-0.5 font-heading text-sm font-bold text-calm-lavender"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>{line.replace(/^\d+[.)]\s*/, "")}</span>
             </li>
           ))}
         </ol>
@@ -65,7 +82,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     }
 
     return lines.map((line, index) => (
-      <p key={index} className="mb-3">
+      <p key={index} className={proseClass}>
         {line}
       </p>
     ));
@@ -91,7 +108,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     : undefined;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white font-body">
       <SEO
         title={seoTitle}
         description={seoDescription}
@@ -105,13 +122,15 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         <main
           id="main"
           data-prerender-state="loading"
-          className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
+          className="flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
         >
           <div className="max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-              <p className="mt-4 text-gray-600">{tt.loading}</p>
-            </div>
+            <div
+              className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-calm-navy border-r-transparent"
+              role="status"
+              aria-label={tt.loading}
+            />
+            <p className="mt-4 font-body text-calm-charcoal/70">{tt.loading}</p>
           </div>
         </main>
       )}
@@ -120,17 +139,17 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         <main
           id="main"
           data-prerender-state="error"
-          className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
+          className="flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
         >
           <div className="max-w-4xl mx-auto">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <h2 className="text-xl font-semibold text-red-800 mb-2">
-                {tt.error}
-              </h2>
-              <p className="text-red-600">{error || tt.notFound}</p>
+            <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
+              <h2 className={cardHeadingClass}>{tt.error}</h2>
+              <p className="mt-3 font-body text-calm-charcoal/70 leading-relaxed">
+                {error || tt.notFound}
+              </p>
               <a
                 href={localizedPath("/techniques", locale)}
-                className="inline-block mt-4 text-blue-600 hover:text-blue-700 font-medium"
+                className="mt-5 inline-flex min-h-[44px] items-center font-body text-sm font-semibold text-calm-navy hover:underline"
               >
                 ← {tt.backToAll}
               </a>
@@ -140,121 +159,125 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       )}
 
       {!loading && !error && technique && (
-        <main
-          id="main"
-          data-prerender-state="ready"
-          className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-4xl mx-auto">
-            {/* Hero Section */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                {technique.name}
-              </h1>
-              {technique.parent_technique && (
-                <p className="text-lg text-gray-600">
-                  {technique.parent_technique.name} › {technique.name}
+        <main id="main" data-prerender-state="ready" className="flex-1">
+          {/* Intro, left aligned to match the rest of the site */}
+          <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
+              }}
+            />
+            <div className="relative max-w-4xl mx-auto">
+              {/* The parent link is real navigation, not decoration: it is how
+                  you get back up the taxonomy. */}
+              {technique.parent_technique ? (
+                <p className={eyebrowClass}>
+                  <a
+                    href={localizedPath(
+                      `/techniques/${technique.parent_technique.slug}`,
+                      locale,
+                    )}
+                    className="hover:underline"
+                  >
+                    {technique.parent_technique.name}
+                  </a>
+                </p>
+              ) : (
+                <p className={eyebrowClass}>
+                  <a
+                    href={localizedPath("/techniques", locale)}
+                    className="hover:underline"
+                  >
+                    {tt.backToAll}
+                  </a>
                 </p>
               )}
+              <h1
+                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(2rem, 5.5vw, 3.5rem)",
+                  lineHeight: 1.05,
+                }}
+              >
+                {technique.name}
+              </h1>
               {technique.description && (
-                <p className="mt-4 text-xl text-gray-700 max-w-3xl mx-auto">
+                <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
                   {technique.description}
                 </p>
               )}
             </div>
+          </section>
 
-            {/* Content Sections */}
-            <div className="space-y-8">
-              {/* Practical Description Section */}
+          <div className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
+            <div className="max-w-4xl mx-auto space-y-6">
               {technique.practical_description && (
-                <Card className="p-6">
-                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                <section className={cardClass}>
+                  <h2 className={cardHeadingClass}>
                     {tt.practicalDescription}
                   </h2>
-                  <div className="text-gray-700 prose prose-lg max-w-none">
-                    <p>{technique.practical_description}</p>
-                  </div>
-                </Card>
+                  <p className={proseClass}>
+                    {technique.practical_description}
+                  </p>
+                </section>
               )}
 
-              {/* Objective Section */}
               {technique.objective && (
-                <Card className="p-6">
-                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {tt.objective}
-                  </h2>
-                  <div className="text-gray-700 prose prose-lg max-w-none">
-                    <p>{technique.objective}</p>
-                  </div>
-                </Card>
+                <section className={cardClass}>
+                  <h2 className={cardHeadingClass}>{tt.objective}</h2>
+                  <p className={proseClass}>{technique.objective}</p>
+                </section>
               )}
 
-              {/* Instructions Section */}
               {technique.instructions && (
-                <Card className="p-6">
-                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {tt.howToPractice}
-                  </h2>
-                  <div className="text-gray-700 prose prose-lg max-w-none">
-                    {formatInstructions(technique.instructions)}
-                  </div>
-                </Card>
+                <section className={cardClass}>
+                  <h2 className={cardHeadingClass}>{tt.howToPractice}</h2>
+                  {formatInstructions(technique.instructions)}
+                </section>
               )}
 
-              {/* Sub-techniques (if this is a main category) */}
               {technique.sub_techniques &&
                 technique.sub_techniques.length > 0 && (
-                  <Card className="p-6">
-                    <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                      {tt.relatedTechniques}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <section className={cardClass}>
+                    <h2 className={cardHeadingClass}>{tt.relatedTechniques}</h2>
+                    <ul className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
                       {technique.sub_techniques.map((subTech) => (
-                        <a
-                          key={subTech.slug}
-                          href={localizedPath(
-                            `/techniques/${subTech.slug}`,
-                            locale,
-                          )}
-                          className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                        >
-                          <h3 className="font-semibold text-gray-900 mb-2">
-                            {subTech.name}
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            {subTech.description}
-                          </p>
-                        </a>
+                        <li key={subTech.slug}>
+                          <a
+                            href={localizedPath(
+                              `/techniques/${subTech.slug}`,
+                              locale,
+                            )}
+                            className="group flex h-full items-start gap-3 rounded-xl bg-white/70 p-4 transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                          >
+                            <span className="flex-1">
+                              <span className="block font-body font-semibold text-calm-charcoal">
+                                {subTech.name}
+                              </span>
+                              <span className="mt-1 block font-body text-sm text-calm-charcoal/70 leading-relaxed">
+                                {subTech.description}
+                              </span>
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              className="mt-0.5 shrink-0 font-body text-calm-navy transition-transform duration-200 group-hover:translate-x-0.5"
+                            >
+                              →
+                            </span>
+                          </a>
+                        </li>
                       ))}
-                    </div>
-                  </Card>
+                    </ul>
+                  </section>
                 )}
-              {/* FAQ Section */}
+
               <TechniqueFAQ slug={slug} locale={locale} />
+
+              <MedicalDisclaimer />
             </div>
-
-            <MedicalDisclaimer className="mt-12" />
-
-            {/* Call to Action */}
-            {/* <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
-              {locale === "pt"
-                ? "Pronto para praticar esta técnica?"
-                : locale === "es"
-                  ? "¿Listo para practicar esta técnica?"
-                  : "Ready to practice this technique?"}
-            </p>
-            <a
-              href="https://app.upspeech.com"
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              {locale === "pt"
-                ? "Começar a Praticar"
-                : locale === "es"
-                  ? "Empezar a Practicar"
-                  : "Start Practicing"}
-            </a>
-          </div> */}
           </div>
         </main>
       )}

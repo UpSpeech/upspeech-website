@@ -40,7 +40,7 @@ const Footer = () => {
                     <img
                       src="/images/app-store.png"
                       alt={t.appStoreAlt}
-                      className="h-10 w-auto"
+                      className="h-11 w-auto"
                       loading="lazy"
                     />
                   </a>
@@ -55,7 +55,7 @@ const Footer = () => {
                     <img
                       src="/images/google-play.png"
                       alt={t.playStoreAlt}
-                      className="h-10 w-auto"
+                      className="h-11 w-auto"
                       loading="lazy"
                     />
                   </a>

@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
-import { useLocale, localizedPath } from "@/i18n";
+import { useLocale } from "@/i18n";
 
 // Configure marked for GFM (GitHub Flavored Markdown) support
 marked.setOptions({
@@ -27,12 +26,6 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
     description:
       "Política de privacidad de UpSpeech, cómo recopilamos, utilizamos y protegemos sus datos personales en nuestra plataforma de logopedia con IA.",
   },
-};
-
-const BACK_LINKS: Record<string, string> = {
-  en: "Back to Home",
-  pt: "Voltar à Página Inicial",
-  es: "Volver a la Página Principal",
 };
 
 const LOADING_TEXT: Record<string, string> = {
@@ -87,17 +80,10 @@ export default function PrivacyPolicy() {
 
   const seo = SEO_DATA[locale] || SEO_DATA.en;
 
-  const languageSwitcher = (
-    <div className="flex justify-end mb-6">
-      <LocaleSwitcher />
-    </div>
-  );
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-calm-light">
+      <div className="bg-calm-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {languageSwitcher}
           <div className="text-lg text-calm-charcoal/70 text-center font-body">
             {LOADING_TEXT[locale] || LOADING_TEXT.en}
           </div>
@@ -108,9 +94,8 @@ export default function PrivacyPolicy() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-calm-light">
+      <div className="bg-calm-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {languageSwitcher}
           <div className="text-center max-w-md mx-auto">
             <div className="text-red-600 text-lg mb-4">{error}</div>
             <button
@@ -126,7 +111,7 @@ export default function PrivacyPolicy() {
   }
 
   return (
-    <div className="min-h-screen bg-calm-light">
+    <div className="bg-calm-light">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -134,7 +119,6 @@ export default function PrivacyPolicy() {
         locale={locale}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {languageSwitcher}
         <div className="bg-white rounded-2xl border border-calm-navy/10 shadow-[0_30px_80px_-30px_rgba(41,53,135,0.18)] overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">
             <div
@@ -142,16 +126,6 @@ export default function PrivacyPolicy() {
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
-        </div>
-
-        {/* Back to Home Link */}
-        <div className="mt-8 text-center">
-          <a
-            href={localizedPath("/", locale)}
-            className="text-calm-navy hover:underline font-body font-medium"
-          >
-            &larr; {BACK_LINKS[locale] || BACK_LINKS.en}
-          </a>
         </div>
       </div>
     </div>

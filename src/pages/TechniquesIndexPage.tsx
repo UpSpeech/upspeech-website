@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
@@ -8,6 +7,30 @@ import { fetchTechniques, type Technique } from "@/lib/api";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 import { useLocale, useT, localizedPath } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+
+// Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
+// the techniques section reads as the same site.
+const eyebrowClass =
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+const sectionClass = "px-[max(1.5rem,5vw)] py-[clamp(2.5rem,5vw,4rem)]";
+
+// Page chrome for the loading and error states, so they are not a different
+// site from the loaded page.
+const Shell = ({
+  state,
+  children,
+}: {
+  state: "loading" | "error";
+  children: React.ReactNode;
+}) => (
+  <main
+    id="main"
+    data-prerender-state={state}
+    className="flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
+  >
+    <div className="max-w-6xl mx-auto">{children}</div>
+  </main>
+);
 
 export function TechniquesIndexPage() {
   const locale = useLocale();
@@ -47,20 +70,16 @@ export function TechniquesIndexPage() {
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen flex flex-col bg-white font-body">
         <Header />
-        <main
-          id="main"
-          data-prerender-state="loading"
-          className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-              <p className="mt-4 text-gray-600">{t.loading}</p>
-            </div>
-          </div>
-        </main>
+        <Shell state="loading">
+          <div
+            className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-calm-navy border-r-transparent"
+            role="status"
+            aria-label={t.loading}
+          />
+          <p className="mt-4 font-body text-calm-charcoal/70">{t.loading}</p>
+        </Shell>
         <Footer />
       </div>
     );
@@ -69,29 +88,25 @@ export function TechniquesIndexPage() {
   // Error state
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen flex flex-col bg-white font-body">
         <Header />
-        <main
-          id="main"
-          data-prerender-state="error"
-          className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
-        >
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <h2 className="text-xl font-semibold text-red-800 mb-2">
-                {t.error}
-              </h2>
-              <p className="text-red-600">{t.tryAgain}</p>
-            </div>
+        <Shell state="error">
+          <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
+            <h2 className="font-heading font-bold text-calm-charcoal text-xl sm:text-2xl tracking-tight">
+              {t.error}
+            </h2>
+            <p className="mt-3 font-body text-calm-charcoal/70 leading-relaxed">
+              {t.tryAgain}
+            </p>
           </div>
-        </main>
+        </Shell>
         <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white font-body">
       <SEO
         title={t.title}
         description={t.seoDescription}
@@ -101,140 +116,146 @@ export function TechniquesIndexPage() {
       />
       <Header />
 
-      <main
-        id="main"
-        data-prerender-state="ready"
-        className="flex-1 pt-32 pb-12 px-4 sm:px-6 lg:px-8"
-      >
-        <div className="max-w-6xl mx-auto">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t.title}</h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              {t.subtitle}
-            </p>
+      <main id="main" data-prerender-state="ready" className="flex-1">
+        {/* Intro, matching the other pages: left aligned, eyebrow + headline */}
+        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
+            }}
+          />
+          <div className="relative max-w-6xl mx-auto">
+            <div className="max-w-3xl">
+              <p className={eyebrowClass}>{t.mainCategories}</p>
+              <h1
+                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
+                  lineHeight: 1.05,
+                }}
+              >
+                {t.title}
+              </h1>
+              <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+                {t.subtitle}
+              </p>
+            </div>
           </div>
+        </section>
 
-          {/* Main Categories */}
-          {mainCategories.length > 0 && (
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        {/* Main categories. These have children, so the card holds the parent
+            and its sub-techniques nest inside it: the hierarchy is the
+            information, so the layout encodes it rather than flattening. */}
+        {mainCategories.length > 0 && (
+          <section className={sectionClass}>
+            <div className="max-w-6xl mx-auto">
+              <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
                 {t.mainCategories}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {mainCategories.map((category) => (
-                  <Card key={category.slug} className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <div
+                    key={category.slug}
+                    className="rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7"
+                  >
+                    <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {category.name}
                     </h3>
-                    <p className="text-gray-600 mb-4">{category.description}</p>
+                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                      {category.description}
+                    </p>
 
-                    {/* Subcategories */}
                     {category.sub_techniques &&
                       category.sub_techniques.length > 0 && (
-                        <div className="space-y-3">
+                        <ul className="mt-5 space-y-2">
                           {category.sub_techniques.map((subTech) => (
-                            <Link
-                              key={subTech.slug}
-                              to={localizedPath(
-                                `/techniques/${subTech.slug}`,
-                                locale,
-                              )}
-                              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                            >
-                              <div className="flex items-start justify-between">
-                                <div className="flex-1">
-                                  <h4 className="font-semibold text-gray-900 mb-1">
+                            <li key={subTech.slug}>
+                              {/* Whole row is the target, comfortably over
+                                  44px on a phone. */}
+                              <Link
+                                to={localizedPath(
+                                  `/techniques/${subTech.slug}`,
+                                  locale,
+                                )}
+                                className="group flex items-start gap-3 rounded-xl bg-white/70 p-4 transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                              >
+                                <span className="flex-1">
+                                  <span className="block font-body font-semibold text-calm-charcoal">
                                     {subTech.name}
-                                  </h4>
-                                  <p className="text-sm text-gray-600">
+                                  </span>
+                                  <span className="mt-1 block font-body text-sm text-calm-charcoal/70 leading-relaxed">
                                     {subTech.description}
-                                  </p>
-                                </div>
-                                <svg
-                                  className="w-5 h-5 text-gray-400 flex-shrink-0 ml-3"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
+                                  </span>
+                                </span>
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-0.5 shrink-0 font-body text-calm-navy transition-transform duration-200 group-hover:translate-x-0.5"
                                 >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </div>
-                            </Link>
+                                  →
+                                </span>
+                              </Link>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       )}
 
-                    {/* Show count if no subcategories displayed */}
                     {(!category.sub_techniques ||
                       category.sub_techniques.length === 0) && (
-                      <p className="text-sm text-gray-500">
+                      <p className="mt-4 font-body text-sm text-calm-charcoal/60">
                         {category.mini_games_count || 0} {t.techniques}
                       </p>
                     )}
-                  </Card>
+                  </div>
                 ))}
               </div>
-            </section>
-          )}
+            </div>
+          </section>
+        )}
 
-          {/* Standalone Techniques */}
-          {standalone.length > 0 && (
-            <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        {/* Standalone techniques have no children, so the whole card is one
+            link rather than a small "View Details" target. */}
+        {standalone.length > 0 && (
+          <section className={sectionClass}>
+            <div className="max-w-6xl mx-auto">
+              <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
                 {t.standalone}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {standalone.map((technique) => (
-                  <Card key={technique.slug} className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <Link
+                    key={technique.slug}
+                    to={localizedPath(`/techniques/${technique.slug}`, locale)}
+                    className="group flex flex-col rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7 transition-colors duration-200 hover:bg-calm-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                  >
+                    <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {technique.name}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
                       {technique.description}
                     </p>
-                    <Link
-                      to={localizedPath(
-                        `/techniques/${technique.slug}`,
-                        locale,
-                      )}
-                      className="inline-block text-blue-600 hover:text-blue-700 font-medium"
-                    >
-                      {t.viewDetails} →
-                    </Link>
-                  </Card>
+                    <span className="mt-5 inline-flex items-center gap-2 font-body text-sm font-semibold text-calm-navy">
+                      {t.viewDetails}
+                      <span
+                        aria-hidden="true"
+                        className="transition-transform duration-200 group-hover:translate-x-0.5"
+                      >
+                        →
+                      </span>
+                    </span>
+                  </Link>
                 ))}
               </div>
-            </section>
-          )}
+            </div>
+          </section>
+        )}
 
-          <MedicalDisclaimer className="mt-12" />
-
-          {/* Call to Action */}
-          {/* <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
-              {locale === "pt"
-                ? "Pronto para começar a praticar?"
-                : locale === "es"
-                  ? "¿Listo para empezar a practicar?"
-                  : "Ready to start practicing?"}
-            </p>
-            <a
-              href="https://upspeech.app/join"
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              {locale === "pt"
-                ? "Começar Agora"
-                : locale === "es"
-                  ? "Comenzar Ahora"
-                  : "Get Started"}
-            </a>
-          </div> */}
+        <div className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
+          <div className="max-w-6xl mx-auto">
+            <MedicalDisclaimer />
+          </div>
         </div>
       </main>
 

@@ -1,4 +1,6 @@
 import React, { Suspense, useEffect } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -89,14 +91,63 @@ const IdentificationDesensitization = React.lazy(
 
 // The full route tree, with locale-agnostic relative paths so it can be mounted
 // under "/", "/pt", and "/es". Keep the catch-all NotFound inside this tree.
+// Legal, support and account pages predate the redesign and render no site
+// chrome of their own, so a visitor landing on one from search or a footer
+// link has no logo, no nav and no way back except an inline "Back to Home".
+// Wrapping at the route level fixes all five without touching the pages, which
+// each have several return branches.
+const Chrome = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex min-h-screen flex-col bg-white font-body">
+    <Header />
+    {/* Header is fixed, so reserve its height the same way the other pages do */}
+    <div className="flex-1 pt-24 sm:pt-28">{children}</div>
+    <Footer />
+  </div>
+);
+
 const AppRoutes = () => (
   <Routes>
     <Route index element={<Index />} />
-    <Route path="privacy" element={<PrivacyPolicy />} />
-    <Route path="terms" element={<TermsOfService />} />
-    <Route path="cookies" element={<CookiePolicy />} />
-    <Route path="delete-account" element={<DeleteAccount />} />
-    <Route path="support" element={<Support />} />
+    <Route
+      path="privacy"
+      element={
+        <Chrome>
+          <PrivacyPolicy />
+        </Chrome>
+      }
+    />
+    <Route
+      path="terms"
+      element={
+        <Chrome>
+          <TermsOfService />
+        </Chrome>
+      }
+    />
+    <Route
+      path="cookies"
+      element={
+        <Chrome>
+          <CookiePolicy />
+        </Chrome>
+      }
+    />
+    <Route
+      path="delete-account"
+      element={
+        <Chrome>
+          <DeleteAccount />
+        </Chrome>
+      }
+    />
+    <Route
+      path="support"
+      element={
+        <Chrome>
+          <Support />
+        </Chrome>
+      }
+    />
     <Route path="for-patients" element={<ForPatients />} />
     <Route path="person-centered-therapy" element={<PersonCentered />} />
     <Route

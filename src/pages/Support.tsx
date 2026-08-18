@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { useLocale, localizedPath, type Locale } from "@/i18n";
 
 const SUPPORT_EMAIL = "support@upspeech.app";
@@ -43,7 +42,6 @@ interface SupportContent {
   privacy: string;
   terms: string;
   deleteAccount: string;
-  back: string;
   langLabel: Record<Locale, string>;
 }
 
@@ -134,7 +132,6 @@ const CONTENT: Record<Locale, SupportContent> = {
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     deleteAccount: "Delete your account or data",
-    back: "Back to Home",
     langLabel: { en: "English", pt: "Português", es: "Español" },
   },
   pt: {
@@ -223,7 +220,6 @@ const CONTENT: Record<Locale, SupportContent> = {
     privacy: "Política de Privacidade",
     terms: "Termos de Serviço",
     deleteAccount: "Eliminar a sua conta ou dados",
-    back: "Voltar à Página Inicial",
     langLabel: { en: "English", pt: "Português", es: "Español" },
   },
   es: {
@@ -313,7 +309,6 @@ const CONTENT: Record<Locale, SupportContent> = {
     privacy: "Política de Privacidad",
     terms: "Términos del Servicio",
     deleteAccount: "Eliminar tu cuenta o datos",
-    back: "Volver a la Página Principal",
     langLabel: { en: "English", pt: "Português", es: "Español" },
   },
 };
@@ -431,7 +426,7 @@ export default function Support() {
   const c = CONTENT[locale];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-white">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -440,10 +435,6 @@ export default function Support() {
         structuredData={buildSupportFaqSchema(locale)}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex justify-end mb-6">
-          <LocaleSwitcher />
-        </div>
-
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">
             <h1 className="text-3xl font-bold text-gray-900 font-heading">
@@ -520,16 +511,6 @@ export default function Support() {
               </ul>
             </section>
           </div>
-        </div>
-
-        {/* Back to Home Link */}
-        <div className="mt-8 text-center">
-          <a
-            href={localizedPath("/", locale)}
-            className="text-indigo-600 hover:underline"
-          >
-            &larr; {c.back}
-          </a>
         </div>
       </div>
     </div>
