@@ -2,7 +2,7 @@
 
 > Platform and monorepo setup lives in the umbrella repo. This README is website-specific.
 
-The public marketing site at https://upspeech.app. React 18 + TypeScript + Vite, prerendered to static HTML and served by Netlify. This README is mainly about how localisation works, because that is where most of the maintenance traps are.
+The public marketing site at https://upspeech.app. React 18 + TypeScript + Vite, prerendered to static HTML and served by Netlify. This README is mainly about how localization works, because that is where most of the maintenance traps are.
 
 ## Running it
 
@@ -15,7 +15,7 @@ npm run build        # full static build (see "Build pipeline" below)
 
 There is no unit test framework. Verification is `typecheck` + `lint` + a successful `build`.
 
-## Localisation model
+## Localization model
 
 The site ships in three locales: English, Portuguese, Spanish.
 

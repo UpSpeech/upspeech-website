@@ -16,7 +16,7 @@ Each concept lists the **angle**, the **audience**, and the **why**.
   *Audience: people who stutter. Why: warmth, retention, recognizable brand.*
 
 - **"Say it slow" pacing GIFs.** A breathing/pacing pacer animation (a dot that
-  expands and contracts) people can actually practise along with in a story or
+  expands and contracts) people can actually practice along with in a story or
   reel. Useful, on-brand, infinitely repeatable.
   *Audience: people who stutter. Why: genuinely useful = saved and shared.*
 
@@ -56,7 +56,7 @@ Each concept lists the **angle**, the **audience**, and the **why**.
 ## Format experiments
 
 - **Audio-first content.** The product is about speech; lean into sound. A
-  "technique of the week" audio reel, a calm voice modelling easy onset, a
+  "technique of the week" audio reel, a calm voice modeling easy onset, a
   podcast-style snippet with an SLP. Most speech-therapy social ignores audio.
   *Audience: all. Why: differentiation, accessibility (with captions).*
 

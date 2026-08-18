@@ -19,7 +19,7 @@ Supporting messages:
 
 - Draft the session report in seconds, then edit and approve. Less time on
   notes, more time with the person.
-- Patients keep practising between sessions, on the technique you set, and you
+- Patients keep practicing between sessions, on the technique you set, and you
   see the trends before the next appointment.
 - Multi-tenant and built for real clinical workflows, not a consumer toy.
 - Stutter-positive by design. The tool supports your judgment; it doesn't
@@ -27,7 +27,7 @@ Supporting messages:
 
 ## Audiences
 
-1. **Practising SLPs** (especially fluency/stuttering specialists). The core.
+1. **Practicing SLPs** (especially fluency/stuttering specialists). The core.
 2. **Clinic owners and practice managers.** Care about throughput, adherence,
    documentation load, and staff time.
 3. **University clinics and SLP students/educators.** Credibility and reach.

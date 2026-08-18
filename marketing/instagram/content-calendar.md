@@ -59,7 +59,7 @@ Publish all six highlight covers before or during week 1.
 - **Mon feed** `feed-07-path.png`
   > One step at a time.
   >
-  > Learn the technique, practise it in the app, try it in a real scenario,
+  > Learn the technique, practice it in the app, try it in a real scenario,
   > review it with your SLP. A clear path, no overwhelm.
 - **Wed feed** `feed-08-scenarios.png`
   > Rehearse the hard conversations, safely.

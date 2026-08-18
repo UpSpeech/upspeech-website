@@ -138,7 +138,7 @@ showed up again. That felt steadier. Small words, real difference.
 ```text
 One step at a time.
 
-Learn the technique, practise it in the app, try it in a real scenario, review
+Learn the technique, practice it in the app, try it in a real scenario, review
 it with your SLP. A clear path, no overwhelm.
 
 #SpeechTherapy #Stuttering #StutterPositive #SpeechPractice #SLP
