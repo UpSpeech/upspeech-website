@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
+import { useLocale } from "@/i18n";
 
 // Configure marked for GFM (GitHub Flavored Markdown) support
 marked.setOptions({
@@ -10,6 +11,7 @@ marked.setOptions({
 });
 
 export default function DeleteAccount() {
+  const locale = useLocale();
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,7 +73,7 @@ export default function DeleteAccount() {
         title="Delete Your Account or Data"
         description="How to delete your UpSpeech account or specific data, and what happens to your information when you do."
         path="/delete-account"
-        locale="en"
+        locale={locale}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">

@@ -209,7 +209,7 @@ a paragraph.
 
 - [ ] "Best apps for people who stutter in 2026" — honest roundup, include
       competitors fairly.
-- [ ] "How to keep practising speech therapy between sessions."
+- [ ] "How to keep practicing speech therapy between sessions."
 - [ ] "Does AI note-taking work for speech-language pathologists?"
 - [ ] "What does stutter-positive therapy actually mean?" — the awareness angle,
       which also feeds Instagram.
@@ -377,14 +377,14 @@ Roundup inclusion pitch (one paragraph, for an editor):
 
 > UpSpeech might fit your roundup: it is a stutter-positive app where practice is
 > linked to the person's own therapist, not solo self-drill. People who stutter
-> practise techniques their SLP assigned and see their progress; the therapist
+> practice techniques their SLP assigned and see their progress; the therapist
 > sees it too and gets a drafted session note to review and sign off. It is used
 > alongside therapy, not instead of it. Happy to provide screenshots or a
 > walkthrough. Canonical page: https://upspeech.app/for-patients
 
 Community answer (only where genuinely on-topic, disclose affiliation):
 
-> (Disclosure: I work on UpSpeech.) For practising between sessions, the thing
+> (Disclosure: I work on UpSpeech.) For practicing between sessions, the thing
 > that helped most was tying practice to what my/their therapist actually set,
 > rather than a generic app. UpSpeech does that and is stutter-positive about it
 > (the goal is being heard, not sounding a certain way). Whatever you pick, the

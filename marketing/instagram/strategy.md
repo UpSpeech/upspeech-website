@@ -13,14 +13,14 @@ SLPs" posts and the For SLPs highlight), not the lead message.
 
 ## Positioning
 
-**Speech therapy that keeps going between sessions.**
+**Continuous support for stuttering therapy.**
 
 Supporting messages:
 
 - Guided daily practice shaped around the technique your therapist set.
 - Progress you can actually see: streaks, technique scores, trends.
 - Gentle encouragement built in, every day.
-- Practise the hard conversations safely before the real moment.
+- Practice the hard conversations safely before the real moment.
 - A stutter-positive brand: confidence and tools, never a demand to be fluent.
 
 ## Audiences
@@ -101,7 +101,7 @@ Story formats:
 - Technique or scenario poll ("which moment feels hardest?").
 - Progress reveal (ring or streak).
 - Myth/fact drop (stutter-positive, save-and-share).
-- Question sticker ("where do you practise?", "word of the day").
+- Question sticker ("where do you practice?", "word of the day").
 - Photo overlay (calm desk, phone in hand) once source imagery exists.
 
 ## Hashtag direction
@@ -120,4 +120,4 @@ Avoid stigmatizing tags and avoid spammy 30-tag blocks. Five to eight is enough.
 - Replies to story prompts (word of the day, scenario polls).
 - Profile clicks from awareness and progress posts.
 - DMs from people who stutter and from parents (qualitative signal).
-- Signup / "ask your therapist" link clicks once the link is live.
+- "Ask your therapist" / for-patients link clicks once the link is live.

@@ -1,0 +1,319 @@
+import { useEffect, useRef, useState } from "react";
+import { EASE, reveal } from "./motion";
+import { useT } from "@/i18n";
+
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
+
+const DAY_COUNT = 7;
+
+// Once-a-week clinic cadence: session on Thursday
+const SESSION_DAY = 3;
+
+const GapSection = () => {
+  const t = useT().home.gap;
+  const containerRef = useRef<HTMLElement | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+  // On phones the pinned scroll story loses its labels and activity bars,
+  // so the section renders as a plain static comparison instead.
+  const [isStatic, setIsStatic] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const apply = () => setIsStatic(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReduced || isStatic) {
+      setProgress(1);
+      if (prefersReduced) {
+        setRevealed(true);
+        return;
+      }
+    }
+
+    // Entry reveal, fires once when the section starts intersecting.
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -15% 0px" },
+    );
+    obs.observe(el);
+
+    if (isStatic) {
+      return () => obs.disconnect();
+    }
+
+    let raf = 0;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const scrollable = rect.height - vh;
+      const scrolled = Math.max(0, Math.min(scrollable, -rect.top));
+      setProgress(scrollable > 0 ? scrolled / scrollable : 0);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+      obs.disconnect();
+    };
+  }, [isStatic]);
+
+  // Choreography:
+  //  0.00           both rows visible, gap is the default state
+  //  0.20 → 0.75    fill the continuous row day by day
+  //  0.50 → 0.85    headline swaps from 'today' to 'by design'
+  //  0.80 → 0.95    footer insight fades in
+  const fillContinuous = clamp01((progress - 0.2) / 0.55);
+  const swap = clamp01((progress - 0.5) / 0.35);
+  const footer = clamp01((progress - 0.8) / 0.15);
+
+  const daysLit = fillContinuous * DAY_COUNT;
+  const isFull = daysLit >= 6.95;
+
+  return (
+    <section
+      id="how-it-works"
+      ref={containerRef}
+      className="relative bg-white"
+      style={{ height: isStatic ? "auto" : "180vh" }}
+    >
+      <div
+        className={
+          isStatic
+            ? "relative overflow-hidden py-20"
+            : "sticky top-20 h-[calc(100vh-5rem)] overflow-hidden"
+        }
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(900px 600px at 18% 20%, rgba(41,53,135,0.06), transparent 60%)",
+          }}
+        />
+
+        <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)]">
+          <p
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-4 sm:mb-5"
+            style={reveal(revealed, 0)}
+          >
+            {t.eyebrow}
+          </p>
+
+          {/* Swapping headlines */}
+          <div
+            className="relative max-w-4xl"
+            style={{
+              minHeight: "clamp(3.5rem, 6vw, 5rem)",
+              ...reveal(revealed, 80),
+            }}
+          >
+            <h2
+              className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
+              style={{
+                fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                lineHeight: 1.1,
+                transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
+                opacity: 1 - swap,
+                transform: `translateY(${swap * -28}px)`,
+              }}
+            >
+              {t.headlineToday}
+            </h2>
+            <h2
+              className="absolute top-0 left-0 right-0 font-heading font-bold text-calm-charcoal tracking-tight"
+              style={{
+                fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                lineHeight: 1.1,
+                transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
+                opacity: swap,
+                transform: `translateY(${(1 - swap) * 28}px)`,
+              }}
+            >
+              {t.headlineWithPrefix}{" "}
+              <span className="text-calm-lavender">{t.headlineWithBrand}</span>
+            </h2>
+          </div>
+
+          {/* Two week-rows */}
+          <div
+            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-[min(64rem,94vw)]"
+            style={reveal(revealed, 160)}
+          >
+            {/* Traditional row */}
+            <div className="mb-6 sm:mb-10">
+              <div className="mb-3 flex items-baseline justify-between">
+                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/55">
+                  {t.traditional}
+                </span>
+                <span className="font-body text-xs sm:text-sm text-calm-charcoal/55 tabular-nums">
+                  {t.traditionalCadence}
+                </span>
+              </div>
+              <WeekRow variant="traditional" progress={1} />
+            </div>
+
+            {/* Continuous row */}
+            <div>
+              <div className="mb-3 flex items-baseline justify-between">
+                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-lavender">
+                  {t.withUpspeech}
+                </span>
+                <span
+                  className={`font-body text-xs sm:text-sm tabular-nums transition-colors duration-500 ${
+                    isFull
+                      ? "text-calm-navy font-semibold"
+                      : "text-calm-navy/90"
+                  }`}
+                >
+                  {isFull
+                    ? t.fullCadence
+                    : `${t.partialPrefix}${Math.round(daysLit)}${t.partialSuffix}`}
+                </span>
+              </div>
+              <WeekRow variant="continuous" progress={fillContinuous} />
+            </div>
+          </div>
+
+          {/* Footer insight */}
+          <div
+            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed"
+            style={{
+              transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
+              opacity: footer,
+              transform: `translateY(${(1 - footer) * 20}px)`,
+            }}
+          >
+            {t.footerPrefix}{" "}
+            <span className="text-calm-navy font-semibold">
+              {t.footerEmphasis}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const WeekRow = ({
+  variant,
+  progress,
+}: {
+  variant: "traditional" | "continuous";
+  progress: number;
+}) => {
+  const t = useT().home.gap;
+  return (
+    <div className="grid grid-cols-7 gap-2 sm:gap-3">
+      {t.days.map((day, i) => {
+        const isSession = i === SESSION_DAY;
+        const lit =
+          variant === "traditional"
+            ? isSession
+              ? 1
+              : 0
+            : clamp01(progress * DAY_COUNT - i);
+
+        return (
+          <div key={day} className="flex flex-col items-center gap-2 sm:gap-3">
+            <span className="font-body text-[10px] sm:text-xs font-medium tracking-wider uppercase text-calm-charcoal/40">
+              {day}
+            </span>
+            <div
+              className="relative w-full rounded-xl"
+              style={{ aspectRatio: "4 / 5" }}
+            >
+              <div className="absolute inset-0 rounded-xl bg-calm-light border border-calm-charcoal/5" />
+
+              {variant === "traditional" && isSession && (
+                <div className="absolute inset-0 rounded-xl bg-calm-navy flex items-center justify-center">
+                  <span className="hidden sm:inline font-body text-[10px] sm:text-xs font-semibold text-white">
+                    {t.session}
+                  </span>
+                </div>
+              )}
+
+              {variant === "continuous" && (
+                <div
+                  className="absolute inset-0 rounded-xl overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: `linear-gradient(180deg, rgba(152,165,254,${0.85 * lit}) 0%, rgba(152,165,254,${0.55 * lit}) 100%)`,
+                    transition: `background 600ms ${EASE}`,
+                  }}
+                >
+                  {/* Mini activity bars */}
+                  <div className="absolute inset-x-3 bottom-3 hidden sm:flex items-end gap-[2px] h-[30%]">
+                    {Array.from({ length: 6 }).map((_, b) => (
+                      <div
+                        key={b}
+                        className="flex-1 rounded-sm bg-white/80"
+                        style={{
+                          height: `${lit === 0 ? 0 : 35 + Math.abs(Math.sin((i + 1) * (b + 1) * 0.7)) * 60}%`,
+                          opacity: lit,
+                          transition: `height 500ms ${EASE}, opacity 500ms ${EASE}`,
+                          transitionDelay: `${b * 40}ms`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Session + Practice stack on Thursday */}
+                  {isSession && lit > 0.3 ? (
+                    <div
+                      className="relative z-10 hidden sm:flex flex-col items-center gap-1"
+                      style={{
+                        opacity: clamp01((lit - 0.3) / 0.4),
+                      }}
+                    >
+                      <span className="rounded-md bg-calm-navy px-2 py-0.5 font-body text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_6px_-2px_rgba(41,53,135,0.4)] ring-1 ring-white/20">
+                        {t.session}
+                      </span>
+                      <span className="font-body text-[10px] sm:text-xs font-semibold text-white/95">
+                        {t.plusPractice}
+                      </span>
+                    </div>
+                  ) : (
+                    lit > 0.4 && (
+                      <span
+                        className="relative z-10 hidden sm:inline font-body text-[10px] sm:text-xs font-semibold text-white"
+                        style={{
+                          opacity: clamp01((lit - 0.4) / 0.4),
+                        }}
+                      >
+                        {t.practice}
+                      </span>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default GapSection;

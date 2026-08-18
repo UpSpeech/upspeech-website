@@ -10,91 +10,48 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { EMAILJS_CONFIG, EmailTemplateParams } from "@/lib/emailjs";
 import { trackFormSubmit } from "@/lib/analytics";
+import { useT } from "@/i18n";
 
 const CTASection = () => {
+  const t = useT().home.cta;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     role: "",
     clinicSize: "",
+    company: "", // honeypot: must stay empty for real users
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Lazy-load emailjs only when needed
-  const getEmailJS = async () => {
-    const { default: emailjs } = await import("@emailjs/browser");
-    if (
-      EMAILJS_CONFIG.PUBLIC_KEY &&
-      EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY"
-    ) {
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    }
-    return emailjs;
-  };
-
-  const sendAutoReplyEmail = async (userData: typeof formData) => {
-    try {
-      // Validate EmailJS configuration
-      if (
-        !EMAILJS_CONFIG.SERVICE_ID ||
-        EMAILJS_CONFIG.SERVICE_ID === "YOUR_SERVICE_ID"
-      ) {
-        throw new Error("EmailJS Service ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.TEMPLATE_ID ||
-        EMAILJS_CONFIG.TEMPLATE_ID === "YOUR_TEMPLATE_ID"
-      ) {
-        throw new Error("EmailJS Template ID not configured");
-      }
-      if (
-        !EMAILJS_CONFIG.PUBLIC_KEY ||
-        EMAILJS_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY"
-      ) {
-        throw new Error("EmailJS Public Key not configured");
-      }
-
-      const templateParams: EmailTemplateParams = {
-        to_name: userData.name,
-        to_email: userData.email,
-        user_role: userData.role,
-        clinic_size: userData.clinicSize || "Not specified",
-        linkedin_url: "https://www.linkedin.com/company/upspeech/",
-        logo_url: "https://upspeech.app/images/logo.svg",
-        referral_link: "https://upspeech.app",
-        reply_to: "hello@upspeech.app",
-      };
-
-      const emailjs = await getEmailJS();
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY,
-      );
-    } catch (error) {
-      console.error("Failed to send auto-reply email:", error);
-    }
-  };
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    role?: string;
+  }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     if (!formData.name || !formData.email || !formData.role) {
+      setFieldErrors({
+        name: formData.name ? undefined : t.nameError,
+        email: formData.email ? undefined : t.emailError,
+        role: formData.role ? undefined : t.roleError,
+      });
       toast({
-        title: "Please fill in all required fields",
+        title: t.requiredFieldsTitle,
         variant: "destructive",
       });
       setIsSubmitting(false);
       return;
     }
+    setFieldErrors({});
 
     try {
-      // Submit to Formspree for your records
-      const formspreeResponse = await fetch("https://formspree.io/f/mpwrpely", {
+      // Same-origin POST to the Netlify function, which sends the team
+      // notification and the applicant auto-reply through Resend.
+      const response = await fetch("/.netlify/functions/early-access", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +59,7 @@ const CTASection = () => {
         body: JSON.stringify(formData),
       });
 
-      if (formspreeResponse.ok) {
+      if (response.ok) {
         trackFormSubmit("waitlist_form", true);
         // Reset form first (so user knows submission was successful)
         setFormData({
@@ -110,40 +67,35 @@ const CTASection = () => {
           email: "",
           role: "",
           clinicSize: "",
+          company: "",
         });
-
-        // Try to send auto-reply email via EmailJS
-        // This is non-blocking, so if it fails, the user still gets registered
-        await sendAutoReplyEmail(formData);
 
         toast({
-          title: "Welcome to the UpSpeech waitlist!",
-          description:
-            "You've been successfully registered. Check your email for a confirmation message.",
+          title: t.successTitle,
+          description: t.successDescription,
         });
       } else {
-        trackFormSubmit("waitlist_form", false);
-        const errorText = await formspreeResponse.text();
-        console.error("Formspree error:", errorText);
-        throw new Error(`Form submission failed: ${formspreeResponse.status}`);
+        const errorText = await response.text();
+        console.error("Early-access submission error:", errorText);
+        throw new Error(`Form submission failed: ${response.status}`);
       }
     } catch (error) {
+      // The catch owns all failure tracking (covers both the thrown non-2xx
+      // above and network errors), so it fires exactly once per failure.
       trackFormSubmit("waitlist_form", false);
       console.error("Submission error:", error);
 
-      let errorMessage = "Please try again later.";
+      let errorMessage = t.errorDefault;
       if (error instanceof Error) {
         if (error.message.includes("fetch")) {
-          errorMessage =
-            "Network error. Please check your connection and try again.";
+          errorMessage = t.errorNetwork;
         } else if (error.message.includes("Form submission failed")) {
-          errorMessage =
-            "There was an issue with the form submission. Please try again.";
+          errorMessage = t.errorSubmission;
         }
       }
 
       toast({
-        title: "Something went wrong",
+        title: t.errorTitle,
         description: errorMessage,
         variant: "destructive",
       });
@@ -155,7 +107,7 @@ const CTASection = () => {
   return (
     <section
       id="cta"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-mesh-calm relative overflow-hidden"
+      className="px-[max(1.5rem,5vw)] py-[clamp(5rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -175,43 +127,65 @@ const CTASection = () => {
           className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          Join us before we launch!
+          {t.headline}
         </h2>
         <p
-          className="font-body text-xl text-calm-charcoal/80 mb-12 max-w-3xl mx-auto animate-fade-in"
+          className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          Join forward-thinking speech therapy clinics already revolutionizing
-          their practice with AI-powered continuous care solutions.
+          {t.body}
         </p>
 
         <div
           className="bg-white rounded-2xl shadow-card-hover border border-calm-light p-8 max-w-md mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
         >
-          <h3 className="font-heading font-bold text-xl text-calm-charcoal mb-6">
-            Request Early Access to UpSpeech
-          </h3>
-
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot: hidden from people, tempting to bots. If filled, the
+                Netlify function silently drops the submission. */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({ ...formData, company: e.target.value })
+              }
+            />
             <div className="text-left">
               <Label
                 htmlFor="name"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Full Name *
+                {t.nameLabel}
               </Label>
               <Input
                 id="name"
                 type="text"
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                  if (fieldErrors.name)
+                    setFieldErrors({ ...fieldErrors, name: undefined });
+                }}
+                aria-invalid={!!fieldErrors.name}
+                aria-describedby={fieldErrors.name ? "name-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
-                placeholder="Enter your name"
+                placeholder={t.namePlaceholder}
                 required
               />
+              {fieldErrors.name && (
+                <p
+                  id="name-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.name}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -219,19 +193,32 @@ const CTASection = () => {
                 htmlFor="email"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Email Address *
+                {t.emailLabel}
               </Label>
               <Input
                 id="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (fieldErrors.email)
+                    setFieldErrors({ ...fieldErrors, email: undefined });
+                }}
+                aria-invalid={!!fieldErrors.email}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
                 className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 placeholder:text-calm-charcoal/80 transition-colors duration-200"
-                placeholder="your@email.com"
+                placeholder={t.emailPlaceholder}
                 required
               />
+              {fieldErrors.email && (
+                <p
+                  id="email-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -239,43 +226,56 @@ const CTASection = () => {
                 htmlFor="role"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Role *
+                {t.roleLabel}
               </Label>
               <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, role: value })
-                }
+                onValueChange={(value) => {
+                  setFormData({ ...formData, role: value });
+                  if (fieldErrors.role)
+                    setFieldErrors({ ...fieldErrors, role: undefined });
+                }}
               >
                 <SelectTrigger
-                  aria-label="Choose your role"
+                  aria-label={t.rolePlaceholder}
+                  aria-invalid={!!fieldErrors.role}
+                  aria-describedby={fieldErrors.role ? "role-error" : undefined}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
-                  <SelectValue placeholder="Choose your role" />
+                  <SelectValue placeholder={t.rolePlaceholder} />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem
                     value="speech-therapist"
                     className="focus:bg-calm-navy/5"
                   >
-                    Speech Therapist
+                    {t.roleSpeechTherapist}
                   </SelectItem>
                   <SelectItem
                     value="clinic-director"
                     className="focus:bg-calm-navy/5"
                   >
-                    Clinic Director
+                    {t.roleClinicDirector}
                   </SelectItem>
                   <SelectItem
                     value="practice-owner"
                     className="focus:bg-calm-navy/5"
                   >
-                    Practice Owner
+                    {t.rolePracticeOwner}
                   </SelectItem>
                   <SelectItem value="other" className="focus:bg-calm-navy/5">
-                    Other
+                    {t.roleOther}
                   </SelectItem>
                 </SelectContent>
               </Select>
+              {fieldErrors.role && (
+                <p
+                  id="role-error"
+                  role="alert"
+                  className="mt-1 text-sm text-red-600"
+                >
+                  {fieldErrors.role}
+                </p>
+              )}
             </div>
 
             <div className="text-left">
@@ -283,7 +283,7 @@ const CTASection = () => {
                 htmlFor="clinic-size"
                 className="font-body text-sm font-semibold text-calm-charcoal"
               >
-                Clinic Size (Optional)
+                {t.clinicSizeLabel}
               </Label>
               <Select
                 onValueChange={(value) =>
@@ -291,23 +291,23 @@ const CTASection = () => {
                 }
               >
                 <SelectTrigger
-                  aria-label="Choose clinic size"
+                  aria-label={t.clinicSizePlaceholder}
                   className="mt-1 font-body rounded-xl border-2 border-calm-charcoal/10 hover:border-calm-charcoal/20 focus:border-calm-lavender focus:ring-4 focus:ring-primary-100 data-[placeholder]:text-calm-charcoal/80 transition-colors duration-200"
                 >
-                  <SelectValue placeholder="Choose clinic size" />
+                  <SelectValue placeholder={t.clinicSizePlaceholder} />
                 </SelectTrigger>
                 <SelectContent className="border-calm-charcoal/10 bg-white rounded-xl">
                   <SelectItem value="solo" className="focus:bg-calm-navy/5">
-                    Solo Practice
+                    {t.clinicSizeSolo}
                   </SelectItem>
                   <SelectItem value="small" className="focus:bg-calm-navy/5">
-                    2-5 Therapists
+                    {t.clinicSizeSmall}
                   </SelectItem>
                   <SelectItem value="medium" className="focus:bg-calm-navy/5">
-                    6-15 Therapists
+                    {t.clinicSizeMedium}
                   </SelectItem>
                   <SelectItem value="large" className="focus:bg-calm-navy/5">
-                    15+ Therapists
+                    {t.clinicSizeLarge}
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -318,7 +318,7 @@ const CTASection = () => {
               disabled={isSubmitting}
               className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              {isSubmitting ? "Joining Waitlist..." : "Join the Waitlist"}
+              {isSubmitting ? t.submitting : t.submit}
             </Button>
           </form>
         </div>

@@ -1,32 +1,49 @@
-import React from "react";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import ProblemSection from "@/components/ProblemSection";
+import HeroOptionD from "@/components/HeroOptionD";
+import CredibilityStrip from "@/components/CredibilityStrip";
+import GapSection from "@/components/GapSection";
 import InterstitialCTA from "@/components/InterstitialCTA";
-import SolutionSection from "@/components/SolutionSection";
-import GuidingVoicesBanner from "@/components/GuidingVoicesBanner";
-import DifferentiationSection from "@/components/DifferentiationSection";
-import PartnersSection from "@/components/PartnersSection";
+import TherapistScene from "@/components/TherapistScene";
+import PatientScene from "@/components/PatientScene";
+import MobileAppBand from "@/components/MobileAppBand";
+import FeatureGallerySection from "@/components/FeatureGallerySection";
+import CycleScene from "@/components/CycleScene";
+import EngineSection from "@/components/EngineSection";
+import FoundationsScene from "@/components/FoundationsScene";
+import SecuritySection from "@/components/SecuritySection";
 import CTASection from "@/components/CTASection";
-import TechniquesOverviewSection from "@/components/TechniquesOverviewSection";
 import Footer from "@/components/Footer";
+import { useLocale, useT } from "@/i18n";
 
 const Index = () => {
+  const locale = useLocale();
+  const t = useT();
   return (
     <div className="min-h-screen font-body">
-      <SEO path="/" />
+      <SEO path="/" locale={locale} description={t.home.seoDescription} />
       <Header />
-      <HeroSection />
-      <ProblemSection />
-      <InterstitialCTA />
-      <SolutionSection />
-      <GuidingVoicesBanner />
-      <DifferentiationSection />
-      <TechniquesOverviewSection />
-      <PartnersSection />
-      <CTASection />
-      {/* <FAQSection /> */}
+      <main id="main">
+        <HeroOptionD />
+        <CredibilityStrip />
+        <GapSection />
+        <div id="features">
+          <TherapistScene />
+          <PatientScene />
+        </div>
+        <MobileAppBand />
+        <CycleScene />
+        <InterstitialCTA />
+        <FeatureGallerySection />
+        <div id="differentiation">
+          <EngineSection />
+        </div>
+        <div id="about">
+          <FoundationsScene />
+        </div>
+        <SecuritySection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );
