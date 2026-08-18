@@ -3,20 +3,31 @@ import { Resvg } from "@resvg/resvg-js";
 import { writeFileSync, readFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { ROUTES, LOCALES, DEFAULT_LOCALE } from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, "..", "public", "og");
 
-// Load screenshot as base64 data URI
-const screenshotPath = join(
-  __dirname,
-  "..",
-  "public",
-  "screenshots",
-  "desktop.jpg",
+// One hero screenshot per locale, as a base64 data URI. The card is the first
+// thing a reader sees when the link is shared, so a PT reader should not get an
+// English hero. Falls back to the English capture when a locale has none, which
+// matches localizedAsset() in src/i18n/assets.ts.
+const SCREENSHOTS_DIR = join(__dirname, "..", "public", "screenshots");
+
+function loadScreenshot(locale) {
+  const localized = join(SCREENSHOTS_DIR, locale, "desktop.jpg");
+  const base = join(SCREENSHOTS_DIR, "desktop.jpg");
+  const file =
+    locale !== DEFAULT_LOCALE && existsSync(localized) ? localized : base;
+  return {
+    uri: `data:image/jpeg;base64,${readFileSync(file).toString("base64")}`,
+    localized: file === localized,
+  };
+}
+
+const SCREENSHOT_BY_LOCALE = Object.fromEntries(
+  LOCALES.map((locale) => [locale, loadScreenshot(locale)]),
 );
-const screenshotBase64 = readFileSync(screenshotPath).toString("base64");
-const screenshotDataUri = `data:image/jpeg;base64,${screenshotBase64}`;
 
 // -- Page definitions --
 
@@ -92,10 +103,10 @@ const TECHNIQUES = {
 const PAGES = [
   {
     slug: "home",
-    title: "AI-Powered Speech Therapy Support",
+    title: "Software for Speech Therapy Practices",
     subtitle: null,
     description:
-      "Transform your speech therapy practice with AI-powered training between sessions.",
+      "Continuous support for speech and language therapy. Patients practice between sessions on a plan their therapist set, and every attempt comes back for review.",
     category: null,
     showScreenshot: true,
   },
@@ -150,6 +161,33 @@ const PAGES = [
     showScreenshot: true,
   },
   {
+    slug: "for-slps",
+    title: "For Speech-Language Pathologists",
+    subtitle: null,
+    description:
+      "Patients get structured practice between sessions. You set what they work on, and you see how it went before the next appointment.",
+    category: null,
+    showScreenshot: true,
+  },
+  {
+    slug: "person-centered-therapy",
+    title: "Person-Centered Therapy",
+    subtitle: null,
+    description:
+      "What person-centered speech therapy means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    category: null,
+    showScreenshot: true,
+  },
+  {
+    slug: "reducing-documentation-time",
+    title: "Less Time on Session Notes",
+    subtitle: null,
+    description:
+      "A practical guide for speech-language pathologists on cutting documentation time, with structured drafts that support clinical judgement.",
+    category: null,
+    showScreenshot: true,
+  },
+  {
     slug: "support",
     title: "Support",
     subtitle: null,
@@ -168,6 +206,30 @@ const PAGES = [
     showScreenshot: false,
   },
 ];
+
+// PAGES is hand-written while ROUTES is what actually ships. When the two
+// drifted, SEO.tsx still emitted /og/<slug>.png for the uncovered page, the
+// Netlify catch-all answered with the SPA shell, and social crawlers got 120KB
+// of HTML where an image should be. That is how /for-slps,
+// /person-centered-therapy and /reducing-documentation-time shipped without a
+// card. Fail the build rather than serve HTML to a crawler.
+const slugForRoute = (path) =>
+  path === "/" ? "home" : path.replace(/^\/|\/$/g, "");
+const routeSlugs = ROUTES.map((r) => slugForRoute(r.path));
+const cardSlugs = new Set(PAGES.map((page) => page.slug));
+
+const uncovered = routeSlugs.filter((slug) => !cardSlugs.has(slug));
+if (uncovered.length) {
+  throw new Error(
+    `No OG card for ${uncovered.length} route(s): ${uncovered.join(", ")}\n` +
+      `Add an entry to PAGES in scripts/generate-og-images.mjs.`,
+  );
+}
+
+const orphaned = [...cardSlugs].filter((slug) => !routeSlugs.includes(slug));
+if (orphaned.length) {
+  console.warn(`  OG cards with no matching route: ${orphaned.join(", ")}`);
+}
 
 // -- Per-locale card copy --
 //
@@ -200,9 +262,9 @@ const CATEGORY_ES = {
 const TRANSLATIONS = {
   pt: {
     home: {
-      title: "Apoio à terapia da fala com IA",
+      title: "Software para clínicas de terapia da fala",
       description:
-        "Apoio contínuo para a terapia da gaguez. Prática estruturada entre sessões, relatórios redigidos por IA. Os terapeutas estão sempre no controlo.",
+        "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo o plano do terapeuta, e cada tentativa volta para revisão.",
     },
     techniques: {
       title: "Técnicas de Terapia da Fala",
@@ -297,6 +359,21 @@ const TRANSLATIONS = {
         "Como os pacientes praticam terapia da fala entre sessões com a UpSpeech, orientados pelo seu terapeuta da fala.",
       // no category badge
     },
+    "for-slps": {
+      title: "Para terapeutas da fala",
+      description:
+        "Os pacientes têm prática estruturada entre sessões. Define o que trabalham e vê como correu antes da consulta seguinte.",
+    },
+    "person-centered-therapy": {
+      title: "Terapia centrada na pessoa",
+      description:
+        "O que significa a terapia da fala centrada na pessoa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
+    },
+    "reducing-documentation-time": {
+      title: "Menos tempo em notas de sessão",
+      description:
+        "Um guia prático para terapeutas da fala sobre como reduzir o tempo de documentação, com rascunhos estruturados que apoiam o juízo clínico.",
+    },
     support: {
       title: "Suporte",
       description:
@@ -312,9 +389,9 @@ const TRANSLATIONS = {
   },
   es: {
     home: {
-      title: "Apoyo a la logopedia con IA",
+      title: "Software para clínicas de logopedia",
       description:
-        "Apoyo continuo para la terapia de la tartamudez. Práctica estructurada entre sesiones, informes redactados por IA. Los terapeutas siempre tienen el control.",
+        "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones según el plan de su terapeuta, y cada intento vuelve para revisión.",
     },
     techniques: {
       title: "Técnicas de Logopedia",
@@ -408,6 +485,21 @@ const TRANSLATIONS = {
         "Cómo los pacientes practican logopedia entre sesiones con UpSpeech, guiados por su logopeda.",
       // no category badge
     },
+    "for-slps": {
+      title: "Para logopedas",
+      description:
+        "Los pacientes tienen práctica estructurada entre sesiones. Tú defines en qué trabajan y ves cómo ha ido antes de la siguiente cita.",
+    },
+    "person-centered-therapy": {
+      title: "Logopedia centrada en la persona",
+      description:
+        "Qué significa la logopedia centrada en la persona, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
+    },
+    "reducing-documentation-time": {
+      title: "Menos tiempo en notas de sesión",
+      description:
+        "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación, con borradores estructurados que apoyan el juicio clínico.",
+    },
     support: {
       title: "Soporte",
       description:
@@ -476,7 +568,7 @@ function LogoIcon() {
 
 // -- Screenshot card component --
 
-function ScreenshotCard() {
+function ScreenshotCard(screenshotUri) {
   return {
     type: "div",
     props: {
@@ -496,7 +588,7 @@ function ScreenshotCard() {
         {
           type: "img",
           props: {
-            src: screenshotDataUri,
+            src: screenshotUri,
             width: 480,
             height: 480,
             style: {
@@ -512,7 +604,14 @@ function ScreenshotCard() {
 
 // -- OG Image template --
 
-function OGImage({ title, subtitle, description, category, showScreenshot }) {
+function OGImage({
+  title,
+  subtitle,
+  description,
+  category,
+  showScreenshot,
+  screenshotUri,
+}) {
   const textMaxWidth = showScreenshot ? 600 : 800;
   const children = [];
 
@@ -535,7 +634,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
 
   // Screenshot card (positioned absolutely on the right)
   if (showScreenshot) {
-    children.push(ScreenshotCard());
+    children.push(ScreenshotCard(screenshotUri));
   }
 
   // Top bar: logo icon + wordmark
@@ -710,10 +809,19 @@ async function main() {
     mkdirSync(OUT_DIR, { recursive: true });
   }
 
-  const LOCALES = ["en", "pt", "es"];
   console.log(
     `Generating ${PAGES.length * LOCALES.length} OG images (${PAGES.length} pages x ${LOCALES.length} locales)...`,
   );
+  // Say which locales are using the English hero, so a missing capture is
+  // visible in the build log instead of silently shipping an English card.
+  const fallbacks = LOCALES.filter(
+    (locale) => locale !== DEFAULT_LOCALE && !SCREENSHOT_BY_LOCALE[locale].localized,
+  );
+  if (fallbacks.length) {
+    console.warn(
+      `  no localized hero screenshot for ${fallbacks.join(", ")}, using the ${DEFAULT_LOCALE} capture`,
+    );
+  }
 
   for (const locale of LOCALES) {
     // English keeps the historical flat path (public/og/<slug>.png); pt/es get
@@ -736,6 +844,7 @@ async function main() {
           description,
           category,
           showScreenshot: page.showScreenshot,
+          screenshotUri: SCREENSHOT_BY_LOCALE[locale].uri,
         }),
         { width: 1200, height: 630, fonts },
       );
