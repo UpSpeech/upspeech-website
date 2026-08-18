@@ -145,7 +145,7 @@ const PAGES = [
     title: "For Patients",
     subtitle: null,
     description:
-      "How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
+      "How patients practice speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
     category: null,
     showScreenshot: true,
   },
@@ -277,7 +277,8 @@ const TRANSLATIONS = {
     },
     privacy: {
       title: "Política de Privacidade",
-      description: "Como protegemos os seus dados e respeitamos a sua privacidade.",
+      description:
+        "Como protegemos os seus dados e respeitamos a sua privacidade.",
       category: CATEGORY_PT["Legal"],
     },
     terms: {
@@ -726,8 +727,7 @@ async function main() {
       const t = locale === "en" ? undefined : TRANSLATIONS[locale]?.[page.slug];
       const title = t?.title ?? page.title;
       const description = t?.description ?? page.description;
-      const category =
-        t && "category" in t ? t.category : page.category;
+      const category = t && "category" in t ? t.category : page.category;
 
       const svg = await satori(
         OGImage({

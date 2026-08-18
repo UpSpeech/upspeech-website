@@ -45,7 +45,7 @@ export type Dictionary = typeof en;
 
 `pt.ts` and `es.ts` are typed as `Dictionary`, so if either is missing a key that `en.ts` has, or has the wrong shape, it **fails `npm run typecheck`**. That is the safety net: you cannot ship a half-translated dictionary. Add a key to `en.ts` first, then the typechecker tells you exactly what pt/es are missing.
 
-**British spelling in EN copy** (practise, organised, behaviour, centre). Keep it consistent.
+**American spelling in EN copy** (practice, organized, behavior, center, analyze). Keep it consistent.
 
 ## Where copy lives
 

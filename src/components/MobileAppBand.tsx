@@ -12,7 +12,7 @@ const SCREENSHOTS = [
   { src: "/screenshots/mobile/patient-home-device.png" },
 ];
 
-// The hero (centre) phone: a bare screen-recording played BEHIND the official
+// The hero (center) phone: a bare screen-recording played BEHIND the official
 // open-source frameit device frame (transparent screen, real Natural Titanium
 // bezel + island). The frame's real edges mask the video, so the screen shape is
 // always perfect. Frame from fastlane/frameit-frames (same one the store shots use).
