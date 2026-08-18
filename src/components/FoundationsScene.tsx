@@ -112,7 +112,7 @@ const FoundationsScene = () => {
             {partners.map((p, i) => (
               <div
                 key={p.name}
-                className="bg-calm-light p-6 sm:p-8 flex flex-col items-start justify-between gap-6 min-h-[10rem] group transition-colors duration-500 hover:bg-white"
+                className="bg-calm-light p-6 sm:p-8 flex flex-col items-start justify-center group transition-colors duration-500 hover:bg-white"
                 style={{
                   transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
                   transitionDelay: `${440 + i * 60}ms`,
