@@ -6,7 +6,7 @@ const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
 type Actor = "ai" | "clinician";
 
-// Actor sequence stays in code (drives colours/geometry); verb/title/body copy
+// Actor sequence stays in code (drives colors/geometry); verb/title/body copy
 // comes from the dictionary by index (home.cycle.nodes).
 const NODE_ACTORS: Actor[] = [
   "ai",

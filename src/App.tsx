@@ -53,7 +53,7 @@ const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
 const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
 const Support = React.lazy(() => import("./pages/Support"));
 const ForPatients = React.lazy(() => import("./pages/ForPatients"));
-const PersonCentred = React.lazy(() => import("./pages/PersonCentred"));
+const PersonCentered = React.lazy(() => import("./pages/PersonCentered"));
 const ReducingDocumentationTime = React.lazy(
   () => import("./pages/ReducingDocumentationTime"),
 );
@@ -98,7 +98,7 @@ const AppRoutes = () => (
     <Route path="delete-account" element={<DeleteAccount />} />
     <Route path="support" element={<Support />} />
     <Route path="for-patients" element={<ForPatients />} />
-    <Route path="person-centred-therapy" element={<PersonCentred />} />
+    <Route path="person-centered-therapy" element={<PersonCentered />} />
     <Route
       path="reducing-documentation-time"
       element={<ReducingDocumentationTime />}

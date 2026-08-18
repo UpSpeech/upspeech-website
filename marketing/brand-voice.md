@@ -20,7 +20,7 @@ credibility. Accessible by default. Personality through polish.*
 ## How it sounds
 
 - Short, clear sentences. Speakable out loud.
-- Concrete practice language: practise, warm up, slow down, log it, try the
+- Concrete practice language: practice, warm up, slow down, log it, try the
   scenario, review with your therapist.
 - Second person for patients ("your week", "you showed up"). Peer-to-peer for
   clinicians ("your notes", "your caseload").
@@ -68,7 +68,7 @@ style preferences. Breaking them is a brand and trust failure.
 ## Audience framing in one line each
 
 - **People who stutter (teens/adults):** a calm, encouraging place to keep
-  practising between sessions, with progress you can see.
+  practicing between sessions, with progress you can see.
 - **Parents/caregivers:** reassurance and a clear path, never pressure or fear.
 - **Speech-language pathologists:** less time on paperwork, more time with the
   person; a tool that respects clinical judgment.

@@ -36,7 +36,7 @@ export const pt: Dictionary = {
     appStoreAriaLabel: "Descarregar a UpSpeech na App Store",
     playStoreAlt: "Disponível no Google Play",
     playStoreAriaLabel: "Obter a UpSpeech no Google Play",
-    personCentred: "Centrada na pessoa",
+    personCentered: "Centrada na pessoa",
     reducingDocumentationTime: "Tempo de documentação",
   },
   localeSwitcher: {
@@ -421,7 +421,7 @@ export const pt: Dictionary = {
     storePlayAlt: "Disponível no Google Play",
     storePlayAriaLabel: "Obter a UpSpeech no Google Play",
   },
-  personCentred: {
+  personCentered: {
     seoTitle: "O que é a terapia centrada na pessoa?",
     seoDescription:
       "Um guia em linguagem simples sobre terapia da fala centrada na pessoa: o que significa, porque a fluência não é o único objetivo, e como a UpSpeech reflete esta abordagem.",
@@ -574,7 +574,7 @@ export const pt: Dictionary = {
         },
       ],
     },
-    personCentred: {
+    personCentered: {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
       body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",

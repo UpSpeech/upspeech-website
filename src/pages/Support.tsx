@@ -80,13 +80,13 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Who is UpSpeech for?",
-        a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+        a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
       },
       {
         q: "Is my data private?",
         a: (locale: Locale) => (
           <>
-            Yes. Clinical data is encrypted and isolated per organisation. See
+            Yes. Clinical data is encrypted and isolated per organization. See
             our{" "}
             <a
               href={localizedPath("/privacy", locale)}
@@ -336,11 +336,11 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "Who is UpSpeech for?",
-      a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+      a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
     },
     {
       q: "Is my data private?",
-      a: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
+      a: "Yes. Clinical data is encrypted and isolated per organization. See our Privacy Policy for details.",
     },
     {
       q: "How do I delete my account or data?",

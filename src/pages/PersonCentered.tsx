@@ -3,16 +3,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedPath } from "@/i18n";
-import { getPersonCentredStructuredData } from "@/lib/seo-data";
+import { getPersonCenteredStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
   "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
 
-export default function PersonCentred() {
+export default function PersonCentered() {
   const locale = useLocale();
-  const t = useT().personCentred;
+  const t = useT().personCentered;
 
-  const articleSchema = getPersonCentredStructuredData(locale);
+  const articleSchema = getPersonCenteredStructuredData(locale);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -32,7 +32,7 @@ export default function PersonCentred() {
       <SEO
         title={t.seoTitle}
         description={t.seoDescription}
-        path="/person-centred-therapy"
+        path="/person-centered-therapy"
         locale={locale}
         structuredData={[articleSchema, faqSchema]}
       />

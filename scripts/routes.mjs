@@ -88,7 +88,7 @@ export const ROUTES = [
     priority: "0.7",
   },
   {
-    path: "/person-centred-therapy",
+    path: "/person-centered-therapy",
     lastmod: "2026-06-25",
     changefreq: "monthly",
     priority: "0.7",

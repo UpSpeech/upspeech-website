@@ -36,7 +36,7 @@ export const es: Dictionary = {
     appStoreAriaLabel: "Descarga UpSpeech en la App Store",
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
-    personCentred: "Centrada en la persona",
+    personCentered: "Centrada en la persona",
     reducingDocumentationTime: "Tiempo de documentación",
   },
   localeSwitcher: {
@@ -421,7 +421,7 @@ export const es: Dictionary = {
     storePlayAlt: "Disponible en Google Play",
     storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
-  personCentred: {
+  personCentered: {
     seoTitle: "¿Qué es la logopedia centrada en la persona?",
     seoDescription:
       "Una guía en lenguaje sencillo sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
@@ -573,7 +573,7 @@ export const es: Dictionary = {
         },
       ],
     },
-    personCentred: {
+    personCentered: {
       eyebrow: "Nuestro enfoque",
       headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",

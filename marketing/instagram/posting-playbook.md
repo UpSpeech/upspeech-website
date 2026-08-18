@@ -40,7 +40,7 @@ Timely, lighter, participatory:
 - Technique and scenario polls.
 - Progress reveals (ring / streak).
 - Stutter-positive fact drops (save-and-share).
-- Question stickers ("word of the day", "where do you practise?").
+- Question stickers ("word of the day", "where do you practice?").
 - Short product demos and companion clips.
 
 ### Highlights

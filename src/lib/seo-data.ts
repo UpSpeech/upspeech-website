@@ -72,7 +72,7 @@ export const TECHNIQUE_SEO: Record<
   "identification-desensitization": {
     title: "Identification & Desensitization for Stuttering",
     description:
-      "Learn identification and desensitization, recognise stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
+      "Learn identification and desensitization, recognize stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
   },
 };
 
@@ -162,14 +162,14 @@ export function getTechniqueFAQStructuredData(
   };
 }
 
-export function getPersonCentredStructuredData(locale: string = "en") {
+export function getPersonCenteredStructuredData(locale: string = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "What does person-centred mean?",
+    headline: "What does person-centered mean?",
     description:
-      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
-    url: localeAbsUrl("/person-centred-therapy", locale),
+      "A plain-language guide to person-centered speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    url: localeAbsUrl("/person-centered-therapy", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
     dateModified: "2026-06-25",
@@ -189,7 +189,7 @@ export function getPersonCentredStructuredData(locale: string = "en") {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": localeAbsUrl("/person-centred-therapy", locale),
+      "@id": localeAbsUrl("/person-centered-therapy", locale),
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
@@ -203,8 +203,8 @@ export function getPersonCentredStructuredData(locale: string = "en") {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Person-centred",
-          item: localeAbsUrl("/person-centred-therapy", locale),
+          name: "Person-centered",
+          item: localeAbsUrl("/person-centered-therapy", locale),
         },
       ],
     },

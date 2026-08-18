@@ -2,7 +2,7 @@ import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Waveform, useRise } from "../ui";
 import { useStrings } from "../strings";
 
-/** Patient view: practising at home between sessions. */
+/** Patient view: practicing at home between sessions. */
 const ScenePractice = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

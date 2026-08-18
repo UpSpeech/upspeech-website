@@ -5,7 +5,7 @@ export type RemotionLocale = "en" | "pt" | "es";
 type Exercise = { cat: string; title: string; meta: string };
 
 // Fixed-length tuples where the value is index-coupled to a code-side constant
-// (tag positions, colours, step timings, section layouts). The tuple lengths
+// (tag positions, colors, step timings, section layouts). The tuple lengths
 // force every locale to stay in lockstep, so a dropped or added entry in one
 // language is a type error rather than a silently misaligned label.
 type HeroStrings = {
@@ -149,7 +149,7 @@ export const STRINGS: Record<RemotionLocale, HeroStrings> = {
       subtitle: "Drafted from today's session · Miguel A.",
       ready: "✓ Ready",
       draft: "Draft",
-      sections: ["Session summary", "What we practised", "Recommendations"],
+      sections: ["Session summary", "What we practiced", "Recommendations"],
       reassurance: "Nothing leaves the platform without therapist review.",
       readyToShare: "✓ Ready to share",
       markReady: "Mark as ready",
