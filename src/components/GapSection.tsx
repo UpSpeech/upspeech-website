@@ -136,7 +136,10 @@ const GapSection = () => {
               style={{
                 fontSize: "clamp(1.75rem, 4vw, 3rem)",
                 lineHeight: 1.1,
-                transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
+                // No CSS transition: scroll already drives this every frame,
+                // and a 700ms transition on top means a jump in scroll position
+                // starts both headlines animating at once, showing two strings
+                // stacked on each other for the length of the transition.
                 opacity: 1 - swapOut,
                 transform: `translateY(${swapOut * -28}px)`,
               }}
@@ -148,7 +151,6 @@ const GapSection = () => {
               style={{
                 fontSize: "clamp(1.75rem, 4vw, 3rem)",
                 lineHeight: 1.1,
-                transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
                 opacity: swapIn,
                 transform: `translateY(${(1 - swapIn) * 28}px)`,
               }}

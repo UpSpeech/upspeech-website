@@ -118,7 +118,9 @@ const FoundationsScene = () => {
                 }}
               >
                 <div>
-                  <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
+                  {/* Two lines reserved: one name wraps and the rest do not,
+                      which dropped that card's context line below the others. */}
+                  <div className="flex min-h-[2.4em] items-start font-body text-[11px] font-semibold tracking-[0.2em] uppercase leading-[1.2] text-calm-lavender">
                     {p.name}
                   </div>
                   <div className="mt-1.5 font-body text-sm text-calm-charcoal/65 leading-snug">

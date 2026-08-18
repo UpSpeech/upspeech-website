@@ -1,7 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import { useReveal } from "./useReveal";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
 const EngineSection = () => {
   const t = useT().home.engine;
@@ -10,6 +12,46 @@ const EngineSection = () => {
   const videoWebm = localizedAsset("/videos/annotation-tool.webm", locale);
   const videoMp4 = localizedAsset("/videos/annotation-tool.mp4", locale);
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.25 });
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  // The tags are the labels clinicians place on a recording, so scroll drives a
+  // playhead across them rather than fading all six in on a timer.
+  //
+  // Measured from the track, not the section. The track sits about 1100px below
+  // the section top on a phone, so driving this off the section ran the whole
+  // playhead before the track was ever on screen.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(1);
+      return;
+    }
+
+    let raf = 0;
+    const update = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 as the track enters at the bottom, 1 by the time it is 45% up
+      setProgress(clamp01((vh - rect.top) / (vh * 0.55)));
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const playhead = clamp01((progress - 0.15) / 0.7);
+  const tagCount = t.tags.length;
 
   const textStyle = (delay: number): React.CSSProperties => ({
     transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
@@ -91,21 +133,56 @@ const EngineSection = () => {
                 />
               )}
             </div>
+            {/* Playhead across the recording. Each mark is where a label gets
+                placed, and the label lands as the head reaches it. */}
+            <div
+              ref={trackRef}
+              className="relative mt-5 h-1 rounded-full bg-white/10"
+              aria-hidden="true"
+            >
+              <div
+                className="absolute inset-y-0 left-0 rounded-full bg-calm-lavender/80"
+                style={{ width: `${playhead * 100}%` }}
+              />
+              {t.tags.map((tag, i) => {
+                const passed = playhead * tagCount > i + 0.5;
+                return (
+                  <span
+                    key={tag}
+                    className="absolute top-1/2 h-2 w-2 rounded-full"
+                    style={{
+                      left: `${((i + 0.5) / tagCount) * 100}%`,
+                      background: passed
+                        ? "#ede9fe"
+                        : "rgba(255,255,255,0.22)",
+                      transform: `translate(-50%,-50%) scale(${passed ? 1.3 : 1})`,
+                      transition: `background 350ms ${EASE}, transform 350ms ${EASE}`,
+                    }}
+                  />
+                );
+              })}
+            </div>
             <div className="mt-4 flex flex-wrap gap-2">
-              {t.tags.map((tag, i) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-body text-[11px] font-medium text-white/75"
-                  style={{
-                    transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
-                    transitionDelay: `${1000 + i * 80}ms`,
-                    opacity: revealed ? 1 : 0,
-                    transform: revealed ? "translateY(0)" : "translateY(8px)",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
+              {t.tags.map((tag, i) => {
+                const lit = clamp01(playhead * tagCount - i);
+                return (
+                  <span
+                    key={tag}
+                    className="rounded-full border bg-white/5 px-2.5 py-1 font-body text-[11px] font-medium text-white/75"
+                    style={{
+                      transition: `opacity 450ms ${EASE}, transform 450ms ${EASE}, border-color 450ms ${EASE}`,
+                      opacity: lit,
+                      transform: `translateY(${(1 - lit) * 8}px)`,
+                      borderColor:
+                        lit > 0.9
+                          ? "rgba(237,233,254,0.35)"
+                          : "rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>

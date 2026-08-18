@@ -46,7 +46,11 @@ const CredibilityStrip = () => {
               <img
                 src={item.logo}
                 alt={item.name}
-                className="h-6 sm:h-7 w-auto object-contain opacity-75 grayscale transition duration-300 hover:grayscale-0 hover:opacity-100"
+                // Fixed box rather than a fixed height: the two marks have very
+                // different aspect ratios (SpeechCare ~2.8:1, ElevenLabs ~11:1),
+                // so matching their heights made the wordmark four times wider
+                // and it read as the only partner on the page.
+                className="h-6 w-[124px] sm:h-7 sm:w-[150px] object-contain object-left opacity-75 grayscale transition duration-300 hover:grayscale-0 hover:opacity-100"
                 loading="lazy"
               />
               <span className="font-body text-xs text-calm-charcoal/55">
