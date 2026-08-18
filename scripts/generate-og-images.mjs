@@ -3,21 +3,31 @@ import { Resvg } from "@resvg/resvg-js";
 import { writeFileSync, readFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { ROUTES, LOCALES } from "./routes.mjs";
+import { ROUTES, LOCALES, DEFAULT_LOCALE } from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, "..", "public", "og");
 
-// Load screenshot as base64 data URI
-const screenshotPath = join(
-  __dirname,
-  "..",
-  "public",
-  "screenshots",
-  "desktop.jpg",
+// One hero screenshot per locale, as a base64 data URI. The card is the first
+// thing a reader sees when the link is shared, so a PT reader should not get an
+// English hero. Falls back to the English capture when a locale has none, which
+// matches localizedAsset() in src/i18n/assets.ts.
+const SCREENSHOTS_DIR = join(__dirname, "..", "public", "screenshots");
+
+function loadScreenshot(locale) {
+  const localized = join(SCREENSHOTS_DIR, locale, "desktop.jpg");
+  const base = join(SCREENSHOTS_DIR, "desktop.jpg");
+  const file =
+    locale !== DEFAULT_LOCALE && existsSync(localized) ? localized : base;
+  return {
+    uri: `data:image/jpeg;base64,${readFileSync(file).toString("base64")}`,
+    localized: file === localized,
+  };
+}
+
+const SCREENSHOT_BY_LOCALE = Object.fromEntries(
+  LOCALES.map((locale) => [locale, loadScreenshot(locale)]),
 );
-const screenshotBase64 = readFileSync(screenshotPath).toString("base64");
-const screenshotDataUri = `data:image/jpeg;base64,${screenshotBase64}`;
 
 // -- Page definitions --
 
@@ -558,7 +568,7 @@ function LogoIcon() {
 
 // -- Screenshot card component --
 
-function ScreenshotCard() {
+function ScreenshotCard(screenshotUri) {
   return {
     type: "div",
     props: {
@@ -578,7 +588,7 @@ function ScreenshotCard() {
         {
           type: "img",
           props: {
-            src: screenshotDataUri,
+            src: screenshotUri,
             width: 480,
             height: 480,
             style: {
@@ -594,7 +604,14 @@ function ScreenshotCard() {
 
 // -- OG Image template --
 
-function OGImage({ title, subtitle, description, category, showScreenshot }) {
+function OGImage({
+  title,
+  subtitle,
+  description,
+  category,
+  showScreenshot,
+  screenshotUri,
+}) {
   const textMaxWidth = showScreenshot ? 600 : 800;
   const children = [];
 
@@ -617,7 +634,7 @@ function OGImage({ title, subtitle, description, category, showScreenshot }) {
 
   // Screenshot card (positioned absolutely on the right)
   if (showScreenshot) {
-    children.push(ScreenshotCard());
+    children.push(ScreenshotCard(screenshotUri));
   }
 
   // Top bar: logo icon + wordmark
@@ -795,6 +812,16 @@ async function main() {
   console.log(
     `Generating ${PAGES.length * LOCALES.length} OG images (${PAGES.length} pages x ${LOCALES.length} locales)...`,
   );
+  // Say which locales are using the English hero, so a missing capture is
+  // visible in the build log instead of silently shipping an English card.
+  const fallbacks = LOCALES.filter(
+    (locale) => locale !== DEFAULT_LOCALE && !SCREENSHOT_BY_LOCALE[locale].localized,
+  );
+  if (fallbacks.length) {
+    console.warn(
+      `  no localized hero screenshot for ${fallbacks.join(", ")}, using the ${DEFAULT_LOCALE} capture`,
+    );
+  }
 
   for (const locale of LOCALES) {
     // English keeps the historical flat path (public/og/<slug>.png); pt/es get
@@ -817,6 +844,7 @@ async function main() {
           description,
           category,
           showScreenshot: page.showScreenshot,
+          screenshotUri: SCREENSHOT_BY_LOCALE[locale].uri,
         }),
         { width: 1200, height: 630, fonts },
       );
