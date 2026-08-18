@@ -180,7 +180,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                       `/techniques/${technique.parent_technique.slug}`,
                       locale,
                     )}
-                    className="hover:underline"
+                    className="inline-flex min-h-[44px] items-center hover:underline"
                   >
                     {technique.parent_technique.name}
                   </a>
@@ -189,7 +189,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 <p className={eyebrowClass}>
                   <a
                     href={localizedPath("/techniques", locale)}
-                    className="hover:underline"
+                    className="inline-flex min-h-[44px] items-center hover:underline"
                   >
                     {tt.backToAll}
                   </a>

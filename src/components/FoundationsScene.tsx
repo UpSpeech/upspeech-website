@@ -56,7 +56,7 @@ const FoundationsScene = () => {
   });
 
   return (
-    <section className="relative bg-calm-light py-[clamp(3.25rem,8vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
+    <section className="relative bg-calm-light py-[clamp(3.25rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{

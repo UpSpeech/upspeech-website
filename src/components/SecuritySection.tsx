@@ -27,7 +27,7 @@ const SecuritySection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.05 });
 
   return (
-    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(3.25rem,8vw,10rem)] overflow-hidden">
+    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
@@ -91,7 +91,7 @@ const SecuritySection = () => {
         >
           <a
             href={localizedPath("/privacy", locale)}
-            className="font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors hover:decoration-calm-navy"
+            className="inline-flex min-h-[44px] items-center font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors hover:decoration-calm-navy"
           >
             {t.readPrivacy}
           </a>

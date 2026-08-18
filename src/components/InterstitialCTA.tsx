@@ -8,7 +8,7 @@ const InterstitialCTA = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.4 });
 
   return (
-    <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(2.75rem,7vw,7rem)] overflow-hidden">
+    <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(2.75rem,8vw,7rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
