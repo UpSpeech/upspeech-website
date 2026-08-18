@@ -17,7 +17,8 @@
     "preview": "vite preview",
     "video:studio": "remotion studio",
     "video:render": "remotion render HeroDemo public/videos/hero-demo.mp4 --codec h264 --crf 23",
-    "video:poster": "remotion still HeroDemo public/videos/hero-demo-poster.jpg --frame 30"
+    "video:poster": "remotion still HeroDemo public/videos/hero-demo-poster.jpg --frame 30",
+    "seo:indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -42,10 +43,18 @@
     "zod": "^3.23.8"
   },
   "overrides": {
-    "micromatch": { "picomatch": "2.3.2" },
-    "anymatch": { "picomatch": "2.3.2" },
-    "readdirp": { "picomatch": "2.3.2" },
-    "tinyglobby": { "picomatch": "4.0.4" }
+    "micromatch": {
+      "picomatch": "2.3.2"
+    },
+    "anymatch": {
+      "picomatch": "2.3.2"
+    },
+    "readdirp": {
+      "picomatch": "2.3.2"
+    },
+    "tinyglobby": {
+      "picomatch": "4.0.4"
+    }
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
