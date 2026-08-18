@@ -71,7 +71,7 @@ export const en = {
   },
   home: {
     seoDescription:
-      "Continuous support for speech and language therapy. Patients practice between sessions, following a plan their therapist set, and everything they do comes back to the therapist to review.",
+      "Continuous support for speech and language therapy. Patients practice between sessions on a plan their therapist set, and every attempt comes back for review.",
     hero: {
       eyebrow: "For speech and language therapy clinics",
       headlineLine1: "Your therapy",

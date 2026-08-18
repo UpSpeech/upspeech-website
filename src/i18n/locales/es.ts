@@ -73,7 +73,7 @@ export const es: Dictionary = {
   },
   home: {
     seoDescription:
-      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda, y todo lo que hacen vuelve al terapeuta para su revisión.",
+      "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones según el plan de su terapeuta, y cada intento vuelve para revisión.",
     hero: {
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
