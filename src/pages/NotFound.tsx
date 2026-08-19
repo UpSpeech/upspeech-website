@@ -31,7 +31,7 @@ const NotFound = () => {
           }}
         />
         <div className="relative">
-          <p className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender">
+          <p className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink">
             Error 404
           </p>
           <h1
@@ -40,7 +40,7 @@ const NotFound = () => {
           >
             This page took a pause.
           </h1>
-          <p className="mt-5 max-w-md mx-auto font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+          <p className="mt-5 max-w-md mx-auto font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
             The page you are looking for moved or never existed. Let's get you
             back on track.
           </p>

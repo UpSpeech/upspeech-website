@@ -28,7 +28,7 @@ const CredibilityStrip = () => {
         ref={ref}
         className="max-w-6xl mx-auto flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-12"
       >
-        <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/40">
+        <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/80">
           {t.eyebrow}
         </span>
         <div className="flex flex-wrap items-start gap-x-10 gap-y-5">
@@ -53,7 +53,7 @@ const CredibilityStrip = () => {
                 className="h-6 w-[124px] sm:h-7 sm:w-[150px] object-contain object-left opacity-75 grayscale transition duration-300 hover:grayscale-0 hover:opacity-100"
                 loading="lazy"
               />
-              <span className="font-body text-xs text-calm-charcoal/55">
+              <span className="font-body text-xs text-calm-charcoal/80">
                 {t.partnerContext[item.contextKey]}
               </span>
             </span>

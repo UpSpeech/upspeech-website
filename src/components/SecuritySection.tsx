@@ -38,7 +38,7 @@ const SecuritySection = () => {
 
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
+          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
           style={reveal(revealed, 0)}
         >
           {t.eyebrow}
@@ -54,7 +54,7 @@ const SecuritySection = () => {
           {t.headline}
         </h2>
         <p
-          className="mt-5 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed"
+          className="mt-5 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed"
           style={reveal(revealed, 160)}
         >
           {t.body}
@@ -76,7 +76,7 @@ const SecuritySection = () => {
                   <h3 className="font-heading font-semibold text-calm-charcoal text-lg leading-tight">
                     {point.title}
                   </h3>
-                  <p className="mt-2 font-body text-sm text-calm-charcoal/70 leading-relaxed">
+                  <p className="mt-2 font-body text-sm text-calm-charcoal/80 leading-relaxed">
                     {point.copy}
                   </p>
                 </div>
@@ -86,7 +86,7 @@ const SecuritySection = () => {
         </ul>
 
         <p
-          className="mt-10 font-body text-sm text-calm-charcoal/70"
+          className="mt-10 font-body text-sm text-calm-charcoal/80"
           style={reveal(revealed, 640)}
         >
           <a

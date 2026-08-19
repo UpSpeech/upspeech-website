@@ -89,7 +89,14 @@ export default {
         calm: {
           navy: "#293587",
           charcoal: "#4B4E4E",
+          // Brand lavender. Fine as a fill, a border or a gradient stop, but it
+          // only reaches 2.93:1 on white, so it fails WCAG AA as text at any
+          // size. The two tokens below are the text-safe versions: ink for
+          // light backgrounds, bright for the dark charcoal band. Measured
+          // against #FFFFFF, #F6F6F6 and #4B4E4E.
           lavender: "#958AF0",
+          "lavender-ink": "#6866C4",
+          "lavender-bright": "#BEB8F6",
           light: "#F6F6F6",
           sky: "#e0f2fe",
           mint: "#d1fae5",

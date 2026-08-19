@@ -72,7 +72,7 @@ const EngineSection = () => {
 
       <div ref={ref} className="relative max-w-6xl">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-6 sm:mb-8"
+          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-bright mb-6 sm:mb-8"
           style={textStyle(0)}
         >
           {t.eyebrow}
@@ -87,11 +87,11 @@ const EngineSection = () => {
         >
           {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">{t.headlineLine2}</span>
+          <span className="text-calm-lavender-bright">{t.headlineLine2}</span>
         </h2>
 
         <p
-          className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/65 leading-relaxed"
+          className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/70 leading-relaxed"
           style={textStyle(160)}
         >
           {t.body}

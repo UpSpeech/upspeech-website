@@ -130,7 +130,7 @@ const CTASection = () => {
           {t.headline}
         </h2>
         <p
-          className="font-body text-lg sm:text-xl text-calm-charcoal/70 mb-12 max-w-2xl mx-auto animate-fade-in"
+          className="font-body text-lg sm:text-xl text-calm-charcoal/80 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
           {t.body}

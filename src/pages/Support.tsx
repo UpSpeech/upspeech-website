@@ -440,14 +440,14 @@ export default function Support() {
             <h1 className="text-3xl font-bold text-calm-charcoal font-heading">
               {c.heading}
             </h1>
-            <p className="mt-4 text-calm-charcoal/70 font-body">{c.intro}</p>
+            <p className="mt-4 text-calm-charcoal/80 font-body">{c.intro}</p>
 
             {/* Contact */}
             <section className="mt-10">
               <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
                 {c.contactHeading}
               </h2>
-              <p className="mt-2 text-calm-charcoal/70 font-body">
+              <p className="mt-2 text-calm-charcoal/80 font-body">
                 {c.contactBody}
               </p>
               <a
@@ -456,7 +456,7 @@ export default function Support() {
               >
                 {c.emailLabel}: {SUPPORT_EMAIL}
               </a>
-              <p className="mt-3 text-sm text-calm-charcoal/60 font-body">
+              <p className="mt-3 text-sm text-calm-charcoal/80 font-body">
                 {c.responseTime}
               </p>
             </section>
@@ -472,7 +472,7 @@ export default function Support() {
                     <dt className="font-medium text-calm-charcoal font-body">
                       {item.q}
                     </dt>
-                    <dd className="mt-1 text-calm-charcoal/70 font-body">
+                    <dd className="mt-1 text-calm-charcoal/80 font-body">
                       {typeof item.a === "function" ? item.a(locale) : item.a}
                     </dd>
                   </div>

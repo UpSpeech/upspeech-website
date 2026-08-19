@@ -117,7 +117,7 @@ const GapSection = () => {
 
         <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)]">
           <p
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-4 sm:mb-5"
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink mb-4 sm:mb-5"
             style={reveal(revealed, 0)}
           >
             {t.eyebrow}
@@ -156,7 +156,7 @@ const GapSection = () => {
               }}
             >
               {t.headlineWithPrefix}{" "}
-              <span className="text-calm-lavender">{t.headlineWithBrand}</span>
+              <span className="text-calm-lavender-ink">{t.headlineWithBrand}</span>
             </h2>
           </div>
 
@@ -168,10 +168,10 @@ const GapSection = () => {
             {/* Traditional row */}
             <div className="mb-6 sm:mb-10">
               <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/55">
+                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-charcoal/80">
                   {t.traditional}
                 </span>
-                <span className="font-body text-xs sm:text-sm text-calm-charcoal/55 tabular-nums">
+                <span className="font-body text-xs sm:text-sm text-calm-charcoal/80 tabular-nums">
                   {t.traditionalCadence}
                 </span>
               </div>
@@ -181,7 +181,7 @@ const GapSection = () => {
             {/* Continuous row */}
             <div>
               <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-lavender">
+                <span className="font-body text-xs font-semibold tracking-[0.22em] uppercase text-calm-lavender-ink">
                   {t.withUpspeech}
                 </span>
                 <span
@@ -206,7 +206,7 @@ const GapSection = () => {
 
           {/* Footer insight */}
           <div
-            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed"
+            className="mt-[clamp(1.5rem,3vw,2.5rem)] max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
             style={{
               transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
               opacity: footer,
@@ -268,7 +268,7 @@ const WeekRow = ({
                   }}
                 />
               </div>
-              <span className="font-body text-[10px] font-medium uppercase tracking-wider text-calm-charcoal/40">
+              <span className="font-body text-[10px] font-medium uppercase tracking-wider text-calm-charcoal/80">
                 {day}
               </span>
               {/* Session day marker, so Thursday stays identifiable once the
@@ -300,7 +300,7 @@ const WeekRow = ({
 
         return (
           <div key={day} className="flex flex-col items-center gap-2 sm:gap-3">
-            <span className="font-body text-[10px] sm:text-xs font-medium tracking-wider uppercase text-calm-charcoal/40">
+            <span className="font-body text-[10px] sm:text-xs font-medium tracking-wider uppercase text-calm-charcoal/80">
               {day}
             </span>
             <div

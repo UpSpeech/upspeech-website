@@ -68,7 +68,7 @@ const Footer = () => {
             aria-label={t.product}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
               {t.product}
             </h2>
             <a
@@ -101,7 +101,7 @@ const Footer = () => {
             aria-label={t.legal}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
               {t.legal}
             </h2>
             <a href={localizedPath("/privacy", locale)} className={linkClass}>
@@ -119,7 +119,7 @@ const Footer = () => {
             aria-label={t.company}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/60">
+            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
               {t.company}
             </h2>
             <a
@@ -147,7 +147,7 @@ const Footer = () => {
           style={{ animationDelay: "0.3s" }}
         >
           <div className="flex flex-col items-center space-y-3">
-            <p className="font-body text-xs text-white/50 uppercase tracking-wider">
+            <p className="font-body text-xs text-white/70 uppercase tracking-wider">
               Supported by
             </p>
             <a
@@ -173,7 +173,7 @@ const Footer = () => {
           className="mt-6 text-center animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          <p className="font-body text-sm text-white/60">
+          <p className="font-body text-sm text-white/70">
             © {new Date().getFullYear()} UpSpeech. {t.rights}
           </p>
         </div>

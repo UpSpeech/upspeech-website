@@ -119,25 +119,25 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("how-it-works")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               {t.howItWorks}
             </button>
             <button
               onClick={() => scrollToSection("features")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               {t.features}
             </button>
             <button
               onClick={() => scrollToSection("differentiation")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
             >
               {t.whyUs}
             </button>
             <a
               href={localizedPath("/techniques", locale)}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
+              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender"
               onClick={() => trackButtonClick("nav_techniques", "header")}
             >
               {t.techniques}

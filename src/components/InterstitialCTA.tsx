@@ -27,7 +27,7 @@ const InterstitialCTA = () => {
           >
             {t.headlineLine1}
             <br />
-            <span className="text-calm-lavender">{t.headlineLine2}</span>
+            <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
           </h2>
         </div>
         <div className="shrink-0" style={reveal(revealed, 120)}>

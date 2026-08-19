@@ -118,7 +118,7 @@ export function LocaleSwitcher({
   if (variant === "inline") {
     return (
       <div className={cn("flex flex-col gap-2", className)}>
-        <span className="flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-wider text-calm-charcoal/50">
+        <span className="flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-wider text-calm-charcoal/80">
           <GlobeAltIcon className="h-4 w-4" aria-hidden="true" />
           {t.localeSwitcher.label}
         </span>
@@ -175,7 +175,7 @@ export function LocaleSwitcher({
         <span>{LABELS[locale]}</span>
         <ChevronDownIcon
           className={cn(
-            "h-4 w-4 text-calm-charcoal/50 transition-transform duration-200",
+            "h-4 w-4 text-calm-charcoal/80 transition-transform duration-200",
             open && "rotate-180",
           )}
           aria-hidden="true"

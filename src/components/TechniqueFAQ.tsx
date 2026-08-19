@@ -39,7 +39,7 @@ export function TechniqueFAQ({ slug, locale = "en" }: TechniqueFAQProps) {
               </span>
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-3">
-              <p className="font-body text-calm-charcoal/75 leading-relaxed">
+              <p className="font-body text-calm-charcoal/80 leading-relaxed">
                 {faq.answer}
               </p>
             </AccordionContent>

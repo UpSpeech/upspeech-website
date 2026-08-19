@@ -26,7 +26,7 @@ const SCREENSHOTS = [
 ];
 
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
 
 export default function ForPatients() {
   const locale = useLocale();
@@ -81,11 +81,11 @@ export default function ForPatients() {
               >
                 {t.intro.headlineLine1}
                 <br />
-                <span className="text-calm-lavender">
+                <span className="text-calm-lavender-ink">
                   {t.intro.headlineLine2}
                 </span>
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                 {t.intro.body}
               </p>
             </div>
@@ -122,7 +122,7 @@ export default function ForPatients() {
                     <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {step.title}
                     </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                       {step.copy}
                     </p>
                   </div>
@@ -154,7 +154,7 @@ export default function ForPatients() {
               >
                 {t.app.headline}
               </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
                 {t.app.body}
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function ForPatients() {
                   <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
                     {item.q}
                   </dt>
-                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                     {item.a}
                   </dd>
                 </div>
@@ -249,7 +249,7 @@ export default function ForPatients() {
             >
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
                 href={`${localizedPath("/", locale)}#cta`}
