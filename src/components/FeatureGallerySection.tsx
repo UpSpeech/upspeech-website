@@ -46,7 +46,7 @@ const FeatureGallerySection = () => {
 
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
+          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
           style={headerStyle(0)}
         >
           {t.eyebrow}
@@ -61,10 +61,10 @@ const FeatureGallerySection = () => {
         >
           {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">{t.headlineLine2}</span>
+          <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </h2>
         <p
-          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
+          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
           style={headerStyle(140)}
         >
           {t.intro}
@@ -97,13 +97,13 @@ const FeatureGallerySection = () => {
                 {t.forResearchers}
               </span>
             </div>
-            <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
+            <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender-ink">
               {t.annotationEyebrow}
             </div>
             <h3 className="mt-2 font-heading font-bold text-calm-charcoal tracking-tight text-2xl sm:text-3xl leading-tight">
               {t.annotationTitle}
             </h3>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.annotationCopy}
             </p>
             <div className="mt-5 flex flex-wrap gap-1.5">
@@ -111,7 +111,7 @@ const FeatureGallerySection = () => {
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-calm-navy/15 bg-calm-light px-2.5 py-1 font-body text-[11px] font-medium text-calm-charcoal/70"
+                    className="rounded-full border border-calm-navy/15 bg-calm-light px-2.5 py-1 font-body text-[11px] font-medium text-calm-charcoal/80"
                   >
                     {tag}
                   </span>
@@ -142,13 +142,13 @@ const FeatureGallerySection = () => {
                 />
               </div>
               <div className="mt-5">
-                <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender">
+                <div className="font-body text-[11px] font-semibold tracking-[0.2em] uppercase text-calm-lavender-ink">
                   {f.label}
                 </div>
                 <h3 className="mt-2 font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
                   {f.title}
                 </h3>
-                <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                   {f.copy}
                 </p>
               </div>

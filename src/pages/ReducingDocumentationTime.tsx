@@ -6,7 +6,7 @@ import { useLocale, useT, localizedPath } from "@/i18n";
 import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
 
 export default function ReducingDocumentationTime() {
   const locale = useLocale();
@@ -61,11 +61,11 @@ export default function ReducingDocumentationTime() {
               >
                 {t.intro.headlineLine1}
                 <br />
-                <span className="text-calm-lavender">
+                <span className="text-calm-lavender-ink">
                   {t.intro.headlineLine2}
                 </span>
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                 {t.intro.body}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function ReducingDocumentationTime() {
                   <div className="flex items-baseline gap-4">
                     <span
                       aria-hidden="true"
-                      className="font-heading text-2xl font-bold text-calm-lavender sm:text-3xl"
+                      className="font-heading text-2xl font-bold text-calm-lavender-ink sm:text-3xl"
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -92,7 +92,7 @@ export default function ReducingDocumentationTime() {
                       {section.heading}
                     </h2>
                   </div>
-                  <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed sm:pl-[3.25rem]">
+                  <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed sm:pl-[3.25rem]">
                     {section.body}
                   </p>
                 </article>
@@ -118,7 +118,7 @@ export default function ReducingDocumentationTime() {
                   <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
                     {item.q}
                   </dt>
-                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                     {item.a}
                   </dd>
                 </div>
@@ -141,7 +141,7 @@ export default function ReducingDocumentationTime() {
             >
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
                 href={`${localizedPath("/", locale)}#cta`}

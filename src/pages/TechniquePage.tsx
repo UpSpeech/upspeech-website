@@ -18,13 +18,13 @@ interface TechniquePageProps {
 
 // Shared with the redesigned pages so this reads as the same site.
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
 const cardClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const cardHeadingClass =
   "font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl";
 const proseClass =
-  "mt-4 font-body text-base text-calm-charcoal/75 leading-relaxed";
+  "mt-4 font-body text-base text-calm-charcoal/80 leading-relaxed";
 
 export function TechniquePage({ slug }: TechniquePageProps) {
   const locale = useLocale();
@@ -63,14 +63,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
     if (isNumberedList) {
       return (
-        <ol className="mt-4 space-y-3 font-body text-base text-calm-charcoal/75">
+        <ol className="mt-4 space-y-3 font-body text-base text-calm-charcoal/80">
           {lines.map((line, index) => (
             <li key={index} className="flex gap-3 leading-relaxed">
               {/* Instructions are a real sequence, so the number carries
                   information here and is worth showing. */}
               <span
                 aria-hidden="true"
-                className="mt-0.5 font-heading text-sm font-bold text-calm-lavender"
+                className="mt-0.5 font-heading text-sm font-bold text-calm-lavender-ink"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -130,7 +130,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               role="status"
               aria-label={tt.loading}
             />
-            <p className="mt-4 font-body text-calm-charcoal/70">{tt.loading}</p>
+            <p className="mt-4 font-body text-calm-charcoal/80">{tt.loading}</p>
           </div>
         </main>
       )}
@@ -144,7 +144,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
               <h2 className={cardHeadingClass}>{tt.error}</h2>
-              <p className="mt-3 font-body text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-3 font-body text-calm-charcoal/80 leading-relaxed">
                 {error || tt.notFound}
               </p>
               <a
@@ -205,7 +205,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 {technique.name}
               </h1>
               {technique.description && (
-                <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
                   {technique.description}
                 </p>
               )}
@@ -257,7 +257,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                               <span className="block font-body font-semibold text-calm-charcoal">
                                 {subTech.name}
                               </span>
-                              <span className="mt-1 block font-body text-sm text-calm-charcoal/70 leading-relaxed">
+                              <span className="mt-1 block font-body text-sm text-calm-charcoal/80 leading-relaxed">
                                 {subTech.description}
                               </span>
                             </span>

@@ -120,7 +120,7 @@ const MobileAppBand = () => {
       >
         <div className="max-w-xl">
           <span
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
             style={reveal(revealed, 0)}
           >
             {t.eyebrow}

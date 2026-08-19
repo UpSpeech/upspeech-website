@@ -15,7 +15,7 @@ const MedicalDisclaimer = ({ variant = "section", className }: Props) => {
     return (
       <p
         className={cn(
-          "font-body text-xs leading-relaxed text-calm-charcoal/70",
+          "font-body text-xs leading-relaxed text-calm-charcoal/80",
           className,
         )}
       >

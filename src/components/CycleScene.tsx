@@ -145,7 +145,7 @@ const CycleScene = () => {
 
         <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)] py-[clamp(2rem,6vh,4rem)]">
           <p
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender mb-5 sm:mb-6"
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink mb-5 sm:mb-6"
             style={reveal(revealed, 0)}
           >
             {t.eyebrow}
@@ -160,7 +160,7 @@ const CycleScene = () => {
             }}
           >
             {t.headlinePrefix}{" "}
-            <span className="text-calm-lavender">{t.headlineEmphasis}</span>
+            <span className="text-calm-lavender-ink">{t.headlineEmphasis}</span>
           </h2>
 
           <div
@@ -309,7 +309,7 @@ const CycleScene = () => {
                     >
                       <div
                         className={`font-body font-bold tracking-[0.22em] uppercase ${
-                          isClinician ? "text-calm-navy" : "text-calm-lavender"
+                          isClinician ? "text-calm-navy" : "text-calm-lavender-ink"
                         }`}
                         style={{
                           fontSize: "clamp(9px, 0.82vw, 11px)",
@@ -346,7 +346,7 @@ const CycleScene = () => {
               {/* Center scoreboard, live actor readout */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
                 <div
-                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/45"
+                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/80"
                   style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
                 >
                   {t.eyebrow}
@@ -359,7 +359,9 @@ const CycleScene = () => {
                   style={{
                     fontSize: "clamp(1.25rem, 2.4vw, 1.625rem)",
                     lineHeight: 1,
-                    color: activeIsAI ? "#958AF0" : "#293587",
+                    // #958AF0 is the brand fill and only reaches 2.93:1 on
+                    // white, under the 3:1 this size needs. Text-safe ink.
+                    color: activeIsAI ? "#6866C4" : "#293587",
                     animation: `optD-actor-swap 600ms ${EASE} both`,
                   }}
                 >
@@ -367,7 +369,7 @@ const CycleScene = () => {
                 </div>
 
                 <div
-                  className="inline-flex items-center gap-2 font-body font-bold tracking-[0.3em] uppercase tabular-nums text-calm-charcoal/60"
+                  className="inline-flex items-center gap-2 font-body font-bold tracking-[0.3em] uppercase tabular-nums text-calm-charcoal/80"
                   style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
                 >
                   <span className="block h-px w-5 bg-calm-charcoal/30" />
@@ -400,7 +402,7 @@ const CycleScene = () => {
                     className={`font-body text-[11px] font-bold tracking-[0.28em] uppercase ${
                       activeActor === "clinician"
                         ? "text-calm-navy"
-                        : "text-calm-lavender"
+                        : "text-calm-lavender-ink"
                     }`}
                   >
                     {activeActor === "clinician"
@@ -419,7 +421,7 @@ const CycleScene = () => {
                 >
                   {active.title}
                 </h3>
-                <p className="font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed max-w-md">
+                <p className="font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed max-w-md">
                   {active.body}
                 </p>
 

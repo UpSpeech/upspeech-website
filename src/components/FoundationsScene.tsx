@@ -58,7 +58,7 @@ const FoundationsScene = () => {
 
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
+          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
           style={style(0)}
         >
           {t.eyebrow}
@@ -73,10 +73,10 @@ const FoundationsScene = () => {
         >
           {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">{t.headlineLine2}</span>
+          <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </h2>
         <p
-          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed"
+          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
           style={style(160)}
         >
           {t.body}
@@ -88,10 +88,10 @@ const FoundationsScene = () => {
             className="mb-8 sm:mb-10 flex items-baseline justify-between flex-wrap gap-4"
             style={style(320)}
           >
-            <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/60">
+            <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/80">
               {t.partnersLabel}
             </span>
-            <span className="font-body text-sm text-calm-charcoal/45">
+            <span className="font-body text-sm text-calm-charcoal/80">
               {t.partnersTagline}
             </span>
           </div>
@@ -120,10 +120,10 @@ const FoundationsScene = () => {
                 <div>
                   {/* Two lines reserved: one name wraps and the rest do not,
                       which dropped that card's context line below the others. */}
-                  <div className="flex min-h-[2.4em] items-start font-body text-[11px] font-semibold tracking-[0.2em] uppercase leading-[1.2] text-calm-lavender">
+                  <div className="flex min-h-[2.4em] items-start font-body text-[11px] font-semibold tracking-[0.2em] uppercase leading-[1.2] text-calm-lavender-ink">
                     {p.name}
                   </div>
-                  <div className="mt-1.5 font-body text-sm text-calm-charcoal/65 leading-snug">
+                  <div className="mt-1.5 font-body text-sm text-calm-charcoal/80 leading-snug">
                     {t.partnerContext[p.contextKey]}
                   </div>
                 </div>

@@ -82,7 +82,7 @@ export default function CookiePolicy() {
     return (
       <div className="bg-calm-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-lg text-calm-charcoal/70 text-center font-body">
+          <div className="text-lg text-calm-charcoal/80 text-center font-body">
             {LOADING_TEXT[locale] || LOADING_TEXT.en}
           </div>
         </div>

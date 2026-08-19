@@ -11,7 +11,7 @@ const TherapistScene = () => {
         <>
           {t.headlineLine1}
           <br />
-          <span className="text-calm-lavender">{t.headlineLine2}</span>
+          <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </>
       }
       body={t.body}

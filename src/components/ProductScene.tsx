@@ -59,7 +59,7 @@ const ProductScene = ({
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <div className={align === "right" ? "lg:text-right lg:ml-auto" : ""}>
           <p
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender"
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
             style={style(0)}
           >
             {eyebrow}
@@ -77,7 +77,7 @@ const ProductScene = ({
             {headline}
           </h2>
           <p
-            className={`mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/65 leading-relaxed ${
+            className={`mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed ${
               align === "right" ? "lg:ml-auto" : ""
             }`}
             style={style(160)}
@@ -104,7 +104,7 @@ const ProductScene = ({
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
               <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
               <div className="ml-3 flex-1 h-5 rounded-md bg-white/90 max-w-[260px] border border-calm-charcoal/5 flex items-center justify-center">
-                <span className="font-body text-[10px] text-calm-charcoal/40 tabular-nums">
+                <span className="font-body text-[10px] text-calm-charcoal/80 tabular-nums">
                   {url}
                 </span>
               </div>
@@ -131,7 +131,7 @@ const ProductScene = ({
               }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-heading font-bold tabular-nums text-calm-lavender text-base leading-none">
+                <span className="font-heading font-bold tabular-nums text-calm-lavender-ink text-base leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="block h-px flex-1 bg-calm-lavender/40" />
@@ -139,7 +139,7 @@ const ProductScene = ({
               <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                 {p.label}
               </h3>
-              <p className="mt-2.5 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-2.5 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                 {p.copy}
               </p>
             </div>

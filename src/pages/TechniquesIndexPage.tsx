@@ -11,7 +11,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 // Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
 // the techniques section reads as the same site.
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender";
+  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
 const sectionClass = "px-[max(1.5rem,5vw)] py-[clamp(2.5rem,5vw,4rem)]";
 
 // Page chrome for the loading and error states, so they are not a different
@@ -78,7 +78,7 @@ export function TechniquesIndexPage() {
             role="status"
             aria-label={t.loading}
           />
-          <p className="mt-4 font-body text-calm-charcoal/70">{t.loading}</p>
+          <p className="mt-4 font-body text-calm-charcoal/80">{t.loading}</p>
         </Shell>
         <Footer />
       </div>
@@ -95,7 +95,7 @@ export function TechniquesIndexPage() {
             <h2 className="font-heading font-bold text-calm-charcoal text-xl sm:text-2xl tracking-tight">
               {t.error}
             </h2>
-            <p className="mt-3 font-body text-calm-charcoal/70 leading-relaxed">
+            <p className="mt-3 font-body text-calm-charcoal/80 leading-relaxed">
               {t.tryAgain}
             </p>
           </div>
@@ -139,7 +139,7 @@ export function TechniquesIndexPage() {
               >
                 {t.title}
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/70 leading-relaxed">
+              <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
                 {t.subtitle}
               </p>
             </div>
@@ -164,7 +164,7 @@ export function TechniquesIndexPage() {
                     <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {category.name}
                     </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                       {category.description}
                     </p>
 
@@ -186,7 +186,7 @@ export function TechniquesIndexPage() {
                                   <span className="block font-body font-semibold text-calm-charcoal">
                                     {subTech.name}
                                   </span>
-                                  <span className="mt-1 block font-body text-sm text-calm-charcoal/70 leading-relaxed">
+                                  <span className="mt-1 block font-body text-sm text-calm-charcoal/80 leading-relaxed">
                                     {subTech.description}
                                   </span>
                                 </span>
@@ -204,7 +204,7 @@ export function TechniquesIndexPage() {
 
                     {(!category.sub_techniques ||
                       category.sub_techniques.length === 0) && (
-                      <p className="mt-4 font-body text-sm text-calm-charcoal/60">
+                      <p className="mt-4 font-body text-sm text-calm-charcoal/80">
                         {category.mini_games_count || 0} {t.techniques}
                       </p>
                     )}
@@ -233,7 +233,7 @@ export function TechniquesIndexPage() {
                     <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {technique.name}
                     </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/70 leading-relaxed">
+                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
                       {technique.description}
                     </p>
                     <span className="mt-5 inline-flex items-center gap-2 font-body text-sm font-semibold text-calm-navy">
