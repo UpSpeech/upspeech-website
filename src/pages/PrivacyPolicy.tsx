@@ -1,14 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
 import { useLocale } from "@/i18n";
+import enMd from "../../public/legal/privacy-policy.md?raw";
+import ptMd from "../../public/legal/privacy-policy-pt.md?raw";
+import esMd from "../../public/legal/privacy-policy-es.md?raw";
 
 // Configure marked for GFM (GitHub Flavored Markdown) support
 marked.setOptions({
   gfm: true,
   breaks: true,
 });
+
+// Bundled at build time rather than fetched at runtime. main.tsx mounts with
+// createRoot, which discards the prerendered DOM and re-renders from scratch,
+// so a page that starts in a loading state paints its full prerendered content,
+// collapses to a spinner, then refills. On this page that moved the footer up
+// 220px and scored 0.73 CLS. Reading the markdown from the module graph means
+// the first render already has it and nothing moves.
+//
+// The files stay in public/ and are still served at /legal/*.md, so anything
+// linking to them directly is unaffected. These pages are React.lazy, so the
+// markdown lands in their own chunks and never reaches the homepage bundle.
+const MARKDOWN: Record<string, string> = {
+  en: enMd,
+  pt: ptMd,
+  es: esMd,
+};
 
 const SEO_DATA: Record<string, { title: string; description: string }> = {
   en: {
@@ -28,87 +47,19 @@ const SEO_DATA: Record<string, { title: string; description: string }> = {
   },
 };
 
-const LOADING_TEXT: Record<string, string> = {
-  en: "Loading Privacy Policy...",
-  pt: "A carregar a Política de Privacidade...",
-  es: "Cargando la Política de Privacidad...",
-};
-
-const ERROR_TEXT: Record<string, string> = {
-  en: "Failed to load privacy policy. Please try again later.",
-  pt: "Não foi possível carregar a política de privacidade. Por favor, tente novamente mais tarde.",
-  es: "No se ha podido cargar la política de privacidad. Por favor, inténtelo de nuevo más tarde.",
-};
-
-const RELOAD_TEXT: Record<string, string> = {
-  en: "Reload Page",
-  pt: "Recarregar Página",
-  es: "Recargar Página",
-};
-
 export default function PrivacyPolicy() {
   const locale = useLocale();
-  const [content, setContent] = useState<string>("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+
+  const content = useMemo(() => {
+    const md = MARKDOWN[locale] || MARKDOWN.en;
+    return DOMPurify.sanitize(marked.parse(md) as string);
+  }, [locale]);
 
   useEffect(() => {
-    setLoading(true);
-    const suffix = locale === "en" ? "" : `-${locale}`;
-    fetch(`/legal/privacy-policy${suffix}.md`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load privacy policy");
-        }
-        return response.text();
-      })
-      .then((text) => {
-        const html = marked.parse(text) as string;
-        const sanitized = DOMPurify.sanitize(html);
-        setContent(sanitized);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error loading privacy policy:", err);
-        setError(ERROR_TEXT[locale] || ERROR_TEXT.en);
-        setLoading(false);
-      });
-
-    // Scroll to top on mount
     window.scrollTo(0, 0);
   }, [locale]);
 
   const seo = SEO_DATA[locale] || SEO_DATA.en;
-
-  if (loading) {
-    return (
-      <div className="bg-calm-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-lg text-calm-charcoal/80 text-center font-body">
-            {LOADING_TEXT[locale] || LOADING_TEXT.en}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-calm-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center max-w-md mx-auto">
-            <div className="text-red-600 text-lg mb-4">{error}</div>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-calm-navy text-white rounded-full hover:bg-calm-charcoal transition-colors"
-            >
-              {RELOAD_TEXT[locale] || RELOAD_TEXT.en}
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-calm-light">
