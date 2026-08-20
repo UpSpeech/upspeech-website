@@ -4,6 +4,13 @@
  */
 
 import { getTechniqueFAQs } from "./technique-faqs";
+import { routeDate } from "@/lib/route-dates.generated";
+
+/** dateModified for an Article, from the generated route dates. Omitted if git had nothing to say. */
+function articleDates(path: string): { dateModified?: string } {
+  const dateModified = routeDate(path);
+  return dateModified ? { dateModified } : {};
+}
 
 const BASE_URL = "https://upspeech.app";
 
@@ -90,7 +97,11 @@ export function getTechniqueStructuredData(
     url: localeAbsUrl(`/techniques/${slug}`, locale),
     inLanguage: locale,
     datePublished: "2026-02-01",
-    dateModified: "2026-03-03",
+    // datePublished is an editorial fact git cannot know, so it stays written
+    // down. dateModified is generated, because the hand-typed one drifted:
+    // this page claimed 2026-03-03 here, 2026-04-23 in the sitemap and
+    // 2026-03-06 in the database.
+    ...articleDates(`/techniques/${slug}`),
     author: {
       "@type": "Organization",
       name: "UpSpeech",
@@ -172,7 +183,7 @@ export function getPersonCenteredStructuredData(locale: string = "en") {
     url: localeAbsUrl("/person-centered-therapy", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
-    dateModified: "2026-06-25",
+    ...articleDates("/person-centered-therapy"),
     author: {
       "@type": "Organization",
       name: "UpSpeech",
@@ -222,7 +233,7 @@ export function getDocumentationArticleStructuredData(locale: string = "en") {
     url: localeAbsUrl("/reducing-documentation-time", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
-    dateModified: "2026-06-25",
+    ...articleDates("/reducing-documentation-time"),
     author: {
       "@type": "Organization",
       name: "UpSpeech",

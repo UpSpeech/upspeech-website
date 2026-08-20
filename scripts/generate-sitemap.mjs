@@ -2,6 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { ROUTES, LOCALES, localeUrl } from "./routes.mjs";
+import { readGeneratedDates } from "./generate-route-dates.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT = join(__dirname, "..", "public", "sitemap.xml");
@@ -9,6 +10,11 @@ const OUTPUT = join(__dirname, "..", "public", "sitemap.xml");
 // One <url> per (route, locale). Each carries the full reciprocal set of
 // xhtml:link hreflang alternates (en/pt/es + x-default) so search engines see
 // the language variants as alternates of one another, not duplicates.
+// The same dates the WebPage JSON-LD emits, read from the generated file
+// rather than recomputed, so the sitemap and the structured data cannot drift
+// apart the way the hand-typed values did.
+const ROUTE_DATES = readGeneratedDates();
+
 function urlEntry(route, locale) {
   const alternates = [
     ...LOCALES.map(
@@ -18,9 +24,8 @@ function urlEntry(route, locale) {
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${localeUrl(route.path, "en")}" />`,
   ].join("\n");
 
-  const lastmod = route.lastmod
-    ? `\n    <lastmod>${route.lastmod}</lastmod>`
-    : "";
+  const date = ROUTE_DATES[route.path];
+  const lastmod = date ? `\n    <lastmod>${date}</lastmod>` : "";
   const changefreq = route.changefreq
     ? `\n    <changefreq>${route.changefreq}</changefreq>`
     : "";
