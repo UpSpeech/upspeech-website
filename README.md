@@ -73,7 +73,9 @@ Never edit this file.
 
 ## Routes are a single source of truth
 
-`scripts/routes.mjs` exports `ROUTES`, the canonical list of static page paths plus sitemap metadata (lastmod, changefreq, priority). The sitemap generator and the prerenderer both read it, so they never drift from each other.
+`scripts/routes.mjs` exports `ROUTES`, the canonical list of static page paths plus the component that owns each one and its sitemap metadata (changefreq, priority). The sitemap generator, the prerenderer, the route-date generator and the output check all read it, so they never drift from each other.
+
+There is no hand-written `lastmod`. It used to be there and it rotted: `/techniques/cancelation` ended up claiming 2026-04-23 in the sitemap, 2026-03-03 in its JSON-LD and 2026-03-06 in the database. `component` replaced it, and `generate-route-dates.mjs` derives the date from git instead.
 
 But the SPA router in `src/App.tsx` keeps its own hand-written list of `<Route>` elements (deliberately, so each page is a lazy import and code-splits). That second list can drift from `routes.mjs`: add a page to one and forget the other, and you get either a route that renders but is missing from the sitemap and prerender (no SEO), or a sitemap/prerender entry that 404s in the app.
 
@@ -90,12 +92,39 @@ It runs first in `npm run build`, so a route mismatch fails the build loudly ins
 `npm run build` runs, in order:
 
 1. `check-routes.mjs`: fail fast if App.tsx and routes.mjs disagree.
-2. `generate-og-images.mjs`: render the Open Graph share images.
-3. `generate-sitemap.mjs`: emit `sitemap.xml` from `ROUTES` x locales.
-4. `vite build`: the app bundle.
-5. `prerender.mjs`: render each route x locale to static HTML (drives SEO and first paint).
+2. `generate-asset-manifest.mjs`: record which localized assets exist under `public/`.
+3. `generate-og-images.mjs`: render the Open Graph share images.
+4. `generate-route-dates.mjs`: derive each route's `dateModified` from git.
+5. `generate-sitemap.mjs`: emit `sitemap.xml` from `ROUTES` x locales.
+6. `vite build`: the app bundle.
+7. `prerender.mjs`: render each route x locale to static HTML (drives SEO and first paint).
+8. `check-output.mjs`: read the prerendered HTML back and fail on what a crawler would see.
 
-`routes.mjs` is the route source of truth; `check-routes`, `generate-sitemap`, and `prerender` all read it.
+`routes.mjs` is the route source of truth; every one of those steps reads it.
+
+## Freshness dates are generated, never typed
+
+`generate-route-dates.mjs` takes the `component` each route names, walks that file's local imports, and asks git when any of them last changed. The answer goes to `src/lib/route-dates.generated.ts`, which the sitemap and `SEO.tsx` both read, so `lastmod` and `dateModified` cannot disagree.
+
+Shared chrome is excluded on purpose (Header, Footer, `ui/` primitives, hooks, the i18n dictionaries). A tweak there is not a change to what a page says, and the dictionaries are one file covering all 22 routes, so counting them would collapse every page onto a single date.
+
+The generated file is **committed**, not build-only, because Netlify clones shallowly and `git log` can come back empty on the build box. When that happens the previous value is carried over rather than dropped.
+
+`datePublished` stays hand-written in `src/lib/seo-data.ts`. It is an editorial fact about when a piece first went up, and git has no way to know it.
+
+## The output check
+
+`scripts/check-output.mjs` runs last, against `dist/`, with JavaScript disabled, reading each page the way a crawler that does not execute JS reads it. It exists because two bugs shipped to production and stayed there, and neither was visible to anything else in the pipeline. Lighthouse scored the site 100/100 on SEO throughout both.
+
+The first: multi-line headings extracted as one word. JSX drops the newline between an expression and a following `<br />` or sibling `<span>`, so the home page `h1` rendered correctly and read `Your therapykeeps goingbetween sessions.` to anything pulling text out rather than laying it out. The second: every page claimed to be the home page, because the `WebPage` node was baked into the static `@graph` in `index.html` with the home page's `@id`, `url` and `name`.
+
+Per page it asserts: headings keep their word boundaries in `textContent`, exactly one `<h1>`, canonical and `<html lang>` match the route and locale, the JSON-LD parses, there is exactly one `WebPage` node with the right `@id`/`url`/`inLanguage`, it carries a `dateModified`, and that date matches the sitemap's `lastmod` (as does any `Article` node's).
+
+```bash
+npm run check:output
+```
+
+It needs `dist/` to exist, so run a build first. About two seconds for all 66 pages.
 
 ## Adding a fourth locale
 
