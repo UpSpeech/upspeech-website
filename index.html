@@ -65,6 +65,23 @@
       crossorigin
     />
 
+    <!-- Analytics origins. These load on every page load regardless of the
+         cookie banner: consent is signalled to them afterwards via GA4 Consent
+         Mode v2 and Clarity consentv2 (see src/lib/consent.ts), denied until
+         the visitor accepts. The handshake happens either way, so warming it
+         costs no extra exposure. Preconnect only the two that deliver a
+         payload; the rest get DNS resolution, which is cheaper than holding
+         open a connection for a 1KB beacon. -->
+    <link
+      rel="preconnect"
+      href="https://www.googletagmanager.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://scripts.clarity.ms" crossorigin />
+    <link rel="dns-prefetch" href="https://z.clarity.ms" />
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
 

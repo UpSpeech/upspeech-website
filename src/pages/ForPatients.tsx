@@ -20,9 +20,9 @@ const STEP_ICONS = [
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
 const SCREENSHOTS = [
-  "/screenshots/mobile/patient-home-device.png",
-  "/screenshots/mobile/patient-journey-device.png",
-  "/screenshots/mobile/patient-practice-device.png",
+  "/screenshots/mobile/patient-home-device.webp",
+  "/screenshots/mobile/patient-journey-device.webp",
+  "/screenshots/mobile/patient-practice-device.webp",
 ];
 
 const eyebrowClass =

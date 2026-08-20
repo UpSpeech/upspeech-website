@@ -7,9 +7,9 @@ import { useT, useLocale, localizedAsset } from "@/i18n";
 // section with no baked panel or caption. Cropped from the app-mobile store art.
 // Alt text comes from the dictionary by index (home.mobile.screenshots).
 const SCREENSHOTS = [
-  { src: "/screenshots/mobile/patient-journey-device.png" },
-  { src: "/screenshots/mobile/patient-practice-device.png" },
-  { src: "/screenshots/mobile/patient-home-device.png" },
+  { src: "/screenshots/mobile/patient-journey-device.webp" },
+  { src: "/screenshots/mobile/patient-practice-device.webp" },
+  { src: "/screenshots/mobile/patient-home-device.webp" },
 ];
 
 // The hero (center) phone: a bare screen-recording played BEHIND the official
@@ -17,7 +17,7 @@ const SCREENSHOTS = [
 // bezel + island). The frame's real edges mask the video, so the screen shape is
 // always perfect. Frame from fastlane/frameit-frames (same one the store shots use).
 const HERO_VIDEO = { mp4: "/videos/app-screen.mp4" };
-const PHONE_FRAME = "/screenshots/mobile/iphone-frame.png";
+const PHONE_FRAME = "/screenshots/mobile/iphone-frame.webp";
 
 // Screen rectangle straight from frameit's offsets.json for this frame
 // (offset +75+66, screen width 1320 in the 1470x3000 frame), as % of the phone

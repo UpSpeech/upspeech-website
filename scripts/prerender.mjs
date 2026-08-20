@@ -59,6 +59,7 @@ const MIME_TYPES = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
   ".woff": "font/woff",
@@ -66,6 +67,11 @@ const MIME_TYPES = {
   ".txt": "text/plain",
   ".xml": "application/xml",
   ".webmanifest": "application/manifest+json",
+  // Prerender waits on networkidle0, so anything the page requests has to be
+  // served with a type the browser will accept. Missing entries fall through to
+  // application/octet-stream, which the hero <video> will not start on.
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 /** Serve dist/ as a static file server with SPA fallback */
@@ -216,6 +222,28 @@ async function renderRoute(page, route) {
     document
       .querySelectorAll("[data-sonner-toaster], [aria-label*='Notifications']")
       .forEach((el) => el.remove());
+
+    // Analytics loaders inject their own <script> at runtime, and serializing
+    // the DOM captures those tags as if we had authored them. Both of the ones
+    // that showed up caused real damage:
+    //
+    //   Clarity inserts its tag before the first <script>, which lands it in
+    //   <head>, ~120KB ahead of the inline snippet at the end of <body> that
+    //   defines window.clarity. On a real load the baked tag ran first and threw
+    //   "a[c] is not a function" calling a stub that did not exist yet, then the
+    //   snippet fetched the same tag again.
+    //
+    //   PostHog's config.js came through with neither async nor defer, so it
+    //   blocked rendering for ~460ms.
+    //
+    // Strip any script whose src points somewhere we never author a src for.
+    // The loaders re-inject at runtime, so nothing is lost. Our own third-party
+    // tag in index.html (gtag, deferred) is authored with a src and stays.
+    const INJECTED_SRC = /clarity\.ms|\/relay-[^/]+\/|i\.posthog\.com/;
+    document.querySelectorAll("script[src]").forEach((el) => {
+      if (INJECTED_SRC.test(el.getAttribute("src") || "")) el.remove();
+    });
+
     return document.documentElement.outerHTML;
   });
   const fullHtml = `<!DOCTYPE html>\n${html}`;
@@ -299,7 +327,11 @@ async function prerender() {
     // from *.upspeech.app, so without this the build-time fetch is blocked and the
     // techniques pages render empty. Safe here: this is a throwaway build-only browser
     // rendering our own trusted dist/, never user input. See plan 145.
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-web-security"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-web-security",
+    ],
   });
 
   // Shared work queue; each worker pulls the next route until it drains.
