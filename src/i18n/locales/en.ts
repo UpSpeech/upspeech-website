@@ -73,6 +73,8 @@ export const en = {
     seoDescription:
       "Continuous support for speech and language therapy. Patients practice between sessions on a plan their therapist set, and every attempt comes back for review.",
     hero: {
+      photoAlt:
+        "A woman at her kitchen table holding a phone up in front of her, speaking a practice exercise aloud in late afternoon light",
       eyebrow: "For speech and language therapy clinics",
       headlineLine1: "Your therapy",
       headlineLine2: "keeps going",
@@ -103,6 +105,44 @@ export const en = {
       plusPractice: "+ Practice",
       footerPrefix: "The patient keeps their support every day,",
       footerEmphasis: "without adding sessions to the clinician's week.",
+    },
+    week: {
+      eyebrow: "Between the sessions",
+      headline: "Most of therapy happens when nobody is watching.",
+      body: "One hour in the clinic, then six days on their own. The part that decides whether therapy works is the part the clinician never sees.",
+      frames: [
+        {
+          day: "Thursday",
+          caption: "The session. Everything works in the room.",
+          alt: "A speech and language therapist mid-explanation with a patient listening, seated facing each other in a plain therapy room",
+        },
+        {
+          day: "Saturday",
+          caption: "Alone with the handout. No idea if it is going right.",
+          alt: "A young man sitting alone at a table at home, holding a printed exercise sheet and looking uncertain",
+        },
+        {
+          day: "Monday",
+          caption: "The phone rings. He lets it ring out.",
+          alt: "A young man standing in a hallway looking down at a ringing phone on a side table without picking it up",
+        },
+        {
+          day: "Next Thursday",
+          caption: "So, how did the week go? Nobody really knows.",
+          alt: "A therapist asking an opening question while the patient answers with an uncertain shrug",
+        },
+      ],
+      traceLabel: "Six days with nothing recorded",
+    },
+    handoff: {
+      eyebrow: "Recorded at home, reviewed in the clinic",
+      headline: "He recorded it on Saturday.",
+      headlineEmphasis: "She watched it on Monday.",
+      body: "The patient practices at home and the attempt goes straight to their therapist, who reviews it, marks what changed, and decides what comes next. The software sits between two people. It does not replace either of them.",
+      cardTitle: "Recording review",
+      cardMeta: "Reviewed by the clinician, not by a model",
+      patientAlt: "A young man looking down at a phone he is holding, practicing at home",
+      clinicianAlt: "A speech and language therapist looking down at a recording on her phone, reviewing a patient's attempt",
     },
     therapist: {
       eyebrow: "In the room",
