@@ -1,57 +1,80 @@
 import { revealFrom } from "./motion";
 import { useReveal } from "./useReveal";
-import { useT } from "@/i18n";
+import { useT, useLocale, localizedAsset } from "@/i18n";
 
 /**
  * The review loop, staged as a handoff between two people.
  *
- * The two portraits are transparent cut-outs rather than framed photos, and
- * their eyelines both fall on the card between them: the clinician on the left
- * looks down and to her right, the patient on the right looks down and to his
- * left. Swapping the sides breaks the composition, because then both of them
- * look away from the card.
+ * The recording is the subject, so the real review screen is the dominant
+ * object and the two people flank it from behind. An earlier version had this
+ * the other way round: the people large, and a placeholder card of grey bars
+ * between them. It read as unfinished, and in a section arguing that a
+ * clinician does the reviewing, a fake interface quietly undercut the claim.
+ *
+ * The cut-outs are transparent, with no frame. Their eyelines both fall on the
+ * screen: the clinician on the left looks down and to her right, the patient on
+ * the right looks down and to his left. Swapping the sides breaks the
+ * composition, because then they both look away from it.
  */
 const HandoffScene = () => {
   const t = useT().home.handoff;
-  const { ref, revealed } = useReveal<HTMLElement>({ threshold: 0.12 });
+  const locale = useLocale();
+  const reviewScreen = localizedAsset(
+    "/screenshots/app/researcher-annotation-tool.jpg",
+    locale,
+  );
+  const { ref, revealed } = useReveal<HTMLElement>({ threshold: 0.1 });
+
+  const cutoutMask =
+    "[mask-image:linear-gradient(180deg,#000_58%,transparent_97%)] " +
+    "[-webkit-mask-image:linear-gradient(180deg,#000_58%,transparent_97%)]";
 
   return (
-    <section ref={ref} className="relative bg-white py-[clamp(4rem,9vw,7rem)]">
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-calm-light py-[clamp(4rem,9vw,7rem)]"
+    >
       <div className="mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
-        <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
-          style={revealFrom(revealed, "up", 0)}
-        >
-          {t.eyebrow}
-        </p>
+        <div className="grid gap-6 lg:grid-cols-[1.3fr,0.7fr] lg:items-end lg:gap-14">
+          <div>
+            <p
+              className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink"
+              style={revealFrom(revealed, "up", 0)}
+            >
+              {t.eyebrow}
+            </p>
+            <h2
+              className="mt-5 max-w-[26ch] font-accent font-bold tracking-tight text-calm-charcoal"
+              style={{
+                fontSize: "clamp(1.6rem, 3.4vw, 2.6rem)",
+                lineHeight: 1.12,
+                ...revealFrom(revealed, "up", 80),
+              }}
+            >
+              {t.headline}{" "}
+              {/* Own line: two sentences, two people, two days. Letting them
+                  reflow together reads as one run-on. The space above stays so
+                  textContent still separates the words. */}
+              <span className="block text-calm-lavender-ink">
+                {t.headlineEmphasis}
+              </span>
+            </h2>
+          </div>
 
-        <h2
-          className="mt-5 max-w-[22ch] font-accent font-bold text-calm-charcoal tracking-tight"
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 3rem)",
-            lineHeight: 1.1,
-            ...revealFrom(revealed, "up", 80),
-          }}
-        >
-          {t.headline}{" "}
-          {/* Own line: the two sentences are two people and two days, and
-              letting them reflow together reads as one run-on. The space above
-              stays so textContent still separates the words. */}
-          <span className="block text-calm-lavender-ink">
-            {t.headlineEmphasis}
-          </span>
-        </h2>
+          <p
+            className="max-w-xl font-body text-base leading-relaxed text-calm-charcoal/80 sm:text-lg lg:pb-2"
+            style={revealFrom(revealed, "up", 160)}
+          >
+            {t.body}
+          </p>
+        </div>
 
-        {/* The stage. The two figures lean toward the middle and the card
-            overlaps both, so the three elements read as one scene rather than a
-            row of three things. Each portrait fades out along its bottom edge:
-            without the mask the cut-outs end on a hard horizontal line and stop
-            looking like people standing in the page. */}
         <div
-          className="relative mx-auto mt-[clamp(2rem,4vw,3.5rem)] max-w-4xl overflow-hidden rounded-[2rem] bg-gradient-to-b from-calm-light via-calm-light to-white pt-8 sm:pt-10"
-          style={revealFrom(revealed, "scale", 200, 24)}
+          className="relative mt-[clamp(2.5rem,5vw,4rem)]"
+          style={revealFrom(revealed, "up", 240, 24)}
         >
-          <div className="grid grid-cols-2 items-end">
+          {/* Wide: the figures sit behind the screen's outer edges. */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden items-end justify-between sm:flex">
             <img
               src="/images/people/handoff-clinician.webp"
               alt={t.clinicianAlt}
@@ -59,7 +82,7 @@ const HandoffScene = () => {
               height={1132}
               loading="lazy"
               decoding="async"
-              className="block w-full max-w-[330px] justify-self-end [mask-image:linear-gradient(180deg,#000_62%,transparent_98%)] [-webkit-mask-image:linear-gradient(180deg,#000_62%,transparent_98%)]"
+              className={`block w-[30%] max-w-[290px] translate-y-[7%] ${cutoutMask}`}
             />
             <img
               src="/images/people/handoff-patient.webp"
@@ -68,33 +91,60 @@ const HandoffScene = () => {
               height={1132}
               loading="lazy"
               decoding="async"
-              className="block w-full max-w-[330px] justify-self-start [mask-image:linear-gradient(180deg,#000_62%,transparent_98%)] [-webkit-mask-image:linear-gradient(180deg,#000_62%,transparent_98%)]"
+              className={`block w-[30%] max-w-[290px] translate-y-[7%] ${cutoutMask}`}
             />
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-[10%] flex justify-center sm:bottom-[16%]">
-            <div className="w-[min(80%,24rem)] rounded-2xl border border-calm-navy/10 bg-white p-4 shadow-[0_30px_70px_-24px_rgba(41,53,135,0.45)] sm:p-5">
-              <p className="font-heading text-sm font-bold text-calm-navy">
-                {t.cardTitle}
-              </p>
-              <div className="mt-3 space-y-2">
-                <span className="block h-2 w-[88%] rounded-full bg-calm-navy/10" />
-                <span className="block h-2 w-[64%] rounded-full bg-calm-lavender/45" />
-                <span className="block h-2 w-[46%] rounded-full bg-calm-navy/10" />
-              </div>
-              <p className="mt-4 font-body text-[11px] uppercase tracking-[0.14em] text-calm-charcoal/60">
-                {t.cardMeta}
-              </p>
-            </div>
+          {/* Narrow: nothing can flank a full-width screen, so the two of them
+              sit above it at a size where their faces still read. */}
+          <div className="mb-7 flex items-end justify-center gap-3 sm:hidden">
+            <img
+              src="/images/people/handoff-clinician.webp"
+              alt={t.clinicianAlt}
+              width={900}
+              height={1132}
+              loading="lazy"
+              decoding="async"
+              className={`block w-[44%] max-w-[160px] ${cutoutMask}`}
+            />
+            <img
+              src="/images/people/handoff-patient.webp"
+              alt={t.patientAlt}
+              width={900}
+              height={1132}
+              loading="lazy"
+              decoding="async"
+              className={`block w-[44%] max-w-[160px] ${cutoutMask}`}
+            />
           </div>
-        </div>
 
-        <p
-          className="mx-auto mt-[clamp(1.5rem,3vw,2.5rem)] max-w-2xl text-center font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
-          style={revealFrom(revealed, "up", 320)}
-        >
-          {t.body}
-        </p>
+          <figure className="relative z-10 m-0 sm:mx-auto sm:w-[74%] lg:w-[68%]">
+            <div className="overflow-hidden rounded-xl border border-calm-charcoal/10 bg-white shadow-[0_40px_90px_-40px_rgba(41,53,135,0.55)] sm:rounded-2xl">
+              <div className="flex items-center gap-2 border-b border-calm-charcoal/5 bg-calm-light/80 px-4 py-2.5">
+                <span className="h-2 w-2 rounded-full bg-calm-charcoal/15" />
+                <span className="h-2 w-2 rounded-full bg-calm-charcoal/15" />
+                <span className="h-2 w-2 rounded-full bg-calm-charcoal/15" />
+                <div className="ml-3 flex h-4 max-w-[220px] flex-1 items-center justify-center rounded border border-calm-charcoal/5 bg-white/90">
+                  <span className="font-body text-[9px] tabular-nums text-calm-charcoal/70">
+                    app.upspeech.app/reviews
+                  </span>
+                </div>
+              </div>
+              <img
+                src={reviewScreen}
+                alt={t.screenAlt}
+                width={1579}
+                height={931}
+                loading="lazy"
+                decoding="async"
+                className="block w-full"
+              />
+            </div>
+            <figcaption className="mt-4 text-center font-body text-[11px] uppercase tracking-[0.16em] text-calm-charcoal/60">
+              {t.screenCaption}
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );

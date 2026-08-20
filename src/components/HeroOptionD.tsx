@@ -98,7 +98,12 @@ const HeroOptionD = () => {
       </Helmet>
 
       <picture>
-        <source media={NARROW} srcSet={PHOTO_PORTRAIT} width={864} height={1152} />
+        <source
+          media={NARROW}
+          srcSet={PHOTO_PORTRAIT}
+          width={864}
+          height={1152}
+        />
         <source
           media={WIDE}
           srcSet={PHOTO_WIDE_SRCSET}
@@ -114,14 +119,14 @@ const HeroOptionD = () => {
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center md:h-full"
         />
       </picture>
 
       {/* Two scrims, because the copy sits beside the subject on a wide screen
           and on top of her on a phone. */}
       <div
-        className="pointer-events-none absolute inset-0 md:hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[100svh] md:hidden"
         style={{
           background:
             "linear-gradient(180deg, rgba(27,31,59,0.52) 0%, rgba(27,31,59,0.46) 50%, rgba(27,31,59,0.80) 100%)",
@@ -136,8 +141,11 @@ const HeroOptionD = () => {
       />
 
       <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-end gap-10 px-[max(1.5rem,5vw)] pb-14 pt-28 lg:grid-cols-[1.2fr,0.8fr] lg:items-center lg:gap-16 lg:pb-16 lg:pt-32">
-        {/* Left column: value proposition */}
-        <div>
+        {/* Left column: value proposition. On a phone it is given the height of
+            the photo (which is pinned to the first viewport), so the demo card
+            below it lands clear of the picture instead of sitting on top of the
+            subject. The 9.5rem subtracted is pt-28 (7rem) plus the 2.5rem grid gap. */}
+        <div className="flex min-h-[calc(100svh-9.5rem)] flex-col justify-center lg:block lg:min-h-0">
           <div
             className="mb-6 sm:mb-8"
             style={{
@@ -214,7 +222,7 @@ const HeroOptionD = () => {
         {/* Right column: the product demo, no longer the hero. It still plays;
             it just stops being the first thing on the page. */}
         <div
-          className="w-full max-w-[24rem] justify-self-start self-end lg:max-w-[21rem] lg:justify-self-end"
+          className="w-full max-w-[26rem] justify-self-start self-end pt-2 lg:max-w-[21rem] lg:justify-self-end lg:pt-0"
           style={{
             transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
             transitionDelay: "800ms",
