@@ -803,3 +803,66 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Animated mark (LogoLoader)
+
+   The mark is a person and the purple circle is her speech bubble, so the loop
+   is her speaking: the bubble clears, restarts from where her mouth would be,
+   and rises back into place while she breathes underneath it.
+
+   Both ends of every keyframe list are the resting state. The global
+   prefers-reduced-motion rule above collapses animation-duration to 0.01ms,
+   which lands the element on its 100% frame, so a reader who has asked for
+   less motion gets the correct static logo rather than a half-faded bubble.
+--------------------------------------------------------------------------- */
+.upspeech-loader {
+  color: #212540;
+  line-height: 0;
+}
+
+.upspeech-loader__figure {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: upspeech-loader-breathe var(--upspeech-loader-cycle, 2400ms)
+    cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+.upspeech-loader__bubble {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: upspeech-loader-speak var(--upspeech-loader-cycle, 2400ms)
+    cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes upspeech-loader-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.022);
+  }
+}
+
+@keyframes upspeech-loader-speak {
+  0%,
+  30% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  44% {
+    transform: translate(7px, -15px) scale(0.86);
+    opacity: 0;
+  }
+  /* Reset to the mouth while invisible, so the jump is never seen. */
+  45% {
+    transform: translate(-30px, 33px) scale(0.3);
+    opacity: 0;
+  }
+  70%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
