@@ -141,8 +141,9 @@ export const pt: Dictionary = {
       headline: "Ele gravou no sábado.",
       headlineEmphasis: "Ela viu na segunda.",
       body: "O paciente pratica em casa e a tentativa segue directamente para o terapeuta, que a revê, marca o que mudou e decide o passo seguinte. O software fica entre duas pessoas. Não substitui nenhuma delas.",
-      cardTitle: "Revisão da gravação",
-      cardMeta: "Revisto pelo clínico, não por um modelo",
+      screenAlt:
+        "O ecrã de revisão de gravações da UpSpeech: o vídeo do paciente, uma forma de onda com dois momentos marcados e as anotações do clínico com marcação temporal",
+      screenCaption: "Revisto pelo clínico, não por um modelo",
       patientAlt: "Um jovem a olhar para o telemóvel que segura, a praticar em casa",
       clinicianAlt: "Uma terapeuta da fala a olhar para uma gravação no telemóvel, a rever a tentativa de um paciente",
     },

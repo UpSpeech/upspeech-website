@@ -139,8 +139,9 @@ export const en = {
       headline: "He recorded it on Saturday.",
       headlineEmphasis: "She watched it on Monday.",
       body: "The patient practices at home and the attempt goes straight to their therapist, who reviews it, marks what changed, and decides what comes next. The software sits between two people. It does not replace either of them.",
-      cardTitle: "Recording review",
-      cardMeta: "Reviewed by the clinician, not by a model",
+      screenAlt:
+        "The UpSpeech recording review screen: the patient's video, a waveform with two marked moments, and the clinician's timestamped annotations",
+      screenCaption: "Reviewed by the clinician, not by a model",
       patientAlt: "A young man looking down at a phone he is holding, practicing at home",
       clinicianAlt: "A speech and language therapist looking down at a recording on her phone, reviewing a patient's attempt",
     },
