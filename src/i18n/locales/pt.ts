@@ -88,13 +88,6 @@ export const pt: Dictionary = {
         "Demonstração do produto UpSpeech: o plano de prática personalizado de um terapeuta",
       playAriaLabel: "Reproduzir a demonstração do produto UpSpeech",
     },
-    credibility: {
-      eyebrow: "Parceiros",
-      partnerContext: {
-        speechcare: "Parceiro de desenvolvimento conjunto",
-        elevenlabs: "Subvenção de infraestrutura de IA",
-      },
-    },
     gap: {
       eyebrow: "A semana do paciente",
       days: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
@@ -275,6 +268,11 @@ export const pt: Dictionary = {
       headlineLine1: "Prática clínica e engenharia de IA,",
       headlineLine2: "na mesma equipa.",
       body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala que usam a plataforma com pacientes.",
+      logoPartnersLabel: "Parceiros",
+      logoPartnerContext: {
+        speechcare: "Parceiro de desenvolvimento conjunto",
+        elevenlabs: "Subvenção de infraestrutura de IA",
+      },
       partnersLabel: "Programas · Apoiantes · Reconhecimento",
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {

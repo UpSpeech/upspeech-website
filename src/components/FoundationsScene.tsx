@@ -10,12 +10,43 @@ type Partner = {
   >["home"]["foundations"]["partnerContext"];
 };
 
+// The two relationships that carry a logo and a substantive tie to the
+// product. They sit here rather than in a band under the hero because this
+// section's headline is about exactly them: SpeechCare is the clinical half of
+// "clinical practice and AI engineering", ElevenLabs is the AI half.
+//
+// `width` is the one number that has to be tuned per mark. Both files are
+// cropped tight to their ink, but their letterforms take very different shares
+// of that box: SpeechCare's caps are 39% of its height (the ECG squiggle takes
+// the rest), ElevenLabs' are 96%. Sizing both marks to one shared box, as the
+// old band did, left both with a 7px cap height, smaller than the caption
+// underneath. These widths put both on a ~19px cap height inside the shared
+// ROW_HEIGHT row, and `object-left-top` lands both cap lines on the same y.
+//
+// Everything scales through --mark so the two stay matched: change the scale,
+// not the widths.
+const ROW_HEIGHT = 48;
+
+const logoPartners = [
+  {
+    name: "SpeechCare",
+    logo: "/images/speechcare-logo.webp",
+    contextKey: "speechcare",
+    width: 192,
+  },
+  {
+    name: "ElevenLabs Grants",
+    logo: "/images/elevenlabs-grants.webp",
+    contextKey: "elevenlabs",
+    width: 218,
+  },
+] as const;
+
 // Partner names are proper nouns and stay in code; the context line is
 // localized via home.foundations.partnerContext[contextKey].
 //
-// Programs, backers and awards. The two logo partners (SpeechCare,
-// ElevenLabs) live in CredibilityStrip above the fold, so nothing is named
-// in both places.
+// Programs, backers and awards. The two above carry logos and are labelled
+// separately, so no partner is named in both places.
 const partners: Partner[] = [
   {
     name: "Lispolis Ignite",
@@ -82,8 +113,37 @@ const FoundationsScene = () => {
           {t.body}
         </p>
 
-        {/* Partners grid */}
-        <div className="mt-[clamp(4rem,8vw,7rem)]">
+        {/* The two we build with, as marks */}
+        <div className="mt-[clamp(3rem,6vw,4.5rem)]">
+          <span
+            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/80"
+            style={style(240)}
+          >
+            {t.logoPartnersLabel}
+          </span>
+          <div className="mt-6 flex flex-wrap items-start gap-x-12 gap-y-8 sm:gap-x-24 [--mark:0.82] sm:[--mark:1]">
+            {logoPartners.map((item, i) => (
+              <div key={item.name} style={style(300 + i * 80)}>
+                <img
+                  src={item.logo}
+                  alt={item.name}
+                  className="object-contain object-left-top"
+                  style={{
+                    width: `calc(${item.width}px * var(--mark))`,
+                    height: `calc(${ROW_HEIGHT}px * var(--mark))`,
+                  }}
+                  loading="lazy"
+                />
+                <p className="mt-3 font-body text-sm text-calm-charcoal/80">
+                  {t.logoPartnerContext[item.contextKey]}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Programs, backers and awards */}
+        <div className="mt-[clamp(3rem,6vw,4.5rem)]">
           <div
             className="mb-8 sm:mb-10 flex items-baseline justify-between flex-wrap gap-4"
             style={style(320)}

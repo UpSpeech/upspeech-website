@@ -1,7 +1,6 @@
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import HeroOptionD from "@/components/HeroOptionD";
-import CredibilityStrip from "@/components/CredibilityStrip";
 import GapSection from "@/components/GapSection";
 import InterstitialCTA from "@/components/InterstitialCTA";
 import TherapistScene from "@/components/TherapistScene";
@@ -25,7 +24,6 @@ const Index = () => {
       <Header />
       <main id="main">
         <HeroOptionD />
-        <CredibilityStrip />
         <GapSection />
         <div id="features">
           <TherapistScene />
