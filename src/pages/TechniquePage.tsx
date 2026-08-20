@@ -118,11 +118,20 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       />
       <Header />
 
+      {/* min-h keeps the footer below the fold while the article is in flight.
+          main.tsx mounts with createRoot, which discards the prerendered DOM,
+          so this page painted its full prerendered article, collapsed to the
+          spinner, and the footer rode up ~250px: 0.691 CLS on a throttled
+          phone. A layout shift only counts elements inside the viewport, and
+          real articles run 1636-2137px tall, so holding the loading state at
+          150vh means the footer is off-screen before and after the swap and
+          the move costs nothing. Reserving a height in vh rather than a pixel
+          guess also survives the articles getting longer or shorter. */}
       {loading && (
         <main
           id="main"
           data-prerender-state="loading"
-          className="flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
+          className="min-h-[150vh] flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
         >
           <div className="max-w-4xl mx-auto">
             <div
@@ -139,7 +148,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         <main
           id="main"
           data-prerender-state="error"
-          className="flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
+          className="min-h-[150vh] flex-1 px-[max(1.5rem,5vw)] pt-28 pb-16 sm:pt-36"
         >
           <div className="max-w-4xl mx-auto">
             <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
