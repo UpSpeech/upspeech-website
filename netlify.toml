@@ -198,6 +198,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Fonts and hero media had no rule at all, so they fell through to Netlify's
+# 4-hour default and every returning visitor revalidated six woff2 files and a
+# 1.9MB mp4. Same stable-filename reasoning as the block above, so not immutable,
+# but a month of freshness rather than an afternoon. A replaced file still
+# propagates on the revalidate that follows.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, must-revalidate"
+
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, must-revalidate"
+
 # Ensure robots.txt and sitemap.xml are always fresh
 [[headers]]
   for = "/robots.txt"

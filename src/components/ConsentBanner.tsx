@@ -64,8 +64,14 @@ export const ConsentBanner = () => {
   const { locale } = splitLocaleFromPath(pathname);
   const t = getDictionary(locale).consent;
 
+  // data-consent-banner marks this for removal from the prerendered HTML. The
+  // banner appears a second after mount, so whether a build captured it came
+  // down to how long that route took to settle, and a visitor who already
+  // answered got it painted and then removed. Consent state only exists in the
+  // browser, so the banner does not belong in a static file.
   return (
     <div
+      data-consent-banner="true"
       className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300"
       role="dialog"
       aria-labelledby="consent-banner-title"
