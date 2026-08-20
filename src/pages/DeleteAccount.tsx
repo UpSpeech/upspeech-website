@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { SEO } from "@/components/SEO";
 import { useLocale } from "@/i18n";
+import deleteAccountMd from "../../public/legal/delete-account.md?raw";
+
+// The markdown is bundled at build time rather than fetched. main.tsx mounts
+// with createRoot, which discards the prerendered DOM and re-renders from
+// scratch, so a page starting in a loading state paints its prerendered content,
+// collapses to a spinner, then refills. Measured on /privacy, which is built the
+// same way, that moved the footer up 220px and scored 0.73 CLS. This page is
+// English only, so there is one file rather than a per-locale map.
 
 // Configure marked for GFM (GitHub Flavored Markdown) support
 marked.setOptions({
@@ -12,60 +20,14 @@ marked.setOptions({
 
 export default function DeleteAccount() {
   const locale = useLocale();
-  const [content, setContent] = useState<string>("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const content = useMemo(
+    () => DOMPurify.sanitize(marked.parse(deleteAccountMd) as string),
+    [],
+  );
 
   useEffect(() => {
-    setLoading(true);
-    fetch("/legal/delete-account.md")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load page");
-        }
-        return response.text();
-      })
-      .then((text) => {
-        const html = marked.parse(text) as string;
-        setContent(DOMPurify.sanitize(html));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error loading delete account page:", err);
-        setError("Failed to load this page. Please try again later.");
-        setLoading(false);
-      });
-
     window.scrollTo(0, 0);
   }, []);
-
-  if (loading) {
-    return (
-      <div className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-lg text-gray-600 text-center">Loading...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center max-w-md mx-auto">
-            <div className="text-red-600 text-lg mb-4">{error}</div>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-            >
-              Reload Page
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-white">
