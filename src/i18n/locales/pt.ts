@@ -141,11 +141,22 @@ export const pt: Dictionary = {
       headline: "Ele gravou no sábado.",
       headlineEmphasis: "Ela viu na segunda.",
       body: "O paciente pratica em casa e a tentativa segue directamente para o terapeuta, que a revê, marca o que mudou e decide o passo seguinte. O software fica entre duas pessoas. Não substitui nenhuma delas.",
-      screenAlt:
-        "O ecrã de revisão de gravações da UpSpeech: o vídeo do paciente, uma forma de onda com dois momentos marcados e as anotações do clínico com marcação temporal",
-      screenCaption: "Revisto pelo clínico, não por um modelo",
+      recordedStamp: "Sábado, 21:07",
+      recordedPlace: "Em casa",
+      recordedCaption:
+        "Uma tentativa, dois minutos, enviada assim que ele terminou.",
+      recordedTraceLabel:
+        "Forma de onda de uma gravação de prática de dois minutos: seis frases com pausas entre elas",
+      reviewedStamp: "Segunda-feira, 09:22",
+      reviewedPlace: "Na clínica",
+      reviewedTraceLabel:
+        "A mesma forma de onda, com dois momentos marcados pela terapeuta aos 00:53 e 01:22",
+      marks: ["00:53 · SR", "01:22 · MUR"],
+      reviewedCaption:
+        "Dois momentos marcados. Revisto pelo clínico, não por um modelo.",
       patientAlt: "Um jovem a olhar para o telemóvel que segura, a praticar em casa",
-      clinicianAlt: "Uma terapeuta da fala a olhar para uma gravação no telemóvel, a rever a tentativa de um paciente",
+      clinicianAlt:
+        "Uma terapeuta da fala a olhar para uma gravação no tablet, a rever a tentativa de um paciente",
     },
     therapist: {
       eyebrow: "Na consulta",

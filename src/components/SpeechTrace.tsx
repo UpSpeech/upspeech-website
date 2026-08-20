@@ -28,12 +28,27 @@ const ACTIVE_BY_VARIANT: Record<string, [number, number][]> = {
     [0.74, 0.83],
     [0.88, 0.98],
   ],
+  // One recording rather than a week of them: phrases of uneven length with
+  // breaths between. The spacing is deliberately irregular, because evenly
+  // spaced bursts read as a chart and this one has to read as someone talking.
+  utterance: [
+    [0.03, 0.14],
+    [0.19, 0.36],
+    [0.41, 0.47],
+    [0.52, 0.71],
+    [0.77, 0.84],
+    [0.88, 0.99],
+  ],
 };
 
-const SEED_BY_VARIANT: Record<string, number> = { gap: 20826, continuous: 719 };
+const SEED_BY_VARIANT: Record<string, number> = {
+  gap: 20826,
+  continuous: 719,
+  utterance: 4711,
+};
 
 type Props = {
-  variant?: "gap" | "continuous";
+  variant?: "gap" | "continuous" | "utterance";
   /** Rendered height in CSS pixels. */
   height?: number;
   className?: string;
