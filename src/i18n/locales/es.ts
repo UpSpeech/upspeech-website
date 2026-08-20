@@ -141,11 +141,22 @@ export const es: Dictionary = {
       headline: "Él lo grabó el sábado.",
       headlineEmphasis: "Ella lo vio el lunes.",
       body: "El paciente practica en casa y el intento llega directamente a su logopeda, que lo revisa, marca lo que ha cambiado y decide el siguiente paso. El software está entre dos personas. No sustituye a ninguna.",
-      screenAlt:
-        "La pantalla de revisión de grabaciones de UpSpeech: el vídeo del paciente, una forma de onda con dos momentos marcados y las anotaciones del clínico con marca de tiempo",
-      screenCaption: "Revisado por el clínico, no por un modelo",
+      recordedStamp: "Sábado, 21:07",
+      recordedPlace: "En casa",
+      recordedCaption:
+        "Un intento, dos minutos, enviado en cuanto él terminó.",
+      recordedTraceLabel:
+        "Forma de onda de una grabación de práctica de dos minutos: seis frases con pausas entre ellas",
+      reviewedStamp: "Lunes, 09:22",
+      reviewedPlace: "En la consulta",
+      reviewedTraceLabel:
+        "La misma forma de onda, con dos momentos marcados por la logopeda en 00:53 y 01:22",
+      marks: ["00:53 · SR", "01:22 · MUR"],
+      reviewedCaption:
+        "Dos momentos marcados. Revisado por el clínico, no por un modelo.",
       patientAlt: "Un joven mirando el teléfono que sostiene, practicando en casa",
-      clinicianAlt: "Una logopeda mirando una grabación en su teléfono, revisando el intento de un paciente",
+      clinicianAlt:
+        "Una logopeda mirando una grabación en su tablet, revisando el intento de un paciente",
     },
     therapist: {
       eyebrow: "En la consulta",
