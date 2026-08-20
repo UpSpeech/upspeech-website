@@ -24,11 +24,18 @@ const RETRY_BACKOFF_MS = 1000;
 // slow future route is better served by raising this than shrinking the pool.
 const NAV_TIMEOUT_MS = 25000;
 // How long to wait for React Helmet to inject the SEO tags after navigation.
-// Well above the old serial 5s: under a concurrent pool each page shares CPU,
-// so Helmet's post-networkidle0 effect flush is slower than in the old serial
-// run, and the first cold batch is slowest of all. If the tags are still absent
-// past this the route is retried, then fails the build.
-const SELECTOR_TIMEOUT_MS = 15000;
+//
+// The wait is bimodal, not gradual. Timing all 66 routes: 63 resolve in 2-9ms
+// (median 3ms), and the first POOL_SIZE routes take ~41,500ms while Chrome warms
+// up and the bundle and fonts are fetched cold for the first time. The old 15s
+// landed in that gap, so every build burned attempts 1 and 2 on those first
+// routes and passed only on attempt 3 of MAX_ATTEMPTS, leaving no margin at all
+// on a build machine slower than a laptop.
+//
+// 90s clears the observed cold start with room to spare. It costs nothing on the
+// 63 fast routes, because waitForFunction returns the moment the tags appear, and
+// it is only paid when a route is genuinely stuck.
+const SELECTOR_TIMEOUT_MS = 90000;
 // -----------------------------------------------------------------------------
 
 // Routes whose visible content is fetched from the backend at render time and
