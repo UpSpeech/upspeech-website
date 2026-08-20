@@ -5,9 +5,18 @@
 [functions]
   directory = "netlify/functions"
 
-# Skip prerender for deploy previews (no Chrome on Netlify CI)
-[context.deploy-preview]
-  command = "node scripts/generate-og-images.mjs && vite build"
+# Deploy previews run the same command as production. They used to skip the
+# prerender step, on the basis that Netlify CI had no Chrome, but the production
+# build installs its own (`npx puppeteer browsers install chrome` in the build
+# script) and prerenders 66 pages on this same image every deploy.
+#
+# Skipping it meant a preview served a ~10KB SPA shell where production serves
+# ~124KB of prerendered HTML, so a green preview check proved nothing about the
+# step most likely to fail. Netlify posts statuses on previews but not on
+# production branch builds, so a production build that died in prerender showed
+# up nowhere: the PR went green, the merge commit reported no checks at all, and
+# the deploy silently stayed on the previous build. Previews take longer now,
+# which is the point.
 
 [[redirects]]
   from = "https://upspeechapp.com/*"
