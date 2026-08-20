@@ -884,15 +884,15 @@
 
 .speech-ring__bar {
   stroke: #6866c4;
-  stroke-width: 2.4;
+  stroke-width: 3.2;
   stroke-linecap: round;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
 
 .speech-ring__bar--quiet {
-  stroke: rgba(75, 78, 78, 0.28);
-  stroke-width: 2;
+  stroke: rgba(75, 78, 78, 0.3);
+  stroke-width: 2.6;
 }
 
 .speech-ring--intro .speech-ring__bar {
