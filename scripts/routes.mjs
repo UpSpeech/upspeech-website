@@ -1,130 +1,153 @@
 // Single source of truth for the site's static routes, shared by the sitemap
-// generator and the prerenderer so they never drift. Each entry is the
-// locale-agnostic path plus its sitemap metadata. English lives at the root;
-// pt/es are served under a locale prefix.
+// generator, the prerenderer and the route-date generator so they never drift.
+// Each entry is the locale-agnostic path, the component that owns the route,
+// and its sitemap metadata. English lives at the root; pt/es are served under a
+// locale prefix.
+//
+// There is deliberately no `lastmod` here. It used to be typed by hand, and by
+// the time anyone looked there were three different answers on the same page:
+// the sitemap said one date, the Article JSON-LD in seo-data.ts said another,
+// and the backend row said a third. `component` replaces it: the date generator
+// walks that file's imports and asks git when any of them last changed. See
+// scripts/generate-route-dates.mjs.
 
 export const BASE_URL = "https://upspeech.app";
 export const LOCALES = ["en", "pt", "es"];
 export const DEFAULT_LOCALE = "en";
 
 export const ROUTES = [
-  { path: "/", lastmod: "2026-05-08", changefreq: "weekly", priority: "1.0" },
+  {
+    path: "/",
+    component: "src/pages/Index.tsx",
+    changefreq: "weekly",
+    priority: "1.0",
+  },
   {
     path: "/techniques",
-    lastmod: "2026-04-23",
+    component: "src/pages/TechniquesIndexPage.tsx",
     changefreq: "weekly",
     priority: "0.9",
   },
   {
     path: "/techniques/voluntary-stuttering",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/VoluntaryStuttering.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/cancelation",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/Cancelation.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/pull-out",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/PullOut.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/preparatory-set",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/PreparatorySet.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/holding",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/Holding.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/soft-starts",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/SoftStarts.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/soft-articulation-contact",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/SoftArticulationContact.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/prolonged-speech",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/ProlongedSpeech.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/speech-speed-management",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/SpeechSpeedManagement.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/pauses",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/Pauses.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/techniques/identification-desensitization",
-    lastmod: "2026-04-23",
+    component: "src/pages/techniques/IdentificationDesensitization.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
   {
     path: "/for-patients",
-    lastmod: "2026-06-18",
+    component: "src/pages/ForPatients.tsx",
     changefreq: "monthly",
     priority: "0.7",
   },
   {
     path: "/person-centered-therapy",
-    lastmod: "2026-06-25",
+    component: "src/pages/PersonCentered.tsx",
     changefreq: "monthly",
     priority: "0.7",
   },
   {
     path: "/reducing-documentation-time",
-    lastmod: "2026-06-25",
+    component: "src/pages/ReducingDocumentationTime.tsx",
     changefreq: "monthly",
     priority: "0.7",
   },
   {
     path: "/for-slps",
-    lastmod: "2026-06-25",
+    component: "src/pages/ForSlps.tsx",
     changefreq: "monthly",
     priority: "0.8",
   },
-  { path: "/support", changefreq: "monthly", priority: "0.5" },
+  {
+    path: "/support",
+    component: "src/pages/Support.tsx",
+    changefreq: "monthly",
+    priority: "0.5",
+  },
   {
     path: "/privacy",
-    lastmod: "2026-04-23",
+    component: "src/pages/PrivacyPolicy.tsx",
     changefreq: "yearly",
     priority: "0.3",
   },
   {
     path: "/terms",
-    lastmod: "2026-04-23",
+    component: "src/pages/TermsOfService.tsx",
     changefreq: "yearly",
     priority: "0.3",
   },
   {
     path: "/cookies",
-    lastmod: "2026-04-23",
+    component: "src/pages/CookiePolicy.tsx",
     changefreq: "yearly",
     priority: "0.3",
   },
-  { path: "/delete-account", changefreq: "yearly", priority: "0.3" },
+  {
+    path: "/delete-account",
+    component: "src/pages/DeleteAccount.tsx",
+    changefreq: "yearly",
+    priority: "0.3",
+  },
 ];
 
 /** Absolute URL for a route path in a given locale (trailing slash, like Netlify serves). */

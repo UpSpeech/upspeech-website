@@ -85,7 +85,11 @@
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data: site-level entities only.
+         These three are true on every page, so they are safe to bake into the
+         shell. The per-page WebPage node is emitted by src/components/SEO.tsx,
+         because the one that used to live here described the home page and was
+         served on all 66 URLs, contradicting each page's own Article node. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -149,30 +153,6 @@
               "Between-session practice support",
               "Structured practice exercises"
             ]
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://upspeech.app/#webpage",
-            "url": "https://upspeech.app/",
-            "name": "UpSpeech - Software for Speech Therapy Practices",
-            "isPartOf": {
-              "@id": "https://upspeech.app/#website"
-            },
-            "about": {
-              "@id": "https://upspeech.app/#organization"
-            },
-            "description": "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports. Therapists always in the loop.",
-            "breadcrumb": {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://upspeech.app/"
-                }
-              ]
-            }
           }
         ]
       }

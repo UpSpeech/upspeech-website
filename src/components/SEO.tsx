@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { SUPPORTED_LOCALES } from "@/i18n";
+import { routeDate } from "@/lib/route-dates.generated";
 
 const BASE_URL = "https://upspeech.app";
 const DEFAULT_TITLE = "UpSpeech - Software for Speech Therapy Practices";
@@ -66,6 +67,30 @@ export function SEO({
   const resolvedImageAlt = imageAlt ?? fullTitle;
   const ogLocale = LOCALE_TO_OG[locale] ?? "en_US";
 
+  // Every page used to inherit one WebPage node from the static @graph in
+  // index.html, which described the home page: @id .../#webpage, url the site
+  // root, and the home page's title. On the other 65 pages that is simply a
+  // false statement, sitting next to an Article node that says something else.
+  // The site-level nodes stay in index.html because they are true everywhere;
+  // this one is per page, so it belongs here, and it is where dateModified goes.
+  const dateModified = routeDate(path);
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: fullTitle,
+    description,
+    inLanguage: locale,
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    primaryImageOfPage: { "@type": "ImageObject", url: resolvedImage },
+    // Generated from git rather than typed, so it cannot go stale unnoticed.
+    // Absent only if the build had no git history to read. See
+    // scripts/generate-route-dates.mjs.
+    ...(dateModified ? { dateModified } : {}),
+  };
+
   return (
     <Helmet htmlAttributes={{ lang: locale }}>
       <title>{fullTitle}</title>
@@ -123,6 +148,7 @@ export function SEO({
       <meta name="twitter:image:alt" content={resolvedImageAlt} />
 
       {/* Structured Data */}
+      <script type="application/ld+json">{JSON.stringify(webPage)}</script>
       {structuredData &&
         (Array.isArray(structuredData) ? (
           structuredData.map((data, i) => (
