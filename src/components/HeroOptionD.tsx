@@ -6,11 +6,14 @@ import { useT, useLocale, localizedAsset } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
+// GPT Image 2 returns 1536x864 natively and the srcset tops out there rather
+// than upscaling: inventing detail in a face is worse than a slightly soft
+// background photo sitting behind a scrim.
 const PHOTO_WIDE_SRCSET =
-  "/images/people/practice-hero-960.webp 960w, " +
-  "/images/people/practice-hero-1440.webp 1440w, " +
-  "/images/people/practice-hero-1920.webp 1920w";
-const PHOTO_WIDE_FALLBACK = "/images/people/practice-hero-1440.webp";
+  "/images/people/practice-hero-864.webp 864w, " +
+  "/images/people/practice-hero-1152.webp 1152w, " +
+  "/images/people/practice-hero-1536.webp 1536w";
+const PHOTO_WIDE_FALLBACK = "/images/people/practice-hero-1152.webp";
 const PHOTO_PORTRAIT = "/images/people/practice-hero-portrait.webp";
 const NARROW = "(max-width: 767px)";
 const WIDE = "(min-width: 768px)";
@@ -95,23 +98,23 @@ const HeroOptionD = () => {
       </Helmet>
 
       <picture>
-        <source media={NARROW} srcSet={PHOTO_PORTRAIT} width={810} height={1080} />
+        <source media={NARROW} srcSet={PHOTO_PORTRAIT} width={864} height={1152} />
         <source
           media={WIDE}
           srcSet={PHOTO_WIDE_SRCSET}
           sizes="100vw"
-          width={1920}
-          height={1072}
+          width={1536}
+          height={864}
         />
         <img
           src={PHOTO_WIDE_FALLBACK}
           alt={t.photoAlt}
-          width={1440}
-          height={804}
+          width={1536}
+          height={864}
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          className="absolute inset-0 h-full w-full object-cover object-[68%_center] md:object-[center_28%]"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
       </picture>
 
@@ -121,7 +124,7 @@ const HeroOptionD = () => {
         className="pointer-events-none absolute inset-0 md:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(27,31,59,0.72) 0%, rgba(27,31,59,0.58) 46%, rgba(27,31,59,0.90) 100%)",
+            "linear-gradient(180deg, rgba(27,31,59,0.52) 0%, rgba(27,31,59,0.46) 50%, rgba(27,31,59,0.80) 100%)",
         }}
       />
       <div
@@ -132,7 +135,7 @@ const HeroOptionD = () => {
         }}
       />
 
-      <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-end gap-10 px-[max(1.5rem,5vw)] pb-14 pt-32 lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 lg:pb-16 lg:pt-40">
+      <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-end gap-10 px-[max(1.5rem,5vw)] pb-14 pt-28 lg:grid-cols-[1.2fr,0.8fr] lg:items-center lg:gap-16 lg:pb-16 lg:pt-32">
         {/* Left column: value proposition */}
         <div>
           <div
