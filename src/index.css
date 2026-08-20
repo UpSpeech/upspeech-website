@@ -805,69 +805,6 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Animated mark (LogoLoader)
-
-   The mark is a person and the purple circle is her speech bubble, so the loop
-   is her speaking: the bubble clears, restarts from where her mouth would be,
-   and rises back into place while she breathes underneath it.
-
-   Both ends of every keyframe list are the resting state. The global
-   prefers-reduced-motion rule above collapses animation-duration to 0.01ms,
-   which lands the element on its 100% frame, so a reader who has asked for
-   less motion gets the correct static logo rather than a half-faded bubble.
---------------------------------------------------------------------------- */
-.upspeech-loader {
-  color: #212540;
-  line-height: 0;
-}
-
-.upspeech-loader__figure {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: upspeech-loader-breathe var(--upspeech-loader-cycle, 2400ms)
-    cubic-bezier(0.37, 0, 0.63, 1) infinite;
-}
-
-.upspeech-loader__bubble {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: upspeech-loader-speak var(--upspeech-loader-cycle, 2400ms)
-    cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-
-@keyframes upspeech-loader-breathe {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.022);
-  }
-}
-
-@keyframes upspeech-loader-speak {
-  0%,
-  30% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  44% {
-    transform: translate(7px, -15px) scale(0.86);
-    opacity: 0;
-  }
-  /* Reset to the mouth while invisible, so the jump is never seen. */
-  45% {
-    transform: translate(-30px, 33px) scale(0.3);
-    opacity: 0;
-  }
-  70%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-}
-
-/* ---------------------------------------------------------------------------
    SpeechRing
 
    A speech envelope bent into a circle: bars radiate outward where someone was
@@ -897,7 +834,7 @@
 
 .speech-ring--intro .speech-ring__bar {
   opacity: 0;
-  animation: speech-ring-draw 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: speech-ring-draw 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--bar-delay, 0ms);
 }
 
@@ -919,44 +856,140 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Intro overlay
+   Opening sequence
 
    Shown once per browsing session, never to a reader who has asked for less
    motion, and removed from the DOM once it has finished so it cannot trap
    focus or intercept a click.
+
+   The order is the point: the ring writes itself the way a recording runs,
+   start to finish; she appears at its centre; the ring collapses onto her and
+   her speech bubble arrives; then the lockup settles left and the wordmark
+   writes in beside it. What is left at the end is the logo exactly as the
+   header draws it.
+
+   Timings, in ms from mount:
+        0 -> 1080  ring writes clockwise (SpeechRing staggers each bar)
+      620 -> 1060  the figure rises in
+     1120 -> 1540  the ring collapses toward her
+     1240 -> 1640  the speech bubble pops into place
+     1420 -> 1980  the lockup settles left, the wordmark wipes in
+     2160 -> 2600  the overlay fades out (SiteIntro unmounts at 2600)
 --------------------------------------------------------------------------- */
 .site-intro {
   position: fixed;
   inset: 0;
   z-index: 200;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
   background: #f6f6f6;
-  animation: site-intro-out 520ms cubic-bezier(0.22, 1, 0.36, 1) 1500ms forwards;
+  animation: site-intro-out 440ms cubic-bezier(0.22, 1, 0.36, 1) 2160ms forwards;
 }
 
-.site-intro__word {
+.site-intro__stage {
+  /* One scale drives both, so the mark keeps the same share of the ring's
+     empty middle at every width. 2.25 puts the mark at about 60% of the
+     inner circle, which is as large as it goes before the bubble touches
+     the bars. */
+  --intro-scale: clamp(120px, 33vw, 204px);
+  --intro-ring: var(--intro-scale);
+  --intro-lockup: calc(var(--intro-scale) * 2.25);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--intro-ring);
+  height: var(--intro-ring);
+}
+
+.site-intro__ring {
+  transform-origin: 50% 50%;
+  animation: site-intro-ring-out 420ms cubic-bezier(0.55, 0, 0.45, 1) 1120ms
+    forwards;
+}
+
+/* The lockup is placed by its mark, not by its own box, so the mark lands on
+   the ring's centre. 0.11824 is where the mark's centre falls across the
+   1024-wide lockup; 0.38176 is the rest of the way to centring the lockup
+   itself, which is what the settle covers. */
+.site-intro__lockup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: calc(var(--intro-lockup) * -0.11824);
+  transform: translate(0, -50%);
+  color: #212540;
+  line-height: 0;
+  animation: site-intro-settle 560ms cubic-bezier(0.22, 1, 0.36, 1) 1420ms
+    forwards;
+}
+
+.site-intro .brand-lockup__figure {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
   opacity: 0;
-  animation: site-intro-word 700ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
+  animation: site-intro-figure 440ms cubic-bezier(0.22, 1, 0.36, 1) 620ms
+    forwards;
+}
+
+.site-intro .brand-lockup__bubble {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  animation: site-intro-bubble 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 1240ms
+    forwards;
+}
+
+.site-intro .brand-lockup__word {
+  clip-path: inset(0 100% 0 0);
+  animation: site-intro-word 560ms cubic-bezier(0.22, 1, 0.36, 1) 1420ms
+    forwards;
+}
+
+@keyframes site-intro-ring-out {
+  to {
+    opacity: 0;
+    transform: scale(0.34);
+  }
+}
+
+@keyframes site-intro-settle {
+  to {
+    transform: translate(calc(var(--intro-lockup) * -0.38176), -50%);
+  }
+}
+
+@keyframes site-intro-figure {
+  from {
+    opacity: 0;
+    transform: translateY(12%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes site-intro-bubble {
+  from {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes site-intro-word {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 @keyframes site-intro-out {
   to {
     opacity: 0;
     visibility: hidden;
-  }
-}
-
-@keyframes site-intro-word {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }

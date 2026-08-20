@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
+import BrandLockup from "./BrandLockup";
 import SpeechRing from "./SpeechRing";
 
 const SESSION_KEY = "upspeech_intro_seen";
-const TOTAL_MS = 2100;
+const TOTAL_MS = 2600;
 
 /**
  * The one-off opening: a speech envelope writing itself into a ring, clockwise,
- * the way a recording runs start to finish.
+ * the way a recording runs start to finish, resolving into the logo.
+ *
+ * The ring collapses onto the figure and her speech bubble arrives as it goes,
+ * so the recording becomes the mark rather than being replaced by it. The
+ * wordmark writes in last. See index.css for the timings.
  *
  * Deliberately constrained, because an intro is a tax on the first view:
  *  - once per browsing session, not once per page
@@ -48,10 +53,12 @@ const SiteIntro = () => {
 
   return (
     <div className="site-intro" aria-hidden="true">
-      <SpeechRing size={220} intro />
-      <p className="site-intro__word font-accent text-lg font-medium tracking-tight text-calm-charcoal">
-        UpSpeech
-      </p>
+      <div className="site-intro__stage">
+        <SpeechRing size="var(--intro-ring)" intro className="site-intro__ring" />
+        <div className="site-intro__lockup">
+          <BrandLockup width="var(--intro-lockup)" />
+        </div>
+      </div>
     </div>
   );
 };
