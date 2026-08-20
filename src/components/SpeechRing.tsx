@@ -71,14 +71,15 @@ function buildBars(): Bar[] {
       x2: CENTER + cos * (INNER_R + length),
       y2: CENTER + sin * (INNER_R + length),
       spoken: Boolean(arc),
-      delay: Math.round(fraction * 900),
+      delay: Math.round(fraction * 620),
     });
   }
   return bars;
 }
 
 type Props = {
-  size?: number;
+  /** Any CSS length. A number is read as pixels. */
+  size?: number | string;
   className?: string;
   /** Play the one-off draw-in. Ambient rotation runs either way. */
   intro?: boolean;
