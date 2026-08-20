@@ -36,7 +36,7 @@ const HeroOptionD = () => {
   const t = useT().home.hero;
   const locale = useLocale();
   const heroVideo = localizedAsset("/videos/hero-demo.mp4", locale);
-  const heroPoster = localizedAsset("/videos/hero-demo-poster.jpg", locale);
+  const heroPoster = localizedAsset("/videos/hero-demo-poster.webp", locale);
   const [loaded, setLoaded] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
