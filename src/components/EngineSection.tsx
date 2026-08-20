@@ -85,7 +85,7 @@ const EngineSection = () => {
             ...textStyle(80),
           }}
         >
-          {t.headlineLine1}
+          {t.headlineLine1}{" "}
           <br />
           <span className="text-calm-lavender-bright">{t.headlineLine2}</span>
         </h2>

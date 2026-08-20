@@ -9,7 +9,7 @@ const TherapistScene = () => {
       eyebrow={t.eyebrow}
       headline={
         <>
-          {t.headlineLine1}
+          {t.headlineLine1}{" "}
           <br />
           <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </>
