@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
+import { readSeed, writeSeed, techniquesKey } from "@/lib/prerender-data";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 import { useLocale, useT, localizedPath } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
@@ -34,29 +35,53 @@ const Shell = ({
 
 export function TechniquesIndexPage() {
   const locale = useLocale();
-  const [techniques, setTechniques] = useState<Technique[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Seeded by the prerenderer so the first client render matches the listing
+  // already painted into the HTML. See lib/prerender-data.
+  const seed = readSeed<Technique[]>(techniquesKey(locale));
+  const [techniques, setTechniques] = useState<Technique[]>(seed ?? []);
+  const [loading, setLoading] = useState(!seed);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadTechniques = async () => {
+    const seeded = readSeed<Technique[]>(techniquesKey(locale));
+    if (seeded) {
+      setTechniques(seeded);
+      setLoading(false);
+    } else {
       setLoading(true);
-      setError(null);
+    }
+    setError(null);
 
+    let cancelled = false;
+
+    const loadTechniques = async () => {
       try {
         const data = await fetchTechniques(locale);
+        if (cancelled) return;
         setTechniques(data);
+        writeSeed(techniquesKey(locale), data);
       } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "Failed to load techniques",
-        );
+        if (cancelled) return;
+        // The seeded listing is already on screen; a failed refresh should not
+        // replace it with an error.
+        if (!seeded) {
+          setError(
+            err instanceof Error ? err.message : "Failed to load techniques",
+          );
+        }
         console.error("Error loading techniques:", err);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
+    // Always refetch so a technique added or renamed in the backend shows up
+    // without a redeploy. Behind a seed this is silent. See TechniquePage.
     loadTechniques();
+
+    return () => {
+      cancelled = true;
+    };
   }, [locale]);
 
   // Group techniques by type

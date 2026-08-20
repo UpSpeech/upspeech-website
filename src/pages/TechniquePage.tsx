@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechnique, type Technique } from "@/lib/api";
+import { readSeed, writeSeed, techniqueKey } from "@/lib/prerender-data";
 import {
   TECHNIQUE_SEO,
   getTechniqueStructuredData,
@@ -29,29 +30,60 @@ const proseClass =
 export function TechniquePage({ slug }: TechniquePageProps) {
   const locale = useLocale();
   const tt = useT().techniquePage;
-  const [technique, setTechnique] = useState<Technique | null>(null);
-  const [loading, setLoading] = useState(true);
+  // The prerenderer bakes this article into the HTML it generates, so on a cold
+  // load the content is already on screen. Starting from the seed means the first
+  // client render matches that markup and hydration adopts the paint instead of
+  // replacing it with a spinner and refetching. A client-side navigation to a
+  // different article finds no seed and fetches, as before.
+  const seed = readSeed<Technique>(techniqueKey(slug, locale));
+  const [technique, setTechnique] = useState<Technique | null>(seed);
+  const [loading, setLoading] = useState(!seed);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadTechnique = async () => {
+    const seeded = readSeed<Technique>(techniqueKey(slug, locale));
+    // Showing the seed straight away also covers navigating back to the seeded
+    // article after reading another one, where the state still holds the article
+    // we moved away from.
+    if (seeded) {
+      setTechnique(seeded);
+      setLoading(false);
+    } else {
       setLoading(true);
-      setError(null);
+    }
+    setError(null);
 
+    let cancelled = false;
+
+    const loadTechnique = async () => {
       try {
         const data = await fetchTechnique(slug, locale);
+        if (cancelled) return;
         setTechnique(data);
+        writeSeed(techniqueKey(slug, locale), data);
       } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "Failed to load technique",
-        );
+        if (cancelled) return;
+        // A seeded page already has its article on screen. A failed refresh is
+        // not a reason to replace it with an error.
+        if (!seeded) {
+          setError(
+            err instanceof Error ? err.message : "Failed to load technique",
+          );
+        }
         console.error("Error loading technique:", err);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
+    // Always refetch, seeded or not, so an article edited in the backend still
+    // reaches readers without a redeploy. With a seed this runs behind the
+    // painted article and changes nothing unless the content actually changed.
     loadTechnique();
+
+    return () => {
+      cancelled = true;
+    };
   }, [slug, locale]);
 
   const staticSeo = TECHNIQUE_SEO[slug];

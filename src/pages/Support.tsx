@@ -56,6 +56,11 @@ const CONTENT: Record<Locale, SupportContent> = {
     emailLabel: "Email support",
     responseTime: "We usually reply within 1 to 2 business days.",
     faqHeading: "Frequently asked questions",
+    // Links inside these answers carry a standing underline, not just one on
+    // hover. They sit mid-sentence, and navy against the body grey is under the
+    // 3:1 that WCAG 1.4.1 requires before colour alone may carry the meaning.
+    // The links in the "More" list further down are their own line and are not
+    // in a text block, so they keep the hover underline.
     faq: [
       {
         q: "How do I get help with my account?",
@@ -64,7 +69,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Email us at{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -88,7 +93,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             our{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               Privacy Policy
             </a>{" "}
@@ -103,7 +108,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             You can request deletion at any time on our{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               account deletion page
             </a>
@@ -118,7 +123,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Sorry about that. Email{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -152,7 +157,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Envie-nos um email para{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -176,7 +181,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Consulte a nossa{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               Política de Privacidade
             </a>{" "}
@@ -191,7 +196,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Pode solicitar a eliminação a qualquer momento na nossa{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               página de eliminação de conta
             </a>
@@ -206,7 +211,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Lamentamos. Envie um email para{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -241,7 +246,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Escríbenos a{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}
@@ -265,7 +270,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Consulta nuestra{" "}
             <a
               href={localizedPath("/privacy", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               Política de Privacidad
             </a>{" "}
@@ -280,7 +285,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Puedes solicitar la eliminación en cualquier momento en nuestra{" "}
             <a
               href={localizedPath("/delete-account", locale)}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               página de eliminación de cuenta
             </a>
@@ -295,7 +300,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Lo sentimos. Escribe a{" "}
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="text-calm-navy hover:underline"
+              className="text-calm-navy underline underline-offset-2"
             >
               {SUPPORT_EMAIL}
             </a>{" "}

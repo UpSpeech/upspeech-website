@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
 import { PlayIcon } from "@heroicons/react/24/outline";
 import { trackButtonClick } from "@/lib/analytics";
 import { useT, useLocale, localizedAsset } from "@/i18n";
@@ -55,6 +56,20 @@ const HeroOptionD = () => {
 
   return (
     <section className="relative min-h-[100svh] bg-calm-light overflow-hidden">
+      {/* The poster is the homepage LCP element. It already carries eager +
+          fetchpriority high, but on a throttled connection it still queued
+          behind the stylesheet, the module preloads and the two fonts: 627ms of
+          load delay before the request even started. Preloading it from <head>
+          puts it at the front of that queue. The path is locale-specific, and
+          each locale gets its own prerendered HTML, so this resolves per page. */}
+      <Helmet>
+        <link
+          rel="preload"
+          as="image"
+          href={heroPoster}
+          fetchPriority="high"
+        />
+      </Helmet>
       <div
         className="pointer-events-none absolute inset-0"
         style={{

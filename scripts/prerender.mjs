@@ -223,11 +223,25 @@ async function renderRoute(page, route) {
 
   // Extract the fully-rendered HTML, keeping #root content intact so
   // crawlers that don't execute JS (Bing, DuckDuckGo) see real page content.
-  // main.tsx uses createRoot (not hydrateRoot) so there are no hydration mismatches.
+  // main.tsx hydrates this markup rather than rebuilding it, so what is written
+  // here has to be what the app's first client render produces. That is why the
+  // backend payloads are baked in below: without them the data-driven pages
+  // start on their loading state, mismatch, and lose the paint.
   const html = await page.evaluate(() => {
-    // Remove transient UI elements that shouldn't be in static HTML
+    // Remove transient UI elements that shouldn't be in static HTML.
+    //
+    // The consent banner mounts a second after the page does, so whether it
+    // landed in a build was a race with how long the route took to settle: it
+    // was baked into the homepage and not into the other 65 pages. Consent lives
+    // in localStorage, so the banner is browser-only by definition and never
+    // belongs in a static file.
+    //
+    // The sonner container used to be stripped here too. It is rendered inside
+    // #root, so removing it left the HTML missing an <ol> that the app renders
+    // on its first pass, and hydration bailed out to a full client render on
+    // every page. It is an empty list; leaving it costs a few bytes.
     document
-      .querySelectorAll("[data-sonner-toaster], [aria-label*='Notifications']")
+      .querySelectorAll("[data-consent-banner]")
       .forEach((el) => el.remove());
 
     // Analytics loaders inject their own <script> at runtime, and serializing
@@ -250,6 +264,20 @@ async function renderRoute(page, route) {
     document.querySelectorAll("script[src]").forEach((el) => {
       if (INJECTED_SRC.test(el.getAttribute("src") || "")) el.remove();
     });
+
+    // Bake in whatever the page fetched while rendering (see
+    // src/lib/prerender-data.ts). Without this the visitor's browser refetches
+    // it, and the article on screen is replaced by a spinner until the response
+    // lands: measured at 4.2s LCP against a 1.7s first paint.
+    const seeds = window.__PRERENDER_DATA__;
+    if (seeds && Object.keys(seeds).length > 0) {
+      const el = document.createElement("script");
+      el.type = "application/json";
+      el.id = "__PRERENDER_DATA__";
+      // Escaping "<" keeps a "</script>" inside the content from closing the tag.
+      el.textContent = JSON.stringify(seeds).replace(/</g, "\\u003c");
+      document.head.appendChild(el);
+    }
 
     return document.documentElement.outerHTML;
   });
