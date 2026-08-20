@@ -2,7 +2,6 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import HeroOptionD from "@/components/HeroOptionD";
 import WeekInPhotos from "@/components/WeekInPhotos";
-import GapSection from "@/components/GapSection";
 import InterstitialCTA from "@/components/InterstitialCTA";
 import HandoffScene from "@/components/HandoffScene";
 import TherapistScene from "@/components/TherapistScene";
@@ -27,7 +26,6 @@ const Index = () => {
       <main id="main">
         <HeroOptionD />
         <WeekInPhotos />
-        <GapSection />
         <div id="features">
           <HandoffScene />
           <TherapistScene />
