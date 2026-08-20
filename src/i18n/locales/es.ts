@@ -75,6 +75,8 @@ export const es: Dictionary = {
     seoDescription:
       "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones según el plan de su terapeuta, y cada intento vuelve para revisión.",
     hero: {
+      photoAlt:
+        "Una mujer en la mesa de su cocina sosteniendo el teléfono frente a ella, diciendo un ejercicio en voz alta a última hora de la tarde",
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
       headlineLine2: "sigue",
@@ -105,6 +107,44 @@ export const es: Dictionary = {
       plusPractice: "+ Práctica",
       footerPrefix: "El paciente cuenta con apoyo todos los días,",
       footerEmphasis: "sin añadir sesiones a la agenda del logopeda.",
+    },
+    week: {
+      eyebrow: "Entre las sesiones",
+      headline: "La mayor parte de la terapia ocurre cuando nadie mira.",
+      body: "Una hora en la clínica y luego seis días por tu cuenta. La parte que decide si la terapia funciona es la que el clínico nunca ve.",
+      frames: [
+        {
+          day: "Jueves",
+          caption: "La sesión. En la sala todo sale bien.",
+          alt: "Una logopeda explicando algo a un paciente que escucha, sentados uno frente al otro en una sala sencilla",
+        },
+        {
+          day: "Sábado",
+          caption: "Solo con la hoja. Sin saber si lo está haciendo bien.",
+          alt: "Un joven sentado solo a la mesa en casa, con una hoja de ejercicios en la mano y expresión de duda",
+        },
+        {
+          day: "Lunes",
+          caption: "Suena el teléfono. Lo deja sonar.",
+          alt: "Un joven de pie en el pasillo mirando un teléfono que suena sobre una mesa auxiliar, sin cogerlo",
+        },
+        {
+          day: "Jueves siguiente",
+          caption: "Y bien, ¿qué tal la semana? Nadie lo sabe del todo.",
+          alt: "Una logopeda haciendo una pregunta inicial mientras el paciente responde con un gesto de duda",
+        },
+      ],
+      traceLabel: "Seis días sin nada registrado",
+    },
+    handoff: {
+      eyebrow: "Grabado en casa, revisado en la clínica",
+      headline: "Él lo grabó el sábado.",
+      headlineEmphasis: "Ella lo vio el lunes.",
+      body: "El paciente practica en casa y el intento llega directamente a su logopeda, que lo revisa, marca lo que ha cambiado y decide el siguiente paso. El software está entre dos personas. No sustituye a ninguna.",
+      cardTitle: "Revisión de la grabación",
+      cardMeta: "Revisado por el clínico, no por un modelo",
+      patientAlt: "Un joven mirando el teléfono que sostiene, practicando en casa",
+      clinicianAlt: "Una logopeda mirando una grabación en su teléfono, revisando el intento de un paciente",
     },
     therapist: {
       eyebrow: "En la consulta",

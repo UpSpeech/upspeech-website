@@ -75,6 +75,8 @@ export const pt: Dictionary = {
     seoDescription:
       "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo o plano do terapeuta, e cada tentativa volta para revisão.",
     hero: {
+      photoAlt:
+        "Uma mulher à mesa da cozinha, com o telemóvel à frente, a dizer um exercício em voz alta ao fim da tarde",
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A sua terapia",
       headlineLine2: "continua",
@@ -105,6 +107,44 @@ export const pt: Dictionary = {
       plusPractice: "+ Prática",
       footerPrefix: "O paciente mantém o seu apoio todos os dias,",
       footerEmphasis: "sem acrescentar sessões à semana do clínico.",
+    },
+    week: {
+      eyebrow: "Entre as sessões",
+      headline: "A maior parte da terapia acontece quando ninguém está a ver.",
+      body: "Uma hora na clínica e depois seis dias sozinho. A parte que decide se a terapia resulta é a parte que o clínico nunca vê.",
+      frames: [
+        {
+          day: "Quinta",
+          caption: "A sessão. Na sala corre tudo bem.",
+          alt: "Uma terapeuta da fala a explicar algo a um paciente que escuta, sentados frente a frente numa sala simples",
+        },
+        {
+          day: "Sábado",
+          caption: "Sozinho com a folha. Sem saber se está a fazer bem.",
+          alt: "Um jovem sentado sozinho à mesa em casa, com uma folha de exercícios na mão e um ar incerto",
+        },
+        {
+          day: "Segunda",
+          caption: "O telemóvel toca. Ele deixa tocar.",
+          alt: "Um jovem parado no corredor a olhar para um telemóvel a tocar numa mesa de apoio, sem o atender",
+        },
+        {
+          day: "Quinta seguinte",
+          caption: "Então, como correu a semana? Ninguém sabe bem.",
+          alt: "Uma terapeuta a fazer uma pergunta inicial enquanto o paciente responde com um gesto de dúvida",
+        },
+      ],
+      traceLabel: "Seis dias sem nada registado",
+    },
+    handoff: {
+      eyebrow: "Gravado em casa, revisto na clínica",
+      headline: "Ele gravou no sábado.",
+      headlineEmphasis: "Ela viu na segunda.",
+      body: "O paciente pratica em casa e a tentativa segue directamente para o terapeuta, que a revê, marca o que mudou e decide o passo seguinte. O software fica entre duas pessoas. Não substitui nenhuma delas.",
+      cardTitle: "Revisão da gravação",
+      cardMeta: "Revisto pelo clínico, não por um modelo",
+      patientAlt: "Um jovem a olhar para o telemóvel que segura, a praticar em casa",
+      clinicianAlt: "Uma terapeuta da fala a olhar para uma gravação no telemóvel, a rever a tentativa de um paciente",
     },
     therapist: {
       eyebrow: "Na consulta",
