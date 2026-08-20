@@ -29,6 +29,7 @@ cadence, and formats differ per platform.
 marketing/
 ├── README.md                  this file
 ├── brand-voice.md             shared voice + the sensitivity rules for stuttering content
+├── gtm-laws.md                the 48 Laws of SaaS, triaged for a clinical B2B2C product
 ├── creative-concepts.md       out-of-the-box campaign and post ideas
 ├── aeo.md                     Answer Engine Optimization (ChatGPT / Perplexity / Gemini)
 ├── instagram/
@@ -88,3 +89,9 @@ read [`brand-voice.md`](brand-voice.md). The short version: never promise
 clinical outcomes or cures, never mock or imitate stuttering, never imply
 fluency is the goal, and never use a real patient or session without written
 consent.
+
+The same caution applies to imported growth advice.
+[`gtm-laws.md`](gtm-laws.md) takes a widely shared B2B SaaS list and sorts all
+48 of its laws into adopt, rewrite, reject, and not yet, with the reason
+recorded for each. Five of them are actively harmful for a product holding
+patient data, and they are written down so nobody re-imports them later.
