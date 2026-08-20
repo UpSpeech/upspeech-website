@@ -866,3 +866,97 @@
     opacity: 1;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   SpeechRing
+
+   A speech envelope bent into a circle: bars radiate outward where someone was
+   speaking, and lie flat where they were not. The ring turns slowly, once per
+   48 seconds, which is slow enough to read as ambient rather than as a spinner.
+
+   The draw-in staggers each bar by its position around the circle, so the ring
+   is written the way a recording is: start to finish, clockwise.
+--------------------------------------------------------------------------- */
+.speech-ring__svg {
+  animation: speech-ring-turn 48s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.speech-ring__bar {
+  stroke: #6866c4;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.speech-ring__bar--quiet {
+  stroke: rgba(75, 78, 78, 0.28);
+  stroke-width: 2;
+}
+
+.speech-ring--intro .speech-ring__bar {
+  opacity: 0;
+  animation: speech-ring-draw 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--bar-delay, 0ms);
+}
+
+@keyframes speech-ring-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes speech-ring-draw {
+  from {
+    opacity: 0;
+    transform: scale(0.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Intro overlay
+
+   Shown once per browsing session, never to a reader who has asked for less
+   motion, and removed from the DOM once it has finished so it cannot trap
+   focus or intercept a click.
+--------------------------------------------------------------------------- */
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: #f6f6f6;
+  animation: site-intro-out 520ms cubic-bezier(0.22, 1, 0.36, 1) 1500ms forwards;
+}
+
+.site-intro__word {
+  opacity: 0;
+  animation: site-intro-word 700ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
+}
+
+@keyframes site-intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes site-intro-word {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

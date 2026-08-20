@@ -1,4 +1,5 @@
 import { SEO } from "@/components/SEO";
+import SiteIntro from "@/components/SiteIntro";
 import Header from "@/components/Header";
 import HeroOptionD from "@/components/HeroOptionD";
 import WeekInPhotos from "@/components/WeekInPhotos";
@@ -22,6 +23,7 @@ const Index = () => {
   return (
     <div className="min-h-screen font-body">
       <SEO path="/" locale={locale} description={t.home.seoDescription} />
+      <SiteIntro />
       <Header />
       <main id="main">
         <HeroOptionD />

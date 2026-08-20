@@ -59,6 +59,8 @@ const HeroOptionD = () => {
   const [loaded, setLoaded] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [ambient, setAmbient] = useState(false);
+  const [ambientReady, setAmbientReady] = useState(false);
 
   useEffect(() => {
     const t = window.setTimeout(() => setLoaded(true), 80);
@@ -70,6 +72,24 @@ const HeroOptionD = () => {
       window.clearTimeout(t);
       mq.removeEventListener("change", apply);
     };
+  }, []);
+
+  // The photograph is the LCP element, so the ambient clip is mounted only
+  // after the page has finished loading and never competes for that paint.
+  // Phones do not get it at all: it buys almost nothing at that size and the
+  // subject is a different frame there anyway.
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 768px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!wide.matches || reduce.matches) return;
+
+    const start = () => setAmbient(true);
+    if (document.readyState === "complete") {
+      const id = window.setTimeout(start, 300);
+      return () => window.clearTimeout(id);
+    }
+    window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
   }, []);
 
   return (
@@ -122,6 +142,28 @@ const HeroOptionD = () => {
           className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center md:h-full"
         />
       </picture>
+
+      {/* Five seconds of almost nothing: she breathes, blinks once, the light
+          moves. Generated from the poster frame, so there is no jump when it
+          fades in. 120KB, because a near-static scene compresses to nearly
+          nothing. */}
+      {ambient && (
+        <video
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000"
+          style={{ opacity: ambientReady ? 1 : 0 }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+          onCanPlay={() => setAmbientReady(true)}
+        >
+          <source src="/videos/hero-ambient.webm" type="video/webm" />
+          <source src="/videos/hero-ambient.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Two scrims, because the copy sits beside the subject on a wide screen
           and on top of her on a phone. */}
