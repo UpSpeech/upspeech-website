@@ -11,18 +11,24 @@ const IMAGES = [
 ];
 
 /**
- * The four days the clinic never sees, as photographs.
+ * The four days the clinic never sees, as photographs, and then the same week
+ * as a pair of speech traces.
  *
- * Sits before GapSection on purpose: this is the week as a person experiences
- * it, and GapSection is then the same week as a cadence chart. Human first,
- * abstraction second.
+ * This replaced GapSection, which spent 1,620px and a sticky scroll on exactly
+ * this comparison rendered as abstract tiles with no people in it. The photos
+ * carry the week and the two traces carry the argument, so the page makes the
+ * point once instead of twice.
  */
 const WeekInPhotos = () => {
   const t = useT().home.week;
+  // The cadence labels come from the old GapSection block, which is already
+  // translated in all three locales and carries the sharpest line on the site.
+  const cadence = useT().home.gap;
   const { ref, revealed } = useReveal<HTMLElement>({ threshold: 0.12 });
 
   return (
     <section
+      id="how-it-works"
       ref={ref}
       className="relative bg-calm-light py-[clamp(4rem,9vw,7rem)]"
     >
@@ -82,14 +88,46 @@ const WeekInPhotos = () => {
           ))}
         </div>
 
+        {/* The same week twice, as the recordings actually land. This replaces
+            the 1,620px scroll-driven chart that used to sit in its own section
+            below: it made exactly this comparison, in abstract tiles, with no
+            people in it. The labels are that section's own strings. */}
         <div
-          className="mt-[clamp(2rem,4vw,3rem)]"
+          className="mt-[clamp(2.5rem,5vw,4rem)] overflow-hidden rounded-xl border border-calm-charcoal/10 bg-white"
           style={revealFrom(revealed, "up", 620)}
         >
-          <SpeechTrace variant="gap" height={56} label={t.traceLabel} />
-          <p className="mt-3 font-body text-xs uppercase tracking-[0.18em] text-calm-charcoal/60">
-            {t.traceLabel}
-          </p>
+          <div className="p-5 sm:p-7">
+            <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
+              <span className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-calm-charcoal/80">
+                {cadence.traditional}
+              </span>
+              <span className="font-body text-xs tabular-nums text-calm-charcoal/80 sm:text-sm">
+                {cadence.traditionalCadence}
+              </span>
+            </div>
+            <SpeechTrace
+              variant="gap"
+              height={52}
+              label={cadence.traditionalCadence}
+            />
+          </div>
+
+          <div className="border-t border-calm-charcoal/10 bg-calm-lavender/20 p-5 sm:p-7">
+            <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
+              <span className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-calm-lavender-ink">
+                {cadence.withUpspeech}
+              </span>
+              <span className="font-body text-xs font-semibold tabular-nums text-calm-navy sm:text-sm">
+                {cadence.fullCadence}
+              </span>
+            </div>
+            <SpeechTrace
+              variant="continuous"
+              height={52}
+              label={cadence.fullCadence}
+              silentColor="rgba(75,78,78,0.16)"
+            />
+          </div>
         </div>
       </div>
     </section>
