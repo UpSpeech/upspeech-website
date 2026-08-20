@@ -28,7 +28,13 @@ const Line = ({
         opacity: loaded ? 1 : 0,
       }}
     >
-      {children}
+      {/* The three lines of the headline are separate block boxes with nothing
+          between them, so textContent ran them together: the homepage h1 read
+          "Your therapykeeps goingbetween sessions." to anything extracting text
+          rather than laying it out, crawlers and answer engines included. A
+          trailing space is dropped at the end of a line, so this costs nothing
+          visually. */}
+      {children}{" "}
     </span>
   </span>
 );

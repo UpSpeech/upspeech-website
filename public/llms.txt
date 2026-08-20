@@ -10,7 +10,7 @@ UpSpeech provides evidence-based information about stuttering and speech therapy
 
 ### Stuttering Modification
 
-Techniques that change how a person stutters — making stuttering moments easier and less tense.
+Techniques that change how a person stutters, making stuttering moments easier and less tense.
 
 - [Voluntary Stuttering](https://upspeech.app/techniques/voluntary-stuttering): Intentionally stuttering in a controlled way to reduce fear, shame, and avoidance behaviors.
 - [Cancellation](https://upspeech.app/techniques/cancelation): Pausing after a stuttered word, identifying what went wrong, and repeating it with easier speech.
@@ -31,6 +31,21 @@ Techniques that change overall speech production patterns to promote smoother, m
 ### Cognitive Approaches
 
 - [Identification & Desensitization](https://upspeech.app/techniques/identification-desensitization): Recognizing stuttering patterns and reducing emotional reactions to disfluency through structured exposure.
+
+## How UpSpeech Works
+
+- [For Patients](https://upspeech.app/for-patients): What structured between-session practice looks like for someone in speech therapy, and how a therapist stays in the loop.
+- [For Speech-Language Pathologists](https://upspeech.app/for-slps): How clinicians assign practice, review what happened between sessions, and get AI-drafted reports to edit.
+- [Person-Centered Therapy](https://upspeech.app/person-centered-therapy): What person-centered means in stuttering treatment, and why the goal is not always fluency.
+- [Reducing Documentation Time](https://upspeech.app/reducing-documentation-time): How session reports are drafted from recorded practice for the therapist to review and correct.
+- [Support](https://upspeech.app/support): Answers to common questions about accounts, data, privacy, and getting help.
+
+## Other Languages
+
+The whole site is published in European Portuguese and peninsular Spanish under
+a locale prefix. Any path above also exists at /pt/... and /es/..., for example
+https://upspeech.app/pt/techniques/cancelation and
+https://upspeech.app/es/techniques/cancelation.
 
 ## Optional
 
