@@ -225,6 +225,8 @@ export const en = {
         "UpSpeech mobile app practice screen with guided practice exercises",
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
       ],
+      familyAlt:
+        "A father and his daughter at a dining table, the girl speaking toward a phone propped on a stand while he sits beside her, watching her rather than the screen",
     },
     cycle: {
       eyebrow: "The loop",

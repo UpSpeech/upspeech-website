@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
+import PagePortrait from "./PagePortrait";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
@@ -141,6 +142,23 @@ const MobileAppBand = () => {
           >
             {t.body}
           </p>
+
+          {/* The patients using this are not all adults, and until now the
+              homepage only showed adults. This column is otherwise empty on a
+              wide screen next to a 600px phone fan, so the family sits here
+              rather than costing the page a section of its own.
+
+              Its own frame, deliberately: /for-patients already carries two
+              guardian photographs, and repeating one of them across two pages
+              is the duplication this redesign set out to remove. */}
+          <PagePortrait
+            name="home-family"
+            aspect="4/3"
+            height={675}
+            sizes="(min-width: 1024px) 420px, min(420px, 90vw)"
+            alt={t.familyAlt}
+            className="mt-9 w-full max-w-[420px]"
+          />
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
           <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">

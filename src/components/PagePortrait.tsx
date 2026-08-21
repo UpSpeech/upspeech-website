@@ -27,6 +27,7 @@ const ASPECT = {
   "3/4": "aspect-[3/4]",
   "4/5": "aspect-[4/5]",
   "1/1": "aspect-[1/1]",
+  "4/3": "aspect-[4/3]",
 } as const;
 
 type Props = {
@@ -52,6 +53,8 @@ type Props = {
    * is taller than the copy in it.
    */
   aspect?: keyof typeof ASPECT;
+  /** Intrinsic height of the 900w source, so the box reserves the right space. */
+  height?: number;
   className?: string;
 };
 
@@ -61,6 +64,7 @@ const PagePortrait = ({
   priority = false,
   sizes,
   aspect = "3/4",
+  height = 1132,
   className = "",
 }: Props) => (
   <div className={`overflow-hidden rounded-xl bg-calm-charcoal/5 ${className}`}>
@@ -74,7 +78,7 @@ const PagePortrait = ({
       sizes={sizes}
       alt={alt}
       width={900}
-      height={1132}
+      height={height}
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : undefined}
       decoding="async"
