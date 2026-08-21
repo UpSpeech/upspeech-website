@@ -427,6 +427,14 @@ export const pt: Dictionary = {
       headlineLine1: "A sua prática,",
       headlineLine2: "entre sessões.",
       body: "A UpSpeech é como continua a praticar, entre consultas, o trabalho que faz com o seu terapeuta da fala. O seu terapeuta define o plano e acompanha como está a correr enquanto pratica na app.",
+      photoAlt:
+        "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
+    },
+    withAParent: {
+      eyebrow: "Praticar com um dos pais",
+      line: "Os pacientes mais novos praticam com um dos pais ao lado, seguindo o mesmo plano definido pelo terapeuta.",
+      photoAlt:
+        "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
     },
     howItWorks: {
       eyebrow: "Como funciona para si",
@@ -621,6 +629,8 @@ export const pt: Dictionary = {
       headlineLine1: "Mais terapia entre sessões.",
       headlineLine2: "Tudo orientado por si.",
       body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolher. Saberá como correu a semana antes de o paciente se sentar.",
+      photoAlt:
+        "Uma terapeuta da fala à secretária, a rever a gravação de um paciente no portátil",
     },
     documentation: {
       eyebrow: "Documentação",
@@ -651,6 +661,8 @@ export const pt: Dictionary = {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
       body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
+      photoAlt:
+        "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",

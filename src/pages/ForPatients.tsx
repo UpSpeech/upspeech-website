@@ -7,6 +7,7 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import PagePortrait from "@/components/PagePortrait";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
@@ -70,23 +71,37 @@ export default function ForPatients() {
             }}
           />
           <div className="relative max-w-6xl mx-auto">
-            <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
-              >
-                {t.intro.headlineLine1} <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
-              </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
-                {t.intro.body}
-              </p>
+            {/* Two columns from lg up. The right half of this fold used to be
+                empty, which is what made the page read as a document rather
+                than the front of a product. */}
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+              <div>
+                <p className={eyebrowClass}>{t.intro.eyebrow}</p>
+                <h1
+                  className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                  style={{
+                    fontSize: "clamp(2.25rem, 6vw, 4rem)",
+                    lineHeight: 1.05,
+                  }}
+                >
+                  {t.intro.headlineLine1}{" "}
+                  <br />
+                  <span className="text-calm-lavender-ink">
+                    {t.intro.headlineLine2}
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                  {t.intro.body}
+                </p>
+              </div>
+              <PagePortrait
+                name="patients-hero"
+                aspect="1/1"
+                sizes="(min-width: 1024px) 450px, min(380px, 90vw)"
+                alt={t.intro.photoAlt}
+                priority
+                className="mx-auto w-full max-w-[380px] lg:mr-0 lg:max-w-[460px]"
+              />
             </div>
           </div>
         </section>
@@ -127,6 +142,32 @@ export default function ForPatients() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Practicing with a parent.
+            One sentence, deliberately. The product has no guardian seat: a
+            patient is one login assigned to one therapist. What is true today
+            is that a parent sits with a younger patient and works the plan the
+            therapist set, so that is the whole of what this says. */}
+        <section className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
+          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,300px),1fr] sm:gap-12">
+            <PagePortrait
+              name="patients-listen"
+              aspect="1/1"
+              sizes="min(300px, 90vw)"
+              alt={t.withAParent.photoAlt}
+              className="w-full max-w-[300px]"
+            />
+            <div>
+              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
+              <p
+                className="mt-4 max-w-xl font-accent font-medium text-calm-charcoal leading-snug"
+                style={{ fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)" }}
+              >
+                {t.withAParent.line}
+              </p>
             </div>
           </div>
         </section>
