@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import PagePortrait from "@/components/PagePortrait";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forSlps.betweenSessions.steps).
@@ -62,24 +63,36 @@ export default function ForSlps() {
             }}
           />
           <div className="relative max-w-6xl mx-auto">
-            <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
-              >
-                {t.intro.headlineLine1}{" "}
-                <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
-              </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
-                {t.intro.body}
-              </p>
+            {/* Two columns from lg up, matching /for-patients. Both pages had a
+                text block against an empty right half. */}
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+              <div>
+                <p className={eyebrowClass}>{t.intro.eyebrow}</p>
+                <h1
+                  className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                  style={{
+                    fontSize: "clamp(2.25rem, 6vw, 4rem)",
+                    lineHeight: 1.05,
+                  }}
+                >
+                  {t.intro.headlineLine1}{" "}
+                  <br />
+                  <span className="text-calm-lavender-ink">
+                    {t.intro.headlineLine2}
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                  {t.intro.body}
+                </p>
+              </div>
+              <PagePortrait
+                name="slps-hero"
+                aspect="4/5"
+                sizes="(min-width: 1024px) 450px, min(380px, 90vw)"
+                alt={t.intro.photoAlt}
+                priority
+                className="mx-auto w-full max-w-[380px] lg:mr-0 lg:max-w-[450px]"
+              />
             </div>
           </div>
         </section>
@@ -168,19 +181,33 @@ export default function ForSlps() {
         {/* Person-centered */}
         <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
           <div className="max-w-6xl mx-auto rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
-            <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
-            <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                lineHeight: 1.1,
-              }}
-            >
-              {t.personCentered.headline}
-            </h2>
-            <p className="mt-4 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
-              {t.personCentered.body}
-            </p>
+            <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
+              <div>
+                <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
+                <h2
+                  className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+                  style={{
+                    fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {t.personCentered.headline}
+                </h2>
+                <p className="mt-4 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+                  {t.personCentered.body}
+                </p>
+              </div>
+              {/* A child, a parent and the clinician in one frame. This is the
+                  page a clinic owner reads, so the pediatric case is worth
+                  showing here rather than describing. */}
+              <PagePortrait
+                name="slps-family"
+                aspect="1/1"
+                sizes="(min-width: 1024px) 320px, min(320px, 90vw)"
+                alt={t.personCentered.photoAlt}
+                className="w-full max-w-[320px] lg:ml-auto"
+              />
+            </div>
           </div>
         </section>
 

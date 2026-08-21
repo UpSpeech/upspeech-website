@@ -426,6 +426,14 @@ export const en = {
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
       body: "UpSpeech is how you keep practicing the work you do with your speech therapist between appointments. Your therapist sets the plan and follows how it's going while you practice in the app.",
+      photoAlt:
+        "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
+    },
+    withAParent: {
+      eyebrow: "Practicing with a parent",
+      line: "Younger patients practice with a parent alongside them, working through the same plan their therapist set.",
+      photoAlt:
+        "A father and his daughter sitting together on a sofa, listening back to a recording on his phone",
     },
     howItWorks: {
       eyebrow: "How it works for you",
@@ -618,6 +626,8 @@ export const en = {
       headlineLine1: "More therapy between sessions.",
       headlineLine2: "All of it directed by you.",
       body: "UpSpeech gives your patients guided practice they actually do between appointments, on the techniques you choose. You will know how their week went before they sit down.",
+      photoAlt:
+        "A speech-language pathologist at her desk, reviewing a patient recording on a laptop",
     },
     documentation: {
       eyebrow: "Documentation",
@@ -648,6 +658,8 @@ export const en = {
       eyebrow: "Our approach",
       headline: "Encouraging by design.",
       body: "The app is built around confidence and being heard. The practice is designed to encourage rather than correct.",
+      photoAlt:
+        "A speech-language pathologist talking with a young boy in a clinic room, his mother sitting just behind him",
     },
     faq: {
       eyebrow: "Questions from clinicians",

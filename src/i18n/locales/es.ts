@@ -427,6 +427,14 @@ export const es: Dictionary = {
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
       body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan y ve cómo va todo mientras tú practicas en la app.",
+      photoAlt:
+        "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
+    },
+    withAParent: {
+      eyebrow: "Practicar con un padre o una madre",
+      line: "Los pacientes más jóvenes practican con un padre o una madre a su lado, siguiendo el mismo plan que ha definido su logopeda.",
+      photoAlt:
+        "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
     },
     howItWorks: {
       eyebrow: "Cómo funciona para ti",
@@ -620,6 +628,8 @@ export const es: Dictionary = {
       headlineLine1: "Más terapia entre sesiones.",
       headlineLine2: "Y todo lo diriges tú.",
       body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
+      photoAlt:
+        "Una logopeda en su escritorio, revisando la grabación de un paciente en el portátil",
     },
     documentation: {
       eyebrow: "Documentación",
@@ -650,6 +660,8 @@ export const es: Dictionary = {
       eyebrow: "Nuestro enfoque",
       headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
+      photoAlt:
+        "Una logopeda hablando con un niño en una sala de consulta, con su madre sentada justo detrás de él",
     },
     faq: {
       eyebrow: "Preguntas de profesionales",
