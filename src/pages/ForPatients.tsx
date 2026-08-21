@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import PagePortrait from "@/components/PagePortrait";
+import GuardianMark from "@/components/GuardianMark";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 
@@ -161,7 +162,10 @@ export default function ForPatients() {
               className="w-full max-w-[300px]"
             />
             <div>
-              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
+              <p className={`${eyebrowClass} flex items-center gap-2`}>
+                <GuardianMark className="text-calm-navy/70" />
+                {t.withAParent.eyebrow}
+              </p>
               <p
                 className="mt-4 max-w-xl font-accent font-medium text-calm-charcoal leading-snug"
                 style={{ fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)" }}
