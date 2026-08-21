@@ -14,8 +14,6 @@ export const LOCALIZED_ASSETS: ReadonlySet<string> = new Set([
   "es|/screenshots/mobile/patient-home-device.webp",
   "es|/screenshots/mobile/patient-journey-device.webp",
   "es|/screenshots/mobile/patient-practice-device.webp",
-  "es|/videos/hero-demo-poster.webp",
-  "es|/videos/hero-demo.mp4",
   "pt|/screenshots/app/cbsa-severity-trend.png",
   "pt|/screenshots/app/client-dashboard.png",
   "pt|/screenshots/app/therapist-dashboard.png",
@@ -26,6 +24,4 @@ export const LOCALIZED_ASSETS: ReadonlySet<string> = new Set([
   "pt|/screenshots/mobile/patient-home-device.webp",
   "pt|/screenshots/mobile/patient-journey-device.webp",
   "pt|/screenshots/mobile/patient-practice-device.webp",
-  "pt|/videos/hero-demo-poster.webp",
-  "pt|/videos/hero-demo.mp4",
 ]);
