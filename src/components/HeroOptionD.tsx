@@ -74,11 +74,17 @@ const HeroOptionD = () => {
     };
   }, []);
 
-  // The photograph is the LCP element, so the ambient clip is mounted only
-  // after the page has finished loading and never competes for that paint.
-  // Phones do not get it at all: it buys almost nothing at that size and the
-  // subject is a different frame there anyway.
+  // Mounted only after the page has finished loading, so it never competes
+  // for the first paint. Phones do not get it at all: it buys almost nothing
+  // at that size and the subject is a different frame there anyway.
+  //
+  // The prerender bail-out is load-bearing. Prerender waits for networkidle0,
+  // which is after window.load, so without it this mounted during the scrape
+  // and the <video preload="auto"> was written into the static HTML of all
+  // three home pages. Every mobile visitor then downloaded 159KB of video for
+  // an element hydration immediately removed.
   useEffect(() => {
+    if ((window as { __PRERENDER__?: boolean }).__PRERENDER__) return;
     const wide = window.matchMedia("(min-width: 768px)");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!wide.matches || reduce.matches) return;
@@ -94,10 +100,21 @@ const HeroOptionD = () => {
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-calm-charcoal">
-      {/* The photograph is the LCP element now, so it gets the preload that
-          used to belong to the demo poster. Both breakpoints are preloaded
-          under a `media` guard, otherwise a phone pays for the 1920px file it
-          will never display. */}
+      {/* Chrome does not treat a viewport-covering image as an LCP candidate.
+          It reads it as the page background and skips it, so this photograph
+          can never be the LCP element however fast it arrives. Measured: at
+          1350x940 it paints at 1.27M square pixels and still loses to the
+          62,698 square pixel demo poster in the same frame.
+
+          So the poster keeps the high-priority preload it had before the
+          photograph existed, because on a wide screen it is still what LCP
+          actually measures. Handing that priority to the photograph pushed
+          desktop LCP from 1.44s to 2.28s.
+
+          On a phone the poster is a small card below the copy and is not the
+          LCP element, so there the photograph takes the priority instead. Each
+          preload is behind a `media` guard, otherwise a phone pays for a file
+          it will never display. */}
       <Helmet>
         <link
           rel="preload"
@@ -109,11 +126,17 @@ const HeroOptionD = () => {
         <link
           rel="preload"
           as="image"
+          href={heroPoster}
+          media={WIDE}
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
           href={PHOTO_WIDE_FALLBACK}
           imageSrcSet={PHOTO_WIDE_SRCSET}
           imageSizes="100vw"
           media={WIDE}
-          fetchPriority="high"
         />
       </Helmet>
 
