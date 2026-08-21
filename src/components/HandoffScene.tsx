@@ -30,6 +30,20 @@ const MARKS = [
   { from: 0.66, to: 0.7 },
 ];
 
+/**
+ * The cut-outs render at 300px on a phone and 344px on a wide screen, so even
+ * a DPR 3 phone never needs the full 900w file. Alpha makes these the two
+ * heaviest assets on the page, so the widths are worth having.
+ */
+const cutout = (name: string) => ({
+  src: `/images/people/${name}.webp`,
+  srcSet:
+    `/images/people/${name}-480.webp 480w, ` +
+    `/images/people/${name}-688.webp 688w, ` +
+    `/images/people/${name}.webp 900w`,
+  sizes: "(min-width: 1024px) 344px, 300px",
+});
+
 const SPEECH = "#BEB8F6";
 const SILENCE = "rgba(255,255,255,0.2)";
 
@@ -100,7 +114,7 @@ const HandoffScene = () => {
           {/* Saturday. The recording as he made it. */}
           <figure className="m-0" style={revealFrom(revealed, "up", 240, 24)}>
             <img
-              src="/images/people/handoff-patient.webp"
+              {...cutout("handoff-patient")}
               alt={t.patientAlt}
               width={900}
               height={1132}
@@ -139,7 +153,7 @@ const HandoffScene = () => {
           {/* Monday. The same two minutes, with her marks on it. */}
           <figure className="m-0" style={revealFrom(revealed, "up", 340, 24)}>
             <img
-              src="/images/people/handoff-clinician.webp"
+              {...cutout("handoff-clinician")}
               alt={t.clinicianAlt}
               width={900}
               height={1132}

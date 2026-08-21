@@ -152,6 +152,27 @@ export const es: Dictionary = {
       reviewedTraceLabel:
         "La misma forma de onda, con dos momentos marcados por la logopeda en 00:53 y 01:22",
       marks: ["00:53 · SR", "01:22 · MUR"],
+      howTo: {
+        name: "Cómo la práctica entre sesiones llega al logopeda",
+        steps: [
+          {
+            name: "Grabar el intento en casa",
+            text: "El paciente graba un intento con el móvil, siguiendo el plan que fijó su logopeda.",
+          },
+          {
+            name: "La grabación llega al logopeda",
+            text: "El intento va directamente a su logopeda, sin necesidad de una cita intermedia.",
+          },
+          {
+            name: "El logopeda la revisa y marca lo que ha cambiado",
+            text: "El logopeda ve la grabación y marca los momentos que han cambiado, con marca de tiempo.",
+          },
+          {
+            name: "El logopeda decide el siguiente paso",
+            text: "El siguiente paso del plan se elige a partir de lo que mostró la grabación.",
+          },
+        ],
+      },
       reviewedCaption:
         "Dos momentos marcados. Revisado por el clínico, no por un modelo.",
       patientAlt: "Un joven mirando el teléfono que sostiene, practicando en casa",

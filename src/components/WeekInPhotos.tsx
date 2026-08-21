@@ -4,11 +4,22 @@ import SpeechTrace from "./SpeechTrace";
 import { useT } from "@/i18n";
 
 const IMAGES = [
-  "/images/people/week-session.webp",
-  "/images/people/week-alone.webp",
-  "/images/people/week-phone.webp",
-  "/images/people/week-next.webp",
+  "week-session",
+  "week-alone",
+  "week-phone",
+  "week-next",
 ];
+
+/**
+ * These render at about 163px on a phone and 266px on a wide screen, so the
+ * 720w file is two to four times more image than a phone can use. Measured:
+ * the strip cost 122KB at one width and 43KB across the three.
+ */
+const srcSet = (name: string) =>
+  `/images/people/${name}-400.webp 400w, ` +
+  `/images/people/${name}-560.webp 560w, ` +
+  `/images/people/${name}.webp 720w`;
+const SIZES = "(min-width: 1024px) 266px, 42vw";
 
 /**
  * The four days the clinic never sees, as photographs, and then the same week
@@ -67,7 +78,9 @@ const WeekInPhotos = () => {
             >
               <div className="overflow-hidden rounded-xl bg-calm-charcoal/5">
                 <img
-                  src={IMAGES[i]}
+                  src={`/images/people/${IMAGES[i]}.webp`}
+                  srcSet={srcSet(IMAGES[i])}
+                  sizes={SIZES}
                   alt={frame.alt}
                   width={720}
                   height={964}
