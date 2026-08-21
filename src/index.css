@@ -892,8 +892,9 @@
   /* One scale drives both, so the mark keeps the same share of the ring's
      empty middle at every width. 2.25 puts the mark at about 60% of the
      inner circle, which is as large as it goes before the bubble touches
-     the bars. */
-  --intro-scale: clamp(120px, 33vw, 204px);
+     the bars. The 104px floor only bites below about 364px wide, where the
+     old 120px floor left the finished lockup 25px from each edge. */
+  --intro-scale: clamp(104px, 33vw, 204px);
   --intro-ring: var(--intro-scale);
   --intro-lockup: calc(var(--intro-scale) * 2.25);
   position: relative;
