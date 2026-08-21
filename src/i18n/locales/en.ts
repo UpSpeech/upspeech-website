@@ -129,92 +129,50 @@ export const en = {
       ],
       traceLabel: "Six days with nothing recorded",
     },
-    handoff: {
-      eyebrow: "Recorded at home, reviewed in the clinic",
-      headline: "He recorded it on Saturday.",
-      headlineEmphasis: "She watched it on Monday.",
-      body: "The patient practices at home and the attempt goes straight to their therapist, who reviews it, marks what changed, and decides what comes next. The software sits between two people. It does not replace either of them.",
-      recordedStamp: "Saturday, 9:07 PM",
-      recordedPlace: "At home",
-      recordedCaption: "One attempt, two minutes long, sent the moment he finished it.",
-      recordedTraceLabel:
-        "Waveform of a two minute practice recording: six phrases with pauses between them",
-      reviewedStamp: "Monday, 9:22 AM",
-      reviewedPlace: "In the clinic",
-      reviewedTraceLabel:
-        "The same waveform, with two moments marked by the therapist at 00:53 and 01:22",
-      marks: ["00:53 · SR", "01:22 · MUR"],
-      howTo: {
-        name: "How practice between sessions reaches a speech therapist",
-        steps: [
-          {
-            name: "Record the attempt at home",
-            text: "The patient records a practice attempt on their phone, following the plan their therapist set.",
-          },
-          {
-            name: "The recording reaches the therapist",
-            text: "The attempt goes straight to their therapist, with no appointment needed in between.",
-          },
-          {
-            name: "The therapist reviews it and marks what changed",
-            text: "The therapist watches the recording and marks the moments that changed, timestamped to the audio.",
-          },
-          {
-            name: "The therapist decides what comes next",
-            text: "The next step in the plan is chosen from what the recording actually showed.",
-          },
-        ],
+    day: {
+      howToName: "How a speech therapy session becomes a written record",
+      eyebrow: "A Tuesday",
+      headline: "Most of the work is not the session.",
+      body: "Three clinicians told us the same thing: hours spent preparing, hours spent writing up, and time inside the session lost to taking notes. This is that day with UpSpeech in it.",
+      before: {
+        time: "08:40 · Before the first appointment",
+        headline: "You already have the context.",
+        body: "The patient completed their onboarding in the app. You read where they are before they sit down, instead of spending the first ten minutes asking.",
+        photoAlt: "A speech and language therapist at her desk between appointments, a closed laptop in front of her, looking out of the window",
+    },
+    assessment: {
+      time: "09:15 · The assessment",
+      headline: "You walk out with it written.",
+      body: "Record the assessment and the report is drafted by the time you stand up. You correct it and you sign it. You do not start from an empty page.",
+      detailAlt: "A generated session report headed with the patient name, the report date and a Ready status",
+    },
+    session: {
+      time: "11:30 · In session",
+      headline: "Notes cost you the child.",
+      body: "Every minute you spend writing is a minute they spend somewhere else. Record the session instead, and the notes are waiting for you when it ends.",
+      cost: {
+        label: "Taking notes",
+        caption: "Your attention is on the page. Theirs went to the window a while ago.",
+        photoAlt: "A speech and language therapist writing on a clipboard on her lap while the boy beside her has turned away toward the window, chin in his hand",
       },
-      reviewedCaption:
-        "Two moments marked. Reviewed by the clinician, not by a model.",
-      patientAlt:
-        "A young man looking down at a phone he is holding, practicing at home",
-      clinicianAlt:
-        "A speech and language therapist looking down at a recording on her tablet, reviewing a patient's attempt",
+      instead: {
+        label: "Hands empty",
+        caption: "Nothing to write down. You are looking at each other, and he is the one talking.",
+        photoAlt: "The same therapist leaning toward the boy with both hands open and empty, no clipboard anywhere, the two of them looking at each other while he speaks",
+      },
     },
-    therapist: {
-      eyebrow: "In the room",
-      headlineLine1: "The clinician runs the session.",
-      headlineLine2: "UpSpeech takes it from there.",
-      body: "You can see what patients practiced between appointments, and how each attempt went.",
-      imageAlt:
-        "UpSpeech therapist view of a patient's progress: activity stats, learning path milestone, and current step",
-      points: [
-        {
-          label: "Session prep",
-          copy: "Walk into the appointment knowing what the patient practiced since the last visit.",
-        },
-        {
-          label: "The next plan, ready",
-          copy: "Adjust the coming week's practice without building it from scratch.",
-        },
-        {
-          label: "Therapist sign-off",
-          copy: "Every report and therapy plan is a draft until the therapist reviews and signs it.",
-        },
-      ],
+    plan: {
+      time: "14:00 · After the session",
+      headline: "The plan goes home with them.",
+      body: "Assign the exercises once. They practice between visits, and every attempt comes back for you to review before the next appointment.",
+      detailAlt: "An assigned learning path showing progress through its steps, with the current step marked",
     },
-    patient: {
-      eyebrow: "Outside the room",
-      headlineLine1: "Structured practice between visits,",
-      headlineLine2: "guided by the therapist throughout.",
-      body: "Each patient gets a plan from their clinician, with exercises matched to where they are in therapy, and works through it between visits with guidance at each step.",
-      imageAlt:
-        "UpSpeech patient dashboard with daily practice exercises and progress",
-      points: [
-        {
-          label: "A plan, set by the therapist",
-          copy: "The therapist chooses each step. Patients see only what they should practice.",
-        },
-        {
-          label: "Every attempt, captured",
-          copy: "Every attempt is recorded and organized for the therapist to review and adjust.",
-        },
-        {
-          label: "Progress, recorded",
-          copy: "Streaks and progress over time keep patients going, and the therapist sees the activity behind them.",
-        },
-      ],
+    close: {
+      time: "17:30 · The end of the day",
+      headline: "You remember all of them.",
+      body: "Six patients, back to back. By the evening the detail has gone. The record has not, and it is what the next session starts from.",
+      screenshotAlt: "The therapist dashboard, showing assigned patients, recent activity and what needs attention",
+    },
     },
     mobile: {
       eyebrow: "In the patient's pocket",
@@ -275,45 +233,6 @@ export const en = {
       headlineLine1: "Continuous support,",
       headlineLine2: "starting with your clinic.",
       requestAccess: "Request early access",
-    },
-    gallery: {
-      eyebrow: "Inside the platform",
-      headlineLine1: "Specific tools.",
-      headlineLine2: "For clinicians and researchers.",
-      intro:
-        "The platform is built around a structured learning path, from identifying moments of disfluency through to carrying the work into real conversations.",
-      forClinicians: "For clinicians",
-      forResearchers: "For researchers",
-      annotationEyebrow: "Annotation tool",
-      annotationTitle:
-        "The tool clinicians and researchers use to label moments of disfluency.",
-      annotationCopy:
-        "Clinicians tag moments of disfluency frame by frame with a standard taxonomy, from core behaviors to secondary behaviors and tension level. The same tool builds our dataset and supports our research partnerships.",
-      annotationImageAlt:
-        "UpSpeech annotation tool with audio waveform, video review, and frame-by-frame tagging by speech-language pathologists",
-      features: [
-        {
-          label: "Structured learning path",
-          title: "A plan built from milestones and steps.",
-          copy: "The clinician assembles each patient's path from established techniques, then unlocks each step as the patient is ready.",
-          imageAlt:
-            "UpSpeech learning path showing a patient's therapy milestones and steps with completion status",
-        },
-        {
-          label: "Practice scenarios",
-          title: "Rehearsal with a virtual conversation partner.",
-          copy: "Patients rehearse difficult conversations with a virtual counterpart. The clinician sets the scenario and difficulty.",
-          imageAlt:
-            "UpSpeech practice scenario interface showing a job interview rehearsal with objectives and video call",
-        },
-        {
-          label: "Self-report check-ins",
-          title: "Self-reports the therapist reviews.",
-          copy: "A short self-report is captured at intervals. The clinician can see how the patient describes their own experience over time.",
-          imageAlt:
-            "UpSpeech chart of a patient's self-reported responses over several weeks",
-        },
-      ],
     },
     engine: {
       eyebrow: "UpSpeech Labs",
