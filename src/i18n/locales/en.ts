@@ -82,11 +82,6 @@ export const en = {
       body: "Patients practice between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
-      videoAriaLabel:
-        "UpSpeech product demo: a therapist assigns a personalized plan, the patient practices at home, the therapist follows progress on a dashboard, records a session, and clinicians annotate the recording",
-      posterAlt:
-        "UpSpeech product demo: a therapist's personalized practice plan",
-      playAriaLabel: "Play the UpSpeech product demo",
     },
     gap: {
       eyebrow: "The patient's week",

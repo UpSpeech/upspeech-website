@@ -1,8 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
-import { PlayIcon } from "@heroicons/react/24/outline";
 import { trackButtonClick } from "@/lib/analytics";
-import { useT, useLocale, localizedAsset } from "@/i18n";
+import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -53,25 +52,13 @@ const Line = ({
 
 const HeroOptionD = () => {
   const t = useT().home.hero;
-  const locale = useLocale();
-  const heroVideo = localizedAsset("/videos/hero-demo.mp4", locale);
-  const heroPoster = localizedAsset("/videos/hero-demo-poster.webp", locale);
   const [loaded, setLoaded] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [playing, setPlaying] = useState(false);
   const [ambient, setAmbient] = useState(false);
   const [ambientReady, setAmbientReady] = useState(false);
 
   useEffect(() => {
     const t = window.setTimeout(() => setLoaded(true), 80);
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => setReducedMotion(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => {
-      window.clearTimeout(t);
-      mq.removeEventListener("change", apply);
-    };
+    return () => window.clearTimeout(t);
   }, []);
 
   // Mounted only after the page has finished loading, so it never competes
@@ -100,21 +87,16 @@ const HeroOptionD = () => {
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-calm-charcoal">
-      {/* Chrome does not treat a viewport-covering image as an LCP candidate.
-          It reads it as the page background and skips it, so this photograph
-          can never be the LCP element however fast it arrives. Measured: at
-          1350x940 it paints at 1.27M square pixels and still loses to the
-          62,698 square pixel demo poster in the same frame.
+      {/* Chrome does not treat a viewport-covering image as an LCP candidate:
+          it reads it as the page background and skips it. So this photograph
+          can never be the LCP element however fast it arrives, and with the
+          demo card gone there is no contained image left in the first
+          viewport. LCP here is the headline, which is text.
 
-          So the poster keeps the high-priority preload it had before the
-          photograph existed, because on a wide screen it is still what LCP
-          actually measures. Handing that priority to the photograph pushed
-          desktop LCP from 1.44s to 2.28s.
-
-          On a phone the poster is a small card below the copy and is not the
-          LCP element, so there the photograph takes the priority instead. Each
-          preload is behind a `media` guard, otherwise a phone pays for a file
-          it will never display. */}
+          The photograph still gets the high-priority preload, because it is
+          what the visitor is waiting to see even though it is not what LCP
+          measures. Each preload stays behind a `media` guard so a phone never
+          pays for the 1920px file it will not display. */}
       <Helmet>
         <link
           rel="preload"
@@ -126,17 +108,11 @@ const HeroOptionD = () => {
         <link
           rel="preload"
           as="image"
-          href={heroPoster}
-          media={WIDE}
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
           href={PHOTO_WIDE_FALLBACK}
           imageSrcSet={PHOTO_WIDE_SRCSET}
           imageSizes="100vw"
           media={WIDE}
+          fetchPriority="high"
         />
       </Helmet>
 
@@ -205,12 +181,11 @@ const HeroOptionD = () => {
         }}
       />
 
-      <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-end gap-10 px-[max(1.5rem,5vw)] pb-14 pt-28 lg:grid-cols-[1.2fr,0.8fr] lg:items-center lg:gap-16 lg:pb-16 lg:pt-32">
-        {/* Left column: value proposition. On a phone it is given the height of
-            the photo (which is pinned to the first viewport), so the demo card
-            below it lands clear of the picture instead of sitting on top of the
-            subject. The 9.5rem subtracted is pt-28 (7rem) plus the 2.5rem grid gap. */}
-        <div className="flex min-h-[calc(100svh-9.5rem)] flex-col justify-center lg:block lg:min-h-0">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-[max(1.5rem,5vw)] pb-14 pt-28 lg:pb-16 lg:pt-32">
+        {/* The copy is capped so it never runs across the subject's face on a
+            wide screen. It used to share the row with the demo card, which is
+            what kept it narrow; the cap now does that job explicitly. */}
+        <div className="max-w-[46rem]">
           <div
             className="mb-6 sm:mb-8"
             style={{
@@ -284,65 +259,6 @@ const HeroOptionD = () => {
           </div>
         </div>
 
-        {/* Right column: the product demo, no longer the hero. It still plays;
-            it just stops being the first thing on the page. */}
-        <div
-          className="w-full max-w-[26rem] justify-self-start self-end pt-2 lg:max-w-[21rem] lg:justify-self-end lg:pt-0"
-          style={{
-            transition: `opacity 900ms ${EASE}, transform 900ms ${EASE}`,
-            transitionDelay: "800ms",
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(40px)",
-          }}
-        >
-          <div className="relative overflow-hidden rounded-[1.25rem] border border-white/15 bg-white/95 shadow-[0_40px_80px_-28px_rgba(0,0,0,0.65)]">
-            <div className="flex items-center gap-2 border-b border-calm-charcoal/5 bg-calm-light/80 px-4 py-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
-              <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
-              <span className="w-2.5 h-2.5 rounded-full bg-calm-charcoal/15" />
-              <div className="ml-3 flex h-5 max-w-[260px] flex-1 items-center justify-center rounded-md border border-calm-charcoal/5 bg-white/90">
-                <span className="font-body text-[10px] text-calm-charcoal/80 tabular-nums">
-                  app.upspeech.app/dashboard
-                </span>
-              </div>
-            </div>
-            {playing ? (
-              <video
-                className="block w-full h-auto"
-                src={heroVideo}
-                poster={heroPoster}
-                controls
-                autoPlay={!reducedMotion}
-                muted
-                playsInline
-                aria-label={t.videoAriaLabel}
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  setPlaying(true);
-                  trackButtonClick("hero_play_demo", "hero");
-                }}
-                className="group relative block w-full focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-calm-navy/40"
-                aria-label={t.playAriaLabel}
-              >
-                <img
-                  src={heroPoster}
-                  alt={t.posterAlt}
-                  className="block w-full h-auto"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-calm-navy/90 text-white shadow-[0_12px_30px_-8px_rgba(41,53,135,0.6)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">
-                    <PlayIcon className="w-7 h-7 translate-x-0.5" />
-                  </span>
-                </span>
-              </button>
-            )}
-          </div>
-        </div>
       </div>
     </section>
   );
