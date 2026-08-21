@@ -140,7 +140,7 @@ export const pt: Dictionary = {
       eyebrow: "Gravado em casa, revisto na clínica",
       headline: "Ele gravou no sábado.",
       headlineEmphasis: "Ela viu na segunda.",
-      body: "O paciente pratica em casa e a tentativa segue directamente para o terapeuta, que a revê, marca o que mudou e decide o passo seguinte. O software fica entre duas pessoas. Não substitui nenhuma delas.",
+      body: "O paciente pratica em casa e a tentativa segue diretamente para o terapeuta, que a revê, marca o que mudou e decide o passo seguinte. O software fica entre duas pessoas. Não substitui nenhuma delas.",
       recordedStamp: "Sábado, 21:07",
       recordedPlace: "Em casa",
       recordedCaption:
@@ -161,7 +161,7 @@ export const pt: Dictionary = {
           },
           {
             name: "A gravação chega ao terapeuta",
-            text: "A tentativa segue directamente para o terapeuta, sem ser preciso marcar consulta.",
+            text: "A tentativa segue diretamente para o terapeuta, sem ser preciso marcar consulta.",
           },
           {
             name: "O terapeuta revê e marca o que mudou",
