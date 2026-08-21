@@ -149,6 +149,27 @@ export const en = {
       reviewedTraceLabel:
         "The same waveform, with two moments marked by the therapist at 00:53 and 01:22",
       marks: ["00:53 · SR", "01:22 · MUR"],
+      howTo: {
+        name: "How practice between sessions reaches a speech therapist",
+        steps: [
+          {
+            name: "Record the attempt at home",
+            text: "The patient records a practice attempt on their phone, following the plan their therapist set.",
+          },
+          {
+            name: "The recording reaches the therapist",
+            text: "The attempt goes straight to their therapist, with no appointment needed in between.",
+          },
+          {
+            name: "The therapist reviews it and marks what changed",
+            text: "The therapist watches the recording and marks the moments that changed, timestamped to the audio.",
+          },
+          {
+            name: "The therapist decides what comes next",
+            text: "The next step in the plan is chosen from what the recording actually showed.",
+          },
+        ],
+      },
       reviewedCaption:
         "Two moments marked. Reviewed by the clinician, not by a model.",
       patientAlt:

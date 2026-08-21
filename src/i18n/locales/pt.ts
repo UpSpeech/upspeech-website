@@ -152,6 +152,27 @@ export const pt: Dictionary = {
       reviewedTraceLabel:
         "A mesma forma de onda, com dois momentos marcados pela terapeuta aos 00:53 e 01:22",
       marks: ["00:53 · SR", "01:22 · MUR"],
+      howTo: {
+        name: "Como a prática entre sessões chega ao terapeuta da fala",
+        steps: [
+          {
+            name: "Gravar a tentativa em casa",
+            text: "O paciente grava uma tentativa no telemóvel, seguindo o plano definido pelo terapeuta.",
+          },
+          {
+            name: "A gravação chega ao terapeuta",
+            text: "A tentativa segue directamente para o terapeuta, sem ser preciso marcar consulta.",
+          },
+          {
+            name: "O terapeuta revê e marca o que mudou",
+            text: "O terapeuta vê a gravação e marca os momentos que mudaram, com marcação temporal.",
+          },
+          {
+            name: "O terapeuta decide o passo seguinte",
+            text: "O passo seguinte do plano é escolhido a partir do que a gravação mostrou.",
+          },
+        ],
+      },
       reviewedCaption:
         "Dois momentos marcados. Revisto pelo clínico, não por um modelo.",
       patientAlt: "Um jovem a olhar para o telemóvel que segura, a praticar em casa",
