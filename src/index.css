@@ -863,18 +863,19 @@
    focus or intercept a click.
 
    The order is the point: the ring writes itself the way a recording runs,
-   start to finish; she appears at its centre; the ring collapses onto her and
-   her speech bubble arrives; then the lockup settles left and the wordmark
-   writes in beside it. What is left at the end is the logo exactly as the
-   header draws it.
+   start to finish; she appears at its centre; the ring then shrinks and
+   travels until it is sitting exactly where her speech bubble goes, at
+   exactly its size, and hands over to it; then the lockup settles left and
+   the wordmark writes in beside it. What is left at the end is the logo
+   exactly as the header draws it.
 
    Timings, in ms from mount:
         0 -> 1080  ring writes clockwise (SpeechRing staggers each bar)
       620 -> 1060  the figure rises in
-     1120 -> 1540  the ring collapses toward her
-     1240 -> 1640  the speech bubble pops into place
-     1420 -> 1980  the lockup settles left, the wordmark wipes in
-     2160 -> 2600  the overlay fades out (SiteIntro unmounts at 2600)
+     1080 -> 1520  the ring contracts onto the bubble's spot, at its size
+     1300 -> 1540  the bubble comes up under the ring and takes over
+     1540 -> 2080  the lockup settles left, the wordmark wipes in
+     2260 -> 2680  the overlay fades out (SiteIntro unmounts at 2680)
 --------------------------------------------------------------------------- */
 .site-intro {
   position: fixed;
@@ -884,7 +885,7 @@
   align-items: center;
   justify-content: center;
   background: #f6f6f6;
-  animation: site-intro-out 440ms cubic-bezier(0.22, 1, 0.36, 1) 2160ms forwards;
+  animation: site-intro-out 420ms cubic-bezier(0.22, 1, 0.36, 1) 2260ms forwards;
 }
 
 .site-intro__stage {
@@ -902,10 +903,20 @@
   height: var(--intro-ring);
 }
 
+/* The ring does not simply leave. It contracts while travelling up and to the
+   right, and arrives at the speech bubble's position at the bubble's exact
+   size, so the recording turns into the bubble instead of being swapped for
+   it. The bubble fades up underneath during the last stretch, which is where
+   the handover happens.
+
+   All three numbers are fractions of --intro-scale, so the landing holds at
+   every width: 0.093481 and -0.120843 are the offset from the mark's centre
+   to the bubble's centre, and 0.204461 takes the ring's inner radius (92 of
+   its 300 unit viewBox) down to the bubble's radius. */
 .site-intro__ring {
   transform-origin: 50% 50%;
-  animation: site-intro-ring-out 420ms cubic-bezier(0.55, 0, 0.45, 1) 1120ms
-    forwards;
+  animation: site-intro-ring-condense 440ms cubic-bezier(0.5, 0, 0.28, 1)
+    1080ms forwards;
 }
 
 /* The lockup is placed by its mark, not by its own box, so the mark lands on
@@ -920,7 +931,7 @@
   transform: translate(0, -50%);
   color: #212540;
   line-height: 0;
-  animation: site-intro-settle 560ms cubic-bezier(0.22, 1, 0.36, 1) 1420ms
+  animation: site-intro-settle 540ms cubic-bezier(0.22, 1, 0.36, 1) 1540ms
     forwards;
 }
 
@@ -936,20 +947,33 @@
   transform-box: fill-box;
   transform-origin: 50% 50%;
   opacity: 0;
-  animation: site-intro-bubble 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 1240ms
+  animation: site-intro-bubble 240ms cubic-bezier(0.33, 1, 0.68, 1) 1300ms
     forwards;
 }
 
 .site-intro .brand-lockup__word {
   clip-path: inset(0 100% 0 0);
-  animation: site-intro-word 560ms cubic-bezier(0.22, 1, 0.36, 1) 1420ms
+  animation: site-intro-word 540ms cubic-bezier(0.22, 1, 0.36, 1) 1540ms
     forwards;
 }
 
-@keyframes site-intro-ring-out {
-  to {
+@keyframes site-intro-ring-condense {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  /* Held opaque until the bubble is already coming up, so the two overlap
+     rather than one clearing before the other arrives. */
+  55% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
-    transform: scale(0.34);
+    transform: translate(
+        calc(var(--intro-scale) * 0.093481),
+        calc(var(--intro-scale) * -0.120843)
+      )
+      scale(0.204461);
   }
 }
 
@@ -973,7 +997,10 @@
 @keyframes site-intro-bubble {
   from {
     opacity: 0;
-    transform: scale(0.1);
+    /* Barely under size. It is taking over from a ring that has already
+       arrived at the right diameter, so anything larger reads as a second
+       object popping in on top. */
+    transform: scale(0.88);
   }
   to {
     opacity: 1;

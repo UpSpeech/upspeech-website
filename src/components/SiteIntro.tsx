@@ -3,14 +3,15 @@ import BrandLockup from "./BrandLockup";
 import SpeechRing from "./SpeechRing";
 
 const SESSION_KEY = "upspeech_intro_seen";
-const TOTAL_MS = 2600;
+const TOTAL_MS = 2680;
 
 /**
  * The one-off opening: a speech envelope writing itself into a ring, clockwise,
  * the way a recording runs start to finish, resolving into the logo.
  *
- * The ring collapses onto the figure and her speech bubble arrives as it goes,
- * so the recording becomes the mark rather than being replaced by it. The
+ * The ring then contracts and travels until it is the speech bubble: same
+ * position, same diameter, and the bubble comes up underneath to take over.
+ * The recording becomes the mark rather than being replaced by it. The
  * wordmark writes in last. See index.css for the timings.
  *
  * Deliberately constrained, because an intro is a tax on the first view:
