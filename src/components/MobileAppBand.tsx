@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
 import PagePortrait from "./PagePortrait";
+import GuardianMark from "./GuardianMark";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
@@ -151,13 +152,17 @@ const MobileAppBand = () => {
               Its own frame, deliberately: /for-patients already carries two
               guardian photographs, and repeating one of them across two pages
               is the duplication this redesign set out to remove. */}
+          <p className="mt-9 flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink">
+            <GuardianMark className="text-calm-navy/70" />
+            {t.familyEyebrow}
+          </p>
           <PagePortrait
             name="home-family"
             aspect="4/3"
             height={675}
             sizes="(min-width: 1024px) 420px, min(420px, 90vw)"
             alt={t.familyAlt}
-            className="mt-9 w-full max-w-[420px]"
+            className="mt-4 w-full max-w-[420px]"
           />
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}

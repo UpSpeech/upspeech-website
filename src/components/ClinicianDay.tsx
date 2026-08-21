@@ -1,6 +1,7 @@
 import { revealFrom } from "./motion";
 import { useReveal } from "./useReveal";
 import PagePortrait from "./PagePortrait";
+import GuardianMark from "./GuardianMark";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 /**
@@ -25,6 +26,11 @@ import { useT, useLocale, localizedAsset } from "@/i18n";
  * Product appears as cropped detail, not as a screen to be read: a report
  * header, an assigned plan. The single full screenshot is the last beat, where
  * the claim is breadth and a crop would undersell it.
+ *
+ * All three product images go through localizedAsset. The two crops are cut
+ * from the same pt/es sources as the dashboard, at the same coordinates, so a
+ * Portuguese visitor does not get two translated screens with an English one
+ * wedged between them.
  */
 
 /** Photograph beats. Filenames stay in code; the dictionary carries only text. */
@@ -102,10 +108,13 @@ const ClinicianDay = () => {
               style={revealFrom(revealed, "left", 340)}
             >
               <img
-                src="/screenshots/detail/report-ready.webp"
+                src={localizedAsset(
+                  "/screenshots/detail/report-ready.webp",
+                  locale,
+                )}
                 alt={t.assessment.detailAlt}
                 width={800}
-                height={150}
+                height={200}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
@@ -145,9 +154,10 @@ const ClinicianDay = () => {
         />
         <div className="relative mx-auto max-w-5xl px-[max(1.5rem,5vw)]">
           <span
-            className={`${stamp} text-calm-lavender-bright`}
+            className={`${stamp} flex items-center gap-2 text-calm-lavender-bright`}
             style={revealFrom(sessionRevealed, "up", 0)}
           >
+            <GuardianMark className="text-white/75" />
             {t.session.time}
           </span>
           <h3
@@ -229,10 +239,13 @@ const ClinicianDay = () => {
               style={revealFrom(endRevealed, "right", 80)}
             >
               <img
-                src="/screenshots/detail/plan-assigned.webp"
+                src={localizedAsset(
+                  "/screenshots/detail/plan-assigned.webp",
+                  locale,
+                )}
                 alt={t.plan.detailAlt}
-                width={560}
-                height={215}
+                width={800}
+                height={315}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
