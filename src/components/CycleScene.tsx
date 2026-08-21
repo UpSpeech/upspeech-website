@@ -4,6 +4,24 @@ import { useT } from "@/i18n";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
+/**
+ * The sticky panel's height, and the scroll runway below it. The section is
+ * the sum of the two.
+ *
+ * This used to be a flat 200vh with a full-viewport panel, which is two
+ * screens of scrolling to get through one diagram: 1800px, 12% of the
+ * homepage, for six labels. The panel is now sized to its content instead of
+ * to the viewport, and the runway to roughly 70px of scroll per step.
+ *
+ * Both values feed the progress math below, so they have to stay here rather
+ * than becoming Tailwind classes: the height the panel actually renders at is
+ * the divisor.
+ */
+const PANEL_H = "min(calc(100svh - 5rem), 40rem)";
+const RUNWAY = "24rem";
+/** Matches `sticky top-20`, which clears the fixed header. */
+const STICKY_TOP = 80;
+
 type Actor = "ai" | "clinician";
 
 // Actor sequence stays in code (drives colors/geometry); verb/title/body copy
@@ -53,6 +71,7 @@ const CycleScene = () => {
   const t = useT().home.cycle;
   const nodes = t.nodes;
   const containerRef = useRef<HTMLElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [revealed, setRevealed] = useState(false);
 
@@ -83,9 +102,16 @@ const CycleScene = () => {
     let raf = 0;
     const update = () => {
       const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const scrollable = rect.height - vh;
-      const scrolled = Math.max(0, Math.min(scrollable, -rect.top));
+      // Measure the panel rather than assuming it fills the viewport. The
+      // pinned range runs from rect.top === STICKY_TOP down to the point where
+      // the section bottom meets the panel bottom, so the runway is exactly
+      // the section height minus the panel height.
+      const panelH = panelRef.current?.offsetHeight ?? window.innerHeight;
+      const scrollable = rect.height - panelH;
+      const scrolled = Math.max(
+        0,
+        Math.min(scrollable, STICKY_TOP - rect.top),
+      );
       setProgress(scrollable > 0 ? scrolled / scrollable : 0);
     };
     const onScroll = () => {
@@ -132,9 +158,13 @@ const CycleScene = () => {
     <section
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: "200vh" }}
+      style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
-      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
+      <div
+        ref={panelRef}
+        className="sticky top-20 overflow-hidden"
+        style={{ height: PANEL_H }}
+      >
         <div
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{
@@ -170,7 +200,7 @@ const CycleScene = () => {
             {/* Cycle */}
             <div
               className="relative mx-auto aspect-square"
-              style={{ width: "min(520px, 52vh, 78vw)" }}
+              style={{ width: "min(360px, 40vh, 70vw)" }}
             >
               <svg
                 viewBox="0 0 100 100"
@@ -384,7 +414,7 @@ const CycleScene = () => {
             </div>
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
-            <div className="relative min-h-[10rem] lg:min-h-[18rem]">
+            <div className="relative min-h-[9rem] lg:min-h-[13rem]">
               <div
                 key={activeIndex}
                 className="absolute inset-0 flex flex-col justify-center"

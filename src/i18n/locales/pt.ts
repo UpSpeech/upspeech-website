@@ -227,6 +227,8 @@ export const pt: Dictionary = {
         "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
       ],
+      familyAlt:
+        "Um pai e a filha à mesa da sala, a rapariga a falar para um telemóvel apoiado num suporte enquanto ele está sentado ao lado, a olhar para ela e não para o ecrã",
     },
     cycle: {
       eyebrow: "O ciclo",
