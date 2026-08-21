@@ -84,11 +84,6 @@ export const pt: Dictionary = {
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
-      videoAriaLabel:
-        "Demonstração do produto UpSpeech: um terapeuta atribui um plano personalizado, o paciente pratica em casa, o terapeuta acompanha o progresso num painel, grava uma sessão e os clínicos anotam a gravação",
-      posterAlt:
-        "Demonstração do produto UpSpeech: o plano de prática personalizado de um terapeuta",
-      playAriaLabel: "Reproduzir a demonstração do produto UpSpeech",
     },
     gap: {
       eyebrow: "A semana do paciente",

@@ -84,11 +84,6 @@ export const es: Dictionary = {
       body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
-      videoAriaLabel:
-        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión y los logopedas anotan la grabación",
-      posterAlt:
-        "Demostración del producto UpSpeech: el plan de práctica personalizado de un terapeuta",
-      playAriaLabel: "Reproducir la demostración del producto UpSpeech",
     },
     gap: {
       eyebrow: "La semana del paciente",
