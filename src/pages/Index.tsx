@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import WeekInPhotos from "@/components/WeekInPhotos";
 import ClinicianDay from "@/components/ClinicianDay";
-import QuietBeat from "@/components/QuietBeat";
 import InterstitialCTA from "@/components/InterstitialCTA";
 import MobileAppBand from "@/components/MobileAppBand";
 import CycleScene from "@/components/CycleScene";
@@ -52,7 +51,6 @@ const Index = () => {
       <main id="main">
         <Hero />
         <WeekInPhotos />
-        <QuietBeat />
         <div id="features">
           <ClinicianDay />
         </div>

@@ -82,8 +82,7 @@ export const pt: Dictionary = {
       headlineLine2: "continua",
       headlineLine3: "entre sessões.",
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
-      traceLabel:
-        "Uma gravação de fala desenhada como envelope: picos onde alguém está a falar, linhas planas onde não está",
+      traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
     },
@@ -132,13 +131,6 @@ export const pt: Dictionary = {
         },
       ],
       traceLabel: "Seis dias sem nada registado",
-    },
-    pause: {
-      ariaLabel: "O tamanho do intervalo entre sessões",
-      lineOne: "Uma hora no consultório.",
-      lineTwo: "Cento e sessenta e sete fora dele.",
-      traceLabel:
-        "Uma gravação de fala desenhada como envelope, com os silêncios incluídos",
     },
     day: {
       howToName: "Como uma sessão de terapia da fala se torna um registo escrito",
