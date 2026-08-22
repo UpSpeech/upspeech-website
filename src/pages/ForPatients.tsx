@@ -7,6 +7,8 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import CutOut from "@/components/CutOut";
+import GuardianMark from "@/components/GuardianMark";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 
@@ -70,24 +72,45 @@ export default function ForPatients() {
             }}
           />
           <div className="relative max-w-6xl mx-auto">
-            <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
-              >
-                {t.intro.headlineLine1}{" "}
-                <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
-              </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
-                {t.intro.body}
-              </p>
+            {/* Two columns from lg up. The right half of this fold used to be
+                empty, which is what made the page read as a document rather
+                than the front of a product. */}
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+              <div>
+                <p className={eyebrowClass}>{t.intro.eyebrow}</p>
+                <h1
+                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                >
+                  {t.intro.headlineLine1}{" "}
+                  <br />
+                  <span className="text-calm-lavender-ink">
+                    {t.intro.headlineLine2}
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                  {t.intro.body}
+                </p>
+              </div>
+              {/* Cut out rather than cropped square. The 1:1 crop was
+                  discarding a fifth of a 0.80 portrait to make it fit a box
+                  the box did not need. */}
+              <div className="relative flex justify-center lg:justify-end">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-2%] lg:translate-x-0"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
+                  }}
+                />
+                <CutOut
+                  name="patients-hero"
+                  alt={t.intro.photoAlt}
+                  priority
+                  renderHeight={400}
+                  className="relative h-[300px] sm:h-[360px] lg:h-[400px]"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -97,8 +120,7 @@ export default function ForPatients() {
           <div className="max-w-6xl mx-auto">
             <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
             >
               {t.howItWorks.headline}
             </h2>
@@ -132,6 +154,61 @@ export default function ForPatients() {
           </div>
         </section>
 
+        {/* Practicing with a parent.
+            One sentence, deliberately. The product has no guardian seat: a
+            patient is one login assigned to one therapist. What is true today
+            is that a parent sits with a younger patient and works the plan the
+            therapist set, so that is the whole of what this says. */}
+        <section className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
+          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,360px),1fr] sm:gap-14">
+            {/* The sandwich: the plan the therapist set behind them, the
+                report it produced in front. Both are real product surfaces
+                that belong to this exact person, which is what stops the
+                layering being decoration. */}
+            <div className="relative flex h-[300px] items-end justify-center sm:h-[340px]">
+              <div aria-hidden="true" className="pointer-events-none absolute -left-3 bottom-24 hidden w-[190px] -rotate-3 overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+                <img
+                  src={localizedAsset("/screenshots/detail/plan-assigned.webp", locale)}
+                  alt=""
+                  width={800}
+                  height={315}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full"
+                />
+              </div>
+              <CutOut
+                name="patients-listen"
+                alt={t.withAParent.photoAlt}
+                renderHeight={340}
+                className="relative z-10 h-[300px] sm:h-[340px]"
+              />
+              <div aria-hidden="true" className="pointer-events-none absolute -right-3 bottom-2 z-20 hidden w-[200px] overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+                <img
+                  src={localizedAsset("/screenshots/detail/report-ready.webp", locale)}
+                  alt=""
+                  width={800}
+                  height={200}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full"
+                />
+              </div>
+            </div>
+            <div>
+              <p className={`${eyebrowClass} flex items-center gap-2`}>
+                <GuardianMark className="text-calm-navy/70" />
+                {t.withAParent.eyebrow}
+              </p>
+              <p
+                className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal"
+              >
+                {t.withAParent.line}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* The app */}
         <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
           <div
@@ -146,15 +223,11 @@ export default function ForPatients() {
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.app.eyebrow}</p>
               <h2
-                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                  lineHeight: 1.1,
-                }}
+                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
               >
                 {t.app.headline}
               </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.app.body}
               </p>
             </div>
@@ -214,8 +287,7 @@ export default function ForPatients() {
           <div className="max-w-3xl mx-auto">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.faq.headline}
             </h2>
@@ -223,7 +295,7 @@ export default function ForPatients() {
             <dl className="mt-8 divide-y divide-calm-charcoal/10">
               {t.faq.items.map((item) => (
                 <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
+                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
                     {item.q}
                   </dt>
                   <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
@@ -241,11 +313,7 @@ export default function ForPatients() {
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
-              className="font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                lineHeight: 1.1,
-              }}
+              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.closing.headline}
             </h2>

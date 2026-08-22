@@ -141,6 +141,16 @@ function localeOf(route) {
 /** Create a fresh page with its own analytics-blocking request interception. */
 async function createWorkerPage(browser) {
   const page = await browser.newPage();
+
+  // Tells the app it is being scraped, not viewed. Anything that only makes
+  // sense for a real visitor opts out of the snapshot by checking this.
+  // Without it the hero's ambient clip mounted during prerender and was baked
+  // into the static HTML with preload="auto", so every mobile visitor
+  // downloaded 159KB of video that hydration then removed.
+  await page.evaluateOnNewDocument(() => {
+    window.__PRERENDER__ = true;
+  });
+
   await page.setRequestInterception(true);
   page.on("request", (req) => {
     // Block analytics, but allow fonts and images so the page renders fully
