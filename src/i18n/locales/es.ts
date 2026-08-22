@@ -82,8 +82,7 @@ export const es: Dictionary = {
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
       body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
-      traceLabel:
-        "Una grabación de habla dibujada como envolvente: picos donde alguien habla, tramos planos donde no",
+      traceLabel: "Una grabación de alguien hablando, con las pausas incluidas",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
     },
@@ -132,13 +131,6 @@ export const es: Dictionary = {
         },
       ],
       traceLabel: "Seis días sin nada registrado",
-    },
-    pause: {
-      ariaLabel: "El tamaño del intervalo entre sesiones",
-      lineOne: "Una hora en la consulta.",
-      lineTwo: "Ciento sesenta y siete fuera de ella.",
-      traceLabel:
-        "Una grabación de habla dibujada como envolvente, con los silencios incluidos",
     },
     day: {
       howToName: "Cómo una sesión de logopedia se convierte en un registro escrito",

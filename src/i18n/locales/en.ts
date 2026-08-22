@@ -80,8 +80,7 @@ export const en = {
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
       body: "Patients practice between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
-      traceLabel:
-        "A speech recording drawn as an envelope: bursts where someone is speaking, flat runs where they are not",
+      traceLabel: "A recording of someone speaking, with the pauses left in",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
     },
@@ -130,13 +129,6 @@ export const en = {
         },
       ],
       traceLabel: "Six days with nothing recorded",
-    },
-    pause: {
-      ariaLabel: "The size of the gap between sessions",
-      lineOne: "One hour in the room.",
-      lineTwo: "A hundred and sixty-seven outside it.",
-      traceLabel:
-        "A speech recording drawn as an envelope, with the silences left in",
     },
     day: {
       howToName: "How a speech therapy session becomes a written record",
