@@ -1,6 +1,7 @@
 import { revealFrom } from "./motion";
 import { useReveal } from "./useReveal";
 import SpeechTrace from "./SpeechTrace";
+import CutOut from "./CutOut";
 import { useT } from "@/i18n";
 
 const IMAGES = [
@@ -11,15 +12,17 @@ const IMAGES = [
 ];
 
 /**
- * These render at about 163px on a phone and 266px on a wide screen, so the
- * 720w file is two to four times more image than a phone can use. Measured:
- * the strip cost 122KB at one width and 43KB across the three.
+ * The four stand on one baseline rather than sitting in four boxes, so they are
+ * sized by height and the width follows each subject. week-phone is the odd one
+ * out at 900x1766, a standing figure where the other three are seated, so it
+ * gets its own smaller height or it towers over the week.
  */
-const srcSet = (name: string) =>
-  `/images/people/${name}-400.webp 400w, ` +
-  `/images/people/${name}-560.webp 560w, ` +
-  `/images/people/${name}.webp 720w`;
-const SIZES = "(min-width: 1024px) 266px, 42vw";
+const HEIGHT = [
+  "h-[150px] sm:h-[190px] lg:h-[240px]",
+  "h-[150px] sm:h-[190px] lg:h-[240px]",
+  "h-[168px] sm:h-[212px] lg:h-[268px]",
+  "h-[150px] sm:h-[190px] lg:h-[240px]",
+] as const;
 
 /**
  * The four days the clinic never sees, as photographs, and then the same week
@@ -69,36 +72,47 @@ const WeekInPhotos = () => {
           {t.body}
         </p>
 
-        <div className="mt-[clamp(2rem,4vw,3.5rem)] grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-          {t.frames.map((frame, i) => (
-            <figure
-              key={frame.day}
-              className="m-0"
-              style={revealFrom(revealed, "up", 240 + i * 90)}
-            >
-              <div className="overflow-hidden rounded-xl bg-calm-charcoal/5">
-                <img
-                  src={`/images/people/${IMAGES[i]}.webp`}
-                  srcSet={srcSet(IMAGES[i])}
-                  sizes={SIZES}
-                  alt={frame.alt}
-                  width={720}
-                  height={964}
-                  loading="lazy"
-                  decoding="async"
-                  className="block aspect-[3/4] w-full object-cover"
-                />
-              </div>
-              <figcaption className="pt-4">
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-calm-lavender-ink">
-                  {frame.day}
-                </span>
-                <p className="mt-1.5 font-accent text-[15px] sm:text-base font-medium leading-snug text-calm-charcoal">
-                  {frame.caption}
-                </p>
-              </figcaption>
-            </figure>
-          ))}
+        {/* The week as four people on one line rather than four photographs
+            in four boxes. The baseline is what makes it read as one week: the
+            rule under them is continuous, so the eye travels along it instead
+            of stopping at each frame. */}
+        <div className="relative mt-[clamp(2rem,4vw,3.5rem)]">
+          {/* One rule across the whole row, not four. It is what turns four
+              figures into one week: the eye travels the line instead of
+              stopping at each frame. Only at lg, where the four are on a single
+              row; below that they wrap to two and each carries its own. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-[268px] hidden h-px bg-calm-charcoal/10 lg:block"
+          />
+          {/* items-start, not items-end: the captions are one or two lines and
+              bottom-aligning the items drops the short one out of the row. */}
+          <div className="grid grid-cols-2 items-start gap-x-2 gap-y-8 sm:gap-x-4 lg:grid-cols-4 lg:gap-x-6 lg:gap-y-0">
+            {t.frames.map((frame, i) => (
+              <figure
+                key={frame.day}
+                className="m-0 flex flex-col"
+                style={revealFrom(revealed, "up", 240 + i * 90)}
+              >
+                <div className="flex min-h-[168px] items-end justify-center sm:min-h-[212px] lg:min-h-[268px]">
+                  <CutOut
+                    name={IMAGES[i]}
+                    alt={frame.alt}
+                    renderHeight={i === 2 ? 268 : 240}
+                    className={HEIGHT[i]}
+                  />
+                </div>
+                <figcaption className="border-t border-calm-charcoal/10 pt-4 lg:border-t-0">
+                  <span className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-calm-lavender-ink">
+                    {frame.day}
+                  </span>
+                  <p className="mt-1.5 font-accent text-[15px] sm:text-base font-medium leading-snug text-calm-charcoal">
+                    {frame.caption}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
 
         {/* The same week twice, as the recordings actually land. This replaces

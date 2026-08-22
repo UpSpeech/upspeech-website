@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import PagePortrait from "@/components/PagePortrait";
+import CutOut from "@/components/CutOut";
 import GuardianMark from "@/components/GuardianMark";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
@@ -86,14 +86,23 @@ export default function ForSlps() {
                   {t.intro.body}
                 </p>
               </div>
-              <PagePortrait
-                name="slps-hero"
-                aspect="4/5"
-                sizes="(min-width: 1024px) 450px, min(380px, 90vw)"
-                alt={t.intro.photoAlt}
-                priority
-                className="mx-auto w-full max-w-[380px] lg:mr-0 lg:max-w-[450px]"
-              />
+              <div className="relative flex justify-center lg:justify-end">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-[-6%] left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[6%] lg:translate-x-0"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 42% 38%, rgba(227,220,250,0.9), rgba(241,238,253,0.65) 58%, rgba(241,238,253,0) 71%)",
+                  }}
+                />
+                <CutOut
+                  name="slps-hero"
+                  alt={t.intro.photoAlt}
+                  priority
+                  renderHeight={460}
+                  className="relative h-[320px] sm:h-[400px] lg:h-[460px]"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -204,13 +213,14 @@ export default function ForSlps() {
               {/* A child, a parent and the clinician in one frame. This is the
                   page a clinic owner reads, so the pediatric case is worth
                   showing here rather than describing. */}
-              <PagePortrait
-                name="slps-family"
-                aspect="1/1"
-                sizes="(min-width: 1024px) 320px, min(320px, 90vw)"
-                alt={t.personCentered.photoAlt}
-                className="w-full max-w-[320px] lg:ml-auto"
-              />
+              <div className="flex justify-center lg:justify-end">
+                <CutOut
+                  name="slps-family"
+                  alt={t.personCentered.photoAlt}
+                  renderHeight={300}
+                  className="h-[260px] sm:h-[300px]"
+                />
+              </div>
             </div>
           </div>
         </section>

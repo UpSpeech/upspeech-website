@@ -7,7 +7,7 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import PagePortrait from "@/components/PagePortrait";
+import CutOut from "@/components/CutOut";
 import GuardianMark from "@/components/GuardianMark";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
@@ -95,14 +95,26 @@ export default function ForPatients() {
                   {t.intro.body}
                 </p>
               </div>
-              <PagePortrait
-                name="patients-hero"
-                aspect="1/1"
-                sizes="(min-width: 1024px) 450px, min(380px, 90vw)"
-                alt={t.intro.photoAlt}
-                priority
-                className="mx-auto w-full max-w-[380px] lg:mr-0 lg:max-w-[460px]"
-              />
+              {/* Cut out rather than cropped square. The 1:1 crop was
+                  discarding a fifth of a 0.80 portrait to make it fit a box
+                  the box did not need. */}
+              <div className="relative flex justify-center lg:justify-end">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-[-8%] left-1/2 h-[360px] w-[360px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[8%] lg:translate-x-0"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 42% 38%, rgba(227,220,250,0.9), rgba(241,238,253,0.65) 58%, rgba(241,238,253,0) 71%)",
+                  }}
+                />
+                <CutOut
+                  name="patients-hero"
+                  alt={t.intro.photoAlt}
+                  priority
+                  renderHeight={400}
+                  className="relative h-[300px] sm:h-[360px] lg:h-[400px]"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -153,14 +165,41 @@ export default function ForPatients() {
             is that a parent sits with a younger patient and works the plan the
             therapist set, so that is the whole of what this says. */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
-          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,300px),1fr] sm:gap-12">
-            <PagePortrait
-              name="patients-listen"
-              aspect="1/1"
-              sizes="min(300px, 90vw)"
-              alt={t.withAParent.photoAlt}
-              className="w-full max-w-[300px]"
-            />
+          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,360px),1fr] sm:gap-14">
+            {/* The sandwich: the plan the therapist set behind them, the
+                report it produced in front. Both are real product surfaces
+                that belong to this exact person, which is what stops the
+                layering being decoration. */}
+            <div className="relative flex h-[300px] items-end justify-center sm:h-[340px]">
+              <div aria-hidden="true" className="pointer-events-none absolute left-0 top-4 hidden w-[190px] -rotate-3 overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+                <img
+                  src={localizedAsset("/screenshots/detail/plan-assigned.webp", locale)}
+                  alt=""
+                  width={800}
+                  height={315}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full"
+                />
+              </div>
+              <CutOut
+                name="patients-listen"
+                alt={t.withAParent.photoAlt}
+                renderHeight={340}
+                className="relative z-10 h-[300px] sm:h-[340px]"
+              />
+              <div aria-hidden="true" className="pointer-events-none absolute -right-2 bottom-6 z-20 hidden w-[200px] overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+                <img
+                  src={localizedAsset("/screenshots/detail/report-ready.webp", locale)}
+                  alt=""
+                  width={800}
+                  height={200}
+                  loading="lazy"
+                  decoding="async"
+                  className="block h-auto w-full"
+                />
+              </div>
+            </div>
             <div>
               <p className={`${eyebrowClass} flex items-center gap-2`}>
                 <GuardianMark className="text-calm-navy/70" />

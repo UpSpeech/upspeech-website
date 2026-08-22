@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
-import PagePortrait from "./PagePortrait";
 import GuardianMark from "./GuardianMark";
+import CutOut from "./CutOut";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
@@ -156,13 +156,11 @@ const MobileAppBand = () => {
             <GuardianMark className="text-calm-navy/70" />
             {t.familyEyebrow}
           </p>
-          <PagePortrait
+          <CutOut
             name="home-family"
-            aspect="4/3"
-            height={675}
-            sizes="(min-width: 1024px) 420px, min(420px, 90vw)"
             alt={t.familyAlt}
-            className="mt-4 w-full max-w-[420px]"
+            renderHeight={260}
+            className="mt-3 h-[220px] sm:h-[260px]"
           />
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
