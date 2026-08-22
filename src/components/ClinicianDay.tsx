@@ -53,27 +53,38 @@ const ClinicianDay = () => {
 
   return (
     <>
-      {/* Opening, and the two beats before the session. */}
+      {/* Opening, and the two beats before the session.
+
+          The header runs across the measure instead of stacking top-left. Every
+          other light section on the page opens eyebrow-headline-lead in a column
+          at the same width, and this one used to sit directly under the week's
+          identical opening, so the page read as one template repeating. Here the
+          eyebrow and headline hold the left, the lead sits opposite them, and the
+          rule closes the band: a chapter heading rather than another stack. */}
       <section ref={ref} className="bg-white py-[clamp(4rem,9vw,7rem)]">
         <div className="mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
-          <p
-            className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink"
-            style={revealFrom(revealed, "up", 0)}
-          >
-            {t.eyebrow}
-          </p>
-          <h2
-            className="t-h2 mt-5 max-w-[22ch] font-accent font-bold tracking-tight text-calm-charcoal"
-            style={{ ...revealFrom(revealed, "up", 80) }}
-          >
-            {t.headline}
-          </h2>
-          <p
-            className="t-lead mt-5 max-w-xl font-body text-calm-charcoal/80"
-            style={revealFrom(revealed, "up", 160)}
-          >
-            {t.body}
-          </p>
+          <div className="grid gap-x-12 gap-y-5 border-b border-calm-charcoal/10 pb-[clamp(2rem,4vw,3rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end">
+            <div>
+              <p
+                className="t-eyebrow font-body text-calm-lavender-ink"
+                style={revealFrom(revealed, "up", 0)}
+              >
+                {t.eyebrow}
+              </p>
+              <h2
+                className="t-h2 mt-4 max-w-[16ch] font-accent font-bold text-calm-charcoal"
+                style={{ ...revealFrom(revealed, "up", 80) }}
+              >
+                {t.headline}
+              </h2>
+            </div>
+            <p
+              className="t-lead font-body text-calm-charcoal/80 lg:pb-1"
+              style={revealFrom(revealed, "up", 160)}
+            >
+              {t.body}
+            </p>
+          </div>
 
           {/* 08:40, with the photograph. */}
           <div className="mt-[clamp(2.5rem,5vw,4rem)] grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,420px)] lg:gap-14">

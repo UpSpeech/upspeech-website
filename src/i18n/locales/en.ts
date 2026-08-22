@@ -131,6 +131,13 @@ export const en = {
       ],
       traceLabel: "Six days with nothing recorded",
     },
+    pause: {
+      ariaLabel: "The size of the gap between sessions",
+      lineOne: "One hour in the room.",
+      lineTwo: "A hundred and sixty-seven outside it.",
+      traceLabel:
+        "A speech recording drawn as an envelope, with the silences left in",
+    },
     day: {
       howToName: "How a speech therapy session becomes a written record",
       eyebrow: "A Tuesday",
