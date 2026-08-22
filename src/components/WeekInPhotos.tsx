@@ -55,18 +55,14 @@ const WeekInPhotos = () => {
         </p>
 
         <h2
-          className="mt-5 max-w-[20ch] font-accent font-bold text-calm-charcoal tracking-tight"
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 3rem)",
-            lineHeight: 1.1,
-            ...revealFrom(revealed, "up", 80),
-          }}
+          className="t-h2 mt-5 max-w-[20ch] font-accent font-bold text-calm-charcoal tracking-tight"
+          style={{ ...revealFrom(revealed, "up", 80) }}
         >
           {t.headline}
         </h2>
 
         <p
-          className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
+          className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed"
           style={revealFrom(revealed, "up", 160)}
         >
           {t.body}

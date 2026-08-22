@@ -78,12 +78,8 @@ const EngineSection = () => {
           {t.eyebrow}
         </p>
         <h2
-          className="font-heading font-bold text-white tracking-tight max-w-4xl"
-          style={{
-            fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-            lineHeight: 1.05,
-            ...textStyle(80),
-          }}
+          className="t-display font-heading font-bold text-white tracking-tight max-w-4xl"
+          style={{ ...textStyle(80) }}
         >
           {t.headlineLine1}{" "}
           <br />
@@ -91,7 +87,7 @@ const EngineSection = () => {
         </h2>
 
         <p
-          className="mt-8 max-w-2xl font-body text-base sm:text-lg text-white/70 leading-relaxed"
+          className="mt-8 max-w-2xl t-lead font-body text-white/70 leading-relaxed"
           style={textStyle(160)}
         >
           {t.body}

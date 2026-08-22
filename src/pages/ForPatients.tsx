@@ -79,11 +79,7 @@ export default function ForPatients() {
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1
-                  className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                  style={{
-                    fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                    lineHeight: 1.05,
-                  }}
+                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
                 >
                   {t.intro.headlineLine1}{" "}
                   <br />
@@ -124,8 +120,7 @@ export default function ForPatients() {
           <div className="max-w-6xl mx-auto">
             <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
             >
               {t.howItWorks.headline}
             </h2>
@@ -206,8 +201,7 @@ export default function ForPatients() {
                 {t.withAParent.eyebrow}
               </p>
               <p
-                className="mt-4 max-w-xl font-accent font-medium text-calm-charcoal leading-snug"
-                style={{ fontSize: "clamp(1.25rem, 2.6vw, 1.75rem)" }}
+                className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal"
               >
                 {t.withAParent.line}
               </p>
@@ -229,15 +223,11 @@ export default function ForPatients() {
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.app.eyebrow}</p>
               <h2
-                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                  lineHeight: 1.1,
-                }}
+                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
               >
                 {t.app.headline}
               </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.app.body}
               </p>
             </div>
@@ -297,8 +287,7 @@ export default function ForPatients() {
           <div className="max-w-3xl mx-auto">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.faq.headline}
             </h2>
@@ -306,7 +295,7 @@ export default function ForPatients() {
             <dl className="mt-8 divide-y divide-calm-charcoal/10">
               {t.faq.items.map((item) => (
                 <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
+                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
                     {item.q}
                   </dt>
                   <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
@@ -324,11 +313,7 @@ export default function ForPatients() {
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
-              className="font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                lineHeight: 1.1,
-              }}
+              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.closing.headline}
             </h2>

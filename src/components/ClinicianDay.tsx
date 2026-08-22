@@ -63,17 +63,13 @@ const ClinicianDay = () => {
             {t.eyebrow}
           </p>
           <h2
-            className="mt-5 max-w-[22ch] font-accent font-bold tracking-tight text-calm-charcoal"
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 3rem)",
-              lineHeight: 1.1,
-              ...revealFrom(revealed, "up", 80),
-            }}
+            className="t-h2 mt-5 max-w-[22ch] font-accent font-bold tracking-tight text-calm-charcoal"
+            style={{ ...revealFrom(revealed, "up", 80) }}
           >
             {t.headline}
           </h2>
           <p
-            className="mt-5 max-w-xl font-body text-base leading-relaxed text-calm-charcoal/80 sm:text-lg"
+            className="t-lead mt-5 max-w-xl font-body text-calm-charcoal/80"
             style={revealFrom(revealed, "up", 160)}
           >
             {t.body}
@@ -162,17 +158,13 @@ const ClinicianDay = () => {
             {t.session.time}
           </span>
           <h3
-            className="mt-4 max-w-[20ch] font-accent font-bold tracking-tight text-white"
-            style={{
-              fontSize: "clamp(1.6rem, 3.4vw, 2.6rem)",
-              lineHeight: 1.12,
-              ...revealFrom(sessionRevealed, "up", 80),
-            }}
+            className="t-h2 mt-4 max-w-[20ch] font-accent font-bold tracking-tight text-white"
+            style={{ ...revealFrom(sessionRevealed, "up", 80) }}
           >
             {t.session.headline}
           </h3>
           <p
-            className="mt-5 max-w-xl font-body text-base leading-relaxed text-white/75 sm:text-lg"
+            className="t-lead mt-5 max-w-xl font-body text-white/75"
             style={revealFrom(sessionRevealed, "up", 160)}
           >
             {t.session.body}

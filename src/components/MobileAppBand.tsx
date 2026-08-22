@@ -128,12 +128,8 @@ const MobileAppBand = () => {
             {t.eyebrow}
           </span>
           <h2
-            className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{
-              fontSize: "clamp(1.875rem, 3.4vw, 3.25rem)",
-              lineHeight: 1.05,
-              ...reveal(revealed, 80),
-            }}
+            className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+            style={{ ...reveal(revealed, 80) }}
           >
             {t.headline}
           </h2>

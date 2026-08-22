@@ -95,19 +95,15 @@ const FoundationsScene = () => {
           {t.eyebrow}
         </p>
         <h2
-          className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
-          style={{
-            fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-            lineHeight: 1.05,
-            ...style(80),
-          }}
+          className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
+          style={{ ...style(80) }}
         >
           {t.headlineLine1}{" "}
           <br />
           <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </h2>
         <p
-          className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed"
+          className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed"
           style={style(160)}
         >
           {t.body}
