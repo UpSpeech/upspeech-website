@@ -85,10 +85,13 @@ export default function ForSlps() {
               <div className="relative flex justify-center lg:justify-end">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute bottom-[-6%] left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[6%] lg:translate-x-0"
+                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-4%] lg:translate-x-0"
                   style={{
+                    // closest-side with a long tail, not a hard stop at 71%:
+                    // the tighter gradient read as a circular badge behind her
+                    // rather than light in the room.
                     background:
-                      "radial-gradient(circle at 42% 38%, rgba(227,220,250,0.9), rgba(241,238,253,0.65) 58%, rgba(241,238,253,0) 71%)",
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
                   }}
                 />
                 <CutOut
