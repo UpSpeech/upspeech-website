@@ -1,7 +1,7 @@
 import { SEO } from "@/components/SEO";
 import SiteIntro from "@/components/SiteIntro";
 import Header from "@/components/Header";
-import HeroOptionD from "@/components/HeroOptionD";
+import Hero from "@/components/Hero";
 import WeekInPhotos from "@/components/WeekInPhotos";
 import ClinicianDay from "@/components/ClinicianDay";
 import InterstitialCTA from "@/components/InterstitialCTA";
@@ -49,7 +49,7 @@ const Index = () => {
       <SiteIntro />
       <Header />
       <main id="main">
-        <HeroOptionD />
+        <Hero />
         <WeekInPhotos />
         <div id="features">
           <ClinicianDay />

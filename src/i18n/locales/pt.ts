@@ -82,6 +82,8 @@ export const pt: Dictionary = {
       headlineLine2: "continua",
       headlineLine3: "entre sessões.",
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
+      traceLabel:
+        "Uma gravação de fala desenhada como envelope: picos onde alguém está a falar, linhas planas onde não está",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
     },

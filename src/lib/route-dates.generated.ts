@@ -4,7 +4,7 @@
 // commit touching that page's component or anything it imports.
 
 export const ROUTE_DATES: Readonly<Record<string, string>> = {
-  "/": "2026-08-21",
+  "/": "2026-08-22",
   "/techniques": "2026-08-21",
   "/techniques/voluntary-stuttering": "2026-08-21",
   "/techniques/cancelation": "2026-08-21",
@@ -17,10 +17,10 @@ export const ROUTE_DATES: Readonly<Record<string, string>> = {
   "/techniques/speech-speed-management": "2026-08-21",
   "/techniques/pauses": "2026-08-21",
   "/techniques/identification-desensitization": "2026-08-21",
-  "/for-patients": "2026-08-21",
+  "/for-patients": "2026-08-22",
   "/person-centered-therapy": "2026-08-21",
   "/reducing-documentation-time": "2026-08-21",
-  "/for-slps": "2026-08-21",
+  "/for-slps": "2026-08-22",
   "/support": "2026-08-20",
   "/privacy": "2026-08-20",
   "/terms": "2026-08-20",

@@ -80,6 +80,8 @@ export const en = {
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
       body: "Patients practice between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
+      traceLabel:
+        "A speech recording drawn as an envelope: bursts where someone is speaking, flat runs where they are not",
       requestAccess: "Request early access",
       seeHowItWorks: "See how it works",
     },

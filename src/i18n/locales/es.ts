@@ -82,6 +82,8 @@ export const es: Dictionary = {
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
       body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
+      traceLabel:
+        "Una grabación de habla dibujada como envolvente: picos donde alguien habla, tramos planos donde no",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
     },
