@@ -182,12 +182,8 @@ const CycleScene = () => {
           </p>
 
           <h2
-            className="font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 3rem)",
-              lineHeight: 1.1,
-              ...reveal(revealed, 80),
-            }}
+            className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
+            style={{ ...reveal(revealed, 80) }}
           >
             {t.headlinePrefix}{" "}
             <span className="text-calm-lavender-ink">{t.headlineEmphasis}</span>
@@ -387,10 +383,8 @@ const CycleScene = () => {
                 {/* Actor readout, swaps and recolors with each step */}
                 <div
                   key={`actor-${activeIndex}`}
-                  className="font-heading font-bold tracking-tight mt-2 mb-2.5"
+                  className="t-h3 font-heading font-bold mt-2 mb-2.5"
                   style={{
-                    fontSize: "clamp(1.25rem, 2.4vw, 1.625rem)",
-                    lineHeight: 1,
                     // #958AF0 is the brand fill and only reaches 2.93:1 on
                     // white, under the 3:1 this size needs. Text-safe ink.
                     color: activeIsAI ? "#6866C4" : "#293587",
@@ -445,15 +439,11 @@ const CycleScene = () => {
                   </span>
                 </div>
                 <h3
-                  className="font-heading font-extrabold text-calm-charcoal tracking-tight mb-5"
-                  style={{
-                    fontSize: "clamp(1.6rem, 3.2vw, 2.5rem)",
-                    lineHeight: 1.1,
-                  }}
+                  className="t-h2 font-heading font-extrabold text-calm-charcoal tracking-tight mb-5"
                 >
                   {active.title}
                 </h3>
-                <p className="font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed max-w-md">
+                <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">
                   {active.body}
                 </p>
 

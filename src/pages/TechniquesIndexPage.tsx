@@ -156,15 +156,11 @@ export function TechniquesIndexPage() {
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.techniques}</p>
               <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
+                className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
               >
                 {t.title}
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.subtitle}
               </p>
             </div>

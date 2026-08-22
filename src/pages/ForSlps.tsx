@@ -70,11 +70,7 @@ export default function ForSlps() {
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1
-                  className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                  style={{
-                    fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                    lineHeight: 1.05,
-                  }}
+                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
                 >
                   {t.intro.headlineLine1}{" "}
                   <br />
@@ -120,8 +116,7 @@ export default function ForSlps() {
           <div className="relative max-w-6xl mx-auto">
             <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
             >
               {t.betweenSessions.headline}
             </h2>
@@ -161,15 +156,11 @@ export default function ForSlps() {
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
               <h2
-                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                  lineHeight: 1.1,
-                }}
+                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
               >
                 {t.documentation.headline}
               </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.documentation.body}
               </p>
             </div>
@@ -198,15 +189,11 @@ export default function ForSlps() {
                   {t.personCentered.eyebrow}
                 </p>
                 <h2
-                  className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-                  style={{
-                    fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                    lineHeight: 1.1,
-                  }}
+                  className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
                 >
                   {t.personCentered.headline}
                 </h2>
-                <p className="mt-4 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                   {t.personCentered.body}
                 </p>
               </div>
@@ -230,8 +217,7 @@ export default function ForSlps() {
           <div className="max-w-3xl mx-auto">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
+              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.faq.headline}
             </h2>
@@ -239,7 +225,7 @@ export default function ForSlps() {
             <dl className="mt-8 divide-y divide-calm-charcoal/10">
               {t.faq.items.map((item) => (
                 <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
+                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
                     {item.q}
                   </dt>
                   <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
@@ -255,11 +241,7 @@ export default function ForSlps() {
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
-              className="font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                lineHeight: 1.1,
-              }}
+              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
             >
               {t.closing.headline}
             </h2>

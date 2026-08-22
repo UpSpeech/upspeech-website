@@ -131,17 +131,10 @@ const Hero = () => {
           {/* Bigger and tighter than the old hero by a wide margin. A display
               size that only reaches 5rem next to 1.125rem body is a two-step
               scale, which is what makes a page look like a template. */}
-          <h1
-            className="max-w-[16ch] font-heading font-bold text-calm-charcoal"
-            style={{
-              // Capped so the longest line still sets on one line. The Line
-              // reveal clips its overflow, so a wrap is not a soft failure:
-              // it slices the glyphs of the line below.
-              fontSize: "clamp(2.5rem, 5.2vw, 4.5rem)",
-              lineHeight: 0.98,
-              letterSpacing: "-0.035em",
-            }}
-          >
+          {/* t-display is capped so the longest line still sets on one line.
+              The Line reveal clips its overflow, so a wrap is not a soft
+              failure here: it slices the glyphs of the line below. */}
+          <h1 className="t-display max-w-[16ch] font-heading font-bold text-calm-charcoal">
             {/* The trailing spaces are load-bearing, not sloppy. Each line is
                 a block-level span, so with JavaScript off a crawler extracts
                 textContent and gets "Your therapykeeps goingbetween sessions."

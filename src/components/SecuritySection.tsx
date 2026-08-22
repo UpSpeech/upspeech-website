@@ -44,12 +44,8 @@ const SecuritySection = () => {
           {t.eyebrow}
         </p>
         <h2
-          className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.75rem)",
-            lineHeight: 1.08,
-            ...reveal(revealed, 80),
-          }}
+          className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
+          style={{ ...reveal(revealed, 80) }}
         >
           {t.headline}
         </h2>
