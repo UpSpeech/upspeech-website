@@ -2,6 +2,7 @@ import { revealFrom } from "./motion";
 import { useReveal } from "./useReveal";
 import PagePortrait from "./PagePortrait";
 import GuardianMark from "./GuardianMark";
+import CutOut from "./CutOut";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 /**
@@ -177,44 +178,47 @@ const ClinicianDay = () => {
             {t.session.body}
           </p>
 
-          <div className="mt-[clamp(2.25rem,5vw,3.5rem)] grid gap-8 sm:grid-cols-2 sm:gap-6 lg:gap-10">
-            {(["cost", "instead"] as const).map((k, i) => (
-              <figure
-                key={k}
-                className="m-0"
-                style={revealFrom(sessionRevealed, "up", 240 + i * 100, 24)}
-              >
-                <div className="overflow-hidden rounded-xl bg-white/5">
-                  <img
-                    src={`/images/people/${SESSION_PHOTOS[k]}.webp`}
-                    srcSet={
-                      `/images/people/${SESSION_PHOTOS[k]}-480.webp 480w, ` +
-                      `/images/people/${SESSION_PHOTOS[k]}-688.webp 688w, ` +
-                      `/images/people/${SESSION_PHOTOS[k]}.webp 900w`
-                    }
-                    sizes="(min-width: 640px) 420px, 90vw"
-                    alt={t.session[k].photoAlt}
-                    width={900}
-                    height={675}
-                    loading="lazy"
-                    decoding="async"
-                    className="block aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-                <figcaption className="pt-5">
-                  <span
-                    className={`${stamp} ${
-                      i === 0 ? "text-white/55" : "text-calm-lavender-bright"
-                    }`}
-                  >
-                    {t.session[k].label}
-                  </span>
-                  <p className="mt-2.5 font-body text-sm leading-relaxed text-white/70">
-                    {t.session[k].caption}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
+          {/* Cut out rather than framed, and on one shared floor line. Two
+              photographs of the same room in two boxes read as two pictures;
+              two silhouettes on one line read as the same room twice, which is
+              the whole point of the beat. The subjects are desaturated a little
+              so they belong to the navy instead of sitting on it. */}
+          <div className="relative mt-[clamp(2.25rem,5vw,3.5rem)]">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-[300px] hidden h-px bg-white/12 sm:block"
+            />
+            <div className="grid items-start gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10">
+              {(["cost", "instead"] as const).map((k, i) => (
+                <figure
+                  key={k}
+                  className="m-0 flex flex-col"
+                  style={revealFrom(sessionRevealed, "up", 240 + i * 100, 24)}
+                >
+                  <div className="flex min-h-[210px] items-end justify-center sm:min-h-[300px]">
+                    <CutOut
+                      name={SESSION_PHOTOS[k]}
+                      alt={t.session[k].photoAlt}
+                      tone="dark"
+                      renderHeight={300}
+                      className="h-[210px] sm:h-[300px]"
+                    />
+                  </div>
+                  <figcaption className="border-t border-white/12 pt-5 sm:border-t-0">
+                    <span
+                      className={`${stamp} ${
+                        i === 0 ? "text-white/55" : "text-calm-lavender-bright"
+                      }`}
+                    >
+                      {t.session[k].label}
+                    </span>
+                    <p className="mt-2.5 font-body text-sm leading-relaxed text-white/70">
+                      {t.session[k].caption}
+                    </p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       </section>
