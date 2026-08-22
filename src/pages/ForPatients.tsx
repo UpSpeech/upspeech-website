@@ -97,10 +97,10 @@ export default function ForPatients() {
               <div className="relative flex justify-center lg:justify-end">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute bottom-[-8%] left-1/2 h-[360px] w-[360px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[8%] lg:translate-x-0"
+                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-2%] lg:translate-x-0"
                   style={{
                     background:
-                      "radial-gradient(circle at 42% 38%, rgba(227,220,250,0.9), rgba(241,238,253,0.65) 58%, rgba(241,238,253,0) 71%)",
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
                   }}
                 />
                 <CutOut
@@ -166,7 +166,7 @@ export default function ForPatients() {
                 that belong to this exact person, which is what stops the
                 layering being decoration. */}
             <div className="relative flex h-[300px] items-end justify-center sm:h-[340px]">
-              <div aria-hidden="true" className="pointer-events-none absolute left-0 top-4 hidden w-[190px] -rotate-3 overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+              <div aria-hidden="true" className="pointer-events-none absolute -left-3 bottom-24 hidden w-[190px] -rotate-3 overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
                 <img
                   src={localizedAsset("/screenshots/detail/plan-assigned.webp", locale)}
                   alt=""
@@ -183,7 +183,7 @@ export default function ForPatients() {
                 renderHeight={340}
                 className="relative z-10 h-[300px] sm:h-[340px]"
               />
-              <div aria-hidden="true" className="pointer-events-none absolute -right-2 bottom-6 z-20 hidden w-[200px] overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
+              <div aria-hidden="true" className="pointer-events-none absolute -right-3 bottom-2 z-20 hidden w-[200px] overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
                 <img
                   src={localizedAsset("/screenshots/detail/report-ready.webp", locale)}
                   alt=""

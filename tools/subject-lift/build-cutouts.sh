@@ -24,10 +24,17 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
 # Exposure target, as mean luminance over opaque pixels on a 0-100 scale.
-# Chosen as the median of the set as originally shot. Matching to it is what
-# stops a row of cut-outs reading as a stock collage: before this the set ran
-# from 12 to 38, and the darkest subject was three times darker than the rest.
-TARGET=31
+# Matching to it is what stops a row of cut-outs reading as a stock collage:
+# unmatched, the set ran from 12 to 54 and the darkest subject was four times
+# darker than the brightest.
+#
+# Raised from 31 to 36 when the reshoot landed. 31 was the median of the first
+# set, which was shot flat and dim; the reshoot asked for directional light and
+# came in near 53. Splitting the difference lifts the murky originals and brings
+# the bright new frames down, rather than dragging the good light back to the
+# bad. The gamma floor moved with it: at 0.75 the correction could not reach a
+# 53 and the new frames stayed fifteen points off the rest.
+TARGET=36
 
 SUBJECTS=(
   week-session week-alone week-phone week-next
@@ -74,7 +81,7 @@ for n in "${list[@]}"; do
 import math
 cur = 100*$GA/max($AV,1e-6)
 g = 1/(math.log($TARGET/100)/math.log(max(cur,1)/100))
-print(f'{min(max(g,0.75),1.95):.3f} {cur:.1f}')")"
+print(f'{min(max(g,0.55),1.95):.3f} {cur:.1f}')")"
   magick "$TMP/b.png" \( +clone -alpha extract -write mpr:B +delete \) -alpha off \
     -gamma "$G" mpr:B -compose CopyOpacity -composite "$TMP/c.png"
 
