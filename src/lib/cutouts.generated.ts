@@ -6,6 +6,7 @@ export const CUTOUTS: Record<string, { w: number; h: number }> = {
   "home-family": { w: 900, h: 759 },
   "patients-hero": { w: 900, h: 785 },
   "patients-listen": { w: 900, h: 951 },
+  "practice-hero-1536": { w: 900, h: 973 },
   "slps-family": { w: 900, h: 966 },
   "slps-hero": { w: 900, h: 1167 },
   "week-alone": { w: 900, h: 851 },
