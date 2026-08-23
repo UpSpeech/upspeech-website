@@ -12,7 +12,7 @@ import { LOCALIZED_ASSETS } from "./localized-assets.generated";
  * Localized files live under a locale folder inserted after the first path
  * segment, matching scripts/generate-asset-manifest.mjs:
  *   localizedAsset("/screenshots/app/x.png", "pt") -> "/screenshots/pt/app/x.png"
- *   localizedAsset("/videos/hero-demo.mp4", "es")  -> "/videos/es/hero-demo.mp4"
+ *   localizedAsset("/screenshots/desktop.jpg", "es")  -> "/screenshots/es/desktop.jpg"
  *   localizedAsset("/screenshots/app/x.png", "en") -> "/screenshots/app/x.png"
  */
 export function localizedAsset(basePath: string, locale: Locale): string {

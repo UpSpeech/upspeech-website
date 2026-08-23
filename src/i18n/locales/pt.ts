@@ -75,18 +75,16 @@ export const pt: Dictionary = {
     seoDescription:
       "Apoio contínuo à terapia da fala. Os pacientes praticam entre sessões segundo o plano do terapeuta, e cada tentativa volta para revisão.",
     hero: {
+      photoAlt:
+        "Uma mulher à mesa da cozinha, com o telemóvel à frente, a dizer um exercício em voz alta ao fim da tarde",
       eyebrow: "Para clínicas de terapia da fala",
       headlineLine1: "A sua terapia",
       headlineLine2: "continua",
       headlineLine3: "entre sessões.",
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
+      traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
       requestAccess: "Pedir acesso antecipado",
       seeHowItWorks: "Ver como funciona",
-      videoAriaLabel:
-        "Demonstração do produto UpSpeech: um terapeuta atribui um plano personalizado, o paciente pratica em casa, o terapeuta acompanha o progresso num painel, grava uma sessão e os clínicos anotam a gravação",
-      posterAlt:
-        "Demonstração do produto UpSpeech: o plano de prática personalizado de um terapeuta",
-      playAriaLabel: "Reproduzir a demonstração do produto UpSpeech",
     },
     gap: {
       eyebrow: "A semana do paciente",
@@ -106,49 +104,78 @@ export const pt: Dictionary = {
       footerPrefix: "O paciente mantém o seu apoio todos os dias,",
       footerEmphasis: "sem acrescentar sessões à semana do clínico.",
     },
-    therapist: {
-      eyebrow: "Na consulta",
-      headlineLine1: "O clínico conduz a sessão.",
-      headlineLine2: "A UpSpeech trata do resto.",
-      body: "Pode ver o que os pacientes praticaram entre consultas, e como correu cada tentativa.",
-      imageAlt:
-        "Vista do terapeuta na UpSpeech do progresso de um paciente: estatísticas de atividade, objetivo do percurso de aprendizagem e passo atual",
-      points: [
+    week: {
+      eyebrow: "Entre as sessões",
+      headline: "A maior parte da terapia acontece quando ninguém está a ver.",
+      body: "Uma hora na clínica e depois seis dias sozinho. A parte que decide se a terapia resulta é a parte que o clínico nunca vê.",
+      frames: [
         {
-          label: "Preparação da sessão",
-          copy: "Entre na consulta sabendo o que o paciente praticou desde a última consulta.",
+          day: "Quinta",
+          caption: "A sessão. Na sala corre tudo bem.",
+          alt: "Uma terapeuta da fala a explicar algo a um paciente que escuta, sentados frente a frente numa sala simples",
         },
         {
-          label: "O plano seguinte, pronto",
-          copy: "Ajuste a prática da semana seguinte sem a construir do zero.",
+          day: "Sábado",
+          caption: "Sozinho com a folha. Sem saber se está a fazer bem.",
+          alt: "Um jovem sentado sozinho à mesa em casa, com uma folha de exercícios na mão e um ar incerto",
         },
         {
-          label: "Validação do terapeuta",
-          copy: "Cada relatório e cada plano de terapia é um rascunho até o terapeuta o rever e assinar.",
+          day: "Segunda",
+          caption: "O telemóvel toca. Ele deixa tocar.",
+          alt: "Um jovem parado no corredor a olhar para um telemóvel a tocar numa mesa de apoio, sem o atender",
+        },
+        {
+          day: "Quinta seguinte",
+          caption: "Então, como correu a semana? Ninguém sabe bem.",
+          alt: "Uma terapeuta a fazer uma pergunta inicial enquanto o paciente responde com um gesto de dúvida",
         },
       ],
+      traceLabel: "Seis dias sem nada registado",
     },
-    patient: {
-      eyebrow: "Fora da consulta",
-      headlineLine1: "Prática estruturada entre consultas,",
-      headlineLine2: "orientada pelo terapeuta do início ao fim.",
-      body: "Cada paciente recebe um plano do seu clínico, com exercícios adequados à fase de terapia em que está, e vai cumprindo-o entre consultas com orientação em cada passo.",
-      imageAlt:
-        "Painel do paciente na UpSpeech com exercícios de prática diários e progresso",
-      points: [
-        {
-          label: "Um plano, definido pelo terapeuta",
-          copy: "Cada passo é selecionado pelo terapeuta. Os pacientes veem apenas o que devem praticar.",
-        },
-        {
-          label: "Cada tentativa, registada",
-          copy: "Cada tentativa é gravada e organizada para o terapeuta rever e ajustar.",
-        },
-        {
-          label: "Progresso, registado",
-          copy: "Os dias seguidos de prática e o progresso ao longo do tempo mantêm os pacientes envolvidos. O terapeuta vê a atividade por trás desses números.",
-        },
-      ],
+    day: {
+      howToName: "Como uma sessão de terapia da fala se torna um registo escrito",
+      eyebrow: "Uma terça-feira",
+      headline: "A maior parte do trabalho não é a sessão.",
+      body: "Três clínicos disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
+      before: {
+        time: "08:40 · Antes da primeira consulta",
+        headline: "Já tem o contexto.",
+        body: "O paciente completou o acolhimento na app. Lê onde ele está antes de se sentar, em vez de gastar os primeiros dez minutos a perguntar.",
+        photoAlt: "Uma terapeuta da fala à secretária entre consultas, com o portátil fechado à frente, a olhar pela janela",
+    },
+    assessment: {
+      time: "09:15 · A avaliação",
+      headline: "Sai com o relatório escrito.",
+      body: "Grave a avaliação e o relatório fica em rascunho no momento em que se levanta. Corrige e assina. Não começa de uma página em branco.",
+      detailAlt: "Um relatório de sessão gerado, com o nome do paciente, a data e o estado Pronto",
+    },
+    session: {
+      time: "11:30 · Na sessão",
+      headline: "As notas custam-lhe a criança.",
+      body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grave a sessão e as notas ficam à sua espera quando ela terminar.",
+      cost: {
+        label: "A tirar notas",
+        caption: "A sua atenção está no papel. A dele foi para a janela há já algum tempo.",
+        photoAlt: "Uma terapeuta da fala a escrever numa prancheta ao colo enquanto o rapaz ao lado se virou para a janela, com o queixo apoiado na mão",
+      },
+      instead: {
+        label: "Mãos livres",
+        caption: "Nada para apontar. Estão a olhar um para o outro e é ele quem fala.",
+        photoAlt: "A mesma terapeuta inclinada para o rapaz, com as duas mãos abertas e vazias, sem prancheta nenhuma, os dois a olhar um para o outro enquanto ele fala",
+      },
+    },
+    plan: {
+      time: "14:00 · Depois da sessão",
+      headline: "O plano vai com eles para casa.",
+      body: "Atribui os exercícios uma vez. Praticam entre consultas e cada tentativa volta para si rever antes da consulta seguinte.",
+      detailAlt: "Um percurso de aprendizagem atribuído, a mostrar o progresso pelos passos, com o passo atual assinalado",
+    },
+    close: {
+      time: "17:30 · O fim do dia",
+      headline: "Lembra-se de todos.",
+      body: "Seis pacientes, um a seguir ao outro. Ao fim da tarde o detalhe desapareceu. O registo não, e é dele que parte a sessão seguinte.",
+      screenshotAlt: "O painel do terapeuta, com os pacientes atribuídos, a atividade recente e o que precisa de atenção",
+    },
     },
     mobile: {
       eyebrow: "No bolso do paciente",
@@ -159,6 +186,9 @@ export const pt: Dictionary = {
         "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
       ],
+      familyEyebrow: "Pacientes mais novos",
+      familyAlt:
+        "Um pai e a filha à mesa da sala, a rapariga a falar para um telemóvel apoiado num suporte enquanto ele está sentado ao lado, a olhar para ela e não para o ecrã",
     },
     cycle: {
       eyebrow: "O ciclo",
@@ -207,45 +237,6 @@ export const pt: Dictionary = {
       headlineLine1: "Apoio contínuo,",
       headlineLine2: "a começar pela sua clínica.",
       requestAccess: "Pedir acesso antecipado",
-    },
-    gallery: {
-      eyebrow: "Dentro da plataforma",
-      headlineLine1: "Ferramentas específicas.",
-      headlineLine2: "Para clínicos e investigadores.",
-      intro:
-        "A plataforma assenta num percurso de aprendizagem estruturado, desde a identificação de momentos de disfluência até levar o trabalho para conversas reais.",
-      forClinicians: "Para clínicos",
-      forResearchers: "Para investigadores",
-      annotationEyebrow: "Ferramenta de anotação",
-      annotationTitle:
-        "A ferramenta que clínicos e investigadores usam para anotar momentos de disfluência.",
-      annotationCopy:
-        "Os clínicos anotam momentos de disfluência com uma taxonomia padrão, do comportamento principal aos comportamentos secundários e ao nível de tensão. A mesma ferramenta constrói o nosso conjunto de dados e apoia as nossas parcerias de investigação.",
-      annotationImageAlt:
-        "Ferramenta de anotação UpSpeech com forma de onda de áudio, revisão de vídeo e anotação por terapeutas da fala",
-      features: [
-        {
-          label: "Percurso de aprendizagem estruturado",
-          title: "Um plano construído a partir de objetivos e passos.",
-          copy: "O clínico monta o percurso de cada paciente a partir de técnicas estabelecidas e desbloqueia cada passo à medida que o paciente está pronto.",
-          imageAlt:
-            "Percurso de aprendizagem UpSpeech a mostrar os objetivos e passos de terapia de um paciente com o estado de conclusão",
-        },
-        {
-          label: "Cenários de prática",
-          title: "Ensaio com um interlocutor virtual.",
-          copy: "Os pacientes ensaiam conversas difíceis com um interlocutor virtual. O clínico define o cenário e a dificuldade.",
-          imageAlt:
-            "Interface de cenário de prática UpSpeech a mostrar o ensaio de uma entrevista de emprego com objetivos e videochamada",
-        },
-        {
-          label: "Reflexões periódicas",
-          title: "Reflexões que o terapeuta revê.",
-          copy: "O paciente regista periodicamente uma breve reflexão sobre a sua experiência. O clínico pode ver como descreve a própria experiência ao longo do tempo.",
-          imageAlt:
-            "Gráfico UpSpeech das reflexões de um paciente ao longo de várias semanas",
-        },
-      ],
     },
     engine: {
       eyebrow: "UpSpeech Labs",
@@ -354,6 +345,14 @@ export const pt: Dictionary = {
       headlineLine1: "A sua prática,",
       headlineLine2: "entre sessões.",
       body: "A UpSpeech é como continua a praticar, entre consultas, o trabalho que faz com o seu terapeuta da fala. O seu terapeuta define o plano e acompanha como está a correr enquanto pratica na app.",
+      photoAlt:
+        "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
+    },
+    withAParent: {
+      eyebrow: "Praticar com um dos pais",
+      line: "Os pacientes mais novos praticam com um dos pais ao lado, seguindo o mesmo plano definido pelo terapeuta.",
+      photoAlt:
+        "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
     },
     howItWorks: {
       eyebrow: "Como funciona para si",
@@ -548,6 +547,8 @@ export const pt: Dictionary = {
       headlineLine1: "Mais terapia entre sessões.",
       headlineLine2: "Tudo orientado por si.",
       body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolher. Saberá como correu a semana antes de o paciente se sentar.",
+      photoAlt:
+        "Uma terapeuta da fala à secretária, a rever a gravação de um paciente no portátil",
     },
     documentation: {
       eyebrow: "Documentação",
@@ -578,6 +579,8 @@ export const pt: Dictionary = {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
       body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
+      photoAlt:
+        "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
     faq: {
       eyebrow: "Perguntas de clínicos",

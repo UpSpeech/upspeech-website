@@ -22,8 +22,7 @@ const InterstitialCTA = () => {
       >
         <div style={reveal(revealed, 0)}>
           <h2
-            className="font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1 }}
+            className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight"
           >
             {t.headlineLine1}{" "}
             <br />
