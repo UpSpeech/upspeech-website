@@ -37,7 +37,7 @@ import { useT } from "@/i18n";
  */
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-const HERO_CUTOUT = "practice-hero-1536";
+const HERO_CUTOUT = "practice-hero";
 
 const Line = ({
   children,

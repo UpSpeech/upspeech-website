@@ -42,7 +42,7 @@ SUBJECTS=(
   home-family
   patients-hero patients-listen
   slps-hero slps-family
-  practice-hero-1536
+  practice-hero
 )
 
 for bin in swiftc magick cwebp; do
