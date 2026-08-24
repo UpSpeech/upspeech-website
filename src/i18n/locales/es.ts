@@ -132,6 +132,11 @@ export const es: Dictionary = {
       ],
       traceLabel: "Seis días sin nada registrado",
     },
+    pause: {
+      ariaLabel: "El paso de la semana del paciente al día del clínico",
+      line: "Ahora, al otro lado de la mesa.",
+      traceLabel: "Una grabación de alguien hablando, con las pausas incluidas",
+    },
     day: {
       howToName: "Cómo una sesión de logopedia se convierte en un registro escrito",
       eyebrow: "Un martes",

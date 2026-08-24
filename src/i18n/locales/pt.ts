@@ -132,6 +132,11 @@ export const pt: Dictionary = {
       ],
       traceLabel: "Seis dias sem nada registado",
     },
+    pause: {
+      ariaLabel: "A passagem da semana do paciente para o dia do clínico",
+      line: "Agora, do outro lado da mesa.",
+      traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
+    },
     day: {
       howToName: "Como uma sessão de terapia da fala se torna um registo escrito",
       eyebrow: "Uma terça-feira",

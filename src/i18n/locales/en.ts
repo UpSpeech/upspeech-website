@@ -130,6 +130,11 @@ export const en = {
       ],
       traceLabel: "Six days with nothing recorded",
     },
+    pause: {
+      ariaLabel: "Turning from the patient's week to the clinician's day",
+      line: "Now the other side of the table.",
+      traceLabel: "A recording of someone speaking, with the pauses left in",
+    },
     day: {
       howToName: "How a speech therapy session becomes a written record",
       eyebrow: "A Tuesday",
