@@ -273,7 +273,7 @@ export const pt: Dictionary = {
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {
         lispolis: "Programa de aceleração",
-        unicorn: "Startup Mais Promissora · Lisboa",
+        unicorn: "Startup Mais Promissora · Portugal",
         innocatalyst: "Programa de inovação em saúde",
         healthqup: "Programa de aceleração em saúde",
       },

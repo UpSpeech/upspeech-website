@@ -271,7 +271,7 @@ export const en = {
       partnersTagline: "Who we work with",
       partnerContext: {
         lispolis: "Acceleration program",
-        unicorn: "Most Promising Startup · Lisboa",
+        unicorn: "Most Promising Startup · Portugal",
         innocatalyst: "Health innovation program",
         healthqup: "Health acceleration program",
       },
