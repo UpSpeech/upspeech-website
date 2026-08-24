@@ -237,12 +237,16 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 </p>
               )}
               <h1
-                className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(2rem, 5.5vw, 3.5rem)",
+                  lineHeight: 1.05,
+                }}
               >
                 {technique.name}
               </h1>
               {technique.description && (
-                <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
                   {technique.description}
                 </p>
               )}

@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
-import GuardianMark from "./GuardianMark";
-import CutOut from "./CutOut";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
 // Bare device renders (phone only, transparent background) so they float on the
@@ -128,8 +126,12 @@ const MobileAppBand = () => {
             {t.eyebrow}
           </span>
           <h2
-            className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{ ...reveal(revealed, 80) }}
+            className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+            style={{
+              fontSize: "clamp(1.875rem, 3.4vw, 3.25rem)",
+              lineHeight: 1.05,
+              ...reveal(revealed, 80),
+            }}
           >
             {t.headline}
           </h2>
@@ -139,25 +141,6 @@ const MobileAppBand = () => {
           >
             {t.body}
           </p>
-
-          {/* The patients using this are not all adults, and until now the
-              homepage only showed adults. This column is otherwise empty on a
-              wide screen next to a 600px phone fan, so the family sits here
-              rather than costing the page a section of its own.
-
-              Its own frame, deliberately: /for-patients already carries two
-              guardian photographs, and repeating one of them across two pages
-              is the duplication this redesign set out to remove. */}
-          <p className="mt-9 flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink">
-            <GuardianMark className="text-calm-navy/70" />
-            {t.familyEyebrow}
-          </p>
-          <CutOut
-            name="home-family"
-            alt={t.familyAlt}
-            renderHeight={260}
-            className="mt-3 h-[220px] sm:h-[260px]"
-          />
 
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
           <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">

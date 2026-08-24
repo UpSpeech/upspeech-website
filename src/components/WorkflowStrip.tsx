@@ -38,8 +38,12 @@ const WorkflowStrip = () => {
           How it fits your week
         </p>
         <h2
-          className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-          style={{ ...reveal(revealed, 80) }}
+          className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            lineHeight: 1.1,
+            ...reveal(revealed, 80),
+          }}
         >
           Before, during, and after each session.
         </h2>
@@ -53,7 +57,8 @@ const WorkflowStrip = () => {
             >
               <div className="flex items-center gap-4">
                 <div
-                  className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums"
+                  className="font-heading font-bold text-calm-navy/25 tabular-nums leading-none"
+                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </div>

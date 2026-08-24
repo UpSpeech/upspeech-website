@@ -8,8 +8,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import CutOut from "@/components/CutOut";
-import GuardianMark from "@/components/GuardianMark";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forSlps.betweenSessions.steps).
@@ -64,44 +62,24 @@ export default function ForSlps() {
             }}
           />
           <div className="relative max-w-6xl mx-auto">
-            {/* Two columns from lg up, matching /for-patients. Both pages had a
-                text block against an empty right half. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
-              <div>
-                <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1
-                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                >
-                  {t.intro.headlineLine1}{" "}
-                  <br />
-                  <span className="text-calm-lavender-ink">
-                    {t.intro.headlineLine2}
-                  </span>
-                </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
-                  {t.intro.body}
-                </p>
-              </div>
-              <div className="relative flex justify-center lg:justify-end">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-4%] lg:translate-x-0"
-                  style={{
-                    // closest-side with a long tail, not a hard stop at 71%:
-                    // the tighter gradient read as a circular badge behind her
-                    // rather than light in the room.
-                    background:
-                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
-                  }}
-                />
-                <CutOut
-                  name="slps-hero"
-                  alt={t.intro.photoAlt}
-                  priority
-                  renderHeight={460}
-                  className="relative h-[320px] sm:h-[400px] lg:h-[460px]"
-                />
-              </div>
+            <div className="max-w-3xl">
+              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
+              <h1
+                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
+                  lineHeight: 1.05,
+                }}
+              >
+                {t.intro.headlineLine1}{" "}
+                <br />
+                <span className="text-calm-lavender-ink">
+                  {t.intro.headlineLine2}
+                </span>
+              </h1>
+              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                {t.intro.body}
+              </p>
             </div>
           </div>
         </section>
@@ -119,7 +97,8 @@ export default function ForSlps() {
           <div className="relative max-w-6xl mx-auto">
             <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
             <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
             >
               {t.betweenSessions.headline}
             </h2>
@@ -159,11 +138,15 @@ export default function ForSlps() {
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
               <h2
-                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+                style={{
+                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
+                  lineHeight: 1.1,
+                }}
               >
                 {t.documentation.headline}
               </h2>
-              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
                 {t.documentation.body}
               </p>
             </div>
@@ -185,33 +168,19 @@ export default function ForSlps() {
         {/* Person-centered */}
         <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
           <div className="max-w-6xl mx-auto rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
-            <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
-              <div>
-                <p className={`${eyebrowClass} flex items-center gap-2`}>
-                  <GuardianMark className="text-calm-navy/70" />
-                  {t.personCentered.eyebrow}
-                </p>
-                <h2
-                  className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-                >
-                  {t.personCentered.headline}
-                </h2>
-                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
-                  {t.personCentered.body}
-                </p>
-              </div>
-              {/* A child, a parent and the clinician in one frame. This is the
-                  page a clinic owner reads, so the pediatric case is worth
-                  showing here rather than describing. */}
-              <div className="flex justify-center lg:justify-end">
-                <CutOut
-                  name="slps-family"
-                  alt={t.personCentered.photoAlt}
-                  renderHeight={300}
-                  className="h-[260px] sm:h-[300px]"
-                />
-              </div>
-            </div>
+            <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
+            <h2
+              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+              style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
+                lineHeight: 1.1,
+              }}
+            >
+              {t.personCentered.headline}
+            </h2>
+            <p className="mt-4 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              {t.personCentered.body}
+            </p>
           </div>
         </section>
 
@@ -220,7 +189,8 @@ export default function ForSlps() {
           <div className="max-w-3xl mx-auto">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
             >
               {t.faq.headline}
             </h2>
@@ -228,7 +198,7 @@ export default function ForSlps() {
             <dl className="mt-8 divide-y divide-calm-charcoal/10">
               {t.faq.items.map((item) => (
                 <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
+                  <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
                     {item.q}
                   </dt>
                   <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
@@ -244,7 +214,11 @@ export default function ForSlps() {
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
-              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
+              className="font-heading font-bold text-calm-charcoal tracking-tight"
+              style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
+                lineHeight: 1.1,
+              }}
             >
               {t.closing.headline}
             </h2>

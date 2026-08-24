@@ -75,16 +75,18 @@ export const es: Dictionary = {
     seoDescription:
       "Apoyo continuo a la logopedia. Los pacientes practican entre sesiones según el plan de su terapeuta, y cada intento vuelve para revisión.",
     hero: {
-      photoAlt:
-        "Una mujer en la mesa de su cocina sosteniendo el teléfono frente a ella, diciendo un ejercicio en voz alta a última hora de la tarde",
       eyebrow: "Para clínicas de logopedia",
       headlineLine1: "Tu terapia",
       headlineLine2: "sigue",
       headlineLine3: "entre sesiones.",
       body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
-      traceLabel: "Una grabación de alguien hablando, con las pausas incluidas",
       requestAccess: "Solicitar acceso anticipado",
       seeHowItWorks: "Ver cómo funciona",
+      videoAriaLabel:
+        "Demostración del producto UpSpeech: un terapeuta asigna un plan personalizado, el paciente practica en casa, el terapeuta sigue el progreso en un panel, graba una sesión y los logopedas anotan la grabación",
+      posterAlt:
+        "Demostración del producto UpSpeech: el plan de práctica personalizado de un terapeuta",
+      playAriaLabel: "Reproducir la demostración del producto UpSpeech",
     },
     gap: {
       eyebrow: "La semana del paciente",
@@ -104,78 +106,49 @@ export const es: Dictionary = {
       footerPrefix: "El paciente cuenta con apoyo todos los días,",
       footerEmphasis: "sin añadir sesiones a la agenda del logopeda.",
     },
-    week: {
-      eyebrow: "Entre las sesiones",
-      headline: "La mayor parte de la terapia ocurre cuando nadie mira.",
-      body: "Una hora en la clínica y luego seis días por tu cuenta. La parte que decide si la terapia funciona es la que el clínico nunca ve.",
-      frames: [
+    therapist: {
+      eyebrow: "En la consulta",
+      headlineLine1: "El logopeda dirige la sesión.",
+      headlineLine2: "UpSpeech se encarga del resto.",
+      body: "Puedes ver qué han practicado tus pacientes entre citas, y cómo ha ido cada intento.",
+      imageAlt:
+        "Vista del terapeuta en UpSpeech del progreso de un paciente: estadísticas de actividad, hito de la ruta de aprendizaje y paso actual",
+      points: [
         {
-          day: "Jueves",
-          caption: "La sesión. En la sala todo sale bien.",
-          alt: "Una logopeda explicando algo a un paciente que escucha, sentados uno frente al otro en una sala sencilla",
+          label: "Preparación de la sesión",
+          copy: "Entra en la consulta sabiendo qué ha practicado el paciente desde la última visita.",
         },
         {
-          day: "Sábado",
-          caption: "Solo con la hoja. Sin saber si lo está haciendo bien.",
-          alt: "Un joven sentado solo a la mesa en casa, con una hoja de ejercicios en la mano y expresión de duda",
+          label: "El siguiente plan, listo",
+          copy: "Ajusta la práctica de la semana siguiente sin volver a construirla desde cero.",
         },
         {
-          day: "Lunes",
-          caption: "Suena el teléfono. Lo deja sonar.",
-          alt: "Un joven de pie en el pasillo mirando un teléfono que suena sobre una mesa auxiliar, sin cogerlo",
-        },
-        {
-          day: "Jueves siguiente",
-          caption: "Y bien, ¿qué tal la semana? Nadie lo sabe del todo.",
-          alt: "Una logopeda haciendo una pregunta inicial mientras el paciente responde con un gesto de duda",
+          label: "Validación del terapeuta",
+          copy: "Cada informe y cada plan de terapia es un borrador hasta que el terapeuta lo revisa y lo firma.",
         },
       ],
-      traceLabel: "Seis días sin nada registrado",
     },
-    day: {
-      howToName: "Cómo una sesión de logopedia se convierte en un registro escrito",
-      eyebrow: "Un martes",
-      headline: "La mayor parte del trabajo no es la sesión.",
-      body: "Tres clínicos nos dijeron lo mismo: horas preparando, horas redactando informes y, dentro de la sesión, tiempo perdido tomando notas. Este es ese día con UpSpeech.",
-      before: {
-        time: "08:40 · Antes de la primera cita",
-        headline: "Ya tienes el contexto.",
-        body: "El paciente ha completado su incorporación en la app. Lees dónde está antes de que se siente, en vez de gastar los primeros diez minutos preguntando.",
-        photoAlt: "Una logopeda en su escritorio entre citas, con el portátil cerrado delante, mirando por la ventana",
-    },
-    assessment: {
-      time: "09:15 · La evaluación",
-      headline: "Sales con el informe escrito.",
-      body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo corriges y lo firmas. No empiezas desde una página en blanco.",
-      detailAlt: "Un informe de sesión generado, encabezado con el nombre del paciente, la fecha y el estado Listo",
-    },
-    session: {
-      time: "11:30 · En sesión",
-      headline: "Las notas te cuestan el niño.",
-      body: "Cada minuto que pasas escribiendo es un minuto que él pasa en otra parte. Graba la sesión y las notas te esperan cuando termine.",
-      cost: {
-        label: "Tomando notas",
-        caption: "Tu atención está en el papel. La suya se fue a la ventana hace rato.",
-        photoAlt: "Una logopeda escribiendo en un portapapeles sobre el regazo mientras el niño a su lado se ha girado hacia la ventana, con la barbilla apoyada en la mano",
-      },
-      instead: {
-        label: "Manos libres",
-        caption: "Nada que apuntar. Os estáis mirando y es él quien habla.",
-        photoAlt: "La misma logopeda inclinada hacia el niño, con las dos manos abiertas y vacías, sin ningún portapapeles, mirándose mientras él habla",
-      },
-    },
-    plan: {
-      time: "14:00 · Después de la sesión",
-      headline: "El plan se va a casa con ellos.",
-      body: "Asignas los ejercicios una vez. Practican entre citas y cada intento vuelve para que lo revises antes de la siguiente.",
-      detailAlt: "Un itinerario de aprendizaje asignado, mostrando el progreso por sus pasos, con el paso actual marcado",
-    },
-    close: {
-      time: "17:30 · El final del día",
-      headline: "Te acuerdas de todos.",
-      body: "Seis pacientes, uno detrás de otro. Por la tarde el detalle ya se ha ido. El registro no, y es de ahí que arranca la siguiente sesión.",
-      screenshotAlt: "El panel del terapeuta, con los pacientes asignados, la actividad reciente y lo que necesita atención",
-    },
+    patient: {
+      eyebrow: "Fuera de la consulta",
+      headlineLine1: "Práctica estructurada entre visitas,",
+      headlineLine2: "guiada por el terapeuta en todo momento.",
+      body: "Cada paciente recibe un plan de su logopeda, con ejercicios adaptados a su fase de terapia, y lo va completando entre visitas con orientación en cada paso.",
+      imageAlt:
+        "Panel del paciente en UpSpeech con ejercicios de práctica diarios y progreso",
+      points: [
+        {
+          label: "Un plan, definido por el terapeuta",
+          copy: "Cada paso lo elige el terapeuta. Los pacientes ven solo lo que deben practicar.",
+        },
+        {
+          label: "Cada intento, registrado",
+          copy: "Cada intento se graba y se organiza para que el terapeuta lo revise y lo ajuste.",
+        },
+        {
+          label: "Progreso, registrado",
+          copy: "Las rachas y el progreso a lo largo del tiempo mantienen a los pacientes implicados. El terapeuta ve la actividad que hay detrás.",
+        },
+      ],
     },
     mobile: {
       eyebrow: "En el bolsillo del paciente",
@@ -186,9 +159,6 @@ export const es: Dictionary = {
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
-      familyEyebrow: "Pacientes más jóvenes",
-      familyAlt:
-        "Un padre y su hija en la mesa del comedor, la niña hablando hacia un teléfono apoyado en un soporte mientras él está sentado a su lado, mirándola a ella y no a la pantalla",
     },
     cycle: {
       eyebrow: "El ciclo",
@@ -237,6 +207,45 @@ export const es: Dictionary = {
       headlineLine1: "Apoyo continuo,",
       headlineLine2: "empezando por tu clínica.",
       requestAccess: "Solicitar acceso anticipado",
+    },
+    gallery: {
+      eyebrow: "Dentro de la plataforma",
+      headlineLine1: "Herramientas específicas.",
+      headlineLine2: "Para logopedas e investigadores.",
+      intro:
+        "La plataforma gira en torno a una ruta de aprendizaje estructurada, desde identificar momentos de disfluencia hasta llevar el trabajo a conversaciones reales.",
+      forClinicians: "Para logopedas",
+      forResearchers: "Para investigadores",
+      annotationEyebrow: "Herramienta de anotación",
+      annotationTitle:
+        "La herramienta que logopedas e investigadores usan para anotar momentos de disfluencia.",
+      annotationCopy:
+        "Los logopedas anotan momentos de disfluencia con una taxonomía estándar, desde las conductas principales hasta las secundarias y el nivel de tensión. La misma herramienta construye nuestro conjunto de datos y apoya nuestras colaboraciones de investigación.",
+      annotationImageAlt:
+        "Herramienta de anotación de UpSpeech con forma de onda de audio, revisión de vídeo y anotación por logopedas",
+      features: [
+        {
+          label: "Ruta de aprendizaje estructurada",
+          title: "Un plan construido a partir de hitos y pasos.",
+          copy: "El logopeda monta la ruta de cada paciente a partir de técnicas establecidas y va desbloqueando cada paso cuando el paciente está preparado.",
+          imageAlt:
+            "Ruta de aprendizaje de UpSpeech mostrando los hitos y pasos de terapia de un paciente con su estado de finalización",
+        },
+        {
+          label: "Escenarios de práctica",
+          title: "Ensayo con un interlocutor de conversación virtual.",
+          copy: "Los pacientes ensayan conversaciones difíciles con un interlocutor virtual. El logopeda define el escenario y la dificultad.",
+          imageAlt:
+            "Interfaz de escenario de práctica de UpSpeech mostrando el ensayo de una entrevista de trabajo con objetivos y videollamada",
+        },
+        {
+          label: "Cuestionarios de seguimiento",
+          title: "Cuestionarios que el terapeuta revisa.",
+          copy: "Cada cierto tiempo, el paciente rellena un breve cuestionario sobre su experiencia. Así el logopeda ve cómo describe el paciente su propia experiencia con el paso del tiempo.",
+          imageAlt:
+            "Gráfico de UpSpeech con las respuestas de un paciente al cuestionario a lo largo de varias semanas",
+        },
+      ],
     },
     engine: {
       eyebrow: "UpSpeech Labs",
@@ -345,14 +354,6 @@ export const es: Dictionary = {
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
       body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan y ve cómo va todo mientras tú practicas en la app.",
-      photoAlt:
-        "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
-    },
-    withAParent: {
-      eyebrow: "Practicar con un padre o una madre",
-      line: "Los pacientes más jóvenes practican con un padre o una madre a su lado, siguiendo el mismo plan que ha definido su logopeda.",
-      photoAlt:
-        "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
     },
     howItWorks: {
       eyebrow: "Cómo funciona para ti",
@@ -546,8 +547,6 @@ export const es: Dictionary = {
       headlineLine1: "Más terapia entre sesiones.",
       headlineLine2: "Y todo lo diriges tú.",
       body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
-      photoAlt:
-        "Una logopeda en su escritorio, revisando la grabación de un paciente en el portátil",
     },
     documentation: {
       eyebrow: "Documentación",
@@ -578,8 +577,6 @@ export const es: Dictionary = {
       eyebrow: "Nuestro enfoque",
       headline: "Diseñado para animar.",
       body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
-      photoAlt:
-        "Una logopeda hablando con un niño en una sala de consulta, con su madre sentada justo detrás de él",
     },
     faq: {
       eyebrow: "Preguntas de profesionales",
