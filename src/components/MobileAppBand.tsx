@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
-import GuardianMark from "./GuardianMark";
+import Companion from "./Companion";
 import CutOut from "./CutOut";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
@@ -148,8 +148,8 @@ const MobileAppBand = () => {
               Its own frame, deliberately: /for-patients already carries two
               guardian photographs, and repeating one of them across two pages
               is the duplication this redesign set out to remove. */}
-          <p className="mt-9 flex items-center gap-2 font-body t-eyebrow text-calm-lavender-ink">
-            <GuardianMark className="text-calm-navy/70" />
+          <Companion size={84} className="mt-9" />
+          <p className="mt-4 font-body t-eyebrow text-calm-lavender-ink">
             {t.familyEyebrow}
           </p>
           <CutOut

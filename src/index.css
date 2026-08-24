@@ -1128,3 +1128,161 @@
     padding-inline: max(1.5rem, 5vw);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Companion
+   ---------------------------------------------------------------------------
+   One six-second loop, shared by every part of the character so nothing can
+   drift out of phase: the bubble rests as a circle, becomes a speech bubble,
+   three dots rise, and it settles. Six seconds because the brand is calm before
+   all else, and a character that fidgets is neither calm nor professional.
+
+   Two stacked bubble shapes cross-fade on the same timeline rather than a state
+   machine swapping them, which is why this needs no JavaScript and cannot fall
+   out of sync with itself.
+--------------------------------------------------------------------------- */
+.companion {
+  display: block;
+  overflow: visible;
+}
+
+/* Paused until the character is on screen. See the note in Companion.tsx: an
+   infinite loop composites cheaply but never lets the tab idle, and this sits
+   partway down a long page. */
+.companion :is(.companion-figure, .companion-bubble-rest, .companion-bubble-speak, .companion-dot) {
+  animation-play-state: paused;
+}
+.companion-live :is(.companion-figure, .companion-bubble-rest, .companion-bubble-speak, .companion-dot) {
+  animation-play-state: running;
+}
+
+/* Breathing. Deliberately small: at more than a couple of percent it reads as
+   bouncing rather than being alive. */
+.companion-figure {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: companion-breathe 6s ease-in-out infinite;
+}
+@keyframes companion-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  38% {
+    transform: translateY(-1.5%) scale(1.015);
+  }
+  62% {
+    transform: translateY(-0.5%) scale(1.005);
+  }
+}
+
+.companion-bubble-rest,
+.companion-bubble-speak {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* The handover. The circle holds, shrinks out as the speech bubble arrives,
+   and comes back. Both sit on one timeline so the swap is always clean. */
+.companion-bubble-rest {
+  animation: companion-rest 6s ease-in-out infinite;
+}
+@keyframes companion-rest {
+  0%,
+  26% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  34%,
+  74% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  84%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.companion-bubble-speak {
+  opacity: 0;
+  animation: companion-speak 6s ease-in-out infinite;
+}
+@keyframes companion-speak {
+  0%,
+  28% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  38%,
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+}
+
+/* Three dots leaving the bubble while it is speaking, staggered inside the same
+   six seconds rather than on loops of their own. */
+.companion-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: companion-dot 6s ease-in-out infinite;
+}
+.companion-dot-1 {
+  animation-delay: 0s;
+}
+.companion-dot-2 {
+  animation-delay: 0.22s;
+}
+.companion-dot-3 {
+  animation-delay: 0.44s;
+}
+@keyframes companion-dot {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translate(-6%, 6%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  64% {
+    opacity: 1;
+    transform: translate(4%, -4%) scale(1);
+  }
+  74%,
+  100% {
+    opacity: 0;
+    transform: translate(9%, -9%) scale(0.72);
+  }
+}
+
+/* Reduced motion keeps the character, drops the performance: the speech bubble
+   is the state worth resting on, since it is the one that says what the product
+   is for. */
+@media (prefers-reduced-motion: reduce) {
+  .companion-figure,
+  .companion-bubble-rest,
+  .companion-bubble-speak,
+  .companion-dot {
+    animation: none;
+  }
+  .companion-bubble-rest {
+    opacity: 0;
+  }
+  .companion-bubble-speak {
+    opacity: 1;
+  }
+  .companion-dot {
+    opacity: 1;
+  }
+}
+

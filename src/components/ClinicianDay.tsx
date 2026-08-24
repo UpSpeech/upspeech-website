@@ -1,7 +1,6 @@
 import { revealFrom } from "./motion";
 import { useReveal } from "./useReveal";
 import PagePortrait from "./PagePortrait";
-import GuardianMark from "./GuardianMark";
 import CutOut from "./CutOut";
 import { useT, useLocale, localizedAsset } from "@/i18n";
 
@@ -163,10 +162,9 @@ const ClinicianDay = () => {
         />
         <div className="relative mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
           <span
-            className={`${stamp} flex items-center gap-2 text-calm-lavender-bright`}
+            className={`${stamp} text-calm-lavender-bright`}
             style={revealFrom(sessionRevealed, "up", 0)}
           >
-            <GuardianMark className="text-white/75" />
             {t.session.time}
           </span>
           {/* Headline and body run side by side rather than stacking. Stacked

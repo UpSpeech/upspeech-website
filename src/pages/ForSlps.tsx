@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
-import GuardianMark from "@/components/GuardianMark";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forSlps.betweenSessions.steps).
@@ -187,10 +186,7 @@ export default function ForSlps() {
           <div className="mx-auto max-w-6xl rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
-                <p className={`${eyebrowClass} flex items-center gap-2`}>
-                  <GuardianMark className="text-calm-navy/70" />
-                  {t.personCentered.eyebrow}
-                </p>
+                <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
                 <h2
                   className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
                 >

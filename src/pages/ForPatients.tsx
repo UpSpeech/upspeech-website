@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
-import GuardianMark from "@/components/GuardianMark";
+import Companion from "@/components/Companion";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
@@ -196,10 +196,8 @@ export default function ForPatients() {
               </div>
             </div>
             <div>
-              <p className={`${eyebrowClass} flex items-center gap-2`}>
-                <GuardianMark className="text-calm-navy/70" />
-                {t.withAParent.eyebrow}
-              </p>
+              <Companion size={92} className="mb-5" />
+              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
               <p
                 className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal"
               >
