@@ -11,6 +11,6 @@ export const CUTOUTS: Record<string, { w: number; h: number }> = {
   "slps-hero": { w: 900, h: 1237 },
   "week-alone": { w: 900, h: 851 },
   "week-next": { w: 900, h: 878 },
-  "week-phone": { w: 900, h: 1766 },
+  "week-phone": { w: 900, h: 1307 },
   "week-session": { w: 900, h: 981 },
 };

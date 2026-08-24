@@ -66,10 +66,21 @@ for n in "${list[@]}"; do
   "$TMP/lift" "$TMP/in.png" "$TMP/a.png" >/dev/null
 
   # 2. warm grade: the source set is flat, cool and evenly lit, which is most
-  #    of what reads as sterile once the background is gone
+  #    of what reads as sterile once the background is gone.
+  #
+  #    No synthetic grain. There used to be an "-attenuate 0.30 +noise Gaussian"
+  #    here as film grain and it was far too strong: measured as the standard
+  #    deviation of a high-pass, the sources sit at 10 to 12 and the graded
+  #    output came out at 27 to 42. That is roughly triple, which reads as a
+  #    dirty filter rather than as film. It was worst on the frames needing a
+  #    large exposure lift, because the gamma multiplies the grain it is
+  #    lifting. The sources already carry their own grain; nothing needs adding.
+  #
+  #    Contrast is gentler too, for the same reason: 3.2 on top of a gamma lift
+  #    crushed the shadows on the darker frames.
   magick "$TMP/a.png" \( +clone -alpha extract -write mpr:A +delete \) -alpha off \
-    -modulate 103,108,100 -sigmoidal-contrast 3.2,48% -fill "#ffd9a8" -colorize 6 \
-    -attenuate 0.30 +noise Gaussian mpr:A -compose CopyOpacity -composite "$TMP/b.png"
+    -modulate 103,106,100 -sigmoidal-contrast 2.0,48% -fill "#ffd9a8" -colorize 5 \
+    mpr:A -compose CopyOpacity -composite "$TMP/b.png"
 
   # 3. match exposure to the set. Measured over opaque pixels only: a mean over
   #    the whole canvas measures how much of the frame the subject fills, not

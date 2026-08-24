@@ -160,7 +160,7 @@ const ClinicianDay = () => {
               "radial-gradient(1000px 460px at 50% -8%, rgba(149,138,240,0.28), transparent 68%)",
           }}
         />
-        <div className="relative mx-auto max-w-5xl px-[max(1.5rem,5vw)]">
+        <div className="relative mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
           <span
             className={`${stamp} flex items-center gap-2 text-calm-lavender-bright`}
             style={revealFrom(sessionRevealed, "up", 0)}
@@ -168,18 +168,23 @@ const ClinicianDay = () => {
             <GuardianMark className="text-white/75" />
             {t.session.time}
           </span>
-          <h3
-            className="t-h2 mt-4 max-w-[20ch] font-accent font-bold tracking-tight text-white"
-            style={{ ...revealFrom(sessionRevealed, "up", 80) }}
-          >
-            {t.session.headline}
-          </h3>
-          <p
-            className="t-lead mt-5 max-w-xl font-body text-white/75"
-            style={revealFrom(sessionRevealed, "up", 160)}
-          >
-            {t.session.body}
-          </p>
+          {/* Headline and body run side by side rather than stacking. Stacked
+              in a max-w-xl column they left the right two thirds of the band
+              empty, which is most of what made it look unfinished. */}
+          <div className="mt-4 grid gap-x-12 gap-y-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-end">
+            <h3
+              className="t-h2 max-w-[16ch] font-accent font-bold text-white"
+              style={{ ...revealFrom(sessionRevealed, "up", 80) }}
+            >
+              {t.session.headline}
+            </h3>
+            <p
+              className="t-lead font-body text-white/75 lg:pb-1"
+              style={revealFrom(sessionRevealed, "up", 160)}
+            >
+              {t.session.body}
+            </p>
+          </div>
 
           {/* Cut out rather than framed, and on one shared floor line. Two
               photographs of the same room in two boxes read as two pictures;
@@ -189,7 +194,7 @@ const ClinicianDay = () => {
           <div className="relative mt-[clamp(2.25rem,5vw,3.5rem)]">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-[300px] hidden h-px bg-white/12 sm:block"
+              className="pointer-events-none absolute inset-x-0 top-[400px] hidden h-px bg-white/20 sm:block"
             />
             <div className="grid items-start gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10">
               {(["cost", "instead"] as const).map((k, i) => (
@@ -198,13 +203,13 @@ const ClinicianDay = () => {
                   className="m-0 flex flex-col"
                   style={revealFrom(sessionRevealed, "up", 240 + i * 100, 24)}
                 >
-                  <div className="flex min-h-[210px] items-end justify-center sm:min-h-[300px]">
+                  <div className="flex min-h-[240px] items-end justify-center sm:min-h-[400px]">
                     <CutOut
                       name={SESSION_PHOTOS[k]}
                       alt={t.session[k].photoAlt}
                       tone="dark"
-                      renderHeight={300}
-                      className="h-[210px] sm:h-[300px]"
+                      renderHeight={400}
+                      className="h-[240px] sm:h-[400px]"
                     />
                   </div>
                   <figcaption className="border-t border-white/12 pt-5 sm:border-t-0">
