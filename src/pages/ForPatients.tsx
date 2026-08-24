@@ -30,6 +30,64 @@ const SCREENSHOTS = [
 const eyebrowClass =
   "font-body t-eyebrow text-calm-lavender-ink";
 
+// The device frame the app band already uses, and the screen rectangle inside
+// it, straight from frameit's offsets.json for this frame (offset +75+66,
+// screen width 1320 in a 1470x3000 frame) as a percentage of the phone box.
+// Measured once, in MobileAppBand; repeated here rather than exported, because
+// a two-line constant shared across two files is not an abstraction.
+const PHONE_FRAME = "/screenshots/mobile/iphone-frame.webp";
+const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
+
+/**
+ * A screen behind the real device frame. The frame's own transparent screen
+ * cutout masks the shot, so the corners and the island are always right and no
+ * radius has to be guessed.
+ *
+ * Decorative on purpose. What these two screens show is said in the sentence
+ * beside them, and naming each one in alt text would make a screen reader read
+ * out two app mockups before reaching the point.
+ */
+const PhoneShot = ({
+  src,
+  className = "",
+}: {
+  src: string;
+  className?: string;
+}) => (
+  <div
+    aria-hidden="true"
+    className={`pointer-events-none absolute ${className}`}
+    style={{ aspectRatio: "1470 / 3000" }}
+  >
+    <img
+      src={src}
+      alt=""
+      width={780}
+      height={1688}
+      loading="lazy"
+      decoding="async"
+      className="absolute object-cover"
+      style={{
+        top: SCREEN.top,
+        left: SCREEN.left,
+        width: SCREEN.width,
+        height: SCREEN.height,
+        // The screen rectangle is square-cornered and the bezel around it is
+        // not, so on a dark screen the four corners poke out past the frame as
+        // coloured nicks. Relative units so one radius serves both phone sizes.
+        borderRadius: "12% / 5.4%",
+      }}
+    />
+    <img
+      src={PHONE_FRAME}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      className="absolute inset-0 h-full w-full drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)]"
+    />
+  </div>
+);
+
 export default function ForPatients() {
   const locale = useLocale();
   const t = useT().forPatients;
@@ -160,40 +218,37 @@ export default function ForPatients() {
             is that a parent sits with a younger patient and works the plan the
             therapist set, so that is the whole of what this says. */}
         <section className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,360px),1fr] sm:gap-14">
-            {/* The sandwich: the plan the therapist set behind them, the
-                report it produced in front. Both are real product surfaces
-                that belong to this exact person, which is what stops the
-                layering being decoration. */}
-            <div className="relative flex h-[300px] items-end justify-center sm:h-[340px]">
-              <div aria-hidden="true" className="pointer-events-none absolute -left-3 bottom-24 hidden w-[190px] -rotate-3 overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
-                <img
-                  src={localizedAsset("/screenshots/detail/plan-assigned.webp", locale)}
-                  alt=""
-                  width={800}
-                  height={315}
-                  loading="lazy"
-                  decoding="async"
-                  className="block h-auto w-full"
-                />
-              </div>
+          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
+            {/* Two phones and the two people holding them. The parent's screen
+                is behind on the left, the child's in front on the right, which
+                is the same sandwich this section already had.
+
+                What changed is what is in the sandwich. It used to be the plan
+                and the finished report, and both of those belong to the
+                therapist: the section is about a parent and a child at the
+                kitchen table, and neither of them ever opens a report. These
+                are the two surfaces they actually touch. */}
+            <div className="relative flex h-[300px] items-end justify-center sm:h-[380px]">
+              <PhoneShot
+                src={localizedAsset(
+                  "/screenshots/mobile/caregiver-today.webp",
+                  locale,
+                )}
+                className="bottom-8 left-0 hidden w-[124px] -rotate-6 sm:block"
+              />
               <CutOut
                 name="patients-listen"
                 alt={t.withAParent.photoAlt}
                 renderHeight={340}
                 className="relative z-10 h-[300px] sm:h-[340px]"
               />
-              <div aria-hidden="true" className="pointer-events-none absolute -right-3 bottom-2 z-20 hidden w-[200px] overflow-hidden rounded-xl border border-calm-navy/10 bg-white shadow-[0_24px_44px_-24px_rgba(41,53,135,0.42)] sm:block">
-                <img
-                  src={localizedAsset("/screenshots/detail/report-ready.webp", locale)}
-                  alt=""
-                  width={800}
-                  height={200}
-                  loading="lazy"
-                  decoding="async"
-                  className="block h-auto w-full"
-                />
-              </div>
+              <PhoneShot
+                src={localizedAsset(
+                  "/screenshots/mobile/child-practice.webp",
+                  locale,
+                )}
+                className="bottom-0 right-4 z-20 w-[104px] rotate-3 sm:-right-2 sm:w-[152px]"
+              />
             </div>
             <div>
               <Companion species="lumo" size={104} className="mb-4" />
