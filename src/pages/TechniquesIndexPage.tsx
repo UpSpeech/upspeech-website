@@ -12,7 +12,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 // Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
 // the techniques section reads as the same site.
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+  "font-body t-eyebrow text-calm-lavender-ink";
 const sectionClass = "px-[max(1.5rem,5vw)] py-[clamp(2.5rem,5vw,4rem)]";
 
 // Page chrome for the loading and error states, so they are not a different

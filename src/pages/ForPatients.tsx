@@ -28,7 +28,7 @@ const SCREENSHOTS = [
 ];
 
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+  "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ForPatients() {
   const locale = useLocale();
@@ -62,7 +62,7 @@ export default function ForPatients() {
 
       <main id="main">
         {/* Intro */}
-        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -71,7 +71,7 @@ export default function ForPatients() {
                 "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
+          <div className="gutter relative">
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
                 than the front of a product. */}
@@ -116,8 +116,8 @@ export default function ForPatients() {
         </section>
 
         {/* How it works for you */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-[clamp(3rem,6vw,5rem)]">
+          <div className="gutter">
             <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
             <h2
               className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
@@ -159,7 +159,7 @@ export default function ForPatients() {
             patient is one login assigned to one therapist. What is true today
             is that a parent sits with a younger patient and works the plan the
             therapist set, so that is the whole of what this says. */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
+        <section className="pb-[clamp(3rem,6vw,5rem)]">
           <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,360px),1fr] sm:gap-14">
             {/* The sandwich: the plan the therapist set behind them, the
                 report it produced in front. Both are real product surfaces
@@ -210,7 +210,7 @@ export default function ForPatients() {
         </section>
 
         {/* The app */}
-        <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+        <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -219,7 +219,7 @@ export default function ForPatients() {
                 "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
+          <div className="gutter relative">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.app.eyebrow}</p>
               <h2
@@ -283,8 +283,8 @@ export default function ForPatients() {
         </section>
 
         {/* FAQ */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="gutter max-w-3xl">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
               className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -311,7 +311,7 @@ export default function ForPatients() {
 
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
               className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
             >

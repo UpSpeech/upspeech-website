@@ -113,7 +113,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-8 px-[max(1.5rem,5vw)] pb-0 pt-28 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:gap-10 lg:pt-24">
+      <div className="gutter relative grid w-full grid-cols-1 items-end gap-8 pb-0 pt-28 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:gap-10 lg:pt-24">
         <div className="pb-10 lg:self-center lg:pb-0">
           <div
             className="mb-7"
@@ -123,7 +123,7 @@ const Hero = () => {
               transform: loaded ? "translateY(0)" : "translateY(12px)",
             }}
           >
-            <span className="font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink">
+            <span className="font-body t-eyebrow text-calm-lavender-ink">
               {t.eyebrow}
             </span>
           </div>

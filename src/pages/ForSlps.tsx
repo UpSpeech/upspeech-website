@@ -20,7 +20,7 @@ const STEP_ICONS = [
 ];
 
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+  "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ForSlps() {
   const locale = useLocale();
@@ -54,7 +54,7 @@ export default function ForSlps() {
 
       <main id="main">
         {/* Intro */}
-        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -63,7 +63,7 @@ export default function ForSlps() {
                 "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
+          <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
@@ -107,7 +107,7 @@ export default function ForSlps() {
         </section>
 
         {/* Between sessions */}
-        <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+        <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -116,7 +116,7 @@ export default function ForSlps() {
                 "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
+          <div className="gutter relative">
             <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
             <h2
               className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
@@ -154,8 +154,8 @@ export default function ForSlps() {
         </section>
 
         {/* Documentation */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-[clamp(3rem,6vw,5rem)]">
+          <div className="gutter">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
               <h2
@@ -184,7 +184,7 @@ export default function ForSlps() {
 
         {/* Person-centered */}
         <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
+          <div className="mx-auto max-w-6xl rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
                 <p className={`${eyebrowClass} flex items-center gap-2`}>
@@ -216,8 +216,8 @@ export default function ForSlps() {
         </section>
 
         {/* FAQ */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="gutter max-w-3xl">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
             <h2
               className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
@@ -242,7 +242,7 @@ export default function ForSlps() {
 
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
             <h2
               className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
             >

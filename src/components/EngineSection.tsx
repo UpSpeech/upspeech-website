@@ -61,7 +61,7 @@ const EngineSection = () => {
   });
 
   return (
-    <section className="relative bg-calm-charcoal overflow-hidden py-[clamp(3.25rem,10vw,10rem)] px-[max(1.5rem,5vw)]">
+    <section className="relative bg-calm-charcoal overflow-hidden py-[clamp(3.25rem,10vw,10rem)]">
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
@@ -70,9 +70,9 @@ const EngineSection = () => {
         }}
       />
 
-      <div ref={ref} className="relative max-w-6xl">
+      <div ref={ref} className="gutter relative">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-bright mb-6 sm:mb-8"
+          className="font-body t-eyebrow text-calm-lavender-bright mb-6 sm:mb-8"
           style={textStyle(0)}
         >
           {t.eyebrow}

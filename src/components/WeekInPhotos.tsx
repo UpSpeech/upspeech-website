@@ -46,9 +46,9 @@ const WeekInPhotos = () => {
       ref={ref}
       className="relative bg-calm-light py-[clamp(4rem,9vw,7rem)]"
     >
-      <div className="mx-auto max-w-7xl px-[max(1.5rem,5vw)]">
+      <div className="gutter">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
+          className="font-body t-eyebrow text-calm-lavender-ink"
           style={revealFrom(revealed, "up", 0)}
         >
           {t.eyebrow}
@@ -99,7 +99,7 @@ const WeekInPhotos = () => {
                   />
                 </div>
                 <figcaption className="border-t border-calm-charcoal/10 pt-4 lg:border-t-0">
-                  <span className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-calm-lavender-ink">
+                  <span className="font-body t-label text-calm-lavender-ink">
                     {frame.day}
                   </span>
                   <p className="mt-1.5 font-accent text-[15px] sm:text-base font-medium leading-snug text-calm-charcoal">

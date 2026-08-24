@@ -6,7 +6,7 @@ import { useLocale, useT, localizedHref } from "@/i18n";
 import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+  "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ReducingDocumentationTime() {
   const locale = useLocale();

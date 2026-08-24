@@ -48,8 +48,9 @@ const ClinicianDay = () => {
     threshold: 0.05,
   });
 
-  const stamp =
-    "font-body text-[11px] font-semibold uppercase tracking-[0.22em] tabular-nums";
+  // The clock stamp is an eyebrow that happens to carry numbers, so it takes
+  // the same class and adds tabular figures for the times.
+  const stamp = "t-eyebrow font-body tabular-nums";
 
   return (
     <>
@@ -190,7 +191,13 @@ const ClinicianDay = () => {
               photographs of the same room in two boxes read as two pictures;
               two silhouettes on one line read as the same room twice, which is
               the whole point of the beat. The subjects are desaturated a little
-              so they belong to the navy instead of sitting on it. */}
+              so they belong to the navy instead of sitting on it.
+
+              The rule under them is a rule, not the speech trace. The trace is
+              the page's signature and it appears in three places, the hero, the
+              pause and the week's comparison, none of which are here. Calling
+              this the signature recurring would be describing something the
+              markup does not do. */}
           <div className="relative mt-[clamp(2.25rem,5vw,3.5rem)]">
             <div className="grid gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10">
               {(["cost", "instead"] as const).map((k, i) => (

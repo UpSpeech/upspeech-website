@@ -1081,11 +1081,50 @@
     line-height: 1.55;
   }
 
+  /* The section eyebrow. Values are the majority of what was already in the
+     markup (11px, 600, 0.3em) rather than anything new, so putting the class on
+     an existing eyebrow changes nothing about how it looks. Colour stays a
+     separate class: these run lavender-ink on light, lavender-bright and white
+     on the dark bands. */
   .t-eyebrow {
     font-size: 0.6875rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.4;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
+  }
+
+  /* The tier below it: day labels under the week photographs, the two captions
+     on the 11:30 band. Smaller and tighter, and it was already written twice at
+     10px with two different tracking values. */
+  .t-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Page gutter
+   ---------------------------------------------------------------------------
+   One left edge for every section that sets text left-aligned. Before this the
+   homepage had four: 72px where a section carried its own padding and no cap,
+   144px where the cap sat inside the padding, 152px on the 7xl sections, and
+   216px on the 6xl ones. Scrolling the page, the margin jumped four times.
+
+   The order matters and is the whole reason the drift happened: the padding has
+   to sit inside the cap. `max-w-6xl` inside a padded section resolves against
+   the already-narrowed width and centres 72px further left than the same cap
+   with the padding on it.
+
+   Full-bleed media can still be full-bleed. This is for the text.
+--------------------------------------------------------------------------- */
+@layer components {
+  .gutter {
+    margin-inline: auto;
+    max-width: 72rem; /* max-w-6xl */
+    padding-inline: max(1.5rem, 5vw);
   }
 }

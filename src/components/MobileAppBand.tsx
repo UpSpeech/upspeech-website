@@ -118,11 +118,11 @@ const MobileAppBand = () => {
     <section className="bg-white py-12 sm:py-16 overflow-hidden">
       <div
         ref={ref}
-        className="mx-auto grid max-w-6xl items-center gap-10 px-[max(1.5rem,5vw)] lg:grid-cols-[5fr_6fr]"
+        className="gutter grid items-center gap-10 lg:grid-cols-[5fr_6fr]"
       >
         <div className="max-w-xl">
           <span
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
+            className="font-body t-eyebrow text-calm-lavender-ink"
             style={reveal(revealed, 0)}
           >
             {t.eyebrow}
@@ -148,7 +148,7 @@ const MobileAppBand = () => {
               Its own frame, deliberately: /for-patients already carries two
               guardian photographs, and repeating one of them across two pages
               is the duplication this redesign set out to remove. */}
-          <p className="mt-9 flex items-center gap-2 font-body text-[11px] font-semibold uppercase tracking-[0.3em] text-calm-lavender-ink">
+          <p className="mt-9 flex items-center gap-2 font-body t-eyebrow text-calm-lavender-ink">
             <GuardianMark className="text-calm-navy/70" />
             {t.familyEyebrow}
           </p>

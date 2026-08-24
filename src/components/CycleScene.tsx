@@ -173,9 +173,9 @@ const CycleScene = () => {
           }}
         />
 
-        <div className="relative h-full flex flex-col justify-center px-[max(1.5rem,5vw)] py-[clamp(2rem,6vh,4rem)]">
+        <div className="gutter relative flex h-full w-full flex-col justify-center py-[clamp(2rem,6vh,4rem)]">
           <p
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink mb-5 sm:mb-6"
+            className="font-body t-eyebrow text-calm-lavender-ink mb-5 sm:mb-6"
             style={reveal(revealed, 0)}
           >
             {t.eyebrow}
@@ -425,7 +425,7 @@ const CycleScene = () => {
                     }`}
                   />
                   <span
-                    className={`font-body text-[11px] font-bold tracking-[0.28em] uppercase ${
+                    className={`font-body t-eyebrow ${
                       activeActor === "clinician"
                         ? "text-calm-navy"
                         : "text-calm-lavender-ink"

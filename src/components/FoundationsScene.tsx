@@ -78,7 +78,7 @@ const FoundationsScene = () => {
   });
 
   return (
-    <section className="relative bg-calm-light py-[clamp(3.25rem,10vw,10rem)] px-[max(1.5rem,5vw)] overflow-hidden">
+    <section className="relative bg-calm-light py-[clamp(3.25rem,10vw,10rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -87,9 +87,9 @@ const FoundationsScene = () => {
         }}
       />
 
-      <div ref={ref} className="relative max-w-6xl mx-auto">
+      <div ref={ref} className="gutter relative">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
+          className="font-body t-eyebrow text-calm-lavender-ink"
           style={style(0)}
         >
           {t.eyebrow}
@@ -111,7 +111,7 @@ const FoundationsScene = () => {
         {/* The two we build with, as marks */}
         <div className="mt-[clamp(3rem,6vw,4.5rem)]">
           <span
-            className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/80"
+            className="font-body t-eyebrow text-calm-charcoal/80"
             style={style(240)}
           >
             {t.logoPartnersLabel}
@@ -143,7 +143,7 @@ const FoundationsScene = () => {
             className="mb-8 sm:mb-10 flex items-baseline justify-between flex-wrap gap-4"
             style={style(320)}
           >
-            <span className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-charcoal/80">
+            <span className="font-body t-eyebrow text-calm-charcoal/80">
               {t.partnersLabel}
             </span>
             <span className="font-body text-sm text-calm-charcoal/80">
@@ -175,7 +175,7 @@ const FoundationsScene = () => {
                 <div>
                   {/* Two lines reserved: one name wraps and the rest do not,
                       which dropped that card's context line below the others. */}
-                  <div className="flex min-h-[2.4em] items-start font-body text-[11px] font-semibold tracking-[0.2em] uppercase leading-[1.2] text-calm-lavender-ink">
+                  <div className="flex min-h-[2.4em] items-start font-body t-eyebrow text-calm-lavender-ink">
                     {p.name}
                   </div>
                   <div className="mt-1.5 font-body text-sm text-calm-charcoal/80 leading-snug">

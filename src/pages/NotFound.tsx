@@ -34,7 +34,7 @@ const NotFound = () => {
           }}
         />
         <div className="relative">
-          <p className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink">
+          <p className="font-body t-eyebrow text-calm-lavender-ink">
             {t.eyebrow}
           </p>
           <h1

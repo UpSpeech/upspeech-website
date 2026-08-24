@@ -19,7 +19,7 @@ interface TechniquePageProps {
 
 // Shared with the redesigned pages so this reads as the same site.
 const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+  "font-body t-eyebrow text-calm-lavender-ink";
 const cardClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const cardHeadingClass =
