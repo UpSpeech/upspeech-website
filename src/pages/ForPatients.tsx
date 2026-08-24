@@ -21,11 +21,21 @@ const STEP_ICONS = [
 ];
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
+// These three are captures of the shipped app, cropped from the store art, and
+// arrive with the device frame already baked in.
 const SCREENSHOTS = [
   "/screenshots/mobile/patient-home-device.webp",
   "/screenshots/mobile/patient-journey-device.webp",
   "/screenshots/mobile/patient-practice-device.webp",
 ];
+
+// The child-facing screen. A bare screen rather than a framed render, so it
+// goes through PhoneShot; alt text is forPatients.app.childScreenshots[1].
+//
+// The caregiver screen is deliberately not here. It is a sparse screen whose
+// content stops two thirds down, which is invisible at the size it runs beside
+// the photograph and looks like a failed render at the size this row runs.
+const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice.webp";
 
 const eyebrowClass =
   "font-body t-eyebrow text-calm-lavender-ink";
@@ -43,20 +53,34 @@ const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
  * cutout masks the shot, so the corners and the island are always right and no
  * radius has to be guessed.
  *
- * Decorative on purpose. What these two screens show is said in the sentence
- * beside them, and naming each one in alt text would make a screen reader read
- * out two app mockups before reaching the point.
+ * The caller sizes and places the box; aspectRatio derives the other dimension
+ * from whichever one is given, so a width works in the photograph composition
+ * and a height works in the row of app screenshots.
+ *
+ * The caller also owns the position utility and has to pass one, because the
+ * two images inside are absolute. A default here does not work: a caller's
+ * `absolute` cannot override a base `relative`, since Tailwind emits the
+ * position utilities in a fixed order and class order in the attribute counts
+ * for nothing. Carrying one broke the composition into a flex row.
+ *
+ * With no alt it stays decorative, which is right beside the photograph where
+ * the sentence already says what the screens are. In the screenshot row it
+ * takes one, because there the images are the content.
  */
 const PhoneShot = ({
   src,
+  alt,
   className = "",
 }: {
   src: string;
+  alt?: string;
   className?: string;
 }) => (
   <div
-    aria-hidden="true"
-    className={`pointer-events-none absolute ${className}`}
+    aria-hidden={alt ? undefined : true}
+    role={alt ? "img" : undefined}
+    aria-label={alt}
+    className={`pointer-events-none ${className}`}
     style={{ aspectRatio: "1470 / 3000" }}
   >
     <img
@@ -228,13 +252,18 @@ export default function ForPatients() {
                 therapist: the section is about a parent and a child at the
                 kitchen table, and neither of them ever opens a report. These
                 are the two surfaces they actually touch. */}
-            <div className="relative flex h-[300px] items-end justify-center sm:h-[380px]">
+            {/* Taller than the photograph so the child's phone can sit below
+                its baseline. Measured against the cut-out: both faces live in
+                the top third, y 0.02 to 0.33, and they span almost the full
+                width, so the only place a phone can overlap without landing on
+                someone is below y 0.5, where the laps and the bench are. */}
+            <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
               <PhoneShot
                 src={localizedAsset(
                   "/screenshots/mobile/caregiver-today.webp",
                   locale,
                 )}
-                className="bottom-8 left-0 hidden w-[124px] -rotate-6 sm:block"
+                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
               />
               <CutOut
                 name="patients-listen"
@@ -247,7 +276,7 @@ export default function ForPatients() {
                   "/screenshots/mobile/child-practice.webp",
                   locale,
                 )}
-                className="bottom-0 right-4 z-20 w-[104px] rotate-3 sm:-right-2 sm:w-[152px]"
+                className="absolute -bottom-7 right-4 z-20 w-[104px] rotate-3 sm:-bottom-10 sm:-right-2 sm:w-[122px]"
               />
             </div>
             <div>
@@ -319,18 +348,27 @@ export default function ForPatients() {
                 )}
               </div>
             )}
-            <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
+            {/* Three shipped screens, then the one a younger patient sees.
+                Four phones do not fit the gutter at the height three did, so
+                the whole row steps down together and the first three keep
+                their relative sizing to each other. */}
+            <div className="mt-12 flex items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((base, i) => (
                 <img
                   key={base}
                   src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
-                  className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                  className={`h-auto w-auto max-h-[400px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
                     i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
               ))}
+              <PhoneShot
+                src={localizedAsset(CHILD_SCREENSHOT, locale)}
+                alt={t.app.childScreenshots[1]}
+                className="relative h-[400px] shrink-0 sm:-translate-y-4"
+              />
             </div>
           </div>
         </section>

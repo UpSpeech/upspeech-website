@@ -386,6 +386,10 @@ export const es: Dictionary = {
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
       ],
+      childScreenshots: [
+        "Pantalla de la app móvil de UpSpeech que un padre o una madre usa para hacer la práctica del día con su hijo",
+        "Pantalla de práctica de la app móvil de UpSpeech que ve un niño más pequeño, con una palabra que decir y un botón de grabación",
+      ],
     },
     faq: {
       eyebrow: "Preguntas",

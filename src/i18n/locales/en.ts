@@ -385,6 +385,10 @@ export const en = {
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
       ],
+      childScreenshots: [
+        "UpSpeech mobile app screen a parent uses to run the day's practice with their child",
+        "UpSpeech mobile app practice screen a younger child sees, with one word to say and a record button",
+      ],
     },
     faq: {
       eyebrow: "Questions",
