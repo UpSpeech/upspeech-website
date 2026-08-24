@@ -192,27 +192,27 @@ const ClinicianDay = () => {
               the whole point of the beat. The subjects are desaturated a little
               so they belong to the navy instead of sitting on it. */}
           <div className="relative mt-[clamp(2.25rem,5vw,3.5rem)]">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-[400px] hidden h-px bg-white/20 sm:block"
-            />
-            <div className="grid items-start gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10">
+            <div className="grid gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10">
               {(["cost", "instead"] as const).map((k, i) => (
                 <figure
                   key={k}
                   className="m-0 flex flex-col"
                   style={revealFrom(sessionRevealed, "up", 240 + i * 100, 24)}
                 >
-                  <div className="flex min-h-[240px] items-end justify-center sm:min-h-[400px]">
+                  <div className="flex flex-1 items-end justify-center">
+                    {/* Sized on width: both frames are landscape and fill a
+                        column, and the shared floor line does the aligning, so
+                        the small height difference between them is fine. */}
                     <CutOut
                       name={SESSION_PHOTOS[k]}
                       alt={t.session[k].photoAlt}
                       tone="dark"
-                      renderHeight={400}
-                      className="h-[240px] sm:h-[400px]"
+                      sizing="width"
+                      renderHeight={420}
+                      className="w-full"
                     />
                   </div>
-                  <figcaption className="border-t border-white/12 pt-5 sm:border-t-0">
+                  <figcaption className="mt-5 border-t border-white/20 pt-5">
                     <span
                       className={`${stamp} ${
                         i === 0 ? "text-white/55" : "text-calm-lavender-bright"

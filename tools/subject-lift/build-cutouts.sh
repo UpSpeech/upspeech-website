@@ -96,18 +96,27 @@ print(f'{min(max(g,0.55),1.95):.3f} {cur:.1f}')")"
   magick "$TMP/b.png" \( +clone -alpha extract -write mpr:B +delete \) -alpha off \
     -gamma "$G" mpr:B -compose CopyOpacity -composite "$TMP/c.png"
 
-  # 4. erode one pixel of matte. A subject cut from a light background carries
-  #    that light in its edge pixels, which shows as a fringe on the navy band.
-  magick "$TMP/c.png" -channel A -morphology Erode Disk:1 +channel -trim +repage "$TMP/d.png"
+  # 4. erode one pixel of matte, then feather it. A subject cut from a light
+  #    background carries that light in its edge pixels, which shows as a fringe
+  #    on the navy band, and the erode removes it. On its own the erode also
+  #    leaves the cut hard: Vision's mask is effectively binary and does not
+  #    matte hair, so against a dark ground the edge reads as cut with scissors.
+  #    Erode then feather is the usual pairing and it is what this edge needs.
+  magick "$TMP/c.png" -channel A -morphology Erode Disk:1 -blur 0x0.8 +channel \
+    -trim +repage "$TMP/d.png"
 
   # 5. dissolve the base into the ground. This is baked into the alpha rather
   #    than done with a CSS mask on purpose: filter runs before mask, so a
   #    masked element still casts the shadow of its unmasked silhouette and it
   #    shows through the faded region as a grey rectangle.
+  #
+  #    10% of the height, down from 22%. At 22% it stopped reading as a base
+  #    dissolving into the page and started reading as fog over the bottom fifth
+  #    of every subject, which is exactly what it looked like on the navy band.
   for w in 900 560; do
     magick "$TMP/d.png" -resize "${w}x" "$TMP/r.png"
     W=$(magick identify -format %w "$TMP/r.png"); H=$(magick identify -format %h "$TMP/r.png")
-    F=$(( H * 22 / 100 ))
+    F=$(( H * 10 / 100 ))
     magick "$TMP/r.png" \
       \( +clone -alpha extract \
          \( -size "${W}x${H}" xc:white \

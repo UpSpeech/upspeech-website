@@ -47,6 +47,14 @@ type Props = {
   renderHeight: number;
   /** Ground it sits on. Drives the shadow and the desaturation. */
   tone?: keyof typeof TONE;
+  /**
+   * Which axis the caller is sizing on. Height is right for a row of people at
+   * a common scale, where matching on width would put them at wildly different
+   * sizes. Width is right for a landscape subject filling a column: sized by
+   * height it gets clamped by max-width and object-contain then letterboxes it
+   * smaller than asked for.
+   */
+  sizing?: "height" | "width";
   /** Above the fold. */
   priority?: boolean;
   /** Height classes live here: `h-[250px]`, `lg:h-[400px]` and so on. */
@@ -58,6 +66,7 @@ const CutOut = ({
   alt,
   renderHeight,
   tone = "light",
+  sizing = "height",
   priority = false,
   className = "",
 }: Props) => {
@@ -79,7 +88,13 @@ const CutOut = ({
       fetchPriority={priority ? "high" : undefined}
       decoding="async"
       style={{ filter: TONE[tone] }}
-      className={`block w-auto max-w-full ${className}`}
+      // object-contain is load-bearing, not decoration. These are sized by
+      // height with width:auto, and max-w-full clamps the width on a narrow
+      // column while the height stays fixed, which distorts the subject:
+      // measured at 15% on day-present, 10% on week-session, 9% on day-notes.
+      className={`block object-contain ${
+        sizing === "width" ? "h-auto w-full" : "w-auto max-w-full"
+      } ${className}`}
     />
   );
 };
