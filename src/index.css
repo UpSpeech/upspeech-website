@@ -1132,33 +1132,45 @@
 /* ---------------------------------------------------------------------------
    Companion
    ---------------------------------------------------------------------------
-   One six-second loop, shared by every part of the character so nothing can
-   drift out of phase: the bubble rests as a circle, becomes a speech bubble,
-   three dots rise, and it settles. Six seconds because the brand is calm before
-   all else, and a character that fidgets is neither calm nor professional.
+   One six-second loop shared by every moving part, so nothing can drift out of
+   phase: the companion breathes, blinks, opens its mouth to speak, and three
+   dots rise as it does. Six seconds because the brand is calm before all else,
+   and a character that fidgets is neither calm nor professional.
 
-   Two stacked bubble shapes cross-fade on the same timeline rather than a state
-   machine swapping them, which is why this needs no JavaScript and cannot fall
-   out of sync with itself.
+   Two mouths cross-fade on the same timeline rather than a state machine
+   swapping them, which is why this needs no JavaScript and cannot fall out of
+   sync with itself.
+
+   Paused until on screen: an infinite animation composites cheaply but never
+   lets the tab idle, and these sit partway down a long page.
 --------------------------------------------------------------------------- */
 .companion {
   display: block;
   overflow: visible;
 }
 
-/* Paused until the character is on screen. See the note in Companion.tsx: an
-   infinite loop composites cheaply but never lets the tab idle, and this sits
-   partway down a long page. */
-.companion :is(.companion-figure, .companion-bubble-rest, .companion-bubble-speak, .companion-dot) {
+.companion :is(
+    .companion-body,
+    .companion-eyes,
+    .companion-mouth-rest,
+    .companion-mouth-open,
+    .companion-dot
+  ) {
   animation-play-state: paused;
 }
-.companion-live :is(.companion-figure, .companion-bubble-rest, .companion-bubble-speak, .companion-dot) {
+.companion-live :is(
+    .companion-body,
+    .companion-eyes,
+    .companion-mouth-rest,
+    .companion-mouth-open,
+    .companion-dot
+  ) {
   animation-play-state: running;
 }
 
-/* Breathing. Deliberately small: at more than a couple of percent it reads as
-   bouncing rather than being alive. */
-.companion-figure {
+/* Breathing. Deliberately small: past a couple of percent it reads as bouncing
+   rather than as being alive. */
+.companion-body {
   transform-box: fill-box;
   transform-origin: 50% 100%;
   animation: companion-breathe 6s ease-in-out infinite;
@@ -1168,119 +1180,134 @@
   100% {
     transform: translateY(0) scale(1);
   }
-  38% {
-    transform: translateY(-1.5%) scale(1.015);
+  40% {
+    transform: translateY(-1.4%) scale(1.014);
   }
-  62% {
-    transform: translateY(-0.5%) scale(1.005);
+  70% {
+    transform: translateY(-0.4%) scale(1.004);
   }
 }
 
-.companion-bubble-rest,
-.companion-bubble-speak {
+/* One blink per loop, fast, on the same clock as everything else. */
+.companion-eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  animation: companion-blink 6s ease-in-out infinite;
+}
+@keyframes companion-blink {
+  0%,
+  14%,
+  18%,
+  100% {
+    transform: scaleY(1);
+  }
+  16% {
+    transform: scaleY(0.12);
+  }
+}
+
+.companion-mouth-rest,
+.companion-mouth-open {
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
-
-/* The handover. The circle holds, shrinks out as the speech bubble arrives,
-   and comes back. Both sit on one timeline so the swap is always clean. */
-.companion-bubble-rest {
-  animation: companion-rest 6s ease-in-out infinite;
+.companion-mouth-rest {
+  animation: companion-mouth-rest 6s ease-in-out infinite;
 }
-@keyframes companion-rest {
+@keyframes companion-mouth-rest {
   0%,
-  26% {
+  30% {
     opacity: 1;
-    transform: scale(1);
   }
-  34%,
-  74% {
-    opacity: 0;
-    transform: scale(0.72);
-  }
-  84%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.companion-bubble-speak {
-  opacity: 0;
-  animation: companion-speak 6s ease-in-out infinite;
-}
-@keyframes companion-speak {
-  0%,
-  28% {
-    opacity: 0;
-    transform: scale(0.72);
-  }
-  38%,
+  36%,
   70% {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0;
   }
-  80%,
+  78%,
+  100% {
+    opacity: 1;
+  }
+}
+.companion-mouth-open {
+  opacity: 0;
+  animation: companion-mouth-open 6s ease-in-out infinite;
+}
+@keyframes companion-mouth-open {
+  0%,
+  32% {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+  40% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  52% {
+    opacity: 1;
+    transform: scaleY(0.72);
+  }
+  62% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  72%,
   100% {
     opacity: 0;
-    transform: scale(0.72);
+    transform: scaleY(0.4);
   }
 }
 
-/* Three dots leaving the bubble while it is speaking, staggered inside the same
-   six seconds rather than on loops of their own. */
+/* Dots leaving while the mouth is open, staggered inside the same six seconds
+   rather than on loops of their own. */
 .companion-dot {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: 50% 50%;
   animation: companion-dot 6s ease-in-out infinite;
 }
-.companion-dot-1 {
-  animation-delay: 0s;
-}
 .companion-dot-2 {
-  animation-delay: 0.22s;
+  animation-delay: 0.24s;
 }
 .companion-dot-3 {
-  animation-delay: 0.44s;
+  animation-delay: 0.48s;
 }
 @keyframes companion-dot {
   0%,
-  40% {
+  38% {
     opacity: 0;
-    transform: translate(-6%, 6%) scale(0.5);
+    transform: translate(-8%, 8%) scale(0.4);
   }
-  50% {
+  48% {
     opacity: 1;
     transform: translate(0, 0) scale(1);
   }
-  64% {
+  62% {
     opacity: 1;
-    transform: translate(4%, -4%) scale(1);
+    transform: translate(6%, -6%) scale(1);
   }
-  74%,
+  72%,
   100% {
     opacity: 0;
-    transform: translate(9%, -9%) scale(0.72);
+    transform: translate(14%, -14%) scale(0.6);
   }
 }
 
-/* Reduced motion keeps the character, drops the performance: the speech bubble
-   is the state worth resting on, since it is the one that says what the product
-   is for. */
+/* Reduced motion keeps the character and drops the performance, resting on the
+   speaking state: it is the one that says what the product is for. */
 @media (prefers-reduced-motion: reduce) {
-  .companion-figure,
-  .companion-bubble-rest,
-  .companion-bubble-speak,
-  .companion-dot {
+  .companion :is(
+      .companion-body,
+      .companion-eyes,
+      .companion-mouth-rest,
+      .companion-mouth-open,
+      .companion-dot
+    ) {
     animation: none;
   }
-  .companion-bubble-rest {
+  .companion-mouth-rest {
     opacity: 0;
   }
-  .companion-bubble-speak {
-    opacity: 1;
-  }
+  .companion-mouth-open,
   .companion-dot {
     opacity: 1;
   }

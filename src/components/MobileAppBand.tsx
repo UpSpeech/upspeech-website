@@ -148,8 +148,15 @@ const MobileAppBand = () => {
               Its own frame, deliberately: /for-patients already carries two
               guardian photographs, and repeating one of them across two pages
               is the duplication this redesign set out to remove. */}
-          <Companion size={84} className="mt-9" />
-          <p className="mt-4 font-body t-eyebrow text-calm-lavender-ink">
+          {/* The three residents, in the section that shows the three tabs
+              they own: tumbo on the journey, pip on practice, nima on the
+              coach. Accents are the ones the decision record assigns. */}
+          <div className="mt-7 flex items-end gap-1.5">
+            <Companion species="tumbo" size={84} accent="#cca163" />
+            <Companion species="pip" size={84} accent="#958af0" />
+            <Companion species="nima" size={84} accent="#69b2e1" />
+          </div>
+          <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
             {t.familyEyebrow}
           </p>
           <CutOut

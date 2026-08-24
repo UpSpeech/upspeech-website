@@ -196,7 +196,7 @@ export default function ForPatients() {
               </div>
             </div>
             <div>
-              <Companion size={92} className="mb-5" />
+              <Companion species="lumo" size={104} className="mb-4" />
               <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
               <p
                 className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal"
