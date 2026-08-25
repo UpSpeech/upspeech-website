@@ -554,7 +554,7 @@ export const en = {
       headlineLine2: "All of it directed by you.",
       body: "UpSpeech gives your patients guided practice they actually do between appointments, on the techniques you choose. You will know how their week went before they sit down.",
       photoAlt:
-        "A speech-language pathologist at her desk, reviewing a patient recording on a laptop",
+        "A speech-language pathologist standing in a clinic room, holding a tablet and looking off to one side",
     },
     documentation: {
       eyebrow: "Documentation",

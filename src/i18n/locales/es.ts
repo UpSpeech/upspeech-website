@@ -556,7 +556,7 @@ export const es: Dictionary = {
       headlineLine2: "Y todo lo diriges tú.",
       body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
       photoAlt:
-        "Una logopeda en su escritorio, revisando la grabación de un paciente en el portátil",
+        "Una logopeda de pie en una sala de consulta, sosteniendo una tableta y mirando hacia un lado",
     },
     documentation: {
       eyebrow: "Documentación",

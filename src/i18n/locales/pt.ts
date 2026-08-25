@@ -557,7 +557,7 @@ export const pt: Dictionary = {
       headlineLine2: "Tudo orientado por si.",
       body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolher. Saberá como correu a semana antes de o paciente se sentar.",
       photoAlt:
-        "Uma terapeuta da fala à secretária, a rever a gravação de um paciente no portátil",
+        "Uma terapeuta da fala de pé numa sala de consulta, a segurar um tablet e a olhar para o lado",
     },
     documentation: {
       eyebrow: "Documentação",

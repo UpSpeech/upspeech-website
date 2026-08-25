@@ -8,7 +8,7 @@ export const CUTOUTS: Record<string, { w: number; h: number }> = {
   "patients-listen": { w: 900, h: 1121 },
   "practice-hero": { w: 900, h: 1052 },
   "slps-family": { w: 900, h: 969 },
-  "slps-hero": { w: 900, h: 1230 },
+  "slps-hero": { w: 900, h: 1525 },
   "week-alone": { w: 900, h: 851 },
   "week-next": { w: 900, h: 868 },
   "week-phone": { w: 900, h: 1353 },

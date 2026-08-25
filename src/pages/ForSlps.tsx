@@ -93,12 +93,19 @@ export default function ForSlps() {
                       "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
                   }}
                 />
+                {/* Taller than the frame it replaced, because it is a
+                    narrower figure. The old shot had both arms out and cut at
+                    0.73 wide for its height; this one stands with the arms in
+                    and cuts at 0.59, so at the old 460 she came out 65px
+                    narrower and read small beside a display headline. 570
+                    puts her back at the same apparent width, and the fold had
+                    the room: the text column runs to about 470. */}
                 <CutOut
                   name="slps-hero"
                   alt={t.intro.photoAlt}
                   priority
-                  renderHeight={460}
-                  className="relative h-[320px] sm:h-[400px] lg:h-[460px]"
+                  renderHeight={570}
+                  className="relative h-[400px] sm:h-[500px] lg:h-[570px]"
                 />
               </div>
             </div>
