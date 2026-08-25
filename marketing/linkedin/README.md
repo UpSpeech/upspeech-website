@@ -35,6 +35,6 @@ npm run export -- doc-refer-early
 
 ## Voice
 
-Same brand voice (`../brand-voice.md`), dialed to the *scientific* and credible
+Same brand voice (`../brand-voice.md`), dialed to the _scientific_ and credible
 end. Respect clinical judgment, never overstate outcomes, and never turn a
 patient's experience into a sales hook. The same sensitivity rules apply.

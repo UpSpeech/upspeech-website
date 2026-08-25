@@ -69,12 +69,7 @@ const HeroOptionD = () => {
           puts it at the front of that queue. The path is locale-specific, and
           each locale gets its own prerendered HTML, so this resolves per page. */}
       <Helmet>
-        <link
-          rel="preload"
-          as="image"
-          href={heroPoster}
-          fetchPriority="high"
-        />
+        <link rel="preload" as="image" href={heroPoster} fetchPriority="high" />
       </Helmet>
       <div
         className="pointer-events-none absolute inset-0"

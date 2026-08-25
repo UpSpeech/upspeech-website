@@ -85,8 +85,7 @@ const EngineSection = () => {
             ...textStyle(80),
           }}
         >
-          {t.headlineLine1}{" "}
-          <br />
+          {t.headlineLine1} <br />
           <span className="text-calm-lavender-bright">{t.headlineLine2}</span>
         </h2>
 
@@ -152,9 +151,7 @@ const EngineSection = () => {
                     className="absolute top-1/2 h-2 w-2 rounded-full"
                     style={{
                       left: `${((i + 0.5) / tagCount) * 100}%`,
-                      background: passed
-                        ? "#ede9fe"
-                        : "rgba(255,255,255,0.22)",
+                      background: passed ? "#ede9fe" : "rgba(255,255,255,0.22)",
                       transform: `translate(-50%,-50%) scale(${passed ? 1.3 : 1})`,
                       transition: `background 350ms ${EASE}, transform 350ms ${EASE}`,
                     }}

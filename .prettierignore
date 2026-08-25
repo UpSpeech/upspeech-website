@@ -1,0 +1,29 @@
+# Files whose exact bytes matter, and files nobody hand-edits.
+#
+# Without this, `npm run format` rewrites them, and the damage is the kind that
+# passes every check in the build and only shows up in production.
+
+# Build output.
+dist/
+.pr-assets/
+
+# Generated. Formatting them fights whatever script writes them, and the diff
+# lands on whoever next runs a build rather than on whoever caused it.
+public/sitemap.xml
+src/lib/route-dates.generated.ts
+
+# Ownership tokens. A search engine or app store compares these byte for byte,
+# and prettier appends a trailing newline. Google tolerates that today, which is
+# not a reason to let a formatter edit a verification file at all.
+public/googlef0504871445df5e1.html
+public/*.txt
+public/.well-known/
+
+# Lockfiles.
+package-lock.json
+bun.lockb
+
+# Rendered to a PNG by marketing/instagram/templates/export.mjs, so whitespace
+# between inline elements is layout, not style. Nothing compares those images in
+# CI, so a reflow here would ship silently.
+marketing/instagram/templates/index.html

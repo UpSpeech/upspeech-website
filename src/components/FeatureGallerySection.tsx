@@ -59,8 +59,7 @@ const FeatureGallerySection = () => {
             ...headerStyle(80),
           }}
         >
-          {t.headlineLine1}{" "}
-          <br />
+          {t.headlineLine1} <br />
           <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
         </h2>
         <p

@@ -94,7 +94,7 @@ side and destroys edge text (a centered "UpSpeech" becomes "Spee"). Fixes:
 
 - **Vertical reel from a square design:** pad to 1080x1920 with a brand bar
   first: `magick in.png -gravity center -background "#f3f5fd" -extent 1080x1920
-  padded.png`, then run veo 9:16.
+padded.png`, then run veo 9:16.
 - **Native 9:16 source:** the `story-*` exports are already 1080x1920. Use as-is.
 - **Square loop:** use `kling_master_image` at `1:1`.
 
@@ -136,6 +136,6 @@ Name files to preserve publishing context, e.g.
 - Model endpoint, prompt, seed, and source path are logged in
   `source-images/prompts/`.
 - Missing source plates were reviewed. Run `STRICT_SOURCE_IMAGES=1 npm run
-  export` from `templates/` when fallback gradients should be treated as a
+export` from `templates/` when fallback gradients should be treated as a
   failure.
 - Premium video cost is checked before a batch run.

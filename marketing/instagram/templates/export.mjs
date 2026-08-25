@@ -61,11 +61,15 @@ async function buildDocCarousels(names) {
 
   for (const [carousel, pages] of carousels) {
     // Page order follows the two-digit slide number, not document order.
-    pages.sort((a, b) => a.match(DOC_PAGE)[2].localeCompare(b.match(DOC_PAGE)[2]));
+    pages.sort((a, b) =>
+      a.match(DOC_PAGE)[2].localeCompare(b.match(DOC_PAGE)[2]),
+    );
 
     const pdf = await PDFDocument.create();
     for (const page of pages) {
-      const png = await pdf.embedPng(await fs.readFile(path.join(outputDir, `${page}.png`)));
+      const png = await pdf.embedPng(
+        await fs.readFile(path.join(outputDir, `${page}.png`)),
+      );
       pdf.addPage([png.width, png.height]).drawImage(png, {
         x: 0,
         y: 0,
@@ -99,8 +103,12 @@ function isLocalAssetRef(ref) {
 
 async function reportMissingAssetRefs(sourceText) {
   const refs = [
-    ...[...sourceText.matchAll(/\b(?:src|href)="([^"]+)"/g)].map((match) => match[1]),
-    ...[...sourceText.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map((match) => match[1]),
+    ...[...sourceText.matchAll(/\b(?:src|href)="([^"]+)"/g)].map(
+      (match) => match[1],
+    ),
+    ...[...sourceText.matchAll(/url\(["']?([^"')]+)["']?\)/g)].map(
+      (match) => match[1],
+    ),
   ]
     .filter(isLocalAssetRef)
     .map((ref) => ref.split("#")[0].split("?")[0]);
@@ -165,7 +173,10 @@ async function stopChrome(child, closePromise) {
     // Chrome may have already exited.
   }
 
-  const exited = await Promise.race([closePromise.then(() => true), sleep(1000).then(() => false)]);
+  const exited = await Promise.race([
+    closePromise.then(() => true),
+    sleep(1000).then(() => false),
+  ]);
   if (exited) return;
 
   try {
@@ -177,12 +188,24 @@ async function stopChrome(child, closePromise) {
   await Promise.race([closePromise, sleep(1000)]);
 }
 
-async function exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, height }) {
+async function exportWithChrome({
+  chromePath,
+  htmlUrl,
+  name,
+  outputPath,
+  width,
+  height,
+}) {
   await fs.rm(outputPath, { force: true });
-  const capturePath = path.join(path.dirname(outputPath), `.${name}.capture.png`);
+  const capturePath = path.join(
+    path.dirname(outputPath),
+    `.${name}.capture.png`,
+  );
   await fs.rm(capturePath, { force: true });
 
-  const userDataDir = await fs.mkdtemp(path.join(os.tmpdir(), "upspeech-instagram-export-"));
+  const userDataDir = await fs.mkdtemp(
+    path.join(os.tmpdir(), "upspeech-instagram-export-"),
+  );
   // A generous delay lets the Google Fonts (Outfit / Plus Jakarta Sans /
   // Bricolage Grotesque) finish loading before the screenshot is taken.
   const captureDelay = name === "profile-grid" ? 6000 : 4000;
@@ -233,7 +256,11 @@ async function exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, 
         const stat = await fs.stat(capturePath).catch(() => null);
         if (!stat?.size) {
           throw new Error(
-            [`Chrome exited before exporting ${name}.`, stdout.trim(), stderr.trim()]
+            [
+              `Chrome exited before exporting ${name}.`,
+              stdout.trim(),
+              stderr.trim(),
+            ]
               .filter(Boolean)
               .join("\n"),
           );
@@ -245,7 +272,9 @@ async function exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, 
     await fs.rm(userDataDir, { recursive: true, force: true });
   }
 
-  await sharp(capturePath).extract({ left: 0, top: 0, width, height }).toFile(outputPath);
+  await sharp(capturePath)
+    .extract({ left: 0, top: 0, width, height })
+    .toFile(outputPath);
   await fs.rm(capturePath, { force: true });
 }
 
@@ -263,7 +292,10 @@ const names = [
       .map((match) => match[1])
       .filter((name) => /^[a-z0-9-]+$/.test(name)),
   ),
-].filter((name) => filters.length === 0 || filters.some((filter) => name.includes(filter)));
+].filter(
+  (name) =>
+    filters.length === 0 || filters.some((filter) => name.includes(filter)),
+);
 
 if (names.length === 0) {
   throw new Error(`No export targets matched: ${filters.join(", ")}`);
@@ -278,7 +310,14 @@ for (const name of names) {
   const { width, height } = exportSize(name);
   const outputPath = path.join(outputDir, `${name}.png`);
 
-  await exportWithChrome({ chromePath, htmlUrl, name, outputPath, width, height });
+  await exportWithChrome({
+    chromePath,
+    htmlUrl,
+    name,
+    outputPath,
+    width,
+    height,
+  });
   console.log(`Exported ${path.relative(process.cwd(), outputPath)}`);
 }
 
