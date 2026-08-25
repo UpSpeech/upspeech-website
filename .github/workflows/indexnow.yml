@@ -45,22 +45,36 @@ jobs:
       # added route. Wait for the live sitemap to carry every route this commit
       # declares, then stop waiting. For a content-only change the first poll
       # already passes, so the common case costs one request.
+      # Bounded by wall clock rather than an attempt count, so a slow response
+      # cannot stretch the budget. A counted loop with a 30s curl timeout and a
+      # 30s sleep is 14 minutes at worst, which outlives the job timeout below
+      # and would kill the run before it ever submits.
+      #
+      # Worst case here is WAIT_SECONDS plus one curl and one sleep, so roughly
+      # six minutes against a ten minute job.
       - name: Wait for the deploy to carry this commit's routes
+        env:
+          WAIT_SECONDS: 300
         run: |
           expected=$(node -e 'import("./scripts/routes.mjs").then(m => console.log(m.ROUTES.length * m.LOCALES.length))')
           echo "expecting $expected urls in the live sitemap"
-          for attempt in $(seq 1 14); do
+          deadline=$(( SECONDS + WAIT_SECONDS ))
+          while : ; do
             # grep -c prints 0 and exits 1 when it matches nothing, and the step
-            # runs under bash -e, so swallow the status and keep the count.
-            live=$(curl -sS --max-time 30 https://upspeech.app/sitemap.xml | grep -c '<loc>') || true
-            echo "attempt $attempt: live sitemap has ${live:-0}"
+            # runs under bash -eo pipefail, so swallow the status and keep the
+            # count.
+            live=$(curl -sS --max-time 15 https://upspeech.app/sitemap.xml | grep -c '<loc>') || true
             if [ "${live:-0}" -ge "$expected" ]; then
-              echo "deploy is live"
+              echo "deploy is live with ${live} urls"
               exit 0
             fi
-            sleep 30
+            if [ "$SECONDS" -ge "$deadline" ]; then
+              echo "sitemap still has ${live:-0} of $expected after ${WAIT_SECONDS}s; submitting anyway"
+              exit 0
+            fi
+            echo "live sitemap has ${live:-0}, waiting"
+            sleep 20
           done
-          echo "sitemap still short of $expected after 7 minutes; submitting anyway"
 
       - name: Submit
         run: npm run seo:indexnow
