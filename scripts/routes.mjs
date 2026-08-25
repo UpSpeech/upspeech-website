@@ -15,6 +15,13 @@ export const BASE_URL = "https://upspeech.app";
 export const LOCALES = ["en", "pt", "es"];
 export const DEFAULT_LOCALE = "en";
 
+// A path no route claims, so the app's "*" catch-all renders NotFound and the
+// prerenderer can write that render to dist/404.html. It is never linked, never
+// in the sitemap, and never served under this name: Netlify picks 404.html up
+// by filename. It only has to be a path App.tsx will not match.
+export const NOT_FOUND_RENDER_PATH = "/__not-found__";
+export const NOT_FOUND_OUTPUT_FILE = "404.html";
+
 export const ROUTES = [
   {
     path: "/",

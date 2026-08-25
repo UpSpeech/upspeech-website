@@ -3,14 +3,18 @@ import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { trackButtonClick } from "@/lib/analytics";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref, splitLocaleFromPath } from "@/i18n";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const locale = useLocale();
   const t = useT().nav;
-  const isHome = pathname === localizedPath("/", locale);
+  // Compare the locale-agnostic remainder rather than the raw pathname:
+  // Netlify serves "/pt/", and a literal match against "/pt" made isHome false
+  // on the pt/es home pages, which sent the anchor nav and the logo through a
+  // full page load instead of scrolling.
+  const isHome = splitLocaleFromPath(pathname).path === "/";
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -72,7 +76,7 @@ const Header = () => {
     setMenuOpen(false);
     // Off the homepage the section ids don't exist, so route home to the anchor.
     if (!isHome) {
-      window.location.href = `${localizedPath("/", locale)}#${sectionId}`;
+      window.location.href = `${localizedHref("/", locale)}#${sectionId}`;
       return;
     }
     const element = document.getElementById(sectionId);
@@ -101,7 +105,7 @@ const Header = () => {
               trackButtonClick("logo", "header");
               setMenuOpen(false);
               if (!isHome) {
-                window.location.href = localizedPath("/", locale);
+                window.location.href = localizedHref("/", locale);
                 return;
               }
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -136,7 +140,7 @@ const Header = () => {
               {t.whyUs}
             </button>
             <a
-              href={localizedPath("/techniques", locale)}
+              href={localizedHref("/techniques", locale)}
               className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
               onClick={() => trackButtonClick("nav_techniques", "header")}
             >
@@ -221,7 +225,7 @@ const Header = () => {
               {t.whyUs}
             </button>
             <a
-              href={localizedPath("/techniques", locale)}
+              href={localizedHref("/techniques", locale)}
               className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
               onClick={() => {
                 trackButtonClick("nav_techniques", "header");

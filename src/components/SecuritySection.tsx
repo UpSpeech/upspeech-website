@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useReveal } from "./useReveal";
 import { reveal } from "./motion";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref } from "@/i18n";
 
 // Icons stay in code; title/copy come from the dictionary by index
 // (home.security.points). Keep this list as long as that one. The fallback at
@@ -90,7 +90,7 @@ const SecuritySection = () => {
           style={reveal(revealed, 640)}
         >
           <a
-            href={localizedPath("/privacy", locale)}
+            href={localizedHref("/privacy", locale)}
             className="inline-flex min-h-[44px] items-center font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors hover:decoration-calm-navy"
           >
             {t.readPrivacy}

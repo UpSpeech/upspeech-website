@@ -208,7 +208,7 @@ Si proporciona comentarios, sugerencias o ideas sobre el Servicio ("Feedback"), 
 
 ## 8. Privacidad y Protección de Datos
 
-Su privacidad es importante para nosotros. Nuestra [Política de Privacidad](/privacy) explica cómo recopilamos, utilizamos y protegemos su información personal.
+Su privacidad es importante para nosotros. Nuestra [Política de Privacidad](/es/privacy/) explica cómo recopilamos, utilizamos y protegemos su información personal.
 
 Puntos clave:
 

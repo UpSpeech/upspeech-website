@@ -96,7 +96,12 @@ export function SEO({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <link rel="canonical" href={canonicalUrl} />
+      {/* A noindex page has no canonical URL of its own to declare. The 404 in
+          particular renders at whatever URL the visitor mistyped and passes no
+          path, so it would resolve to the site root and tell crawlers that
+          every missing URL is the home page. Same reason it claims no hreflang
+          alternates and no WebPage node below. */}
+      {noindex ? null : <link rel="canonical" href={canonicalUrl} />}
       <meta
         name="robots"
         content={
@@ -107,10 +112,14 @@ export function SEO({
       />
 
       {/* hreflang alternates */}
-      {SUPPORTED_LOCALES.map((l) => (
-        <link key={l} rel="alternate" hrefLang={l} href={localeUrl(l)} />
-      ))}
-      <link rel="alternate" hrefLang="x-default" href={localeUrl("en")} />
+      {noindex
+        ? null
+        : SUPPORTED_LOCALES.map((l) => (
+            <link key={l} rel="alternate" hrefLang={l} href={localeUrl(l)} />
+          ))}
+      {noindex ? null : (
+        <link rel="alternate" hrefLang="x-default" href={localeUrl("en")} />
+      )}
 
       {/* OpenGraph */}
       <meta property="og:type" content={type} />
@@ -138,7 +147,7 @@ export function SEO({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={resolvedImageAlt} />
-      <meta property="og:url" content={canonicalUrl} />
+      {noindex ? null : <meta property="og:url" content={canonicalUrl} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -148,7 +157,9 @@ export function SEO({
       <meta name="twitter:image:alt" content={resolvedImageAlt} />
 
       {/* Structured Data */}
-      <script type="application/ld+json">{JSON.stringify(webPage)}</script>
+      {noindex ? null : (
+        <script type="application/ld+json">{JSON.stringify(webPage)}</script>
+      )}
       {structuredData &&
         (Array.isArray(structuredData) ? (
           structuredData.map((data, i) => (

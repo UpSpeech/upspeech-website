@@ -318,13 +318,13 @@ Nas nossas aplicações móveis, a informação equivalente (token de autentica�
 
 ### Cookies de Análise
 
-Utilizamos cookies de análise (Google Analytics, Microsoft Clarity, PostHog) para compreender como os utilizadores interagem com a nossa plataforma. Estes cookies só são definidos com o seu consentimento explícito. Não utilizamos cookies para fins de publicidade ou rastreio, e não participamos em redes de publicidade comportamental. Para mais detalhes, consulte a nossa [Política de Cookies](/cookies).
+Utilizamos cookies de análise (Google Analytics, Microsoft Clarity, PostHog) para compreender como os utilizadores interagem com a nossa plataforma. Estes cookies só são definidos com o seu consentimento explícito. Não utilizamos cookies para fins de publicidade ou rastreio, e não participamos em redes de publicidade comportamental. Para mais detalhes, consulte a nossa [Política de Cookies](/pt/cookies/).
 
 ### Definições do Navegador
 
 Pode limpar o localStorage a qualquer momento através das definições do seu navegador. Tenha em atenção que limpar o localStorage terminará a sua sessão na plataforma.
 
-Para mais detalhes, consulte a nossa [Política de Cookies](/cookies).
+Para mais detalhes, consulte a nossa [Política de Cookies](/pt/cookies/).
 
 ## Alterações a Esta Política de Privacidade
 

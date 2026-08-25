@@ -118,11 +118,24 @@
   status = 301
   force = true
 
-# SPA fallback: serve index.html for all routes (must be last)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# No SPA fallback on purpose.
+#
+# There used to be a "/* -> /index.html 200" rule here, which meant every URL on
+# the host answered 200 with the home page: /nope, /deep/fake/path and
+# /BingSiteAuth.xml all returned the same 107KB of home page HTML. React swapped
+# in the NotFound page after hydration, but the status code stayed 200 and the
+# HTML a crawler reads never changed. Bing indexed the site and then stopped
+# serving it, with URL Inspection reporting "known to Bing but has some issues
+# which are preventing us from serving it to our users".
+#
+# Nothing needs the fallback: scripts/prerender.mjs writes a real
+# dist/<route>/index.html for all 66 routes and scripts/check-routes.mjs fails
+# the build if App.tsx and scripts/routes.mjs ever disagree about that list. So
+# a request that matches no file is genuinely a missing page, and Netlify
+# answers it with dist/404.html under a 404, which prerender.mjs now writes.
+#
+# The redirects above still take precedence, so the PostHog relay and the
+# /r/:tenant deep link are unaffected.
 
 # Custom headers for SEO, security, and performance
 [[headers]]

@@ -208,7 +208,7 @@ If you provide feedback, suggestions, or ideas about the Service ("Feedback"), y
 
 ## 8. Privacy and Data Protection
 
-Your privacy is important to us. Our [Privacy Policy](/privacy) explains how we collect, use, and protect your personal information.
+Your privacy is important to us. Our [Privacy Policy](/privacy/) explains how we collect, use, and protect your personal information.
 
 Key points:
 

@@ -3,7 +3,14 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname, extname } from "path";
 import { fileURLToPath } from "url";
 import puppeteer from "puppeteer";
-import { ROUTES, LOCALES, DEFAULT_LOCALE, localePath } from "./routes.mjs";
+import {
+  ROUTES,
+  LOCALES,
+  DEFAULT_LOCALE,
+  localePath,
+  NOT_FOUND_RENDER_PATH,
+  NOT_FOUND_OUTPUT_FILE,
+} from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, "..", "dist");
@@ -53,10 +60,20 @@ function isDataDrivenRoute(route) {
 }
 
 // The full prerender matrix: every route in every locale, as the in-app path
-// the SPA serves (en at the root, pt/es under a prefix).
-const RENDER_PATHS = LOCALES.flatMap((locale) =>
-  ROUTES.map((route) => localePath(route.path, locale)),
-);
+// the SPA serves (en at the root, pt/es under a prefix), plus one render of the
+// NotFound page that gets written to dist/404.html.
+//
+// That last one is what lets Netlify answer a missing URL with a real 404.
+// Without a 404.html the site needed a "/* -> /index.html 200" catch-all, which
+// answered every unmatched URL with the home page under a 200. To a crawler
+// that is not a missing page, it is an infinite supply of duplicate ones, and
+// Bing stopped serving the site over it.
+const RENDER_PATHS = [
+  ...LOCALES.flatMap((locale) =>
+    ROUTES.map((route) => localePath(route.path, locale)),
+  ),
+  NOT_FOUND_RENDER_PATH,
+];
 
 const MIME_TYPES = {
   ".html": "text/html",
@@ -169,11 +186,16 @@ async function renderRoute(page, route) {
   // scraped as if it were complete. A miss throws so the retry loop gives the
   // page another attempt (under concurrency, Helmet can finish just after
   // networkidle0) rather than silently writing degraded HTML.
+  // The 404 render deliberately emits no canonical (see src/components/SEO.tsx),
+  // so gate it on the noindex robots tag instead. Both gates prove Helmet ran.
   await page.waitForFunction(
-    () =>
-      document.querySelector('link[rel="canonical"]') &&
+    (isNotFound) =>
+      (isNotFound
+        ? document.querySelector('meta[name="robots"][content*="noindex"]')
+        : document.querySelector('link[rel="canonical"]')) &&
       document.querySelector('meta[property="og:title"]'),
     { timeout: SELECTOR_TIMEOUT_MS },
+    route === NOT_FOUND_RENDER_PATH,
   );
 
   // Content-integrity gate: for backend-driven routes, the Helmet SEO tags
@@ -285,7 +307,10 @@ async function renderRoute(page, route) {
 
   // Determine output path
   let outputPath;
-  if (route === "/") {
+  if (route === NOT_FOUND_RENDER_PATH) {
+    // Netlify serves dist/404.html for any unmatched URL, with a 404 status.
+    outputPath = join(DIST_DIR, NOT_FOUND_OUTPUT_FILE);
+  } else if (route === "/") {
     outputPath = join(DIST_DIR, "index.html");
   } else {
     outputPath = join(DIST_DIR, route.slice(1), "index.html");

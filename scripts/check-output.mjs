@@ -26,7 +26,13 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
-import { ROUTES, LOCALES, localeUrl, localePath } from "./routes.mjs";
+import {
+  ROUTES,
+  LOCALES,
+  localeUrl,
+  localePath,
+  NOT_FOUND_OUTPUT_FILE,
+} from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -62,7 +68,10 @@ function startServer() {
   const server = createServer((req, res) => {
     const path = new URL(req.url, `http://localhost:${PORT}`).pathname;
     let file = null;
-    for (const candidate of [join(DIST, path), join(DIST, path, "index.html")]) {
+    for (const candidate of [
+      join(DIST, path),
+      join(DIST, path, "index.html"),
+    ]) {
       if (existsSync(candidate) && statSync(candidate).isFile()) {
         file = candidate;
         break;
@@ -84,7 +93,9 @@ function startServer() {
 function sitemapDates() {
   const xml = readFileSync(join(ROOT, "public", "sitemap.xml"), "utf8");
   const out = new Map();
-  for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) {
+  for (const m of xml.matchAll(
+    /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g,
+  )) {
     out.set(m[1], m[2]);
   }
   return out;
@@ -105,14 +116,19 @@ function collect() {
     // and extraction still gets the full string, which is fine. If they match
     // with whitespace removed but differ once it is normalised, the rendered
     // word boundaries are missing from the text stream, which is the bug.
-    if (squash(textContent) === squash(innerText) && norm(textContent) !== norm(innerText)) {
+    if (
+      squash(textContent) === squash(innerText) &&
+      norm(textContent) !== norm(innerText)
+    ) {
       headings.push({ tag: el.tagName, textContent, innerText });
     }
   }
 
   const jsonLd = [];
   let parseError = null;
-  for (const el of document.querySelectorAll('script[type="application/ld+json"]')) {
+  for (const el of document.querySelectorAll(
+    'script[type="application/ld+json"]',
+  )) {
     try {
       const parsed = JSON.parse(el.textContent || "");
       for (const node of parsed["@graph"] || [parsed]) jsonLd.push(node);
@@ -121,13 +137,23 @@ function collect() {
     }
   }
 
+  const internalLinks = [];
+  for (const el of document.querySelectorAll("a[href]")) {
+    const href = el.getAttribute("href") || "";
+    // Same-origin paths only. Protocol-relative "//host/x" is external.
+    if (href.startsWith("/") && !href.startsWith("//"))
+      internalLinks.push(href);
+  }
+
   return {
     headings,
     jsonLd,
     parseError,
+    internalLinks,
     h1Count: document.querySelectorAll("h1").length,
     canonical:
-      document.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? null,
+      document.querySelector('link[rel="canonical"]')?.getAttribute("href") ??
+      null,
     htmlLang: document.documentElement.getAttribute("lang"),
   };
 }
@@ -137,7 +163,8 @@ function check(page, report) {
   const problems = [];
   const { url, locale } = page;
 
-  if (report.parseError) problems.push(`JSON-LD does not parse: ${report.parseError}`);
+  if (report.parseError)
+    problems.push(`JSON-LD does not parse: ${report.parseError}`);
 
   for (const h of report.headings) {
     problems.push(
@@ -147,21 +174,44 @@ function check(page, report) {
     );
   }
 
-  if (report.h1Count !== 1) problems.push(`${report.h1Count} <h1> elements, expected exactly 1`);
-  if (report.canonical !== url) problems.push(`canonical is ${report.canonical}, expected ${url}`);
-  if (report.htmlLang !== locale) problems.push(`<html lang> is ${report.htmlLang}, expected ${locale}`);
+  if (report.h1Count !== 1)
+    problems.push(`${report.h1Count} <h1> elements, expected exactly 1`);
+  if (report.canonical !== url)
+    problems.push(`canonical is ${report.canonical}, expected ${url}`);
+
+  // Netlify serves every real page at a trailing slash and 301s the slashless
+  // form to it, so linking without one spends a redirect on every internal link
+  // and points crawlers at a URL that is not the target's own canonical. Link
+  // helpers live in src/i18n/locale.ts: localizedHref for hrefs, localizedPath
+  // for in-app route matching.
+  for (const href of new Set(report.internalLinks)) {
+    const linkPath = href.split(/[?#]/)[0];
+    if (!linkPath || linkPath === "/" || linkPath.endsWith("/")) continue;
+    // A path with an extension is a file (/images/logo.svg), not a page.
+    if (/\.[a-z0-9]+$/i.test(linkPath)) continue;
+    problems.push(
+      `internal link "${href}" has no trailing slash, so it costs a 301 to "${linkPath}/"`,
+    );
+  }
+  if (report.htmlLang !== locale)
+    problems.push(`<html lang> is ${report.htmlLang}, expected ${locale}`);
 
   const webPages = report.jsonLd.filter((n) => n["@type"] === "WebPage");
   if (webPages.length !== 1) {
-    problems.push(`${webPages.length} WebPage nodes in JSON-LD, expected exactly 1`);
+    problems.push(
+      `${webPages.length} WebPage nodes in JSON-LD, expected exactly 1`,
+    );
   } else {
     const wp = webPages[0];
     if (wp["@id"] !== `${url}#webpage`) {
       problems.push(`WebPage @id is ${wp["@id"]}, expected ${url}#webpage`);
     }
-    if (wp.url !== url) problems.push(`WebPage url is ${wp.url}, expected ${url}`);
+    if (wp.url !== url)
+      problems.push(`WebPage url is ${wp.url}, expected ${url}`);
     if (wp.inLanguage !== locale) {
-      problems.push(`WebPage inLanguage is ${wp.inLanguage}, expected ${locale}`);
+      problems.push(
+        `WebPage inLanguage is ${wp.inLanguage}, expected ${locale}`,
+      );
     }
     if (!wp.dateModified) {
       problems.push("WebPage has no dateModified");
@@ -181,6 +231,52 @@ function check(page, report) {
   }
 
   return problems;
+}
+
+/**
+ * dist/404.html is what makes a missing URL answer 404 instead of 200. Netlify
+ * picks it up by filename, so nothing in the config references it and a silent
+ * disappearance would restore the old "every URL is the home page" behaviour
+ * with no other symptom. Check it before spending a browser on the rest.
+ */
+function notFoundProblems() {
+  const file = join(DIST, NOT_FOUND_OUTPUT_FILE);
+  if (!existsSync(file)) {
+    return [
+      `${NOT_FOUND_OUTPUT_FILE} is missing, so Netlify has no 404 to serve and ` +
+        `every unmatched URL falls back to a 200. scripts/prerender.mjs writes it.`,
+    ];
+  }
+
+  const problems = [];
+  const html = readFileSync(file, "utf8");
+
+  if (!/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html)) {
+    problems.push("has no noindex robots meta");
+  }
+  if (/rel="canonical"/i.test(html)) {
+    problems.push(
+      "declares a canonical URL. It renders at whatever URL was mistyped, so " +
+        "its canonical resolves to the site root and tells crawlers every " +
+        "missing URL is the home page.",
+    );
+  }
+  if (html === readFileSync(join(DIST, "index.html"), "utf8")) {
+    problems.push(
+      "is byte-identical to index.html, so it is the home page under another " +
+        "name rather than a rendered NotFound",
+    );
+  }
+  return problems;
+}
+
+const notFound = notFoundProblems();
+if (notFound.length) {
+  console.error("");
+  console.error("check:output FAILED on dist/%s.", NOT_FOUND_OUTPUT_FILE);
+  for (const problem of notFound) console.error("      %s", problem);
+  console.error("");
+  process.exit(1);
 }
 
 const lastmods = sitemapDates();
@@ -213,7 +309,10 @@ async function worker() {
       timeout: 30000,
     });
     if (!response || response.status() !== 200) {
-      failures.push({ page, problems: [`served HTTP ${response?.status() ?? "no response"}`] });
+      failures.push({
+        page,
+        problems: [`served HTTP ${response?.status() ?? "no response"}`],
+      });
       continue;
     }
     const report = await tab.evaluate(collect);
@@ -228,7 +327,10 @@ await browser.close();
 server.close();
 
 if (failures.length === 0) {
-  console.log("check:output OK: %d pages, headings extract and JSON-LD agrees.", pages.length);
+  console.log(
+    "check:output OK: %d pages, headings extract and JSON-LD agrees.",
+    pages.length,
+  );
   process.exit(0);
 }
 

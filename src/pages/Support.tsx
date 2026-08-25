@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
-import { useLocale, localizedPath, type Locale } from "@/i18n";
+import { useLocale, localizedHref, type Locale } from "@/i18n";
 
 const SUPPORT_EMAIL = "support@upspeech.app";
 
@@ -92,7 +92,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Yes. Clinical data is encrypted and isolated per organization. See
             our{" "}
             <a
-              href={localizedPath("/privacy", locale)}
+              href={localizedHref("/privacy", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               Privacy Policy
@@ -107,7 +107,7 @@ const CONTENT: Record<Locale, SupportContent> = {
           <>
             You can request deletion at any time on our{" "}
             <a
-              href={localizedPath("/delete-account", locale)}
+              href={localizedHref("/delete-account", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               account deletion page
@@ -180,7 +180,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Sim. Os dados clínicos são encriptados e isolados por organização.
             Consulte a nossa{" "}
             <a
-              href={localizedPath("/privacy", locale)}
+              href={localizedHref("/privacy", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               Política de Privacidade
@@ -195,7 +195,7 @@ const CONTENT: Record<Locale, SupportContent> = {
           <>
             Pode solicitar a eliminação a qualquer momento na nossa{" "}
             <a
-              href={localizedPath("/delete-account", locale)}
+              href={localizedHref("/delete-account", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               página de eliminação de conta
@@ -269,7 +269,7 @@ const CONTENT: Record<Locale, SupportContent> = {
             Sí. Los datos clínicos están cifrados y aislados por organización.
             Consulta nuestra{" "}
             <a
-              href={localizedPath("/privacy", locale)}
+              href={localizedHref("/privacy", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               Política de Privacidad
@@ -284,7 +284,7 @@ const CONTENT: Record<Locale, SupportContent> = {
           <>
             Puedes solicitar la eliminación en cualquier momento en nuestra{" "}
             <a
-              href={localizedPath("/delete-account", locale)}
+              href={localizedHref("/delete-account", locale)}
               className="text-calm-navy underline underline-offset-2"
             >
               página de eliminación de cuenta
@@ -493,7 +493,7 @@ export default function Support() {
               <ul className="mt-3 space-y-2 font-body">
                 <li>
                   <a
-                    href={localizedPath("/privacy", locale)}
+                    href={localizedHref("/privacy", locale)}
                     className="text-calm-navy hover:underline"
                   >
                     {c.privacy}
@@ -501,7 +501,7 @@ export default function Support() {
                 </li>
                 <li>
                   <a
-                    href={localizedPath("/terms", locale)}
+                    href={localizedHref("/terms", locale)}
                     className="text-calm-navy hover:underline"
                   >
                     {c.terms}
@@ -509,7 +509,7 @@ export default function Support() {
                 </li>
                 <li>
                   <a
-                    href={localizedPath("/delete-account", locale)}
+                    href={localizedHref("/delete-account", locale)}
                     className="text-calm-navy hover:underline"
                   >
                     {c.deleteAccount}
