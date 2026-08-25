@@ -126,6 +126,42 @@ npm run check:output
 
 It needs `dist/` to exist, so run a build first. About two seconds for all 66 pages.
 
+## The early-access form
+
+`src/components/CTASection.tsx` is the only form on the site. It posts same-origin to `netlify/functions/early-access.ts`, which works in a fixed order.
+
+It writes the lead down first: a row appended to a Google Sheet through an Apps Script web app, and a contact added to a Resend audience. Then it sends the team notification, which repeats the result of those two writes. The applicant confirmation goes last.
+
+That order is a fix, not a preference. The function used to send the team email first and store nothing at all, so a Resend error meant the request was gone with no record that anyone had asked for it. Now the visitor sees a failure only if all three landed nowhere, and a bounced applicant address cannot fail a submission that is already recorded.
+
+Both stores are optional. An unset variable skips that write, and the team email reports `not configured` instead of `failed`.
+
+| Variable                                      | Effect when unset                                                                                  |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`                              | The function answers 503 and sends nothing.                                                        |
+| `RESEND_AUDIENCE_ID`                          | No contact is added; the sheet and the emails still work.                                          |
+| `SHEETS_WEBHOOK_URL`, `SHEETS_WEBHOOK_SECRET` | No spreadsheet row; the audience and the emails still work.                                        |
+| `EARLY_ACCESS_SURVEY_URL`                     | The applicant email leaves out its survey block. A value that is not an `https://` URL is ignored. |
+
+None of these carry a `VITE_` prefix, because they are read on the server and must never reach the browser bundle. Set them in Netlify under Site configuration. `netlify dev` reads them from a local `.env`, which is the only way to exercise the function without deploying.
+
+### The spreadsheet
+
+`netlify/lib/sheet-webhook.gs` is the Apps Script to paste into the leads spreadsheet; its header carries the deployment steps. Editing it later needs a new deployment version, since saving alone does not change what the `/exec` URL runs.
+
+The function checks the response body for `"ok":true` rather than the HTTP status, because an Apps Script web app answers 200 even when `doPost` throws. It also sends a shared secret in the body, because a web app deployed for "Anyone" is world-postable by design.
+
+The Role and Clinic size columns hold English labels rather than the slugs the form posts or the labels the visitor saw, so one filter catches every submission of the same role across all three locales. Status and Notes are left for you to fill in.
+
+### The emails
+
+The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Neither loads a webfont: `src/fonts.css` self-hosts the brand faces to keep requests away from `fonts.googleapis.com`, and an email pulling them from Google would hand over the recipient's IP on open.
+
+```bash
+npm run preview:emails      # every locale and state rendered to .pr-assets/emails/
+npm run check:early-access  # 13 checks against a stubbed network, no credentials needed
+```
+
 ## Adding a fourth locale
 
 1. Add the code to `SUPPORTED_LOCALES` in `src/i18n/locale.ts` (and `LOCALES` in `scripts/routes.mjs`).

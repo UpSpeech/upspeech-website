@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "typecheck": "tsc --project tsconfig.app.json --noEmit",
+    "typecheck": "tsc --project tsconfig.app.json --noEmit && tsc --project tsconfig.netlify.json --noEmit",
     "full_check": "npm run format && npm run lint:fix && npm run typecheck",
     "preview": "vite preview",
     "video:studio": "remotion studio",
@@ -20,7 +20,9 @@
     "video:poster": "remotion still HeroDemo public/videos/hero-demo-poster.jpg --frame 30",
     "seo:indexnow": "node scripts/indexnow.mjs",
     "dates:routes": "node scripts/generate-route-dates.mjs",
-    "check:output": "node scripts/check-output.mjs"
+    "check:output": "node scripts/check-output.mjs",
+    "check:early-access": "node scripts/check-early-access.mjs",
+    "preview:emails": "node scripts/preview-emails.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
