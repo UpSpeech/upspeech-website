@@ -67,7 +67,11 @@ const SiteIntro = () => {
   return (
     <div className="site-intro" aria-hidden="true">
       <div className="site-intro__stage">
-        <SpeechRing size="var(--intro-ring)" intro className="site-intro__ring" />
+        <SpeechRing
+          size="var(--intro-ring)"
+          intro
+          className="site-intro__ring"
+        />
         <div className="site-intro__lockup">
           <BrandLockup width="var(--intro-lockup)" />
         </div>

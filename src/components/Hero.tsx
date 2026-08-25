@@ -147,9 +147,7 @@ const Hero = () => {
               {t.headlineLine2}{" "}
             </Line>
             <Line delay={300} loaded={loaded}>
-              <span className="text-calm-lavender-ink">
-                {t.headlineLine3}
-              </span>
+              <span className="text-calm-lavender-ink">{t.headlineLine3}</span>
             </Line>
           </h1>
 
@@ -219,7 +217,8 @@ const Hero = () => {
           Hiding it would throw away the one part of the hero that explains
           what this company measures. The blooms above are the decoration and
           they are the things that stay hidden. */}
-      <div className="relative w-full shrink-0 overflow-hidden"
+      <div
+        className="relative w-full shrink-0 overflow-hidden"
         style={{
           clipPath: loaded ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
           transition: `clip-path 1600ms ${EASE}`,

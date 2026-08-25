@@ -21,9 +21,7 @@ const InterstitialCTA = () => {
         className="gutter relative flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between"
       >
         <div style={reveal(revealed, 0)}>
-          <h2
-            className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight"
-          >
+          <h2 className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight">
             {t.headlineLine1} <br />
             <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
           </h2>

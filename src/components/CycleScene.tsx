@@ -110,10 +110,7 @@ const CycleScene = () => {
       // the section height minus the panel height.
       const panelH = panelRef.current?.offsetHeight ?? window.innerHeight;
       const scrollable = rect.height - panelH;
-      const scrolled = Math.max(
-        0,
-        Math.min(scrollable, STICKY_TOP - rect.top),
-      );
+      const scrolled = Math.max(0, Math.min(scrollable, STICKY_TOP - rect.top));
       setProgress(scrollable > 0 ? scrolled / scrollable : 0);
     };
     const onScroll = () => {
@@ -454,9 +451,7 @@ const CycleScene = () => {
                         (activeIndex + 1).toString().padStart(2, "0")}
                   </span>
                 </div>
-                <h3
-                  className="t-h2 font-heading font-extrabold text-calm-charcoal tracking-tight mb-5"
-                >
+                <h3 className="t-h2 font-heading font-extrabold text-calm-charcoal tracking-tight mb-5">
                   {active.title}
                 </h3>
                 <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">

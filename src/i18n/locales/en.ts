@@ -144,41 +144,49 @@ export const en = {
         time: "08:40 · Before the first appointment",
         headline: "You already have the context.",
         body: "The patient completed their onboarding in the app. You read where they are before they sit down, instead of spending the first ten minutes asking.",
-        photoAlt: "A speech and language therapist at her desk between appointments, a closed laptop in front of her, looking out of the window",
-    },
-    assessment: {
-      time: "09:15 · The assessment",
-      headline: "You walk out with it written.",
-      body: "Record the assessment and the report is drafted by the time you stand up. You correct it and you sign it. You do not start from an empty page.",
-      detailAlt: "A generated session report headed with the patient name, the report date and a Ready status",
-    },
-    session: {
-      time: "11:30 · In session",
-      headline: "Notes cost you the child.",
-      body: "Every minute you spend writing is a minute they spend somewhere else. Record the session instead, and the notes are waiting for you when it ends.",
-      cost: {
-        label: "Taking notes",
-        caption: "Your attention is on the page. Theirs went to the window a while ago.",
-        photoAlt: "A speech and language therapist writing on a clipboard on her lap while the boy beside her has turned away toward the window, chin in his hand",
+        photoAlt:
+          "A speech and language therapist at her desk between appointments, a closed laptop in front of her, looking out of the window",
       },
-      instead: {
-        label: "Hands empty",
-        caption: "Nothing to write down. You are looking at each other, and he is the one talking.",
-        photoAlt: "The same therapist leaning toward the boy with both hands open and empty, no clipboard anywhere, the two of them looking at each other while he speaks",
+      assessment: {
+        time: "09:15 · The assessment",
+        headline: "You walk out with it written.",
+        body: "Record the assessment and the report is drafted by the time you stand up. You correct it and you sign it. You do not start from an empty page.",
+        detailAlt:
+          "A generated session report headed with the patient name, the report date and a Ready status",
       },
-    },
-    plan: {
-      time: "14:00 · After the session",
-      headline: "The plan goes home with them.",
-      body: "Assign the exercises once. They practice between visits, and every attempt comes back for you to review before the next appointment.",
-      detailAlt: "An assigned learning path showing progress through its steps, with the current step marked",
-    },
-    close: {
-      time: "17:30 · The end of the day",
-      headline: "You remember all of them.",
-      body: "Six patients, back to back. By the evening the detail has gone. The record has not, and it is what the next session starts from.",
-      screenshotAlt: "The therapist dashboard, showing assigned patients, recent activity and what needs attention",
-    },
+      session: {
+        time: "11:30 · In session",
+        headline: "Notes cost you the child.",
+        body: "Every minute you spend writing is a minute they spend somewhere else. Record the session instead, and the notes are waiting for you when it ends.",
+        cost: {
+          label: "Taking notes",
+          caption:
+            "Your attention is on the page. Theirs went to the window a while ago.",
+          photoAlt:
+            "A speech and language therapist writing on a clipboard on her lap while the boy beside her has turned away toward the window, chin in his hand",
+        },
+        instead: {
+          label: "Hands empty",
+          caption:
+            "Nothing to write down. You are looking at each other, and he is the one talking.",
+          photoAlt:
+            "The same therapist leaning toward the boy with both hands open and empty, no clipboard anywhere, the two of them looking at each other while he speaks",
+        },
+      },
+      plan: {
+        time: "14:00 · After the session",
+        headline: "The plan goes home with them.",
+        body: "Assign the exercises once. They practice between visits, and every attempt comes back for you to review before the next appointment.",
+        detailAlt:
+          "An assigned learning path showing progress through its steps, with the current step marked",
+      },
+      close: {
+        time: "17:30 · The end of the day",
+        headline: "You remember all of them.",
+        body: "Six patients, back to back. By the evening the detail has gone. The record has not, and it is what the next session starts from.",
+        screenshotAlt:
+          "The therapist dashboard, showing assigned patients, recent activity and what needs attention",
+      },
     },
     mobile: {
       eyebrow: "In the patient's pocket",

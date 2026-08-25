@@ -18,8 +18,7 @@ interface TechniquePageProps {
 }
 
 // Shared with the redesigned pages so this reads as the same site.
-const eyebrowClass =
-  "font-body t-eyebrow text-calm-lavender-ink";
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const cardClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const cardHeadingClass =
@@ -236,9 +235,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </a>
                 </p>
               )}
-              <h1
-                className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-              >
+              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
                 {technique.name}
               </h1>
               {technique.description && (

@@ -41,8 +41,9 @@ const ClinicianDay = () => {
   const t = useT().home.day;
   const locale = useLocale();
   const { ref, revealed } = useReveal<HTMLElement>({ threshold: 0.05 });
-  const { ref: sessionRef, revealed: sessionRevealed } =
-    useReveal<HTMLElement>({ threshold: 0.15 });
+  const { ref: sessionRef, revealed: sessionRevealed } = useReveal<HTMLElement>(
+    { threshold: 0.15 },
+  );
   const { ref: endRef, revealed: endRevealed } = useReveal<HTMLElement>({
     threshold: 0.05,
   });
@@ -274,7 +275,10 @@ const ClinicianDay = () => {
               crop of a dashboard would undersell exactly the thing being
               claimed. */}
           <div className="mt-[clamp(3rem,6vw,5rem)]">
-            <div className="max-w-xl" style={revealFrom(endRevealed, "up", 160)}>
+            <div
+              className="max-w-xl"
+              style={revealFrom(endRevealed, "up", 160)}
+            >
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.close.time}
               </span>

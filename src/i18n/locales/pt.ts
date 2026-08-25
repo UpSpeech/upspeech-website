@@ -138,7 +138,8 @@ export const pt: Dictionary = {
       traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
     },
     day: {
-      howToName: "Como uma sessão de terapia da fala se torna um registo escrito",
+      howToName:
+        "Como uma sessão de terapia da fala se torna um registo escrito",
       eyebrow: "Uma terça-feira",
       headline: "A maior parte do trabalho não é a sessão.",
       body: "Três clínicos disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
@@ -146,41 +147,49 @@ export const pt: Dictionary = {
         time: "08:40 · Antes da primeira consulta",
         headline: "Já tem o contexto.",
         body: "O paciente completou o acolhimento na app. Lê onde ele está antes de se sentar, em vez de gastar os primeiros dez minutos a perguntar.",
-        photoAlt: "Uma terapeuta da fala à secretária entre consultas, com o portátil fechado à frente, a olhar pela janela",
-    },
-    assessment: {
-      time: "09:15 · A avaliação",
-      headline: "Sai com o relatório escrito.",
-      body: "Grave a avaliação e o relatório fica em rascunho no momento em que se levanta. Corrige e assina. Não começa de uma página em branco.",
-      detailAlt: "Um relatório de sessão gerado, com o nome do paciente, a data e o estado Pronto",
-    },
-    session: {
-      time: "11:30 · Na sessão",
-      headline: "As notas custam-lhe a criança.",
-      body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grave a sessão e as notas ficam à sua espera quando ela terminar.",
-      cost: {
-        label: "A tirar notas",
-        caption: "A sua atenção está no papel. A dele foi para a janela há já algum tempo.",
-        photoAlt: "Uma terapeuta da fala a escrever numa prancheta ao colo enquanto o rapaz ao lado se virou para a janela, com o queixo apoiado na mão",
+        photoAlt:
+          "Uma terapeuta da fala à secretária entre consultas, com o portátil fechado à frente, a olhar pela janela",
       },
-      instead: {
-        label: "Mãos livres",
-        caption: "Nada para apontar. Estão a olhar um para o outro e é ele quem fala.",
-        photoAlt: "A mesma terapeuta inclinada para o rapaz, com as duas mãos abertas e vazias, sem prancheta nenhuma, os dois a olhar um para o outro enquanto ele fala",
+      assessment: {
+        time: "09:15 · A avaliação",
+        headline: "Sai com o relatório escrito.",
+        body: "Grave a avaliação e o relatório fica em rascunho no momento em que se levanta. Corrige e assina. Não começa de uma página em branco.",
+        detailAlt:
+          "Um relatório de sessão gerado, com o nome do paciente, a data e o estado Pronto",
       },
-    },
-    plan: {
-      time: "14:00 · Depois da sessão",
-      headline: "O plano vai com eles para casa.",
-      body: "Atribui os exercícios uma vez. Praticam entre consultas e cada tentativa volta para si rever antes da consulta seguinte.",
-      detailAlt: "Um percurso de aprendizagem atribuído, a mostrar o progresso pelos passos, com o passo atual assinalado",
-    },
-    close: {
-      time: "17:30 · O fim do dia",
-      headline: "Lembra-se de todos.",
-      body: "Seis pacientes, um a seguir ao outro. Ao fim da tarde o detalhe desapareceu. O registo não, e é dele que parte a sessão seguinte.",
-      screenshotAlt: "O painel do terapeuta, com os pacientes atribuídos, a atividade recente e o que precisa de atenção",
-    },
+      session: {
+        time: "11:30 · Na sessão",
+        headline: "As notas custam-lhe a criança.",
+        body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grave a sessão e as notas ficam à sua espera quando ela terminar.",
+        cost: {
+          label: "A tirar notas",
+          caption:
+            "A sua atenção está no papel. A dele foi para a janela há já algum tempo.",
+          photoAlt:
+            "Uma terapeuta da fala a escrever numa prancheta ao colo enquanto o rapaz ao lado se virou para a janela, com o queixo apoiado na mão",
+        },
+        instead: {
+          label: "Mãos livres",
+          caption:
+            "Nada para apontar. Estão a olhar um para o outro e é ele quem fala.",
+          photoAlt:
+            "A mesma terapeuta inclinada para o rapaz, com as duas mãos abertas e vazias, sem prancheta nenhuma, os dois a olhar um para o outro enquanto ele fala",
+        },
+      },
+      plan: {
+        time: "14:00 · Depois da sessão",
+        headline: "O plano vai com eles para casa.",
+        body: "Atribui os exercícios uma vez. Praticam entre consultas e cada tentativa volta para si rever antes da consulta seguinte.",
+        detailAlt:
+          "Um percurso de aprendizagem atribuído, a mostrar o progresso pelos passos, com o passo atual assinalado",
+      },
+      close: {
+        time: "17:30 · O fim do dia",
+        headline: "Lembra-se de todos.",
+        body: "Seis pacientes, um a seguir ao outro. Ao fim da tarde o detalhe desapareceu. O registo não, e é dele que parte a sessão seguinte.",
+        screenshotAlt:
+          "O painel do terapeuta, com os pacientes atribuídos, a atividade recente e o que precisa de atenção",
+      },
     },
     mobile: {
       eyebrow: "No bolso do paciente",

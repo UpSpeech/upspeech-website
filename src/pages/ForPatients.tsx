@@ -37,8 +37,7 @@ const SCREENSHOTS = [
 // the photograph and looks like a failed render at the size this row runs.
 const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice.webp";
 
-const eyebrowClass =
-  "font-body t-eyebrow text-calm-lavender-ink";
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 // The device frame the app band already uses, and the screen rectangle inside
 // it, straight from frameit's offsets.json for this frame (offset +75+66,
@@ -160,11 +159,8 @@ export default function ForPatients() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1
-                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                >
-                  {t.intro.headlineLine1}{" "}
-                  <br />
+                <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+                  {t.intro.headlineLine1} <br />
                   <span className="text-calm-lavender-ink">
                     {t.intro.headlineLine2}
                   </span>
@@ -201,9 +197,7 @@ export default function ForPatients() {
         <section className="py-[clamp(3rem,6vw,5rem)]">
           <div className="gutter">
             <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
-            <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
               {t.howItWorks.headline}
             </h2>
 
@@ -282,9 +276,7 @@ export default function ForPatients() {
             <div>
               <Companion species="lumo" size={104} className="mb-4" />
               <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
-              <p
-                className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal"
-              >
+              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
                 {t.withAParent.line}
               </p>
             </div>
@@ -304,9 +296,7 @@ export default function ForPatients() {
           <div className="gutter relative">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.app.eyebrow}</p>
-              <h2
-                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              >
+              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
                 {t.app.headline}
               </h2>
               <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -377,9 +367,7 @@ export default function ForPatients() {
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter max-w-3xl">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -403,9 +391,7 @@ export default function ForPatients() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2
-              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

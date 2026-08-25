@@ -138,7 +138,8 @@ export const es: Dictionary = {
       traceLabel: "Una grabación de alguien hablando, con las pausas incluidas",
     },
     day: {
-      howToName: "Cómo una sesión de logopedia se convierte en un registro escrito",
+      howToName:
+        "Cómo una sesión de logopedia se convierte en un registro escrito",
       eyebrow: "Un martes",
       headline: "La mayor parte del trabajo no es la sesión.",
       body: "Tres clínicos nos dijeron lo mismo: horas preparando, horas redactando informes y, dentro de la sesión, tiempo perdido tomando notas. Este es ese día con UpSpeech.",
@@ -146,41 +147,48 @@ export const es: Dictionary = {
         time: "08:40 · Antes de la primera cita",
         headline: "Ya tienes el contexto.",
         body: "El paciente ha completado su incorporación en la app. Lees dónde está antes de que se siente, en vez de gastar los primeros diez minutos preguntando.",
-        photoAlt: "Una logopeda en su escritorio entre citas, con el portátil cerrado delante, mirando por la ventana",
-    },
-    assessment: {
-      time: "09:15 · La evaluación",
-      headline: "Sales con el informe escrito.",
-      body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo corriges y lo firmas. No empiezas desde una página en blanco.",
-      detailAlt: "Un informe de sesión generado, encabezado con el nombre del paciente, la fecha y el estado Listo",
-    },
-    session: {
-      time: "11:30 · En sesión",
-      headline: "Las notas te cuestan el niño.",
-      body: "Cada minuto que pasas escribiendo es un minuto que él pasa en otra parte. Graba la sesión y las notas te esperan cuando termine.",
-      cost: {
-        label: "Tomando notas",
-        caption: "Tu atención está en el papel. La suya se fue a la ventana hace rato.",
-        photoAlt: "Una logopeda escribiendo en un portapapeles sobre el regazo mientras el niño a su lado se ha girado hacia la ventana, con la barbilla apoyada en la mano",
+        photoAlt:
+          "Una logopeda en su escritorio entre citas, con el portátil cerrado delante, mirando por la ventana",
       },
-      instead: {
-        label: "Manos libres",
-        caption: "Nada que apuntar. Os estáis mirando y es él quien habla.",
-        photoAlt: "La misma logopeda inclinada hacia el niño, con las dos manos abiertas y vacías, sin ningún portapapeles, mirándose mientras él habla",
+      assessment: {
+        time: "09:15 · La evaluación",
+        headline: "Sales con el informe escrito.",
+        body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo corriges y lo firmas. No empiezas desde una página en blanco.",
+        detailAlt:
+          "Un informe de sesión generado, encabezado con el nombre del paciente, la fecha y el estado Listo",
       },
-    },
-    plan: {
-      time: "14:00 · Después de la sesión",
-      headline: "El plan se va a casa con ellos.",
-      body: "Asignas los ejercicios una vez. Practican entre citas y cada intento vuelve para que lo revises antes de la siguiente.",
-      detailAlt: "Un itinerario de aprendizaje asignado, mostrando el progreso por sus pasos, con el paso actual marcado",
-    },
-    close: {
-      time: "17:30 · El final del día",
-      headline: "Te acuerdas de todos.",
-      body: "Seis pacientes, uno detrás de otro. Por la tarde el detalle ya se ha ido. El registro no, y es de ahí que arranca la siguiente sesión.",
-      screenshotAlt: "El panel del terapeuta, con los pacientes asignados, la actividad reciente y lo que necesita atención",
-    },
+      session: {
+        time: "11:30 · En sesión",
+        headline: "Las notas te cuestan el niño.",
+        body: "Cada minuto que pasas escribiendo es un minuto que él pasa en otra parte. Graba la sesión y las notas te esperan cuando termine.",
+        cost: {
+          label: "Tomando notas",
+          caption:
+            "Tu atención está en el papel. La suya se fue a la ventana hace rato.",
+          photoAlt:
+            "Una logopeda escribiendo en un portapapeles sobre el regazo mientras el niño a su lado se ha girado hacia la ventana, con la barbilla apoyada en la mano",
+        },
+        instead: {
+          label: "Manos libres",
+          caption: "Nada que apuntar. Os estáis mirando y es él quien habla.",
+          photoAlt:
+            "La misma logopeda inclinada hacia el niño, con las dos manos abiertas y vacías, sin ningún portapapeles, mirándose mientras él habla",
+        },
+      },
+      plan: {
+        time: "14:00 · Después de la sesión",
+        headline: "El plan se va a casa con ellos.",
+        body: "Asignas los ejercicios una vez. Practican entre citas y cada intento vuelve para que lo revises antes de la siguiente.",
+        detailAlt:
+          "Un itinerario de aprendizaje asignado, mostrando el progreso por sus pasos, con el paso actual marcado",
+      },
+      close: {
+        time: "17:30 · El final del día",
+        headline: "Te acuerdas de todos.",
+        body: "Seis pacientes, uno detrás de otro. Por la tarde el detalle ya se ha ido. El registro no, y es de ahí que arranca la siguiente sesión.",
+        screenshotAlt:
+          "El panel del terapeuta, con los pacientes asignados, la actividad reciente y lo que necesita atención",
+      },
     },
     mobile: {
       eyebrow: "En el bolsillo del paciente",

@@ -5,8 +5,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedHref } from "@/i18n";
 import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
-const eyebrowClass =
-  "font-body t-eyebrow text-calm-lavender-ink";
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ReducingDocumentationTime() {
   const locale = useLocale();
@@ -52,9 +51,7 @@ export default function ReducingDocumentationTime() {
           <div className="relative max-w-6xl mx-auto">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1
-                className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-              >
+              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
                 {t.intro.headlineLine1} <br />
                 <span className="text-calm-lavender-ink">
                   {t.intro.headlineLine2}
@@ -100,9 +97,7 @@ export default function ReducingDocumentationTime() {
         <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
           <div className="max-w-3xl mx-auto">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -126,9 +121,7 @@ export default function ReducingDocumentationTime() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.5rem,7vw,6rem)]">
           <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2
-              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

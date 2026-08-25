@@ -194,14 +194,7 @@ const Companion = ({
 
         {/* Crown behind the body so the body covers where it joins. */}
         <Crown kind={s.crown} accent={accent} />
-        <rect
-          x={b.x}
-          y={b.y}
-          width={b.w}
-          height={b.h}
-          rx={b.r}
-          fill={INK}
-        />
+        <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={b.r} fill={INK} />
 
         {/* Accent surfaces. All of them take the variable: wiring only some of
             them was the defect that made the original canvas untestable. */}
@@ -252,9 +245,27 @@ const Companion = ({
       <g className="companion-speech">
         {/* Placed clear of the arm, which sits at y 106-154. Lower down they
             read as coming out of the elbow rather than out of the mouth. */}
-        <circle className="companion-dot companion-dot-1" cx="169" cy="94" r="4.5" fill="var(--companion-accent)" />
-        <circle className="companion-dot companion-dot-2" cx="184" cy="76" r="6" fill="var(--companion-accent)" />
-        <circle className="companion-dot companion-dot-3" cx="198" cy="56" r="7.5" fill="var(--companion-accent)" />
+        <circle
+          className="companion-dot companion-dot-1"
+          cx="169"
+          cy="94"
+          r="4.5"
+          fill="var(--companion-accent)"
+        />
+        <circle
+          className="companion-dot companion-dot-2"
+          cx="184"
+          cy="76"
+          r="6"
+          fill="var(--companion-accent)"
+        />
+        <circle
+          className="companion-dot companion-dot-3"
+          cx="198"
+          cy="56"
+          r="7.5"
+          fill="var(--companion-accent)"
+        />
       </g>
     </svg>
   );

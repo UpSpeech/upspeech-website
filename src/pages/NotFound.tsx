@@ -37,9 +37,7 @@ const NotFound = () => {
           <p className="font-body t-eyebrow text-calm-lavender-ink">
             {t.eyebrow}
           </p>
-          <h1
-            className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-          >
+          <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
             {t.title}
           </h1>
           <p className="mt-5 max-w-md mx-auto t-lead font-body text-calm-charcoal/80 leading-relaxed">

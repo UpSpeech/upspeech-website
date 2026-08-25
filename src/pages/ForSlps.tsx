@@ -18,8 +18,7 @@ const STEP_ICONS = [
   ChartBarIcon,
 ];
 
-const eyebrowClass =
-  "font-body t-eyebrow text-calm-lavender-ink";
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ForSlps() {
   const locale = useLocale();
@@ -68,11 +67,8 @@ export default function ForSlps() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1
-                  className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                >
-                  {t.intro.headlineLine1}{" "}
-                  <br />
+                <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+                  {t.intro.headlineLine1} <br />
                   <span className="text-calm-lavender-ink">
                     {t.intro.headlineLine2}
                   </span>
@@ -124,9 +120,7 @@ export default function ForSlps() {
           />
           <div className="gutter relative">
             <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
-            <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
               {t.betweenSessions.headline}
             </h2>
 
@@ -164,9 +158,7 @@ export default function ForSlps() {
           <div className="gutter">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
-              <h2
-                className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              >
+              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
                 {t.documentation.headline}
               </h2>
               <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -194,9 +186,7 @@ export default function ForSlps() {
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
-                <h2
-                  className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-                >
+                <h2 className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
                   {t.personCentered.headline}
                 </h2>
                 <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -222,9 +212,7 @@ export default function ForSlps() {
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter max-w-3xl">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2
-              className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -246,9 +234,7 @@ export default function ForSlps() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2
-              className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight"
-            >
+            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

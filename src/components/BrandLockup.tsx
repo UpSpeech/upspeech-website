@@ -15,8 +15,7 @@ import { useMemo } from "react";
 const VIEWBOX = "0 0 1024 374";
 
 /** The scale and offset the mark was exported with. */
-const MARK_TRANSFORM =
-  "translate(-42.238, 25.987) scale(0.8647293978035985)";
+const MARK_TRANSFORM = "translate(-42.238, 25.987) scale(0.8647293978035985)";
 
 /** The head and hair. */
 const HEAD_D =

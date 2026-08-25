@@ -52,9 +52,7 @@ const WorkflowStrip = () => {
               style={reveal(revealed, 160 + i * 80)}
             >
               <div className="flex items-center gap-4">
-                <div
-                  className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums"
-                >
+                <div className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 {i < STEPS.length - 1 && (

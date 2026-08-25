@@ -916,8 +916,8 @@
    its 300 unit viewBox) down to the bubble's radius. */
 .site-intro__ring {
   transform-origin: 50% 50%;
-  animation: site-intro-ring-condense 440ms cubic-bezier(0.5, 0, 0.28, 1)
-    1080ms forwards;
+  animation: site-intro-ring-condense 440ms cubic-bezier(0.5, 0, 0.28, 1) 1080ms
+    forwards;
 }
 
 /* The lockup is placed by its mark, not by its own box, so the mark lands on
@@ -1149,7 +1149,8 @@
   overflow: visible;
 }
 
-.companion :is(
+.companion
+  :is(
     .companion-body,
     .companion-eyes,
     .companion-mouth-rest,
@@ -1158,7 +1159,8 @@
   ) {
   animation-play-state: paused;
 }
-.companion-live :is(
+.companion-live
+  :is(
     .companion-body,
     .companion-eyes,
     .companion-mouth-rest,
@@ -1295,7 +1297,8 @@
 /* Reduced motion keeps the character and drops the performance, resting on the
    speaking state: it is the one that says what the product is for. */
 @media (prefers-reduced-motion: reduce) {
-  .companion :is(
+  .companion
+    :is(
       .companion-body,
       .companion-eyes,
       .companion-mouth-rest,
@@ -1312,4 +1315,3 @@
     opacity: 1;
   }
 }
-

@@ -4,12 +4,7 @@ import SpeechTrace from "./SpeechTrace";
 import CutOut from "./CutOut";
 import { useT } from "@/i18n";
 
-const IMAGES = [
-  "week-session",
-  "week-alone",
-  "week-phone",
-  "week-next",
-];
+const IMAGES = ["week-session", "week-alone", "week-phone", "week-next"];
 
 /**
  * The four stand on one baseline rather than sitting in four boxes, so they are
