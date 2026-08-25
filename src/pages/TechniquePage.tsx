@@ -10,7 +10,7 @@ import {
   getTechniqueFAQStructuredData,
 } from "@/lib/seo-data";
 import { TechniqueFAQ } from "@/components/TechniqueFAQ";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 interface TechniquePageProps {
@@ -189,7 +189,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                 {error || tt.notFound}
               </p>
               <a
-                href={localizedPath("/techniques", locale)}
+                href={localizedHref("/techniques", locale)}
                 className="mt-5 inline-flex min-h-[44px] items-center font-body text-sm font-semibold text-calm-navy hover:underline"
               >
                 ← {tt.backToAll}
@@ -217,7 +217,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {technique.parent_technique ? (
                 <p className={eyebrowClass}>
                   <a
-                    href={localizedPath(
+                    href={localizedHref(
                       `/techniques/${technique.parent_technique.slug}`,
                       locale,
                     )}
@@ -229,7 +229,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               ) : (
                 <p className={eyebrowClass}>
                   <a
-                    href={localizedPath("/techniques", locale)}
+                    href={localizedHref("/techniques", locale)}
                     className="inline-flex min-h-[44px] items-center hover:underline"
                   >
                     {tt.backToAll}
@@ -288,7 +288,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                       {technique.sub_techniques.map((subTech) => (
                         <li key={subTech.slug}>
                           <a
-                            href={localizedPath(
+                            href={localizedHref(
                               `/techniques/${subTech.slug}`,
                               locale,
                             )}

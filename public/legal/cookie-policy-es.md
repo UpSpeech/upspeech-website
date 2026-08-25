@@ -160,7 +160,7 @@ Nuestras aplicaciones móviles nativas no utilizan cookies de navegador. En su l
 - **Diagnóstico de errores y fallos (Sentry)** - La aplicación utiliza Sentry para capturar informes de fallos e información técnica de errores, de modo que podamos corregir problemas. Esto recopila datos técnicos de diagnóstico, no identificadores publicitarios.
 - **Notificaciones push (Apple Push Notification service y Firebase Cloud Messaging)** - Si activa las notificaciones, se utiliza un token push del dispositivo para entregar recordatorios y actualizaciones.
 
-Las aplicaciones móviles no utilizan cookies publicitarias, rastreadores entre sitios ni SDK de publicidad comportamental. Consulte nuestra [Política de Privacidad](/privacy) para la lista completa de encargados del tratamiento y categorías de datos.
+Las aplicaciones móviles no utilizan cookies publicitarias, rastreadores entre sitios ni SDK de publicidad comportamental. Consulte nuestra [Política de Privacidad](/es/privacy/) para la lista completa de encargados del tratamiento y categorías de datos.
 
 ## Consentimiento de Cookies y Sus Opciones
 
@@ -416,4 +416,4 @@ Si tiene preguntas sobre esta Política de Cookies o sobre cómo utilizamos cook
 - Controlar cookies y almacenamiento a través de los ajustes del navegador
 - Contactarnos para ejercer sus derechos sobre los datos
 
-Para más información sobre cómo tratamos sus datos personales, consulte nuestra [Política de Privacidad](/privacy).
+Para más información sobre cómo tratamos sus datos personales, consulte nuestra [Política de Privacidad](/es/privacy/).

@@ -3,6 +3,7 @@ export {
   DEFAULT_LOCALE,
   isLocale,
   localizedPath,
+  localizedHref,
   splitLocaleFromPath,
   type Locale,
 } from "./locale";

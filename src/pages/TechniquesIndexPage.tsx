@@ -6,7 +6,7 @@ import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
 import { readSeed, writeSeed, techniquesKey } from "@/lib/prerender-data";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
@@ -201,7 +201,7 @@ export function TechniquesIndexPage() {
                               {/* Whole row is the target, comfortably over
                                   44px on a phone. */}
                               <Link
-                                to={localizedPath(
+                                to={localizedHref(
                                   `/techniques/${subTech.slug}`,
                                   locale,
                                 )}
@@ -252,7 +252,7 @@ export function TechniquesIndexPage() {
                 {standalone.map((technique) => (
                   <Link
                     key={technique.slug}
-                    to={localizedPath(`/techniques/${technique.slug}`, locale)}
+                    to={localizedHref(`/techniques/${technique.slug}`, locale)}
                     className="group flex flex-col rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7 transition-colors duration-200 hover:bg-calm-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                   >
                     <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">

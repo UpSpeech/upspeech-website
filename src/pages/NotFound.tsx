@@ -3,9 +3,12 @@ import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLocale, useT, localizedHref } from "@/i18n";
 
 const NotFound = () => {
   const location = useLocation();
+  const locale = useLocale();
+  const t = useT().notFound;
 
   useEffect(() => {
     console.error(
@@ -16,7 +19,7 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-body bg-white">
-      <SEO title="Page Not Found" noindex />
+      <SEO title={t.seoTitle} locale={locale} noindex />
       <Header />
       <main
         id="main"
@@ -32,23 +35,22 @@ const NotFound = () => {
         />
         <div className="relative">
           <p className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink">
-            Error 404
+            {t.eyebrow}
           </p>
           <h1
             className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
             style={{ fontSize: "clamp(2.5rem, 7vw, 4.5rem)", lineHeight: 1.05 }}
           >
-            This page took a pause.
+            {t.title}
           </h1>
           <p className="mt-5 max-w-md mx-auto font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
-            The page you are looking for moved or never existed. Let's get you
-            back on track.
+            {t.body}
           </p>
           <a
-            href="/"
+            href={localizedHref("/", locale)}
             className="mt-8 inline-flex items-center justify-center rounded-full bg-gradient-primary px-6 py-3 font-body font-bold text-white shadow-button transition-all duration-300 hover:bg-calm-navy hover:shadow-lg hover:-translate-y-0.5"
           >
-            Back to home
+            {t.backHome}
           </a>
         </div>
       </main>

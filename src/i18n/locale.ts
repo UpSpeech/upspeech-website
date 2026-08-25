@@ -25,6 +25,28 @@ export function localizedPath(path: string, locale: Locale): string {
 }
 
 /**
+ * The URL to link to for a locale-agnostic path, with the trailing slash
+ * Netlify actually serves.
+ *   localizedHref("/techniques", "pt") -> "/pt/techniques/"
+ *   localizedHref("/", "es")           -> "/es/"
+ *   localizedHref("/privacy", "en")    -> "/privacy/"
+ *
+ * Use this for anything that becomes an href or a location assignment, and
+ * localizedPath for in-app route matching. Netlify 301s the slashless form to
+ * this one, so linking to localizedPath costs every internal link a redirect
+ * hop and points crawlers at a URL that is not the page's own canonical.
+ *
+ * A react-router <Link to> is both at once, and it takes this one: it renders a
+ * real <a href> that crawlers follow, and v6 route matching ignores a trailing
+ * slash. Only programmatic navigation that never reaches the DOM, meaning
+ * navigate() and pathname comparisons, stays on localizedPath.
+ */
+export function localizedHref(path: string, locale: Locale): string {
+  const inApp = localizedPath(path, locale);
+  return inApp.endsWith("/") ? inApp : `${inApp}/`;
+}
+
+/**
  * Split a full pathname into its locale and the locale-agnostic remainder.
  *   "/pt/techniques" -> { locale: "pt", path: "/techniques" }
  *   "/pt"            -> { locale: "pt", path: "/" }

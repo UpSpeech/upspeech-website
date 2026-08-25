@@ -160,7 +160,7 @@ Our native mobile apps do not use browser cookies. Instead, they rely on the fol
 - **Crash and error diagnostics (Sentry)** - The app uses Sentry to capture crash reports and technical error information so we can fix problems. This collects technical diagnostic data, not advertising identifiers.
 - **Push notifications (Apple Push Notification service and Firebase Cloud Messaging)** - If you enable notifications, a device push token is used to deliver reminders and updates.
 
-The mobile apps do not use advertising cookies, cross-site trackers, or behavioral advertising SDKs. See our [Privacy Policy](/privacy) for the full list of processors and data categories.
+The mobile apps do not use advertising cookies, cross-site trackers, or behavioral advertising SDKs. See our [Privacy Policy](/privacy/) for the full list of processors and data categories.
 
 ## Cookie Consent and Your Choices
 
@@ -416,4 +416,4 @@ If you have questions about this Cookie Policy or how we use cookies and similar
 - Control cookies and storage through browser settings
 - Contact us to exercise your data rights
 
-For more information about how we handle your personal data, see our [Privacy Policy](/privacy).
+For more information about how we handle your personal data, see our [Privacy Policy](/privacy/).

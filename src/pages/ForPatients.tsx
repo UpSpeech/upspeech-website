@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
-import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
+import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
 // (forPatients.howItWorks.steps).
@@ -252,7 +252,7 @@ export default function ForPatients() {
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
-                href={`${localizedPath("/", locale)}#cta`}
+                href={`${localizedHref("/", locale)}#cta`}
                 className="font-semibold text-calm-navy hover:underline"
               >
                 {t.closing.bodyLink}

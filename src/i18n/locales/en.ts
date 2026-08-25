@@ -609,6 +609,13 @@ export const en = {
     decline: "Decline",
     accept: "Accept",
   },
+  notFound: {
+    seoTitle: "Page Not Found",
+    eyebrow: "Error 404",
+    title: "This page took a pause.",
+    body: "The page you are looking for moved or never existed. Let's get you back on track.",
+    backHome: "Back to home",
+  },
 };
 
 export type Dictionary = typeof en;

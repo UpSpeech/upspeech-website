@@ -1,6 +1,6 @@
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref } from "@/i18n";
 
 const linkClass =
   "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
@@ -72,27 +72,27 @@ const Footer = () => {
               {t.product}
             </h2>
             <a
-              href={localizedPath("/for-patients", locale)}
+              href={localizedHref("/for-patients", locale)}
               className={linkClass}
             >
               {t.forPatients}
             </a>
             <a
-              href={localizedPath("/person-centered-therapy", locale)}
+              href={localizedHref("/person-centered-therapy", locale)}
               className={linkClass}
             >
               {t.personCentered}
             </a>
             <a
-              href={localizedPath("/reducing-documentation-time", locale)}
+              href={localizedHref("/reducing-documentation-time", locale)}
               className={linkClass}
             >
               {t.reducingDocumentationTime}
             </a>
-            <a href={localizedPath("/for-slps", locale)} className={linkClass}>
+            <a href={localizedHref("/for-slps", locale)} className={linkClass}>
               {t.forSlps}
             </a>
-            <a href={localizedPath("/support", locale)} className={linkClass}>
+            <a href={localizedHref("/support", locale)} className={linkClass}>
               {t.support}
             </a>
           </nav>
@@ -104,13 +104,13 @@ const Footer = () => {
             <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
               {t.legal}
             </h2>
-            <a href={localizedPath("/privacy", locale)} className={linkClass}>
+            <a href={localizedHref("/privacy", locale)} className={linkClass}>
               {t.privacy}
             </a>
-            <a href={localizedPath("/terms", locale)} className={linkClass}>
+            <a href={localizedHref("/terms", locale)} className={linkClass}>
               {t.terms}
             </a>
-            <a href={localizedPath("/cookies", locale)} className={linkClass}>
+            <a href={localizedHref("/cookies", locale)} className={linkClass}>
               {t.cookies}
             </a>
           </nav>

@@ -6,7 +6,7 @@ import {
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useLocale, useT, localizedPath, localizedAsset } from "@/i18n";
+import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Step icons stay in code; titles/copy come from the dictionary by index
@@ -225,7 +225,7 @@ export default function ForSlps() {
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
-                href={`${localizedPath("/", locale)}#cta`}
+                href={`${localizedHref("/", locale)}#cta`}
                 className="font-semibold text-calm-navy hover:underline"
               >
                 {t.closing.bodyLink}

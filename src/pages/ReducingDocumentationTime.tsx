@@ -2,7 +2,7 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import { useLocale, useT, localizedPath } from "@/i18n";
+import { useLocale, useT, localizedHref } from "@/i18n";
 import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
 const eyebrowClass =
@@ -144,7 +144,7 @@ export default function ReducingDocumentationTime() {
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
-                href={`${localizedPath("/", locale)}#cta`}
+                href={`${localizedHref("/", locale)}#cta`}
                 className="font-semibold text-calm-navy hover:underline"
               >
                 {t.closing.bodyLink}

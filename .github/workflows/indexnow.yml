@@ -1,0 +1,80 @@
+# Ping IndexNow (Bing, Yandex, Seznam, Naver) with the sitemap's URLs after a
+# deploy. Google does not consume IndexNow; it discovers through the Sitemap:
+# line in robots.txt. See the header of scripts/indexnow.mjs.
+#
+# This has to run after the deploy, not inside the build: indexnow.mjs reads the
+# LIVE sitemap, which during a build is still the previous deploy's copy.
+#
+# Actions minutes on this account are capped, so the job installs nothing.
+# scripts/indexnow.mjs imports only node: builtins and uses global fetch, so a
+# checkout and a node runtime are the whole dependency list. A run is seconds
+# plus however long the readiness poll waits.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    # Only when something a crawler would see actually changed.
+    paths:
+      - "src/**"
+      - "public/**"
+      - "scripts/**"
+      - "index.html"
+      - "netlify.toml"
+  workflow_dispatch:
+
+# A newer push supersedes an in-flight run rather than racing it.
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    # Hard ceiling so a stuck deploy cannot sit there burning minutes.
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      # Netlify builds on the same push. Submitting before it finishes would
+      # hand IndexNow the previous deploy's URL list, which misses a newly
+      # added route. Wait for the live sitemap to carry every route this commit
+      # declares, then stop waiting. For a content-only change the first poll
+      # already passes, so the common case costs one request.
+      # Bounded by wall clock rather than an attempt count, so a slow response
+      # cannot stretch the budget. A counted loop with a 30s curl timeout and a
+      # 30s sleep is 14 minutes at worst, which outlives the job timeout below
+      # and would kill the run before it ever submits.
+      #
+      # Worst case here is WAIT_SECONDS plus one curl and one sleep, so roughly
+      # six minutes against a ten minute job.
+      - name: Wait for the deploy to carry this commit's routes
+        env:
+          WAIT_SECONDS: 300
+        run: |
+          expected=$(node -e 'import("./scripts/routes.mjs").then(m => console.log(m.ROUTES.length * m.LOCALES.length))')
+          echo "expecting $expected urls in the live sitemap"
+          deadline=$(( SECONDS + WAIT_SECONDS ))
+          while : ; do
+            # grep -c prints 0 and exits 1 when it matches nothing, and the step
+            # runs under bash -eo pipefail, so swallow the status and keep the
+            # count.
+            live=$(curl -sS --max-time 15 https://upspeech.app/sitemap.xml | grep -c '<loc>') || true
+            if [ "${live:-0}" -ge "$expected" ]; then
+              echo "deploy is live with ${live} urls"
+              exit 0
+            fi
+            if [ "$SECONDS" -ge "$deadline" ]; then
+              echo "sitemap still has ${live:-0} of $expected after ${WAIT_SECONDS}s; submitting anyway"
+              exit 0
+            fi
+            echo "live sitemap has ${live:-0}, waiting"
+            sleep 20
+          done
+
+      - name: Submit
+        run: npm run seo:indexnow

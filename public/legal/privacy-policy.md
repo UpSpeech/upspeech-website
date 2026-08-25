@@ -318,13 +318,13 @@ On our mobile apps, the equivalent information (authentication token, cached pro
 
 ### Analytics Cookies
 
-We use analytics cookies (Google Analytics, Microsoft Clarity, PostHog) to understand how users interact with our platform. These cookies are only set with your explicit consent. We do not use cookies for advertising or tracking purposes, and we do not participate in behavioral advertising networks. For full details, see our [Cookie Policy](/cookies).
+We use analytics cookies (Google Analytics, Microsoft Clarity, PostHog) to understand how users interact with our platform. These cookies are only set with your explicit consent. We do not use cookies for advertising or tracking purposes, and we do not participate in behavioral advertising networks. For full details, see our [Cookie Policy](/cookies/).
 
 ### Browser Settings
 
 You can clear localStorage at any time through your browser settings. Note that clearing localStorage will log you out of the platform.
 
-For more details, see our [Cookie Policy](/cookies).
+For more details, see our [Cookie Policy](/cookies/).
 
 ## Changes to This Privacy Policy
 
