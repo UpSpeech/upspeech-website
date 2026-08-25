@@ -126,6 +126,51 @@ npm run check:output
 
 It needs `dist/` to exist, so run a build first. About two seconds for all 66 pages.
 
+## The early-access form
+
+`src/components/CTASection.tsx` is the only form on the site. It posts same-origin to `netlify/functions/early-access.ts`, which works in a fixed order.
+
+It writes the lead down first: a row appended to a Google Sheet through an Apps Script web app, and a contact added to a Resend audience. Then it sends the team notification, which repeats the result of those two writes. The applicant confirmation goes last.
+
+That order is a fix, not a preference. The function used to send the team email first and store nothing at all, so a Resend error meant the request was gone with no record that anyone had asked for it. Now the visitor sees a failure only if all three landed nowhere, and a bounced applicant address cannot fail a submission that is already recorded.
+
+Both stores are optional. An unset variable skips that write, and the team email reports `not configured` instead of `failed`.
+
+| Variable                                      | Effect when unset                                                                                  |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`                              | The function answers 503 and sends nothing.                                                        |
+| `RESEND_AUDIENCE_ID`                          | No contact is added; the sheet and the emails still work.                                          |
+| `SHEETS_WEBHOOK_URL`, `SHEETS_WEBHOOK_SECRET` | No spreadsheet row; the audience and the emails still work.                                        |
+| `EARLY_ACCESS_SURVEY_URL`                     | The applicant email leaves out its survey block. A value that is not an `https://` URL is ignored. |
+
+None of these carry a `VITE_` prefix, because they are read on the server and must never reach the browser bundle. Set them in Netlify under Site configuration, scoped to `Functions` and to the `Production` deploy context. Leaving them on all contexts means every deploy preview writes its test submissions into the real leads sheet. `netlify dev` reads them from a local `.env`, which is the only way to exercise the function without deploying.
+
+Flag `SHEETS_WEBHOOK_SECRET` and `RESEND_API_KEY` with `Contains secret values`. Leave `SHEETS_WEBHOOK_URL` and `RESEND_AUDIENCE_ID` unflagged. Neither of those grants anything on its own, and the flag is a one-way door: it makes the value write-only and cannot be removed afterwards. The `/exec` URL production points at is the first thing you will want to read when rows stop appearing in the sheet.
+
+### The spreadsheet
+
+`netlify/lib/sheet-webhook.gs` is the Apps Script to paste into the leads spreadsheet; its header carries the deployment steps. Editing it later needs a new deployment version, since saving alone does not change what the `/exec` URL runs.
+
+The function checks the response body for `"ok":true` rather than the HTTP status, because an Apps Script web app answers 200 even when `doPost` throws. It also sends a shared secret in the body, because a web app deployed for "Anyone" is world-postable by design.
+
+The Role and Clinic size columns hold English labels rather than the slugs the form posts or the labels the visitor saw, so one filter catches every submission of the same role across all three locales. Status and Notes are left for you to fill in.
+
+### The emails
+
+The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Both follow the site rather than inventing a second look: pale chrome carrying the logo, charcoal headings with the name in lavender, pill buttons on `--gradient-primary`, and one tinted card. Every value is named at the top of `netlify/lib/email-template.ts` with the token it came from.
+
+The logo is loaded from `https://upspeech.app/images/`, in two files. The dark wordmark shows by default and the inverted one replaces it in clients that honour `prefers-color-scheme`. Its `alt` is styled, so a recipient with images blocked reads "UpSpeech" rather than seeing a broken box. No webfont is fetched: `src/fonts.css` self-hosts the brand faces to keep requests away from `fonts.googleapis.com`, and an email pulling them from Google would hand over the recipient's IP on open.
+
+Dark mode works by class, because inline styles beat a stylesheet. A coloured element added without its override class stays at its light value, which on a dark background means charcoal text on a charcoal card.
+
+```bash
+npm run preview:emails        # every locale and state rendered to .pr-assets/emails/
+npm run check:early-access    # 13 checks against a stubbed network, no credentials needed
+node scripts/generate-email-logos.mjs   # after the logo changes
+```
+
+`preview:emails` rewrites the logo host to `public/images/` as it writes, so previews show the logo on a branch that has not deployed yet.
+
 ## Adding a fourth locale
 
 1. Add the code to `SUPPORTED_LOCALES` in `src/i18n/locale.ts` (and `LOCALES` in `scripts/routes.mjs`).

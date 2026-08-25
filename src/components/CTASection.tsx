@@ -11,10 +11,11 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
-import { useT } from "@/i18n";
+import { useLocale, useT } from "@/i18n";
 
 const CTASection = () => {
   const t = useT().home.cta;
+  const locale = useLocale();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -49,14 +50,16 @@ const CTASection = () => {
     setFieldErrors({});
 
     try {
-      // Same-origin POST to the Netlify function, which sends the team
-      // notification and the applicant auto-reply through Resend.
+      // Same-origin POST to the Netlify function, which records the lead
+      // and then sends the team notification and the applicant confirmation.
       const response = await fetch("/.netlify/functions/early-access", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        // locale rides along outside formData so resetting the form on
+        // success cannot clear it.
+        body: JSON.stringify({ ...formData, locale }),
       });
 
       if (response.ok) {

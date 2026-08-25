@@ -1,43 +1,62 @@
-import type { Handler } from "@netlify/functions";
+/**
+ * Early-access form handler.
+ *
+ * Order matters here. The lead is written to its stores first, then the team
+ * notification goes out carrying the result of those writes, and only then the
+ * applicant confirmation. That way a Resend outage cannot lose a lead, and a
+ * bounced applicant address cannot fail a submission we already recorded.
+ *
+ * The Resend key lives only in the Netlify env, never in the bundle.
+ */
 
-// Early-access form handler. Receives the form POST same-origin, sends two
-// emails through Resend (team notification + applicant auto-reply). The Resend
-// key lives only in the Netlify env (RESEND_API_KEY), never in the bundle.
+import type { Handler } from "@netlify/functions";
+import { oneLine, isSafeHttpsUrl } from "../lib/text";
+import {
+  applicantCopy,
+  isEmailLocale,
+  DEFAULT_EMAIL_LOCALE,
+} from "../lib/copy";
+import {
+  applicantEmail,
+  teamEmail,
+  type Lead,
+  type RenderedEmail,
+} from "../lib/email-template";
+import { appendLeadToSheet, addResendContact } from "../lib/leads";
 
 const FROM = "UpSpeech <hello@upspeech.app>"; // must be a Resend-verified sender
 const TEAM_TO = "hello@upspeech.app";
+const SEND_TIMEOUT_MS = 6000;
 
-// Normalize a field to a single line, then length-cap it. Stripping CR/LF
-// keeps user input out of email headers (subject/reply-to) where it could
-// otherwise inject extra headers.
-const oneLine = (value: unknown, max = 200): string =>
-  String(value ?? "")
-    .replace(/[\r\n]+/g, " ")
-    .trim()
-    .slice(0, max);
+/* Rejects "a@b" and trailing junk, which the old includes("@") check let past. */
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-// Escape HTML so submitted values cannot inject markup into the email body.
-const escapeHtml = (value: string): string =>
-  value.replace(
-    /[&<>"']/g,
-    (char) =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;",
-      })[char] ?? char,
-  );
+const json = (statusCode: number, body: unknown) => ({
+  statusCode,
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(body),
+});
 
-async function sendEmail(payload: Record<string, unknown>) {
+async function sendEmail(
+  email: RenderedEmail,
+  to: string,
+  replyTo: string,
+): Promise<void> {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
+    body: JSON.stringify({
+      from: FROM,
+      to: [to],
+      reply_to: replyTo,
+      subject: email.subject,
+      html: email.html,
+      text: email.text,
+    }),
   });
   if (!res.ok) {
     // Cap the upstream body so a verbose Resend error cannot flood the logs.
@@ -59,54 +78,71 @@ export const handler: Handler = async (event) => {
   try {
     body = JSON.parse(event.body || "{}");
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: "Invalid JSON" }) };
+    return json(400, { error: "Invalid JSON" });
   }
 
   try {
-    const { name, email, role, clinicSize, company } = body;
+    const { name, email, role, clinicSize, company, locale } = body;
 
     // Honeypot: a real user never fills the hidden "company" field. Pretend
-    // success so bots get no signal, but send nothing.
-    if (oneLine(company))
-      return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+    // success so bots get no signal, but record and send nothing.
+    if (oneLine(company)) return json(200, { ok: true });
 
-    // Raw single-line values. The email address stays unescaped so it remains
-    // a valid recipient; the *Html copies below are escaped for the body.
-    const safeName = oneLine(name);
-    const rawEmail = oneLine(email, 320);
-    const safeRole = oneLine(role);
-    const safeClinicSize = oneLine(clinicSize) || "Not specified";
+    const lead: Lead = {
+      name: oneLine(name),
+      email: oneLine(email, 320),
+      role: oneLine(role),
+      clinicSize: oneLine(clinicSize),
+      locale: isEmailLocale(locale) ? locale : DEFAULT_EMAIL_LOCALE,
+    };
 
-    if (!safeName || !rawEmail || !safeRole || !rawEmail.includes("@"))
-      return {
-        statusCode: 422,
-        body: JSON.stringify({ error: "Missing or invalid required fields" }),
-      };
+    if (!lead.name || !lead.role || !EMAIL_PATTERN.test(lead.email))
+      return json(422, { error: "Missing or invalid required fields" });
 
-    const htmlName = escapeHtml(safeName);
-    const htmlEmail = escapeHtml(rawEmail);
-    const htmlRole = escapeHtml(safeRole);
-    const htmlClinicSize = escapeHtml(safeClinicSize);
+    // Write the lead down before anything is sent. Neither call rejects; each
+    // reports its own status, which the team email then repeats.
+    const [sheet, audience] = await Promise.all([
+      appendLeadToSheet(lead),
+      addResendContact(lead),
+    ]);
+    const persistence = { sheet, audience };
 
-    await sendEmail({
-      from: FROM,
-      to: [TEAM_TO],
-      reply_to: rawEmail,
-      subject: `Early-access request: ${safeName}`,
-      html: `<p>New early-access request.</p><ul><li>Name: ${htmlName}</li><li>Email: ${htmlEmail}</li><li>Role: ${htmlRole}</li><li>Clinic size: ${htmlClinicSize}</li></ul>`,
-    });
+    let teamNotified = false;
+    try {
+      await sendEmail(teamEmail(lead, persistence), TEAM_TO, lead.email);
+      teamNotified = true;
+    } catch (err) {
+      console.error("team notification failed:", err);
+    }
 
-    await sendEmail({
-      from: FROM,
-      to: [rawEmail],
-      reply_to: TEAM_TO,
-      subject: "Thanks for your interest in UpSpeech",
-      html: `<p>Hi ${htmlName},</p><p>Thanks for requesting early access to UpSpeech. We will be in touch shortly.</p><p>The UpSpeech team</p>`,
-    });
+    // Only a total loss is an error the visitor should see. If any one of the
+    // three landed, the request is safely recorded somewhere we will look.
+    if (!teamNotified && sheet !== "ok" && audience !== "ok") {
+      console.error("early-access request was not recorded anywhere");
+      return json(500, { error: "Send failed" });
+    }
 
-    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+    // The confirmation is the one part we can follow up by hand, so a failure
+    // here is logged and swallowed rather than shown as a failed submission.
+    try {
+      const copy = applicantCopy(lead.locale);
+      const surveyUrl = oneLine(process.env.EARLY_ACCESS_SURVEY_URL, 500);
+      await sendEmail(
+        applicantEmail(
+          lead,
+          copy,
+          isSafeHttpsUrl(surveyUrl) ? surveyUrl : undefined,
+        ),
+        lead.email,
+        TEAM_TO,
+      );
+    } catch (err) {
+      console.error("applicant confirmation failed:", err);
+    }
+
+    return json(200, { ok: true });
   } catch (err) {
     console.error("early-access function error:", err);
-    return { statusCode: 500, body: JSON.stringify({ error: "Send failed" }) };
+    return json(500, { error: "Send failed" });
   }
 };
