@@ -42,10 +42,23 @@ const STATUS = {
   "not configured": { colour: "#6F7285", cls: "st-none" },
 } as const;
 
+/*
+ * PNG, not the SVG, and not the 2048px marketing asset either.
+ *
+ * Outlook, Apple Mail and Yahoo all render an SVG in an <img>, but Gmail's
+ * desktop and mobile webmail do not, and Gmail's apps only manage it for non
+ * Google accounts (caniemail.com/features/image-svg). A logo that disappears
+ * in Gmail is not worth the sharpness.
+ *
+ * scripts/generate-email-logos.mjs rasterizes the SVG at exactly twice the
+ * display width instead, which is 4KB rather than 37KB. Re-run it when the
+ * logo changes.
+ */
 const LOGO_W = 148;
-const LOGO_H = 54; // the asset is 2048x748, so 148 wide lands here
-const LOGO_LIGHT = "https://upspeech.app/images/logo.png";
-const LOGO_DARK = "https://upspeech.app/images/logo-invert.png";
+const LOGO_H = 54; // the source viewBox is 1024x374, so 148 wide lands here
+export const LOGO_HOST = "https://upspeech.app/images/";
+const LOGO_LIGHT = `${LOGO_HOST}logo-email.png`;
+const LOGO_DARK = `${LOGO_HOST}logo-email-invert.png`;
 
 /*
  * No webfont is fetched. src/fonts.css self-hosts the brand faces specifically

@@ -162,9 +162,12 @@ The logo is loaded from `https://upspeech.app/images/`, in two files. The dark w
 Dark mode works by class, because inline styles beat a stylesheet. A coloured element added without its override class stays at its light value, which on a dark background means charcoal text on a charcoal card.
 
 ```bash
-npm run preview:emails      # every locale and state rendered to .pr-assets/emails/
-npm run check:early-access  # 13 checks against a stubbed network, no credentials needed
+npm run preview:emails        # every locale and state rendered to .pr-assets/emails/
+npm run check:early-access    # 13 checks against a stubbed network, no credentials needed
+node scripts/generate-email-logos.mjs   # after the logo changes
 ```
+
+`preview:emails` rewrites the logo host to `public/images/` as it writes, so previews show the logo on a branch that has not deployed yet.
 
 ## Adding a fourth locale
 

@@ -40,13 +40,20 @@ await build({
   logLevel: "warning",
 });
 
-const { applicantEmail, teamEmail, applicantCopy, EMAIL_LOCALES } =
+const { applicantEmail, teamEmail, applicantCopy, EMAIL_LOCALES, LOGO_HOST } =
   await import(pathToFileURL(bundle).href);
 
 const written = [];
+
+/*
+ * The templates point at upspeech.app for the logo, which is correct in a sent
+ * email and a 404 on a branch that has not deployed yet. Previews read the
+ * same files straight out of public/ so the logo shows.
+ */
+const localImages = pathToFileURL(join(root, "public", "images") + "/").href;
 const write = async (name, html) => {
   const file = join(outDir, `${name}.html`);
-  await writeFile(file, html, "utf8");
+  await writeFile(file, html.split(LOGO_HOST).join(localImages), "utf8");
   written.push(name);
 };
 
