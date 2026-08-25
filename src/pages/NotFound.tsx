@@ -50,7 +50,7 @@ const NotFound = () => {
             href={localizedHref("/", locale)}
             className="mt-8 inline-flex items-center justify-center rounded-full bg-gradient-primary px-6 py-3 font-body font-bold text-white shadow-button transition-all duration-300 hover:bg-calm-navy hover:shadow-lg hover:-translate-y-0.5"
           >
-            Back to home
+            {t.backHome}
           </a>
         </div>
       </main>
