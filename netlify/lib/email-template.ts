@@ -4,39 +4,48 @@
  * Built as tables with inline styles because mail clients are not browsers:
  * Outlook renders through Word, and Gmail drops most of what a <style> block
  * declares. The <style> block here carries only progressive enhancement, the
- * mobile media query and the dark-mode overrides, so the email is complete
- * without it.
+ * mobile media query, the dark-mode overrides and the logo swap, so the email
+ * is complete without it.
+ *
+ * It follows the site rather than inventing a second look: pale chrome with
+ * the logo, charcoal headings with a lavender accent, pill buttons on the
+ * brand gradient, and one tinted card. Values come from tailwind.config.ts and
+ * src/index.css, named below.
  *
  * Dark mode works by class. Inline styles beat a stylesheet, so every element
  * that carries a colour also carries the class that overrides it with
  * !important under prefers-color-scheme: dark. Adding a coloured element
  * without its class leaves it at its light value, which on a dark background
- * means navy text on a navy card.
- *
- * There are no images. Gmail and Outlook block remote images by default for
- * unknown senders, and the old EmailJS template led with a hosted logo, so the
- * first thing most recipients saw was a broken placeholder. The wordmark is
- * set as text, which renders the same whether images load or not.
+ * means charcoal text on a charcoal card.
  */
 
+import { clinicSizeLabel, greetingText, roleLabel } from "./copy";
 import { escapeHtml, firstName } from "./text";
-import { clinicSizeLabel, roleLabel } from "./copy";
 import type { ApplicantCopy, EmailLocale } from "./copy";
 
-/* Palette, from app-frontend/src/index.css by way of tailwind.config.ts. */
-const NAVY = "#293587";
-const LAVENDER = "#958AF0";
+/* Palette, from src/index.css by way of tailwind.config.ts. */
+const NAVY = "#293587"; // primary-500
+const NAVY_LIGHT = "#4B5DC9"; // the far stop of --gradient-primary
+const LAVENDER = "#958AF0"; // brand accent, a surface and never text on white
 const LAVENDER_INK = "#6866C4"; // 4.90:1 on white; plain lavender is 2.93:1
-const CHARCOAL = "#4B4E4E";
-const MIST = "#F5F6FC";
-const LINE = "#D9DDF7";
+const CHARCOAL = "#4B4E4E"; // calm-charcoal, the site's heading colour
+const CHARCOAL_SOFT = "#6F7272"; // calm-charcoal/80, the site's body colour
+const MIST = "#F5F6FC"; // primary-25
+const TINT = "#ECEEFB"; // primary-50
+const LINE = "#E4E7F6";
+const PAGE = "#EEF0F9";
 
-/* Status colours for the team email, chosen to pass on the light card. */
+/* Status colours for the team email, chosen to pass on the tinted card. */
 const STATUS = {
   ok: { colour: "#0B7A54", cls: "st-ok" },
   failed: { colour: "#C22B2B", cls: "st-bad" },
   "not configured": { colour: "#6F7285", cls: "st-none" },
 } as const;
+
+const LOGO_W = 148;
+const LOGO_H = 54; // the asset is 2048x748, so 148 wide lands here
+const LOGO_LIGHT = "https://upspeech.app/images/logo.png";
+const LOGO_DARK = "https://upspeech.app/images/logo-invert.png";
 
 /*
  * No webfont is fetched. src/fonts.css self-hosts the brand faces specifically
@@ -73,69 +82,81 @@ export interface Persistence {
 /** One label/value row inside a card. `first` drops the top rule. */
 const row = (label: string, value: string, first = false): string => {
   const rule = first ? "" : `border-top:1px solid ${LINE};`;
-  const pad = first ? "0" : "12px";
+  const pad = first ? "0" : "13px";
   return `
                       <tr>
-                        <td class="rule ink-soft" width="42%" style="${rule}padding:${pad} 0 0 0;font-family:${BODY};font-size:13px;line-height:1.45;color:${CHARCOAL};">${escapeHtml(label)}</td>
-                        <td class="rule ink" align="right" style="${rule}padding:${pad} 0 0 0;font-family:${BODY};font-size:15px;line-height:1.45;font-weight:600;color:${NAVY};">${escapeHtml(value)}</td>
+                        <td class="rule ink-soft" width="44%" style="${rule}padding:${pad} 0 0 0;font-family:${BODY};font-size:13.5px;line-height:1.45;color:${CHARCOAL_SOFT};">${escapeHtml(label)}</td>
+                        <td class="rule ink" align="right" style="${rule}padding:${pad} 0 0 0;font-family:${DISPLAY};font-size:15px;line-height:1.45;font-weight:600;color:${CHARCOAL};">${escapeHtml(value)}</td>
                       </tr>`;
 };
 
 /** A numbered step. The sequence is real: read, then contact, then set up. */
 const step = (index: number, title: string, detail: string): string => `
                 <tr>
-                  <td style="padding:0 0 22px 0;">
+                  <td style="padding:0 0 24px 0;">
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                       <tr>
-                        <td width="26" valign="top" style="width:26px;">
+                        <td width="28" valign="top" style="width:28px;">
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                             <tr>
-                              <td class="chip" width="26" height="26" align="center" valign="middle" bgcolor="${NAVY}" style="width:26px;height:26px;background-color:${NAVY};border-radius:13px;font-family:${DISPLAY};font-size:13px;font-weight:700;color:#ffffff;line-height:26px;">${index}</td>
+                              <td class="chip" width="28" height="28" align="center" valign="middle" bgcolor="${TINT}" style="width:28px;height:28px;background-color:${TINT};border-radius:14px;font-family:${DISPLAY};font-size:13px;font-weight:700;color:${NAVY};line-height:28px;">${index}</td>
                             </tr>
                           </table>
                         </td>
-                        <td width="14" style="width:14px;font-size:0;line-height:0;">&nbsp;</td>
+                        <td width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td>
                         <td valign="top">
-                          <div class="ink" style="font-family:${DISPLAY};font-size:15px;font-weight:600;color:${NAVY};line-height:1.45;padding-top:3px;">${escapeHtml(title)}</div>
-                          <div class="ink-soft" style="font-family:${BODY};font-size:14px;color:${CHARCOAL};line-height:1.6;padding-top:4px;">${escapeHtml(detail)}</div>
+                          <div class="ink" style="font-family:${DISPLAY};font-size:15.5px;font-weight:600;color:${CHARCOAL};line-height:1.45;padding-top:4px;">${escapeHtml(title)}</div>
+                          <div class="ink-soft" style="font-family:${BODY};font-size:14px;color:${CHARCOAL_SOFT};line-height:1.65;padding-top:5px;">${escapeHtml(detail)}</div>
                         </td>
                       </tr>
                     </table>
                   </td>
                 </tr>`;
 
-/** Padded anchor inside a coloured cell: the button pattern clients agree on. */
+/**
+ * The site's submit button: a full pill on the primary gradient. Outlook drops
+ * the gradient and keeps the bgcolor, which is the gradient's first stop.
+ */
 const button = (href: string, label: string): string => `
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                   <tr>
-                    <td class="btn" align="center" bgcolor="${NAVY}" style="background-color:${NAVY};border-radius:10px;">
-                      <a href="${escapeHtml(href)}" style="display:inline-block;padding:14px 30px;font-family:${DISPLAY};font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:10px;">${escapeHtml(label)}</a>
+                    <td class="btn" align="center" bgcolor="${NAVY}" style="background-color:${NAVY};background-image:linear-gradient(135deg,${NAVY} 0%,${NAVY_LIGHT} 100%);border-radius:999px;">
+                      <a href="${escapeHtml(href)}" style="display:inline-block;padding:16px 34px;font-family:${DISPLAY};font-size:15px;font-weight:600;letter-spacing:-0.01em;color:#ffffff;text-decoration:none;border-radius:999px;">${escapeHtml(label)}</a>
                     </td>
                   </tr>
                 </table>`;
 
-/** The bordered card that both emails use as their one filled surface. */
+/** The one tinted surface in each email. */
 const card = (contents: string): string => `
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="card" style="width:100%;border-collapse:separate;background-color:${MIST};border:1px solid ${LINE};border-radius:12px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="card" style="width:100%;border-collapse:separate;background-color:${MIST};border:1px solid ${LINE};border-radius:18px;">
                 <tr>
-                  <td style="padding:20px 22px;">
+                  <td style="padding:22px 24px;">
 ${contents}
                   </td>
                 </tr>
               </table>`;
 
 const eyebrow = (text: string): string =>
-  `<div class="ink-brand" style="font-family:${DISPLAY};font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:${LAVENDER_INK};">${escapeHtml(text)}</div>`;
-
-const heading = (text: string): string =>
-  `<h1 class="h1 ink" style="margin:10px 0 0 0;font-family:${DISPLAY};font-size:29px;line-height:1.2;font-weight:700;letter-spacing:-0.02em;color:${NAVY};">${escapeHtml(text)}</h1>`;
-
-const cardLabel = (text: string): string =>
-  `<div class="ink-soft" style="font-family:${DISPLAY};font-size:11px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:${CHARCOAL};padding-bottom:14px;">${escapeHtml(text)}</div>`;
+  `<div class="ink-brand" style="font-family:${DISPLAY};font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${LAVENDER_INK};">${escapeHtml(text)}</div>`;
 
 /**
- * Shared page chrome: navy band with the wordmark, the caller's rows, then the
- * footer. `inner` is a run of <tr> belonging to the 600px content table.
+ * Charcoal heading with one phrase in lavender, the way the site sets its
+ * headlines. `accent` is already escaped by the caller.
+ */
+const heading = (plain: string, accent = ""): string =>
+  `<h1 class="h1 ink" style="margin:12px 0 0 0;font-family:${DISPLAY};font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.025em;color:${CHARCOAL};">${escapeHtml(plain)}${accent}</h1>`;
+
+const accentSpan = (text: string): string =>
+  ` <span class="ink-brand" style="color:${LAVENDER_INK};">${escapeHtml(text)}</span>`;
+
+const cardLabel = (text: string): string =>
+  `<div class="ink-soft" style="font-family:${DISPLAY};font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:${CHARCOAL_SOFT};padding-bottom:16px;">${escapeHtml(text)}</div>`;
+
+/**
+ * Pale chrome carrying the logo, then a gradient hairline, then the caller's
+ * rows and the footer. Two logo files: the dark wordmark by default and the
+ * inverted one in clients that honour prefers-color-scheme. `alt` is styled so
+ * a blocked image still reads as the wordmark rather than a broken box.
  */
 const shell = (opts: {
   lang: string;
@@ -155,46 +176,50 @@ const shell = (opts: {
 <style>
   @media only screen and (max-width:620px) {
     .container { width:100% !important; }
-    .pad { padding-left:22px !important; padding-right:22px !important; }
-    .h1 { font-size:25px !important; }
+    .pad { padding-left:24px !important; padding-right:24px !important; }
+    .h1 { font-size:27px !important; }
   }
   @media (prefers-color-scheme: dark) {
     .page { background-color:#0f1124 !important; }
-    .surface { background-color:#181b36 !important; }
-    .card { background-color:#212545 !important; border-color:#363c6e !important; }
-    .rule { border-color:#363c6e !important; }
-    .ink { color:#eef0fb !important; }
-    .ink-soft { color:#b6bad6 !important; }
+    .surface { background-color:#191c34 !important; }
+    .chrome { background-color:#20243f !important; }
+    .card { background-color:#222641 !important; border-color:#373c62 !important; }
+    .rule { border-color:#373c62 !important; }
+    .ink { color:#edeef8 !important; }
+    .ink-soft { color:#b4b8d0 !important; }
     .ink-brand { color:#bcc3f5 !important; }
-    .foot { color:#8b8fa8 !important; }
-    .chip { background-color:${LAVENDER_INK} !important; }
-    .btn { background-color:${LAVENDER_INK} !important; }
+    .foot { color:#8c90a8 !important; }
+    .chip { background-color:${LAVENDER_INK} !important; color:#ffffff !important; }
+    .btn { background-color:${LAVENDER_INK} !important; background-image:linear-gradient(135deg,${LAVENDER_INK} 0%,#8f8ade 100%) !important; }
     .alert { background-color:#3b2f13 !important; border-color:#6d5b28 !important; color:#f2dfa6 !important; }
     .st-ok { color:#4ade9b !important; }
     .st-bad { color:#ff9090 !important; }
     .st-none { color:#a0a4ba !important; }
+    .logo-light { display:none !important; }
+    .logo-dark { display:block !important; max-height:none !important; overflow:visible !important; }
   }
 </style>
 </head>
-<body class="page" style="margin:0;padding:0;background-color:#eef0f8;">
-  <div style="display:none;font-size:1px;color:#eef0f8;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">${escapeHtml(opts.preheader)}</div>
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="page" style="border-collapse:collapse;background-color:#eef0f8;">
+<body class="page" style="margin:0;padding:0;background-color:${PAGE};">
+  <div style="display:none;font-size:1px;color:${PAGE};line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">${escapeHtml(opts.preheader)}</div>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="page" style="border-collapse:collapse;background-color:${PAGE};">
     <tr>
-      <td align="center" style="padding:32px 12px;">
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container surface" style="width:600px;max-width:600px;border-collapse:collapse;background-color:#ffffff;border-radius:16px;overflow:hidden;">
+      <td align="center" style="padding:36px 12px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container surface" style="width:600px;max-width:600px;border-collapse:collapse;background-color:#ffffff;border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(41,53,135,0.10);">
           <tr>
-            <td bgcolor="${NAVY}" class="pad" style="background-color:${NAVY};padding:26px 36px;">
-              <span style="font-family:${DISPLAY};font-size:21px;font-weight:700;letter-spacing:-0.02em;color:#ffffff;">UpSpeech</span>
+            <td class="pad chrome" bgcolor="${MIST}" style="background-color:${MIST};padding:26px 40px;">
+              <img class="logo-light" src="${LOGO_LIGHT}" width="${LOGO_W}" height="${LOGO_H}" alt="UpSpeech" style="display:block;border:0;outline:none;text-decoration:none;width:${LOGO_W}px;max-width:${LOGO_W}px;height:auto;font-family:${DISPLAY};font-size:21px;font-weight:700;color:${CHARCOAL};">
+              <img class="logo-dark" src="${LOGO_DARK}" width="${LOGO_W}" height="${LOGO_H}" alt="UpSpeech" style="display:none;max-height:0;overflow:hidden;border:0;outline:none;text-decoration:none;width:${LOGO_W}px;max-width:${LOGO_W}px;height:auto;font-family:${DISPLAY};font-size:21px;font-weight:700;color:#ffffff;">
             </td>
           </tr>
           <tr>
-            <td height="3" bgcolor="${LAVENDER}" style="height:3px;background-color:${LAVENDER};font-size:0;line-height:0;">&nbsp;</td>
+            <td height="3" bgcolor="${LAVENDER}" style="height:3px;background-color:${LAVENDER};background-image:linear-gradient(90deg,${LAVENDER} 0%,${NAVY} 100%);font-size:0;line-height:0;">&nbsp;</td>
           </tr>
 ${opts.inner}
         </table>
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container" style="width:600px;max-width:600px;border-collapse:collapse;">
           <tr>
-            <td class="pad foot" align="center" style="padding:22px 36px 8px 36px;font-family:${BODY};font-size:12.5px;line-height:1.7;color:#767a90;">
+            <td class="pad foot" align="center" style="padding:24px 40px 8px 40px;font-family:${BODY};font-size:12.5px;line-height:1.7;color:#767a90;">
 ${opts.footer.map((line) => `              <div>${line}</div>`).join("\n")}
             </td>
           </tr>
@@ -218,13 +243,14 @@ export const applicantEmail = (
   const role = roleLabel(lead.locale, lead.role);
   const clinicSize =
     clinicSizeLabel(lead.locale, lead.clinicSize) || copy.notSpecified;
+  const given = firstName(lead.name);
 
   const survey = surveyUrl
     ? `
           <tr>
-            <td class="pad" style="padding:6px 36px 30px 36px;">
-              <div class="ink" style="font-family:${DISPLAY};font-size:17px;font-weight:700;color:${NAVY};line-height:1.4;">${escapeHtml(copy.surveyTitle)}</div>
-              <div class="ink-soft" style="font-family:${BODY};font-size:14.5px;color:${CHARCOAL};line-height:1.65;padding:8px 0 20px 0;">${escapeHtml(copy.surveyBody)}</div>
+            <td class="pad" style="padding:8px 40px 36px 40px;">
+              <div class="ink" style="font-family:${DISPLAY};font-size:18px;font-weight:700;letter-spacing:-0.015em;color:${CHARCOAL};line-height:1.4;">${escapeHtml(copy.surveyTitle)}</div>
+              <div class="ink-soft" style="font-family:${BODY};font-size:14.5px;color:${CHARCOAL_SOFT};line-height:1.7;padding:10px 0 22px 0;">${escapeHtml(copy.surveyBody)}</div>
 ${button(surveyUrl, copy.surveyCta)}
             </td>
           </tr>`
@@ -232,33 +258,33 @@ ${button(surveyUrl, copy.surveyCta)}
 
   const inner = `
           <tr>
-            <td class="pad" style="padding:40px 36px 0 36px;">
+            <td class="pad" style="padding:44px 40px 0 40px;">
 ${eyebrow(copy.eyebrow)}
-${heading(copy.greeting(firstName(lead.name)))}
-              <p class="ink-soft" style="margin:16px 0 0 0;font-family:${BODY};font-size:16px;line-height:1.65;color:${CHARCOAL};">${escapeHtml(copy.intro)}</p>
+${heading(copy.greetingPrefix, `${accentSpan(given)}<span class="ink" style="color:${CHARCOAL};">,</span>`)}
+              <p class="ink-soft" style="margin:18px 0 0 0;font-family:${BODY};font-size:16px;line-height:1.7;color:${CHARCOAL_SOFT};">${escapeHtml(copy.intro)}</p>
             </td>
           </tr>
           <tr>
-            <td class="pad" style="padding:28px 36px 0 36px;">
+            <td class="pad" style="padding:30px 40px 0 40px;">
 ${card(`${cardLabel(copy.cardTitle)}
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row(copy.labelName, lead.name, true)}${row(copy.labelRole, role)}${row(copy.labelClinicSize, clinicSize)}
                     </table>`)}
             </td>
           </tr>
           <tr>
-            <td class="pad" style="padding:34px 36px 14px 36px;">
-              <div class="ink" style="font-family:${DISPLAY};font-size:18px;font-weight:700;color:${NAVY};line-height:1.35;padding-bottom:20px;">${escapeHtml(copy.stepsTitle)}</div>
+            <td class="pad" style="padding:38px 40px 14px 40px;">
+              <div class="ink" style="font-family:${DISPLAY};font-size:19px;font-weight:700;letter-spacing:-0.015em;color:${CHARCOAL};line-height:1.35;padding-bottom:22px;">${escapeHtml(copy.stepsTitle)}</div>
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${copy.steps.map((s, i) => step(i + 1, s.title, s.detail)).join("")}
               </table>
             </td>
           </tr>${survey}
           <tr>
-            <td class="pad" style="padding:4px 36px 40px 36px;">
+            <td class="pad" style="padding:4px 40px 44px 40px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
                 <tr>
-                  <td class="rule" style="border-top:1px solid ${LINE};padding-top:22px;">
-                    <div class="ink-soft" style="font-family:${BODY};font-size:14.5px;color:${CHARCOAL};line-height:1.65;">${escapeHtml(copy.replyNote)}</div>
-                    <div class="ink" style="font-family:${DISPLAY};font-size:14.5px;font-weight:600;color:${NAVY};padding-top:14px;">${escapeHtml(copy.signoff)}</div>
+                  <td class="rule" style="border-top:1px solid ${LINE};padding-top:24px;">
+                    <div class="ink-soft" style="font-family:${BODY};font-size:14.5px;color:${CHARCOAL_SOFT};line-height:1.7;">${escapeHtml(copy.replyNote)}</div>
+                    <div class="ink" style="font-family:${DISPLAY};font-size:15px;font-weight:600;color:${CHARCOAL};padding-top:16px;">${escapeHtml(copy.signoff)}</div>
                   </td>
                 </tr>
               </table>
@@ -278,7 +304,7 @@ ${card(`${cardLabel(copy.cardTitle)}
   });
 
   const text = [
-    copy.greeting(firstName(lead.name)),
+    greetingText(copy, given),
     "",
     copy.intro,
     "",
@@ -320,15 +346,16 @@ export const teamEmail = (
      English submission of the same role read as the same value. */
   const role = roleLabel("en", lead.role);
   const clinicSize = clinicSizeLabel("en", lead.clinicSize) || "Not specified";
+
   const alert =
     persistence.sheet === "ok"
       ? ""
       : `
           <tr>
-            <td class="pad" style="padding:20px 36px 0 36px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="alert" style="width:100%;border-collapse:separate;background-color:#FEF3C7;border:1px solid #EFCE7C;border-radius:10px;color:#6B4E12;">
+            <td class="pad" style="padding:22px 40px 0 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="alert" style="width:100%;border-collapse:separate;background-color:#FEF3C7;border:1px solid #EFCE7C;border-radius:14px;color:#6B4E12;">
                 <tr>
-                  <td style="padding:14px 18px;font-family:${BODY};font-size:14px;line-height:1.6;color:inherit;">
+                  <td style="padding:16px 20px;font-family:${BODY};font-size:14px;line-height:1.65;color:inherit;">
                     The spreadsheet row was not written (${escapeHtml(persistence.sheet)}). Keep this email: it may be the only record of this request.
                   </td>
                 </tr>
@@ -338,31 +365,31 @@ export const teamEmail = (
 
   const statusLine = (label: string, status: WriteStatus): string => `
                       <tr>
-                        <td class="ink-soft" width="42%" style="padding:4px 0;font-family:${BODY};font-size:13px;color:${CHARCOAL};">${escapeHtml(label)}</td>
-                        <td class="${STATUS[status].cls}" align="right" style="padding:4px 0;font-family:${BODY};font-size:13px;font-weight:600;color:${STATUS[status].colour};">${escapeHtml(status)}</td>
+                        <td class="ink-soft" width="44%" style="padding:5px 0;font-family:${BODY};font-size:13.5px;color:${CHARCOAL_SOFT};">${escapeHtml(label)}</td>
+                        <td class="${STATUS[status].cls}" align="right" style="padding:5px 0;font-family:${DISPLAY};font-size:13.5px;font-weight:600;color:${STATUS[status].colour};">${escapeHtml(status)}</td>
                       </tr>`;
 
   const inner = `
           <tr>
-            <td class="pad" style="padding:38px 36px 0 36px;">
+            <td class="pad" style="padding:42px 40px 0 40px;">
 ${eyebrow("New early-access request")}
 ${heading(lead.name)}
-              <p style="margin:10px 0 0 0;font-family:${BODY};font-size:15px;line-height:1.5;">
+              <p style="margin:12px 0 0 0;font-family:${BODY};font-size:15px;line-height:1.5;">
                 <a href="mailto:${escapeHtml(lead.email)}" class="ink-brand" style="color:${LAVENDER_INK};text-decoration:underline;">${escapeHtml(lead.email)}</a>
               </p>
             </td>
           </tr>
           <tr>
-            <td class="pad" style="padding:24px 36px 0 36px;">
+            <td class="pad" style="padding:26px 40px 0 40px;">
 ${card(`                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row("Role", role, true)}${row("Clinic size", clinicSize)}${row("Language", lead.locale)}
                     </table>`)}
             </td>
           </tr>${alert}
           <tr>
-            <td class="pad" style="padding:22px 36px 38px 36px;">
+            <td class="pad" style="padding:24px 40px 42px 40px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
                 <tr>
-                  <td class="rule" style="border-top:1px solid ${LINE};padding-top:18px;">
+                  <td class="rule" style="border-top:1px solid ${LINE};padding-top:20px;">
 ${cardLabel("Where it was saved")}
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${statusLine("Google Sheet", persistence.sheet)}${statusLine("Resend audience", persistence.audience)}
                     </table>

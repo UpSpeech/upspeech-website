@@ -155,7 +155,11 @@ The Role and Clinic size columns hold English labels rather than the slugs the f
 
 ### The emails
 
-The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Neither loads a webfont: `src/fonts.css` self-hosts the brand faces to keep requests away from `fonts.googleapis.com`, and an email pulling them from Google would hand over the recipient's IP on open.
+The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Both follow the site rather than inventing a second look: pale chrome carrying the logo, charcoal headings with the name in lavender, pill buttons on `--gradient-primary`, and one tinted card. Every value is named at the top of `netlify/lib/email-template.ts` with the token it came from.
+
+The logo is loaded from `https://upspeech.app/images/`, in two files. The dark wordmark shows by default and the inverted one replaces it in clients that honour `prefers-color-scheme`. Its `alt` is styled, so a recipient with images blocked reads "UpSpeech" rather than seeing a broken box. No webfont is fetched: `src/fonts.css` self-hosts the brand faces to keep requests away from `fonts.googleapis.com`, and an email pulling them from Google would hand over the recipient's IP on open.
+
+Dark mode works by class, because inline styles beat a stylesheet. A coloured element added without its override class stays at its light value, which on a dark background means charcoal text on a charcoal card.
 
 ```bash
 npm run preview:emails      # every locale and state rendered to .pr-assets/emails/

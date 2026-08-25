@@ -28,7 +28,8 @@ export interface ApplicantCopy {
   /** The preview line mail clients show next to the subject. */
   preheader: string;
   eyebrow: string;
-  greeting: (name: string) => string;
+  /** Just the salutation. The template sets the name in the accent colour. */
+  greetingPrefix: string;
   intro: string;
   cardTitle: string;
   labelName: string;
@@ -53,7 +54,7 @@ const en: ApplicantCopy = {
   subject: "We received your early-access request",
   preheader: "Here is what we have on file, and what happens next.",
   eyebrow: "Early access",
-  greeting: (name) => `Hi ${name},`,
+  greetingPrefix: "Hi",
   intro:
     "Thanks for asking about early access to UpSpeech. We work with a small cohort of clinics at a time, and a person reads every request that comes in.",
   cardTitle: "Your request",
@@ -107,7 +108,7 @@ const pt: ApplicantCopy = {
   subject: "Recebemos o seu pedido de acesso antecipado",
   preheader: "Os dados que registámos e os próximos passos.",
   eyebrow: "Acesso antecipado",
-  greeting: (name) => `Olá ${name},`,
+  greetingPrefix: "Olá",
   intro:
     "Obrigado por pedir acesso antecipado ao UpSpeech. Trabalhamos com um pequeno conjunto de clínicas de cada vez e há sempre alguém da equipa a ler cada pedido.",
   cardTitle: "O seu pedido",
@@ -161,7 +162,7 @@ const es: ApplicantCopy = {
   subject: "Hemos recibido tu solicitud de acceso anticipado",
   preheader: "Los datos que hemos registrado y los siguientes pasos.",
   eyebrow: "Acceso anticipado",
-  greeting: (name) => `Hola ${name},`,
+  greetingPrefix: "Hola",
   intro:
     "Gracias por solicitar acceso anticipado a UpSpeech. Trabajamos con un grupo reducido de clínicas cada vez, y alguien del equipo lee todas las solicitudes.",
   cardTitle: "Tu solicitud",
@@ -227,3 +228,7 @@ export const roleLabel = (locale: EmailLocale, key: string): string =>
 
 export const clinicSizeLabel = (locale: EmailLocale, key: string): string =>
   key ? (COPY[locale].clinicSizes[key] ?? key) : "";
+
+/** "Hi Vasco," as one string, for the plain-text part and the <title>. */
+export const greetingText = (copy: ApplicantCopy, name: string): string =>
+  `${copy.greetingPrefix} ${name},`;
