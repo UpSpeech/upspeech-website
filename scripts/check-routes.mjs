@@ -21,6 +21,90 @@ import { ROUTES } from "./routes.mjs";
 
 const scriptsDir = dirname(fileURLToPath(import.meta.url));
 const appTsxPath = join(scriptsDir, "..", "src", "App.tsx");
+const netlifyTomlPath = join(scriptsDir, "..", "netlify.toml");
+const headerPath = join(scriptsDir, "..", "src", "components", "Header.tsx");
+
+/**
+ * Guards on things nothing else in the pipeline reads.
+ *
+ * netlify.toml is the whole reason Bing stopped serving the site: a
+ * "/* -> /index.html 200" catch-all answered every unmatched URL with the home
+ * page under a 200, so the site looked like an infinite supply of duplicate
+ * pages. Nothing else in the build parses this file, so re-adding that rule
+ * would pass every other check and silently undo the fix.
+ */
+function configProblems() {
+  const problems = [];
+  const toml = readFileSync(netlifyTomlPath, "utf8");
+
+  // Parse [[redirects]] blocks in file order; the engine takes the first match.
+  const blocks = toml
+    .split(/\[\[redirects\]\]/)
+    .slice(1)
+    .map((b) => ({
+      from: /^\s*from\s*=\s*"([^"]+)"/m.exec(b)?.[1],
+      to: /^\s*to\s*=\s*"([^"]+)"/m.exec(b)?.[1],
+      status: Number(/^\s*status\s*=\s*(\d+)/m.exec(b)?.[1] ?? 301),
+    }));
+
+  const catchAll = blocks.find(
+    (b) => b.from === "/*" && b.status === 200 && b.to === "/index.html",
+  );
+  if (catchAll) {
+    problems.push(
+      'netlify.toml has a "/* -> /index.html 200" catch-all again. That makes ' +
+        "every unmatched URL answer 200 with the home page instead of 404, " +
+        "which is what got the site dropped from Bing's results.",
+    );
+  }
+
+  // Locale 404s need an explicit rule: Netlify picks up the root 404.html on
+  // its own but not the ones in subdirectories.
+  for (const locale of ["pt", "es"]) {
+    const index = blocks.findIndex(
+      (b) => b.from === `/${locale}/*` && b.status === 404,
+    );
+    if (index === -1) {
+      problems.push(
+        `netlify.toml has no "status = 404" rule for /${locale}/*, so a missing ` +
+          `/${locale}/ URL falls back to the English 404.`,
+      );
+      continue;
+    }
+    // First match wins, so a locale-wide 404 placed above a locale-specific
+    // redirect would 404 the very URLs that redirect is there to rescue.
+    const shadowed = blocks
+      .slice(index + 1)
+      .filter((b) => b.status !== 404 && b.from?.startsWith(`/${locale}/`));
+    for (const rule of shadowed) {
+      problems.push(
+        `netlify.toml rule "${rule.from}" sits below the /${locale}/* 404 rule, ` +
+          `so it never fires. Move the 404 rules back to the end.`,
+      );
+    }
+  }
+
+  // localizedPath has no trailing slash, so assigning it to location.href sends
+  // a real click through a 301. See src/i18n/locale.ts.
+  const header = readFileSync(headerPath, "utf8");
+  if (/window\.location\.href\s*=\s*[^;]*localizedPath\(/.test(header)) {
+    problems.push(
+      "src/components/Header.tsx assigns localizedPath() to window.location.href. " +
+        "Use localizedHref() so the navigation does not take a 301.",
+    );
+  }
+
+  return problems;
+}
+
+const config = configProblems();
+if (config.length > 0) {
+  console.error("check:routes FAILED on configuration.");
+  console.error("");
+  for (const problem of config) console.error(`  - ${problem}`);
+  console.error("");
+  process.exit(1);
+}
 
 /** Normalise an App.tsx route literal to the leading-slash form used by routes.mjs. */
 function normalizeAppPath(raw) {
@@ -84,9 +168,7 @@ if (missingFromRoutes.length === 0 && missingFromApp.length === 0) {
   process.exit(0);
 }
 
-console.error(
-  "check:routes FAILED: App.tsx and scripts/routes.mjs disagree.",
-);
+console.error("check:routes FAILED: App.tsx and scripts/routes.mjs disagree.");
 console.error(
   "Every page route must appear in BOTH src/App.tsx (the SPA router) and",
 );

@@ -611,4 +611,11 @@ export const es: Dictionary = {
     decline: "Rechazar",
     accept: "Aceptar",
   },
+  notFound: {
+    seoTitle: "Página no encontrada",
+    eyebrow: "Error 404",
+    title: "Esta página se tomó una pausa.",
+    body: "La página que buscas se movió o nunca existió. Vamos a ayudarte a retomar el camino.",
+    backHome: "Volver al inicio",
+  },
 };

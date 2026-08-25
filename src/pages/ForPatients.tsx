@@ -79,7 +79,8 @@ export default function ForPatients() {
                   lineHeight: 1.05,
                 }}
               >
-                {t.intro.headlineLine1} <br />
+                {t.intro.headlineLine1}{" "}
+                <br />
                 <span className="text-calm-lavender-ink">
                   {t.intro.headlineLine2}
                 </span>

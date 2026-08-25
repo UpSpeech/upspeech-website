@@ -9,7 +9,7 @@ import {
   DEFAULT_LOCALE,
   localePath,
   NOT_FOUND_RENDER_PATH,
-  NOT_FOUND_OUTPUT_FILE,
+  notFoundOutputPath,
 } from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -72,8 +72,17 @@ const RENDER_PATHS = [
   ...LOCALES.flatMap((locale) =>
     ROUTES.map((route) => localePath(route.path, locale)),
   ),
-  NOT_FOUND_RENDER_PATH,
+  ...LOCALES.map((locale) => localePath(NOT_FOUND_RENDER_PATH, locale)),
 ];
+
+/** The locale whose 404 this render path produces, or null if it is not one. */
+function notFoundLocale(route) {
+  return (
+    LOCALES.find(
+      (locale) => localePath(NOT_FOUND_RENDER_PATH, locale) === route,
+    ) ?? null
+  );
+}
 
 const MIME_TYPES = {
   ".html": "text/html",
@@ -195,7 +204,7 @@ async function renderRoute(page, route) {
         : document.querySelector('link[rel="canonical"]')) &&
       document.querySelector('meta[property="og:title"]'),
     { timeout: SELECTOR_TIMEOUT_MS },
-    route === NOT_FOUND_RENDER_PATH,
+    notFoundLocale(route) !== null,
   );
 
   // Content-integrity gate: for backend-driven routes, the Helmet SEO tags
@@ -307,9 +316,10 @@ async function renderRoute(page, route) {
 
   // Determine output path
   let outputPath;
-  if (route === NOT_FOUND_RENDER_PATH) {
-    // Netlify serves dist/404.html for any unmatched URL, with a 404 status.
-    outputPath = join(DIST_DIR, NOT_FOUND_OUTPUT_FILE);
+  const nf = notFoundLocale(route);
+  if (nf) {
+    // Netlify answers an unmatched URL with the nearest 404.html, under a 404.
+    outputPath = join(DIST_DIR, notFoundOutputPath(nf));
   } else if (route === "/") {
     outputPath = join(DIST_DIR, "index.html");
   } else {

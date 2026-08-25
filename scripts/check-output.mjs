@@ -31,7 +31,7 @@ import {
   LOCALES,
   localeUrl,
   localePath,
-  NOT_FOUND_OUTPUT_FILE,
+  notFoundOutputPath,
 } from "./routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -158,6 +158,33 @@ function collect() {
   };
 }
 
+// Extensions that mean "this href points at a file, not a page", so the
+// trailing-slash rule does not apply. An allowlist rather than "any dot near
+// the end": a slug like /pricing/v1.2 would read as a ".2 file" and silently
+// lose coverage.
+const ASSET_EXTENSIONS =
+  /\.(css|gif|ico|jpe?g|js|json|mp4|pdf|png|svg|txt|webm|webp|woff2?|xml|zip)$/i;
+
+/**
+ * Netlify serves every real page at a trailing slash and 301s the slashless
+ * form to it, so linking without one spends a redirect on every internal link
+ * and points crawlers at a URL that is not the target's own canonical. Link
+ * helpers live in src/i18n/locale.ts: localizedHref for hrefs, localizedPath
+ * for in-app route matching.
+ */
+function linkProblems(internalLinks) {
+  const problems = [];
+  for (const href of new Set(internalLinks)) {
+    const linkPath = href.split(/[?#]/)[0];
+    if (!linkPath || linkPath === "/" || linkPath.endsWith("/")) continue;
+    if (ASSET_EXTENSIONS.test(linkPath)) continue;
+    problems.push(
+      `internal link "${href}" has no trailing slash, so it costs a 301 to "${linkPath}/"`,
+    );
+  }
+  return problems;
+}
+
 /** Every rule, applied to one page. Returns a list of human-readable failures. */
 function check(page, report) {
   const problems = [];
@@ -179,20 +206,7 @@ function check(page, report) {
   if (report.canonical !== url)
     problems.push(`canonical is ${report.canonical}, expected ${url}`);
 
-  // Netlify serves every real page at a trailing slash and 301s the slashless
-  // form to it, so linking without one spends a redirect on every internal link
-  // and points crawlers at a URL that is not the target's own canonical. Link
-  // helpers live in src/i18n/locale.ts: localizedHref for hrefs, localizedPath
-  // for in-app route matching.
-  for (const href of new Set(report.internalLinks)) {
-    const linkPath = href.split(/[?#]/)[0];
-    if (!linkPath || linkPath === "/" || linkPath.endsWith("/")) continue;
-    // A path with an extension is a file (/images/logo.svg), not a page.
-    if (/\.[a-z0-9]+$/i.test(linkPath)) continue;
-    problems.push(
-      `internal link "${href}" has no trailing slash, so it costs a 301 to "${linkPath}/"`,
-    );
-  }
+  problems.push(...linkProblems(report.internalLinks));
   if (report.htmlLang !== locale)
     problems.push(`<html lang> is ${report.htmlLang}, expected ${locale}`);
 
@@ -239,19 +253,26 @@ function check(page, report) {
  * disappearance would restore the old "every URL is the home page" behaviour
  * with no other symptom. Check it before spending a browser on the rest.
  */
-function notFoundProblems() {
-  const file = join(DIST, NOT_FOUND_OUTPUT_FILE);
+function notFoundProblems(locale) {
+  const relative = notFoundOutputPath(locale);
+  const file = join(DIST, relative);
   if (!existsSync(file)) {
     return [
-      `${NOT_FOUND_OUTPUT_FILE} is missing, so Netlify has no 404 to serve and ` +
-        `every unmatched URL falls back to a 200. scripts/prerender.mjs writes it.`,
+      `${relative} is missing, so Netlify has no 404 to serve for ${locale} and ` +
+        `those URLs fall back to a 200. scripts/prerender.mjs writes it.`,
     ];
   }
 
   const problems = [];
   const html = readFileSync(file, "utf8");
 
-  if (!/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html)) {
+  // Attribute order is whatever Helmet happens to serialize, so match the tag
+  // first and its attributes independently rather than assuming name before
+  // content.
+  const robots = [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map((m) => m[0])
+    .find((tag) => /\bname="robots"/i.test(tag));
+  if (!robots || !/\bcontent="[^"]*noindex/i.test(robots)) {
     problems.push("has no noindex robots meta");
   }
   if (/rel="canonical"/i.test(html)) {
@@ -267,14 +288,33 @@ function notFoundProblems() {
         "name rather than a rendered NotFound",
     );
   }
+  const lang = /<html[^>]+lang="([^"]+)"/i.exec(html)?.[1];
+  if (lang !== locale) {
+    problems.push(`<html lang> is ${lang}, expected ${locale}`);
+  }
+  // The per-page loop below only walks ROUTES x LOCALES, and a 404 is not a
+  // route, so its links would otherwise go unchecked.
+  const hrefs = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/gi)]
+    .map((m) => m[1])
+    .filter((href) => href.startsWith("/") && !href.startsWith("//"));
+  problems.push(...linkProblems(hrefs));
   return problems;
 }
 
-const notFound = notFoundProblems();
-if (notFound.length) {
+const notFoundFailures = LOCALES.map((locale) => ({
+  locale,
+  problems: notFoundProblems(locale),
+})).filter(({ problems }) => problems.length);
+
+if (notFoundFailures.length) {
   console.error("");
-  console.error("check:output FAILED on dist/%s.", NOT_FOUND_OUTPUT_FILE);
-  for (const problem of notFound) console.error("      %s", problem);
+  for (const { locale, problems } of notFoundFailures) {
+    console.error(
+      "check:output FAILED on dist/%s.",
+      notFoundOutputPath(locale),
+    );
+    for (const problem of problems) console.error("      %s", problem);
+  }
   console.error("");
   process.exit(1);
 }
@@ -294,6 +334,33 @@ const browser = await puppeteer.launch({
   headless: "new",
   args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
+
+// The regression this whole guard exists for: a URL matching no file must come
+// back 404, not 200. Everything else here inspects pages that are supposed to
+// exist, so nothing else would notice the site answering 200 to anything.
+{
+  const probe = await browser.newPage();
+  const response = await probe.goto(
+    `http://localhost:${PORT}/__missing-url-probe__`,
+    { waitUntil: "domcontentloaded", timeout: 30000 },
+  );
+  const status = response?.status();
+  await probe.close();
+  if (status !== 404) {
+    await browser.close();
+    server.close();
+    console.error("");
+    console.error(
+      "check:output FAILED: an unmatched URL served HTTP %s, expected 404.",
+      status ?? "no response",
+    );
+    console.error(
+      "Every URL answering 200 is what got the site dropped from Bing's results.",
+    );
+    console.error("");
+    process.exit(1);
+  }
+}
 
 const failures = [];
 const queue = [...pages];
