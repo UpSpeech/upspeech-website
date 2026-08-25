@@ -143,7 +143,9 @@ Both stores are optional. An unset variable skips that write, and the team email
 | `SHEETS_WEBHOOK_URL`, `SHEETS_WEBHOOK_SECRET` | No spreadsheet row; the audience and the emails still work.                                        |
 | `EARLY_ACCESS_SURVEY_URL`                     | The applicant email leaves out its survey block. A value that is not an `https://` URL is ignored. |
 
-None of these carry a `VITE_` prefix, because they are read on the server and must never reach the browser bundle. Set them in Netlify under Site configuration. `netlify dev` reads them from a local `.env`, which is the only way to exercise the function without deploying.
+None of these carry a `VITE_` prefix, because they are read on the server and must never reach the browser bundle. Set them in Netlify under Site configuration, scoped to `Functions` and to the `Production` deploy context. Leaving them on all contexts means every deploy preview writes its test submissions into the real leads sheet. `netlify dev` reads them from a local `.env`, which is the only way to exercise the function without deploying.
+
+Flag `SHEETS_WEBHOOK_SECRET` and `RESEND_API_KEY` with `Contains secret values`. Leave `SHEETS_WEBHOOK_URL` and `RESEND_AUDIENCE_ID` unflagged. Neither of those grants anything on its own, and the flag is a one-way door: it makes the value write-only and cannot be removed afterwards. The `/exec` URL production points at is the first thing you will want to read when rows stop appearing in the sheet.
 
 ### The spreadsheet
 
