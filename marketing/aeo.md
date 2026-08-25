@@ -12,12 +12,12 @@ testing. Treat the SERP/citation landscape as a proxy. The next step is still a
 real pass inside ChatGPT, Perplexity, and Gemini (log in, run the prompts, note
 who gets cited) plus a HubSpot AEO Grader run for scored numbers.
 
-| Engine          | Brand query ("UpSpeech") | Category prompts | Date       |
-| --------------- | ------------------------ | ---------------- | ---------- |
-| Google SERP     | #1 (upspeech.app ranks)  | Absent           | 2026-06-25 |
-| ChatGPT         | not yet tested           | not yet tested   | TODO       |
-| Perplexity      | not tested               | Absent (0/5)     | 2026-06-25 |
-| Gemini          | not yet tested           | not yet tested   | TODO       |
+| Engine      | Brand query ("UpSpeech") | Category prompts | Date       |
+| ----------- | ------------------------ | ---------------- | ---------- |
+| Google SERP | #1 (upspeech.app ranks)  | Absent           | 2026-06-25 |
+| ChatGPT     | not yet tested           | not yet tested   | TODO       |
+| Perplexity  | not tested               | Absent (0/5)     | 2026-06-25 |
+| Gemini      | not yet tested           | not yet tested   | TODO       |
 
 **Read:** UpSpeech is recognized on its own name (ranks #1 for "UpSpeech
 stuttering therapy app") but has no share of voice on non-branded buyer prompts.
@@ -49,7 +49,7 @@ stuttering", Healthcare.
 | Recognition score (100) | 12      | 15         | 12     |
 | Sentiment total (100)   | 56      | 72         | 78     |
 
-**Caveat, read before trusting these.** The Grader asks each model to *characterize*
+**Caveat, read before trusting these.** The Grader asks each model to _characterize_
 UpSpeech once handed the name and competitors, so its "Market Position" pie (it
 reports 8-18% share of voice and 120-1,840 "mentions") is the model confabulating
 from thin training data, not a measurement. It contradicts the two real-retrieval
@@ -65,7 +65,7 @@ What it's genuinely useful for:
   us well, so the job is visibility, not reputation repair.
 - **What the models lean on:** ChatGPT admits "no robust review corpus" (0);
   Perplexity cites r/Stutter, our own site, and an arXiv paper that validates
-  *Eloquent* and notes UpSpeech "lacks comparable peer-reviewed data"; Gemini
+  _Eloquent_ and notes UpSpeech "lacks comparable peer-reviewed data"; Gemini
   leans on app-store ratings and health-tech journals.
 - **Named growth gaps** (all double as content/PR angles): clinical
   validation/evidence, clearer differentiation vs alternatives, and retention.
@@ -97,7 +97,7 @@ trytwofold.com's "best AI note takers for SLPs", and the Sprypt documentation
 roundup.
 
 UpSpeech's distinct angle, and the one to make legible to the engines: it does
-*both*, and it is specifically stutter-positive and SLP-linked, not a generic
+_both_, and it is specifically stutter-positive and SLP-linked, not a generic
 fluency drill or a generic medical scribe. No competitor found spans both sides.
 
 **LinkedIn stat card:** `li-stat-01` now uses the ~2 hr/day figure, the load SLPs
@@ -109,6 +109,7 @@ want a hard citation on the card itself, add a small source line under the stat.
 > **Status 2026-06-25, both addressed, in review.** Three website PRs target
 > `preview/website-options` (the branch Netlify actually deploys to production;
 > `main` is a stale English-only line):
+>
 > - **Issue #1 (broken technique pages): PR #18** adds a prerender content gate
 >   that hard-fails the build if a backend-driven page renders empty, plus the
 >   `--disable-web-security` CORS fix and `data-prerender-state` markers. Root
@@ -223,7 +224,7 @@ Use free tools for the baseline; only pay once we're actively moving the number.
 - Brand name: `UpSpeech`
 - Website: `https://upspeech.app`
 - One-line description: `AI-powered speech therapy for stuttering: between-session
-  practice for people who stutter, plus AI clinical report drafting for SLPs.`
+practice for people who stutter, plus AI clinical report drafting for SLPs.`
 - Competitors (patient side): Stamurai, Eloquent, Stutter Stars
 - Competitors (SLP side): SLPFlow, PatientNotes, TheraSnap
 - Locale: run from the target market (set US first, then PT/ES for localized pages)
@@ -231,7 +232,7 @@ Use free tools for the baseline; only pay once we're actively moving the number.
 **Runsheet:**
 
 1. **HubSpot AEO Grader** — https://www.hubspot.com/aeo-grader
-   Free, no account, one-time. Enter brand + site. Returns a *scored* read across
+   Free, no account, one-time. Enter brand + site. Returns a _scored_ read across
    ChatGPT/Perplexity/Gemini (sentiment, presence, brand recognition, share of
    voice, market position). Copy the scores into the baseline table at the top.
 
@@ -240,11 +241,11 @@ Use free tools for the baseline; only pay once we're actively moving the number.
    Google AI Overviews. Note mention + citation rate per engine (limited preview,
    but covers every engine free).
 
-3. **Rankscale** — https://rankscale.ai  (free tier, for ongoing tracking)
+3. **Rankscale** — https://rankscale.ai (free tier, for ongoing tracking)
    Sign up for the free tier, add the 5 prompts below and the competitors, let it
    track over time. This is the recurring monitor.
 
-4. *(optional, paid-with-trial)* **Otterly** — https://otterly.ai/pricing
+4. _(optional, paid-with-trial)_ **Otterly** — https://otterly.ai/pricing
    14-day free trial, no card, then $29/mo Lite (15 prompts). Only if you want
    richer competitor/citation tracking than Rankscale's free tier gives.
 
@@ -283,10 +284,10 @@ Prompts:
 
 Log one row per pass below. "Named?" = did the answer mention UpSpeech.
 
-| Date       | Engine               | #1 | #2 | #3 | #4 | #5 | Named |
-| ---------- | -------------------- | -- | -- | -- | -- | -- | ----- |
-| 2026-06-25 | Google SERP proxy    | no | -  | no | -  | -  | 0/2   |
-| 2026-06-25 | Perplexity, incognito | no | no | no | no | no | 0/5   |
+| Date       | Engine                | #1  | #2  | #3  | #4  | #5  | Named |
+| ---------- | --------------------- | --- | --- | --- | --- | --- | ----- |
+| 2026-06-25 | Google SERP proxy     | no  | -   | no  | -   | -   | 0/2   |
+| 2026-06-25 | Perplexity, incognito | no  | no  | no  | no  | no  | 0/5   |
 
 Still to run: ChatGPT and Gemini (same 5 prompts, one row each).
 
@@ -298,18 +299,18 @@ surface a real product, which makes a clean 0/5 the strongest signal we have:
 for these buyer prompts UpSpeech is not in the set of pages the engine retrieves
 or cites. Per prompt:
 
-1. *best app for people who stutter* — surfaced TalkPath Therapy, Speech4Good,
+1. _best app for people who stutter_ — surfaced TalkPath Therapy, Speech4Good,
    SpeechEasy/DAF devices, and generic categories. It did not cite UpSpeech, and
    notably didn't lead with the strongest incumbents (Stamurai, Eloquent) either,
    so the cited set here is loose and winnable.
-2. *apps to practise speech therapy between sessions* — SpeakClinic, "Terapia da
+2. _apps to practise speech therapy between sessions_ — SpeakClinic, "Terapia da
    Fala", Speechify. Localized to European Portuguese. UpSpeech absent.
-3. *AI session notes for SLPs* — SLPFlow, TheraSnap, Novi, Ambiki, PatientNotes.
+3. _AI session notes for SLPs_ — SLPFlow, TheraSnap, Novi, Ambiki, PatientNotes.
    This is the **crowded** prompt: real, entrenched, cited incumbents.
-4. *stutter-positive speech therapy tools* — **no specific brand cited**, only
+4. _stutter-positive speech therapy tools_ — **no specific brand cited**, only
    generic categories. This is literally UpSpeech's positioning and it's wide
    open whitespace.
-5. *how do speech therapists reduce documentation time* — **no brand cited**,
+5. _how do speech therapists reduce documentation time_ — **no brand cited**,
    generic workflow advice. It described "generate a draft, then review", which
    is UpSpeech's exact pitch, with no product attached.
 
@@ -342,10 +343,10 @@ or community answer should link to. Until #18 deploys, the technique pages still
 render broken, so hold technique-specific links until then.
 
 - Patient story: `https://upspeech.app/for-patients`
-- Clinician story: `https://upspeech.app/for-slps`  (PR #19)
-- Stutter-positive explainer: `https://upspeech.app/stutter-positive`  (PR #20)
-- SLP documentation article: `https://upspeech.app/reducing-documentation-time`  (PR #20)
-- Technique hub: `https://upspeech.app/techniques`  (only after PR #18 deploys)
+- Clinician story: `https://upspeech.app/for-slps` (PR #19)
+- Stutter-positive explainer: `https://upspeech.app/stutter-positive` (PR #20)
+- SLP documentation article: `https://upspeech.app/reducing-documentation-time` (PR #20)
+- Technique hub: `https://upspeech.app/techniques` (only after PR #18 deploys)
 - PT/ES variants exist for all of the above under `/pt/...` and `/es/...`.
 
 ### Where to submit (concrete, check each accepts submissions)

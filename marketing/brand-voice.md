@@ -14,8 +14,8 @@ UpSpeech is **Calm, Scientific, Encouraging.**
 - **Encouraging.** Warm and on the reader's side. Progress, not pressure. We
   celebrate showing up, not just outcomes.
 
-Design principles that carry into copy: *Progress not pressure. Clinical
-credibility. Accessible by default. Personality through polish.*
+Design principles that carry into copy: _Progress not pressure. Clinical
+credibility. Accessible by default. Personality through polish._
 
 ## How it sounds
 

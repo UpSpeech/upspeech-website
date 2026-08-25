@@ -23,11 +23,11 @@ sensitivity rules disagree, the sensitivity rules win.
 
 Every law below has to be read against who is who.
 
-| Role | Who | What they feel |
-|---|---|---|
-| Buyer | The clinic, via the owner or practice manager | Capacity, differentiation, staff time |
-| Champion | The speech-language pathologist | The evening lost to session notes, walking into an appointment with no idea how the week went |
-| User | The patient | Practising alone, with nothing coming back |
+| Role     | Who                                           | What they feel                                                                                |
+| -------- | --------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Buyer    | The clinic, via the owner or practice manager | Capacity, differentiation, staff time                                                         |
+| Champion | The speech-language pathologist               | The evening lost to session notes, walking into an appointment with no idea how the week went |
+| User     | The patient                                   | Practising alone, with nothing coming back                                                    |
 
 The pilot settled that the buyer and the user are different people, and that
 willingness to pay sits with the clinic. Patient willingness to pay is real
@@ -168,99 +168,99 @@ worse periods without needing new appointments."
 ## Rewrite
 
 **3. Don't announce the roadmap. Ship, then talk.**
-→ *No roadmap in public marketing. Full roadmap to the clinics building it with
-us.* The pilot clinic produced the feedback-loop finding precisely because they
+→ _No roadmap in public marketing. Full roadmap to the clinics building it with
+us._ The pilot clinic produced the feedback-loop finding precisely because they
 knew what was coming and could say what was missing. Treating a pilot partner
 like an audience wastes the pilot.
 
 **7. Build a community that creates your content for you.**
-→ *Join the community that already exists. Do not farm it.* The stuttering and
+→ _Join the community that already exists. Do not farm it._ The stuttering and
 neurodiversity communities predate us and are not a content supply. The
 `aeo.md` community caveat applies: show up as a participant, never post a
 community member's words as marketing without consent.
 
 **10. Fire bad-fit customers before they churn loudly.**
-→ *Qualify at the front, and wind down with care.* A clinic cannot be dropped
+→ _Qualify at the front, and wind down with care._ A clinic cannot be dropped
 mid-therapy; its patients are inside a course of care. The filter belongs at
 the start: does this clinic have new patients to onboard from day one? If an
 exit ever happens it has to include a data export and a handover that leaves no
 patient stranded.
 
 **12. Publish your pricing. Admit what you're bad at.**
-→ *The second half now, the first half when there is pricing.* There is no
+→ _The second half now, the first half when there is pricing._ There is no
 pricing to publish yet, only willingness-to-pay evidence. The admission half is
 worth more than usual here: SLPs are earned by honest limits, and the
 regulatory posture obliges us to be explicit about what the product does not
 claim.
 
 **13. Nobody buys your mission. They buy to look good in their QBR.**
-→ *Mission earns the therapist. Numbers earn the clinic.* Speech clinics have no
+→ _Mission earns the therapist. Numbers earn the clinic._ Speech clinics have no
 QBR. The clinic owner wants capacity and a differentiated offer; the SLP wants
 to walk in already knowing how the week went. The stutter-positive stance does
 real work with clinicians as a values signal, it just does not close the sale.
 
 **17. Category leaders sell the cost of not buying.**
-→ *Cost framing is allowed for the clinician's own workload. Never for a
-patient's outcome.* Unreviewed submissions piling up and evenings lost to notes
+→ _Cost framing is allowed for the clinician's own workload. Never for a
+patient's outcome._ Unreviewed submissions piling up and evenings lost to notes
 are fair game. "Your child is falling behind" is banned outright by sensitivity
 rule 6, and the same applies to any version aimed at an adult patient.
 
 **18. Walled gardens die. Open APIs, public docs, free tiers.**
-→ *Integration-first and public documentation. No open free tier holding patient
-recordings.* Open integration is the validated demand. A self-serve free tier is
+→ _Integration-first and public documentation. No open free tier holding patient
+recordings._ Open integration is the validated demand. A self-serve free tier is
 a different matter when the data is patient health data: it implies a data
 processing agreement, a retention policy, and a support obligation to a clinic
 paying nothing.
 
 **23. One ICP, one channel, one message, until it breaks.**
-→ *One ICP. Two audiences, because the product has two.* The B2B2C shape forces
+→ _One ICP. Two audiences, because the product has two._ The B2B2C shape forces
 a patient channel and a clinician channel, which is why Instagram and LinkedIn
 both exist. The ICP is single and the pilot named it: clinics onboarding
 patients who are new to therapy.
 
 **26. Let analysts and customers say what you can't.**
-→ *Third-party voices carry credibility, not claims.* Tempting given the claims
+→ _Third-party voices carry credibility, not claims._ Tempting given the claims
 constraint, and it needs a hard limit. A testimonial we solicit, edit, or
 publish can be treated as our own claim under medical device rules, so a
 customer cannot be used to say something about fluency outcomes that we are not
 allowed to say ourselves.
 
 **27. Category creation is religion-building. Name the movement.**
-→ *Name the practice category. The movement is already named and it is not
-ours.* Stutter-positive and neurodiversity are the community's terms, adopted
+→ _Name the practice category. The movement is already named and it is not
+ours._ Stutter-positive and neurodiversity are the community's terms, adopted
 not invented. What is open to us is naming the thing between sessions.
 
 **29. The campaign isn't done at MQL. Map it to revenue.**
-→ *Map to pilots started.* There is no MQL and no revenue line to map to yet.
+→ _Map to pilots started._ There is no MQL and no revenue line to map to yet.
 The terminal metric that exists is a clinic agreeing to a pilot, and every
 campaign should be answerable to that rather than to follower counts.
 
 **33. Every persona has one metric they're fired over. Find it.**
-→ *Every persona has one thing that ruins their week. Find that.* Nobody is
+→ _Every persona has one thing that ruins their week. Find that._ Nobody is
 getting fired over a metric in a five-therapist clinic. The SLP's version is the
 evening spent writing notes. The clinic owner's is unused capacity. The
 patient's is practising all week and having nothing come back.
 
 **35. Launch into budget season, not into August.**
-→ *Launch into the clinical calendar.* September intake at clinics and
+→ _Launch into the clinical calendar._ September intake at clinics and
 university clinics, and ISAD on October 22, are the real windows. August in
 Iberia is genuinely dead.
 
 **36. Can't win enterprise? Make "no enterprise" your positioning.**
-→ *Name the beachhead instead of the anti-position.* Enterprise here means
+→ _Name the beachhead instead of the anti-position._ Enterprise here means
 hospital groups and national health services, and that is a fight for later, not
 one to define ourselves against now. The independent clinic is the beachhead and
 saying so plainly is stronger than a posture.
 
 **39. Pick a public fight with the status quo.**
-→ *Pick the fight precisely.* The target is the unverifiable "how was your
+→ _Pick the fight precisely._ The target is the unverifiable "how was your
 week?" and the evening lost to session notes. Never the profession, never
 another clinician's therapy choices, and never the community's positions on
 fluency.
 
 **46. Publish your incidents. Flaws read as truth.**
-→ *A status page and honest incident notes to clinics. Not public postmortems on
-patient data.* Transparency about downtime is good practice. An incident
+→ _A status page and honest incident notes to clinics. Not public postmortems on
+patient data._ Transparency about downtime is good practice. An incident
 touching personal data goes down the GDPR path first, to the controller, which
 is the clinic, and to the regulator where required. That route is not a blog
 post.
@@ -307,12 +307,12 @@ optimising away the users the whole thesis rests on.
 
 Sound advice with nothing to attach it to today. Revisit when the gap closes.
 
-| # | Law | What has to exist first |
-|---|---|---|
-| 24 | Marketing that flatters sales gets budget | A sales function separate from the founder |
-| 31 | Three pricing tiers. Design the middle one to win | Pricing. The WTP evidence is in the pilot analysis when we get there |
-| 34 | Price like the premium option and buyers assume you are | Pricing, plus a decision on whether patients are ever billed directly |
-| 43 | Brand makes performance marketing cheap. Cut it last | Any paid spend at all |
+| #   | Law                                                     | What has to exist first                                               |
+| --- | ------------------------------------------------------- | --------------------------------------------------------------------- |
+| 24  | Marketing that flatters sales gets budget               | A sales function separate from the founder                            |
+| 31  | Three pricing tiers. Design the middle one to win       | Pricing. The WTP evidence is in the pilot analysis when we get there  |
+| 34  | Price like the premium option and buyers assume you are | Pricing, plus a decision on whether patients are ever billed directly |
+| 43  | Brand makes performance marketing cheap. Cut it last    | Any paid spend at all                                                 |
 
 ---
 

@@ -5,7 +5,7 @@
 The UpSpeech Instagram account is a calm, encouraging companion for people who
 stutter and the people around them. It is not a feature-list ad account. The
 feed should make practice feel approachable, make progress feel visible, and
-make stuttering feel like something to work *with*, not hide.
+make stuttering feel like something to work _with_, not hide.
 
 The clinical, time-savings story for SLPs lives mostly on LinkedIn. On
 Instagram, the clinician shows up as a quiet, credible presence (a few "for
@@ -38,7 +38,7 @@ In priority order for this channel:
 ## Voice
 
 See [`../brand-voice.md`](../brand-voice.md). On Instagram, lean into the
-*encouraging* and *calm* notes most. Speak to one person. Celebrate showing up.
+_encouraging_ and _calm_ notes most. Speak to one person. Celebrate showing up.
 
 ## Content pillars
 

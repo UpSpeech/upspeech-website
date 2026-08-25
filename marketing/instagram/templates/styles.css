@@ -64,8 +64,17 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(1200px 800px at 12% 0%, rgba(59, 130, 246, 0.16), transparent 55%),
-    radial-gradient(1200px 800px at 88% 100%, rgba(16, 185, 129, 0.14), transparent 55%), #0e1230;
+    radial-gradient(
+      1200px 800px at 12% 0%,
+      rgba(59, 130, 246, 0.16),
+      transparent 55%
+    ),
+    radial-gradient(
+      1200px 800px at 88% 100%,
+      rgba(16, 185, 129, 0.14),
+      transparent 55%
+    ),
+    #0e1230;
   color: #eef1fb;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -235,13 +244,19 @@ svg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: radial-gradient(rgba(41, 53, 135, 0.1) 3px, transparent 3px);
+  background-image: radial-gradient(
+    rgba(41, 53, 135, 0.1) 3px,
+    transparent 3px
+  );
   background-size: 46px 46px;
   opacity: 0.6;
 }
 
 .dot-grid-light {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 3px, transparent 3px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 3px,
+    transparent 3px
+  );
 }
 
 /* ── Companion glyph placements ───────────────────────────────────── */
@@ -375,10 +390,18 @@ svg {
   flex: none;
 }
 
-.bead-sky { background: var(--sky); }
-.bead-mint { background: var(--mint); }
-.bead-lav { background: var(--lavender); }
-.bead-gold { background: var(--gold); }
+.bead-sky {
+  background: var(--sky);
+}
+.bead-mint {
+  background: var(--mint);
+}
+.bead-lav {
+  background: var(--lavender);
+}
+.bead-gold {
+  background: var(--gold);
+}
 
 /* ── 03 Progress + rings ──────────────────────────────────────────── */
 
@@ -495,8 +518,13 @@ svg {
   color: var(--navy);
 }
 
-.bubble-2 { color: var(--mint); border-radius: 26px 26px 8px 26px; }
-.bubble-3 { color: var(--warm); }
+.bubble-2 {
+  color: var(--mint);
+  border-radius: 26px 26px 8px 26px;
+}
+.bubble-3 {
+  color: var(--warm);
+}
 
 /* ── 05 Clinician / report card ───────────────────────────────────── */
 
@@ -529,7 +557,9 @@ svg {
   color: var(--navy);
 }
 
-.report-head-lg { font-size: 30px; }
+.report-head-lg {
+  font-size: 30px;
+}
 
 .report-dot {
   width: 22px;
@@ -544,12 +574,24 @@ svg {
   background: var(--paper-2);
 }
 
-.report-line.w90 { width: 90%; }
-.report-line.w85 { width: 85%; }
-.report-line.w80 { width: 80%; }
-.report-line.w70 { width: 70%; }
-.report-line.w60 { width: 60%; }
-.report-line.w50 { width: 50%; }
+.report-line.w90 {
+  width: 90%;
+}
+.report-line.w85 {
+  width: 85%;
+}
+.report-line.w80 {
+  width: 80%;
+}
+.report-line.w70 {
+  width: 70%;
+}
+.report-line.w60 {
+  width: 60%;
+}
+.report-line.w50 {
+  width: 50%;
+}
 
 .report-ready {
   display: inline-flex;
@@ -681,14 +723,43 @@ svg {
   margin: auto;
 }
 
-.ico-phone { background: rgba(59, 130, 246, 0.16); }
-.ico-phone::after { width: 22px; height: 30px; border: 4px solid var(--sky); border-radius: 7px; }
-.ico-coffee { background: rgba(245, 158, 11, 0.16); }
-.ico-coffee::after { width: 26px; height: 22px; border: 4px solid var(--gold); border-radius: 4px 4px 12px 12px; }
-.ico-people { background: rgba(139, 128, 217, 0.18); }
-.ico-people::after { width: 30px; height: 16px; border-radius: 999px; background: var(--lavender); box-shadow: 0 -14px 0 -4px var(--lavender); }
-.ico-mic { background: rgba(16, 185, 129, 0.16); }
-.ico-mic::after { width: 16px; height: 30px; border-radius: 999px; background: var(--mint); }
+.ico-phone {
+  background: rgba(59, 130, 246, 0.16);
+}
+.ico-phone::after {
+  width: 22px;
+  height: 30px;
+  border: 4px solid var(--sky);
+  border-radius: 7px;
+}
+.ico-coffee {
+  background: rgba(245, 158, 11, 0.16);
+}
+.ico-coffee::after {
+  width: 26px;
+  height: 22px;
+  border: 4px solid var(--gold);
+  border-radius: 4px 4px 12px 12px;
+}
+.ico-people {
+  background: rgba(139, 128, 217, 0.18);
+}
+.ico-people::after {
+  width: 30px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--lavender);
+  box-shadow: 0 -14px 0 -4px var(--lavender);
+}
+.ico-mic {
+  background: rgba(16, 185, 129, 0.16);
+}
+.ico-mic::after {
+  width: 16px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--mint);
+}
 
 /* ── 09 CTA ───────────────────────────────────────────────────────── */
 
@@ -741,7 +812,8 @@ svg {
 .post-photo .photo-bg {
   position: absolute;
   inset: 0;
-  background-image: var(--photo-bg), linear-gradient(150deg, var(--sky), var(--navy) 70%);
+  background-image:
+    var(--photo-bg), linear-gradient(150deg, var(--sky), var(--navy) 70%);
   background-size: cover, cover;
   background-position: center;
   z-index: 0;
@@ -751,7 +823,11 @@ svg {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(14, 18, 48, 0) 30%, rgba(14, 18, 48, 0.6) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(14, 18, 48, 0) 30%,
+    rgba(14, 18, 48, 0.6) 100%
+  );
   z-index: 1;
 }
 
@@ -861,9 +937,15 @@ svg {
   background: #d7dcf0;
 }
 
-.browser-bar i:first-child { background: #f59e0b; }
-.browser-bar i:nth-child(2) { background: #10b981; }
-.browser-bar i:nth-child(3) { background: #3b82f6; }
+.browser-bar i:first-child {
+  background: #f59e0b;
+}
+.browser-bar i:nth-child(2) {
+  background: #10b981;
+}
+.browser-bar i:nth-child(3) {
+  background: #3b82f6;
+}
 
 .browser-shot {
   display: block;
@@ -1120,7 +1202,8 @@ svg {
 .story-photo .photo-bg {
   position: absolute;
   inset: 0;
-  background-image: var(--photo-bg), linear-gradient(160deg, var(--sky), var(--navy) 70%);
+  background-image:
+    var(--photo-bg), linear-gradient(160deg, var(--sky), var(--navy) 70%);
   background-size: cover, cover;
   background-position: center;
   z-index: 0;
@@ -1130,7 +1213,11 @@ svg {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(14, 18, 48, 0.2), rgba(14, 18, 48, 0.65));
+  background: linear-gradient(
+    180deg,
+    rgba(14, 18, 48, 0.2),
+    rgba(14, 18, 48, 0.65)
+  );
   z-index: 1;
 }
 
@@ -1212,7 +1299,11 @@ svg {
 /* ── Launch kit: avatar, app, LinkedIn ────────────────────────────── */
 
 .post-avatar {
-  background: radial-gradient(120% 120% at 30% 20%, var(--navy) 0%, var(--navy-900) 100%);
+  background: radial-gradient(
+    120% 120% at 30% 20%,
+    var(--navy) 0%,
+    var(--navy-900) 100%
+  );
   align-items: center;
   justify-content: center;
   padding: 0;

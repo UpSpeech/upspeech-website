@@ -815,7 +815,8 @@ async function main() {
   // Say which locales are using the English hero, so a missing capture is
   // visible in the build log instead of silently shipping an English card.
   const fallbacks = LOCALES.filter(
-    (locale) => locale !== DEFAULT_LOCALE && !SCREENSHOT_BY_LOCALE[locale].localized,
+    (locale) =>
+      locale !== DEFAULT_LOCALE && !SCREENSHOT_BY_LOCALE[locale].localized,
   );
   if (fallbacks.length) {
     console.warn(

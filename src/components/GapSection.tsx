@@ -104,9 +104,7 @@ const GapSection = () => {
       className="relative bg-white"
       style={{ height: isNarrow ? "190vh" : "180vh" }}
     >
-      <div
-        className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden"
-      >
+      <div className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -156,7 +154,9 @@ const GapSection = () => {
               }}
             >
               {t.headlineWithPrefix}{" "}
-              <span className="text-calm-lavender-ink">{t.headlineWithBrand}</span>
+              <span className="text-calm-lavender-ink">
+                {t.headlineWithBrand}
+              </span>
             </h2>
           </div>
 
@@ -252,7 +252,10 @@ const WeekRow = ({
             variant === "traditional" ? (isSession ? 100 : 14) : 14 + lit * 86;
 
           return (
-            <div key={day} className="flex flex-1 flex-col items-center gap-1.5">
+            <div
+              key={day}
+              className="flex flex-1 flex-col items-center gap-1.5"
+            >
               <div className="flex w-full flex-1 items-end">
                 <div
                   className="w-full rounded-md"

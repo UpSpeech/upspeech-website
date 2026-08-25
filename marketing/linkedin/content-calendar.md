@@ -7,6 +7,7 @@ Keep them peer-to-peer, specific, and within the sensitivity rules in
 ## Week 1
 
 - **Time pillar (text)**
+
   > A speech-language pathologist told us she spends about an hour a day writing
   > session notes. Not seeing clients. Not planning therapy. Typing up what just
   > happened.
@@ -29,20 +30,21 @@ Keep them peer-to-peer, specific, and within the sensitivity rules in
 
 - **Adherence pillar (document carousel)** — "Why between-session practice
   rarely happens (and what changes it)"
+
   > Cover: The homework problem every SLP knows.
-  > Slides: 1) practice is invisible until the next session, 2) no feedback loop,
-  > 3) no structure between visits, 4) what therapist-linked, visible practice
+  > Slides: 1) practice is invisible until the next session, 2) no feedback loop, 3) no structure between visits, 4) what therapist-linked, visible practice
   > changes, 5) how UpSpeech does it. Save this if it sounds familiar.
 
 - **Build-in-public (text)**
   > A small thing we got wrong early: we built progress charts for clinicians
-  > first. Turned out the person who needed to *see* progress most was the
+  > first. Turned out the person who needed to _see_ progress most was the
   > patient. Showing someone their own streak did more for adherence than any
   > dashboard we shipped for the clinic. Build for the person doing the work.
 
 ## Week 3
 
 - **Product proof (graphic + text)** — quote/stat card via the template engine
+
   > Draft, edit, approve. The session note that used to take the evening now
   > starts as a draft you can sign off in a couple of minutes. (Sanitized
   > preview attached.) Documentation shouldn't be the reason clinicians burn out.
@@ -55,6 +57,7 @@ Keep them peer-to-peer, specific, and within the sensitivity rules in
 ## Week 4
 
 - **Field moment (text)** — tie to a real awareness date when one lands
+
   > A reminder worth repeating in our field: stuttering is neurological, not a
   > sign of nerves or low intelligence. The people who stutter we build with are
   > articulate, capable, and tired of being told to "just slow down." We build

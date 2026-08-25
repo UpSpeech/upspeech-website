@@ -309,7 +309,9 @@ const CycleScene = () => {
                     >
                       <div
                         className={`font-body font-bold tracking-[0.22em] uppercase ${
-                          isClinician ? "text-calm-navy" : "text-calm-lavender-ink"
+                          isClinician
+                            ? "text-calm-navy"
+                            : "text-calm-lavender-ink"
                         }`}
                         style={{
                           fontSize: "clamp(9px, 0.82vw, 11px)",
