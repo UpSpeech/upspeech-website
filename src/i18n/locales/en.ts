@@ -139,7 +139,7 @@ export const en = {
       howToName: "How a speech therapy session becomes a written record",
       eyebrow: "A Tuesday",
       headline: "Most of the work is not the session.",
-      body: "Three clinicians told us the same thing: hours spent preparing, hours spent writing up, and time inside the session lost to taking notes. This is that day with UpSpeech in it.",
+      body: "Dozens of therapists told us the same thing: hours spent preparing, hours spent writing up, and time inside the session lost to taking notes. This is that day with UpSpeech in it.",
       before: {
         time: "08:40 · Before the first appointment",
         headline: "You already have the context.",

@@ -142,7 +142,7 @@ export const pt: Dictionary = {
         "Como uma sessão de terapia da fala se torna um registo escrito",
       eyebrow: "Uma terça-feira",
       headline: "A maior parte do trabalho não é a sessão.",
-      body: "Três clínicos disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
+      body: "Dezenas de terapeutas disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
       before: {
         time: "08:40 · Antes da primeira consulta",
         headline: "Já tem o contexto.",

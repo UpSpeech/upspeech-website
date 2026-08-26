@@ -142,7 +142,7 @@ export const es: Dictionary = {
         "Cómo una sesión de logopedia se convierte en un registro escrito",
       eyebrow: "Un martes",
       headline: "La mayor parte del trabajo no es la sesión.",
-      body: "Tres clínicos nos dijeron lo mismo: horas preparando, horas redactando informes y, dentro de la sesión, tiempo perdido tomando notas. Este es ese día con UpSpeech.",
+      body: "Decenas de terapeutas nos dijeron lo mismo: horas preparando, horas redactando informes y, dentro de la sesión, tiempo perdido tomando notas. Este es ese día con UpSpeech.",
       before: {
         time: "08:40 · Antes de la primera cita",
         headline: "Ya tienes el contexto.",
