@@ -47,3 +47,19 @@ short, and free of sales language. Update it whenever the exported image changes
 - `highlight-therapists.png`: Navy UpSpeech highlight cover labeled "For SLPs".
 - `highlight-stories.png`: Navy UpSpeech highlight cover labeled "Stories".
 - `highlight-facts.png`: Navy UpSpeech highlight cover labeled "Facts".
+
+## ISAD campaign (22 October)
+
+- `feed-isad-01-nervous.png`: Myth card headed "You just seem nervous", with the correction that stuttering is neurological and that anxiety can follow it rather than cause it.
+- `feed-isad-02-slow-down.png`: Myth card headed "Just slow down", with the correction that the advice is kindly meant and usually adds pressure, and a suggestion to ask what helps instead.
+- `feed-isad-03-parents.png`: Myth card headed "Something the parents did", with the correction that parenting does not cause stuttering, which is neurological and often runs in families.
+- `feed-isad-04-finish.png`: Myth card headed "I'll finish it for you", with the correction to wait because the words are already on their way.
+- `feed-isad-05-rare.png`: Myth card headed "I've never met anyone who stutters", with the correction that about 1 in 100 adults stutter.
+- `feed-isad-06-listen.png`: Dark navy post reading "Listen to what is said, not how", dated 22 October, with a cream ceramic mug in the lower right and the UpSpeech logo.
+- `carousel-isad-01-hero.png`: Carousel cover reading "22 October is International Stuttering Awareness Day", with the subtitle "Five myths, and what to do instead".
+- `carousel-isad-02-why.png`: Carousel slide reading "About 1 in 100 adults stutter", explaining the day is about changing how other people listen.
+- `carousel-isad-03-how.png`: Carousel slide reading "Wait. Hold eye contact. Ask.", with a line on letting the sentence arrive and asking what helps.
+- `carousel-isad-04-cta.png`: Carousel closing slide reading "Share one fact today", tagged #ISAD.
+- `story-isad-01-countdown.png`: Dark navy story reading "One myth a day", with 22 October in gold and the words International Stuttering Awareness Day.
+- `story-isad-02-poll.png`: Story poll asking which fact surprised you, with two options: anxiety doesn't cause it, and 1 in 100 adults.
+- `story-isad-03-fact.png`: Story reading "About 1 in 100 adults stutter", with a small potted plant and a "Save and share" button.

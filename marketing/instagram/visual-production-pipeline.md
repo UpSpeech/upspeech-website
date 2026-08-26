@@ -56,10 +56,16 @@ Endpoints this pipeline uses:
 | Cut a subject out | `fal-ai/birefnet`, `fal-ai/imageutils/rembg` |
 | Animate a still | `fal-ai/kling-video/v2.1/master/image-to-video`, `fal-ai/ltx-video-13b-distilled/image-to-video` |
 
-Two habits worth keeping. Category inference on a bare search is unreliable, so
-pass `--category` when you know it ("background removal" alone infers
-text-to-image and returns nothing). And `--output-format json` is the default
-here, so pipe into `python3 -c` or `jq` rather than parsing the pretty view.
+Three habits worth keeping. Category inference on a bare search is unreliable,
+so pass `--category` when you know it ("background removal" alone infers
+text-to-image and returns nothing). `--output-format json` is the default here,
+so pipe into `python3 -c` or `jq` rather than parsing the pretty view.
+
+And **read the written path back from `downloaded_files[0].path`** rather than
+assuming the name you passed to `--download`. When the target already exists the
+CLI writes `name_1.png`, `name_2.png` instead of overwriting. Miss that and you
+will keep editing a stale file while every command reports success. Generate
+into an empty directory to avoid it entirely.
 
 The MCP `fal-ai` tools still work and need no install, but they only expose 22
 models with fixed `image_size` and `aspect_ratio` enums, they cannot read a

@@ -1785,3 +1785,149 @@ html.exporting .is-export-target {
 .export-body {
   display: block;
 }
+
+/* ===================================================================
+   ISAD campaign — 22 October. Myth-a-day feed cards, carousel, stories.
+   Education pillar: nothing is sold here. The cut-out objects are
+   atmosphere only (see visual-production-pipeline.md, rule 5: never a
+   generated person).
+   =================================================================== */
+
+.post-myth {
+  justify-content: center;
+  gap: 26px;
+  position: relative;
+}
+.post-myth h2 {
+  font-family: var(--font-heading);
+  font-size: 82px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.post-myth .myth-card {
+  margin: 8px 0 0;
+  padding: 46px;
+  background: var(--paper);
+  border-radius: 30px;
+  border-left: 14px solid var(--mint);
+  box-shadow: 0 20px 44px rgba(20, 26, 68, 0.08);
+  display: grid;
+  gap: 22px;
+}
+.post-myth .myth-x {
+  background: rgba(16, 185, 129, 0.16);
+  color: #0b7f5d;
+  font-size: 24px;
+}
+.post-myth .myth-card p {
+  font-size: 40px;
+  line-height: 1.32;
+}
+.isad-stamp {
+  position: absolute;
+  top: 78px;
+  right: 78px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.post-isad-listen {
+  background: linear-gradient(160deg, var(--navy), var(--navy-900));
+  color: #fff;
+  justify-content: center;
+  gap: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.post-isad-listen h2 {
+  font-family: var(--font-heading);
+  font-size: 96px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 15ch;
+}
+.post-isad-listen .logo-lockup {
+  height: 54px;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Cut-outs: generated objects on a transparent background, positioned
+   here rather than baked into a plate, so they stay movable. */
+.cutout {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+.cutout-mug {
+  width: 300px;
+  right: 70px;
+  bottom: 74px;
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.34));
+}
+.cutout-plant {
+  width: 560px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 420px;
+  filter: drop-shadow(0 30px 56px rgba(20, 26, 68, 0.18));
+}
+
+.story-isad-count {
+  background: linear-gradient(160deg, var(--navy), var(--navy-900));
+  color: #fff;
+  justify-content: flex-start;
+  padding-top: 300px;
+  gap: 34px;
+}
+.story-isad-count h2 {
+  font-family: var(--font-heading);
+  font-size: 104px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.isad-days {
+  margin-top: 40px;
+  display: grid;
+  gap: 6px;
+}
+.isad-days strong {
+  font-family: var(--font-accent);
+  font-size: 340px;
+  font-weight: 800;
+  line-height: 0.9;
+  color: var(--gold);
+}
+.isad-days span {
+  font-family: var(--font-body);
+  font-size: 52px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.story-isad-fact {
+  justify-content: flex-start;
+  gap: 30px;
+  padding-top: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.story-isad-fact h2 {
+  font-family: var(--font-heading);
+  font-size: 104px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 14ch;
+}

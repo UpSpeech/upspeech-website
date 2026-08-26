@@ -108,3 +108,65 @@ Animate the strongest one or two stills per week, not the whole library. See
 5. One clear, low-pressure CTA.
 
 Keep it speakable. No em-dashes. Five to eight specific hashtags.
+
+## Campaign — International Stuttering Awareness Day, 22 October
+
+The anchor campaign in `../creative-concepts.md`. One myth a day for the five
+days before ISAD, then the listen post on the day itself. Education pillar, so
+nothing is sold in any of these. Run the carousel on 20 October so it has time
+to circulate, and drop the stories alongside each feed post.
+
+No community quote series this year. That needs documented written consent per
+rule 5 in `../brand-voice.md`, and we do not have any yet. Worth starting to
+collect now if we want quotes for 2027.
+
+| Date | Asset | Format |
+|---|---|---|
+| Fri 16 Oct | `feed-isad-01-nervous` | Feed |
+| Sat 17 Oct | `feed-isad-02-slow-down` | Feed |
+| Sun 18 Oct | `feed-isad-03-parents` | Feed |
+| Mon 19 Oct | `feed-isad-04-finish` | Feed |
+| Tue 20 Oct | `carousel-isad-01` to `04` | Carousel |
+| Tue 21 Oct | `feed-isad-05-rare` | Feed |
+| Wed 22 Oct | `feed-isad-06-listen` | Feed, the day itself |
+| Throughout | `story-isad-01/02/03` | Stories |
+
+### Captions
+
+**01 nervous.** "You just seem nervous." Most people who stutter have heard it,
+usually from someone being kind. Stuttering is neurological. Anxiety can follow
+it, especially after years of being talked over, but it is not the cause. If
+you take one thing from this week, take that.
+`#Stuttering #StutterPositive #PeopleWhoStutter #ISAD #Neurodiversity`
+
+**02 slow down.** "Just slow down." It is the most common advice, and it rarely
+helps. It moves the work onto the person speaking and adds a layer of
+monitoring on top of everything else. Ask what helps instead. The answer is
+usually simpler than you expect.
+`#Stuttering #StutterPositive #ISAD #Stammering #SpeechTherapy`
+
+**03 parents.** "Something the parents did." No. Parenting does not cause
+stuttering. It is neurological and it often runs in families. Parents carry
+enough without carrying blame for this one.
+`#Stuttering #StutterPositive #ISAD #PeopleWhoStutter #Neurodiversity`
+
+**04 finish.** "I'll finish it for you." Finishing the sentence feels like
+helping. It is closer to interrupting. Wait instead. The words are already on
+their way, and the pause costs you less than it costs them.
+`#Stuttering #StutterPositive #ISAD #Stammering #PeopleWhoStutter`
+
+**05 rare.** "I've never met anyone who stutters." About 1 in 100 adults
+stutter. You have met them. Some of them have built a whole set of habits so
+you would not notice: swapping words, staying quiet in meetings, ordering the
+thing that is easier to say.
+`#Stuttering #StutterPositive #ISAD #PeopleWhoStutter #SLP`
+
+**06 listen (22 Oct).** Today is International Stuttering Awareness Day. The
+day is not about people who stutter speaking differently. It is about the rest
+of us listening differently. Wait. Hold eye contact. Ask what helps. That is
+the whole ask.
+`#ISAD #Stuttering #StutterPositive #PeopleWhoStutter #SLP #Neurodiversity`
+
+**Carousel (20 Oct).** Five things people say, and what to say instead. Save it
+for the next time it comes up.
+`#ISAD #Stuttering #StutterPositive #Stammering #SpeechTherapy #SLPeeps`
