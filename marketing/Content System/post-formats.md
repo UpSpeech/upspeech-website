@@ -226,13 +226,14 @@ earlier ones did not, and it is the weakest carousel in the folder.
 4. **The mechanism, shown.** The real product screen, not a description of it.
    Sanitized screenshot, Companion present, one overlaid callout if the screen
    needs one. Never a generated UI.
-5. **The human slide, on the broken ground.** This is where the single break
-   lands: flip to the opposite frame. The argument stops being evidence and
-   becomes a person, and the change of ground is the reader's breath before the
-   limits.
-6. **The limits.** What this does not prove or does not do. Back on the main
-   ground, plain label, `WHAT THIS DOES NOT SHOW` in every deck.
-7. **Ask.** One action, named.
+5. **The human slide.** The argument stops being evidence and becomes a person.
+   Light ground, like the rest of the argument.
+6. **The limits.** What this does not prove or does not do. Dark ground, plain
+   label, `WHAT THIS DOES NOT SHOW` in every deck.
+7. **Ask.** One action, named. Light.
+
+Dark bookends the deck: page 1 and page 6 dark, the argument light in between.
+That is the rhythm, and it is `brand-signature.md`'s entry of the same name.
 
 Act labels run across pages 1 to 5, from `brand-signature.md` principle 7: names
 drawn from this deck's own subject, not a generic outline. Page 6 keeps its plain
@@ -241,13 +242,28 @@ label and page 7 needs none.
 The limits slide is a house rule, not a convention borrowed from anywhere. It is
 the honest-limits tag from `brand-signature.md` at carousel scale.
 **Fails when.** It is a blog post cut into rectangles. Each page is one idea.
-Also fails when every page runs the same ground for seven pages, which is
-coherent and airless, or when the break is used twice, which stops being a break
-and becomes a pattern.
-**Built.** `doc-refer-early-01-cover` through `-07-cta`, instagram engine.
-`doc-visible-week-01-cover` through `-07-ask`, Output engine, which is the
-current reference build. Neither yet carries the act labels, the promise cue, the
-single break or a filled cover; `doc-visible-week` is the one to retrofit.
+Also fails when five interior pages all anchor their content to the bottom and
+leave the same empty top, which is the same picture five times however good each
+page is on its own. Lay them out at thumbnail size and check.
+**Built.** `doc-visible-week-01-cover` through `-07-ask`, Output engine. This is
+the reference build and it carries every device in `brand-signature.md`: act
+labels on pages 1 to 5, the promise cue and a ghost word on the cover, the
+highlight bar on page 2, the pictograph on page 3, the limit tag on page 3 and
+the dark bookends across the deck.
+
+Pages 4 and 5 are the gap, and the thumbnail check is what surfaces it. Both
+should carry a real product screen, page 4 for the mechanism and page 5 because
+"what you open" is literally a screen, and both currently carry text instead. A
+sanitized screenshot is a capture rather than something a template can invent,
+and generated UI is a hard stop under IG-7, so they stay as they are until real
+screens exist. Page 5 is the one that shows: at thumbnail size it and page 7 are
+the same shape.
+
+Page 7 being plain is deliberate and not the same problem. An ask wants nothing
+competing with it.
+
+`doc-refer-early-01-cover` through `-07-cta` on the instagram engine is the older
+build of the same format and carries none of this.
 
 ### LI-5. One-stat card
 

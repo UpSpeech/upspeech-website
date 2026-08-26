@@ -66,15 +66,22 @@ function docCarouselName(name) {
 }
 
 async function buildDocCarousels(names) {
-  const carousels = new Map();
-  for (const name of names) {
-    const carousel = docCarouselName(name);
-    if (!carousel) continue;
-    if (!carousels.has(carousel)) carousels.set(carousel, []);
-    carousels.get(carousel).push(name);
-  }
+  // Which carousels were touched comes from the render list, but which pages
+  // go in the PDF comes from disk. Re-rendering one page with
+  // `npm run export -- doc-visible-week-02` would otherwise reassemble the
+  // whole carousel from that single page and leave a one-page PDF behind.
+  const carousels = new Set(
+    names.map(docCarouselName).filter((carousel) => carousel !== null),
+  );
 
-  for (const [carousel, pages] of carousels) {
+  const rendered = await fs.readdir(outputDir);
+
+  for (const carousel of carousels) {
+    const pages = rendered
+      .filter((file) => file.endsWith(".png"))
+      .map((file) => file.slice(0, -4))
+      .filter((page) => docCarouselName(page) === carousel);
+
     // Page order follows the two-digit slide number, not document order.
     pages.sort((a, b) =>
       a.match(DOC_PAGE)[2].localeCompare(b.match(DOC_PAGE)[2]),

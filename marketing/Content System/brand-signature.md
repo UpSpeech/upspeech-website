@@ -73,12 +73,12 @@ slide's worth of layout for a figure that was going in the deck anyway.
 The devices that are ours. Nothing in the reference folder has these, and a slide
 using three or four of them is identifiable as UpSpeech with the logo covered.
 
-They are built and running in
+All of them are built and running in
 [`Output/templates/styles.css`](Output/templates/styles.css), which shares
-nothing with the rest of the repo, except for the two marked **not built**. Those
-two are specified here and still have to be written. A device stays marked that
-way until it has rendered in an export, so that this list can be trusted as an
-inventory rather than a wishlist.
+nothing with the rest of the repo. A device does not get listed here until it has
+rendered in an export, so that this list can be trusted as an inventory rather
+than a wishlist. `doc-visible-week` is the deck that carries every one of them
+and is the place to look at them working.
 
 **The aurora ground.** Lavender, sky, and mint bleeding in from opposite corners
 of a near-white field, with a quiet dot grid over the top. The dark variant runs
@@ -87,15 +87,29 @@ solved at once: every slide is unmistakably part of the same set, and the corner
 color gives an otherwise plain layout somewhere to breathe. Class: `.frame`,
 `.frame-dark`.
 
-**The single break.** *Second pass.* One slide in a carousel runs the opposite
-frame to the rest. Not two, not alternating: one. A seven-page deck that is dark
-throughout is coherent and slightly airless, and the reference carousel that
-alternates solid green and solid blue gets its whole rhythm from nothing but the
-colour change. Ours takes the middle: hold the ground constant so the deck reads
-as one object, then break it once, on the slide where the argument stops being
-evidence and becomes a person. The break is a breath, and it makes the slide
-after it land harder because it arrives after a change. Both frames already
-exist, so this is a sequencing rule, not a new class.
+**The dark bookends.** *Second pass, corrected.* Dark ground for the cover and
+for the limits slide, light for the argument in between. This was already how
+`doc-visible-week` ran before anyone wrote it down, and it is right: dark is
+where the brand speaks in its own voice, on the opening claim and on the honest
+caveat, and the light pages are where the argument gets made. Naming it stops it
+being an accident of one deck.
+
+An earlier draft of this entry called for something different, a deck held on one
+ground and broken exactly once. That was written from two exported pages rather
+than the whole deck, and it described a problem the deck did not have. Building
+it settled the question, and the entry now says what the deck actually does.
+
+What the reference set was pointing at is real but compositional rather than
+tonal, and it is the next entry.
+
+**The filled upper half.** *Second pass.* Every page in a carousel anchors its
+content to the bottom, which is correct and which leaves the top forty percent
+empty. On one page that is composure. On five consecutive pages it is the same
+picture five times, and the deck goes flat in a way no change of ground fixes.
+Each interior page wants one object up there: a ghost word, a pictograph, a
+product screen, a stat grid tall enough to reach. The test is to lay the pages
+side by side at thumbnail size, which is roughly how a reader meets them, and see
+whether any two are the same shape.
 
 **The pill label.** A white pill with a soft lift, uppercase Bricolage, tracked
 wide. `THE PROBLEM`, `WHAT WE MEASURED`, `WHAT THIS DOES NOT SHOW`. Principle 1,
@@ -115,34 +129,50 @@ beats being interesting. No new class, the pill renders it.
 carries the idea, regular on the rest. "So we **turned the reminders off**." The
 eye lands on the claim before it reads the sentence. Class: `.headline strong`.
 
-**The highlight bar.** *Second pass. Not built.* The split headline, one level
-down, for body copy. The load-bearing clause of a paragraph sits inside a filled
-bar in the navy to sky to mint gradient, type reversed to white, the bar tight to
-the text and wrapping with it across lines. This is principle 8, and it is the
-only device in the reference folder the signature had no answer for. Rationed
-hard: once per slide, and not on a slide that already carries a gradient numeral,
-or the two fight and the slide has no focal point at all. Proposed class:
+**The highlight bar.** *Second pass.* The split headline, one level down, for
+body copy. The load-bearing clause of a paragraph sits inside a filled bar in the
+navy to sky to mint gradient, type reversed to white. This is principle 8, and it
+is the only device in the reference folder the signature had no answer for.
+Rationed hard: once per slide, and not on a slide that already carries a gradient
+numeral, or the two fight and the slide has no focal point at all. Class:
 `.mark-bar`.
+
+**The clause has to fit on one line**, and that is the rule building it produced.
+The bar sets `box-decoration-break: clone` so a wrap paints the full gradient on
+every line rather than slicing one gradient across them, which is the right
+behaviour and still not enough. A clause that wraps after its first word leaves
+that word alone in a bar of its own, and a one-word bar reads as a rendering
+fault rather than as emphasis. Mark the short version of the clause, or break the
+line yourself, and look at the render before shipping it. `the week is invisible`
+works where `the week is invisible to both of you` does not.
 
 **The gradient numeral.** Numbers are the loudest object on a slide, filled with
 the navy to sky to mint gradient rather than a flat color. A zero we are proud of
 takes flat mint instead, because zero notifications sent is a different kind of
 number from 340 recordings submitted. Classes: `.numeral`, `.numeral-flat`.
 
-**The pictograph.** *Second pass. Not built.* Principle 9. A proportion drawn as
-a grid of dots rather than set as a percentage, the counted dots in mint and the
-remainder at low opacity on the same ground. It is for prevalence figures, which
-is most of what [`proof-library.md`](proof-library.md) actually holds: `5 in 100`
-children stutter for six months or more, `1 in 100` keep stuttering long term.
-Those two together are the strongest pictograph we have, because the picture
-makes the gap between them the point, which is exactly what the myth square is
-arguing.
+**The pictograph.** *Second pass.* Principle 9. A proportion drawn as a grid of
+dots rather than set as a percentage, the counted dots in mint and the remainder
+at low opacity on the same ground. It suits prevalence figures, which is much of
+what [`proof-library.md`](proof-library.md) holds: `5 in 100` children stutter
+for six months or more, `1 in 100` keep stuttering long term. Those two together
+are the strongest pictograph we have, because the picture makes the gap between
+them the point, which is exactly what the myth square is arguing. It also suits a
+plain count out of a plain total: `doc-visible-week` draws 21 of 24.
 
 Rules. The grid matches the denominator, so `1 in 100` is ten by ten and never a
-rounded stand-in. It replaces the numeral on that slide rather than joining it. A
-figure only gets drawn if it is sourced in the proof library, since a picture of
-a number reads as more certain than the number did and the limit tag has to work
-harder to hold it. Proposed classes: `.pictograph`, `.pictograph-dot`.
+rounded stand-in at 99 percent. It replaces the **gradient** numeral on that
+slide rather than joining it, since two loud objects leave a slide with no focal
+point. A flat numeral is a different matter and can stay: on
+`doc-visible-week-03` the mint dots and the flat mint zero agree rather than
+compete, and the zero is the counterpoint the pictograph is arguing against.
+
+A pictograph ships with its caption. The dots are the picture and the caption is
+the figure, and a reader who screenshots the slide needs both. A figure only gets
+drawn if it is sourced in the proof library, since a picture of a number reads as
+more certain than the number did and the limit tag has to work harder to hold it.
+Classes: `.pictograph`, `.pictograph-dot`, `.pictograph-caption`, with `--cols`
+setting the row length.
 
 **The travelling ring.** A progress ring in the top right that fills a little
 more on every page of a carousel, 8 percent on the cover to full on the last
@@ -157,7 +187,9 @@ is hiding in your data*, *swipe for milestones to celebrate*. Ours names the
 payoff in the reader's terms, in sentence case beside the rule, five to nine
 words. `Swipe for what 24 people did with no reminders.` The instruction is not
 the point. The promise is, and a cover that cannot make one is usually a carousel
-without an argument yet. Existing classes: `.swipe`, `.swipe-bar`.
+without an argument yet. It keeps the mint rule and drops the tracking and the
+caps, because those belong to a label and this is a sentence. Classes: `.swipe`
+with `.swipe-promise`, alongside `.swipe-bar`.
 
 **The limit tag.** The one nobody else in that folder does, and the most
 distinctive thing we have. A gold dot and a line saying what the number does not
@@ -170,14 +202,20 @@ slide says what it does not prove is doing something recognizable, and a
 clinician notices it in about two seconds.
 
 **The ghost word.** An oversized word behind the content, cropped by the frame
-edge, at 5 percent opacity. Used once per carousel at most, on the slide where a
-single word is the whole idea. Class: `.ghost`.
+edge, at 5 percent opacity, on the slide where a single word is the whole idea.
+Class: `.ghost`, with `.frame-dark .ghost` reversing it to white on the dark
+ground.
 
-Its most useful home is the cover, and that is a second-pass finding. A cover
-that sets its type in the lower third leaves the top two thirds empty, which
-reads as unfinished rather than as breathing room. Every reference cover fills
-that space with something: a headline set enormous, a product mockup, two tilted
-photographs. The ghost word is what we have for it, and it costs one word.
+**Once on the cover, and at most once inside.** *Second pass, corrected.* The
+rule used to read once per carousel, which building `doc-visible-week` showed to
+be one budget covering two different jobs. A cover that sets its type in the
+lower third leaves the top two thirds empty and reads as unfinished, and every
+reference cover fills that space with something: a headline set enormous, a
+product mockup, two tilted photographs. The ghost word is what we have for it and
+it costs one word. Spending the whole allowance there would then rule it out for
+the interior page that actually needs it. So the cover gets one and the interior
+gets one, and a third is a tic. This deck runs `ANYWAY` on the cover and
+`TUESDAY` on page 2.
 
 **Quoted speech bubbles.** A claim shown as something somebody said, staggered
 left and right like a conversation, rather than asserted by us in a headline. It
