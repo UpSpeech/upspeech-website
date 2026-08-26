@@ -29,6 +29,25 @@ Add `marketing/instagram/art-direction.md` when the post will be rendered as an
 image, and `marketing/instagram/visual-production-pipeline.md` when it needs new
 source imagery.
 
+## Generated imagery goes through fal.ai over MCP
+
+There is no fal CLI here. Use the `fal-ai` MCP tools, and call
+`list_available_models` first if you are unsure a name is still current.
+
+- Source plates and texture: `flux_dev`, `imagen4`, `recraft_v3`, `ideogram_v3`
+- Animating a finished still: `kling_master_image` by default, `ltx_video` for a
+  cheap batch. Both need `image_url` to be a public URL, so upload first.
+- Anything with no dedicated tool, including image edits and veo
+  image-to-video: `execute_custom_model` with the endpoint written out.
+
+Generation is for atmosphere only. Final text, numbers, technique names, app UI,
+and the logo stay deterministic in the HTML templates, per rule 1 of the
+pipeline. Never ask a model to redraw a readable progress screen or report, and
+never generate a person who could read as an identifiable real patient.
+
+Log the tool name, endpoint, prompt, seed, and source path in
+`marketing/instagram/source-images/prompts/` for every batch.
+
 ## Step 2: draft
 
 Write to the platform strategy's pillars and cadence. Voice is Calm, Scientific,
