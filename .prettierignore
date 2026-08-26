@@ -22,8 +22,3 @@ public/.well-known/
 # Lockfiles.
 package-lock.json
 bun.lockb
-
-# Rendered to a PNG by marketing/instagram/templates/export.mjs, so whitespace
-# between inline elements is layout, not style. Nothing compares those images in
-# CI, so a reflow here would ship silently.
-marketing/instagram/templates/index.html
