@@ -4,9 +4,8 @@ How to add photographic and motion polish to the social assets without letting
 generative models invent product UI, text, logos, numbers, or anything that
 could read as a clinical claim.
 
-fal.ai runs through the MCP tools in this workspace. There is no fal CLI
-installed, so MCP is the route. See [Tooling](#tooling) for which tool covers
-which step and what to do when none does.
+fal.ai runs through the `genmedia` CLI. See [Tooling](#tooling) for the install,
+the four commands this pipeline uses, and the endpoint for each step.
 
 ## Core rules
 
@@ -27,31 +26,47 @@ which step and what to do when none does.
 
 ## Tooling
 
-Call `list_available_models` to re-check the roster before trusting the names
-below. It reports 22 models and prints the endpoint each one wraps.
+Use the `genmedia` CLI. It reaches every fal endpoint (~1200), uploads local
+files, and downloads results to disk, which the MCP tools cannot do.
 
-| Step | Tool | Notes |
-|---|---|---|
-| Source imagery, texture, plates | `imagen4`, `flux_dev`, `ideogram_v3`, `recraft_v3` | All text-to-image |
-| Animate a finished still | `kling_master_image`, `ltx_video`, `luma_ray2_image`, `wan_pro_image`, `pixverse_image`, `vidu_image` | All take `image_url` |
-| Anything else | `execute_custom_model` | Takes a raw `endpoint` plus `input_params` |
+```bash
+curl https://genmedia.sh/install -fsS | bash
+genmedia setup --non-interactive --api-key "$FAL_KEY"
+```
 
-Three limits decide how the routes below are written:
+Four commands carry the pipeline:
 
-- **Sizes are enums, not pixels.** Text-to-image takes `image_size` from
-  `square_hd`, `square`, `portrait_4_3`, `portrait_16_9`, `landscape_4_3`,
-  `landscape_16_9`. Image-to-video takes `aspect_ratio` from `16:9`, `9:16`,
-  `1:1` and `duration` of `"5"` or `"10"`. You cannot ask for 1080x1920. Crop
-  and pad deterministically afterwards, which is what the cropping trap below
-  is about.
-- **`image_url` needs a public URL.** These tools do not read local files, so a
-  still has to be uploaded before it can be animated.
-- **No image-edit model is in the registry, and neither is veo image-to-video.**
-  Both run through `execute_custom_model` with the endpoint written out in full.
-  `flux_kontext` is text-to-image despite the name; it takes no input image.
+| Command | Use |
+|---|---|
+| `genmedia models "<query>" --category image-to-image` | Find an endpoint. Add `--endpoint_id a,b` to look up known ones |
+| `genmedia schema <endpoint>` | Real parameter names, types, and enums before you guess |
+| `genmedia pricing <endpoint>` | Cost per unit, which the checklist below asks for |
+| `genmedia run <endpoint> --<param> --download <path>` | Run it and write the result to disk |
 
-Log the tool name, not just the endpoint, in `source-images/prompts/`. The two
-have drifted apart before.
+`genmedia upload ./file.png` returns JSON with a `cdn_url`. That is how a local
+still becomes an `image_url` an endpoint can read, and it replaces the old
+tmpfiles.org step.
+
+Endpoints this pipeline uses:
+
+| Step | Endpoint |
+|---|---|
+| Source plates, texture | `fal-ai/flux/dev`, `fal-ai/flux/schnell` (cheap drafts) |
+| Illustrated plates | `fal-ai/recraft/v3/text-to-image`, `fal-ai/ideogram/v3` |
+| Cut a subject out | `fal-ai/birefnet`, `fal-ai/imageutils/rembg` |
+| Animate a still | `fal-ai/kling-video/v2.1/master/image-to-video`, `fal-ai/ltx-video-13b-distilled/image-to-video` |
+
+Two habits worth keeping. Category inference on a bare search is unreliable, so
+pass `--category` when you know it ("background removal" alone infers
+text-to-image and returns nothing). And `--output-format json` is the default
+here, so pipe into `python3 -c` or `jq` rather than parsing the pretty view.
+
+The MCP `fal-ai` tools still work and need no install, but they only expose 22
+models with fixed `image_size` and `aspect_ratio` enums, they cannot read a
+local file, and they hand back URLs rather than files. Treat them as the
+fallback when the CLI is missing.
+
+Log the endpoint, prompt, seed, and source path in `source-images/prompts/`.
 
 ## Asset routes
 
@@ -67,10 +82,44 @@ optional generated texture
   -> phone-size review
 ```
 
-Generation: `flux_dev` for calm desk and texture plates; `imagen4` for quick
-clean editorial drafts; `recraft_v3` when the plate is illustrated rather than
-photographic. Ask for `square_hd` and crop, since the template decides the final
-size. Text always lives in the template.
+Generation: `fal-ai/flux/dev` for calm desk and texture plates,
+`fal-ai/flux/schnell` for cheap drafts, `fal-ai/recraft/v3/text-to-image` when
+the plate is illustrated rather than photographic. The template decides the
+final size, so generate square and let CSS crop. Text always lives in the
+template.
+
+Endpoints move. `genmedia models --endpoint_id <id>` returns a count of 1 when
+one is live, and a batch lookup 404s wholesale if any single entry is missing,
+so check them one at a time.
+
+### Cut-out objects composited in CSS
+
+Preferred over baking a subject into a flat plate, because the result stays
+editable: move it in CSS, re-run `npm run export`, done.
+
+```bash
+# 1. generate the object on a plain background
+genmedia run fal-ai/flux/schnell \
+  --prompt "a single ceramic mug on a plain white seamless background, soft daylight" \
+  --image_size square --download ./
+
+# 2. cut it out; png is what carries the alpha channel
+genmedia run fal-ai/birefnet \
+  --image_url "$(genmedia upload ./plate.jpg | python3 -c 'import sys,json;print(json.load(sys.stdin)["cdn_url"])')" \
+  --output_format png --download templates/assets/objects/mug.png
+```
+
+Verify the alpha before using it: `magick identify -format '%[channels]\n'`
+should report `srgba`. Then place it in `templates/index.html` as an `<img>` and
+position it with CSS like any other asset.
+
+Ask for the object on a **plain seamless background**. A busy generated scene
+cuts out badly at the edges. `fal-ai/imageutils/rembg` is the faster, rougher
+alternative; `fal-ai/bria/background/remove` and
+`fal-ai/ideogram/remove-background` are there if an edge gives trouble.
+
+Cut-outs are objects and atmosphere. Do not cut out a generated person and place
+them in a post, per rule 5 in `../brand-voice.md`.
 
 ### Product proof with readable UI
 
@@ -85,9 +134,9 @@ Three options, by how load-bearing the on-screen content is:
   real names), then composite it into a generated phone/desk plate with
   ImageMagick perspective `-distort` so the UI stays crisp. Use this when you
   want the screen sitting in a photographed scene, not a flat browser frame.
-- **AI edit.** No edit model is in the MCP registry, so this runs through
-  `execute_custom_model` with the endpoint spelled out and `category_hint:
-  "image"`. Use when the device sits near head-on. Fast, but small text
+- **AI edit.** Find one with `genmedia models "image edit" --category
+  image-to-image`, then check `genmedia schema` for how it takes the second
+  image. Use when the device sits near head-on. Fast, but small text
   regenerates and garbles, so only for posts where the screen is atmosphere,
   not content.
 
@@ -97,17 +146,17 @@ After a still already works as a static post.
 
 ```text
 final still (e.g. a story export, already 9:16)
-  -> upload via tmpfiles.org /dl/ form (catbox is silently rejected by veo/kling)
-  -> kling_master_image  (image_url, aspect_ratio 9:16, subtle motion prompt)
+  -> genmedia upload  (returns cdn_url)
+  -> fal-ai/kling-video/v2.1/master/image-to-video
+       --image_url --aspect_ratio 9:16 --negative_prompt --download
   -> ffmpeg caption/logo overlay if needed
   -> 1080x1920 export
 ```
 
-`kling_master_image` is the default: it takes `negative_prompt`, which is what
-holds the typography still. `ltx_video` is the fast, cheap alternative for a
-batch. Veo image-to-video is not in the registry, so reaching it means
-`execute_custom_model` with `category_hint: "image_to_video"`. Animate the
-strongest one or two stills per week.
+Kling is the default because it takes `negative_prompt`, which is what holds the
+typography still. `fal-ai/ltx-video-13b-distilled/image-to-video` is the fast,
+cheap alternative for a batch. Run `genmedia pricing` on whichever you pick
+before a run. Animate the strongest one or two stills per week.
 
 Prompt pattern that keeps HTML text crisp:
 
@@ -132,7 +181,7 @@ Fixes:
   first: `magick in.png -gravity center -background "#f3f5fd" -extent 1080x1920
 padded.png`, then animate at 9:16.
 - **Native 9:16 source:** the `story-*` exports are already 1080x1920. Use as-is.
-- **Square loop:** use `kling_master_image` at `1:1`.
+- **Square loop:** run Kling image-to-video with `--aspect_ratio 1:1`.
 
 ### Companion animation (UpSpeech-specific)
 

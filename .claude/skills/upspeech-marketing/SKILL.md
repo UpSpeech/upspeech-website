@@ -29,23 +29,36 @@ Add `marketing/instagram/art-direction.md` when the post will be rendered as an
 image, and `marketing/instagram/visual-production-pipeline.md` when it needs new
 source imagery.
 
-## Generated imagery goes through fal.ai over MCP
+## Generated imagery goes through the genmedia CLI
 
-There is no fal CLI here. Use the `fal-ai` MCP tools, and call
-`list_available_models` first if you are unsure a name is still current.
+`genmedia` reaches every fal.ai endpoint, uploads local files, and downloads
+results to disk. Read the Tooling section of
+`marketing/instagram/visual-production-pipeline.md` for the full command set.
+The short version:
 
-- Source plates and texture: `flux_dev`, `imagen4`, `recraft_v3`, `ideogram_v3`
-- Animating a finished still: `kling_master_image` by default, `ltx_video` for a
-  cheap batch. Both need `image_url` to be a public URL, so upload first.
-- Anything with no dedicated tool, including image edits and veo
-  image-to-video: `execute_custom_model` with the endpoint written out.
+- `genmedia models "<query>" --category <cat>` to find an endpoint, and
+  `genmedia schema <endpoint>` for its real parameters. Do not guess parameter
+  names.
+- `genmedia pricing <endpoint>` before any video run.
+- `genmedia run <endpoint> --<param> --download <path>` to generate.
+- `genmedia upload ./file.png` returns a `cdn_url` for endpoints that need an
+  `image_url`.
+
+**Prefer cut-outs over baked-in scenes.** Generate the object on a plain
+background, cut it with `fal-ai/birefnet --output_format png`, then position the
+transparent PNG in the HTML template with CSS. That keeps the composition
+editable across re-exports.
+
+The `fal-ai` MCP tools are the fallback if the CLI is unavailable. They cover 22
+models with fixed size enums and cannot read local files.
 
 Generation is for atmosphere only. Final text, numbers, technique names, app UI,
 and the logo stay deterministic in the HTML templates, per rule 1 of the
 pipeline. Never ask a model to redraw a readable progress screen or report, and
-never generate a person who could read as an identifiable real patient.
+never generate or cut out a person who could read as an identifiable real
+patient.
 
-Log the tool name, endpoint, prompt, seed, and source path in
+Log the endpoint, prompt, seed, and source path in
 `marketing/instagram/source-images/prompts/` for every batch.
 
 ## Step 2: draft
