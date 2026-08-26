@@ -4,8 +4,13 @@ The named, repeatable shapes. Every post is one of these, or it is a new format
 that gets added here after it works.
 
 A format is not a template file. It is a decision about structure: what goes on
-which slide, in what order, and what makes that particular shape fail. The
-template engine at `../instagram/templates/` renders them.
+which slide, in what order, and what makes that particular shape fail.
+
+Two engines render them, which matters when you go looking for a template.
+`../instagram/templates/` is the original and holds most of what is marked built
+below. `Output/templates/` is the Content System's own engine, it is where
+[`brand-signature.md`](brand-signature.md) points, and it is where anything new
+should be written. Where a format exists in both, the Output one is current.
 
 **How the renderer decides size**, from `export.mjs`:
 
@@ -16,9 +21,9 @@ template engine at `../instagram/templates/` renders them.
 | `profile-grid` | 3240 x 3240 |
 | everything else | 1080 x 1080 |
 
-**Built** means an `<article data-export="...">` for it already exists in
-`../instagram/templates/index.html`. **Not built** means the format is defined and
-the template still has to be written.
+**Built** means an `<article data-export="...">` for it already exists, in the
+engine named alongside it. **Not built** means the format is defined and the
+template still has to be written.
 
 ---
 
@@ -48,12 +53,25 @@ every time.
 
 **When.** Correcting something the field gets wrong.
 **Reader.** Community, or parents.
-**Shape.** Two options. Single square with the myths as speech bubbles around the
-Companion, or the myth in navy on the top half and the correction on the light
-lower half. Never more than five myths.
+**Shape.** Three options, and the first two turned out to be one thing. The built
+square runs both at once: speech bubbles under a pill label on the dark upper
+half, the correction and its stat cards on the light lower half. Never more than
+five myths.
+
+The third is the **pair stack**, a carousel rather than a square, and it is the
+one still to build. One page per myth, each page identical: a navy pill carrying
+the claim with the quote beneath it, then a light pill carrying the reframe with
+the correction beneath that, split by a single arc. Five pairs maximum, one per
+page. It is the highest-leverage unbuilt thing in this file, because it takes the
+myth work off a single crowded square and gives each myth a page, while the pill
+pair keeps the myth visibly quoted rather than asserted by us.
+
+Whichever option, the correction gets the larger type and the prevalence figures
+want the pictograph from `brand-signature.md` rather than a bare numeral.
 **Fails when.** The myth is more memorable than the correction. Give the
 correction the larger type.
-**Not built.**
+**Built** as the square: `ig-myth-01-ask-early`, Output engine. **Not built** as
+the pair stack.
 
 ### IG-4. Progress card
 
@@ -91,6 +109,11 @@ line of context.
 **Shape.** Real sanitized screenshot in a hand or a browser frame, flat ground,
 optionally one oversized word behind the device. The screen is real, never
 generated. Route detail in `../instagram/visual-production-pipeline.md`.
+**Also.** The same composite does more work inside a carousel than alone. The
+strongest reference deck puts the product screen on its mechanism page with a
+callout over it rather than posting it as its own announcement, which is why LI-4
+page 4 is a screen and not a paragraph. Build the composite once, use it in both
+places.
 **Fails when.** The UI is generated, or the screenshot has real client data in it.
 Both are hard stops.
 **Built.** `feed-mock-01-progress`, `feed-mock-02-report`, `feed-10-app`,
@@ -176,21 +199,55 @@ do. The third part is not optional.
 
 **When.** The highest-save format on the channel. Roughly twice a month.
 **Reader.** Clinician or clinic.
-**Shape.** 1080 x 1350 pages, six to ten, named
-`doc-<carousel>-<nn>-<slug>` so the exporter assembles the PDF in order.
+**This is the house format.** Everything else in this file is a derivative of it
+or a fragment lifted out of it. It earns that on three counts: it is the highest
+save rate we have, it is the only shape that survives being republished as a
+customer story, an evidence read, a build note and a congress write-up while
+still reading as one publication, and 4:5 is the tallest ratio both channels
+render whole. Headspace's 3:4 gets centre-cropped on LinkedIn, so we do not use
+it.
 
-1. Cover. The whole idea, stated on its own.
-2. The problem, from the clinician's day.
-3. The problem again, with a number in a card if we have one.
-4. The mechanism.
-5. The mechanism, continued or shown.
-6. **The limits.** What this does not prove or does not do.
-7. Ask.
+**Shape.** Seven pages at 1080 x 1350, named `doc-<carousel>-<nn>-<slug>` so the
+exporter assembles the PDF in order. Seven, not six to ten. Five is thin and ten
+is padding: the eleven-page reference deck has two takeaways doing nothing the
+earlier ones did not, and it is the weakest carousel in the folder.
+
+1. **Cover.** The whole idea, stated on its own. Act label in the pill, split
+   headline, one supporting line, ring at 1/7, promise cue at the foot. Do not
+   leave the upper two thirds empty: ghost word, or lift the headline into the
+   upper half and let the cue hold the floor.
+2. **The problem, in real places.** Named moments, not an abstraction. The
+   reference line worth stealing the shape of is "it happens at the dinner
+   table, at the grocery store, during bedtime stories". Three ordinary places
+   beat one general claim.
+3. **The problem with a number.** 2x2 stat cards, context chips at the foot
+   saying who and how many and over what period. A prevalence figure here takes
+   the pictograph.
+4. **The mechanism, shown.** The real product screen, not a description of it.
+   Sanitized screenshot, Companion present, one overlaid callout if the screen
+   needs one. Never a generated UI.
+5. **The human slide, on the broken ground.** This is where the single break
+   lands: flip to the opposite frame. The argument stops being evidence and
+   becomes a person, and the change of ground is the reader's breath before the
+   limits.
+6. **The limits.** What this does not prove or does not do. Back on the main
+   ground, plain label, `WHAT THIS DOES NOT SHOW` in every deck.
+7. **Ask.** One action, named.
+
+Act labels run across pages 1 to 5, from `brand-signature.md` principle 7: names
+drawn from this deck's own subject, not a generic outline. Page 6 keeps its plain
+label and page 7 needs none.
 
 The limits slide is a house rule, not a convention borrowed from anywhere. It is
 the honest-limits tag from `brand-signature.md` at carousel scale.
 **Fails when.** It is a blog post cut into rectangles. Each page is one idea.
-**Built.** `doc-refer-early-01-cover` through `doc-refer-early-07-cta`.
+Also fails when every page runs the same ground for seven pages, which is
+coherent and airless, or when the break is used twice, which stops being a break
+and becomes a pattern.
+**Built.** `doc-refer-early-01-cover` through `-07-cta`, instagram engine.
+`doc-visible-week-01-cover` through `-07-ask`, Output engine, which is the
+current reference build. Neither yet carries the act labels, the promise cue, the
+single break or a filled cover; `doc-visible-week` is the one to retrofit.
 
 ### LI-5. One-stat card
 
