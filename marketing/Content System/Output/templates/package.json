@@ -1,0 +1,13 @@
+{
+  "name": "upspeech-content-system-output",
+  "private": true,
+  "type": "module",
+  "description": "Prototype render targets for Content System/Output. Isolated from the live instagram/templates engine.",
+  "scripts": {
+    "export": "node export.mjs"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,842 @@
+/* ===================================================================
+   UpSpeech Content System - visual system
+
+   Written from scratch for this folder. It shares nothing with
+   marketing/instagram/templates/ and imports nothing from outside
+   Content System/. Fonts and the logo are copied into ./assets/.
+
+   The devices below are derived from the principles in
+   ../../brand-signature.md, which were in turn read off the reference
+   set in ../../Assets/Inspiration from other companies/. None of them
+   reproduce another brand's look:
+
+     aurora ground      soft color bleeding in from opposite corners
+     pill label         a recurring slide tag that makes a series
+     split headline     bold on the phrase that carries the idea
+     gradient numeral   numbers as the loudest object on the slide
+     limit tag          what the number does not prove, inside the card
+     travelling ring    a progress ring that fills across the carousel
+     ghost word         an oversized word sitting behind the content
+   =================================================================== */
+
+/* ----------------------------------------------------- 1. Type ---- */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/outfit-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: block;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("./assets/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: block;
+}
+
+/* --------------------------------------------------- 2. Tokens ---- */
+
+:root {
+  --navy: #293587;
+  --navy-deep: #1b2150;
+  --navy-ink: #141a44;
+  --sky: #3b82f6;
+  --mint: #10b981;
+  --gold: #f59e0b;
+  --lavender: #958af0;
+
+  --paper: #ffffff;
+  --ground: #fbfcfe;
+  --ink: #1b2150;
+  --ink-soft: #454c7d;
+  --muted: #7c82a6;
+  --hairline: #e6e9f7;
+
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Bricolage Grotesque", "Outfit", system-ui, sans-serif;
+
+  --pad: 84px;
+  --card-radius: 34px;
+  --lift: 0 24px 60px rgba(30, 40, 110, 0.09);
+  --lift-soft: 0 14px 34px rgba(30, 40, 110, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------- 3. Workspace shell ---- */
+
+body {
+  margin: 0;
+  padding: 64px;
+  background: #0d1030;
+  color: #dfe3f5;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.workspace-title {
+  max-width: 1080px;
+  margin: 0 auto 56px;
+}
+
+.workspace-title p {
+  margin: 0 0 10px;
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8f97cf;
+}
+
+.workspace-title h1 {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.workspace-title span {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #a7aed8;
+}
+
+.rail {
+  max-width: 1080px;
+  margin: 0 auto 72px;
+}
+
+.rail > p {
+  margin: 0 0 22px;
+  font-family: var(--font-label);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8f97cf;
+}
+
+.rail-scroll {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.rail-scroll > * {
+  flex: 0 0 auto;
+  transform: scale(0.42);
+  transform-origin: top left;
+  margin-right: calc(-58% - 40px);
+  margin-bottom: -58%;
+}
+
+html.exporting body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.export-body {
+  margin: 0;
+  padding: 0;
+  width: var(--export-w);
+  height: var(--export-h);
+  background: transparent;
+}
+
+.export-body .is-export-target {
+  transform: none;
+  margin: 0;
+}
+
+/* --------------------------------------------- 4. Frame + aurora ---- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: var(--pad);
+  background: var(--ground);
+  color: var(--ink);
+}
+
+.frame-square {
+  width: 1080px;
+  height: 1080px;
+}
+
+.frame-page {
+  width: 1080px;
+  height: 1350px;
+}
+
+/* Color bleeding in from two opposite corners. The whole system sits on
+   this. Light frames get a whisper of it, dark frames get more. */
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      760px 620px at 4% -6%,
+      rgba(149, 138, 240, 0.4),
+      transparent 62%
+    ),
+    radial-gradient(
+      700px 580px at 100% 104%,
+      rgba(16, 185, 129, 0.28),
+      transparent 60%
+    ),
+    radial-gradient(
+      620px 520px at 88% 8%,
+      rgba(59, 130, 246, 0.22),
+      transparent 58%
+    );
+}
+
+/* The dot grid, quiet enough that you feel it rather than see it. */
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+    rgba(41, 53, 135, 0.14) 1.6px,
+    transparent 1.6px
+  );
+  background-size: 34px 34px;
+  opacity: 0.5;
+}
+
+.frame-dark {
+  background: var(--navy-deep);
+  color: #eef1fb;
+}
+
+.frame-dark::before {
+  background:
+    radial-gradient(
+      820px 660px at 2% -8%,
+      rgba(149, 138, 240, 0.5),
+      transparent 62%
+    ),
+    radial-gradient(
+      760px 600px at 100% 106%,
+      rgba(16, 185, 129, 0.34),
+      transparent 60%
+    ),
+    radial-gradient(
+      640px 540px at 92% 6%,
+      rgba(59, 130, 246, 0.34),
+      transparent 58%
+    );
+}
+
+.frame-dark::after {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.16) 1.6px,
+    transparent 1.6px
+  );
+  opacity: 0.4;
+}
+
+/* ------------------------------------------------ 5. Slide chrome ---- */
+
+.chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.mark {
+  height: 40px;
+  width: auto;
+}
+
+.counter {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.frame-dark .counter {
+  color: rgba(238, 241, 251, 0.62);
+}
+
+/* The pill label. One per slide, and the thing that makes a run of
+   slides read as a series rather than as separate pictures. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  padding: 17px 32px;
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: var(--lift-soft);
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.pill-mint {
+  color: var(--mint);
+}
+.pill-navy {
+  color: var(--navy);
+}
+
+.frame-dark .pill {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------- 6. Headline ---- */
+
+.body-stack {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 84px;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  color: var(--ink);
+  max-width: 16ch;
+}
+
+/* Bold only on the phrase that carries the idea. */
+.headline strong {
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.frame-dark .headline {
+  color: #ffffff;
+}
+.frame-dark .headline strong {
+  color: #ffffff;
+}
+
+.headline-sm {
+  font-size: 68px;
+  max-width: 19ch;
+}
+
+.lede {
+  margin: 0;
+  font-size: 33px;
+  line-height: 1.38;
+  color: var(--ink-soft);
+  max-width: 27ch;
+}
+
+.frame-dark .lede {
+  color: rgba(238, 241, 251, 0.86);
+}
+
+/* An oversized word sitting behind everything, cropped by the frame. */
+.ghost {
+  position: absolute;
+  z-index: -1;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 300px;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: rgba(41, 53, 135, 0.05);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ghost-tr {
+  top: 218px;
+  right: -70px;
+}
+
+/* ------------------------------------------ 7. Numbers and limits ---- */
+
+.numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.number-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 224px;
+  padding: 38px 36px;
+  border-radius: var(--card-radius);
+  background: var(--paper);
+  box-shadow: var(--lift);
+}
+
+/* The numeral is the loudest object on the slide, and it carries the
+   brand gradient rather than a flat fill. */
+.numeral {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  background: linear-gradient(
+    100deg,
+    var(--navy) 0%,
+    var(--sky) 52%,
+    var(--mint) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.numeral-flat {
+  background: none;
+  -webkit-text-fill-color: var(--mint);
+  color: var(--mint);
+}
+
+.number-label {
+  margin-top: 14px;
+  font-size: 27px;
+  line-height: 1.26;
+  color: var(--ink-soft);
+}
+
+/* What the number does not prove, inside the frame, never in a
+   footnote. This is the house signature. */
+.limit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  align-self: flex-start;
+  width: fit-content;
+  padding: 16px 30px 16px 22px;
+  border-radius: 999px;
+  background: rgba(41, 53, 135, 0.06);
+  border: 1px solid var(--hairline);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+}
+
+.limit-tag::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex: 0 0 auto;
+}
+
+/* Small context pills at the foot of a slide. */
+.foot-pills {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.foot-pill {
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  font-size: 23px;
+  color: var(--navy);
+}
+
+/* ------------------------------------------ 8. The travelling ring ---- */
+
+/* The continuity object. It fills a little more on every page, so the
+   carousel has a direction you can see before you read it. */
+.chrome-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.ring {
+  width: 104px;
+  height: 104px;
+  flex: 0 0 auto;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 13;
+  stroke-linecap: round;
+}
+
+.ring .ring-track {
+  stroke: rgba(41, 53, 135, 0.12);
+}
+
+.ring .ring-fill {
+  stroke: url(#ringGradient);
+  stroke-dasharray: calc(var(--fill, 0) * 339.292px) 339.292px;
+  transform: rotate(-90deg);
+  transform-origin: 64px 64px;
+}
+
+.frame-dark .ring .ring-track {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+/* The gradient goes muddy on navy, so the dark frames take a flat mint. */
+.frame-dark .ring .ring-fill {
+  stroke: #6ee7b7;
+}
+
+/* ------------------------------------------------ 9. Stacked list ---- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.stack-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  padding: 30px 34px;
+  border-radius: 28px;
+  background: var(--paper);
+  box-shadow: var(--lift-soft);
+}
+
+.stack-index {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  color: var(--mint);
+  padding-top: 8px;
+  flex: 0 0 auto;
+}
+
+.stack-row h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.stack-row p {
+  margin: 6px 0 0;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+
+/* Plain ruled list, for the limits page. */
+.ruled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ruled li {
+  padding: 26px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 34px;
+  line-height: 1.3;
+  color: rgba(238, 241, 251, 0.92);
+}
+
+.ruled li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* ------------------------------------------- 10. Speech bubbles ---- */
+
+/* For the myth formats. The claim is quoted, so it reads as something
+   somebody said rather than as something we are asserting. */
+.bubbles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.bubble {
+  max-width: 640px;
+  padding: 19px 30px;
+  border-radius: 28px 28px 28px 10px;
+  background: var(--paper);
+  box-shadow: var(--lift);
+  font-size: 29px;
+  line-height: 1.24;
+  color: var(--ink);
+}
+
+.bubble:nth-child(2) {
+  align-self: flex-end;
+  border-radius: 28px 28px 10px 28px;
+}
+
+.bubble:nth-child(3) {
+  margin-left: 96px;
+}
+
+/* --------------------------------------------- 11. Split square ---- */
+
+/* Claim on the dark half, what is actually true on the light half. */
+.split {
+  padding: 0;
+}
+
+.split-top {
+  position: relative;
+  flex: 0 0 48%;
+  padding: 60px var(--pad) 50px;
+  background: var(--navy-deep);
+  color: #eef1fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  overflow: hidden;
+}
+
+.split-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(
+      620px 460px at 6% -20%,
+      rgba(149, 138, 240, 0.52),
+      transparent 62%
+    ),
+    radial-gradient(
+      560px 420px at 98% 120%,
+      rgba(59, 130, 246, 0.4),
+      transparent 60%
+    );
+}
+
+.split-top > * {
+  position: relative;
+  z-index: 1;
+}
+
+.split-top .headline {
+  font-size: 72px;
+  color: #ffffff;
+  max-width: 15ch;
+}
+
+.split-bottom {
+  position: relative;
+  flex: 1;
+  padding: 48px var(--pad) 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* The square has less room than a carousel page, so the cards run shorter. */
+.split .number-card {
+  min-height: 190px;
+  padding: 32px 34px;
+}
+
+.split .numeral {
+  font-size: 80px;
+}
+
+.split .headline {
+  font-size: 64px;
+}
+
+.split-mark {
+  position: absolute;
+  right: var(--pad);
+  bottom: 62px;
+  height: 34px;
+}
+
+.source-line {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 21px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------- 12. Swipe cue ---- */
+
+.swipe {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.swipe-bar {
+  display: block;
+  width: 74px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--mint);
+}
+
+/* ------------------------------------------------ 13. Photo frame ---- */
+
+/* A real photograph carries the slide, and the brand sits lightly on top
+   of it. The aurora and the dot grid are hidden behind the image, which
+   is correct: a photo does not need a decorated ground. */
+
+.frame-photo {
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.frame-photo .photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame-photo .scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(20, 26, 68, 0.95) 0%,
+    rgba(20, 26, 68, 0.88) 38%,
+    rgba(20, 26, 68, 0.5) 74%,
+    transparent 100%
+  );
+}
+
+.photo-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  padding: var(--pad);
+}
+
+.frame-photo .pill {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  color: #ffffff;
+}
+
+.frame-photo .headline {
+  color: #ffffff;
+  font-size: 62px;
+  max-width: 20ch;
+}
+
+.frame-photo .headline strong {
+  color: #ffffff;
+}
+
+.frame-photo .lede {
+  color: rgba(238, 241, 251, 0.88);
+  max-width: 30ch;
+}
+
+.photo-mark {
+  height: 38px;
+  width: auto;
+}
+
+/* A quieter variant: the photograph alone, with the mark and nothing else. */
+.frame-photo-bare .scrim {
+  height: 34%;
+  background: linear-gradient(
+    to top,
+    rgba(20, 26, 68, 0.72) 0%,
+    rgba(20, 26, 68, 0.28) 52%,
+    transparent 100%
+  );
+}
+
+/* ------------------------------------------- 14. Statement card ---- */
+
+/* One sentence, room around it, and an attribution. For the posts where
+   the words are the whole asset and a photograph would only decorate. */
+
+.byline {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(238, 241, 251, 0.6);
+}
+
+.ghost-quote {
+  top: 138px;
+  left: 58px;
+  font-size: 400px;
+  line-height: 0.7;
+  color: rgba(255, 255, 255, 0.07);
+}
+
+/* A quoted sentence runs long, so the statement card sets its own size
+   rather than inheriting the headline scale. */
+.headline-quote {
+  font-size: 64px;
+  max-width: 17ch;
+}

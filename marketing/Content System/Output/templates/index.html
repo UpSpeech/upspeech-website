@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UpSpeech Content System - render targets</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      document.documentElement.classList.toggle(
+        "exporting",
+        new URLSearchParams(window.location.search).has("export"),
+      );
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const name = new URLSearchParams(window.location.search).get("export");
+        if (!name) return;
+
+        const target = document.querySelector(`[data-export="${CSS.escape(name)}"]`);
+        if (!target) {
+          document.body.replaceChildren();
+          document.body.textContent = `Missing export target: ${name}`;
+          return;
+        }
+
+        const width = target.offsetWidth;
+        const height = target.offsetHeight;
+        document.documentElement.style.setProperty("--export-w", `${width}px`);
+        document.documentElement.style.setProperty("--export-h", `${height}px`);
+        document.body.replaceChildren(target);
+        document.body.className = "export-body";
+        target.classList.add("is-export-target");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="workspace-title">
+      <p>Content System</p>
+      <h1>Render targets</h1>
+      <span>
+        Self-contained. Fonts and the logo are in ./assets/, the visual system is in
+        ./styles.css, and nothing here reads a file from outside Content System/.
+      </span>
+    </div>
+
+    <section class="rail">
+      <p>Instagram</p>
+      <div class="rail-scroll">
+
+          <article class="frame frame-square split" data-export="ig-myth-01-ask-early">
+            <div class="split-top">
+              <span class="pill">What parents hear</span>
+              <div class="bubbles">
+                <p class="bubble">He'll grow out of it.</p>
+                <p class="bubble">My brother was the same at that age.</p>
+                <p class="bubble">Let's see how he is after the summer.</p>
+              </div>
+            </div>
+            <div class="split-bottom">
+              <h2 class="headline headline-sm">Most do. <strong>Nobody can tell which.</strong></h2>
+              <div class="numbers">
+                <div class="number-card"><span class="numeral">5 in 100</span><span class="number-label">children stutter for six months or more</span></div>
+                <div class="number-card"><span class="numeral">1 in 100</span><span class="number-label">keep stuttering long term</span></div>
+              </div>
+              <p class="source-line">Source: Stuttering Foundation</p>
+              <img class="split-mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="rail">
+      <p>LinkedIn statement card</p>
+      <div class="rail-scroll">
+
+          <article class="frame frame-page frame-dark" data-export="li-founder-01-statement">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo-invert.svg" alt="UpSpeech" />
+            </header>
+            <span class="ghost ghost-quote">&ldquo;</span>
+            <div class="body-stack">
+              <span class="pill">Why I built this</span>
+              <h2 class="headline headline-quote">I have stuttered my whole life. <strong>That is not a reason to trust our product.</strong></h2>
+              <p class="lede">It is the reason the product is shaped the way it is.</p>
+              <span class="byline">Founder, UpSpeech</span>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="rail">
+      <p>LinkedIn photo post</p>
+      <div class="rail-scroll">
+
+          <article class="frame frame-page frame-photo" data-export="li-founder-02-week">
+            <img class="photo" src="./assets/photo/week-table.jpg" alt="" />
+            <div class="scrim"></div>
+            <div class="photo-body">
+              <span class="pill">Why I built this</span>
+              <h2 class="headline">The week <strong>nobody could see</strong>.</h2>
+              <img class="photo-mark" src="./assets/brand/logo-invert.svg" alt="UpSpeech" />
+            </div>
+          </article>
+
+          <article class="frame frame-page frame-photo frame-photo-bare" data-export="li-founder-03-week-bare">
+            <img class="photo" src="./assets/photo/week-table.jpg" alt="" />
+            <div class="scrim"></div>
+            <div class="photo-body">
+              <img class="photo-mark" src="./assets/brand/logo-invert.svg" alt="UpSpeech" />
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="rail">
+      <p>LinkedIn document carousel</p>
+      <div class="rail-scroll">
+
+          <article class="frame frame-page frame-dark" data-export="doc-visible-week-01-cover">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo-invert.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">01 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.08" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            <div class="body-stack">
+              <span class="pill">Between-session practice</span>
+              <h2 class="headline">We sent <strong>zero notifications</strong>. They practiced anyway.</h2>
+              <p class="lede">What a pilot of 24 adults changed about what we build.</p>
+              <span class="swipe"><span class="swipe-bar"></span>Swipe</span>
+            </div>
+          </article>
+
+          <article class="frame frame-page" data-export="doc-visible-week-02-problem">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">02 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.22" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            <span class="ghost ghost-tr">TUESDAY</span>
+            <div class="body-stack">
+              <span class="pill ">The problem</span>
+              <h2 class="headline headline-sm">You set the practice on <strong>Tuesday</strong>.</h2>
+              <p class="lede">
+                You find out the following Tuesday whether it happened. In between, the
+                week is invisible to both of you, and the first fifteen minutes of the
+                next session go on rebuilding it from memory.
+              </p>
+            </div>
+          </article>
+
+          <article class="frame frame-page" data-export="doc-visible-week-03-evidence">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">03 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.38" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            
+            <div class="body-stack">
+              <span class="pill ">What we measured</span>
+              <h2 class="headline headline-sm">So we <strong>turned the reminders off</strong>.</h2>
+              <div class="numbers">
+                <div class="number-card"><span class="numeral">24</span><span class="number-label">adults in the pilot</span></div>
+                <div class="number-card"><span class="numeral">21</span><span class="number-label">practiced between sessions</span></div>
+                <div class="number-card"><span class="numeral">340</span><span class="number-label">practice recordings submitted</span></div>
+                <div class="number-card"><span class="numeral numeral-flat">0</span><span class="number-label">notifications sent by us</span></div>
+              </div>
+              <span class="limit-tag">Engagement, not clinical outcome</span>
+            </div>
+          </article>
+
+          <article class="frame frame-page" data-export="doc-visible-week-04-mechanism">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">04 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.55" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            
+            <div class="body-stack">
+              <span class="pill pill-mint">What carried it</span>
+              <h2 class="headline headline-sm">Three things, <strong>none of them a reminder</strong>.</h2>
+              <div class="stack">
+                <div class="stack-row"><span class="stack-index">01</span><div><h3>Short</h3><p>Five minutes, not an evening.</p></div></div>
+                <div class="stack-row"><span class="stack-index">02</span><div><h3>Yours, not ours</h3><p>Tied to the technique you set in the session.</p></div></div>
+                <div class="stack-row"><span class="stack-index">03</span><div><h3>Seen</h3><p>Visible to you afterwards, not filed away.</p></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="frame frame-page" data-export="doc-visible-week-05-open">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">05 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.72" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            
+            <div class="body-stack">
+              <span class="pill ">What you open</span>
+              <h2 class="headline headline-sm">The week, <strong>before the session starts</strong>.</h2>
+              <p class="lede">
+                Not a checkbox saying the practice was done. The recordings themselves,
+                the days they happened on, and the technique they were working on.
+              </p>
+              <div class="foot-pills">
+                <span class="foot-pill">Recordings</span>
+                <span class="foot-pill">Days practiced</span>
+                <span class="foot-pill">Technique set</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="frame frame-page frame-dark" data-export="doc-visible-week-06-limits">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo-invert.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">06 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 0.88" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            
+            <div class="body-stack">
+              <span class="pill ">What this does not show</span>
+              <h2 class="headline headline-sm">The <strong>honest version</strong>.</h2>
+              <ul class="ruled">
+                <li>One pilot. 24 people. Self-selected.</li>
+                <li>No control arm, and nothing published.</li>
+                <li>It measures whether people practiced, not how they spoke.</li>
+                <li>It says nothing about any clinical outcome, and we will not imply that it does.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="frame frame-page" data-export="doc-visible-week-07-ask">
+            <header class="chrome">
+              <img class="mark" src="./assets/brand/logo.svg" alt="UpSpeech" />
+              <div class="chrome-right">
+                <span class="counter">07 / 07</span>
+                <svg class="ring" viewBox="0 0 128 128" style="--fill: 1" aria-hidden="true">
+              <defs><linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#293587"/><stop offset="52%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+              <circle class="ring-track" cx="64" cy="64" r="54"/>
+              <circle class="ring-fill" cx="64" cy="64" r="54"/>
+            </svg>
+              </div>
+            </header>
+            
+            <div class="body-stack">
+              <span class="pill ">Over to you</span>
+              <h2 class="headline headline-sm">What actually gets <strong>home practice done</strong> in your caseload?</h2>
+              <p class="lede">
+                We spend our effort on making the week visible rather than on getting
+                better at nagging. If something else works better in your practice, we
+                would like to know what.
+              </p>
+            </div>
+          </article>
+      </div>
+    </section>
+  </body>
+</html>

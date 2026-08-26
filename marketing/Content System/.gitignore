@@ -1,0 +1,24 @@
+# Node deps for the Output render engine
+Output/templates/node_modules/
+
+# Transient capture files from export.mjs
+Output/exports/.*.capture.png
+
+# Reference material from other companies. Kept on disk, out of git.
+#
+# These are the carousels and posts brand-signature.md was written from. They
+# run to about 80 MB, they are other companies' marketing assets, and the
+# analysis is what has lasting value, not the originals. Same reasoning as
+# ../instagram/.gitignore: heavy source media stays local, final exports are
+# tracked.
+Assets/Inspiration from other companies/*.pdf
+Assets/Inspiration from other companies/*.jpg
+Assets/Inspiration from other companies/*.jpeg
+Assets/Inspiration from other companies/*.png
+
+# Raw generated variants. The accepted plate lives in
+# Output/templates/assets/photo/ and is tracked; the rejects are reproducible
+# from the prompt and seed in Output/source/log.md.
+Output/source/*.jpg
+Output/source/*.jpeg
+Output/source/*.png
