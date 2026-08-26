@@ -34,7 +34,9 @@ public/og
 upspeech-website/*
 
 # CLAUDE
-.claude
+# Local agent state stays out; shared skills are checked in so everyone gets them.
+.claude/*
+!.claude/skills/
 **/CLAUDE.md
 !/CLAUDE.md
 
