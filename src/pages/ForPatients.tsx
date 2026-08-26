@@ -7,6 +7,8 @@ import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
+import CutOut from "@/components/CutOut";
+import Companion from "@/components/Companion";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
@@ -19,14 +21,95 @@ const STEP_ICONS = [
 ];
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
+// These three are captures of the shipped app, cropped from the store art, and
+// arrive with the device frame already baked in.
 const SCREENSHOTS = [
   "/screenshots/mobile/patient-home-device.webp",
   "/screenshots/mobile/patient-journey-device.webp",
   "/screenshots/mobile/patient-practice-device.webp",
 ];
 
-const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+// The child-facing screen. A bare screen rather than a framed render, so it
+// goes through PhoneShot; alt text is forPatients.app.childScreenshots[1].
+//
+// The caregiver screen is deliberately not here. It is a sparse screen whose
+// content stops two thirds down, which is invisible at the size it runs beside
+// the photograph and looks like a failed render at the size this row runs.
+const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice.webp";
+
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
+
+// The device frame the app band already uses, and the screen rectangle inside
+// it, straight from frameit's offsets.json for this frame (offset +75+66,
+// screen width 1320 in a 1470x3000 frame) as a percentage of the phone box.
+// Measured once, in MobileAppBand; repeated here rather than exported, because
+// a two-line constant shared across two files is not an abstraction.
+const PHONE_FRAME = "/screenshots/mobile/iphone-frame.webp";
+const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
+
+/**
+ * A screen behind the real device frame. The frame's own transparent screen
+ * cutout masks the shot, so the corners and the island are always right and no
+ * radius has to be guessed.
+ *
+ * The caller sizes and places the box; aspectRatio derives the other dimension
+ * from whichever one is given, so a width works in the photograph composition
+ * and a height works in the row of app screenshots.
+ *
+ * The caller also owns the position utility and has to pass one, because the
+ * two images inside are absolute. A default here does not work: a caller's
+ * `absolute` cannot override a base `relative`, since Tailwind emits the
+ * position utilities in a fixed order and class order in the attribute counts
+ * for nothing. Carrying one broke the composition into a flex row.
+ *
+ * With no alt it stays decorative, which is right beside the photograph where
+ * the sentence already says what the screens are. In the screenshot row it
+ * takes one, because there the images are the content.
+ */
+const PhoneShot = ({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt?: string;
+  className?: string;
+}) => (
+  <div
+    aria-hidden={alt ? undefined : true}
+    role={alt ? "img" : undefined}
+    aria-label={alt}
+    className={`pointer-events-none ${className}`}
+    style={{ aspectRatio: "1470 / 3000" }}
+  >
+    <img
+      src={src}
+      alt=""
+      width={780}
+      height={1688}
+      loading="lazy"
+      decoding="async"
+      className="absolute object-cover"
+      style={{
+        top: SCREEN.top,
+        left: SCREEN.left,
+        width: SCREEN.width,
+        height: SCREEN.height,
+        // The screen rectangle is square-cornered and the bezel around it is
+        // not, so on a dark screen the four corners poke out past the frame as
+        // coloured nicks. Relative units so one radius serves both phone sizes.
+        borderRadius: "12% / 5.4%",
+      }}
+    />
+    <img
+      src={PHONE_FRAME}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      className="absolute inset-0 h-full w-full drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)]"
+    />
+  </div>
+);
 
 export default function ForPatients() {
   const locale = useLocale();
@@ -60,7 +143,7 @@ export default function ForPatients() {
 
       <main id="main">
         {/* Intro */}
-        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -69,36 +152,52 @@ export default function ForPatients() {
                 "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
-            <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
-              >
-                {t.intro.headlineLine1} <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
-              </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
-                {t.intro.body}
-              </p>
+          <div className="gutter relative">
+            {/* Two columns from lg up. The right half of this fold used to be
+                empty, which is what made the page read as a document rather
+                than the front of a product. */}
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+              <div>
+                <p className={eyebrowClass}>{t.intro.eyebrow}</p>
+                <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+                  {t.intro.headlineLine1} <br />
+                  <span className="text-calm-lavender-ink">
+                    {t.intro.headlineLine2}
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                  {t.intro.body}
+                </p>
+              </div>
+              {/* Cut out rather than cropped square. The 1:1 crop was
+                  discarding a fifth of a 0.80 portrait to make it fit a box
+                  the box did not need. */}
+              <div className="relative flex justify-center lg:justify-end">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-2%] lg:translate-x-0"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
+                  }}
+                />
+                <CutOut
+                  name="patients-hero"
+                  alt={t.intro.photoAlt}
+                  priority
+                  renderHeight={{ base: 300, sm: 360, lg: 400 }}
+                  className="relative h-[300px] sm:h-[360px] lg:h-[400px]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* How it works for you */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-[clamp(3rem,6vw,5rem)]">
+          <div className="gutter">
             <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
-            <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
               {t.howItWorks.headline}
             </h2>
 
@@ -131,8 +230,61 @@ export default function ForPatients() {
           </div>
         </section>
 
+        {/* Practicing with a parent.
+            One sentence, deliberately. The product has no guardian seat: a
+            patient is one login assigned to one therapist. What is true today
+            is that a parent sits with a younger patient and works the plan the
+            therapist set, so that is the whole of what this says. */}
+        <section className="pb-[clamp(3rem,6vw,5rem)]">
+          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
+            {/* Two phones and the two people holding them. The parent's screen
+                is behind on the left, the child's in front on the right, which
+                is the same sandwich this section already had.
+
+                What changed is what is in the sandwich. It used to be the plan
+                and the finished report, and both of those belong to the
+                therapist: the section is about a parent and a child at the
+                kitchen table, and neither of them ever opens a report. These
+                are the two surfaces they actually touch. */}
+            {/* Taller than the photograph so the child's phone can sit below
+                its baseline. Measured against the cut-out: both faces live in
+                the top third, y 0.02 to 0.33, and they span almost the full
+                width, so the only place a phone can overlap without landing on
+                someone is below y 0.5, where the laps and the bench are. */}
+            <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
+              <PhoneShot
+                src={localizedAsset(
+                  "/screenshots/mobile/caregiver-today.webp",
+                  locale,
+                )}
+                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
+              />
+              <CutOut
+                name="patients-listen"
+                alt={t.withAParent.photoAlt}
+                renderHeight={{ base: 300, sm: 340 }}
+                className="relative z-10 h-[300px] sm:h-[340px]"
+              />
+              <PhoneShot
+                src={localizedAsset(
+                  "/screenshots/mobile/child-practice.webp",
+                  locale,
+                )}
+                className="absolute -bottom-7 right-4 z-20 w-[104px] rotate-3 sm:-bottom-10 sm:-right-2 sm:w-[122px]"
+              />
+            </div>
+            <div>
+              <Companion species="lumo" size={104} className="mb-4" />
+              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
+              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
+                {t.withAParent.line}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* The app */}
-        <section className="relative overflow-hidden bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+        <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -141,19 +293,13 @@ export default function ForPatients() {
                 "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
             }}
           />
-          <div className="relative max-w-6xl mx-auto">
+          <div className="gutter relative">
             <div className="max-w-2xl">
               <p className={eyebrowClass}>{t.app.eyebrow}</p>
-              <h2
-                className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                  lineHeight: 1.1,
-                }}
-              >
+              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
                 {t.app.headline}
               </h2>
-              <p className="mt-5 max-w-xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.app.body}
               </p>
             </div>
@@ -192,37 +338,43 @@ export default function ForPatients() {
                 )}
               </div>
             )}
-            <div className="mt-12 flex gap-6 overflow-x-auto pb-4 sm:gap-10 lg:justify-center lg:overflow-visible">
+            {/* Three shipped screens, then the one a younger patient sees.
+                Four phones do not fit the gutter at the height three did, so
+                the whole row steps down together and the first three keep
+                their relative sizing to each other. */}
+            <div className="mt-12 flex items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((base, i) => (
                 <img
                   key={base}
                   src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
-                  className={`h-auto w-auto max-h-[500px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                  className={`h-auto w-auto max-h-[400px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
                     i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
               ))}
+              <PhoneShot
+                src={localizedAsset(CHILD_SCREENSHOT, locale)}
+                alt={t.app.childScreenshots[1]}
+                className="relative h-[400px] shrink-0 sm:-translate-y-4"
+              />
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="gutter max-w-3xl">
             <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2
-              className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.1 }}
-            >
+            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
               {t.faq.headline}
             </h2>
 
             <dl className="mt-8 divide-y divide-calm-charcoal/10">
               {t.faq.items.map((item) => (
                 <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal text-base sm:text-lg">
+                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
                     {item.q}
                   </dt>
                   <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
@@ -238,14 +390,8 @@ export default function ForPatients() {
 
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2
-              className="font-heading font-bold text-calm-charcoal tracking-tight"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                lineHeight: 1.1,
-              }}
-            >
+          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
+            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

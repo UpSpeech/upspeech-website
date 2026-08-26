@@ -32,18 +32,14 @@ const WorkflowStrip = () => {
     <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
       <div ref={ref} className="relative max-w-6xl mx-auto">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
+          className="font-body t-eyebrow text-calm-lavender-ink"
           style={reveal(revealed, 0)}
         >
           How it fits your week
         </p>
         <h2
-          className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-          style={{
-            fontSize: "clamp(1.75rem, 4vw, 3rem)",
-            lineHeight: 1.1,
-            ...reveal(revealed, 80),
-          }}
+          className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+          style={{ ...reveal(revealed, 80) }}
         >
           Before, during, and after each session.
         </h2>
@@ -56,10 +52,7 @@ const WorkflowStrip = () => {
               style={reveal(revealed, 160 + i * 80)}
             >
               <div className="flex items-center gap-4">
-                <div
-                  className="font-heading font-bold text-calm-navy/25 tabular-nums leading-none"
-                  style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)" }}
-                >
+                <div className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 {i < STEPS.length - 1 && (
@@ -69,7 +62,7 @@ const WorkflowStrip = () => {
                   />
                 )}
               </div>
-              <div className="mt-3 font-body text-[10px] font-semibold tracking-[0.2em] uppercase text-calm-lavender-ink">
+              <div className="mt-3 font-body t-label text-calm-lavender-ink">
                 {step.role}
               </div>
               <h3 className="mt-1.5 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">

@@ -1,12 +1,12 @@
 import { SEO } from "@/components/SEO";
+import SiteIntro from "@/components/SiteIntro";
 import Header from "@/components/Header";
-import HeroOptionD from "@/components/HeroOptionD";
-import GapSection from "@/components/GapSection";
+import Hero from "@/components/Hero";
+import WeekInPhotos from "@/components/WeekInPhotos";
+import ClinicianDay from "@/components/ClinicianDay";
+import QuietBeat from "@/components/QuietBeat";
 import InterstitialCTA from "@/components/InterstitialCTA";
-import TherapistScene from "@/components/TherapistScene";
-import PatientScene from "@/components/PatientScene";
 import MobileAppBand from "@/components/MobileAppBand";
-import FeatureGallerySection from "@/components/FeatureGallerySection";
 import CycleScene from "@/components/CycleScene";
 import EngineSection from "@/components/EngineSection";
 import FoundationsScene from "@/components/FoundationsScene";
@@ -18,21 +18,47 @@ import { useLocale, useT } from "@/i18n";
 const Index = () => {
   const locale = useLocale();
   const t = useT();
+
+  // The handoff section describes an actual sequence, so it is published as
+  // one. Google retired HowTo rich results in 2023, so this buys nothing in
+  // the search listing; it is here so an answer engine reading the page has
+  // the steps as data rather than having to infer them from the prose.
+  const day = t.home.day;
+  const howTo = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: day.howToName,
+    description: day.body,
+    step: [day.before, day.assessment, day.session, day.plan, day.close].map(
+      (s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.headline,
+        text: s.body,
+      }),
+    ),
+  };
+
   return (
     <div className="min-h-screen font-body">
-      <SEO path="/" locale={locale} description={t.home.seoDescription} />
+      <SEO
+        path="/"
+        locale={locale}
+        description={t.home.seoDescription}
+        structuredData={howTo}
+      />
+      <SiteIntro />
       <Header />
       <main id="main">
-        <HeroOptionD />
-        <GapSection />
+        <Hero />
+        <WeekInPhotos />
+        <QuietBeat />
         <div id="features">
-          <TherapistScene />
-          <PatientScene />
+          <ClinicianDay />
         </div>
         <MobileAppBand />
         <CycleScene />
         <InterstitialCTA />
-        <FeatureGallerySection />
         <div id="differentiation">
           <EngineSection />
         </div>

@@ -27,7 +27,7 @@ const SecuritySection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.05 });
 
   return (
-    <section className="relative bg-white px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] overflow-hidden">
+    <section className="relative bg-white py-[clamp(3.25rem,10vw,10rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
@@ -36,20 +36,16 @@ const SecuritySection = () => {
         }}
       />
 
-      <div ref={ref} className="relative max-w-6xl mx-auto">
+      <div ref={ref} className="gutter relative">
         <p
-          className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink"
+          className="font-body t-eyebrow text-calm-lavender-ink"
           style={reveal(revealed, 0)}
         >
           {t.eyebrow}
         </p>
         <h2
-          className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.75rem)",
-            lineHeight: 1.08,
-            ...reveal(revealed, 80),
-          }}
+          className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
+          style={{ ...reveal(revealed, 80) }}
         >
           {t.headline}
         </h2>

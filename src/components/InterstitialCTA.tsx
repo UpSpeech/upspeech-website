@@ -8,7 +8,7 @@ const InterstitialCTA = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.4 });
 
   return (
-    <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(2.75rem,8vw,7rem)] overflow-hidden">
+    <section className="relative bg-calm-light py-[clamp(2.75rem,8vw,7rem)] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -18,13 +18,10 @@ const InterstitialCTA = () => {
       />
       <div
         ref={ref}
-        className="relative max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8"
+        className="gutter relative flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between"
       >
         <div style={reveal(revealed, 0)}>
-          <h2
-            className="font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1 }}
-          >
+          <h2 className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight">
             {t.headlineLine1} <br />
             <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
           </h2>

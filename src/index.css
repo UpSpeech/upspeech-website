@@ -803,3 +803,515 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   SpeechRing
+
+   A speech envelope bent into a circle: bars radiate outward where someone was
+   speaking, and lie flat where they were not. The ring turns slowly, once per
+   48 seconds, which is slow enough to read as ambient rather than as a spinner.
+
+   The draw-in staggers each bar by its position around the circle, so the ring
+   is written the way a recording is: start to finish, clockwise.
+--------------------------------------------------------------------------- */
+.speech-ring__svg {
+  animation: speech-ring-turn 48s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.speech-ring__bar {
+  stroke: #6866c4;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.speech-ring__bar--quiet {
+  stroke: rgba(75, 78, 78, 0.3);
+  stroke-width: 2.6;
+}
+
+.speech-ring--intro .speech-ring__bar {
+  opacity: 0;
+  animation: speech-ring-draw 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--bar-delay, 0ms);
+}
+
+@keyframes speech-ring-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes speech-ring-draw {
+  from {
+    opacity: 0;
+    transform: scale(0.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Opening sequence
+
+   Shown once per browsing session, never to a reader who has asked for less
+   motion, and removed from the DOM once it has finished so it cannot trap
+   focus or intercept a click.
+
+   The order is the point: the ring writes itself the way a recording runs,
+   start to finish; she appears at its centre; the ring then shrinks and
+   travels until it is sitting exactly where her speech bubble goes, at
+   exactly its size, and hands over to it; then the lockup settles left and
+   the wordmark writes in beside it. What is left at the end is the logo
+   exactly as the header draws it.
+
+   Timings, in ms from mount:
+        0 -> 1080  ring writes clockwise (SpeechRing staggers each bar)
+      620 -> 1060  the figure rises in
+     1080 -> 1520  the ring contracts onto the bubble's spot, at its size
+     1300 -> 1540  the bubble comes up under the ring and takes over
+     1540 -> 2080  the lockup settles left, the wordmark wipes in
+     2260 -> 2680  the overlay fades out (SiteIntro unmounts at 2680)
+--------------------------------------------------------------------------- */
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6f6;
+  animation: site-intro-out 420ms cubic-bezier(0.22, 1, 0.36, 1) 2260ms forwards;
+}
+
+.site-intro__stage {
+  /* One scale drives both, so the mark keeps the same share of the ring's
+     empty middle at every width. 2.25 puts the mark at about 60% of the
+     inner circle, which is as large as it goes before the bubble touches
+     the bars. The 104px floor only bites below about 364px wide, where the
+     old 120px floor left the finished lockup 25px from each edge. */
+  --intro-scale: clamp(104px, 33vw, 204px);
+  --intro-ring: var(--intro-scale);
+  --intro-lockup: calc(var(--intro-scale) * 2.25);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--intro-ring);
+  height: var(--intro-ring);
+}
+
+/* The ring does not simply leave. It contracts while travelling up and to the
+   right, and arrives at the speech bubble's position at the bubble's exact
+   size, so the recording turns into the bubble instead of being swapped for
+   it. The bubble fades up underneath during the last stretch, which is where
+   the handover happens.
+
+   All three numbers are fractions of --intro-scale, so the landing holds at
+   every width: 0.093481 and -0.120843 are the offset from the mark's centre
+   to the bubble's centre, and 0.204461 takes the ring's inner radius (92 of
+   its 300 unit viewBox) down to the bubble's radius. */
+.site-intro__ring {
+  transform-origin: 50% 50%;
+  animation: site-intro-ring-condense 440ms cubic-bezier(0.5, 0, 0.28, 1) 1080ms
+    forwards;
+}
+
+/* The lockup is placed by its mark, not by its own box, so the mark lands on
+   the ring's centre. 0.11824 is where the mark's centre falls across the
+   1024-wide lockup; 0.38176 is the rest of the way to centring the lockup
+   itself, which is what the settle covers. */
+.site-intro__lockup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: calc(var(--intro-lockup) * -0.11824);
+  transform: translate(0, -50%);
+  color: #212540;
+  line-height: 0;
+  animation: site-intro-settle 540ms cubic-bezier(0.22, 1, 0.36, 1) 1540ms
+    forwards;
+}
+
+.site-intro .brand-lockup__figure {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: 0;
+  animation: site-intro-figure 440ms cubic-bezier(0.22, 1, 0.36, 1) 620ms
+    forwards;
+}
+
+.site-intro .brand-lockup__bubble {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  animation: site-intro-bubble 240ms cubic-bezier(0.33, 1, 0.68, 1) 1300ms
+    forwards;
+}
+
+.site-intro .brand-lockup__word {
+  clip-path: inset(0 100% 0 0);
+  animation: site-intro-word 540ms cubic-bezier(0.22, 1, 0.36, 1) 1540ms
+    forwards;
+}
+
+@keyframes site-intro-ring-condense {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  /* Held opaque until the bubble is already coming up, so the two overlap
+     rather than one clearing before the other arrives. */
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(var(--intro-scale) * 0.093481),
+        calc(var(--intro-scale) * -0.120843)
+      )
+      scale(0.204461);
+  }
+}
+
+@keyframes site-intro-settle {
+  to {
+    transform: translate(calc(var(--intro-lockup) * -0.38176), -50%);
+  }
+}
+
+@keyframes site-intro-figure {
+  from {
+    opacity: 0;
+    transform: translateY(12%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes site-intro-bubble {
+  from {
+    opacity: 0;
+    /* Barely under size. It is taking over from a ring that has already
+       arrived at the right diameter, so anything larger reads as a second
+       object popping in on top. */
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes site-intro-word {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes site-intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Type scale
+   ---------------------------------------------------------------------------
+   Before this the site carried nineteen different font-size clamps, twelve of
+   them one value and the rest a long tail of one-offs, so a section headline
+   could be 3rem, 3.25rem, 3.5rem, 4rem or 4.5rem depending on which component
+   you happened to be in. Nothing was wrong at any single size and the page
+   still read as a template, because a scale is what makes type look decided
+   rather than typed.
+
+   Two things are deliberate and are what most of the tail was missing.
+   Tracking tightens as size grows: at display size the default spacing of a
+   geometric sans looks loose and slightly cheap, and at body size the same
+   negative tracking would hurt reading. Leading tightens with it for the same
+   reason. The steps are wide on purpose; a display face that only reaches
+   twice the body size is not a scale, it is two sizes.
+
+   Sizes stay in the classes rather than moving to Tailwind's theme so the
+   clamps, line height and tracking travel together. Splitting them is how the
+   tail grew in the first place.
+--------------------------------------------------------------------------- */
+@layer components {
+  .t-display {
+    font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .t-h2 {
+    font-size: clamp(1.875rem, 3.6vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  /* Closing panels and asides: the same voice as t-h2, quieter in the mix. */
+  .t-h2-sm {
+    font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.024em;
+  }
+
+  /* A single sentence given room, for the beats that are one thought. */
+  .t-statement {
+    font-size: clamp(1.375rem, 2.5vw, 2rem);
+    line-height: 1.28;
+    letter-spacing: -0.015em;
+  }
+
+  .t-h3 {
+    font-size: clamp(1.25rem, 1.9vw, 1.625rem);
+    line-height: 1.16;
+    letter-spacing: -0.018em;
+  }
+
+  .t-lead {
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+    line-height: 1.55;
+  }
+
+  /* The section eyebrow. Values are the majority of what was already in the
+     markup (11px, 600, 0.3em) rather than anything new, so putting the class on
+     an existing eyebrow changes nothing about how it looks. Colour stays a
+     separate class: these run lavender-ink on light, lavender-bright and white
+     on the dark bands. */
+  .t-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* The tier below it: day labels under the week photographs, the two captions
+     on the 11:30 band. Smaller and tighter, and it was already written twice at
+     10px with two different tracking values. */
+  .t-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Page gutter
+   ---------------------------------------------------------------------------
+   One left edge for every section that sets text left-aligned. Before this the
+   homepage had four: 72px where a section carried its own padding and no cap,
+   144px where the cap sat inside the padding, 152px on the 7xl sections, and
+   216px on the 6xl ones. Scrolling the page, the margin jumped four times.
+
+   The order matters and is the whole reason the drift happened: the padding has
+   to sit inside the cap. `max-w-6xl` inside a padded section resolves against
+   the already-narrowed width and centres 72px further left than the same cap
+   with the padding on it.
+
+   Full-bleed media can still be full-bleed. This is for the text.
+--------------------------------------------------------------------------- */
+@layer components {
+  .gutter {
+    margin-inline: auto;
+    max-width: 72rem; /* max-w-6xl */
+    padding-inline: max(1.5rem, 5vw);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Companion
+   ---------------------------------------------------------------------------
+   One six-second loop shared by every moving part, so nothing can drift out of
+   phase: the companion breathes, blinks, opens its mouth to speak, and three
+   dots rise as it does. Six seconds because the brand is calm before all else,
+   and a character that fidgets is neither calm nor professional.
+
+   Two mouths cross-fade on the same timeline rather than a state machine
+   swapping them, which is why this needs no JavaScript and cannot fall out of
+   sync with itself.
+
+   Paused until on screen: an infinite animation composites cheaply but never
+   lets the tab idle, and these sit partway down a long page.
+--------------------------------------------------------------------------- */
+.companion {
+  display: block;
+  overflow: visible;
+}
+
+.companion
+  :is(
+    .companion-body,
+    .companion-eyes,
+    .companion-mouth-rest,
+    .companion-mouth-open,
+    .companion-dot
+  ) {
+  animation-play-state: paused;
+}
+.companion-live
+  :is(
+    .companion-body,
+    .companion-eyes,
+    .companion-mouth-rest,
+    .companion-mouth-open,
+    .companion-dot
+  ) {
+  animation-play-state: running;
+}
+
+/* Breathing. Deliberately small: past a couple of percent it reads as bouncing
+   rather than as being alive. */
+.companion-body {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: companion-breathe 6s ease-in-out infinite;
+}
+@keyframes companion-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-1.4%) scale(1.014);
+  }
+  70% {
+    transform: translateY(-0.4%) scale(1.004);
+  }
+}
+
+/* One blink per loop, fast, on the same clock as everything else. */
+.companion-eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  animation: companion-blink 6s ease-in-out infinite;
+}
+@keyframes companion-blink {
+  0%,
+  14%,
+  18%,
+  100% {
+    transform: scaleY(1);
+  }
+  16% {
+    transform: scaleY(0.12);
+  }
+}
+
+.companion-mouth-rest,
+.companion-mouth-open {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.companion-mouth-rest {
+  animation: companion-mouth-rest 6s ease-in-out infinite;
+}
+@keyframes companion-mouth-rest {
+  0%,
+  30% {
+    opacity: 1;
+  }
+  36%,
+  70% {
+    opacity: 0;
+  }
+  78%,
+  100% {
+    opacity: 1;
+  }
+}
+.companion-mouth-open {
+  opacity: 0;
+  animation: companion-mouth-open 6s ease-in-out infinite;
+}
+@keyframes companion-mouth-open {
+  0%,
+  32% {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+  40% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  52% {
+    opacity: 1;
+    transform: scaleY(0.72);
+  }
+  62% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+}
+
+/* Dots leaving while the mouth is open, staggered inside the same six seconds
+   rather than on loops of their own. */
+.companion-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: companion-dot 6s ease-in-out infinite;
+}
+.companion-dot-2 {
+  animation-delay: 0.24s;
+}
+.companion-dot-3 {
+  animation-delay: 0.48s;
+}
+@keyframes companion-dot {
+  0%,
+  38% {
+    opacity: 0;
+    transform: translate(-8%, 8%) scale(0.4);
+  }
+  48% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  62% {
+    opacity: 1;
+    transform: translate(6%, -6%) scale(1);
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: translate(14%, -14%) scale(0.6);
+  }
+}
+
+/* Reduced motion keeps the character and drops the performance, resting on the
+   speaking state: it is the one that says what the product is for. */
+@media (prefers-reduced-motion: reduce) {
+  .companion
+    :is(
+      .companion-body,
+      .companion-eyes,
+      .companion-mouth-rest,
+      .companion-mouth-open,
+      .companion-dot
+    ) {
+    animation: none;
+  }
+  .companion-mouth-rest {
+    opacity: 0;
+  }
+  .companion-mouth-open,
+  .companion-dot {
+    opacity: 1;
+  }
+}

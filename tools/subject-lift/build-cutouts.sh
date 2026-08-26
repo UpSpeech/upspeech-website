@@ -1,0 +1,153 @@
+#!/bin/bash
+#
+# Build the alpha cut-outs in public/images/people/cut/ from the framed
+# photographs beside them.
+#
+# Run by hand on macOS, not in CI: the segmentation is Vision's
+# VNGenerateForegroundInstanceMaskRequest, which is the same model behind
+# lifting a subject in Photos. It needs macOS 14+ and a Swift toolchain, and it
+# is the reason no paid background-removal service is in the loop. The outputs
+# are committed, so a normal build never runs this.
+#
+#   ./tools/subject-lift/build-cutouts.sh            # every subject below
+#   ./tools/subject-lift/build-cutouts.sh week-phone # just one
+#
+# Requires: swiftc, ImageMagick (magick), cwebp.
+
+set -euo pipefail
+
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$HERE/../.." && pwd)"
+SRC="$ROOT/public/images/people"
+OUT="$SRC/cut"
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+
+# Exposure target, as mean luminance over opaque pixels on a 0-100 scale.
+# Matching to it is what stops a row of cut-outs reading as a stock collage:
+# unmatched, the set ran from 12 to 54 and the darkest subject was four times
+# darker than the brightest.
+#
+# Raised from 31 to 36 when the reshoot landed. 31 was the median of the first
+# set, which was shot flat and dim; the reshoot asked for directional light and
+# came in near 53. Splitting the difference lifts the murky originals and brings
+# the bright new frames down, rather than dragging the good light back to the
+# bad. The gamma floor moved with it: at 0.75 the correction could not reach a
+# 53 and the new frames stayed fifteen points off the rest.
+TARGET=36
+
+SUBJECTS=(
+  week-session week-alone week-phone week-next
+  day-notes day-present
+  home-family
+  patients-hero patients-listen
+  slps-hero slps-family
+  practice-hero
+)
+
+for bin in swiftc magick cwebp; do
+  command -v "$bin" >/dev/null || { echo "missing $bin" >&2; exit 1; }
+done
+
+echo "building lift..."
+swiftc -O -o "$TMP/lift" "$HERE/lift.swift"
+mkdir -p "$OUT"
+
+list=("${@:-}")
+[ -z "${list[0]:-}" ] && list=("${SUBJECTS[@]}")
+
+printf "%-18s %-8s %-8s %s\n" subject gamma bright size
+for n in "${list[@]}"; do
+  in="$SRC/$n.webp"
+  [ -f "$in" ] || { echo "  no source for $n" >&2; continue; }
+
+  # 1. lift the subject out of its background
+  magick "$in" "$TMP/in.png"
+  "$TMP/lift" "$TMP/in.png" "$TMP/a.png" >/dev/null
+
+  # 2. warm grade: the source set is flat, cool and evenly lit, which is most
+  #    of what reads as sterile once the background is gone.
+  #
+  #    No synthetic grain. There used to be an "-attenuate 0.30 +noise Gaussian"
+  #    here as film grain and it was far too strong: measured as the standard
+  #    deviation of a high-pass, the sources sit at 10 to 12 and the graded
+  #    output came out at 27 to 42. That is roughly triple, which reads as a
+  #    dirty filter rather than as film. It was worst on the frames needing a
+  #    large exposure lift, because the gamma multiplies the grain it is
+  #    lifting. The sources already carry their own grain; nothing needs adding.
+  #
+  #    Contrast is gentler too, for the same reason: 3.2 on top of a gamma lift
+  #    crushed the shadows on the darker frames.
+  magick "$TMP/a.png" \( +clone -alpha extract -write mpr:A +delete \) -alpha off \
+    -modulate 103,106,100 -sigmoidal-contrast 2.0,48% -fill "#ffd9a8" -colorize 5 \
+    mpr:A -compose CopyOpacity -composite "$TMP/b.png"
+
+  # 3. match exposure to the set. Measured over opaque pixels only: a mean over
+  #    the whole canvas measures how much of the frame the subject fills, not
+  #    how it is lit.
+  GA=$(magick "$TMP/b.png" \( +clone -alpha extract \) -alpha off -colorspace Gray \
+        -compose Multiply -composite -format "%[fx:mean]" info:)
+  AV=$(magick "$TMP/b.png" -alpha extract -format "%[fx:mean]" info:)
+  read -r G BEFORE <<<"$(python3 -c "
+import math
+cur = 100*$GA/max($AV,1e-6)
+g = 1/(math.log($TARGET/100)/math.log(max(cur,1)/100))
+print(f'{min(max(g,0.55),1.95):.3f} {cur:.1f}')")"
+  magick "$TMP/b.png" \( +clone -alpha extract -write mpr:B +delete \) -alpha off \
+    -gamma "$G" mpr:B -compose CopyOpacity -composite "$TMP/c.png"
+
+  # 4. erode one pixel of matte, then feather it. A subject cut from a light
+  #    background carries that light in its edge pixels, which shows as a fringe
+  #    on the navy band, and the erode removes it. On its own the erode also
+  #    leaves the cut hard: Vision's mask is effectively binary and does not
+  #    matte hair, so against a dark ground the edge reads as cut with scissors.
+  #    Erode then feather is the usual pairing and it is what this edge needs.
+  magick "$TMP/c.png" -channel A -morphology Erode Disk:1 -blur 0x0.8 +channel \
+    -trim +repage "$TMP/d.png"
+
+  # 5. dissolve the base into the ground. This is baked into the alpha rather
+  #    than done with a CSS mask on purpose: filter runs before mask, so a
+  #    masked element still casts the shadow of its unmasked silhouette and it
+  #    shows through the faded region as a grey rectangle.
+  #
+  #    10% of the height, down from 22%. At 22% it stopped reading as a base
+  #    dissolving into the page and started reading as fog over the bottom fifth
+  #    of every subject, which is exactly what it looked like on the navy band.
+  for w in 900 560; do
+    magick "$TMP/d.png" -resize "${w}x" "$TMP/r.png"
+    W=$(magick identify -format %w "$TMP/r.png"); H=$(magick identify -format %h "$TMP/r.png")
+    F=$(( H * 10 / 100 ))
+    magick "$TMP/r.png" \
+      \( +clone -alpha extract \
+         \( -size "${W}x${H}" xc:white \
+            \( -size "${W}x${F}" gradient:white-black \) -gravity south -composite \) \
+         -compose Multiply -composite \) \
+      -alpha off -compose CopyOpacity -composite "$TMP/f.png"
+    suffix=""; [ "$w" = 560 ] && suffix="-560"
+    cwebp -quiet -q 80 -alpha_q 92 -m 6 "$TMP/f.png" -o "$OUT/$n$suffix.webp"
+  done
+
+  GA2=$(magick "$OUT/$n.webp" \( +clone -alpha extract \) -alpha off -colorspace Gray \
+         -compose Multiply -composite -format "%[fx:mean]" info:)
+  AV2=$(magick "$OUT/$n.webp" -alpha extract -format "%[fx:mean]" info:)
+  AFTER=$(python3 -c "print(f'{100*$GA2/max($AV2,1e-6):.1f}')")
+  printf "%-18s %-8s %-8s %sK\n" "$n" "$G" "$BEFORE->$AFTER" \
+    "$(( $(stat -f%z "$OUT/$n.webp")/1024 ))"
+done
+
+# A cut-out is trimmed to its subject, so every one has its own intrinsic size
+# and the component cannot guess it. Emit the dimensions so <img width/height>
+# can reserve the right box and the row does not jump on load.
+echo "writing src/lib/cutouts.generated.ts"
+{
+  echo "// Generated by tools/subject-lift/build-cutouts.sh. Do not edit."
+  echo "// Intrinsic size of each cut-out, so <img> can reserve its box."
+  echo "export const CUTOUTS: Record<string, { w: number; h: number }> = {"
+  for f in "$OUT"/*.webp; do
+    b="$(basename "$f" .webp)"
+    case "$b" in *-560) continue;; esac
+    read -r W H <<<"$(magick identify -format "%w %h" "$f")"
+    echo "  \"$b\": { w: $W, h: $H },"
+  done
+  echo "};"
+} > "$ROOT/src/lib/cutouts.generated.ts"

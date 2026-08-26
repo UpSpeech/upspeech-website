@@ -34,16 +34,13 @@ const NotFound = () => {
           }}
         />
         <div className="relative">
-          <p className="font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink">
+          <p className="font-body t-eyebrow text-calm-lavender-ink">
             {t.eyebrow}
           </p>
-          <h1
-            className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 4.5rem)", lineHeight: 1.05 }}
-          >
+          <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
             {t.title}
           </h1>
-          <p className="mt-5 max-w-md mx-auto font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+          <p className="mt-5 max-w-md mx-auto t-lead font-body text-calm-charcoal/80 leading-relaxed">
             {t.body}
           </p>
           <a

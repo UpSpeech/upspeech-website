@@ -11,8 +11,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 // Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
 // the techniques section reads as the same site.
-const eyebrowClass =
-  "font-body text-[11px] font-semibold tracking-[0.3em] uppercase text-calm-lavender-ink";
+const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const sectionClass = "px-[max(1.5rem,5vw)] py-[clamp(2.5rem,5vw,4rem)]";
 
 // Page chrome for the loading and error states, so they are not a different
@@ -155,16 +154,10 @@ export function TechniquesIndexPage() {
           <div className="relative max-w-6xl mx-auto">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.techniques}</p>
-              <h1
-                className="mt-5 font-heading font-bold text-calm-charcoal tracking-tight"
-                style={{
-                  fontSize: "clamp(2.25rem, 6vw, 4rem)",
-                  lineHeight: 1.05,
-                }}
-              >
+              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
                 {t.title}
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-base sm:text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
                 {t.subtitle}
               </p>
             </div>
