@@ -89,7 +89,11 @@ const WeekInPhotos = () => {
                   <CutOut
                     name={IMAGES[i]}
                     alt={frame.alt}
-                    renderHeight={i === 2 ? 268 : 240}
+                    renderHeight={
+                      i === 2
+                        ? { base: 168, sm: 212, lg: 268 }
+                        : { base: 150, sm: 190, lg: 240 }
+                    }
                     className={HEIGHT[i]}
                   />
                 </div>

@@ -100,7 +100,7 @@ export default function ForSlps() {
                   name="slps-hero"
                   alt={t.intro.photoAlt}
                   priority
-                  renderHeight={570}
+                  renderHeight={{ base: 400, sm: 500, lg: 570 }}
                   className="relative h-[400px] sm:h-[500px] lg:h-[570px]"
                 />
               </div>
@@ -200,7 +200,7 @@ export default function ForSlps() {
                 <CutOut
                   name="slps-family"
                   alt={t.personCentered.photoAlt}
-                  renderHeight={300}
+                  renderHeight={{ base: 260, sm: 300 }}
                   className="h-[260px] sm:h-[300px]"
                 />
               </div>

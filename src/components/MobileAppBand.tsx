@@ -162,7 +162,7 @@ const MobileAppBand = () => {
           <CutOut
             name="home-family"
             alt={t.familyAlt}
-            renderHeight={260}
+            renderHeight={{ base: 220, sm: 260 }}
             className="mt-3 h-[220px] sm:h-[260px]"
           />
 

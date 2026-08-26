@@ -185,7 +185,7 @@ export default function ForPatients() {
                   name="patients-hero"
                   alt={t.intro.photoAlt}
                   priority
-                  renderHeight={400}
+                  renderHeight={{ base: 300, sm: 360, lg: 400 }}
                   className="relative h-[300px] sm:h-[360px] lg:h-[400px]"
                 />
               </div>
@@ -262,7 +262,7 @@ export default function ForPatients() {
               <CutOut
                 name="patients-listen"
                 alt={t.withAParent.photoAlt}
-                renderHeight={340}
+                renderHeight={{ base: 300, sm: 340 }}
                 className="relative z-10 h-[300px] sm:h-[340px]"
               />
               <PhoneShot

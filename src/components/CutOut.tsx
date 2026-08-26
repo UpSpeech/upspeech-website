@@ -1,4 +1,5 @@
 import { CUTOUTS } from "@/lib/cutouts.generated";
+import { cutOutWidthAt, sizesFor, type Heights } from "@/lib/cutout-sizes";
 
 /**
  * A person with the background removed, standing on the page rather than
@@ -38,13 +39,17 @@ type Props = {
   name: keyof typeof CUTOUTS | string;
   alt: string;
   /**
-   * Largest CSS height this is rendered at, across breakpoints. The width it
-   * actually occupies follows from the subject's own aspect, so a hand-written
-   * sizes attribute is always wrong here: pass the height and let the component
-   * work the width out. Left to a guess, every cut-out pulls the 900w file even
-   * when it paints 137px wide.
+   * CSS height this is rendered at. The width it actually occupies follows from
+   * the subject's own aspect, so a hand-written sizes attribute is always wrong
+   * here: pass the height and let the component work the width out. Left to a
+   * guess, every cut-out pulls the 900w file even when it paints 137px wide.
+   *
+   * Pass the breakpoint ladder, not a single number, whenever className carries
+   * one. A lone number describes the widest breakpoint and phones inherit it,
+   * which is how /for-slps came to declare 337px for a slot it paints at 236px
+   * and pull the 900w file on a 2x screen that the 560w one covers.
    */
-  renderHeight: number;
+  renderHeight: number | Heights;
   /** Ground it sits on. Drives the shadow and the desaturation. */
   tone?: keyof typeof TONE;
   /**
@@ -71,7 +76,7 @@ const CutOut = ({
   className = "",
 }: Props) => {
   const dim = CUTOUTS[name as keyof typeof CUTOUTS];
-  const width = dim ? Math.ceil(renderHeight * (dim.w / dim.h)) : renderHeight;
+  const sizes = sizesFor(renderHeight, cutOutWidthAt(name));
 
   return (
     <img
@@ -80,7 +85,7 @@ const CutOut = ({
         `/images/people/cut/${name}-560.webp 560w, ` +
         `/images/people/cut/${name}.webp 900w`
       }
-      sizes={`${width}px`}
+      sizes={sizes}
       alt={alt}
       width={dim?.w}
       height={dim?.h}

@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { trackButtonClick } from "@/lib/analytics";
 import SpeechTrace from "./SpeechTrace";
 import CutOut from "./CutOut";
+import { cutOutWidthAt, sizesFor } from "@/lib/cutout-sizes";
 import { useT } from "@/i18n";
 
 /**
@@ -38,6 +39,9 @@ import { useT } from "@/i18n";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const HERO_CUTOUT = "practice-hero";
+/** Matches the height ladder on the CutOut below, and the preload above it. */
+const HERO_HEIGHTS = { base: 300, sm: 380, lg: 500 } as const;
+const HERO_SIZES = sizesFor(HERO_HEIGHTS, cutOutWidthAt(HERO_CUTOUT));
 
 const Line = ({
   children,
@@ -85,7 +89,7 @@ const Hero = () => {
             `/images/people/cut/${HERO_CUTOUT}-560.webp 560w, ` +
             `/images/people/cut/${HERO_CUTOUT}.webp 900w`
           }
-          imageSizes="500px"
+          imageSizes={HERO_SIZES}
           fetchPriority="high"
         />
       </Helmet>
@@ -203,7 +207,7 @@ const Hero = () => {
             name={HERO_CUTOUT}
             alt={t.photoAlt}
             priority
-            renderHeight={500}
+            renderHeight={HERO_HEIGHTS}
             className="h-[300px] sm:h-[380px] lg:h-full lg:max-h-[calc(100svh-9rem)] lg:w-auto lg:object-contain"
           />
         </div>
