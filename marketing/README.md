@@ -9,9 +9,20 @@ small set of strategy docs, a deterministic HTML-to-PNG template engine, and an
 AEO track. It is built so any future session can produce a new batch of
 on-brand posts without re-deriving the brand each time.
 
-## Why two platforms
+## Start here
 
-UpSpeech has two audiences with different homes:
+Before writing anything, read [`CONTENT_DIRECTIVES.md`](CONTENT_DIRECTIVES.md).
+It is the writing standard: the four-line brief every post starts from, the house
+style, what we can and cannot claim about a clinical product, the per-channel
+anatomy for Instagram, LinkedIn, and the blog, the European Portuguese rules, and
+the checklist a draft has to pass before it ships.
+
+The strategy files below say what to post and how often. The directives say how to
+write it so it comes out at the same standard every time.
+
+## Why three channels
+
+UpSpeech has audiences with different homes:
 
 - **Instagram** carries the patient, parent, and awareness story: practice,
   progress, encouragement, and stutter-positive education. Warmer, more
@@ -19,15 +30,19 @@ UpSpeech has two audiences with different homes:
 - **LinkedIn** carries the clinical B2B story: SLP time savings, clinical
   credibility, between-session adherence, and product proof. Peer-to-peer and
   evidence-aware.
+- **The blog** carries what has to still be findable in six months, in search and
+  inside the answer engines. It is the only channel that compounds, and the main
+  lever on the zero AI visibility recorded in [`aeo.md`](aeo.md).
 
 The voice rules in [`brand-voice.md`](brand-voice.md) are shared. The framing,
-cadence, and formats differ per platform.
+cadence, and formats differ per channel.
 
 ## Structure
 
 ```
 marketing/
 ├── README.md                  this file
+├── CONTENT_DIRECTIVES.md      how to write a post to standard (EN + PT-PT), read first
 ├── brand-voice.md             shared voice + the sensitivity rules for stuttering content
 ├── gtm-laws.md                the 48 Laws of SaaS, triaged for a clinical B2B2C product
 ├── creative-concepts.md       out-of-the-box campaign and post ideas
@@ -42,9 +57,12 @@ marketing/
 │   ├── templates/             index.html + styles.css + export.mjs + local assets
 │   ├── exports/               generated PNGs, ready to post
 │   └── source-images/         generated/curated source imagery before final layout
-└── linkedin/
-    ├── strategy.md            B2B positioning, pillars, formats, cadence
-    └── content-calendar.md    first weeks of LinkedIn posts + drafts
+├── linkedin/
+│   ├── strategy.md            B2B positioning, pillars, formats, cadence
+│   └── content-calendar.md    first weeks of LinkedIn posts + drafts
+└── blog/
+    ├── README.md              where posts live, what ships with each one
+    └── strategy.md            pillars, the first ten posts, cadence, language
 ```
 
 ## Producing a batch
@@ -89,6 +107,9 @@ read [`brand-voice.md`](brand-voice.md). The short version: never promise
 clinical outcomes or cures, never mock or imitate stuttering, never imply
 fluency is the goal, and never use a real patient or session without written
 consent.
+
+The full pre-publish checklist is at the end of
+[`CONTENT_DIRECTIVES.md`](CONTENT_DIRECTIVES.md). Run it on every draft.
 
 The same caution applies to imported growth advice.
 [`gtm-laws.md`](gtm-laws.md) takes a widely shared B2B SaaS list and sorts all
