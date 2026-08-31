@@ -8,7 +8,6 @@ export const es: Dictionary = {
     howItWorks: "Cómo funciona",
     features: "Funcionalidades",
     whyUs: "Por qué UpSpeech",
-    techniques: "Técnicas",
     forPatients: "Para pacientes",
     requestAccess: "Solicitar acceso anticipado",
     skipToContent: "Saltar al contenido",
