@@ -6,7 +6,6 @@ export const en = {
     howItWorks: "How it works",
     features: "Features",
     whyUs: "Why Us",
-    techniques: "Techniques",
     forPatients: "For patients",
     requestAccess: "Request early access",
     skipToContent: "Skip to content",

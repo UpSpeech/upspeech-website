@@ -139,13 +139,6 @@ const Header = () => {
             >
               {t.whyUs}
             </button>
-            <a
-              href={localizedHref("/techniques", locale)}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-              onClick={() => trackButtonClick("nav_techniques", "header")}
-            >
-              {t.techniques}
-            </a>
             <LocaleSwitcher />
           </nav>
 
@@ -224,16 +217,6 @@ const Header = () => {
             >
               {t.whyUs}
             </button>
-            <a
-              href={localizedHref("/techniques", locale)}
-              className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-              onClick={() => {
-                trackButtonClick("nav_techniques", "header");
-                setMenuOpen(false);
-              }}
-            >
-              {t.techniques}
-            </a>
             <Button
               onClick={() => {
                 trackButtonClick("join_waitlist", "header");
