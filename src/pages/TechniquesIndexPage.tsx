@@ -174,10 +174,14 @@ export function TechniquesIndexPage() {
                 {t.mainCategories}
               </h2>
               <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* The id on each card is the landing spot for the parent link
+                    on a sub-technique page. scroll-mt clears the fixed h-20
+                    header, which would otherwise cover the heading. */}
                 {mainCategories.map((category) => (
                   <div
                     key={category.slug}
-                    className="rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7"
+                    id={category.slug}
+                    className="scroll-mt-24 rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7"
                   >
                     <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
                       {category.name}

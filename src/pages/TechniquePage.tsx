@@ -212,14 +212,15 @@ export function TechniquePage({ slug }: TechniquePageProps) {
             />
             <div className="relative max-w-4xl mx-auto">
               {/* The parent link is real navigation, not decoration: it is how
-                  you get back up the taxonomy. */}
+                  you get back up the taxonomy. It points at the category's card
+                  on the index rather than /techniques/<parent slug>, which is
+                  not a route: the parent categories (fluency-shaping,
+                  fluency-modification) exist only as headings on the index, so
+                  that URL 404s in all three locales. */}
               {technique.parent_technique ? (
                 <p className={eyebrowClass}>
                   <a
-                    href={localizedHref(
-                      `/techniques/${technique.parent_technique.slug}`,
-                      locale,
-                    )}
+                    href={`${localizedHref("/techniques", locale)}#${technique.parent_technique.slug}`}
                     className="inline-flex min-h-[44px] items-center hover:underline"
                   >
                     {technique.parent_technique.name}
