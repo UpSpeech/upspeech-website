@@ -11,9 +11,10 @@ import { useEffect, useRef, useState } from "react";
  * Four bodies on one construction system. Everything except the body rectangle
  * and the crown is shared, which is the whole point of the system: the face,
  * the chest lobe, the arms and the feet never move, so a new species is one
- * changed rectangle rather than a new drawing. The accent is a variable because
- * a body and an accent are two separate axes, and wiring only some of the
- * accent surfaces to it was the bug that made the original canvas untestable.
+ * changed rectangle rather than a new drawing. Body, crown, accent and chest
+ * lobe are four separate axes, each a variable, and wiring only some of the
+ * coloured surfaces to one was the bug that made the original canvas
+ * untestable.
  *
  * The loop is the product's own subject rather than idle fidgeting: the
  * companion breathes, then speaks, and three dots rise as it does. Six seconds,
@@ -30,6 +31,12 @@ export type Species = "lumo" | "pip" | "nima" | "tumbo";
 type Body = { x: number; y: number; w: number; h: number; r: number };
 
 /**
+ * The crowns the file can draw. Named once so the species record, the prop and
+ * the Crown component cannot drift apart.
+ */
+export type CrownKind = "ears" | "antenna" | "sideEars" | "none";
+
+/**
  * Per species: the body rectangle, the crown, and where the arms and feet sit
  * against that body. Only these differ.
  */
@@ -39,7 +46,7 @@ const SPECIES: Record<
     body: Body;
     arms: { lx: number; rx: number; y: number; w: number; h: number };
     feet: { lx: number; rx: number; w: number };
-    crown: "ears" | "antenna" | "sideEars" | "none";
+    crown: CrownKind;
   }
 > = {
   lumo: {
@@ -74,10 +81,24 @@ const EYE = "#faf9f5";
 
 type Props = {
   species?: Species;
+  /**
+   * Crown, independent of the body. Omitted, or set to the stored sentinel
+   * "default", the species keeps the crown it was drawn with, so every existing
+   * caller is unaffected.
+   */
+  crown?: CrownKind | "default";
   /** Rendered size in px. Below about 80 the face stops reading. */
   size?: number;
-  /** Accent for the chest lobe, cheek dots and speech. Defaults to the brand lavender. */
+  /**
+   * Accent for the cheek dots, the antenna tip and the speech dots. Defaults to
+   * the brand lavender.
+   */
   accent?: string;
+  /**
+   * Chest lobe colour, as its own axis. Defaults to `accent`, which is how it
+   * behaved when the lobe and the cheeks were one variable.
+   */
+  belly?: string;
   /**
    * Accessible name. Omitted, it stays decorative, which is right when the copy
    * beside it already says what the section is.
@@ -86,46 +107,74 @@ type Props = {
   className?: string;
 };
 
-const Crown = ({ kind, accent }: { kind: string; accent: string }) => {
-  if (kind === "ears")
+/**
+ * Crowns anchor to the body rect rather than to absolute canvas coordinates.
+ * Each one was authored against a single body, so an antenna drawn for pip
+ * (body top y 40) floats clear of tumbo's head (y 62), and side ears drawn for
+ * nima disappear inside a body 150 units wide. Every offset below reproduces
+ * its home species exactly, so no shipped drawing moves, and carries the crown
+ * correctly onto the other three bodies.
+ */
+const Crown = ({ kind, body: b }: { kind: CrownKind; body: Body }) => {
+  if (kind === "ears") {
+    const cy = b.y + 8; // lumo: 50
     return (
       <>
-        <circle cx="60" cy="50" r="17" fill={INK} />
-        <circle cx="140" cy="50" r="17" fill={INK} />
+        <circle cx={b.x + 20} cy={cy} r="17" fill={INK} />
+        <circle cx={b.x + b.w - 20} cy={cy} r="17" fill={INK} />
       </>
     );
-  if (kind === "sideEars")
+  }
+  if (kind === "sideEars") {
+    const cy = b.y + 44; // nima: 92
     return (
       <>
-        <circle cx="44" cy="92" r="21" fill={INK} />
-        <circle cx="156" cy="92" r="21" fill={INK} />
+        <circle cx={b.x + 8} cy={cy} r="21" fill={INK} />
+        <circle cx={b.x + b.w - 8} cy={cy} r="21" fill={INK} />
       </>
     );
-  if (kind === "antenna")
+  }
+  if (kind === "antenna") {
+    // Buried 6px inside the body so the join hides behind it. On pip the base
+    // is 46, the stem tops at 26 and the ball centres at 18. The stem also
+    // takes its x from the body centre rather than the canvas centre: all four
+    // bodies happen to centre on 100, but a body that did not would grow a
+    // detached antenna, which is the class of bug this whole change removes.
+    const base = b.y + 6;
+    const cx = b.x + b.w / 2;
     return (
       <>
         <path
-          d="M100 46 V26"
+          d={`M${cx} ${base} V${base - 20}`}
           stroke={INK}
           strokeWidth={8}
           strokeLinecap="round"
           fill="none"
         />
-        <circle cx="100" cy="18" r="11" fill={accent} />
+        <circle cx={cx} cy={base - 28} r="11" fill="var(--companion-accent)" />
       </>
     );
+  }
   return null;
 };
 
 const Companion = ({
   species = "lumo",
+  crown: crownProp,
   size = 160,
   accent = "#958af0",
+  belly: bellyProp,
   label,
   className = "",
 }: Props) => {
   const s = SPECIES[species];
   const { body: b, arms: a, feet: f } = s;
+  // `default` is the stored sentinel for "the crown this body was drawn with",
+  // and so is prop absence. Both resolve here so no caller has to translate.
+  const crown = !crownProp || crownProp === "default" ? s.crown : crownProp;
+  // Defaulted through the cascade rather than through the resolved string, so
+  // an override of --companion-accent carries the lobe with it.
+  const belly = bellyProp ?? "var(--companion-accent)";
   const ref = useRef<SVGSVGElement | null>(null);
   const [onScreen, setOnScreen] = useState(false);
 
@@ -158,7 +207,10 @@ const Companion = ({
       viewBox="0 0 200 212"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ ["--companion-accent" as string]: accent }}
+      style={{
+        ["--companion-accent" as string]: accent,
+        ["--companion-belly" as string]: belly,
+      }}
       className={`companion ${onScreen ? "companion-live" : ""} ${className}`}
       {...a11y}
     >
@@ -193,17 +245,23 @@ const Companion = ({
         />
 
         {/* Crown behind the body so the body covers where it joins. */}
-        <Crown kind={s.crown} accent={accent} />
+        <Crown kind={crown} body={b} />
         <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={b.r} fill={INK} />
 
-        {/* Accent surfaces. All of them take the variable: wiring only some of
-            them was the defect that made the original canvas untestable. */}
+        {/* Two colour axes, and every coloured surface belongs to exactly one.
+            The chest lobe reads --companion-belly; the cheeks, the antenna tip
+            and the speech dots read --companion-accent. Wiring a surface to
+            neither is the defect that made the original canvas untestable, so
+            a new coloured surface must join one of the two. */}
         <path
           d="M82 126 H108 A18 18 0 1 1 108 162 H82 A8 8 0 0 1 74 154 V134 A8 8 0 0 1 82 126 Z"
-          fill="var(--companion-accent)"
+          fill="var(--companion-belly)"
           opacity="0.94"
         />
-        <circle cx="131" cy="128" r="5.5" fill="var(--companion-accent)" />
+        {/* Both cheeks on one line. The right one was authored at cy 128, level
+            with the chest lobe rather than with its own pair, which read as a
+            slipped dot on every body since the cheeks are shared geometry. */}
+        <circle cx="131" cy="110" r="5.5" fill="var(--companion-accent)" />
         <circle
           cx="61"
           cy="110"
