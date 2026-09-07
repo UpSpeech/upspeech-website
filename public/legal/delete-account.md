@@ -5,9 +5,9 @@ This page explains how to delete your UpSpeech account, or specific data, and wh
 ## Delete your account from the app
 
 1. Open UpSpeech and sign in.
-2. Go to **Settings → Account → Delete account**.
-3. Choose **Delete everything**.
-4. Type the confirmation phrase and confirm.
+2. Open the **Profile** tab and tap **Delete account**.
+3. Choose **Delete everything**, or **Help improve UpSpeech** to keep anonymized recordings for model training.
+4. Type **DELETE** in the confirmation box and tap **Delete my account**.
 
 Your account is deactivated right away and the deletion is processed. This cannot be undone from inside the app.
 
