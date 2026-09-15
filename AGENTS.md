@@ -10,8 +10,8 @@ exactly this reason.
 ## Conventions
 
 - **No regulatory positioning.** UpSpeech does not claim one and never implies
-  one. The claims posture lives in the marketing repo's
-  `standards/CONTENT_DIRECTIVES.md`.
+  one. The full claims standard is held privately; ask before writing anything
+  that reads as a clinical or regulatory claim.
 - `tailwind.config.ts` files the brand accent `#958AF0` under `calm.lavender`,
   which is a different colour's name in app-frontend. Check the value, not the
   name.
