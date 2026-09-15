@@ -35,7 +35,20 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(options?: {
       { threshold, rootMargin },
     );
     obs.observe(el);
-    return () => obs.disconnect();
+
+    // Focus counts as arrival, the same way scrolling does. A keyboard user
+    // tabbing ahead of the scroll position would otherwise land on content
+    // still at opacity 0, which is a focus indicator on something invisible.
+    const onFocusIn = () => {
+      setRevealed(true);
+      if (once) obs.disconnect();
+    };
+    el.addEventListener("focusin", onFocusIn);
+
+    return () => {
+      obs.disconnect();
+      el.removeEventListener("focusin", onFocusIn);
+    };
   }, [threshold, rootMargin, once]);
 
   return { ref, revealed };
