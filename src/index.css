@@ -858,9 +858,9 @@
 /* ---------------------------------------------------------------------------
    Opening sequence
 
-   Shown only when ?intro is on the URL, never to a reader who has asked for
-   less motion, and removed from the DOM once it has finished so it cannot
-   trap focus or intercept a click.
+   Shown once per browsing session, never to a reader who has asked for less
+   motion, and removed from the DOM once it has finished so it cannot trap
+   focus or intercept a click.
 
    The order is the point: the ring writes itself the way a recording runs,
    start to finish; she appears at its centre; the ring then shrinks and
