@@ -76,10 +76,6 @@ export default {
           DEFAULT: "#ef4444",
           foreground: "#FFFFFF",
         },
-        info: {
-          DEFAULT: "#3b82f6",
-          foreground: "#FFFFFF",
-        },
         destructive: {
           DEFAULT: "#ef4444",
           foreground: "#FFFFFF",
