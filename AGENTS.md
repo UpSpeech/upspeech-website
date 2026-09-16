@@ -41,10 +41,8 @@ Five rules sit here because they bite before you would think to go and look.
 - **Work in a per-task worktree.** `git worktree add ../upspeech-website-<slug> -b <branch> origin/main`.
   Other sessions run against this checkout, and a `git switch` here reverts their
   uncommitted work.
-- **Check `../plans/delight/` before changing a screen.** If an open delight plan
-  names your files, ship the task here and that plan's stage to `feat/redesign`
-  in the same session. The umbrella `AGENTS.md`, "The delight plans come with the
-  change", has the steps.
+- **Changing a screen: check `../plans/delight/` first.** The umbrella
+  `AGENTS.md`, "Delight overlap", says how to ship it with the plan it overlaps.
 - **Stage files by name**, so `.env`, credentials and keys stay out of a commit.
 - **A commit message carries the change and nothing else.** No trailer naming an
   assistant or a vendor, and no em dashes anywhere: use a comma, or end the
