@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   hasConsent,
   grantConsent,
@@ -18,6 +17,7 @@ import { getDictionary, splitLocaleFromPath } from "@/i18n";
  */
 export const ConsentBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -45,6 +45,31 @@ export const ConsentBanner = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Other fixed layers read --consent-bar-h to keep clear of the bar. The
+  // header's mobile drawer is the first one; the var(..., 0px) fallback on the
+  // reading side is what makes it safe to only publish it while mounted.
+  useEffect(() => {
+    if (!showBanner) return;
+
+    const bar = barRef.current;
+    if (!bar) return;
+
+    // A ResizeObserver rather than a resize listener: switching locale
+    // re-renders longer copy into a banner that never unmounts, and the window
+    // has not changed size.
+    const root = document.documentElement;
+    const observer = new ResizeObserver(() => {
+      const height = Math.round(bar.getBoundingClientRect().height);
+      root.style.setProperty("--consent-bar-h", `${height}px`);
+    });
+    observer.observe(bar);
+
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--consent-bar-h");
+    };
+  }, [showBanner]);
+
   const handleAccept = () => {
     grantConsent();
     setShowBanner(false);
@@ -71,56 +96,57 @@ export const ConsentBanner = () => {
   // browser, so the banner does not belong in a static file.
   return (
     <div
+      ref={barRef}
       data-consent-banner="true"
-      className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300"
+      className="fixed bottom-0 left-0 right-0 z-[60] border-t border-calm-light bg-white shadow-lg animate-in slide-in-from-bottom duration-300"
       role="dialog"
       aria-labelledby="consent-banner-title"
       aria-describedby="consent-banner-description"
     >
-      <Card className="mx-auto max-w-4xl border-2 shadow-lg">
-        <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex-1 space-y-2">
-            <h2
-              id="consent-banner-title"
-              className="text-lg font-semibold text-gray-900"
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-[max(1.5rem,5vw)] py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-4">
+        <div className="flex-1 sm:flex sm:items-baseline sm:gap-2">
+          <h2
+            id="consent-banner-title"
+            className="text-sm font-semibold text-gray-900 sm:shrink-0"
+          >
+            {t.title}
+          </h2>
+          <p
+            id="consent-banner-description"
+            className="text-xs text-gray-600 sm:text-sm"
+          >
+            {t.description}{" "}
+            <a
+              href="https://policies.google.com/technologies/cookies"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-gray-900"
             >
-              {t.title}
-            </h2>
-            <p
-              id="consent-banner-description"
-              className="text-sm text-gray-600"
-            >
-              {t.description}{" "}
-              <a
-                href="https://policies.google.com/technologies/cookies"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-gray-900"
-              >
-                {t.learnMore}
-              </a>
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={handleDecline}
-              className="sm:order-1"
-            >
-              {t.decline}
-            </Button>
-            <Button
-              type="button"
-              variant="default"
-              onClick={handleAccept}
-              className="sm:order-2"
-            >
-              {t.accept}
-            </Button>
-          </div>
+              {t.learnMore}
+            </a>
+          </p>
         </div>
-      </Card>
+        <div className="flex gap-2 sm:shrink-0 sm:gap-3">
+          <Button
+            type="button"
+            variant="secondary"
+            size="sm"
+            onClick={handleDecline}
+            className="flex-1 sm:order-1 sm:flex-none"
+          >
+            {t.decline}
+          </Button>
+          <Button
+            type="button"
+            variant="default"
+            size="sm"
+            onClick={handleAccept}
+            className="flex-1 sm:order-2 sm:flex-none"
+          >
+            {t.accept}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
