@@ -71,7 +71,7 @@ function buildBars(): Bar[] {
       x2: CENTER + cos * (INNER_R + length),
       y2: CENTER + sin * (INNER_R + length),
       spoken: Boolean(arc),
-      delay: Math.round(fraction * 620),
+      delay: Math.round(fraction * 280),
     });
   }
   return bars;
