@@ -23,6 +23,13 @@ const scriptsDir = dirname(fileURLToPath(import.meta.url));
 const appTsxPath = join(scriptsDir, "..", "src", "App.tsx");
 const netlifyTomlPath = join(scriptsDir, "..", "netlify.toml");
 const headerPath = join(scriptsDir, "..", "src", "components", "Header.tsx");
+const consentBannerPath = join(
+  scriptsDir,
+  "..",
+  "src",
+  "components",
+  "ConsentBanner.tsx",
+);
 
 /**
  * Guards on things nothing else in the pipeline reads.
@@ -91,6 +98,26 @@ function configProblems() {
     problems.push(
       "src/components/Header.tsx assigns localizedPath() to window.location.href. " +
         "Use localizedHref() so the navigation does not take a 301.",
+    );
+  }
+
+  // --consent-bar-h is a two-file contract held together by a string. The
+  // banner writes it, the drawer's max-height subtracts it, and the reading
+  // side falls back to 0px, so a rename on either side lints and typechecks
+  // clean and the drawer quietly overlaps the bar again.
+  const banner = readFileSync(consentBannerPath, "utf8");
+  const name = /--consent-bar-h(?![\w-])/;
+  const writes = name.test(banner);
+  const reads = name.test(header);
+  if (writes !== reads) {
+    problems.push(
+      writes
+        ? "src/components/ConsentBanner.tsx publishes --consent-bar-h but " +
+            "src/components/Header.tsx no longer reads it, so the mobile " +
+            "drawer will overlap the consent bar."
+        : "src/components/Header.tsx reads --consent-bar-h but " +
+            "src/components/ConsentBanner.tsx no longer publishes it, so the " +
+            "drawer silently falls back to the 0px default.",
     );
   }
 
