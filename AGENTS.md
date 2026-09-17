@@ -37,7 +37,13 @@ decisions. Read it before opening a PR from here.
 
 Five rules sit here because they bite before you would think to go and look.
 
-- **Base branch: `main`.** Merging to `main` deploys. Netlify builds a preview per PR.
+- **Base branch: `main`.** Merging to `main` deploys.
+- **There is no deploy preview.** Netlify previews are off, so a reviewer has no
+  hosted URL to open and a PR that only links one shows them nothing. Run the site
+  locally and screenshot it, the way the app repos do: `npm run dev`, capture each
+  page you changed, and publish the images to the `pr-assets` branch. Running it
+  locally is also what makes `critique` possible here, since it reads a rendered
+  page rather than a diff.
 - **Work in a per-task worktree.** `git worktree add ../upspeech-website-<slug> -b <branch> origin/main`.
   Other sessions run against this checkout, and a `git switch` here reverts their
   uncommitted work.
