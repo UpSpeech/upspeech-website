@@ -156,7 +156,7 @@ const Hero = () => {
           </h1>
 
           <p
-            className="mt-8 max-w-[44ch] font-body text-lg leading-relaxed text-calm-charcoal/75"
+            className="mt-8 max-w-[44ch] font-body text-lg leading-relaxed text-calm-charcoal/80"
             style={{
               transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
               transitionDelay: "470ms",
