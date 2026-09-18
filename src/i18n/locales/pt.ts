@@ -490,7 +490,7 @@ export const pt: Dictionary = {
     closing: {
       headline: "Trabalha com um clínico que entenda os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech é utilizada através de terapeutas da fala. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech é utilizada por terapeutas da fala. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -512,7 +512,7 @@ export const pt: Dictionary = {
         body: "Após uma sessão, sabes o que aconteceu. Escrever é a parte que demora, porque parte de uma página em branco com o raciocínio clínico já feito. Numa agenda cheia de pacientes isso acumula-se, e sai normalmente do tempo de preparação ou do fim do dia.",
       },
       {
-        heading: "Rascunhos estruturados que revê e edita",
+        heading: "Rascunhos estruturados que revês e editas",
         body: "Uma solução é um rascunho construído a partir dos dados da própria sessão, cobrindo o que o paciente praticou e como evoluiu. Edita o que precisa de edição e assina. O juízo clínico continua a ser teu do início ao fim.",
       },
       {
@@ -542,7 +542,7 @@ export const pt: Dictionary = {
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finaliza o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
         },
       ],
     },
@@ -595,7 +595,7 @@ export const pt: Dictionary = {
     personCentered: {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
+      body: "O objetivo da app é a confiança e a sensação de ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
       photoAlt:
         "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
