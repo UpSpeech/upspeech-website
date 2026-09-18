@@ -36,6 +36,8 @@ upspeech-website/*
 # CLAUDE
 # Local agent state stays out; shared skills are checked in so everyone gets them.
 .claude/*
+!.claude/settings.json
+.claude/settings.local.json
 !.claude/skills/
 **/CLAUDE.md
 !/CLAUDE.md
