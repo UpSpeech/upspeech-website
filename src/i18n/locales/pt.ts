@@ -50,7 +50,7 @@ export const pt: Dictionary = {
     title: "Técnicas de terapia da fala",
     subtitle: "Técnicas estabelecidas usadas em terapia da fala",
     seoDescription:
-      "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
+      "Conhece técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
     mainCategories: "Categorias de técnicas",
     standalone: "Técnicas independentes",
@@ -58,7 +58,7 @@ export const pt: Dictionary = {
     techniques: "técnicas",
     loading: "A carregar técnicas...",
     error: "Erro ao carregar técnicas",
-    tryAgain: "Erro ao carregar técnicas. Tente novamente mais tarde.",
+    tryAgain: "Erro ao carregar técnicas. Tenta novamente mais tarde.",
   },
   techniquePage: {
     loading: "A carregar técnica...",
@@ -77,7 +77,7 @@ export const pt: Dictionary = {
       photoAlt:
         "Uma mulher à mesa da cozinha, com o telemóvel à frente, a dizer um exercício em voz alta ao fim da tarde",
       eyebrow: "Para clínicas de terapia da fala",
-      headlineLine1: "A sua terapia",
+      headlineLine1: "A tua terapia",
       headlineLine2: "continua",
       headlineLine3: "entre sessões.",
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
@@ -144,26 +144,26 @@ export const pt: Dictionary = {
       body: "Dezenas de terapeutas disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
       before: {
         time: "08:40 · Antes da primeira consulta",
-        headline: "Já tem o contexto.",
+        headline: "Já tens o contexto.",
         body: "O paciente completou o acolhimento na app. Lê onde ele está antes de se sentar, em vez de gastar os primeiros dez minutos a perguntar.",
         photoAlt:
           "Uma terapeuta da fala à secretária entre consultas, com o portátil fechado à frente, a olhar pela janela",
       },
       assessment: {
         time: "09:15 · A avaliação",
-        headline: "Sai com o relatório escrito.",
-        body: "Grave a avaliação e o relatório fica em rascunho no momento em que se levanta. Corrige e assina. Não começa de uma página em branco.",
+        headline: "Sais com o relatório escrito.",
+        body: "Gravas a avaliação e o relatório fica em rascunho no momento em que te levantas. Corriges e assinas. Não começas de uma página em branco.",
         detailAlt:
           "Um relatório de sessão gerado, com o nome do paciente, a data e o estado Pronto",
       },
       session: {
         time: "11:30 · Na sessão",
-        headline: "As notas custam-lhe a criança.",
-        body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grave a sessão e as notas ficam à sua espera quando ela terminar.",
+        headline: "As notas custam-te a criança.",
+        body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grava a sessão e as notas ficam à tua espera quando ela terminar.",
         cost: {
           label: "A tirar notas",
           caption:
-            "A sua atenção está no papel. A dele foi para a janela há já algum tempo.",
+            "A tua atenção está no papel. A dele foi para a janela há já algum tempo.",
           photoAlt:
             "Uma terapeuta da fala a escrever numa prancheta ao colo enquanto o rapaz ao lado se virou para a janela, com o queixo apoiado na mão",
         },
@@ -178,13 +178,13 @@ export const pt: Dictionary = {
       plan: {
         time: "14:00 · Depois da sessão",
         headline: "O plano vai com eles para casa.",
-        body: "Atribui os exercícios uma vez. Praticam entre consultas e cada tentativa volta para si rever antes da consulta seguinte.",
+        body: "Atribuis os exercícios uma vez. Praticam entre consultas e cada tentativa volta para ti rever antes da consulta seguinte.",
         detailAlt:
           "Um percurso de aprendizagem atribuído, a mostrar o progresso pelos passos, com o passo atual assinalado",
       },
       close: {
         time: "17:30 · O fim do dia",
-        headline: "Lembra-se de todos.",
+        headline: "Lembras-te de todos.",
         body: "Seis pacientes, um a seguir ao outro. Ao fim da tarde o detalhe desapareceu. O registo não, e é dele que parte a sessão seguinte.",
         screenshotAlt:
           "O painel do terapeuta, com os pacientes atribuídos, a atividade recente e o que precisa de atenção",
@@ -248,7 +248,7 @@ export const pt: Dictionary = {
     },
     interstitial: {
       headlineLine1: "Apoio contínuo,",
-      headlineLine2: "a começar pela sua clínica.",
+      headlineLine2: "a começar pela tua clínica.",
       requestAccess: "Pedir acesso antecipado",
     },
     engine: {
@@ -316,37 +316,37 @@ export const pt: Dictionary = {
     },
     cta: {
       headline: "Pedir acesso antecipado.",
-      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Fale-nos da sua clínica e entraremos em contacto.",
+      body: "Estamos a trabalhar com um conjunto de clínicas e gostaríamos de ouvir outras que trabalham na área da terapia da fala. Fala-nos da tua clínica e entraremos em contacto.",
       nameLabel: "Nome completo *",
-      namePlaceholder: "Introduza o seu nome",
-      nameError: "Introduza o seu nome.",
+      namePlaceholder: "Introduz o teu nome",
+      nameError: "Introduz o teu nome.",
       emailLabel: "Endereço de email *",
-      emailPlaceholder: "o-seu@email.com",
-      emailError: "Introduza o seu endereço de email.",
+      emailPlaceholder: "o-teu@email.com",
+      emailError: "Introduz o teu endereço de email.",
       roleLabel: "Função *",
-      rolePlaceholder: "Escolha a sua função",
-      roleError: "Escolha a sua função.",
+      rolePlaceholder: "Escolhe a tua função",
+      roleError: "Escolhe a tua função.",
       roleSpeechTherapist: "Terapeuta da fala",
       roleClinicDirector: "Diretor de clínica",
       rolePracticeOwner: "Proprietário de consultório",
       roleOther: "Outro",
       clinicSizeLabel: "Dimensão da clínica (opcional)",
-      clinicSizePlaceholder: "Escolha a dimensão da clínica",
+      clinicSizePlaceholder: "Escolhe a dimensão da clínica",
       clinicSizeSolo: "Consultório individual",
       clinicSizeSmall: "2-5 Terapeutas",
       clinicSizeMedium: "6-15 Terapeutas",
       clinicSizeLarge: "15+ Terapeutas",
       submit: "Pedir acesso antecipado",
       submitting: "A enviar...",
-      requiredFieldsTitle: "Preencha todos os campos obrigatórios",
+      requiredFieldsTitle: "Preenche todos os campos obrigatórios",
       successTitle: "Está na lista.",
       successDescription:
-        "Obrigado, entraremos em contacto. Verifique o seu email para uma confirmação.",
+        "Obrigado, entraremos em contacto. Verifica o teu email para uma confirmação.",
       errorTitle: "Algo correu mal",
-      errorDefault: "Tente novamente mais tarde.",
-      errorNetwork: "Erro de rede. Verifique a sua ligação e tente novamente.",
+      errorDefault: "Tenta novamente mais tarde.",
+      errorNetwork: "Erro de rede. Verifica a tua ligação e tenta novamente.",
       errorSubmission:
-        "Ocorreu um problema com o envio do formulário. Tente novamente.",
+        "Ocorreu um problema com o envio do formulário. Tenta novamente.",
     },
   },
   forPatients: {
@@ -355,9 +355,9 @@ export const pt: Dictionary = {
       "Como os pacientes praticam terapia da fala entre sessões com a UpSpeech, orientados pelo seu terapeuta da fala.",
     intro: {
       eyebrow: "Para pacientes",
-      headlineLine1: "A sua prática,",
+      headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continua a praticar, entre consultas, o trabalho que faz com o seu terapeuta da fala. O seu terapeuta define o plano e acompanha como está a correr enquanto pratica na app.",
+      body: "A UpSpeech é como continuas a praticar, entre consultas, o trabalho que fazes com o teu terapeuta da fala. O teu terapeuta define o plano e acompanha como está a correr enquanto praticas na app.",
       photoAlt:
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
     },
@@ -368,27 +368,27 @@ export const pt: Dictionary = {
         "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
     },
     howItWorks: {
-      eyebrow: "Como funciona para si",
-      headline: "Orientado pelo seu terapeuta, a cada passo.",
+      eyebrow: "Como funciona para ti",
+      headline: "Orientado pelo teu terapeuta, a cada passo.",
       steps: [
         {
-          title: "O seu terapeuta define o seu plano",
-          copy: "O seu terapeuta da fala escolhe os exercícios e objetivos que correspondem à fase da terapia em que está.",
+          title: "O teu terapeuta define o teu plano",
+          copy: "O teu terapeuta da fala escolhe os exercícios e objetivos que correspondem à fase da terapia em que estás.",
         },
         {
-          title: "Pratica na app",
-          copy: "Faça os exercícios guiados no telemóvel, ao ritmo que lhe der jeito entre sessões.",
+          title: "Praticas na app",
+          copy: "Fazes os exercícios guiados no telemóvel, ao ritmo que te der jeito entre sessões.",
         },
         {
-          title: "O seu terapeuta vê o seu progresso",
-          copy: "O seu terapeuta acompanha o que praticou e ajusta o plano à medida que avança, para que cada sessão dê continuidade à anterior.",
+          title: "O teu terapeuta vê o teu progresso",
+          copy: "O teu terapeuta acompanha o que praticaste e ajusta o plano à medida que avanças, para que cada sessão dê continuidade à anterior.",
         },
       ],
     },
     app: {
       eyebrow: "A app",
-      headline: "O seu plano, no seu bolso.",
-      body: "Abra a app e o exercício do dia está lá à sua espera.",
+      headline: "O teu plano, no teu bolso.",
+      body: "Abre a app e o exercício do dia está lá à tua espera.",
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
@@ -405,30 +405,30 @@ export const pt: Dictionary = {
       items: [
         {
           q: "Preciso de um terapeuta da fala para usar a UpSpeech?",
-          a: "Sim. A UpSpeech é usada em conjunto com o seu terapeuta da fala, que define o seu plano e revê o seu progresso. Não substitui a terapia.",
+          a: "Sim. A UpSpeech é usada em conjunto com o teu terapeuta da fala, que define o teu plano e revê o teu progresso. Não substitui a terapia.",
         },
         {
           q: "O que vou praticar?",
-          a: "O seu terapeuta escolhe exercícios para si com base nos seus objetivos e na sua fase de terapia.",
+          a: "O teu terapeuta escolhe exercícios para ti com base nos teus objetivos e na tua fase de terapia.",
         },
         {
           q: "Com que frequência devo praticar?",
-          a: "O seu terapeuta orienta a frequência da prática. A app facilita manter uma rotina constante entre sessões.",
+          a: "O teu terapeuta orienta a frequência da prática. A app facilita manter uma rotina constante entre sessões.",
         },
         {
           q: "A minha informação é privada?",
-          a: "Sim. Os seus dados são encriptados e só ficam acessíveis a quem o acompanha. Consulte a Política de Privacidade para mais detalhes.",
+          a: "Sim. Os teus dados são encriptados e só ficam acessíveis a quem te acompanha. Consulta a Política de Privacidade para mais detalhes.",
         },
         {
           q: "Como obtenho a UpSpeech?",
-          a: "Pergunte ao seu terapeuta da fala se usa a UpSpeech.",
+          a: "Pergunta ao teu terapeuta da fala se usa a UpSpeech.",
         },
       ],
     },
     closing: {
-      headline: "Pergunte ao seu terapeuta da fala sobre a UpSpeech.",
+      headline: "Pergunta ao teu terapeuta da fala sobre a UpSpeech.",
       bodyPrefix:
-        "A UpSpeech funciona através da sua clínica. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
+        "A UpSpeech funciona através da tua clínica. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -453,7 +453,7 @@ export const pt: Dictionary = {
         body: "A terapia da fala tradicional trata por vezes a fluência como definição de sucesso. A abordagem centrada na pessoa alarga esse horizonte. Quando a pessoa pretende uma fala mais fluente, os clínicos recorrem a técnicas de modelagem da fluência, como a fala prolongada. Quando reduzir o evitamento é o que mais importa, recorrem à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é que é ela que tem uma palavra a dizer sobre quais desses objetivos se aplicam.",
       },
       {
-        heading: "Ser ouvido à sua maneira",
+        heading: "Ser ouvido à tua maneira",
         body: "As pessoas que gaguejam lidam frequentemente com mais do que disfluência. Há o telefonema que se adia e o café que se pede de outra forma porque é mais fácil do que a palavra que se queria dizer. A terapia centrada na pessoa aborda isso a par de qualquer prática de técnicas.",
       },
       {
@@ -488,9 +488,9 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Trabalhe com um clínico que entenda os seus objetivos.",
+      headline: "Trabalha com um clínico que entenda os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech é utilizada através de terapeutas da fala. Se gere um consultório e quer usá-la com os seus pacientes, pode ",
+        "A UpSpeech é utilizada por terapeutas da fala. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -509,11 +509,11 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Após uma sessão, sabe o que aconteceu. Escrever é a parte que demora, porque parte de uma página em branco com o raciocínio clínico já feito. Numa agenda cheia de pacientes isso acumula-se, e sai normalmente do tempo de preparação ou do fim do dia.",
+        body: "Após uma sessão, sabes o que aconteceu. Escrever é a parte que demora, porque parte de uma página em branco com o raciocínio clínico já feito. Numa agenda cheia de pacientes isso acumula-se, e sai normalmente do tempo de preparação ou do fim do dia.",
       },
       {
-        heading: "Rascunhos estruturados que revê e edita",
-        body: "Uma solução é um rascunho construído a partir dos dados da própria sessão, cobrindo o que o paciente praticou e como evoluiu. Edita o que precisa de edição e assina. O juízo clínico continua a ser seu do início ao fim.",
+        heading: "Rascunhos estruturados que revês e editas",
+        body: "Uma solução é um rascunho construído a partir dos dados da própria sessão, cobrindo o que o paciente praticou e como evoluiu. Edita o que precisa de edição e assina. O juízo clínico continua a ser teu do início ao fim.",
       },
       {
         heading: "O que deve constar numa boa nota de terapia da fala",
@@ -530,7 +530,7 @@ export const pt: Dictionary = {
       items: [
         {
           q: "Quanto tempo podem os terapeutas da fala poupar realisticamente na documentação?",
-          a: "Depende do seu fluxo de trabalho atual e do tempo que gasta em notas. Um rascunho elimina a página em branco, que é normalmente a parte mais lenta de escrever uma nota. Quanto poupa varia conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
+          a: "Depende do teu fluxo de trabalho atual e do tempo que gastas em notas. Um rascunho elimina a página em branco, que é normalmente a parte mais lenta de escrever uma nota. Quanto poupas varia conforme a complexidade da sessão e a quantidade de edições que o rascunho necessita.",
         },
         {
           q: "A redação de notas com assistência de IA substitui a observação clínica?",
@@ -538,21 +538,21 @@ export const pt: Dictionary = {
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
-          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulte as orientações da sua ordem profissional sobre IA na documentação clínica.",
+          a: "As notas redigidas são adequadas quando o terapeuta revê e assina cada nota antes de esta entrar no processo clínico do paciente. Consulta as orientações da tua ordem profissional sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finaliza o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
         },
       ],
     },
     closing: {
       headline:
-        "Deixe a UpSpeech redigir as notas para se concentrar na sessão.",
+        "Deixa a UpSpeech redigir as notas para te concentrares na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que pretendem prática estruturada entre sessões e notas redigidas por IA. ",
-      bodyLink: "Peça acesso aqui",
-      bodySuffix: " para ver se se adequa à sua clínica.",
+      bodyLink: "Pede acesso aqui",
+      bodySuffix: " para ver se se adequa à tua clínica.",
     },
   },
   forSlps: {
@@ -562,8 +562,8 @@ export const pt: Dictionary = {
     intro: {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "Mais terapia entre sessões.",
-      headlineLine2: "Tudo orientado por si.",
-      body: "A UpSpeech dá aos seus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolher. Saberá como correu a semana antes de o paciente se sentar.",
+      headlineLine2: "Tudo orientado por ti.",
+      body: "A UpSpeech dá aos teus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolheres. Saberás como correu a semana antes de o paciente se sentar.",
       photoAlt:
         "Uma terapeuta da fala de pé numa sala de consulta, a segurar um tablet e a olhar para o lado",
     },
@@ -576,7 +576,7 @@ export const pt: Dictionary = {
     },
     betweenSessions: {
       eyebrow: "Entre sessões",
-      headline: "Atribua prática. Veja o que aconteceu.",
+      headline: "Atribui prática. Vê o que aconteceu.",
       steps: [
         {
           title: "Define o plano",
@@ -584,18 +584,18 @@ export const pt: Dictionary = {
         },
         {
           title: "O paciente pratica na app",
-          copy: "Alguns minutos calmos por dia de prática guiada, na técnica que definiu.",
+          copy: "Alguns minutos calmos por dia de prática guiada, na técnica que definiste.",
         },
         {
           title: "Acompanha o progresso",
-          copy: "Os dias seguidos de prática, a regularidade e as tendências chegam até si entre consultas.",
+          copy: "Os dias seguidos de prática, a regularidade e as tendências chegam até ti entre consultas.",
         },
       ],
     },
     personCentered: {
       eyebrow: "A nossa abordagem",
       headline: "Feito para encorajar.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
+      body: "O objetivo da app é a confiança e a sensação de ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
       photoAlt:
         "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
@@ -605,29 +605,29 @@ export const pt: Dictionary = {
       items: [
         {
           q: "A UpSpeech escreve os meus relatórios por mim?",
-          a: "Redige um rascunho de relatório estruturado a partir da sessão para rever e editar, e poupa-lhe o trabalho da página em branco.",
+          a: "Redige um rascunho de relatório estruturado a partir da sessão para reveres e editares, e poupa-te o trabalho da página em branco.",
         },
         {
           q: "O que fazem os meus pacientes?",
-          a: "Praticam as técnicas que atribui, em sessões diárias curtas, e o seu progresso chega até si entre consultas.",
+          a: "Praticam as técnicas que atribuis, em sessões diárias curtas, e o progresso deles chega até ti entre consultas.",
         },
         {
           q: "Substitui a terapia?",
-          a: "Não. A UpSpeech funciona através da sua clínica e é usada em conjunto com as suas sessões, não em vez delas.",
+          a: "Não. A UpSpeech funciona através da tua clínica e é usada em conjunto com as tuas sessões, não em vez delas.",
         },
       ],
     },
     closing: {
-      headline: "Traga a UpSpeech para a sua clínica.",
-      bodyPrefix: "A UpSpeech funciona através da sua clínica. ",
-      bodyLink: "Peça acesso aqui",
+      headline: "Traz a UpSpeech para a tua clínica.",
+      bodyPrefix: "A UpSpeech funciona através da tua clínica. ",
+      bodyLink: "Pede acesso aqui",
       bodySuffix: ".",
     },
   },
   consent: {
     title: "Cookies neste site",
     description:
-      "Usamos cookies para melhorar a sua experiência e analisar a utilização do site. Ao aceitar, concorda com a utilização de cookies de análise. Pode recusar se preferir.",
+      "Usamos cookies para melhorar a tua experiência e analisar a utilização do site. Ao aceitares, concordas com a utilização de cookies de análise. Podes recusar se preferires.",
     learnMore: "Saber mais sobre cookies",
     decline: "Recusar",
     accept: "Aceitar",
@@ -636,7 +636,7 @@ export const pt: Dictionary = {
     seoTitle: "Página não encontrada",
     eyebrow: "Erro 404",
     title: "Esta página fez uma pausa.",
-    body: "A página que procura foi movida ou nunca existiu. Vamos ajudar a voltar ao caminho certo.",
+    body: "A página que procuras foi movida ou nunca existiu. Vamos ajudar a voltar ao caminho certo.",
     backHome: "Voltar ao início",
   },
 };
