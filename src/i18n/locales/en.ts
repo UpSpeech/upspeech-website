@@ -50,8 +50,8 @@ export const en = {
     seoDescription:
       "Speech therapy techniques for stuttering, each with what it is, what it is for, and how to practice it. Covers fluency shaping, stuttering modification and cognitive approaches.",
     featured: "Featured",
-    mainCategories: "Families of technique",
-    standalone: "Techniques on their own",
+    mainCategories: "Technique families",
+    standalone: "Techniques that do not belong to a family",
     viewDetails: "Read the technique",
     techniques: "techniques",
     loading: "Loading techniques...",
@@ -66,7 +66,7 @@ export const en = {
     practicalDescription: "What it is",
     objective: "What it is for",
     howToPractice: "How to practice it",
-    relatedTechniques: "Practiced alongside",
+    relatedTechniques: "Practiced with this one",
   },
   home: {
     seoDescription:
@@ -590,8 +590,8 @@ export const en = {
     },
     personCentered: {
       eyebrow: "Our approach",
-      headline: "Every attempt gets a person's reply.",
-      body: "A patient records at home and their therapist listens to it. The feedback the patient reads is what the therapist wrote.",
+      headline: "Every attempt comes back with your reply.",
+      body: "A patient records at home and you listen to it. The feedback they read is what you wrote.",
       photoAlt:
         "A speech-language pathologist talking with a young boy in a clinic room, his mother sitting just behind him",
     },

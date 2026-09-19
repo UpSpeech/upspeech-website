@@ -53,7 +53,7 @@ export const es: Dictionary = {
       "Técnicas de logopedia para la tartamudez, cada una con qué es, para qué sirve y cómo practicarla. Incluye moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
     mainCategories: "Familias de técnicas",
-    standalone: "Técnicas por sí solas",
+    standalone: "Técnicas que no pertenecen a una familia",
     viewDetails: "Leer la técnica",
     techniques: "técnicas",
     loading: "Cargando técnicas...",
@@ -68,7 +68,7 @@ export const es: Dictionary = {
     practicalDescription: "Qué es",
     objective: "Para qué sirve",
     howToPractice: "Cómo practicarla",
-    relatedTechniques: "Se practican junto a",
+    relatedTechniques: "Se practican con esta",
   },
   home: {
     seoDescription:
@@ -592,8 +592,8 @@ export const es: Dictionary = {
     },
     personCentered: {
       eyebrow: "Nuestro enfoque",
-      headline: "Cada intento recibe respuesta de una persona.",
-      body: "El paciente graba en casa y su logopeda escucha la grabación. El comentario que lee el paciente lo escribió su logopeda.",
+      headline: "Cada intento recibe tu respuesta.",
+      body: "El paciente graba en casa y tú escuchas la grabación. El comentario que lee lo escribiste tú.",
       photoAlt:
         "Una logopeda hablando con un niño en una sala de consulta, con su madre sentada justo detrás de él",
     },

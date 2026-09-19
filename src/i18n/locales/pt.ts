@@ -53,7 +53,7 @@ export const pt: Dictionary = {
       "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
     mainCategories: "Famílias de técnicas",
-    standalone: "Técnicas por si só",
+    standalone: "Técnicas que não pertencem a uma família",
     viewDetails: "Ler a técnica",
     techniques: "técnicas",
     loading: "A carregar técnicas...",
@@ -68,7 +68,7 @@ export const pt: Dictionary = {
     practicalDescription: "O que é",
     objective: "Para que serve",
     howToPractice: "Como praticá-la",
-    relatedTechniques: "Praticadas em conjunto",
+    relatedTechniques: "Praticadas com esta",
   },
   home: {
     seoDescription:
@@ -594,8 +594,8 @@ export const pt: Dictionary = {
     },
     personCentered: {
       eyebrow: "A nossa abordagem",
-      headline: "Cada tentativa tem resposta de uma pessoa.",
-      body: "O paciente grava em casa e o seu terapeuta ouve a gravação. O comentário que o paciente lê foi escrito pelo terapeuta.",
+      headline: "Cada tentativa recebe a tua resposta.",
+      body: "O paciente grava em casa e tu ouves a gravação. O comentário que ele lê foi escrito por ti.",
       photoAlt:
         "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
