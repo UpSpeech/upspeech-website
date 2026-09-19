@@ -46,13 +46,13 @@ export const en = {
     "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.",
   techniquesIndex: {
     title: "Speech Therapy Techniques",
-    subtitle: "Established techniques used in speech and language therapy",
+    subtitle: "What each one is for, and how to practice it",
     seoDescription:
-      "Browse established speech therapy techniques for stuttering, including fluency shaping, stuttering modification, and cognitive approaches.",
+      "Speech therapy techniques for stuttering, each with what it is, what it is for, and how to practice it. Covers fluency shaping, stuttering modification and cognitive approaches.",
     featured: "Featured",
-    mainCategories: "Technique Categories",
-    standalone: "Standalone Techniques",
-    viewDetails: "View Details",
+    mainCategories: "Families of technique",
+    standalone: "Techniques on their own",
+    viewDetails: "Read the technique",
     techniques: "techniques",
     loading: "Loading techniques...",
     error: "Error Loading Techniques",
@@ -63,10 +63,10 @@ export const en = {
     error: "Error Loading Technique",
     notFound: "Technique not found",
     backToAll: "Back to all techniques",
-    practicalDescription: "Practical Description",
-    objective: "Objective",
-    howToPractice: "How to Practice",
-    relatedTechniques: "Related Techniques",
+    practicalDescription: "What it is",
+    objective: "What it is for",
+    howToPractice: "How to practice it",
+    relatedTechniques: "Practiced alongside",
   },
   home: {
     seoDescription:
@@ -81,7 +81,7 @@ export const en = {
       body: "Patients practice between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       traceLabel: "A recording of someone speaking, with the pauses left in",
       requestAccess: "Request early access",
-      seeHowItWorks: "See how it works",
+      seeHowItWorks: "See a patient's week",
     },
     gap: {
       eyebrow: "The patient's week",
@@ -590,8 +590,8 @@ export const en = {
     },
     personCentered: {
       eyebrow: "Our approach",
-      headline: "Encouraging by design.",
-      body: "The app is built around confidence and being heard. The practice is designed to encourage rather than correct.",
+      headline: "Every attempt gets a person's reply.",
+      body: "A patient records at home and their therapist listens to it. The feedback the patient reads is what the therapist wrote.",
       photoAlt:
         "A speech-language pathologist talking with a young boy in a clinic room, his mother sitting just behind him",
     },
