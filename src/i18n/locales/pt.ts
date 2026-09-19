@@ -48,13 +48,13 @@ export const pt: Dictionary = {
     "A UpSpeech é uma ferramenta de prática e de produtividade clínica para utilização por e com terapeutas da fala qualificados. Não é um dispositivo médico e não diagnostica, trata nem cura qualquer condição. O conteúdo educativo deste site não substitui o aconselhamento clínico profissional.",
   techniquesIndex: {
     title: "Técnicas de terapia da fala",
-    subtitle: "Técnicas estabelecidas usadas em terapia da fala",
+    subtitle: "Para que serve cada uma, e como praticá-la",
     seoDescription:
-      "Conheça técnicas estabelecidas de terapia da fala para a gaguez, incluindo modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
+      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
-    mainCategories: "Categorias de técnicas",
-    standalone: "Técnicas independentes",
-    viewDetails: "Ver detalhes",
+    mainCategories: "Famílias de técnicas",
+    standalone: "Técnicas que não pertencem a uma família",
+    viewDetails: "Ler a técnica",
     techniques: "técnicas",
     loading: "A carregar técnicas...",
     error: "Erro ao carregar técnicas",
@@ -65,10 +65,10 @@ export const pt: Dictionary = {
     error: "Erro ao carregar a técnica",
     notFound: "Técnica não encontrada",
     backToAll: "Voltar a todas as técnicas",
-    practicalDescription: "Descrição prática",
-    objective: "Objetivo",
-    howToPractice: "Como praticar",
-    relatedTechniques: "Técnicas relacionadas",
+    practicalDescription: "O que é",
+    objective: "Para que serve",
+    howToPractice: "Como praticá-la",
+    relatedTechniques: "Praticadas com esta",
   },
   home: {
     seoDescription:
@@ -83,7 +83,7 @@ export const pt: Dictionary = {
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
       traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
       requestAccess: "Pedir acesso antecipado",
-      seeHowItWorks: "Ver como funciona",
+      seeHowItWorks: "Ver a semana de um paciente",
     },
     gap: {
       eyebrow: "A semana do paciente",
@@ -594,8 +594,8 @@ export const pt: Dictionary = {
     },
     personCentered: {
       eyebrow: "A nossa abordagem",
-      headline: "Feito para encorajar.",
-      body: "O objetivo na app é a confiança e ser ouvido. A prática é concebida para encorajar em vez de corrigir.",
+      headline: "Cada tentativa recebe a tua resposta.",
+      body: "O paciente grava em casa e tu ouves a gravação. O comentário que ele lê foi escrito por ti.",
       photoAlt:
         "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },

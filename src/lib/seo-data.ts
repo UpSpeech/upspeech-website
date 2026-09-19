@@ -29,57 +29,57 @@ export const TECHNIQUE_SEO: Record<
   "voluntary-stuttering": {
     title: "Voluntary Stuttering Technique",
     description:
-      "Learn voluntary stuttering, a speech therapy technique where you intentionally stutter to reduce fear and tension. Understand how it works, its objectives, and how to practice.",
+      "Stuttering on purpose, under your own control, so the fear of it has less to work with. What voluntary stuttering is for and how to practice it.",
   },
   cancelation: {
     title: "Cancellation Technique for Stuttering",
     description:
-      "Master the cancellation technique, pause after a stuttered word and repeat it with controlled, easier speech. A core stuttering modification strategy for speech therapy.",
+      "Stop after the stuttered word, then say it again with easier speech. Cancellation is a stuttering modification technique, and this is how to practice it.",
   },
   "pull-out": {
     title: "Pull-Out Technique for Stuttering",
     description:
-      "Learn the pull-out technique, modify a stutter mid-word by easing into smoother speech. A real-time stuttering modification method used in speech therapy.",
+      "Changing a stutter while it is still happening, by easing out of it mid-word. What the pull-out is for and how to practice it.",
   },
   "preparatory-set": {
     title: "Preparatory Set Technique",
     description:
-      "Understand the preparatory set, plan your articulatory movements before speaking to reduce stuttering. A proactive fluency shaping technique for speech therapy.",
+      "Setting up the movement before the word starts, instead of repairing it afterwards. What the preparatory set is for and how to practice it.",
   },
   holding: {
     title: "Holding Technique for Stuttering",
     description:
-      "Learn the holding technique, maintain your articulatory position during a block to release tension gradually. A key stuttering modification strategy.",
+      "Staying in the articulatory position through a block until the tension drains out of it. What the holding technique is for and how to practice it.",
   },
   "soft-starts": {
     title: "Soft Starts Speech Technique",
     description:
-      "Practice soft starts, begin voicing gently with relaxed vocal folds to reduce hard glottal attacks. A foundational fluency shaping technique in speech therapy.",
+      "Beginning a word with the vocal folds relaxed, so there is no hard glottal attack to push through. What soft starts is for and how to practice it.",
   },
   "soft-articulation-contact": {
     title: "Soft Articulation Contact Technique",
     description:
-      "Learn soft articulation contact, use light, relaxed contact between articulators to reduce tension and improve speech flow. A fluency shaping method for stuttering therapy.",
+      "Light contact between the articulators, so less tension reaches the sound. What soft articulation contact is for and how to practice it.",
   },
   "prolonged-speech": {
     title: "Prolonged Speech Technique",
     description:
-      "Master prolonged speech, extend vowels and continuant consonants to slow your rate and increase fluency. A widely-used fluency shaping technique in stuttering therapy.",
+      "Vowels and continuant consonants held longer, which brings the rate down with them. What prolonged speech is for and how to practice it.",
   },
   "speech-speed-management": {
     title: "Speech Speed Management Technique",
     description:
-      "Learn speech speed management, control your speaking rate to maintain fluency under different communication demands. A practical technique for stuttering therapy.",
+      "Picking a speaking rate and keeping it when the room asks you to hurry. What speech speed management is for and how to practice it.",
   },
   pauses: {
     title: "Pauses Technique in Speech Therapy",
     description:
-      "Master the use of pauses, incorporate natural breaks in speech to reduce time pressure and improve fluency. An essential technique for stuttering management.",
+      "Breaks put in on purpose, so the time pressure comes off the word after them. What the pauses technique is for and how to practice it.",
   },
   "identification-desensitization": {
     title: "Identification & Desensitization for Stuttering",
     description:
-      "Learn identification and desensitization, recognize stuttering patterns and reduce emotional reactions to disfluency. A cognitive approach to stuttering therapy.",
+      "Naming what your stutter actually does, until the reaction to it settles. A cognitive approach, with what it is for and how to practice it.",
   },
 };
 

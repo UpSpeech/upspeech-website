@@ -48,13 +48,13 @@ export const es: Dictionary = {
     "UpSpeech es una herramienta de práctica y de productividad clínica para su uso por y con logopedas cualificados. No es un dispositivo médico y no diagnostica, trata ni cura ninguna condición. El contenido educativo de este sitio no sustituye el asesoramiento clínico profesional.",
   techniquesIndex: {
     title: "Técnicas de logopedia",
-    subtitle: "Técnicas establecidas usadas en logopedia",
+    subtitle: "Para qué sirve cada una, y cómo practicarla",
     seoDescription:
-      "Descubre técnicas establecidas de logopedia para la tartamudez, incluyendo moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+      "Técnicas de logopedia para la tartamudez, cada una con qué es, para qué sirve y cómo practicarla. Incluye moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
     featured: "Destacado",
-    mainCategories: "Categorías de técnicas",
-    standalone: "Técnicas independientes",
-    viewDetails: "Ver detalles",
+    mainCategories: "Familias de técnicas",
+    standalone: "Técnicas que no pertenecen a una familia",
+    viewDetails: "Leer la técnica",
     techniques: "técnicas",
     loading: "Cargando técnicas...",
     error: "Error al cargar técnicas",
@@ -65,10 +65,10 @@ export const es: Dictionary = {
     error: "Error al cargar la técnica",
     notFound: "Técnica no encontrada",
     backToAll: "Volver a todas las técnicas",
-    practicalDescription: "Descripción práctica",
-    objective: "Objetivo",
-    howToPractice: "Cómo practicar",
-    relatedTechniques: "Técnicas relacionadas",
+    practicalDescription: "Qué es",
+    objective: "Para qué sirve",
+    howToPractice: "Cómo practicarla",
+    relatedTechniques: "Se practican con esta",
   },
   home: {
     seoDescription:
@@ -83,7 +83,7 @@ export const es: Dictionary = {
       body: "Los pacientes practican entre sesiones, siguiendo el plan que les ha pautado su logopeda. Cada intento vuelve al terapeuta, que decide el siguiente paso.",
       traceLabel: "Una grabación de alguien hablando, con las pausas incluidas",
       requestAccess: "Solicitar acceso anticipado",
-      seeHowItWorks: "Ver cómo funciona",
+      seeHowItWorks: "Ver la semana de un paciente",
     },
     gap: {
       eyebrow: "La semana del paciente",
@@ -592,8 +592,8 @@ export const es: Dictionary = {
     },
     personCentered: {
       eyebrow: "Nuestro enfoque",
-      headline: "Diseñado para animar.",
-      body: "La app está pensada en torno a la confianza y a ser escuchado. La práctica está diseñada para animar en lugar de corregir.",
+      headline: "Cada intento recibe tu respuesta.",
+      body: "El paciente graba en casa y tú escuchas la grabación. El comentario que lee lo escribiste tú.",
       photoAlt:
         "Una logopeda hablando con un niño en una sala de consulta, con su madre sentada justo detrás de él",
     },
