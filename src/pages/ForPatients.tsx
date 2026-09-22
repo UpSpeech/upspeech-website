@@ -274,7 +274,15 @@ export default function ForPatients() {
               />
             </div>
             <div>
-              <Companion species="lumo" size={104} className="mb-4" />
+              {/* A face of its own, not the default one three other
+                  companions on this site already wear. */}
+              <Companion
+                species="lumo"
+                size={104}
+                className="mb-4"
+                eyes="dot"
+                bellyShape="round"
+              />
               <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
               <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
                 {t.withAParent.line}
