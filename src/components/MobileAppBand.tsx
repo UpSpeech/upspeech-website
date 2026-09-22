@@ -150,11 +150,33 @@ const MobileAppBand = () => {
               is the duplication this redesign set out to remove. */}
           {/* The three residents, in the section that shows the three tabs
               they own: tumbo on the journey, pip on practice, nima on the
-              coach. Accents are the ones the decision record assigns. */}
+              coach. Accents are the ones the decision record assigns.
+
+              Each wears a different face, because the app now offers eyes,
+              brows and a belly as things a person picks, and three characters
+              separated only by colour is the finding that started D50. Pip
+              keeps the defaults so one of the three is still the drawing the
+              rest of the site ships. */}
           <div className="mt-7 flex items-end gap-1.5">
-            <Companion species="tumbo" size={84} accent="#cca163" />
+            <Companion
+              species="tumbo"
+              size={84}
+              accent="#cca163"
+              eyes="wide"
+              brows="soft"
+              bellyShape="round"
+              bellySize="l"
+            />
             <Companion species="pip" size={84} accent="#958af0" />
-            <Companion species="nima" size={84} accent="#69b2e1" />
+            <Companion
+              species="nima"
+              size={84}
+              accent="#69b2e1"
+              eyes="narrow"
+              brows="flat"
+              bellyShape="shield"
+              bellySize="s"
+            />
           </div>
           <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
             {t.familyEyebrow}
