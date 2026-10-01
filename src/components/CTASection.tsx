@@ -127,7 +127,7 @@ const CTASection = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
         <h2
-          className="t-h2-sm font-heading font-bold text-calm-charcoal mb-6 animate-fade-in"
+          className="t-h2-sm font-heading font-bold text-calm-navy mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
           {t.headline}
@@ -319,7 +319,7 @@ const CTASection = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 t-lead rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-calm-navy hover:opacity-90 text-white font-body font-bold py-3 t-lead rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? t.submitting : t.submit}
             </Button>

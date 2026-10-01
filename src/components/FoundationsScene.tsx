@@ -88,18 +88,12 @@ const FoundationsScene = () => {
       />
 
       <div ref={ref} className="gutter relative">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-ink"
-          style={style(0)}
-        >
-          {t.eyebrow}
-        </p>
         <h2
-          className="t-h2 mt-5 font-heading font-bold text-calm-charcoal max-w-4xl"
+          className="t-h2 font-heading font-bold text-calm-navy max-w-4xl"
           style={{ ...style(80) }}
         >
           {t.headlineLine1} <br />
-          <span className="text-calm-lavender-ink">{t.headlineLine2}</span>
+          {t.headlineLine2}
         </h2>
         <p
           className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed"

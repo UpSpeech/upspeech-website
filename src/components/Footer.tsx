@@ -9,7 +9,7 @@ const Footer = () => {
   const locale = useLocale();
   const t = useT().footer;
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-primary text-white relative overflow-hidden">
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 right-10 w-20 h-20 bg-calm-lavender/10 rounded-full blur-xl" />

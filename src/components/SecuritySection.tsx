@@ -37,14 +37,8 @@ const SecuritySection = () => {
       />
 
       <div ref={ref} className="gutter relative">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-ink"
-          style={reveal(revealed, 0)}
-        >
-          {t.eyebrow}
-        </p>
         <h2
-          className="t-h2 mt-5 font-heading font-bold text-calm-charcoal max-w-3xl"
+          className="t-h2 font-heading font-bold text-calm-navy max-w-3xl"
           style={{ ...reveal(revealed, 80) }}
         >
           {t.headline}

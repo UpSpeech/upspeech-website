@@ -73,7 +73,7 @@ const ClinicianDay = () => {
                 {t.eyebrow}
               </p>
               <h2
-                className="t-h2 mt-4 max-w-[16ch] font-accent font-bold text-calm-charcoal"
+                className="t-h2 mt-4 max-w-[16ch] font-accent font-bold text-calm-navy"
                 style={{ ...revealFrom(revealed, "up", 80) }}
               >
                 {t.headline}

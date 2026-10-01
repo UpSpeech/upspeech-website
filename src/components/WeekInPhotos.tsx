@@ -42,15 +42,8 @@ const WeekInPhotos = () => {
       className="relative bg-calm-light py-[clamp(4rem,9vw,7rem)]"
     >
       <div className="gutter">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-ink"
-          style={revealFrom(revealed, "up", 0)}
-        >
-          {t.eyebrow}
-        </p>
-
         <h2
-          className="t-h2 mt-5 max-w-[20ch] font-accent font-bold text-calm-charcoal tracking-tight"
+          className="t-h2 max-w-[20ch] font-accent font-bold text-calm-navy tracking-tight"
           style={{ ...revealFrom(revealed, "up", 80) }}
         >
           {t.headline}
