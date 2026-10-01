@@ -138,7 +138,7 @@ export default function ForPatients() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-heading font-bold text-calm-navy tracking-tight">
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
                   {t.intro.headlineLine2}
                 </h1>
@@ -224,7 +224,7 @@ export default function ForPatients() {
                 bellyShape="round"
               />
 
-              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
+              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>

@@ -151,7 +151,7 @@ export function TechniquesIndexPage() {
         <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
           <div className="gutter relative">
             <div className="max-w-3xl">
-              <h1 className="t-display font-heading font-bold text-calm-navy tracking-tight">
+              <h1 className="t-display font-accent font-bold text-calm-navy tracking-tight">
                 {t.title}
               </h1>
               <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">

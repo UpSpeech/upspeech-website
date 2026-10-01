@@ -137,8 +137,11 @@ const Hero = () => {
               scale, which is what makes a page look like a template. */}
           {/* t-display is capped so the longest line still sets on one line.
               The Line reveal clips its overflow, so a wrap is not a soft
-              failure here: it slices the glyphs of the line below. */}
-          <h1 className="t-display max-w-[16ch] font-heading font-bold text-calm-navy">
+              failure here: it slices the glyphs of the line below.
+              Bricolage sets "between sessions." about 610px wide at the 72px
+              cap, wider than the grid column from 1400px up, hence the fixed
+              width there. */}
+          <h1 className="t-display max-w-[16ch] min-[1400px]:w-[38.5rem] min-[1400px]:max-w-none font-accent font-bold text-calm-navy">
             {/* The trailing spaces are load-bearing, not sloppy. Each line is
                 a block-level span, so with JavaScript off a crawler extracts
                 textContent and gets "Your therapykeeps goingbetween sessions."
