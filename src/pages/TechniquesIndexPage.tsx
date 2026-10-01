@@ -154,7 +154,7 @@ export function TechniquesIndexPage() {
           <div className="gutter relative">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.techniques}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 font-accent font-bold text-calm-charcoal tracking-tight">
                 {t.title}
               </h1>
               <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">

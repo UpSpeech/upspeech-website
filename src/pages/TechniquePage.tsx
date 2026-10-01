@@ -235,7 +235,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </a>
                 </p>
               )}
-              <h1 className="t-display mt-5 max-w-4xl font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 max-w-4xl font-accent font-bold text-calm-charcoal tracking-tight">
                 {technique.name}
               </h1>
               {technique.description && (

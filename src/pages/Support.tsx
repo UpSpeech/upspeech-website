@@ -442,7 +442,7 @@ export default function Support() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="rounded-2xl border border-calm-charcoal/10 bg-white overflow-hidden">
           <div className="px-6 py-8 sm:px-10 sm:py-12">
-            <h1 className="text-3xl font-bold text-calm-charcoal font-heading">
+            <h1 className="t-display font-accent font-bold text-calm-charcoal">
               {c.heading}
             </h1>
             <p className="mt-4 text-calm-charcoal/80 font-body">{c.intro}</p>

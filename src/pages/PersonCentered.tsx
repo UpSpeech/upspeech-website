@@ -51,7 +51,7 @@ export default function PersonCentered() {
           <div className="gutter relative">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 font-accent font-bold text-calm-charcoal tracking-tight">
                 {t.intro.headlineLine1} <br />
                 <span className="text-calm-lavender-ink">
                   {t.intro.headlineLine2}
