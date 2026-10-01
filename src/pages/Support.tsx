@@ -439,9 +439,9 @@ export default function Support() {
         locale={locale}
         structuredData={buildSupportFaqSchema(locale)}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div>
-          <div className="px-6 py-8 sm:px-10 sm:py-12">
+      <div className="gutter py-12">
+        <div className="max-w-3xl">
+          <div className="py-8 sm:py-12">
             <h1 className="t-display font-accent font-bold text-calm-navy">
               {c.heading}
             </h1>

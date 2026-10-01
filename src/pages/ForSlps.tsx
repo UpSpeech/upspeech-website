@@ -46,9 +46,8 @@ export default function ForSlps() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
-                  {t.intro.headlineLine1} <br />
-                  {t.intro.headlineLine2}
+                <h1 className="t-h2 mt-5 font-accent font-bold text-calm-navy tracking-tight">
+                  {t.intro.headlineLine1} {t.intro.headlineLine2}
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
