@@ -50,6 +50,10 @@ export const appendLeadToSheet = async (lead: Lead): Promise<WriteStatus> => {
         role: roleLabel("en", lead.role),
         clinicSize: clinicSizeLabel("en", lead.clinicSize),
         locale: lead.locale,
+        source: lead.source,
+        medium: lead.medium,
+        campaign: lead.campaign,
+        content: lead.content,
       }),
     });
 

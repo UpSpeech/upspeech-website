@@ -170,6 +170,61 @@ check(
   "",
 );
 
+// 10. Campaign tags reach the sheet row and the team email
+globalThis.fetch = realFetch;
+const captureBodies = () => {
+  const bodies = {};
+  const stubbed = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const u = String(url);
+    if (u.includes("script.google.com")) bodies.sheet = JSON.parse(init.body);
+    if (u.includes("/emails")) {
+      const b = JSON.parse(init.body);
+      if (b.to[0].includes("hello@")) bodies.team = b.text;
+    }
+    return stubbed(url, init);
+  };
+  return bodies;
+};
+stub({});
+let bodies = captureBodies();
+await handler(
+  POST({
+    ...LEAD,
+    source: "linkedin",
+    medium: "social\nx",
+    campaign: "autumn-slp",
+    content: "c".repeat(300),
+  }),
+);
+check(
+  "sheet row carries source, medium, campaign and content",
+  bodies.sheet?.source === "linkedin" &&
+    bodies.sheet?.medium === "social x" &&
+    bodies.sheet?.campaign === "autumn-slp" &&
+    bodies.sheet?.content.length === 100,
+  JSON.stringify(bodies.sheet),
+);
+check(
+  "team email names the campaign",
+  bodies.team?.includes("linkedin / social x / autumn-slp"),
+  bodies.team,
+);
+
+stub({});
+bodies = captureBodies();
+await handler(POST(LEAD));
+check(
+  "untagged lead writes empty campaign cells",
+  bodies.sheet?.source === "" && bodies.sheet?.campaign === "",
+  JSON.stringify(bodies.sheet),
+);
+check(
+  "untagged lead is marked in the team email",
+  bodies.team?.includes("Campaign:    Untagged"),
+  bodies.team,
+);
+
 console.error = realError;
 await rm(out, { force: true });
 
