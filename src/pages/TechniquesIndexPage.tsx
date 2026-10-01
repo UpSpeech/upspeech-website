@@ -125,7 +125,7 @@ export function TechniquesIndexPage() {
         <Header />
         <Shell state="error">
           <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
-            <h2 className="font-heading font-bold text-calm-charcoal text-xl sm:text-2xl tracking-tight">
+            <h2 className="font-heading font-bold text-calm-navy text-xl sm:text-2xl tracking-tight">
               {t.error}
             </h2>
             <p className="mt-3 font-body text-calm-charcoal/80 leading-relaxed">
@@ -152,18 +152,9 @@ export function TechniquesIndexPage() {
       <main id="main" data-prerender-state="ready" className="flex-1">
         {/* Intro, matching the other pages: left aligned, eyebrow + headline */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.techniques}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display font-heading font-bold text-calm-navy tracking-tight">
                 {t.title}
               </h1>
               <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -180,7 +171,7 @@ export function TechniquesIndexPage() {
         {mainCategories.length > 0 && (
           <section className={sectionClass}>
             <div className="gutter">
-              <h2 className="font-heading t-h2-sm font-bold text-calm-charcoal">
+              <h2 className="font-heading t-h2-sm font-bold text-calm-navy">
                 {t.mainCategories}
               </h2>
               <div className="mt-8 grid grid-cols-1 items-start gap-x-14 gap-y-12 md:grid-cols-2">
@@ -193,7 +184,7 @@ export function TechniquesIndexPage() {
                     id={category.slug}
                     className="scroll-mt-24 border-t-2 border-calm-navy/80 pt-6"
                   >
-                    <h3 className="font-heading t-h3 font-bold text-calm-charcoal">
+                    <h3 className="font-heading t-h3 font-bold text-calm-navy">
                       {category.name}
                     </h3>
                     <p className="mt-2 max-w-xl font-body t-small text-calm-charcoal/80">
@@ -252,7 +243,7 @@ export function TechniquesIndexPage() {
         {standalone.length > 0 && (
           <section className={sectionClass}>
             <div className="gutter">
-              <h2 className="font-heading t-h2-sm font-bold text-calm-charcoal">
+              <h2 className="font-heading t-h2-sm font-bold text-calm-navy">
                 {t.standalone}
               </h2>
               <div className="mt-8 grid grid-cols-1 gap-x-14 md:grid-cols-2">
@@ -262,7 +253,7 @@ export function TechniquesIndexPage() {
                     to={localizedHref(`/techniques/${technique.slug}`, locale)}
                     className="group flex flex-col border-t border-calm-charcoal/10 py-6 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                   >
-                    <h3 className="font-heading t-h3 font-bold text-calm-charcoal group-hover:underline">
+                    <h3 className="font-heading t-h3 font-bold text-calm-navy group-hover:underline">
                       {technique.name}
                     </h3>
                     <p className="mt-2 max-w-xl font-body t-small text-calm-charcoal/80">

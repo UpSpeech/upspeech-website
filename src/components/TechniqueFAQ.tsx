@@ -23,7 +23,7 @@ export function TechniqueFAQ({ slug, locale = "en" }: TechniqueFAQProps) {
 
   return (
     <section className="max-w-3xl border-t border-calm-charcoal/10 pt-8">
-      <h2 className="font-heading t-h3 font-bold text-calm-charcoal mb-5">
+      <h2 className="font-heading t-h3 font-bold text-calm-navy mb-5">
         {TITLES[locale] || TITLES.en}
       </h2>
       <Accordion

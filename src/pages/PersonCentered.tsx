@@ -40,22 +40,12 @@ export default function PersonCentered() {
       <main id="main">
         {/* Intro */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 font-heading font-bold text-calm-navy tracking-tight">
                 {t.intro.headlineLine1} <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
+                {t.intro.headlineLine2}
               </h1>
               <p className="mt-6 max-w-2xl font-body t-lead text-calm-charcoal/80">
                 {t.intro.body}
@@ -82,7 +72,7 @@ export default function PersonCentered() {
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h2 className="font-heading t-h3 font-bold text-calm-charcoal">
+                    <h2 className="font-heading t-h3 font-bold text-calm-navy">
                       {section.heading}
                     </h2>
                   </div>
@@ -99,8 +89,7 @@ export default function PersonCentered() {
         <section className="bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.faq.headline}
               </h2>
 
@@ -126,7 +115,7 @@ export default function PersonCentered() {
         <section className="pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter">
             <div className="max-w-2xl">
-              <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal">
+              <h2 className="t-h2-sm font-heading font-bold text-calm-navy">
                 {t.closing.headline}
               </h2>
               <p className="mt-4 font-body t-lead text-calm-charcoal/80">
