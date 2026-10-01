@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
-import { getCampaign } from "@/lib/utm";
+import { getCampaign, leadEventProperties } from "@/lib/utm";
 import { useLocale, useT } from "@/i18n";
 
 const CTASection = () => {
@@ -51,13 +51,7 @@ const CTASection = () => {
     setFieldErrors({});
 
     const campaign = getCampaign();
-    // What the event may carry: the two picked-from-a-list answers and the
-    // campaign, never the name or email the visitor typed.
-    const leadProperties = {
-      role: formData.role,
-      clinic_size: formData.clinicSize || undefined,
-      ...campaign,
-    };
+    const leadProperties = leadEventProperties(formData, campaign);
 
     try {
       // Same-origin POST to the Netlify function, which records the lead
