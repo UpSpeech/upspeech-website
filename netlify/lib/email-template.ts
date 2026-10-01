@@ -77,7 +77,18 @@ export interface Lead {
   role: string;
   clinicSize: string;
   locale: EmailLocale;
+  /** UTM tags from the link that brought the visitor, empty when untagged. */
+  source: string;
+  medium: string;
+  campaign: string;
+  content: string;
 }
+
+/** "linkedin / social / slp-oct", or empty for an untagged visit. */
+const campaignSummary = (lead: Lead): string =>
+  [lead.source, lead.medium, lead.campaign, lead.content]
+    .filter(Boolean)
+    .join(" / ");
 
 export interface RenderedEmail {
   subject: string;
@@ -359,6 +370,7 @@ export const teamEmail = (
      English submission of the same role read as the same value. */
   const role = roleLabel("en", lead.role);
   const clinicSize = clinicSizeLabel("en", lead.clinicSize) || "Not specified";
+  const campaign = campaignSummary(lead) || "Untagged";
 
   const alert =
     persistence.sheet === "ok"
@@ -394,7 +406,7 @@ ${heading(lead.name)}
           </tr>
           <tr>
             <td class="pad" style="padding:26px 40px 0 40px;">
-${card(`                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row("Role", role, true)}${row("Clinic size", clinicSize)}${row("Language", lead.locale)}
+${card(`                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row("Role", role, true)}${row("Clinic size", clinicSize)}${row("Language", lead.locale)}${row("Campaign", campaign)}
                     </table>`)}
             </td>
           </tr>${alert}
@@ -431,6 +443,7 @@ ${cardLabel("Where it was saved")}
     `Role:        ${role}`,
     `Clinic size: ${clinicSize}`,
     `Language:    ${lead.locale}`,
+    `Campaign:    ${campaign}`,
     "",
     `Google Sheet:    ${persistence.sheet}`,
     `Resend audience: ${persistence.audience}`,

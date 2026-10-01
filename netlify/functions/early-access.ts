@@ -82,7 +82,18 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    const { name, email, role, clinicSize, company, locale } = body;
+    const {
+      name,
+      email,
+      role,
+      clinicSize,
+      company,
+      locale,
+      source,
+      medium,
+      campaign,
+      content,
+    } = body;
 
     // Honeypot: a real user never fills the hidden "company" field. Pretend
     // success so bots get no signal, but record and send nothing.
@@ -94,6 +105,10 @@ export const handler: Handler = async (event) => {
       role: oneLine(role),
       clinicSize: oneLine(clinicSize),
       locale: isEmailLocale(locale) ? locale : DEFAULT_EMAIL_LOCALE,
+      source: oneLine(source, 100),
+      medium: oneLine(medium, 100),
+      campaign: oneLine(campaign, 100),
+      content: oneLine(content, 100),
     };
 
     if (!lead.name || !lead.role || !EMAIL_PATTERN.test(lead.email))

@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "typecheck": "tsc --project tsconfig.app.json --noEmit && tsc --project tsconfig.netlify.json --noEmit",
-    "full_check": "npm run format && npm run lint:fix && npm run typecheck && npm run check:utm",
+    "full_check": "npm run format && npm run lint:fix && npm run typecheck && npm run check:utm && npm run check:early-access",
     "preview": "vite preview",
     "video:studio": "remotion studio",
     "video:render": "remotion render HeroDemo public/videos/hero-demo.mp4 --codec h264 --crf 23",

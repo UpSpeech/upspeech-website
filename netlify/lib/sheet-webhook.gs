@@ -15,6 +15,10 @@
  * Editing this script later needs Deploy > Manage deployments > Edit > Version:
  * New version. Saving alone does not change what the /exec URL runs.
  *
+ * The four campaign columns sit after Notes so rows written before they existed
+ * stay aligned. A sheet that already has a header row needs those four header
+ * cells typed in by hand, because ensureHeaderRow only writes an empty sheet.
+ *
  * "Who has access: Anyone" makes the URL world-postable, which is why every
  * request has to carry the shared secret.
  */
@@ -28,6 +32,10 @@ var HEADERS = [
   "Language",
   "Status",
   "Notes",
+  "Source",
+  "Medium",
+  "Campaign",
+  "Content",
 ];
 
 function doPost(e) {
@@ -57,6 +65,10 @@ function doPost(e) {
       body.locale || "",
       "New",
       "",
+      body.source || "",
+      body.medium || "",
+      body.campaign || "",
+      body.content || "",
     ]);
 
     return jsonResponse({ ok: true });

@@ -24,6 +24,10 @@ const SAMPLE = {
   email: "vasco@clinicadafala.pt",
   role: "speech-therapist",
   clinicSize: "small",
+  source: "linkedin",
+  medium: "social",
+  campaign: "autumn-slp",
+  content: "",
 };
 
 const SURVEY = "https://upspeech.app/survey";
