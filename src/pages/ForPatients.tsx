@@ -224,7 +224,7 @@ export default function ForPatients() {
                 bellyShape="round"
               />
 
-              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
+              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>
