@@ -19,12 +19,11 @@ interface TechniquePageProps {
 
 // Shared with the redesigned pages so this reads as the same site.
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
-const cardClass =
+// The one block on the page that earns its own ground: a procedure the reader follows.
+const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
-const cardHeadingClass =
-  "font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl";
-const proseClass =
-  "mt-4 font-body text-base text-calm-charcoal/80 leading-relaxed";
+const headingClass = "font-heading t-h3 font-bold text-calm-navy";
+const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
 
 export function TechniquePage({ slug }: TechniquePageProps) {
   const locale = useLocale();
@@ -94,14 +93,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
     if (isNumberedList) {
       return (
-        <ol className="mt-4 space-y-3 font-body text-base text-calm-charcoal/80">
+        <ol className="mt-4 space-y-3 font-body t-lead text-calm-charcoal/80">
           {lines.map((line, index) => (
             <li key={index} className="flex gap-3 leading-relaxed">
               {/* Instructions are a real sequence, so the number carries
                   information here and is worth showing. */}
               <span
                 aria-hidden="true"
-                className="mt-0.5 font-heading text-sm font-bold text-calm-lavender-ink"
+                className="mt-0.5 font-heading t-small font-bold text-calm-lavender-ink"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -183,7 +182,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         >
           <div className="max-w-4xl mx-auto">
             <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
-              <h2 className={cardHeadingClass}>{tt.error}</h2>
+              <h2 className={headingClass}>{tt.error}</h2>
               <p className="mt-3 font-body text-calm-charcoal/80 leading-relaxed">
                 {error || tt.notFound}
               </p>
@@ -201,16 +200,8 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       {!loading && !error && technique && (
         <main id="main" data-prerender-state="ready" className="flex-1">
           {/* Intro, left aligned to match the rest of the site */}
-          <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-              }}
-            />
-            <div className="relative max-w-4xl mx-auto">
+          <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
+            <div className="gutter relative">
               {/* The parent link is real navigation, not decoration: it is how
                   you get back up the taxonomy. It points at the category's card
                   on the index rather than /techniques/<parent slug>, which is
@@ -236,7 +227,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </a>
                 </p>
               )}
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 max-w-4xl font-heading font-bold text-calm-navy tracking-tight">
                 {technique.name}
               </h1>
               {technique.description && (
@@ -247,13 +238,11 @@ export function TechniquePage({ slug }: TechniquePageProps) {
             </div>
           </section>
 
-          <div className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
-            <div className="max-w-4xl mx-auto space-y-6">
+          <div className="pb-[clamp(3rem,6vw,5rem)]">
+            <div className="gutter space-y-[clamp(2.5rem,5vw,4rem)]">
               {technique.practical_description && (
-                <section className={cardClass}>
-                  <h2 className={cardHeadingClass}>
-                    {tt.practicalDescription}
-                  </h2>
+                <section className="max-w-3xl">
+                  <h2 className={headingClass}>{tt.practicalDescription}</h2>
                   <p className={proseClass}>
                     {technique.practical_description}
                   </p>
@@ -261,38 +250,43 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               )}
 
               {technique.objective && (
-                <section className={cardClass}>
-                  <h2 className={cardHeadingClass}>{tt.objective}</h2>
-                  <p className={proseClass}>{technique.objective}</p>
+                <section className="max-w-3xl border-l-2 border-calm-lavender pl-6">
+                  <h2 className={eyebrowClass}>{tt.objective}</h2>
+                  <p className="mt-3 font-heading t-statement font-semibold text-calm-charcoal">
+                    {technique.objective}
+                  </p>
                 </section>
               )}
 
               {technique.instructions && (
-                <section className={cardClass}>
-                  <h2 className={cardHeadingClass}>{tt.howToPractice}</h2>
+                <section className={`max-w-3xl ${procedureClass}`}>
+                  <h2 className={headingClass}>{tt.howToPractice}</h2>
                   {formatInstructions(technique.instructions)}
                 </section>
               )}
 
               {technique.sub_techniques &&
                 technique.sub_techniques.length > 0 && (
-                  <section className={cardClass}>
-                    <h2 className={cardHeadingClass}>{tt.relatedTechniques}</h2>
-                    <ul className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <section className="border-t border-calm-charcoal/10 pt-8">
+                    <h2 className={headingClass}>{tt.relatedTechniques}</h2>
+                    <ul className="mt-5 grid grid-cols-1 gap-x-12 md:grid-cols-2">
                       {technique.sub_techniques.map((subTech) => (
-                        <li key={subTech.slug}>
+                        <li
+                          key={subTech.slug}
+                          className="border-b border-calm-charcoal/10"
+                        >
                           <a
                             href={localizedHref(
                               `/techniques/${subTech.slug}`,
                               locale,
                             )}
-                            className="group flex h-full items-start gap-3 rounded-xl bg-white/70 p-4 transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                            className="group flex h-full items-start gap-3 py-4 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                           >
                             <span className="flex-1">
-                              <span className="block font-body font-semibold text-calm-charcoal">
+                              <span className="block font-body font-semibold text-calm-charcoal group-hover:underline">
                                 {subTech.name}
                               </span>
-                              <span className="mt-1 block font-body text-sm text-calm-charcoal/80 leading-relaxed">
+                              <span className="mt-1 block font-body t-small text-calm-charcoal/80">
                                 {subTech.description}
                               </span>
                             </span>
@@ -311,7 +305,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
               <TechniqueFAQ slug={slug} locale={locale} />
 
-              <MedicalDisclaimer />
+              <MedicalDisclaimer className="mx-0 mt-8 border-t-0 pt-0" />
             </div>
           </div>
         </main>

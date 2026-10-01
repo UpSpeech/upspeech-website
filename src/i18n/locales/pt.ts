@@ -104,7 +104,6 @@ export const pt: Dictionary = {
       footerEmphasis: "sem acrescentar sessões à semana do clínico.",
     },
     week: {
-      eyebrow: "Entre as sessões",
       headline: "A maior parte da terapia acontece quando ninguém está a ver.",
       body: "Uma hora na clínica e depois seis dias sozinho. A parte que decide se a terapia resulta é a parte que o clínico nunca vê.",
       frames: [
@@ -366,24 +365,6 @@ export const pt: Dictionary = {
       line: "Os pacientes mais novos praticam com um dos pais ao lado, seguindo o mesmo plano definido pelo terapeuta.",
       photoAlt:
         "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
-    },
-    howItWorks: {
-      eyebrow: "Como funciona para ti",
-      headline: "Orientado pelo teu terapeuta, a cada passo.",
-      steps: [
-        {
-          title: "O teu terapeuta define o teu plano",
-          copy: "O teu terapeuta da fala escolhe os exercícios e objetivos que correspondem à fase da terapia em que estás.",
-        },
-        {
-          title: "Praticas na app",
-          copy: "Fazes os exercícios guiados no telemóvel, ao ritmo que te der jeito entre sessões.",
-        },
-        {
-          title: "O teu terapeuta vê o teu progresso",
-          copy: "O teu terapeuta acompanha o que praticaste e ajusta o plano à medida que avanças, para que cada sessão dê continuidade à anterior.",
-        },
-      ],
     },
     app: {
       eyebrow: "A app",
