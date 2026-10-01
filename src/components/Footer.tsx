@@ -68,7 +68,7 @@ const Footer = () => {
             aria-label={t.product}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body t-label text-white/70">{t.product}</h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.product}</h2>
             <a
               href={localizedHref("/for-patients", locale)}
               className={linkClass}
@@ -99,7 +99,7 @@ const Footer = () => {
             aria-label={t.legal}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body t-label text-white/70">{t.legal}</h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.legal}</h2>
             <a href={localizedHref("/privacy", locale)} className={linkClass}>
               {t.privacy}
             </a>
@@ -115,7 +115,7 @@ const Footer = () => {
             aria-label={t.company}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body t-label text-white/70">{t.company}</h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.company}</h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
@@ -141,7 +141,7 @@ const Footer = () => {
           style={{ animationDelay: "0.3s" }}
         >
           <div className="flex flex-col items-center space-y-3">
-            <p className="font-body t-label text-white/70">
+            <p className="font-body t-eyebrow text-white/70">
               Supported by
             </p>
             <a
