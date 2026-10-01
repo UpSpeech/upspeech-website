@@ -22,7 +22,7 @@ const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 // The one block on the page that earns its own ground: a procedure the reader follows.
 const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
-const headingClass = "font-heading t-h3 font-bold text-calm-charcoal";
+const headingClass = "font-heading t-h3 font-bold text-calm-navy";
 const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
 
 export function TechniquePage({ slug }: TechniquePageProps) {
@@ -201,14 +201,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
         <main id="main" data-prerender-state="ready" className="flex-1">
           {/* Intro, left aligned to match the rest of the site */}
           <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-              }}
-            />
             <div className="gutter relative">
               {/* The parent link is real navigation, not decoration: it is how
                   you get back up the taxonomy. It points at the category's card
@@ -235,7 +227,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </a>
                 </p>
               )}
-              <h1 className="t-display mt-5 max-w-4xl font-accent font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 max-w-4xl font-accent font-bold text-calm-navy tracking-tight">
                 {technique.name}
               </h1>
               {technique.description && (
@@ -313,7 +305,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
               <TechniqueFAQ slug={slug} locale={locale} />
 
-              <MedicalDisclaimer className="mx-0" />
+              <MedicalDisclaimer className="mx-0 mt-8 border-t-0 pt-0" />
             </div>
           </div>
         </main>

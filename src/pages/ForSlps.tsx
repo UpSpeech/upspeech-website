@@ -40,25 +40,15 @@ export default function ForSlps() {
       <main id="main">
         {/* Intro */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-accent font-bold text-calm-charcoal tracking-tight">
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
-                  <span className="text-calm-lavender-ink">
-                    {t.intro.headlineLine2}
-                  </span>
+                  {t.intro.headlineLine2}
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
@@ -97,17 +87,8 @@ export default function ForSlps() {
 
         {/* Between sessions */}
         <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
-            <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
               {t.betweenSessions.headline}
             </h2>
 
@@ -126,7 +107,7 @@ export default function ForSlps() {
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-heading t-h3 font-bold text-calm-charcoal">
+                  <h3 className="font-heading t-h3 font-bold text-calm-navy">
                     {step.title}
                   </h3>
                   <p className="max-w-xl font-body t-lead text-calm-charcoal/80">
@@ -142,8 +123,7 @@ export default function ForSlps() {
         <section className="py-[clamp(3rem,6vw,5rem)]">
           <div className="gutter">
             <div className="max-w-2xl">
-              <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
-              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.documentation.headline}
               </h2>
               <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -170,8 +150,7 @@ export default function ForSlps() {
           <div className="mx-auto max-w-6xl rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
-                <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
-                <h2 className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
+                <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
                   {t.personCentered.headline}
                 </h2>
                 <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -196,8 +175,7 @@ export default function ForSlps() {
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter max-w-3xl">
-            <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -219,7 +197,7 @@ export default function ForSlps() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

@@ -131,14 +131,6 @@ export default function ForPatients() {
       <main id="main">
         {/* Intro */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
@@ -146,11 +138,9 @@ export default function ForPatients() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-accent font-bold text-calm-charcoal tracking-tight">
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
-                  <span className="text-calm-lavender-ink">
-                    {t.intro.headlineLine2}
-                  </span>
+                  {t.intro.headlineLine2}
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
@@ -186,7 +176,7 @@ export default function ForPatients() {
             is that a parent sits with a younger patient and works the plan the
             therapist set, so that is the whole of what this says. */}
         <section className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
+          <div className="gutter grid items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
             {/* Two phones and the two people holding them. The parent's screen
                 is behind on the left, the child's in front on the right, which
                 is the same sandwich this section already had.
@@ -233,7 +223,7 @@ export default function ForPatients() {
                 eyes="dot"
                 bellyShape="round"
               />
-              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
+
               <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
                 {t.withAParent.line}
               </p>
@@ -243,18 +233,9 @@ export default function ForPatients() {
 
         {/* The app */}
         <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             <div className="max-w-2xl">
-              <p className={eyebrowClass}>{t.app.eyebrow}</p>
-              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.app.headline}
               </h2>
               <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -324,8 +305,7 @@ export default function ForPatients() {
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter max-w-3xl">
-            <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -349,7 +329,7 @@ export default function ForPatients() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
