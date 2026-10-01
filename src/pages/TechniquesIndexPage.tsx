@@ -9,9 +9,6 @@ import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 import { useLocale, useT, localizedHref } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
-// Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
-// the techniques section reads as the same site.
-const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const sectionClass = "py-[clamp(2.5rem,5vw,4rem)]";
 
 // Page chrome for the loading and error states, so they are not a different
