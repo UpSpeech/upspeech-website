@@ -172,9 +172,6 @@ const MobileAppBand = () => {
               bellySize="s"
             />
           </div>
-          <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
-            {t.familyEyebrow}
-          </p>
           <CutOut
             name="home-family"
             alt={t.familyAlt}

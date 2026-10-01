@@ -10,12 +10,6 @@ const Footer = () => {
   const t = useT().footer;
   return (
     <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 right-10 w-20 h-20 bg-calm-lavender/10 rounded-full blur-xl" />
-        <div className="absolute bottom-10 left-10 w-16 h-16 bg-calm-light/10 rounded-full blur-lg" />
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)] animate-fade-in-up">
           <div className="flex flex-col items-center md:items-start space-y-3">

@@ -112,19 +112,6 @@ const CTASection = () => {
       id="cta"
       className="px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-calm-charcoal/10 rounded-full blur-2xl" />
-        <div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-calm-navy/10 rounded-full blur-3xl"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-calm-lavender/15 rounded-full blur-xl"
-          style={{ animationDelay: "4s" }}
-        />
-      </div>
-
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
         <h2
           className="t-h2-sm font-heading font-bold text-calm-navy mb-6 animate-fade-in"

@@ -93,7 +93,7 @@ const ClinicianDay = () => {
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.before.time}
               </span>
-              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-charcoal">
+              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-navy">
                 {t.before.headline}
               </h3>
               <p className="mt-3 max-w-md font-body t-lead text-calm-charcoal/80">
@@ -136,7 +136,7 @@ const ClinicianDay = () => {
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.assessment.time}
               </span>
-              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-charcoal">
+              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-navy">
                 {t.assessment.headline}
               </h3>
               <p className="mt-3 max-w-md font-body t-lead text-calm-charcoal/80">
@@ -245,7 +245,7 @@ const ClinicianDay = () => {
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.plan.time}
               </span>
-              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-charcoal">
+              <h3 className="mt-3 max-w-[18ch] font-accent t-h3 font-bold text-calm-navy">
                 {t.plan.headline}
               </h3>
               <p className="mt-3 max-w-md font-body t-lead text-calm-charcoal/80">
@@ -282,7 +282,7 @@ const ClinicianDay = () => {
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.close.time}
               </span>
-              <h3 className="mt-3 max-w-[20ch] font-accent t-h3 font-bold text-calm-charcoal">
+              <h3 className="mt-3 max-w-[20ch] font-accent t-h3 font-bold text-calm-navy">
                 {t.close.headline}
               </h3>
               <p className="mt-3 font-body t-lead text-calm-charcoal/80">
