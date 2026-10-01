@@ -179,19 +179,11 @@ const CycleScene = () => {
         />
 
         <div className="gutter relative flex min-h-full w-full flex-col justify-center py-[clamp(2rem,6vh,4rem)]">
-          <p
-            className="font-body t-eyebrow text-calm-lavender-ink mb-5 sm:mb-6"
-            style={reveal(revealed, 0)}
-          >
-            {t.eyebrow}
-          </p>
-
           <h2
-            className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
+            className="t-h2 font-heading font-bold text-calm-navy tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
             style={{ ...reveal(revealed, 80) }}
           >
-            {t.headlinePrefix}{" "}
-            <span className="text-calm-lavender-ink">{t.headlineEmphasis}</span>
+            {t.headlinePrefix} {t.headlineEmphasis}
           </h2>
 
           <div
@@ -451,7 +443,7 @@ const CycleScene = () => {
                         (activeIndex + 1).toString().padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="t-h2 font-heading font-extrabold text-calm-charcoal tracking-tight mb-5">
+                <h3 className="t-h2 font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}
                 </h3>
                 <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">

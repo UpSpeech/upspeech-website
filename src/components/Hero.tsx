@@ -138,7 +138,7 @@ const Hero = () => {
           {/* t-display is capped so the longest line still sets on one line.
               The Line reveal clips its overflow, so a wrap is not a soft
               failure here: it slices the glyphs of the line below. */}
-          <h1 className="t-display max-w-[16ch] font-heading font-bold text-calm-charcoal">
+          <h1 className="t-display max-w-[16ch] font-heading font-bold text-calm-navy">
             {/* The trailing spaces are load-bearing, not sloppy. Each line is
                 a block-level span, so with JavaScript off a crawler extracts
                 textContent and gets "Your therapykeeps goingbetween sessions."
@@ -156,7 +156,7 @@ const Hero = () => {
           </h1>
 
           <p
-            className="mt-8 max-w-[44ch] font-body text-lg leading-relaxed text-calm-charcoal/80"
+            className="mt-8 max-w-[44ch] font-body t-lead text-calm-charcoal/80"
             style={{
               transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
               transitionDelay: "470ms",

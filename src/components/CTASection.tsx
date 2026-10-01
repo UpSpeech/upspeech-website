@@ -112,28 +112,15 @@ const CTASection = () => {
       id="cta"
       className="px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-calm-charcoal/10 rounded-full blur-2xl" />
-        <div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-calm-navy/10 rounded-full blur-3xl"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-calm-lavender/15 rounded-full blur-xl"
-          style={{ animationDelay: "4s" }}
-        />
-      </div>
-
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
         <h2
-          className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
+          className="t-h2-sm font-heading font-bold text-calm-navy mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
           {t.headline}
         </h2>
         <p
-          className="font-body text-lg sm:text-xl text-calm-charcoal/80 mb-12 max-w-2xl mx-auto animate-fade-in"
+          className="font-body t-lead text-calm-charcoal/80 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
           {t.body}
@@ -161,7 +148,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="name"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.nameLabel}
               </Label>
@@ -184,7 +171,7 @@ const CTASection = () => {
                 <p
                   id="name-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.name}
                 </p>
@@ -194,7 +181,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="email"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.emailLabel}
               </Label>
@@ -217,7 +204,7 @@ const CTASection = () => {
                 <p
                   id="email-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.email}
                 </p>
@@ -227,7 +214,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="role"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.roleLabel}
               </Label>
@@ -274,7 +261,7 @@ const CTASection = () => {
                 <p
                   id="role-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.role}
                 </p>
@@ -284,7 +271,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="clinic-size"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.clinicSizeLabel}
               </Label>
@@ -319,7 +306,7 @@ const CTASection = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-calm-navy hover:opacity-90 text-white font-body font-bold py-3 t-lead rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? t.submitting : t.submit}
             </Button>
