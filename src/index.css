@@ -1049,6 +1049,8 @@
    tail grew in the first place.
 --------------------------------------------------------------------------- */
 @layer components {
+  /* The page's single top note: one .t-display per page, and on the home page
+     it is the hero. A section that needs less than this takes .t-h2. */
   .t-display {
     font-size: clamp(2.5rem, 5.2vw, 4.5rem);
     line-height: 0.98;
@@ -1084,6 +1086,14 @@
   .t-lead {
     font-size: clamp(1.05rem, 1.35vw, 1.25rem);
     line-height: 1.55;
+  }
+
+  /* A sentence at small size: card copy, form labels and errors, footer links.
+     The one size under .t-lead; it carries its own leading so it never rides
+     on text-sm's. */
+  .t-small {
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   /* The section eyebrow. Values are the majority of what was already in the

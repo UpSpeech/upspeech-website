@@ -134,7 +134,7 @@ const MobileAppBand = () => {
             {t.headline}
           </h2>
           <p
-            className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
+            className="mt-5 max-w-md font-body t-lead text-calm-charcoal/80"
             style={reveal(revealed, 160)}
           >
             {t.body}

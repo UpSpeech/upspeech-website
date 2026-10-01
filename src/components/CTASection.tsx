@@ -127,13 +127,13 @@ const CTASection = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
         <h2
-          className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6 animate-fade-in"
+          className="t-h2-sm font-heading font-bold text-calm-charcoal mb-6 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
           {t.headline}
         </h2>
         <p
-          className="font-body text-lg sm:text-xl text-calm-charcoal/80 mb-12 max-w-2xl mx-auto animate-fade-in"
+          className="font-body t-lead text-calm-charcoal/80 mb-12 max-w-2xl mx-auto animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
           {t.body}
@@ -161,7 +161,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="name"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.nameLabel}
               </Label>
@@ -184,7 +184,7 @@ const CTASection = () => {
                 <p
                   id="name-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.name}
                 </p>
@@ -194,7 +194,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="email"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.emailLabel}
               </Label>
@@ -217,7 +217,7 @@ const CTASection = () => {
                 <p
                   id="email-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.email}
                 </p>
@@ -227,7 +227,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="role"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.roleLabel}
               </Label>
@@ -274,7 +274,7 @@ const CTASection = () => {
                 <p
                   id="role-error"
                   role="alert"
-                  className="mt-1 text-sm text-red-600"
+                  className="mt-1 t-small text-red-600"
                 >
                   {fieldErrors.role}
                 </p>
@@ -284,7 +284,7 @@ const CTASection = () => {
             <div className="text-left">
               <Label
                 htmlFor="clinic-size"
-                className="font-body text-sm font-semibold text-calm-charcoal"
+                className="font-body t-small font-semibold text-calm-charcoal"
               >
                 {t.clinicSizeLabel}
               </Label>
@@ -319,7 +319,7 @@ const CTASection = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 text-lg rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-gradient-primary hover:opacity-90 text-white font-body font-bold py-3 t-lead rounded-full transition-all duration-300 hover:shadow-button-hover hover:scale-105 hover:-translate-y-0.5 mt-6 shadow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? t.submitting : t.submit}
             </Button>

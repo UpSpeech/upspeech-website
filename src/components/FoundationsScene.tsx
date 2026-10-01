@@ -95,7 +95,7 @@ const FoundationsScene = () => {
           {t.eyebrow}
         </p>
         <h2
-          className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-4xl"
+          className="t-h2 mt-5 font-heading font-bold text-calm-charcoal max-w-4xl"
           style={{ ...style(80) }}
         >
           {t.headlineLine1} <br />
@@ -129,7 +129,7 @@ const FoundationsScene = () => {
                   }}
                   loading="lazy"
                 />
-                <p className="mt-3 font-body text-sm text-calm-charcoal/80">
+                <p className="mt-3 font-body t-small text-calm-charcoal/80">
                   {t.logoPartnerContext[item.contextKey]}
                 </p>
               </div>
@@ -146,7 +146,7 @@ const FoundationsScene = () => {
             <span className="font-body t-eyebrow text-calm-charcoal/80">
               {t.partnersLabel}
             </span>
-            <span className="font-body text-sm text-calm-charcoal/80">
+            <span className="font-body t-small text-calm-charcoal/80">
               {t.partnersTagline}
             </span>
           </div>
@@ -178,7 +178,7 @@ const FoundationsScene = () => {
                   <div className="flex min-h-[2.4em] items-start font-body t-eyebrow text-calm-lavender-ink">
                     {p.name}
                   </div>
-                  <div className="mt-1.5 font-body text-sm text-calm-charcoal/80 leading-snug">
+                  <div className="mt-1.5 font-body t-small text-calm-charcoal/80 leading-snug">
                     {t.partnerContext[p.contextKey]}
                   </div>
                 </div>

@@ -101,7 +101,7 @@ const WeekInPhotos = () => {
                   <span className="font-body t-label text-calm-lavender-ink">
                     {frame.day}
                   </span>
-                  <p className="mt-1.5 font-accent text-[15px] sm:text-base font-medium leading-snug text-calm-charcoal">
+                  <p className="mt-1.5 font-body t-small font-medium text-calm-charcoal">
                     {frame.caption}
                   </p>
                 </figcaption>
@@ -120,10 +120,10 @@ const WeekInPhotos = () => {
         >
           <div className="p-5 sm:p-7">
             <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-              <span className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-calm-charcoal/80">
+              <span className="font-body t-label text-calm-charcoal/80">
                 {cadence.traditional}
               </span>
-              <span className="font-body text-xs tabular-nums text-calm-charcoal/80 sm:text-sm">
+              <span className="font-body t-small tabular-nums text-calm-charcoal/80">
                 {cadence.traditionalCadence}
               </span>
             </div>
@@ -136,10 +136,10 @@ const WeekInPhotos = () => {
 
           <div className="border-t border-calm-charcoal/10 bg-calm-lavender/20 p-5 sm:p-7">
             <div className="mb-3 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-              <span className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-calm-lavender-ink">
+              <span className="font-body t-label text-calm-lavender-ink">
                 {cadence.withUpspeech}
               </span>
-              <span className="font-body text-xs font-semibold tabular-nums text-calm-navy sm:text-sm">
+              <span className="font-body t-small tabular-nums text-calm-navy">
                 {cadence.fullCadence}
               </span>
             </div>
