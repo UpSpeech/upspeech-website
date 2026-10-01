@@ -158,7 +158,7 @@ export const pt: Dictionary = {
       },
       session: {
         time: "11:30 · Na sessão",
-        headline: "As notas custam-te a criança.",
+        headline: "As notas custam‑te a criança.",
         body: "Cada minuto que passa a escrever é um minuto que ela passa noutro sítio. Grava a sessão e as notas ficam à tua espera quando ela terminar.",
         cost: {
           label: "A tirar notas",

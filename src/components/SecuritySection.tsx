@@ -56,14 +56,14 @@ const SecuritySection = () => {
             return (
               <li
                 key={point.title}
-                className="flex gap-4 rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)]"
+                className="flex gap-4 md:[&:last-child:nth-child(odd)]:col-span-2 rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)]"
                 style={reveal(revealed, 240 + index * 90)}
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <div>
-                  <h3 className="font-heading t-lead font-semibold text-calm-charcoal leading-tight">
+                  <h3 className="font-heading t-lead font-semibold text-calm-navy leading-tight">
                     {point.title}
                   </h3>
                   <p className="mt-2 font-body t-small text-calm-charcoal/80">
