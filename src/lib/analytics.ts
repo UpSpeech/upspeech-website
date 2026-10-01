@@ -92,9 +92,15 @@ export const trackButtonClick = (buttonName: string, location?: string) => {
  * Track a form submission
  * @param formName - The name of the form submitted
  * @param success - Whether the submission was successful
+ * @param properties - Picked-from-a-list categories only, never a typed name or email
  */
-export const trackFormSubmit = (formName: string, success: boolean = true) => {
+export const trackFormSubmit = (
+  formName: string,
+  success: boolean = true,
+  properties: Record<string, string | undefined> = {},
+) => {
   trackEvent("form_submit", {
+    ...properties,
     form_name: formName,
     success: success,
   });
