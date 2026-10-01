@@ -3,19 +3,13 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref } from "@/i18n";
 
 const linkClass =
-  "inline-flex items-center min-h-[44px] font-body text-sm text-white/90 hover:text-white hover:underline transition-all duration-200";
+  "inline-flex items-center min-h-[44px] font-body t-small text-white/90 hover:text-white hover:underline transition-all duration-200";
 
 const Footer = () => {
   const locale = useLocale();
   const t = useT().footer;
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-primary text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 right-10 w-20 h-20 bg-calm-lavender/10 rounded-full blur-xl" />
-        <div className="absolute bottom-10 left-10 w-16 h-16 bg-calm-light/10 rounded-full blur-lg" />
-      </div>
-
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)] animate-fade-in-up">
           <div className="flex flex-col items-center md:items-start space-y-3">
@@ -27,7 +21,7 @@ const Footer = () => {
               height="48"
               loading="lazy"
             />
-            <p className="font-body text-sm text-white/80">{t.tagline}</p>
+            <p className="font-body t-small text-white/80">{t.tagline}</p>
             {(APP_STORE_URL || PLAY_STORE_URL) && (
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 {APP_STORE_URL && (
@@ -68,9 +62,7 @@ const Footer = () => {
             aria-label={t.product}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
-              {t.product}
-            </h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.product}</h2>
             <a
               href={localizedHref("/for-patients", locale)}
               className={linkClass}
@@ -101,9 +93,7 @@ const Footer = () => {
             aria-label={t.legal}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
-              {t.legal}
-            </h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.legal}</h2>
             <a href={localizedHref("/privacy", locale)} className={linkClass}>
               {t.privacy}
             </a>
@@ -119,9 +109,7 @@ const Footer = () => {
             aria-label={t.company}
             className="flex flex-col items-center md:items-start gap-1"
           >
-            <h2 className="font-body text-xs font-semibold uppercase tracking-wider text-white/70">
-              {t.company}
-            </h2>
+            <h2 className="font-body t-eyebrow text-white/70">{t.company}</h2>
             <a
               href="https://www.linkedin.com/company/upspeech/"
               target="_blank"
@@ -147,7 +135,7 @@ const Footer = () => {
           style={{ animationDelay: "0.3s" }}
         >
           <div className="flex flex-col items-center space-y-3">
-            <p className="font-body text-xs text-white/70 uppercase tracking-wider">
+            <p className="font-body t-eyebrow text-white/70">
               Supported by
             </p>
             <a
@@ -173,7 +161,7 @@ const Footer = () => {
           className="mt-6 text-center animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          <p className="font-body text-sm text-white/70">
+          <p className="font-body t-small text-white/70">
             © {new Date().getFullYear()} UpSpeech. {t.rights}
           </p>
         </div>

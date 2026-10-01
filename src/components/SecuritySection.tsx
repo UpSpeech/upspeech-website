@@ -37,20 +37,14 @@ const SecuritySection = () => {
       />
 
       <div ref={ref} className="gutter relative">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-ink"
-          style={reveal(revealed, 0)}
-        >
-          {t.eyebrow}
-        </p>
         <h2
-          className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight max-w-3xl"
+          className="t-h2 font-heading font-bold text-calm-navy max-w-3xl"
           style={{ ...reveal(revealed, 80) }}
         >
           {t.headline}
         </h2>
         <p
-          className="mt-5 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed"
+          className="mt-5 max-w-2xl font-body t-lead text-calm-charcoal/80"
           style={reveal(revealed, 160)}
         >
           {t.body}
@@ -62,17 +56,17 @@ const SecuritySection = () => {
             return (
               <li
                 key={point.title}
-                className="flex gap-4 rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)]"
+                className="flex gap-4 md:[&:last-child:nth-child(odd)]:col-span-2 rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)]"
                 style={reveal(revealed, 240 + index * 90)}
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <div>
-                  <h3 className="font-heading font-semibold text-calm-charcoal text-lg leading-tight">
+                  <h3 className="font-heading t-lead font-semibold text-calm-navy leading-tight">
                     {point.title}
                   </h3>
-                  <p className="mt-2 font-body text-sm text-calm-charcoal/80 leading-relaxed">
+                  <p className="mt-2 font-body t-small text-calm-charcoal/80">
                     {point.copy}
                   </p>
                 </div>
@@ -82,7 +76,7 @@ const SecuritySection = () => {
         </ul>
 
         <p
-          className="mt-10 font-body text-sm text-calm-charcoal/80"
+          className="mt-10 font-body t-small text-calm-charcoal/80"
           style={reveal(revealed, 640)}
         >
           <a

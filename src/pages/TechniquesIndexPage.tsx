@@ -83,6 +83,15 @@ export function TechniquesIndexPage() {
     };
   }, [locale]);
 
+  // The browser tries the #hash before the listing has loaded, so the
+  // category anchor from a technique page does not exist yet and the page
+  // stays at the top. Scroll once the cards are in.
+  useEffect(() => {
+    if (loading || error) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, [loading, error]);
+
   // Group techniques by type
   const mainCategories = techniques.filter(
     (t) => t.category_type === "main_category",

@@ -20,10 +20,10 @@ const CTASection = () => {
       className="px-[max(1.5rem,5vw)] py-[clamp(3.25rem,10vw,10rem)] bg-mesh-calm relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="font-heading font-bold text-3xl sm:text-4xl text-calm-charcoal mb-6">
+        <h2 className="t-h2-sm font-heading font-bold text-calm-navy mb-6">
           {t.headline}
         </h2>
-        <p className="font-body text-lg sm:text-xl text-calm-charcoal/80 mb-10 max-w-2xl mx-auto">
+        <p className="font-body t-lead text-calm-charcoal/80 mb-10 max-w-2xl mx-auto">
           {t.body}
         </p>
         <div

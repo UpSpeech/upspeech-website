@@ -121,20 +121,14 @@ const MobileAppBand = () => {
         className="gutter grid items-center gap-10 lg:grid-cols-[5fr_6fr]"
       >
         <div className="max-w-xl">
-          <span
-            className="font-body t-eyebrow text-calm-lavender-ink"
-            style={reveal(revealed, 0)}
-          >
-            {t.eyebrow}
-          </span>
           <h2
-            className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+            className="t-h2 font-heading font-bold text-calm-navy tracking-tight"
             style={{ ...reveal(revealed, 80) }}
           >
             {t.headline}
           </h2>
           <p
-            className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
+            className="mt-5 max-w-md font-body t-lead text-calm-charcoal/80"
             style={reveal(revealed, 160)}
           >
             {t.body}
@@ -178,9 +172,6 @@ const MobileAppBand = () => {
               bellySize="s"
             />
           </div>
-          <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
-            {t.familyEyebrow}
-          </p>
           <CutOut
             name="home-family"
             alt={t.familyAlt}
