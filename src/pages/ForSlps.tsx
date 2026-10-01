@@ -150,8 +150,7 @@ export default function ForSlps() {
           <div className="mx-auto max-w-6xl rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
-                <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
-                <h2 className="t-h2-sm mt-4 font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
+                <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
                   {t.personCentered.headline}
                 </h2>
                 <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">

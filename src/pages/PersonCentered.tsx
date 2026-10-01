@@ -39,11 +39,10 @@ export default function PersonCentered() {
 
       <main id="main">
         {/* Intro */}
-        <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(0.5rem,2vw,1.5rem)] sm:pt-36">
           <div className="gutter relative">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-navy tracking-tight">
+              <h1 className="t-display font-heading font-bold text-calm-navy tracking-tight">
                 {t.intro.headlineLine1} <br />
                 {t.intro.headlineLine2}
               </h1>

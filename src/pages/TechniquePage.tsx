@@ -305,7 +305,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
               <TechniqueFAQ slug={slug} locale={locale} />
 
-              <MedicalDisclaimer className="mx-0" />
+              <MedicalDisclaimer className="mx-0 mt-8 border-t-0 pt-0" />
             </div>
           </div>
         </main>
