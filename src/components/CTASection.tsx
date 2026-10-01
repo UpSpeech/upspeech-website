@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
+import { getCampaign, leadEventProperties } from "@/lib/utm";
 import { useLocale, useT } from "@/i18n";
 
 const CTASection = () => {
@@ -49,6 +50,9 @@ const CTASection = () => {
     }
     setFieldErrors({});
 
+    const campaign = getCampaign();
+    const leadProperties = leadEventProperties(formData, campaign);
+
     try {
       // Same-origin POST to the Netlify function, which records the lead
       // and then sends the team notification and the applicant confirmation.
@@ -59,11 +63,11 @@ const CTASection = () => {
         },
         // locale rides along outside formData so resetting the form on
         // success cannot clear it.
-        body: JSON.stringify({ ...formData, locale }),
+        body: JSON.stringify({ ...formData, ...campaign, locale }),
       });
 
       if (response.ok) {
-        trackFormSubmit("waitlist_form", true);
+        trackFormSubmit("waitlist_form", true, leadProperties);
         // Reset form first (so user knows submission was successful)
         setFormData({
           name: "",
@@ -85,7 +89,7 @@ const CTASection = () => {
     } catch (error) {
       // The catch owns all failure tracking (covers both the thrown non-2xx
       // above and network errors), so it fires exactly once per failure.
-      trackFormSubmit("waitlist_form", false);
+      trackFormSubmit("waitlist_form", false, leadProperties);
       console.error("Submission error:", error);
 
       let errorMessage = t.errorDefault;
