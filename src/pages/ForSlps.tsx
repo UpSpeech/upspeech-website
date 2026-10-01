@@ -111,7 +111,10 @@ export default function ForSlps() {
               {t.betweenSessions.headline}
             </h2>
 
-            <ol className="mt-[clamp(2.5rem,5vw,3.5rem)] divide-y divide-calm-navy/10 border-y border-calm-navy/10">
+            <ol
+              role="list"
+              className="mt-[clamp(2.5rem,5vw,3.5rem)] divide-y divide-calm-navy/10 border-y border-calm-navy/10"
+            >
               {t.betweenSessions.steps.map((step, i) => (
                 <li
                   key={step.title}

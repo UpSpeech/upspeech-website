@@ -1333,13 +1333,17 @@
 
 /* A horizontal row that says it scrolls: the right edge fades while more is
    off-screen and clears at the end. Below lg only, where the row scrolls.
-   Browsers without scroll-driven animations keep a fixed, shallow fade. */
+   Browsers without scroll-driven animations get no fade, and the fade is also
+   off while the row does not overflow. */
 @property --fade-end {
   syntax: "<length>";
   inherits: false;
-  initial-value: 2.5rem;
+  initial-value: 0px;
 }
 @keyframes scroll-fade-end {
+  from {
+    --fade-end: 2.5rem;
+  }
   to {
     --fade-end: 0px;
   }
