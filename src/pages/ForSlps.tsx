@@ -1,22 +1,9 @@
-import {
-  ClipboardDocumentListIcon,
-  DevicePhoneMobileIcon,
-  ChartBarIcon,
-} from "@heroicons/react/24/outline";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
-
-// Step icons stay in code; titles/copy come from the dictionary by index
-// (forSlps.betweenSessions.steps).
-const STEP_ICONS = [
-  ClipboardDocumentListIcon,
-  DevicePhoneMobileIcon,
-  ChartBarIcon,
-];
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
@@ -124,32 +111,27 @@ export default function ForSlps() {
               {t.betweenSessions.headline}
             </h2>
 
-            <div className="mt-[clamp(2.5rem,5vw,3.5rem)] grid gap-8 sm:gap-10 md:grid-cols-3">
-              {t.betweenSessions.steps.map((step, i) => {
-                const Icon = STEP_ICONS[i];
-                return (
-                  <div key={step.title}>
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </span>
-                      {i < t.betweenSessions.steps.length - 1 && (
-                        <div
-                          aria-hidden="true"
-                          className="hidden h-px flex-1 bg-calm-navy/10 md:block"
-                        />
-                      )}
-                    </div>
-                    <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                      {step.copy}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+            <ol className="mt-[clamp(2.5rem,5vw,3.5rem)] divide-y divide-calm-navy/10 border-y border-calm-navy/10">
+              {t.betweenSessions.steps.map((step, i) => (
+                <li
+                  key={step.title}
+                  className="grid gap-2 py-6 md:grid-cols-[3rem_minmax(0,18rem)_minmax(0,1fr)] md:items-baseline md:gap-8"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="font-heading t-h3 font-bold text-calm-lavender-ink tabular-nums"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-heading t-h3 font-bold text-calm-charcoal">
+                    {step.title}
+                  </h3>
+                  <p className="max-w-xl font-body t-lead text-calm-charcoal/80">
+                    {step.copy}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

@@ -22,24 +22,28 @@ export function TechniqueFAQ({ slug, locale = "en" }: TechniqueFAQProps) {
   if (!faqs?.length) return null;
 
   return (
-    <section className="rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8">
-      <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl mb-5">
+    <section className="max-w-3xl border-t border-calm-charcoal/10 pt-8">
+      <h2 className="font-heading t-h3 font-bold text-calm-charcoal mb-5">
         {TITLES[locale] || TITLES.en}
       </h2>
-      <Accordion type="single" collapsible className="space-y-3">
+      <Accordion
+        type="single"
+        collapsible
+        className="divide-y divide-calm-charcoal/10 border-b border-calm-charcoal/10"
+      >
         {faqs.map((faq, index) => (
           <AccordionItem
             key={index}
             value={`faq-${index}`}
-            className="rounded-xl border border-calm-charcoal/10 bg-white/70 overflow-hidden"
+            className="border-b-0"
           >
-            <AccordionTrigger className="min-h-[44px] px-4 py-3 text-left hover:no-underline hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
+            <AccordionTrigger className="min-h-[44px] py-4 text-left hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
               <span className="font-body font-semibold text-calm-charcoal">
                 {faq.question}
               </span>
             </AccordionTrigger>
-            <AccordionContent className="px-4 pb-3">
-              <p className="font-body text-calm-charcoal/80 leading-relaxed">
+            <AccordionContent className="pb-4">
+              <p className="font-body t-small text-calm-charcoal/80">
                 {faq.answer}
               </p>
             </AccordionContent>

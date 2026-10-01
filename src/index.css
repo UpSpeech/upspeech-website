@@ -1330,3 +1330,33 @@
     opacity: 1;
   }
 }
+
+/* A horizontal row that says it scrolls: the right edge fades while more is
+   off-screen and clears at the end. Below lg only, where the row scrolls.
+   Browsers without scroll-driven animations keep a fixed, shallow fade. */
+@property --fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 2.5rem;
+}
+@keyframes scroll-fade-end {
+  to {
+    --fade-end: 0px;
+  }
+}
+@media (max-width: 1023.98px) {
+  .scroll-fade-x {
+    mask-image: linear-gradient(
+      to right,
+      #000 calc(100% - var(--fade-end)),
+      transparent
+    );
+  }
+  @supports (animation-timeline: scroll()) {
+    .scroll-fade-x {
+      animation: scroll-fade-end linear both;
+      animation-timeline: scroll(self inline);
+      animation-range: calc(100% - 4rem) 100%;
+    }
+  }
+}

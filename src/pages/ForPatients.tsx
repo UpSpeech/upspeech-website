@@ -1,8 +1,3 @@
-import {
-  ClipboardDocumentCheckIcon,
-  DevicePhoneMobileIcon,
-  ArrowTrendingUpIcon,
-} from "@heroicons/react/24/outline";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,14 +6,6 @@ import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
-
-// Step icons stay in code; titles/copy come from the dictionary by index
-// (forPatients.howItWorks.steps).
-const STEP_ICONS = [
-  ClipboardDocumentCheckIcon,
-  DevicePhoneMobileIcon,
-  ArrowTrendingUpIcon,
-];
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
 // These three are captures of the shipped app, cropped from the store art, and
@@ -193,43 +180,6 @@ export default function ForPatients() {
           </div>
         </section>
 
-        {/* How it works for you */}
-        <section className="py-[clamp(3rem,6vw,5rem)]">
-          <div className="gutter">
-            <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
-              {t.howItWorks.headline}
-            </h2>
-
-            <div className="mt-[clamp(2.5rem,5vw,3.5rem)] grid gap-8 sm:gap-10 md:grid-cols-3">
-              {t.howItWorks.steps.map((step, i) => {
-                const Icon = STEP_ICONS[i];
-                return (
-                  <div key={step.title}>
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </span>
-                      {i < t.howItWorks.steps.length - 1 && (
-                        <div
-                          aria-hidden="true"
-                          className="hidden h-px flex-1 bg-calm-navy/10 md:block"
-                        />
-                      )}
-                    </div>
-                    <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                      {step.copy}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* Practicing with a parent.
             One sentence, deliberately. The product has no guardian seat: a
             patient is one login assigned to one therapist. What is true today
@@ -350,14 +300,14 @@ export default function ForPatients() {
                 Four phones do not fit the gutter at the height three did, so
                 the whole row steps down together and the first three keep
                 their relative sizing to each other. */}
-            <div className="mt-12 flex items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:justify-center lg:overflow-visible">
+            <div className="scroll-fade-x mt-12 flex snap-x snap-mandatory items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:snap-none lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((base, i) => (
                 <img
                   key={base}
                   src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
-                  className={`h-auto w-auto max-h-[400px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                  className={`h-auto w-auto max-h-[400px] shrink-0 snap-start drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
                     i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
@@ -365,7 +315,7 @@ export default function ForPatients() {
               <PhoneShot
                 src={localizedAsset(CHILD_SCREENSHOT, locale)}
                 alt={t.app.childScreenshots[1]}
-                className="relative h-[400px] shrink-0 sm:-translate-y-4"
+                className="relative h-[400px] shrink-0 snap-start sm:-translate-y-4"
               />
             </div>
           </div>

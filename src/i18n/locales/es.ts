@@ -104,7 +104,6 @@ export const es: Dictionary = {
       footerEmphasis: "sin añadir sesiones a la agenda del logopeda.",
     },
     week: {
-      eyebrow: "Entre las sesiones",
       headline: "La mayor parte de la terapia ocurre cuando nadie mira.",
       body: "Una hora en la clínica y luego seis días por tu cuenta. La parte que decide si la terapia funciona es la que el clínico nunca ve.",
       frames: [
@@ -365,24 +364,6 @@ export const es: Dictionary = {
       line: "Los pacientes más jóvenes practican con un padre o una madre a su lado, siguiendo el mismo plan que ha definido su logopeda.",
       photoAlt:
         "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
-    },
-    howItWorks: {
-      eyebrow: "Cómo funciona para ti",
-      headline: "Guiado por tu terapeuta, en cada paso.",
-      steps: [
-        {
-          title: "Tu terapeuta define tu plan",
-          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a la fase de terapia en la que estás.",
-        },
-        {
-          title: "Practicas en la app",
-          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones.",
-        },
-        {
-          title: "Tu terapeuta ve tu progreso",
-          copy: "Tu logopeda sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
-        },
-      ],
     },
     app: {
       eyebrow: "La app",
