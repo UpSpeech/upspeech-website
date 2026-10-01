@@ -55,7 +55,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do you perform a pull-out during a stutter?",
       answer:
-        "When you feel yourself stuttering on a word, slow down rather than forcing through. Gradually relax the muscles involved in speech, your lips, tongue, jaw, or vocal folds, and ease into the rest of the word with a slower, lighter touch. The goal is to finish the word smoothly.",
+        "When you feel yourself stuttering on a word, slow down. Do not force through it. Gradually relax the muscles involved in speech, your lips, tongue, jaw, or vocal folds, and ease into the rest of the word with a slower, lighter touch. The goal is to finish the word smoothly.",
     },
     {
       question: "Is the pull-out technique difficult to learn?",
@@ -85,7 +85,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "What is the holding technique in stuttering therapy?",
       answer:
-        "The holding technique involves maintaining your articulatory position during a block rather than pushing through or retreating. By holding the position calmly and then releasing with reduced tension, you learn to manage blocks without struggle and transition into smoother speech.",
+        "The holding technique means staying in your articulatory position during a block, without pushing through it or backing out of it. By holding the position calmly and then releasing with reduced tension, you learn to manage blocks without struggle and transition into smoother speech.",
     },
     {
       question: "How does holding help with stuttering blocks?",
@@ -107,7 +107,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do you practice soft starts?",
       answer:
-        "Begin by exhaling gently, then gradually engage your voice with a breathy, relaxed quality. Start words with a soft, easy initiation rather than a forceful or sudden onset. Practice first on isolated words, then phrases, and eventually in conversation.",
+        "Begin by exhaling gently, then gradually engage your voice with a breathy, relaxed quality. Start words gently, with no sudden or forceful onset. Practice first on isolated words, then phrases, and eventually in conversation.",
     },
     {
       question: "Are soft starts only for words that begin with vowels?",
@@ -204,7 +204,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
       question:
         "Is identification and desensitization used alone or with other techniques?",
       answer:
-        "It is typically used as a foundation alongside other techniques. Identification and desensitization prepare you psychologically and build self-awareness, while motor techniques like cancellation, pull-out, and soft starts address the physical aspects of stuttering. Together, they form a comprehensive approach.",
+        "It is typically used as a foundation alongside other techniques. Identification and desensitization prepare you psychologically and build self-awareness, while motor techniques like cancellation, pull-out, and soft starts address the physical aspects of stuttering. Together they cover both sides.",
     },
   ],
 };

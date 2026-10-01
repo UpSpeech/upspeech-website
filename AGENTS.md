@@ -37,13 +37,20 @@ decisions. Read it before opening a PR from here.
 
 Five rules sit here because they bite before you would think to go and look.
 
-- **Base branch: `main`.** Merging to `main` deploys.
-- **There is no deploy preview.** Netlify previews are off, so a reviewer has no
-  hosted URL to open and a PR that only links one shows them nothing. Run the site
-  locally and screenshot it, the way the app repos do: `npm run dev`, capture each
-  page you changed, and publish the images to the `pr-assets` branch. Running it
-  locally is also what makes `critique` possible here, since it reads a rendered
-  page rather than a diff.
+- **Base branch: `main`.** Merging to `main` deploys, and this repo has no
+  staging step, so a merge here is live on `upspeech.app` in about four minutes.
+  That is unlike every other repo in the workspace. D31 merged at 12:02 on
+  2026-09-19 and was serving on the public site by 12:06.
+- **There is a deploy preview, and you still capture locally.** Previews were off
+  on 2026-09-17 and were back by 2026-09-19: upspeech-website#94 got a passing
+  `netlify/upspeech/deploy-preview` and the URL returned 200 with that branch's
+  copy prerendered into it. Check the PR's own checks rather than assuming either
+  way. Link the preview, because it is the best evidence the site still builds and
+  prerenders. Capture the pages you changed as well and publish them to the
+  `pr-assets` branch, because a preview shows only the after and a reviewer
+  comparing copy or type needs the before beside it. Running the site locally is
+  also what makes `critique` possible here, since it reads a rendered page rather
+  than a diff.
 - **Work in a per-task worktree.** `git worktree add ../upspeech-website-<slug> -b <branch> origin/main`.
   Other sessions run against this checkout, and a `git switch` here reverts their
   uncommitted work.

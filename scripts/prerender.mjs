@@ -177,6 +177,14 @@ async function createWorkerPage(browser) {
     window.__PRERENDER__ = true;
   });
 
+  // useReveal flips on an IntersectionObserver, and this crawler never scrolls,
+  // so without this every section below the fold serializes at `opacity: 0`.
+  // Its reduced-motion branch reveals regardless of viewport, which is the only
+  // reason the snapshot comes out visible.
+  await page.emulateMediaFeatures([
+    { name: "prefers-reduced-motion", value: "reduce" },
+  ]);
+
   await page.setRequestInterception(true);
   page.on("request", (req) => {
     // Block analytics, but allow fonts and images so the page renders fully
