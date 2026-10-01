@@ -227,7 +227,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </a>
                 </p>
               )}
-              <h1 className="t-display mt-5 max-w-4xl font-heading font-bold text-calm-navy tracking-tight">
+              <h1 className="t-display mt-5 max-w-4xl font-accent font-bold text-calm-navy tracking-tight">
                 {technique.name}
               </h1>
               {technique.description && (
@@ -252,7 +252,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
               {technique.objective && (
                 <section className="max-w-3xl border-l-2 border-calm-lavender pl-6">
                   <h2 className={eyebrowClass}>{tt.objective}</h2>
-                  <p className="mt-3 font-heading t-statement font-semibold text-calm-charcoal">
+                  <p className="mt-3 font-heading t-statement font-semibold text-calm-navy">
                     {technique.objective}
                   </p>
                 </section>

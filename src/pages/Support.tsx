@@ -439,17 +439,17 @@ export default function Support() {
         locale={locale}
         structuredData={buildSupportFaqSchema(locale)}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="rounded-2xl border border-calm-charcoal/10 bg-white overflow-hidden">
-          <div className="px-6 py-8 sm:px-10 sm:py-12">
-            <h1 className="text-3xl font-bold text-calm-charcoal font-heading">
+      <div className="gutter py-12">
+        <div className="max-w-3xl">
+          <div className="py-8 sm:py-12">
+            <h1 className="t-display font-accent font-bold text-calm-navy">
               {c.heading}
             </h1>
             <p className="mt-4 text-calm-charcoal/80 font-body">{c.intro}</p>
 
             {/* Contact */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.contactHeading}
               </h2>
               <p className="mt-2 text-calm-charcoal/80 font-body">
@@ -457,7 +457,7 @@ export default function Support() {
               </p>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
-                className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 transition-colors"
+                className="mt-4 inline-flex items-center rounded-full bg-calm-navy px-6 py-3 font-bold text-white transition-opacity hover:opacity-90"
               >
                 {c.emailLabel}: {SUPPORT_EMAIL}
               </a>
@@ -468,7 +468,7 @@ export default function Support() {
 
             {/* FAQ */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.faqHeading}
               </h2>
               <dl className="mt-4 divide-y divide-gray-100">
@@ -487,7 +487,7 @@ export default function Support() {
 
             {/* More info */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.moreHeading}
               </h2>
               <ul className="mt-3 space-y-2 font-body">
