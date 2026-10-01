@@ -43,7 +43,7 @@ const WeekInPhotos = () => {
     >
       <div className="gutter">
         <h2
-          className="t-h2 max-w-[20ch] font-accent font-bold text-calm-charcoal tracking-tight"
+          className="t-h2 max-w-[20ch] font-accent font-bold text-calm-navy tracking-tight"
           style={{ ...revealFrom(revealed, "up", 80) }}
         >
           {t.headline}
