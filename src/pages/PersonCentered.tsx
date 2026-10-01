@@ -5,8 +5,6 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedHref } from "@/i18n";
 import { getPersonCenteredStructuredData } from "@/lib/seo-data";
 
-const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
-
 export default function PersonCentered() {
   const locale = useLocale();
   const t = useT().personCentered;
