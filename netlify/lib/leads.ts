@@ -18,6 +18,14 @@ import type { WriteStatus } from "./email-template";
 const WRITE_TIMEOUT_MS = 4000;
 const RESEND_API = "https://api.resend.com";
 
+/**
+ * Sheets reads a cell that starts with = + - or @ as a formula, and this
+ * endpoint is public. A leading apostrophe stores the value as text and Sheets
+ * does not display it.
+ */
+const asSheetText = (value: string): string =>
+  /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+
 /** Split a submitted full name into the two fields Resend contacts hold. */
 const splitName = (name: string): { first: string; last: string } => {
   const parts = name.split(/\s+/).filter(Boolean);
@@ -43,17 +51,17 @@ export const appendLeadToSheet = async (lead: Lead): Promise<WriteStatus> => {
       body: JSON.stringify({
         secret,
         submittedAt: new Date().toISOString(),
-        name: lead.name,
-        email: lead.email,
+        name: asSheetText(lead.name),
+        email: asSheetText(lead.email),
         // English labels, not the posted slugs and not the visitor's language,
         // so the Role column stays filterable across all three locales.
-        role: roleLabel("en", lead.role),
-        clinicSize: clinicSizeLabel("en", lead.clinicSize),
-        locale: lead.locale,
-        source: lead.source,
-        medium: lead.medium,
-        campaign: lead.campaign,
-        content: lead.content,
+        role: asSheetText(roleLabel("en", lead.role)),
+        clinicSize: asSheetText(clinicSizeLabel("en", lead.clinicSize)),
+        locale: asSheetText(lead.locale),
+        source: asSheetText(lead.source),
+        medium: asSheetText(lead.medium),
+        campaign: asSheetText(lead.campaign),
+        content: asSheetText(lead.content),
       }),
     });
 

@@ -225,6 +225,32 @@ check(
   bodies.team,
 );
 
+// 11. A value Sheets would run as a formula reaches the row as text
+stub({});
+bodies = captureBodies();
+await handler(
+  POST({
+    ...LEAD,
+    name: '=HYPERLINK("https://example.com","x")',
+    source: "=1+1",
+    campaign: "@sum",
+    medium: "social",
+  }),
+);
+check(
+  "formula-looking cells reach the sheet escaped",
+  bodies.sheet?.name === `'=HYPERLINK("https://example.com","x")` &&
+    bodies.sheet?.source === "'=1+1" &&
+    bodies.sheet?.campaign === "'@sum" &&
+    bodies.sheet?.medium === "social",
+  JSON.stringify(bodies.sheet),
+);
+check(
+  "the team email shows the value without the apostrophe",
+  bodies.team?.includes("=1+1") && !bodies.team?.includes("'=1+1"),
+  bodies.team,
+);
+
 console.error = realError;
 await rm(out, { force: true });
 
