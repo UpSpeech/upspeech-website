@@ -5,6 +5,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
 import StoreBadges from "@/components/StoreBadges";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
@@ -145,10 +146,12 @@ export default function ForPatients() {
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
-                <StoreBadges className="mt-8" />
-                <p className="mt-3 font-body text-sm text-calm-charcoal/70">
-                  {t.intro.inviteNote}
-                </p>
+                {(APP_STORE_URL || PLAY_STORE_URL) && (
+                  <p className="mt-8 font-body text-base font-semibold text-calm-navy">
+                    {t.intro.inviteNote}
+                  </p>
+                )}
+                <StoreBadges className="mt-4" />
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
                   discarding a fifth of a 0.80 portrait to make it fit a box
