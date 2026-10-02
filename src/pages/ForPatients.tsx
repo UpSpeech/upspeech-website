@@ -27,13 +27,13 @@ const GALLERY = [
 const EXCHANGE = [
   {
     src: "/screenshots/detail/exchange-today.webp",
-    width: 1056,
-    height: 395,
+    width: 1080,
+    height: 400,
   },
   {
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 984,
-    height: 500,
+    width: 1008,
+    height: 292,
   },
 ] as const;
 const RECORD_SHOT = "/screenshots/mobile/patient-record.webp";
@@ -189,8 +189,8 @@ export default function ForPatients() {
                 </div>
               </div>
 
-              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[600px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
-                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-6 sm:self-start">
+              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[640px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-4 sm:self-start">
                   <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[0].src, locale)}
@@ -206,10 +206,10 @@ export default function ForPatients() {
                   <PhoneShot
                     src={localizedAsset(RECORD_SHOT, locale)}
                     alt={t.intro.exchange.recordAlt}
-                    className="relative w-[190px] sm:w-[260px]"
+                    className="relative w-[190px] sm:w-[225px]"
                   />
                 </li>
-                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-6 sm:self-start">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-4 sm:self-start">
                   <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[1].src, locale)}
