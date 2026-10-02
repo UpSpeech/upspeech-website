@@ -299,6 +299,8 @@ const ClinicianDay = () => {
                   locale,
                 )}
                 alt={t.close.screenshotAlt}
+                width={2360}
+                height={1120}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
