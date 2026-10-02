@@ -8,12 +8,13 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
-// These three are captures of the shipped app, cropped from the store art, and
-// arrive with the device frame already baked in.
+// These three are crops of the shipped app on demo data, cut to the part each
+// caption is about and shown at 330px wide, so body text lands near 1:1 on the
+// page. The corners are baked into the image; there is no device frame.
 const SCREENSHOTS = [
-  "/screenshots/mobile/patient-home-device.webp",
-  "/screenshots/mobile/patient-journey-device.webp",
-  "/screenshots/mobile/patient-practice-device.webp",
+  "/screenshots/mobile/patient-home-crop.webp",
+  "/screenshots/mobile/patient-journey-crop.webp",
+  "/screenshots/mobile/patient-practice-crop.webp",
 ];
 
 // The child-facing screen. A bare screen rather than a framed render, so it
@@ -235,12 +236,16 @@ export default function ForPatients() {
                 width, so the only place a phone can overlap without landing on
                 someone is below y 0.5, where the laps and the bench are. */}
             <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
-              <PhoneShot
+              <img
                 src={localizedAsset(
-                  "/screenshots/mobile/caregiver-today.webp",
+                  "/screenshots/mobile/caregiver-today-crop.webp",
                   locale,
                 )}
-                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
+                alt=""
+                aria-hidden="true"
+                width={600}
+                loading="lazy"
+                className="pointer-events-none absolute bottom-14 left-0 hidden w-[214px] -rotate-6 rounded-[20px] ring-1 ring-calm-navy/10 drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)] sm:block"
               />
               <CutOut
                 name="patients-listen"
@@ -298,7 +303,8 @@ export default function ForPatients() {
                   src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
-                  className={`h-auto w-auto max-h-[400px] shrink-0 snap-start drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                  width={600}
+                  className={`h-auto w-[330px] max-w-none shrink-0 snap-start rounded-[30px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
                     i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
