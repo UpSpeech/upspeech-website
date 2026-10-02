@@ -1,5 +1,5 @@
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
+import StoreBadges from "@/components/StoreBadges";
 import { useLocale, useT, localizedHref } from "@/i18n";
 
 const linkClass =
@@ -22,40 +22,7 @@ const Footer = () => {
               loading="lazy"
             />
             <p className="font-body t-small text-white/80">{t.tagline}</p>
-            {(APP_STORE_URL || PLAY_STORE_URL) && (
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                {APP_STORE_URL && (
-                  <a
-                    href={APP_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.appStoreAriaLabel}
-                  >
-                    <img
-                      src="/images/app-store.png"
-                      alt={t.appStoreAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-                {PLAY_STORE_URL && (
-                  <a
-                    href={PLAY_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.playStoreAriaLabel}
-                  >
-                    <img
-                      src="/images/google-play.png"
-                      alt={t.playStoreAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-              </div>
-            )}
+            <StoreBadges className="pt-2" />
           </div>
 
           <nav

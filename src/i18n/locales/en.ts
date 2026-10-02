@@ -356,6 +356,7 @@ export const en = {
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
       body: "UpSpeech is how you keep practising the work you do with your speech therapist between appointments. Your therapist sets the plan and follows how it's going while you practise in the app.",
+      inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
     },
@@ -388,11 +389,11 @@ export const en = {
           a: "Yes. UpSpeech is used together with your speech therapist, who sets your plan and reviews your progress. It is not a replacement for therapy.",
         },
         {
-          q: "What will I practice?",
+          q: "What will I practise?",
           a: "Your therapist chooses exercises for you based on your goals and your stage of therapy.",
         },
         {
-          q: "How often should I practice?",
+          q: "How often should I practise?",
           a: "Your therapist guides how often to practise. The app makes it easy to keep a steady routine between sessions.",
         },
         {
@@ -412,10 +413,6 @@ export const en = {
       bodyLink: "request access here",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Download on the App Store",
-    storeAppStoreAriaLabel: "Download UpSpeech on the App Store",
-    storePlayAlt: "Get it on Google Play",
-    storePlayAriaLabel: "Get UpSpeech on Google Play",
   },
   personCentered: {
     seoTitle: "What Is Person-Centred Speech Therapy?",
