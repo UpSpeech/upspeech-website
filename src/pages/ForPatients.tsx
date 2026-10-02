@@ -8,12 +8,12 @@ import StoreBadges from "@/components/StoreBadges";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
-// Real app screens on demo data inside the device frame, 524x1088 each. Alt
+// Real app screens on demo data, one patient and one story: 43 percent, 3 of 7 steps. Alt
 // text comes from forPatients.app.screenshots.
 const GALLERY = [
-  "/screenshots/mobile/patient-home-device.webp",
-  "/screenshots/mobile/patient-journey-device.webp",
-  "/screenshots/mobile/patient-practice-device.webp",
+  "/screenshots/mobile/patient-home-screen.webp",
+  "/screenshots/mobile/patient-journey-screen.webp",
+  "/screenshots/mobile/patient-practice-screen.webp",
 ];
 
 // The child-facing screen, cropped to the character and the cue like the three
@@ -308,13 +308,10 @@ export default function ForPatients() {
                   key={base}
                   className="w-[68%] shrink-0 snap-start sm:w-auto"
                 >
-                  <img
+                  <PhoneShot
                     src={localizedAsset(base, locale)}
                     alt={t.app.screenshots[i]}
-                    loading="lazy"
-                    width={524}
-                    height={1088}
-                    className="pointer-events-none mx-auto h-auto w-full max-w-[260px] select-none drop-shadow-[0_30px_50px_-28px_rgba(41,53,135,0.45)]"
+                    className="relative mx-auto w-full max-w-[260px]"
                   />
                   <div className="mx-auto mt-5 max-w-[260px]">
                     <p className="font-heading text-lg font-bold text-calm-navy">
