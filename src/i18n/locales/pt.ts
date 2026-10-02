@@ -447,12 +447,12 @@ export const pt: Dictionary = {
       eyebrow: "Filosofia",
       headlineLine1: "O que é a terapia",
       headlineLine2: "centrada na pessoa?",
-      body: "Se gaguejas, ou se tens um filho que gagueja, esta é a ideia por trás da terapia centrada na pessoa: a confiança e a comunicação vêm primeiro, e és tu quem ajuda a definir os objetivos. Na gaguez, também lhe chamam gaguez positiva.",
+      body: "Se gaguejas, ou se tens um filho que gagueja, esta é a ideia por trás da terapia centrada na pessoa: a confiança e a comunicação vêm primeiro, e és tu quem ajuda a definir os objetivos. Na gaguez, esta abordagem chama-se por vezes gaguez positiva.",
     },
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional costuma medir o sucesso pela fluência. A abordagem centrada na pessoa alarga essa medida. Se queres uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Se o mais importante é evitares menos, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é teres voz na escolha dos objetivos que te dizem respeito. Se for uma criança, a família faz parte dessa conversa.",
+        body: "A terapia da fala tradicional costuma medir o sucesso pela fluência. A abordagem centrada na pessoa vai mais longe. Se queres uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Se o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é teres voz na escolha dos objetivos que te dizem respeito. Se for uma criança, a família faz parte dessa conversa.",
       },
       {
         heading: "Ser ouvido à tua maneira",
@@ -460,11 +460,11 @@ export const pt: Dictionary = {
       },
       {
         heading: "O papel da UpSpeech",
-        body: "A UpSpeech apoia a abordagem que o teu terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for evitares menos, o terapeuta inclui isso no plano. Se o plano tiver gaguez voluntária, a app acompanha também esse treino. Quem decide se a fluência entra no plano és tu, com o terapeuta.",
+        body: "A UpSpeech apoia a abordagem que o teu terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for reduzir o evitamento, o terapeuta inclui isso no plano. Se o plano tiver gaguez voluntária, a app acompanha também esse treino. Quem decide se a fluência entra no plano és tu, com o terapeuta.",
       },
       {
         heading: "Uma nota sobre linguagem",
-        body: "Esta página fala em «pessoas que gaguejam». Pomos a pessoa primeiro e só depois a condição, a menos que prefiras outra forma. A ideia é usar as palavras que cada um escolhe para si.",
+        body: "Esta página fala em «pessoas que gaguejam». Pomos a pessoa primeiro e só depois a condição. Cada um escolhe as palavras para si, e nós usamos essas.",
       },
     ],
     faq: {
@@ -480,7 +480,7 @@ export const pt: Dictionary = {
           a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra a quem pratica o que o terapeuta atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
         },
         {
-          q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
+          q: "Que técnicas se usam na terapia da gaguez centrada na pessoa?",
           a: "A gaguez voluntária, a identificação e dessensibilização e as técnicas de saída controlada (pull-out, sair de um momento de gaguez com controlo) são comuns. Muitos terapeutas combinam-nas com trabalho de modelação da fluência, consoante os objetivos de cada pessoa.",
         },
         {
