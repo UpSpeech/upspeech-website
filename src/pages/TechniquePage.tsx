@@ -365,7 +365,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </section>
                 ) : null}
 
-                <section className="max-w-3xl rounded-2xl bg-calm-light px-7 py-8 sm:px-9">
+                <section className="max-w-3xl rounded-2xl bg-calm-lavender/10 px-7 py-8 sm:px-9">
                   <h2 className={headingClass}>{tt.closingTitle}</h2>
                   <p className={proseClass}>{tt.closingBody}</p>
                   <a
