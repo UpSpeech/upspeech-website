@@ -435,7 +435,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Ser ouvido à tua maneira",
-        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café em que se troca de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha isso a par do treino de técnicas.",
+        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café em que se troca de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha estas situações a par do treino de técnicas.",
       },
       {
         heading: "O papel da UpSpeech",
@@ -460,7 +460,7 @@ export const pt: Dictionary = {
         },
         {
           q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
-          a: "A gaguez voluntária, a identificação e dessensibilização e as técnicas de pull-out (sair de forma controlada de um momento de gaguez) são comuns. Muitos terapeutas combinam-nas com trabalho de modelação da fluência, consoante os objetivos de cada pessoa.",
+          a: "A gaguez voluntária, a identificação e dessensibilização e as técnicas de saída controlada (pull-out, sair de um momento de gaguez com controlo) são comuns. Muitos terapeutas combinam-nas com trabalho de modelação da fluência, consoante os objetivos de cada pessoa.",
         },
         {
           q: "Onde posso aprender mais?",
@@ -490,11 +490,11 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se e sai da preparação ou do fim do dia.",
+        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se e acaba por comer a preparação ou o fim do dia.",
       },
       {
         heading: "Rascunhos estruturados que revês e editas",
-        body: "Uma solução é um rascunho feito a partir dos dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso e assinas. O juízo clínico continua a ser teu, do princípio ao fim.",
+        body: "Ajuda partir de um rascunho feito com os dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso e assinas. O juízo clínico continua a ser teu, do princípio ao fim.",
       },
       {
         heading: "O que deve ter uma boa nota de terapia da fala",
