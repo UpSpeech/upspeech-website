@@ -679,7 +679,7 @@ export const pt: Dictionary = {
       items: [
         {
           q: "A UpSpeech escreve os meus relatórios por mim?",
-          a: "Redige um rascunho de relatório estruturado a partir da sessão para reveres e editares, e poupa-te o trabalho da página em branco.",
+          a: "Não sozinha. Redige o rascunho a partir da gravação da sessão e dos dados de prática, e és tu quem decide o que o relatório diz.",
         },
         {
           q: "O que fazem os meus pacientes?",
