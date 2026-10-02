@@ -23,9 +23,9 @@ const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const FAQ_TITLES: Record<string, string> = {
-  en: "Frequently Asked Questions",
-  pt: "Perguntas Frequentes",
-  es: "Preguntas Frecuentes",
+  en: "Frequently asked questions",
+  pt: "Perguntas frequentes",
+  es: "Preguntas frecuentes",
 };
 const headingClass = "font-heading t-h3 font-bold text-calm-navy";
 const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
