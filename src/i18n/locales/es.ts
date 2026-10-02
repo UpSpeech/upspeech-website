@@ -677,7 +677,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿UpSpeech escribe mis informes por mí?",
-          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites, y te ahorra el trabajo de la página en blanco.",
+          a: "No por sí sola. Redacta el borrador a partir de la grabación de la sesión y de los datos de práctica, y tú decides qué dice el informe.",
         },
         {
           q: "¿Qué hacen mis pacientes?",

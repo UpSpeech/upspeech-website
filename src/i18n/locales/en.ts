@@ -665,7 +665,7 @@ export const en = {
       items: [
         {
           q: "Does UpSpeech write my reports for me?",
-          a: "It drafts a structured report from the session for you to review and edit, and takes the blank-page work off your plate.",
+          a: "Not on its own. It drafts from the session recording and the practice data, and you decide what the report says.",
         },
         {
           q: "What do my patients actually do?",

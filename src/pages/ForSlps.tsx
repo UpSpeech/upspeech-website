@@ -52,7 +52,7 @@ export default function ForSlps() {
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} {t.intro.headlineLine2}
                 </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
                   {t.intro.body}
                 </p>
                 <a
@@ -124,7 +124,7 @@ export default function ForSlps() {
                   <h3 className="font-heading t-h3 font-bold text-calm-navy">
                     {step.title}
                   </h3>
-                  <p className="max-w-xl font-body t-lead text-calm-charcoal/80">
+                  <p className="max-w-xl font-body t-lead text-calm-charcoal/90">
                     {step.copy}
                   </p>
                 </li>
@@ -140,12 +140,12 @@ export default function ForSlps() {
               <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.documentation.headline}
               </h2>
-              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/90 leading-relaxed">
                 {t.documentation.body}
               </p>
             </div>
 
-            <div className="relative mt-12 max-w-3xl overflow-x-auto rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
+            <div className="relative mt-12 max-w-5xl overflow-x-auto [mask-image:linear-gradient(to_right,black_88%,transparent)] sm:[mask-image:none] rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
               <img
                 src={localizedAsset(
                   "/screenshots/app/therapist-report.png",
@@ -169,7 +169,7 @@ export default function ForSlps() {
                 <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
                   {t.personCentered.headline}
                 </h2>
-                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/90 leading-relaxed">
                   {t.personCentered.body}
                 </p>
               </div>
@@ -190,7 +190,7 @@ export default function ForSlps() {
 
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="gutter max-w-3xl">
+          <div className="gutter grid gap-8 lg:grid-cols-[minmax(0,1fr),minmax(0,1.8fr)] lg:gap-16">
             <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
@@ -200,7 +200,7 @@ export default function ForSlps() {
                 question: item.q,
                 answer: item.a,
               }))}
-              className="mt-8"
+              className="lg:-mt-4"
             />
           </div>
         </section>
@@ -211,7 +211,7 @@ export default function ForSlps() {
             <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/90 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
                 href={`${localizedHref("/", locale)}#cta`}
