@@ -362,7 +362,7 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continuas a praticar, entre consultas, o trabalho que fazes com o teu terapeuta da fala. O teu terapeuta define o plano e acompanha como está a correr enquanto praticas na app.",
+      body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e ele vê como correu cada um.",
       exchange: {
         todayLabel: "Definida para ti",
         todayAlt:

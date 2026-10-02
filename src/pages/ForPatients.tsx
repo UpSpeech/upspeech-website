@@ -42,7 +42,7 @@ const EXCHANGE = [
     key: "reply",
     src: "/screenshots/detail/exchange-reply.webp",
     width: 984,
-    height: 545,
+    height: 500,
   },
 ] as const;
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
@@ -174,14 +174,6 @@ export default function ForPatients() {
                 <StoreBadges className="mt-4" />
               </div>
               <ol className="relative mx-auto w-full max-w-[460px] space-y-6 lg:mx-0 lg:ml-auto">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -right-10 top-1/2 h-[480px] w-[480px] -translate-y-1/2 rounded-full"
-                  style={{
-                    background:
-                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
-                  }}
-                />
                 {EXCHANGE.map(({ key, src, width, height }, i) => (
                   <li key={key} className="relative">
                     {i === 0 && (
