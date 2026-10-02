@@ -15,6 +15,12 @@ const SCREENSHOTS = [
   "/screenshots/mobile/patient-journey-crop.webp",
   "/screenshots/mobile/patient-practice-crop.webp",
 ];
+// Pixel size of each crop above, in the same order: 2x of the 460px column.
+const SCREENSHOT_SIZES = [
+  { width: 920, height: 825 },
+  { width: 920, height: 1280 },
+  { width: 920, height: 767 },
+];
 
 // The child-facing screen, cropped to the character and the cue like the three
 // above. The photograph's phone below uses the full screen through PhoneShot.
@@ -243,7 +249,7 @@ export default function ForPatients() {
                 alt=""
                 aria-hidden="true"
                 width={600}
-                height={507}
+                height={560}
                 loading="lazy"
                 className="pointer-events-none absolute bottom-14 left-0 hidden w-[214px] -rotate-6 rounded-[20px] ring-1 ring-calm-navy/10 drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)] sm:block"
               />
@@ -305,8 +311,8 @@ export default function ForPatients() {
                       src={localizedAsset(base, locale)}
                       alt={t.app.screenshots[i]}
                       loading="lazy"
-                      width={600}
-                      height={542}
+                      width={SCREENSHOT_SIZES[i].width}
+                      height={SCREENSHOT_SIZES[i].height}
                       className="h-auto w-[min(460px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
                     />
                   </div>
