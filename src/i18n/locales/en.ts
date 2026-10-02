@@ -154,7 +154,7 @@ export const en = {
       assessment: {
         time: "09:15 · The assessment",
         headline: "You walk out with it written.",
-        body: "Record the assessment and the report is drafted by the time you stand up. You correct it and you sign it. You do not start from an empty page.",
+        body: "Record the assessment and the report is drafted by the time you stand up. You review it and correct it. You do not start from an empty page.",
         detailAlt:
           "A generated session report headed with the patient name, the report date and a Ready status",
       },
@@ -234,7 +234,7 @@ export const en = {
         {
           verb: "calibrates",
           title: "The clinician calibrates it.",
-          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the therapist reviews and signs it.",
+          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the therapist has reviewed it.",
         },
         {
           verb: "listens",
@@ -512,7 +512,7 @@ export const en = {
       },
       {
         heading: "Structured drafts you review and edit",
-        body: "One fix is a draft built from the session's own data, covering what the patient practised and how they progressed. You edit what needs editing and sign it off. The clinical judgement stays yours throughout.",
+        body: "One fix is a draft built from the session's own data, covering what the patient practised and how they progressed. You edit what needs editing. The clinical judgement stays yours throughout.",
       },
       {
         heading: "What belongs in a good speech therapy note",
@@ -520,7 +520,7 @@ export const en = {
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist reviews and signs it. You only record with the patient's consent.",
+        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist has reviewed it. You only record with the patient's consent.",
       },
     ],
     faq: {
@@ -537,11 +537,11 @@ export const en = {
         },
         {
           q: "Is it clinically appropriate to use AI-drafted notes?",
-          a: "Drafted notes are appropriate when the therapist reviews and signs off on every note before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
+          a: "Drafted notes are appropriate when the therapist reviews every note before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is finalised.",
         },
       ],
     },
@@ -568,7 +568,7 @@ export const en = {
     documentation: {
       eyebrow: "Documentation",
       headline: "Session notes, drafted for you to review.",
-      body: "After a session, UpSpeech drafts the report. You edit it and sign it off, without starting from an empty page.",
+      body: "After a session, UpSpeech drafts the report. You review and edit it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },

@@ -156,7 +156,7 @@ export const pt: Dictionary = {
       assessment: {
         time: "09:15 · A avaliação",
         headline: "Sais com o relatório escrito.",
-        body: "Gravas a avaliação e o relatório fica em rascunho no momento em que te levantas. Corriges e assinas. Não começas de uma página em branco.",
+        body: "Gravas a avaliação e o relatório fica em rascunho no momento em que te levantas. Revês e corriges. Não começas de uma página em branco.",
         detailAlt:
           "Um relatório de sessão gerado, com o nome do paciente, a data e o estado Pronto",
       },
@@ -237,7 +237,7 @@ export const pt: Dictionary = {
         {
           verb: "calibra",
           title: "O clínico calibra-o.",
-          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o terapeuta reveja e assine.",
+          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o terapeuta reveja.",
         },
         {
           verb: "ouve",
@@ -515,7 +515,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Rascunhos estruturados que revês e editas",
-        body: "Ajuda partir de um rascunho feito com os dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso e assinas. O juízo clínico continua a ser teu, do princípio ao fim.",
+        body: "Ajuda partir de um rascunho feito com os dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso. O juízo clínico continua a ser teu, do princípio ao fim.",
       },
       {
         heading: "O que deve ter um bom relatório de terapia da fala",
@@ -523,7 +523,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho do relatório de sessão. Nada chega ao paciente sem tu o reveres e assinares. Só gravas com o consentimento do paciente.",
+        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho do relatório de sessão. Nada chega ao paciente sem tu o reveres. Só gravas com o consentimento do paciente.",
       },
     ],
     faq: {
@@ -540,11 +540,11 @@ export const pt: Dictionary = {
         },
         {
           q: "É clinicamente adequado usar relatórios redigidos por IA?",
-          a: "É, desde que revejas e assines cada relatório antes de ele entrar no processo clínico do paciente. Consulta as orientações da tua associação profissional sobre IA na documentação clínica.",
+          a: "É, desde que revejas cada relatório antes de ele entrar no processo clínico do paciente. Consulta as orientações da tua associação profissional sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Duas coisas alimentam-no. A prática entre sessões mostra o que o paciente concluiu na app e como correu. A gravação da sessão é transcrita, e o rascunho do relatório sai dessa transcrição. Quando finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório ficam guardados no processo. Vês tudo antes de assinares qualquer relatório.",
+          a: "Duas coisas alimentam-no. A prática entre sessões mostra o que o paciente concluiu na app e como correu. A gravação da sessão é transcrita, e o rascunho do relatório sai dessa transcrição. Quando finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório ficam guardados no processo. Vês tudo antes de finalizares o relatório.",
         },
       ],
     },
@@ -571,7 +571,7 @@ export const pt: Dictionary = {
     documentation: {
       eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas e prontas para rever.",
-      body: "Após uma sessão, a UpSpeech redige o relatório. Edita-o e assina-o, sem partir de uma página em branco.",
+      body: "Após uma sessão, a UpSpeech redige o relatório. Revê-o e edita-o, sem partir de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
