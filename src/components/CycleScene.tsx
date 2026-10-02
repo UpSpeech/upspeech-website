@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUturnUpIcon } from "@heroicons/react/24/outline";
 import { EASE, reveal } from "./motion";
+import HandoffScene, { type Actor } from "./HandoffScene";
 import { useT } from "@/i18n";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
@@ -25,8 +26,6 @@ const RUNWAY = "100svh";
 /** Matches `sticky top-20`, which clears the fixed header. */
 const STICKY_TOP = 80;
 
-type Actor = "ai" | "clinician";
-
 // Actor sequence stays in code (drives colors/geometry); verb/title/body copy
 // comes from the dictionary by index (home.cycle.nodes).
 const NODE_ACTORS: Actor[] = [
@@ -38,36 +37,17 @@ const NODE_ACTORS: Actor[] = [
   "clinician",
 ];
 
-// SVG viewBox is 100×100; geometry expressed in those units and overlaid with HTML.
+// The phone list's ring: viewBox 100×100, nodes clockwise from the top.
 const CENTER = 50;
 const RADIUS = 27;
-const LABEL_RADIUS = 38;
 
-// compassDeg: 0 at top, rotates clockwise
 const nodePoint = (i: number, r = RADIUS) => {
   const compassDeg = (i * 360) / NODE_ACTORS.length;
   const rad = (compassDeg * Math.PI) / 180;
   return {
     x: CENTER + r * Math.sin(rad),
     y: CENTER - r * Math.cos(rad),
-    compassDeg,
   };
-};
-
-// Per-quadrant transform keeps label anchored OUTSIDE the ring
-// so long words never cross the circumference.
-const labelTransform = (compassDeg: number): string => {
-  if (compassDeg < 30 || compassDeg >= 330) return "translate(-50%, -115%)";
-  if (compassDeg >= 30 && compassDeg <= 150) return "translate(12%, -50%)";
-  if (compassDeg > 150 && compassDeg < 210) return "translate(-50%, 15%)";
-  return "translate(-112%, -50%)";
-};
-
-const labelAlignClass = (compassDeg: number): string => {
-  if (compassDeg < 30 || compassDeg >= 330) return "text-center";
-  if (compassDeg > 150 && compassDeg < 210) return "text-center";
-  if (compassDeg >= 30 && compassDeg <= 150) return "text-left";
-  return "text-right";
 };
 
 const PinnedCycle = () => {
@@ -130,11 +110,8 @@ const PinnedCycle = () => {
     };
   }, []);
 
-  // Structural chrome (eyebrow, headline, labels, center, description, footer)
-  // is visible from the start, the cycle reads as 'ready to go' at scroll 0
-  // defaulting to step 01 (AI drafts). Scroll drives only the progression.
+  // Step 01 shows from scroll 0; scrolling only advances the step.
   const nodePhase = clamp01(progress / 0.9);
-  const finalGlow = clamp01((progress - 0.9) / 0.1);
 
   const nodeFloat = nodePhase * NODE_ACTORS.length;
   const activeIndex = Math.min(
@@ -143,17 +120,6 @@ const PinnedCycle = () => {
   );
   const activeActor = NODE_ACTORS[activeIndex];
   const active = nodes[activeIndex];
-  const activeIsAI = activeActor === "ai";
-
-  // Orbital satellite, rides the ring at the current nodeFloat position
-  const orbitDeg = (nodeFloat / NODE_ACTORS.length) * 360;
-  const orbitRad = (orbitDeg * Math.PI) / 180;
-  const orbitX = CENTER + RADIUS * Math.sin(orbitRad);
-  const orbitY = CENTER - RADIUS * Math.cos(orbitRad);
-
-  // Progress arc, continuous loop drawn from top clockwise
-  const circumference = 2 * Math.PI * RADIUS;
-  const arcDrawn = nodePhase * circumference;
 
   return (
     <section
@@ -162,7 +128,7 @@ const PinnedCycle = () => {
       style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
       {/* min-height, not height: a fixed height with overflow hidden would
-          cut the ring or the copy where the six steps run taller than the
+          cut the scene or the copy where the six steps run taller than the
           viewport. */}
       <div
         ref={panelRef}
@@ -170,14 +136,9 @@ const PinnedCycle = () => {
         style={{ minHeight: PANEL_H }}
       >
         <div
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background:
-              "radial-gradient(900px 700px at 75% 25%, rgba(152,165,254,0.16), transparent 58%), radial-gradient(700px 600px at 12% 85%, rgba(41,53,135,0.09), transparent 60%)",
-          }}
-        />
-
-        <div className="gutter relative flex min-h-full w-full flex-col justify-center py-[clamp(2rem,6vh,4rem)]">
+          className="gutter relative flex w-full flex-col justify-center py-[clamp(2rem,6vh,4rem)]"
+          style={{ minHeight: PANEL_H }}
+        >
           <h2
             className="t-h2 font-heading font-bold text-calm-navy tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
             style={{ ...reveal(revealed, 80) }}
@@ -186,222 +147,15 @@ const PinnedCycle = () => {
           </h2>
 
           <div
-            className="grid grid-cols-1 lg:grid-cols-[1.15fr,1fr] gap-6 lg:gap-16 items-center"
+            className="grid grid-cols-1 lg:grid-cols-[1.4fr,1fr] gap-6 lg:gap-16 items-center"
             style={reveal(revealed, 160)}
           >
-            {/* Cycle */}
-            <div
-              className="relative mx-auto aspect-square"
-              style={{ width: "min(520px, 52vh, 78vw)" }}
-            >
-              <svg
-                viewBox="0 0 100 100"
-                className="absolute inset-0 w-full h-full"
-                aria-hidden="true"
-                overflow="visible"
-              >
-                {/* Track ring */}
-                <circle
-                  cx={CENTER}
-                  cy={CENTER}
-                  r={RADIUS}
-                  fill="none"
-                  stroke="rgba(41,53,135,0.12)"
-                  strokeWidth="0.6"
-                />
-
-                {/* Progress arc, continuous loop, from top clockwise */}
-                <circle
-                  cx={CENTER}
-                  cy={CENTER}
-                  r={RADIUS}
-                  fill="none"
-                  stroke="#958AF0"
-                  strokeWidth="1.1"
-                  strokeLinecap="round"
-                  strokeDasharray={`${arcDrawn} ${circumference}`}
-                  transform={`rotate(-90 ${CENTER} ${CENTER})`}
-                  style={{ transition: `stroke-dasharray 450ms ${EASE}` }}
-                />
-
-                {/* Orbital satellite, subtle position indicator */}
-                {nodePhase > 0 && (
-                  <g style={{ transition: `transform 450ms ${EASE}` }}>
-                    <circle
-                      cx={orbitX}
-                      cy={orbitY}
-                      r={2.4}
-                      fill={activeIsAI ? "#958AF0" : "#293587"}
-                      opacity={0.12}
-                    />
-                    <circle
-                      cx={orbitX}
-                      cy={orbitY}
-                      r={1.1}
-                      fill={activeIsAI ? "#958AF0" : "#293587"}
-                    />
-                  </g>
-                )}
-
-                {/* Nodes */}
-                {NODE_ACTORS.map((actor, i) => {
-                  const pos = nodePoint(i);
-                  const isActive = i === activeIndex && nodePhase > 0;
-                  const isPast = i < activeIndex && nodePhase > 0;
-                  const lit = isActive || isPast || finalGlow > 0;
-                  const isClinician = actor === "clinician";
-                  const fill = lit
-                    ? isClinician
-                      ? "#293587"
-                      : "#958AF0"
-                    : "#FFFFFF";
-                  const stroke = isClinician ? "#293587" : "#958AF0";
-                  const r = isActive ? 5.4 : 4.3;
-
-                  return (
-                    <g key={i}>
-                      {isActive && (
-                        <circle
-                          cx={pos.x}
-                          cy={pos.y}
-                          r={8.5}
-                          fill={stroke}
-                          opacity={0.16}
-                          style={{ transition: `opacity 500ms ${EASE}` }}
-                        />
-                      )}
-                      <circle
-                        cx={pos.x}
-                        cy={pos.y}
-                        r={r}
-                        fill={fill}
-                        stroke={stroke}
-                        strokeWidth={isActive ? 1.1 : 0.85}
-                        style={{
-                          transition: `r 500ms ${EASE}, fill 500ms ${EASE}, stroke-width 500ms ${EASE}`,
-                        }}
-                      />
-                      <text
-                        x={pos.x}
-                        y={pos.y + 1.1}
-                        textAnchor="middle"
-                        style={{
-                          fontSize: "3.2px",
-                          fontWeight: 800,
-                          fontFamily:
-                            "Outfit, ui-sans-serif, system-ui, sans-serif",
-                          letterSpacing: "-0.02em",
-                        }}
-                        fill={
-                          lit
-                            ? isClinician
-                              ? "#FFFFFF"
-                              : "#293587"
-                            : "#293587"
-                        }
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </text>
-                    </g>
-                  );
-                })}
-              </svg>
-
-              {/* HTML labels outside the ring, positioned per quadrant */}
-              {NODE_ACTORS.map((actor, i) => {
-                const pos = nodePoint(i, LABEL_RADIUS);
-                const isActive = i === activeIndex && nodePhase > 0;
-                const isPast = i < activeIndex && nodePhase > 0;
-                const lit = isActive || isPast || finalGlow > 0;
-                const isClinician = actor === "clinician";
-
-                return (
-                  <div
-                    key={`lbl-${i}`}
-                    className="pointer-events-none hidden lg:block absolute"
-                    style={{
-                      left: `${pos.x}%`,
-                      top: `${pos.y}%`,
-                      transform: labelTransform(pos.compassDeg),
-                    }}
-                  >
-                    <div
-                      className={labelAlignClass(pos.compassDeg)}
-                      style={{ maxWidth: "10rem" }}
-                    >
-                      <div
-                        className={`font-body font-bold tracking-[0.22em] uppercase ${
-                          isClinician
-                            ? "text-calm-navy"
-                            : "text-calm-lavender-ink"
-                        }`}
-                        style={{
-                          fontSize: "clamp(9px, 0.82vw, 11px)",
-                          opacity: lit ? 1 : 0.55,
-                          transition: `opacity 500ms ${EASE}`,
-                        }}
-                      >
-                        {isClinician ? t.clinician : t.ai}
-                      </div>
-                      <div
-                        className="font-heading font-bold tracking-tight text-calm-charcoal"
-                        style={{
-                          fontSize: "clamp(13px, 1.15vw, 15.5px)",
-                          lineHeight: 1.1,
-                          marginTop: "3px",
-                          opacity: lit ? 1 : 0.4,
-                          transform: isActive ? "scale(1.04)" : "scale(1)",
-                          transformOrigin:
-                            pos.compassDeg >= 210 && pos.compassDeg < 330
-                              ? "right center"
-                              : pos.compassDeg >= 30 && pos.compassDeg <= 150
-                                ? "left center"
-                                : "center",
-                          transition: `opacity 500ms ${EASE}, transform 500ms ${EASE}`,
-                        }}
-                      >
-                        {nodes[i].verb}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Center scoreboard, live actor readout */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-                <div
-                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/80"
-                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
-                >
-                  {t.eyebrow}
-                </div>
-
-                {/* Actor readout, swaps and recolors with each step */}
-                <div
-                  key={`actor-${activeIndex}`}
-                  className="t-h3 font-heading font-bold mt-2 mb-2.5"
-                  style={{
-                    // #958AF0 is the brand fill and only reaches 2.93:1 on
-                    // white, under the 3:1 this size needs. Text-safe ink.
-                    color: activeIsAI ? "#6866C4" : "#293587",
-                    animation: `optD-actor-swap 600ms ${EASE} both`,
-                  }}
-                >
-                  {activeIsAI ? t.ai : t.clinician}
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-2 font-body font-bold tracking-[0.3em] uppercase tabular-nums text-calm-charcoal/80"
-                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
-                >
-                  <span className="block h-px w-5 bg-calm-charcoal/30" />
-                  {t.stepPrefix}
-                  {String(activeIndex + 1).padStart(2, "0")}
-                  {t.stepSuffix}
-                  <span className="block h-px w-5 bg-calm-charcoal/30" />
-                </div>
-              </div>
-            </div>
+            <HandoffScene
+              activeIndex={activeIndex}
+              labels={{ ai: t.ai, clinician: t.clinician }}
+              states={t.states}
+              docs={t.docs}
+            />
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
             {/* The copy is absolutely positioned so steps cross-fade in place, so
@@ -410,7 +164,7 @@ const PinnedCycle = () => {
             <div className="relative min-h-[15rem] lg:min-h-[22rem]">
               <div
                 key={activeIndex}
-                className="absolute inset-0 flex flex-col justify-center"
+                className="absolute inset-0 flex flex-col justify-start"
                 style={{
                   animation: `optD-reveal 600ms ${EASE} both`,
                 }}
@@ -430,14 +184,10 @@ const PinnedCycle = () => {
                         : "text-calm-lavender-ink"
                     }`}
                   >
-                    {activeActor === "clinician"
-                      ? t.clinicianStepPrefix +
-                        (activeIndex + 1).toString().padStart(2, "0")
-                      : t.aiStepPrefix +
-                        (activeIndex + 1).toString().padStart(2, "0")}
+                    {activeActor === "clinician" ? t.clinician : t.ai}
                   </span>
                 </div>
-                <h3 className="t-h2 font-heading font-extrabold text-calm-navy tracking-tight mb-5">
+                <h3 className="t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}
                 </h3>
                 <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">
@@ -445,7 +195,7 @@ const PinnedCycle = () => {
                 </p>
 
                 {/* Progress pips */}
-                <div className="mt-9 flex items-center gap-1.5">
+                <div className="mt-auto flex items-center gap-1.5 pt-6">
                   {NODE_ACTORS.map((_, i) => (
                     <span
                       key={i}
@@ -459,9 +209,11 @@ const PinnedCycle = () => {
                               : "0.5rem",
                         backgroundColor:
                           i === activeIndex
-                            ? "#293587"
+                            ? NODE_ACTORS[i] === "ai"
+                              ? "#6866C4"
+                              : "#293587"
                             : i < activeIndex
-                              ? "#958AF0"
+                              ? "rgba(41,53,135,0.35)"
                               : "rgba(41,53,135,0.15)",
                       }}
                     />
@@ -478,17 +230,13 @@ const PinnedCycle = () => {
           from { opacity: 0; transform: translateY(14px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes optD-actor-swap {
-          from { opacity: 0; letter-spacing: 0.02em; transform: translateY(8px); }
-          to { opacity: 1; letter-spacing: -0.02em; transform: translateY(0); }
-        }
       `}</style>
     </section>
   );
 };
 
 // Below lg the section is a plain list. A pinned panel with a runway needs a
-// viewport taller than the ring plus the copy, which a phone does not have.
+// viewport taller than the scene plus the copy, which a phone does not have.
 const StepList = () => {
   const t = useT().home.cycle;
   return (
@@ -573,7 +321,7 @@ const StepList = () => {
                   >
                     {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
                   </p>
-                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
+                  <h3 className="mt-2 t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight">
                     {node.title}
                   </h3>
                   <p className="mt-2 max-w-[60ch] font-body t-lead text-calm-charcoal/80 leading-relaxed">
