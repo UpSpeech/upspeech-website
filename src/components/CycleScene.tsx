@@ -544,7 +544,18 @@ const StepList = () => {
             const isClinician = NODE_ACTORS[i] === "clinician";
             const n = String(i + 1).padStart(2, "0");
             return (
-              <li key={i} className={`flex gap-4 ${i === 0 ? "" : "mt-9"}`}>
+              <li
+                key={i}
+                className={`relative flex gap-4 ${i === 0 ? "" : "mt-9"}`}
+              >
+                {i < t.nodes.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-[17px] top-9 -bottom-9 w-0.5 ${
+                      isClinician ? "bg-calm-navy/25" : "bg-calm-lavender/60"
+                    }`}
+                  />
+                )}
                 <span
                   aria-hidden="true"
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
@@ -566,7 +577,7 @@ const StepList = () => {
                   <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
                     {node.title}
                   </h3>
-                  <p className="mt-2 font-body t-lead text-calm-charcoal/80 leading-relaxed">
+                  <p className="mt-2 max-w-[60ch] font-body t-lead text-calm-charcoal/80 leading-relaxed">
                     {node.body}
                   </p>
                 </div>
