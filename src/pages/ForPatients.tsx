@@ -292,7 +292,7 @@ export default function ForPatients() {
             </div>
 
             <StoreButtons className="mt-8" />
-            <ol className="mt-14 space-y-14 sm:space-y-20">
+            <ol className="mt-14 space-y-12 sm:space-y-14">
               {SCREENSHOTS.map((base, i) => (
                 <li
                   key={base}
@@ -307,11 +307,11 @@ export default function ForPatients() {
                       loading="lazy"
                       width={600}
                       height={542}
-                      className="h-auto w-[min(380px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
+                      className="h-auto w-[min(460px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
                     />
                   </div>
                   <div className="max-w-sm">
-                    <p className={eyebrowClass}>
+                    <p className={`${eyebrowClass} !tracking-normal`}>
                       {String(i + 1).padStart(2, "0")}
                     </p>
                     <h3 className="mt-2 t-h3 font-heading font-bold text-calm-navy tracking-tight">

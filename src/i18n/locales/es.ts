@@ -379,7 +379,7 @@ export const es: Dictionary = {
       walkthrough: [
         {
           title: "Hoy",
-          line: "El plan que tu terapeuta preparó para el día te está esperando, con el ejercicio ya elegido.",
+          line: "Tu terapeuta elige el ejercicio. Tú pulsas empezar.",
         },
         {
           title: "Tu recorrido",

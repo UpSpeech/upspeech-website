@@ -378,7 +378,7 @@ export const en = {
       walkthrough: [
         {
           title: "Today",
-          line: "The plan your therapist set for the day is waiting, with the exercise already chosen.",
+          line: "Your therapist picks the exercise. You press start.",
         },
         {
           title: "Your journey",
