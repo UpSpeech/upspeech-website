@@ -212,6 +212,7 @@ export const es: Dictionary = {
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
+      backToStart: "Y vuelta al paso 01",
       nodes: [
         {
           verb: "redacta",

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUturnUpIcon } from "@heroicons/react/24/outline";
 import { EASE, reveal } from "./motion";
 import { useT } from "@/i18n";
 
@@ -548,14 +549,12 @@ const StepList = () => {
                 key={i}
                 className={`relative flex gap-4 ${i === 0 ? "" : "mt-9"}`}
               >
-                {i < t.nodes.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className={`absolute left-[17px] top-9 -bottom-9 w-0.5 ${
-                      isClinician ? "bg-calm-navy/25" : "bg-calm-lavender/60"
-                    }`}
-                  />
-                )}
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-[17px] top-9 -bottom-9 w-0.5 ${
+                    isClinician ? "bg-calm-navy/25" : "bg-calm-lavender/60"
+                  }`}
+                />
                 <span
                   aria-hidden="true"
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
@@ -585,6 +584,17 @@ const StepList = () => {
             );
           })}
         </ol>
+        <div className="relative mt-9 flex items-center gap-4">
+          <span
+            aria-hidden="true"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-calm-lavender/60 text-calm-navy"
+          >
+            <ArrowUturnUpIcon className="h-4 w-4" />
+          </span>
+          <p className="font-body t-eyebrow text-calm-charcoal/70">
+            {t.backToStart}
+          </p>
+        </div>
       </div>
     </section>
   );
