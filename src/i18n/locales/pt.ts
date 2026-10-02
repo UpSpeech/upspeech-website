@@ -357,6 +357,7 @@ export const pt: Dictionary = {
       headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
       body: "A UpSpeech é como continuas a praticar, entre consultas, o trabalho que fazes com o teu terapeuta da fala. O teu terapeuta define o plano e acompanha como está a correr enquanto praticas na app.",
+      inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
     },
@@ -431,11 +432,11 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que torna a terapia centrada na pessoa é ser a própria pessoa a decidir quais destes objetivos se aplicam.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é ser a própria pessoa a decidir que objetivos são os seus.",
       },
       {
         heading: "Ser ouvido à tua maneira",
-        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o café que se pede de outra forma porque é mais fácil do que a palavra que se queria dizer. A terapia centrada na pessoa trata disso a par de qualquer treino de técnicas.",
+        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café que muda de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha isso a par do treino de técnicas.",
       },
       {
         heading: "Como a UpSpeech se encaixa",
@@ -443,7 +444,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "Uma nota sobre linguagem",
-        body: "Esta página fala em 'pessoas que gaguejam' e 'pessoa que gagueja'. Pomos primeiro a pessoa e só depois a condição, a menos que a própria pessoa prefira outra forma. A ideia é descrever as pessoas com respeito, pelas palavras que elas escolhem para si.",
+        body: "Esta página fala em «pessoas que gaguejam». Pomos primeiro a pessoa e só depois a condição, a menos que a própria pessoa prefira outra forma. A ideia é descrever as pessoas com respeito, com as palavras que elas próprias escolhem.",
       },
     ],
     faq: {
@@ -451,12 +452,12 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes.",
       items: [
         {
-          q: "A terapia centrada na pessoa é o mesmo que não ajudar alguém a melhorar?",
-          a: "Não. A terapia centrada na pessoa continua a ensinar técnicas e a trabalhar o evitamento. Muda quem define a meta: a pessoa e o terapeuta combinam o que é progresso, e a fluência não é a resposta automática.",
+          q: "Centrar a terapia na pessoa quer dizer desistir de melhorar?",
+          a: "Não. A terapia centrada na pessoa continua a ensinar técnicas e a trabalhar o evitamento. Muda quem define a meta: a pessoa e o terapeuta combinam o que é progresso, e não se parte do princípio de que é a fluência.",
         },
         {
-          q: "A UpSpeech funciona apenas para abordagens centradas na pessoa?",
-          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app entrega o que o terapeuta atribui, seja modelação da fluência, técnicas de modificação ou trabalho centrado na confiança.",
+          q: "A UpSpeech só serve para abordagens centradas na pessoa?",
+          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra ao paciente o que o terapeuta lhe atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
         },
         {
           q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
@@ -471,7 +472,7 @@ export const pt: Dictionary = {
     closing: {
       headline: "Trabalha com um terapeuta que perceba os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech é usada através de terapeutas da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech usa-se com o acompanhamento de um terapeuta da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -485,12 +486,12 @@ export const pt: Dictionary = {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "As notas começam",
       headlineLine2: "já escritas.",
-      body: "A documentação faz parte de uma boa prática clínica, mas não deve tirar tempo ao trabalho em si. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e onde entram os rascunhos estruturados.",
+      body: "A documentação faz parte de uma boa prática clínica, mas não deve roubar tempo aos pacientes. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e onde entram os rascunhos estruturados.",
     },
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se, e costuma sair da preparação ou do fim do dia.",
+        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se, e acaba por sair do tempo de preparação ou do fim do dia.",
       },
       {
         heading: "Rascunhos estruturados que revês e editas",
@@ -498,16 +499,16 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que deve ter uma boa nota de terapia da fala",
-        body: "Uma boa nota de sessão diz que técnica se praticou, como correu o paciente face aos seus objetivos, o que se notou sobre evitamento ou confiança e o que vem a seguir. Com um modelo para cada ponto, escreve-se mais depressa, com ou sem ajuda de IA.",
+        body: "Uma boa nota de sessão diz que técnica se praticou, como o paciente se saiu face aos objetivos, o que se notou sobre evitamento ou confiança e o que vem a seguir. Com um modelo para cada ponto, escreve-se mais depressa, com ou sem ajuda de IA.",
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada chega ao paciente sem o terapeuta rever e assinar.",
+        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada entra no processo do paciente sem tu reveres e assinares.",
       },
     ],
     faq: {
       eyebrow: "Perguntas",
-      headline: "Perguntas frequentes de clínicos.",
+      headline: "Perguntas frequentes dos terapeutas.",
       items: [
         {
           q: "Quanto tempo se pode poupar, na prática, na documentação?",
@@ -515,15 +516,15 @@ export const pt: Dictionary = {
         },
         {
           q: "Redigir notas com ajuda de IA substitui a observação clínica?",
-          a: "Não. O rascunho parte dos dados da sessão. O que o terapeuta avalia na sala é o que ele próprio acrescenta.",
+          a: "Não. O rascunho parte dos dados da sessão. O que observas na sala és tu que acrescentas.",
         },
         {
           q: "É clinicamente adequado usar notas redigidas por IA?",
-          a: "É, desde que o terapeuta reveja e assine cada nota antes de ela entrar no processo clínico do paciente. Consulta as orientações da tua ordem profissional sobre IA na documentação clínica.",
+          a: "É, desde que revejas e assines cada nota antes de ela entrar no processo clínico do paciente. Consulta as orientações da tua associação profissional sobre IA na documentação clínica.",
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Duas coisas alimentam-no. A prática entre sessões dá dados de conclusão e de desempenho da app. A gravação da sessão é transcrita, e o rascunho do relatório sai dessa transcrição. Quando finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório ficam guardados no registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Duas coisas alimentam-no. A prática entre sessões mostra o que o paciente concluiu na app e como correu. A gravação da sessão é transcrita, e o rascunho do relatório sai dessa transcrição. Quando finalizas o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório ficam guardados no processo. Vês tudo antes de assinares qualquer nota.",
         },
       ],
     },
