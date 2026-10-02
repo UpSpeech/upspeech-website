@@ -4,6 +4,7 @@ import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
+import StoreBadges from "@/components/StoreBadges";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
@@ -104,51 +105,6 @@ const PhoneShot = ({
   </div>
 );
 
-function StoreButtons({
-  className = "",
-  eager = false,
-}: {
-  className?: string;
-  eager?: boolean;
-}) {
-  const t = useT().forPatients;
-  if (!APP_STORE_URL && !PLAY_STORE_URL) return null;
-  return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      {APP_STORE_URL && (
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.storeAppStoreAriaLabel}
-        >
-          <img
-            src="/images/app-store.png"
-            alt={t.storeAppStoreAlt}
-            className="h-11 w-auto"
-            loading={eager ? "eager" : "lazy"}
-          />
-        </a>
-      )}
-      {PLAY_STORE_URL && (
-        <a
-          href={PLAY_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.storePlayAriaLabel}
-        >
-          <img
-            src="/images/google-play.png"
-            alt={t.storePlayAlt}
-            className="h-11 w-auto"
-            loading={eager ? "eager" : "lazy"}
-          />
-        </a>
-      )}
-    </div>
-  );
-}
-
 export default function ForPatients() {
   const locale = useLocale();
   const t = useT().forPatients;
@@ -201,7 +157,7 @@ export default function ForPatients() {
                     {t.intro.inviteNote}
                   </p>
                 )}
-                <StoreButtons className="mt-4" eager />
+                <StoreBadges className="mt-4" />
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
                   discarding a fifth of a 0.80 portrait to make it fit a box
@@ -305,7 +261,7 @@ export default function ForPatients() {
               </p>
             </div>
 
-            <StoreButtons className="mt-8" />
+            <StoreBadges className="mt-8" />
             <ol className="mt-14 space-y-12 sm:space-y-14">
               {SCREENSHOTS.map((base, i) => (
                 <li
