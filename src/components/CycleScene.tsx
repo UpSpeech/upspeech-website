@@ -551,10 +551,7 @@ const StepList = () => {
             const isClinician = NODE_ACTORS[i] === "clinician";
             const n = String(i + 1).padStart(2, "0");
             return (
-              <li
-                key={i}
-                className={`flex gap-4 ${i === 0 ? "" : i % 2 === 0 ? "mt-12" : "mt-6"}`}
-              >
+              <li key={i} className={`flex gap-4 ${i === 0 ? "" : "mt-9"}`}>
                 <span
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
                     isClinician
@@ -572,7 +569,7 @@ const StepList = () => {
                   >
                     {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
                   </p>
-                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight text-balance">
+                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
                     {node.title}
                   </h3>
                   <p className="mt-2 font-body t-lead text-calm-charcoal/80 leading-relaxed">
