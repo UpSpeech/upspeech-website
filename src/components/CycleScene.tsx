@@ -192,7 +192,7 @@ const PinnedCycle = () => {
                   {NODE_ACTORS.map((_, i) => (
                     <span
                       key={i}
-                      className="block h-1 rounded-full transition-all duration-500"
+                      className="block h-1.5 rounded-full transition-all duration-500"
                       style={{
                         width:
                           i === activeIndex
@@ -207,7 +207,7 @@ const PinnedCycle = () => {
                               : "#293587"
                             : i < activeIndex
                               ? "rgba(41,53,135,0.35)"
-                              : "rgba(41,53,135,0.15)",
+                              : "rgba(41,53,135,0.28)",
                       }}
                     />
                   ))}

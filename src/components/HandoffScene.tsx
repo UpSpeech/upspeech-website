@@ -11,12 +11,44 @@ type Doc = {
 // of the file. Each section shows its latest snapshot, so the file only grows.
 // Logged attempts come from the patient, not from the AI draft.
 const ATTEMPTS = 2;
+const NEXT_STEP = 3;
 const SECTIONS: readonly (readonly number[])[] = [[0, 1], [2, 3], [4], [5]];
+
+type Line = { text: string; mark: string };
+
+/**
+ * One section's lines once step `upto` has happened. A line an earlier step
+ * had and a later snapshot dropped stays on the page, struck through, so the
+ * clinician's edit is visible next to what it replaced.
+ */
+function buildLines(
+  docs: readonly Doc[],
+  steps: readonly number[],
+  upto: number,
+) {
+  const shown = steps.filter((n) => n <= upto);
+  const latest = docs[shown[shown.length - 1]].lines;
+  const dropped: Line[] = [];
+  for (const n of shown.slice(0, -1)) {
+    for (const l of docs[n].lines) {
+      if (
+        !latest.some((x) => x.text === l.text) &&
+        !dropped.some((x) => x.text === l.text)
+      )
+        dropped.push({ text: l.text, mark: "struck" });
+    }
+  }
+  return [
+    ...latest.filter((l) => l.mark !== "clin"),
+    ...dropped,
+    ...latest.filter((l) => l.mark === "clin"),
+  ];
+}
 
 const TINTS: Record<string, string> = {
   ai: "[&>span:first-child]:rounded [&>span:first-child]:bg-calm-lavender/25 [&>span:first-child]:px-1 [&>span:first-child]:[box-decoration-break:clone] text-calm-charcoal",
   plain: "text-calm-charcoal",
-  struck: "text-calm-charcoal/75 line-through decoration-calm-navy/60",
+  struck: "text-calm-charcoal/80 line-through decoration-calm-navy/60",
   clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
 };
 
@@ -92,6 +124,7 @@ export default function HandoffScene({
           // The file always holds its final height: a section that has not
           // started is a dashed ghost, and one still growing keeps the room.
           const finalDoc = docs[steps[steps.length - 1]];
+          const finalLines = buildLines(docs, steps, steps[steps.length - 1]);
           if (!shown.length) {
             return (
               <section
@@ -102,7 +135,7 @@ export default function HandoffScene({
                   {finalDoc.kind}
                 </p>
                 <ul className="invisible space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs">
-                  {finalDoc.lines.map((l) => (
+                  {finalLines.map((l) => (
                     <li key={l.text}>{l.text}</li>
                   ))}
                 </ul>
@@ -111,6 +144,7 @@ export default function HandoffScene({
           }
           const latest = shown[shown.length - 1];
           const doc = docs[latest];
+          const lines = buildLines(docs, steps, activeIndex);
           // A line the clinician left alone keeps the AI tint it was drafted with.
           const earlierAi = new Set(
             shown
@@ -121,10 +155,10 @@ export default function HandoffScene({
           );
           const isActive = steps.includes(activeIndex);
           // The marker follows the last line the active actor wrote in this section.
-          const lastIdx = doc.lines.reduce(
+          const lastIdx = lines.reduce(
             (acc, l, i) =>
               actor === "clinician" ? (l.mark === "clin" ? i : acc) : i,
-            doc.lines.length - 1,
+            lines.length - 1,
           );
           return (
             <section
@@ -148,7 +182,7 @@ export default function HandoffScene({
               </p>
               <div className="grid">
                 <ul className="[grid-area:1/1] space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs">
-                  {doc.lines.map((line, i) => {
+                  {lines.map((line, i) => {
                     const mark =
                       s === ATTEMPTS
                         ? "plain"
@@ -173,7 +207,7 @@ export default function HandoffScene({
                   aria-hidden="true"
                   className="invisible [grid-area:1/1] space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs"
                 >
-                  {finalDoc.lines.map((l) => (
+                  {finalLines.map((l) => (
                     <li key={l.text}>{l.text}</li>
                   ))}
                 </ul>
