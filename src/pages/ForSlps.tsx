@@ -46,7 +46,7 @@ export default function ForSlps() {
           <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.3fr,0.7fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -145,15 +145,17 @@ export default function ForSlps() {
               </p>
             </div>
 
-            <div className="relative mt-12 max-w-3xl overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
+            <div className="relative mt-12 max-w-3xl overflow-x-auto rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
               <img
                 src={localizedAsset(
                   "/screenshots/app/therapist-report.png",
                   locale,
                 )}
                 alt={t.documentation.screenshotAlt}
+                width={1800}
+                height={2065}
                 loading="lazy"
-                className="block h-auto w-full"
+                className="block h-auto w-full min-w-[680px] sm:min-w-0"
               />
             </div>
           </div>

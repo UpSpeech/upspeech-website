@@ -271,9 +271,7 @@ export function TechniquesIndexPage() {
           </section>
         )}
 
-        <div className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="gutter"></div>
-        </div>
+        <div className="pb-[clamp(3rem,6vw,5rem)]" />
       </main>
 
       <Footer />

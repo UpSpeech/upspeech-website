@@ -104,7 +104,13 @@ const PhoneShot = ({
   </div>
 );
 
-function StoreButtons({ className = "" }: { className?: string }) {
+function StoreButtons({
+  className = "",
+  eager = false,
+}: {
+  className?: string;
+  eager?: boolean;
+}) {
   const t = useT().forPatients;
   if (!APP_STORE_URL && !PLAY_STORE_URL) return null;
   return (
@@ -120,7 +126,7 @@ function StoreButtons({ className = "" }: { className?: string }) {
             src="/images/app-store.png"
             alt={t.storeAppStoreAlt}
             className="h-11 w-auto"
-            loading="lazy"
+            loading={eager ? "eager" : "lazy"}
           />
         </a>
       )}
@@ -135,7 +141,7 @@ function StoreButtons({ className = "" }: { className?: string }) {
             src="/images/google-play.png"
             alt={t.storePlayAlt}
             className="h-11 w-auto"
-            loading="lazy"
+            loading={eager ? "eager" : "lazy"}
           />
         </a>
       )}
@@ -190,10 +196,12 @@ export default function ForPatients() {
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
-                <StoreButtons className="mt-8" />
-                <p className="mt-3 font-body text-sm text-calm-charcoal/70">
-                  {t.intro.inviteNote}
-                </p>
+                {(APP_STORE_URL || PLAY_STORE_URL) && (
+                  <p className="mt-8 font-body text-base font-semibold text-calm-navy">
+                    {t.intro.inviteNote}
+                  </p>
+                )}
+                <StoreButtons className="mt-4" eager />
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
                   discarding a fifth of a 0.80 portrait to make it fit a box

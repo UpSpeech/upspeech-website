@@ -69,6 +69,10 @@ export const es: Dictionary = {
     objective: "Para qué sirve",
     howToPractice: "Cómo practicarla",
     onThisPage: "En esta página",
+    closingTitle: "Practica esto entre sesiones",
+    closingBody:
+      "Tu logopeda puede asignar esta técnica en UpSpeech y ver cómo fue cada práctica antes de tu próxima cita.",
+    closingLink: "Cómo funciona UpSpeech para pacientes",
     relatedTechniques: "Se practican con esta",
   },
   home: {
@@ -212,6 +216,7 @@ export const es: Dictionary = {
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
+      backToStart: "Y vuelta al paso 01",
       nodes: [
         {
           verb: "redacta",
