@@ -68,6 +68,7 @@ export const es: Dictionary = {
     practicalDescription: "Qué es",
     objective: "Para qué sirve",
     howToPractice: "Cómo practicarla",
+    onThisPage: "En esta página",
     relatedTechniques: "Se practican con esta",
   },
   home: {

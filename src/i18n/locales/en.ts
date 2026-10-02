@@ -67,6 +67,7 @@ export const en = {
     practicalDescription: "What it is",
     objective: "What it is for",
     howToPractice: "How to practise it",
+    onThisPage: "On this page",
     relatedTechniques: "Practised with this one",
   },
   home: {
