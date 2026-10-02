@@ -9,12 +9,14 @@ type Doc = {
 
 // Which of the six step snapshots in the dictionary belong to the same section
 // of the file. Each section shows its latest snapshot, so the file only grows.
+// Logged attempts come from the patient, not from the AI draft.
+const ATTEMPTS = 2;
 const SECTIONS: readonly (readonly number[])[] = [[0, 1], [2, 3], [4], [5]];
 
 const TINTS: Record<string, string> = {
   ai: "[&>span:first-child]:rounded [&>span:first-child]:bg-calm-lavender/25 [&>span:first-child]:px-1 [&>span:first-child]:[box-decoration-break:clone] text-calm-charcoal",
   plain: "text-calm-charcoal",
-  struck: "text-calm-charcoal/65 line-through decoration-calm-navy/60",
+  struck: "text-calm-charcoal/75 line-through decoration-calm-navy/60",
   clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
 };
 
@@ -69,9 +71,21 @@ export default function HandoffScene({
         minHeight: "min(35rem, 70vh)",
       }}
     >
-      <p className="mb-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:760px)]:mb-2.5 [@media(max-height:760px)]:pb-2 font-heading text-base font-bold text-calm-navy">
-        {title}
-      </p>
+      <div className="mb-4 flex items-center justify-between gap-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:760px)]:mb-2.5 [@media(max-height:760px)]:pb-2">
+        <p className="font-heading text-base font-bold text-calm-navy">
+          {title}
+        </p>
+        <div className="flex items-center gap-4 font-body text-xs font-semibold text-calm-navy">
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-5 rounded bg-calm-lavender/50" />
+            {labels.ai}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-0.5 bg-calm-navy" />
+            {labels.clinician}
+          </span>
+        </div>
+      </div>
 
       <div className="space-y-4 [@media(max-height:760px)]:space-y-2.5">
         {SECTIONS.map((steps, s) => {
@@ -116,9 +130,11 @@ export default function HandoffScene({
               <ul className="space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:760px)]:space-y-0.5 [@media(max-height:760px)]:text-xs">
                 {doc.lines.map((line, i) => {
                   const mark =
-                    line.mark === "plain" && earlierAi.has(line.text)
-                      ? "ai"
-                      : line.mark;
+                    s === ATTEMPTS
+                      ? "plain"
+                      : line.mark === "plain" && earlierAi.has(line.text)
+                        ? "ai"
+                        : line.mark;
                   return (
                     <li
                       key={line.text}
@@ -136,17 +152,6 @@ export default function HandoffScene({
             </section>
           );
         })}
-      </div>
-
-      <div className="mt-5 flex items-center gap-5 font-body text-xs font-semibold text-calm-navy">
-        <span className="flex items-center gap-1.5">
-          <span className="h-3 w-5 rounded bg-calm-lavender/50" />
-          {labels.ai}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="h-3 w-0.5 bg-calm-navy" />
-          {labels.clinician}
-        </span>
       </div>
 
       <style>{`

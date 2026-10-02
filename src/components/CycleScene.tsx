@@ -149,7 +149,7 @@ const PinnedCycle = () => {
             {/* The copy is absolutely positioned so steps cross-fade in place, so
                 this box must fit the tallest step in the longest language:
                 321px at 1440 (en), plus headroom. */}
-            <div className="relative min-h-[15rem] lg:min-h-[22rem]">
+            <div className="relative min-h-[15rem] lg:min-h-[19rem]">
               <div
                 key={activeIndex}
                 className="absolute inset-0 flex flex-col justify-start"
@@ -183,7 +183,7 @@ const PinnedCycle = () => {
                 <h3 className="t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}
                 </h3>
-                <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">
+                <p className="t-lead font-body text-calm-charcoal/90 leading-relaxed max-w-md">
                   {active.body}
                 </p>
 
