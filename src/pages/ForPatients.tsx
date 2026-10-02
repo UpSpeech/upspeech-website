@@ -9,8 +9,7 @@ import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
 // These three are crops of the shipped app on demo data, cut to the part each
-// caption is about and shown at 320px wide, so body text lands near 1:1 on the
-// page. The corners are baked into the image; there is no device frame.
+// caption is about and shown at 320px wide. The corners are baked into the image; there is no device frame.
 const SCREENSHOTS = [
   "/screenshots/mobile/patient-home-crop.webp",
   "/screenshots/mobile/patient-journey-crop.webp",
@@ -245,6 +244,7 @@ export default function ForPatients() {
                 alt=""
                 aria-hidden="true"
                 width={600}
+                height={507}
                 loading="lazy"
                 className="pointer-events-none absolute bottom-14 left-0 hidden w-[214px] -rotate-6 rounded-[20px] ring-1 ring-calm-navy/10 drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)] sm:block"
               />
@@ -305,6 +305,7 @@ export default function ForPatients() {
                   alt={t.app.screenshots[i]}
                   loading="lazy"
                   width={600}
+                  height={542}
                   className={`h-auto w-[320px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]`}
                 />
               ))}
@@ -313,6 +314,7 @@ export default function ForPatients() {
                 alt={t.app.childScreenshots[1]}
                 loading="lazy"
                 width={446}
+                height={565}
                 className="h-auto w-[236px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
               />
             </div>
