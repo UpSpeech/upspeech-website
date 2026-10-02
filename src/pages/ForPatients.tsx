@@ -98,6 +98,45 @@ const PhoneShot = ({
   </div>
 );
 
+function StoreButtons({ className = "" }: { className?: string }) {
+  const t = useT().forPatients;
+  if (!APP_STORE_URL && !PLAY_STORE_URL) return null;
+  return (
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+      {APP_STORE_URL && (
+        <a
+          href={APP_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.storeAppStoreAriaLabel}
+        >
+          <img
+            src="/images/app-store.png"
+            alt={t.storeAppStoreAlt}
+            className="h-11 w-auto"
+            loading="lazy"
+          />
+        </a>
+      )}
+      {PLAY_STORE_URL && (
+        <a
+          href={PLAY_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.storePlayAriaLabel}
+        >
+          <img
+            src="/images/google-play.png"
+            alt={t.storePlayAlt}
+            className="h-11 w-auto"
+            loading="lazy"
+          />
+        </a>
+      )}
+    </div>
+  );
+}
+
 export default function ForPatients() {
   const locale = useLocale();
   const t = useT().forPatients;
@@ -144,6 +183,10 @@ export default function ForPatients() {
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
+                </p>
+                <StoreButtons className="mt-8" />
+                <p className="mt-3 font-body text-sm text-calm-charcoal/70">
+                  {t.intro.inviteNote}
                 </p>
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
@@ -224,7 +267,7 @@ export default function ForPatients() {
                 bellyShape="round"
               />
 
-              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-navy">
+              <p className="t-statement mt-4 max-w-xl font-heading font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>
@@ -243,40 +286,7 @@ export default function ForPatients() {
               </p>
             </div>
 
-            {(APP_STORE_URL || PLAY_STORE_URL) && (
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                {APP_STORE_URL && (
-                  <a
-                    href={APP_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.storeAppStoreAriaLabel}
-                  >
-                    <img
-                      src="/images/app-store.png"
-                      alt={t.storeAppStoreAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-                {PLAY_STORE_URL && (
-                  <a
-                    href={PLAY_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.storePlayAriaLabel}
-                  >
-                    <img
-                      src="/images/google-play.png"
-                      alt={t.storePlayAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-              </div>
-            )}
+            <StoreButtons className="mt-8" />
             {/* Three shipped screens, then the one a younger patient sees.
                 Four phones do not fit the gutter at the height three did, so
                 the whole row steps down together and the first three keep
