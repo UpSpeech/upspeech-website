@@ -186,7 +186,8 @@ export default function HandoffScene({
                     const mark =
                       s === ATTEMPTS
                         ? "plain"
-                        : line.mark === "plain" && earlierAi.has(line.text)
+                        : line.mark === "plain" &&
+                            (earlierAi.has(line.text) || s === NEXT_STEP)
                           ? "ai"
                           : line.mark;
                     return (
