@@ -520,7 +520,7 @@ export const en = {
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist reviews and signs it.",
+        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist reviews and signs it. You only record with the patient's consent.",
       },
     ],
     faq: {
