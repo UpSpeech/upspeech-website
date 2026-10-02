@@ -306,7 +306,7 @@ export default function ForPatients() {
                   loading="lazy"
                   width={600}
                   height={542}
-                  className={`h-auto w-[320px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]`}
+                  className={`h-auto w-[min(320px,76vw)] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]`}
                 />
               ))}
               <img
@@ -315,7 +315,7 @@ export default function ForPatients() {
                 loading="lazy"
                 width={446}
                 height={565}
-                className="h-auto w-[236px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
+                className="h-auto w-[min(236px,58vw)] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
               />
             </div>
           </div>
