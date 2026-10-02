@@ -93,9 +93,15 @@ export function TechniquePage({ slug }: TechniquePageProps) {
   // navigation, so scroll to it once the sections exist.
   useEffect(() => {
     if (loading || error) return;
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    const raw = window.location.hash.slice(1);
+    let id = raw;
+    try {
+      id = decodeURIComponent(raw);
+    } catch {
+      // A pasted link with a broken escape still has to render.
+    }
     if (id) document.getElementById(id)?.scrollIntoView();
-  }, [loading, error]);
+  }, [loading, error, slug]);
 
   const staticSeo = TECHNIQUE_SEO[slug];
   const faqs = getTechniqueFAQs(slug, locale);
