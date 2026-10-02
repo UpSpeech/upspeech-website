@@ -217,6 +217,72 @@ export const es: Dictionary = {
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
       backToStart: "Y vuelta al paso 01",
+      docs: [
+        {
+          kind: "Informe de la sesión",
+          lines: [
+            {
+              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              mark: "ai",
+            },
+            { text: "La evitación de llamadas sigue igual.", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Informe de la sesión",
+          lines: [
+            {
+              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              mark: "plain",
+            },
+            { text: "La evitación de llamadas sigue igual.", mark: "struck" },
+            {
+              text: "La evitación de llamadas bajó: hizo dos llamadas esta semana.",
+              mark: "clin",
+            },
+          ],
+        },
+        {
+          kind: "Plan de práctica",
+          lines: [
+            { text: "Inicios suaves, 5 min al día", mark: "ai" },
+            { text: "Salidas controladas, 5 min al día", mark: "ai" },
+            { text: "Dificultad: media", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Plan de práctica",
+          lines: [
+            { text: "Inicios suaves, 5 min al día", mark: "plain" },
+            { text: "Salidas controladas, 5 min al día", mark: "struck" },
+            { text: "Tartamudeo voluntario, 5 min al día", mark: "clin" },
+            { text: "Dificultad: fácil", mark: "clin" },
+          ],
+        },
+        {
+          kind: "Intentos de esta semana",
+          lines: [
+            { text: "Lun, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
+            { text: "Mié, inicios suaves, esfuerzo 3 de 5", mark: "ai" },
+            { text: "Vie, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Siguiente paso",
+          lines: [
+            { text: "Tres intentos, el esfuerzo baja.", mark: "plain" },
+            { text: "Siguiente paso: salidas controladas.", mark: "clin" },
+          ],
+        },
+      ],
+      states: [
+        "Borrador",
+        "Listo",
+        "Propuesto",
+        "Activo",
+        "Registrado",
+        "Elegido",
+      ],
       nodes: [
         {
           verb: "redacta",
@@ -226,22 +292,22 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El logopeda lo edita y lo aprueba.",
-          body: "Esas correcciones mejoran el siguiente borrador. Todo lo que se use para entrenar nuestros modelos necesita antes el consentimiento del paciente.",
+          body: "Cada corrección mejora el siguiente borrador. Todo lo que se use para entrenar nuestros modelos necesita antes el consentimiento del paciente.",
         },
         {
           verb: "estructura",
           title: "La IA estructura el plan de práctica.",
-          body: "A partir de los datos de la sesión y la fase del paciente, UpSpeech propone ejercicios diarios para que el terapeuta los apruebe.",
+          body: "A partir de los datos de la sesión y la fase del paciente, UpSpeech propone ejercicios diarios para que el logopeda los apruebe.",
         },
         {
           verb: "calibra",
           title: "El logopeda lo calibra.",
-          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise.",
+          body: "El logopeda ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el logopeda lo revise.",
         },
         {
           verb: "escucha",
           title: "La IA ayuda entre sesiones.",
-          body: "Los intentos se guardan con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
+          body: "UpSpeech guarda cada intento con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
         },
         {
           verb: "decide",

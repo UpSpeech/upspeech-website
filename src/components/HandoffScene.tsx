@@ -1,22 +1,13 @@
 import { EASE } from "./motion";
-import { localizedAsset, useLocale } from "@/i18n";
 
-type Actor = "ai" | "clinician";
+export type Actor = "ai" | "clinician";
 
-// One real screen per step, in step order: the report and the plan each change
-// hands twice, then a patient's practice and the step the clinician sets next.
-const ARTIFACTS = [
-  { src: "/screenshots/detail/report-ready.webp", width: 634, height: 264 },
-  { src: "/screenshots/detail/report-ready.webp", width: 634, height: 264 },
-  { src: "/screenshots/detail/loop-plan.webp", width: 610, height: 136 },
-  { src: "/screenshots/detail/loop-plan.webp", width: 610, height: 136 },
-  {
-    src: "/screenshots/mobile/patient-practice-crop.webp",
-    width: 920,
-    height: 767,
-  },
-  { src: "/screenshots/detail/exchange-today.webp", width: 1056, height: 395 },
-] as const;
+const MARKS: Record<string, string> = {
+  plain: "text-calm-charcoal",
+  ai: "-mx-1 rounded bg-calm-lavender/25 px-1 text-calm-charcoal",
+  struck: "text-calm-charcoal/50 line-through decoration-calm-navy/60",
+  clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
+};
 
 const TONES = {
   ai: { sleeve: "#6866C4", cuff: "#BEB8F6", hand: "#958AF0" },
@@ -32,13 +23,13 @@ const Hand = ({ actor }: { actor: Actor }) => {
       <rect x="44" y="26" width="12" height="60" rx="6" fill={c.cuff} />
       <rect x="54" y="34" width="44" height="44" rx="18" fill={c.hand} />
       <rect
-        x="68"
-        y="18"
-        width="34"
-        height="12"
-        rx="6"
+        x="62"
+        y="24"
+        width="36"
+        height="13"
+        rx="6.5"
         fill={c.hand}
-        transform="rotate(-26 70 26)"
+        transform="rotate(-18 64 31)"
       />
       {[
         [32, 46],
@@ -63,63 +54,90 @@ const Hand = ({ actor }: { actor: Actor }) => {
 };
 
 const slide = `700ms ${EASE}`;
+const HELD = "translateX(0)";
+// Offsets are tuned to the hand's 22% width and the sheet's 52%.
+const SIDES: Record<Actor, { hand: string; sheet: string; tilt: number }> = {
+  ai: { hand: "translateX(-30%)", sheet: "20%", tilt: -3 },
+  clinician: { hand: "translateX(30%)", sheet: "29%", tilt: 3 },
+};
 
 export default function HandoffScene({
   activeIndex,
   labels,
+  states,
+  docs,
 }: {
   activeIndex: number;
   labels: Record<Actor, string>;
+  states: readonly string[];
+  docs: readonly {
+    kind: string;
+    lines: readonly { text: string; mark: string }[];
+  }[];
 }) {
-  const locale = useLocale();
   const holder: Actor = activeIndex % 2 === 0 ? "ai" : "clinician";
-  const art = ARTIFACTS[activeIndex];
+  const doc = docs[activeIndex];
 
   return (
     <div
       aria-hidden="true"
       className="relative mx-auto w-full overflow-hidden rounded-3xl bg-white ring-1 ring-calm-navy/10"
-      style={{ aspectRatio: "560 / 340", maxWidth: "min(560px, 56vh * 1.75)" }}
+      style={{ aspectRatio: "560 / 360", maxWidth: "min(680px, 62vh * 1.55)" }}
     >
-      <div
-        className="absolute top-[34%] left-0 z-20 h-[34%] w-[27%] motion-reduce:transition-none"
-        style={{
-          transform: holder === "ai" ? "translateX(0)" : "translateX(-75%)",
-          transition: `transform ${slide}`,
-        }}
-      >
-        <Hand actor="ai" />
-      </div>
-      <div
-        className="absolute top-[34%] right-0 z-20 h-[34%] w-[27%] motion-reduce:transition-none"
-        style={{
-          transform:
-            holder === "clinician" ? "translateX(0)" : "translateX(75%)",
-          transition: `transform ${slide}`,
-        }}
-      >
-        <div className="h-full w-full -scale-x-100">
-          <Hand actor="clinician" />
+      {(["ai", "clinician"] as const).map((actor) => (
+        <div
+          key={actor}
+          className={`absolute top-[34%] z-20 h-[32%] w-[22%] ${
+            actor === "ai" ? "left-0" : "right-0"
+          }`}
+          style={{
+            transform: holder === actor ? HELD : SIDES[actor].hand,
+            transition: `transform ${slide}`,
+          }}
+        >
+          <div
+            className={`h-full w-full ${actor === "ai" ? "" : "-scale-x-100"}`}
+          >
+            <Hand actor={actor} />
+          </div>
         </div>
-      </div>
+      ))}
 
       <div
-        className="absolute top-1/2 z-10 w-[46%] rounded-xl bg-white p-3 shadow-[0_20px_40px_-20px_rgba(41,53,135,0.45)] ring-1 ring-calm-navy/10 motion-reduce:transition-none"
+        className="absolute top-1/2 z-10 w-[52%] rounded-xl border-l-4 bg-white p-4 shadow-[0_20px_40px_-20px_rgba(41,53,135,0.45)] ring-1 ring-calm-navy/10"
         style={{
-          left: holder === "ai" ? "23.5%" : "30.5%",
-          transform: `translateY(-50%) rotate(${holder === "ai" ? -2 : 2}deg)`,
+          borderLeftColor: holder === "ai" ? "#958AF0" : "#293587",
+          left: SIDES[holder].sheet,
+          transform: `translateY(-50%) rotate(${SIDES[holder].tilt}deg)`,
           transition: `left ${slide}, transform ${slide}`,
         }}
       >
-        <img
+        <div
           key={activeIndex}
-          src={localizedAsset(art.src, locale)}
-          alt=""
-          width={art.width}
-          height={art.height}
-          className="h-auto w-full"
           style={{ animation: `optD-reveal 600ms ${EASE} both` }}
-        />
+        >
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <span className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-calm-charcoal/70">
+              {doc.kind}
+            </span>
+            <span
+              className={`rounded-full px-2.5 py-0.5 font-body text-[11px] font-bold ${
+                holder === "ai"
+                  ? "bg-calm-lavender text-calm-navy"
+                  : "bg-calm-navy text-white"
+              }`}
+            >
+              {states[activeIndex]}
+            </span>
+          </div>
+          <ul className="space-y-2 font-body text-[13px] leading-snug">
+            {doc.lines.map((line) => (
+              <li key={line.text} className={MARKS[line.mark]}>
+                {line.text}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {(["ai", "clinician"] as const).map((actor) => (
@@ -129,7 +147,7 @@ export default function HandoffScene({
             actor === "ai"
               ? "left-5 text-calm-lavender-ink"
               : "right-5 text-calm-navy"
-          } ${holder === actor ? "opacity-100" : "opacity-40"}`}
+          } ${holder === actor ? "opacity-100" : "opacity-65"}`}
         >
           {labels[actor]}
         </span>

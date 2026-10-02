@@ -218,6 +218,72 @@ export const pt: Dictionary = {
       stepPrefix: "Passo ",
       stepSuffix: " / 06",
       backToStart: "E volta ao passo 01",
+      docs: [
+        {
+          kind: "Relatório da sessão",
+          lines: [
+            {
+              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              mark: "ai",
+            },
+            { text: "O evitamento de telefonemas mantém-se.", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Relatório da sessão",
+          lines: [
+            {
+              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              mark: "plain",
+            },
+            { text: "O evitamento de telefonemas mantém-se.", mark: "struck" },
+            {
+              text: "O evitamento de telefonemas diminuiu: fez dois telefonemas esta semana.",
+              mark: "clin",
+            },
+          ],
+        },
+        {
+          kind: "Plano de prática",
+          lines: [
+            { text: "Inícios suaves, 5 min por dia", mark: "ai" },
+            { text: "Saídas controladas, 5 min por dia", mark: "ai" },
+            { text: "Dificuldade: média", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Plano de prática",
+          lines: [
+            { text: "Inícios suaves, 5 min por dia", mark: "plain" },
+            { text: "Saídas controladas, 5 min por dia", mark: "struck" },
+            { text: "Gaguez voluntária, 5 min por dia", mark: "clin" },
+            { text: "Dificuldade: fácil", mark: "clin" },
+          ],
+        },
+        {
+          kind: "Tentativas desta semana",
+          lines: [
+            { text: "Seg, inícios suaves, esforço 2 de 5", mark: "ai" },
+            { text: "Qua, inícios suaves, esforço 3 de 5", mark: "ai" },
+            { text: "Sex, inícios suaves, esforço 2 de 5", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Passo seguinte",
+          lines: [
+            { text: "Três tentativas, esforço a descer.", mark: "plain" },
+            { text: "Passo seguinte: saídas controladas.", mark: "clin" },
+          ],
+        },
+      ],
+      states: [
+        "Rascunho",
+        "Pronto",
+        "Proposto",
+        "Ativo",
+        "Registada",
+        "Escolhido",
+      ],
       nodes: [
         {
           verb: "redige",
@@ -227,22 +293,22 @@ export const pt: Dictionary = {
         {
           verb: "aprova",
           title: "O clínico edita e aprova.",
-          body: "Essas correções melhoram o rascunho seguinte. Qualquer conteúdo usado para treinar os nossos modelos exige o consentimento prévio do paciente.",
+          body: "Cada correção melhora o rascunho seguinte. Qualquer conteúdo usado para treinar os nossos modelos exige o consentimento prévio do paciente.",
         },
         {
           verb: "estrutura",
           title: "A IA estrutura o plano de prática.",
-          body: "Com base nos dados da sessão e na fase do paciente, a UpSpeech propõe exercícios diários para o terapeuta aprovar.",
+          body: "Com base nos dados da sessão e na fase do paciente, a UpSpeech propõe exercícios diários para o clínico aprovar.",
         },
         {
           verb: "calibra",
           title: "O clínico calibra-o.",
-          body: "O terapeuta ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o terapeuta reveja.",
+          body: "O clínico ajusta a dificuldade e troca técnicas onde é preciso. Nada chega ao paciente sem que o clínico reveja.",
         },
         {
           verb: "ouve",
           title: "A IA ajuda entre sessões.",
-          body: "As tentativas ficam guardadas com a técnica, a data e a avaliação que o paciente fez do esforço.",
+          body: "A UpSpeech guarda cada tentativa com a técnica, a data e a avaliação que o paciente fez do esforço.",
         },
         {
           verb: "decide",
