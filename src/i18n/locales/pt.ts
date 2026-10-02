@@ -50,7 +50,7 @@ export const pt: Dictionary = {
     title: "Técnicas de terapia da fala",
     subtitle: "Para que serve cada uma, e como praticá-la",
     seoDescription:
-      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
+      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelação da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
     mainCategories: "Famílias de técnicas",
     standalone: "Técnicas que não pertencem a uma família",
@@ -431,7 +431,7 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é ser a própria pessoa a decidir que objetivos são os seus.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter uma palavra real a dizer sobre quais desses objetivos se aplicam.",
       },
       {
         heading: "Ser ouvido à tua maneira",
@@ -471,7 +471,7 @@ export const pt: Dictionary = {
     closing: {
       headline: "Trabalha com um terapeuta que perceba os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech usa-se com o acompanhamento de um terapeuta da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech usa-se através de terapeutas da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -502,7 +502,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada entra no processo do paciente sem tu reveres e assinares.",
+        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada chega ao paciente sem tu reveres e assinares.",
       },
     ],
     faq: {
