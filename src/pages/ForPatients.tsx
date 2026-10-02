@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
+import StoreBadges from "@/components/StoreBadges";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
@@ -98,45 +98,6 @@ const PhoneShot = ({
   </div>
 );
 
-function StoreButtons({ className = "" }: { className?: string }) {
-  const t = useT().forPatients;
-  if (!APP_STORE_URL && !PLAY_STORE_URL) return null;
-  return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      {APP_STORE_URL && (
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.storeAppStoreAriaLabel}
-        >
-          <img
-            src="/images/app-store.png"
-            alt={t.storeAppStoreAlt}
-            className="h-11 w-auto"
-            loading="lazy"
-          />
-        </a>
-      )}
-      {PLAY_STORE_URL && (
-        <a
-          href={PLAY_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.storePlayAriaLabel}
-        >
-          <img
-            src="/images/google-play.png"
-            alt={t.storePlayAlt}
-            className="h-11 w-auto"
-            loading="lazy"
-          />
-        </a>
-      )}
-    </div>
-  );
-}
-
 export default function ForPatients() {
   const locale = useLocale();
   const t = useT().forPatients;
@@ -184,7 +145,7 @@ export default function ForPatients() {
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
-                <StoreButtons className="mt-8" />
+                <StoreBadges className="mt-8" />
                 <p className="mt-3 font-body text-sm text-calm-charcoal/70">
                   {t.intro.inviteNote}
                 </p>
@@ -286,7 +247,7 @@ export default function ForPatients() {
               </p>
             </div>
 
-            <StoreButtons className="mt-8" />
+            <StoreBadges className="mt-8" />
             {/* Three shipped screens, then the one a younger patient sees.
                 Four phones do not fit the gutter at the height three did, so
                 the whole row steps down together and the first three keep
