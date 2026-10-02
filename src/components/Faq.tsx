@@ -39,7 +39,7 @@ export function Faq({
               {item.question}
             </span>
           </AccordionTrigger>
-          <AccordionContent className="pb-4">
+          <AccordionContent forceMount className="pb-4">
             <p className="font-body t-lead text-calm-charcoal/80">
               {item.answer}
             </p>
