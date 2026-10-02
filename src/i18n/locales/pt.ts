@@ -225,7 +225,7 @@ export const pt: Dictionary = {
           kind: "Relatório da sessão",
           lines: [
             {
-              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              text: "O paciente praticou 3 vezes esta semana.",
               mark: "ai",
             },
             { text: "O evitamento de telefonemas mantém-se.", mark: "ai" },
@@ -235,7 +235,7 @@ export const pt: Dictionary = {
           kind: "Relatório da sessão",
           lines: [
             {
-              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              text: "O paciente praticou 3 vezes esta semana.",
               mark: "plain",
             },
             { text: "O evitamento de telefonemas mantém-se.", mark: "struck" },
@@ -435,7 +435,7 @@ export const pt: Dictionary = {
       headlineLine2: "entre sessões.",
       body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
-        todayLabel: "O Sam Rivera define",
+        todayLabel: "O exercício de hoje, definido pelo Sam Rivera",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Sam Rivera responde",

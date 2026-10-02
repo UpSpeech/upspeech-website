@@ -224,7 +224,7 @@ export const es: Dictionary = {
           kind: "Informe de la sesión",
           lines: [
             {
-              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              text: "El paciente practicó 3 veces esta semana.",
               mark: "ai",
             },
             { text: "La evitación de llamadas sigue igual.", mark: "ai" },
@@ -234,7 +234,7 @@ export const es: Dictionary = {
           kind: "Informe de la sesión",
           lines: [
             {
-              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              text: "El paciente practicó 3 veces esta semana.",
               mark: "plain",
             },
             { text: "La evitación de llamadas sigue igual.", mark: "struck" },
@@ -434,7 +434,7 @@ export const es: Dictionary = {
       headlineLine2: "entre sesiones.",
       body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
-        todayLabel: "Sam Rivera lo define",
+        todayLabel: "El ejercicio de hoy, definido por Sam Rivera",
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Sam Rivera responde",

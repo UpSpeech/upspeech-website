@@ -222,7 +222,7 @@ export const en = {
           kind: "Session report",
           lines: [
             {
-              text: "Patient practised soft starts 4 times this week.",
+              text: "Patient practised 3 times this week.",
               mark: "ai",
             },
             { text: "Avoidance of phone calls is unchanged.", mark: "ai" },
@@ -232,7 +232,7 @@ export const en = {
           kind: "Session report",
           lines: [
             {
-              text: "Patient practised soft starts 4 times this week.",
+              text: "Patient practised 3 times this week.",
               mark: "plain",
             },
             { text: "Avoidance of phone calls is unchanged.", mark: "struck" },
@@ -423,7 +423,7 @@ export const en = {
       headlineLine2: "between sessions.",
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
-        todayLabel: "Sam Rivera sets it",
+        todayLabel: "Today's exercise, set by Sam Rivera",
         todayAlt:
           "The patient dashboard: today's practice, set by the therapist, with a button to start",
         replyLabel: "Sam Rivera replies",
