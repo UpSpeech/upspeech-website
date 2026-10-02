@@ -174,6 +174,11 @@ const PinnedCycle = () => {
                   >
                     {activeActor === "clinician" ? t.clinician : t.ai}
                   </span>
+                  <span className="font-body t-small tabular-nums text-calm-charcoal/70">
+                    {t.stepPrefix}
+                    {String(activeIndex + 1).padStart(2, "0")}
+                    {t.stepSuffix}
+                  </span>
                 </div>
                 <h3 className="t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}

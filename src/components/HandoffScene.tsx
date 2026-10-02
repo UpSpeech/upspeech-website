@@ -14,7 +14,7 @@ const SECTIONS: readonly (readonly number[])[] = [[0, 1], [2, 3], [4], [5]];
 const TINTS: Record<string, string> = {
   ai: "[&>span:first-child]:rounded [&>span:first-child]:bg-calm-lavender/25 [&>span:first-child]:px-1 [&>span:first-child]:[box-decoration-break:clone] text-calm-charcoal",
   plain: "text-calm-charcoal",
-  struck: "text-calm-charcoal/50 line-through decoration-calm-navy/60",
+  struck: "text-calm-charcoal/65 line-through decoration-calm-navy/60",
   clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
 };
 
@@ -25,7 +25,7 @@ const Presence = ({ actor, label }: { actor: Actor; label: string }) => (
   >
     {actor === "ai" ? (
       <span
-        className="h-4 w-0.5 bg-calm-lavender-ink"
+        className="h-4 w-2 bg-calm-lavender-ink"
         style={{ animation: "handoff-caret 1s steps(2) infinite" }}
       />
     ) : (
@@ -66,14 +66,14 @@ export default function HandoffScene({
       className="relative mx-auto w-full overflow-hidden rounded-3xl bg-white p-5 ring-1 ring-calm-navy/10 shadow-[0_30px_60px_-30px_rgba(41,53,135,0.45)] sm:p-7"
       style={{
         maxWidth: "min(620px, 62vh * 1.4)",
-        minHeight: "min(32rem, 64vh)",
+        minHeight: "min(35rem, 70vh)",
       }}
     >
-      <p className="mb-4 border-b border-calm-charcoal/10 pb-3 font-heading text-base font-bold text-calm-navy">
+      <p className="mb-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:760px)]:mb-2.5 [@media(max-height:760px)]:pb-2 font-heading text-base font-bold text-calm-navy">
         {title}
       </p>
 
-      <div className="space-y-4">
+      <div className="space-y-4 [@media(max-height:760px)]:space-y-2.5">
         {SECTIONS.map((steps, s) => {
           const shown = steps.filter((n) => n <= activeIndex);
           if (!shown.length) return null;
@@ -113,7 +113,7 @@ export default function HandoffScene({
                   {states[latest]}
                 </span>
               </p>
-              <ul className="space-y-1.5 font-body text-[13px] leading-snug">
+              <ul className="space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:760px)]:space-y-0.5 [@media(max-height:760px)]:text-xs">
                 {doc.lines.map((line, i) => {
                   const mark =
                     line.mark === "plain" && earlierAi.has(line.text)
@@ -138,9 +138,9 @@ export default function HandoffScene({
         })}
       </div>
 
-      <div className="mt-5 flex items-center gap-5 font-body text-[11px] font-semibold text-calm-charcoal/70">
+      <div className="mt-5 flex items-center gap-5 font-body text-xs font-semibold text-calm-navy">
         <span className="flex items-center gap-1.5">
-          <span className="h-3 w-5 rounded bg-calm-lavender/25" />
+          <span className="h-3 w-5 rounded bg-calm-lavender/50" />
           {labels.ai}
         </span>
         <span className="flex items-center gap-1.5">

@@ -311,7 +311,7 @@ export const es: Dictionary = {
         },
         {
           verb: "escucha",
-          title: "La IA ayuda entre sesiones.",
+          title: "UpSpeech registra cada intento.",
           body: "UpSpeech guarda cada intento con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
         },
         {
@@ -434,7 +434,7 @@ export const es: Dictionary = {
       headlineLine2: "entre sesiones.",
       body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
-        todayLabel: "De tu terapeuta",
+        todayLabel: "Sam Rivera lo define",
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Sam Rivera responde",

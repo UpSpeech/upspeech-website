@@ -299,7 +299,7 @@ export const en = {
         },
         {
           verb: "listens",
-          title: "AI helps between sessions.",
+          title: "UpSpeech logs each attempt.",
           body: "UpSpeech stores each attempt with the technique, the date, and how the patient rated the effort.",
         },
         {
@@ -423,7 +423,7 @@ export const en = {
       headlineLine2: "between sessions.",
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
-        todayLabel: "From your therapist",
+        todayLabel: "Sam Rivera sets it",
         todayAlt:
           "The patient dashboard: today's practice, set by the therapist, with a button to start",
         replyLabel: "Sam Rivera replies",

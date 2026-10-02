@@ -312,7 +312,7 @@ export const pt: Dictionary = {
         },
         {
           verb: "ouve",
-          title: "A IA ajuda entre sessões.",
+          title: "A UpSpeech regista cada tentativa.",
           body: "A UpSpeech guarda cada tentativa com a técnica, a data e a avaliação que o paciente fez do esforço.",
         },
         {
@@ -435,7 +435,7 @@ export const pt: Dictionary = {
       headlineLine2: "entre sessões.",
       body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
-        todayLabel: "Do teu terapeuta",
+        todayLabel: "O Sam Rivera define",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Sam Rivera responde",

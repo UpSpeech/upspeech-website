@@ -180,9 +180,9 @@ export default function ForPatients() {
                   {t.intro.body}
                 </p>
                 <div id="get-app" className="mt-8 scroll-mt-32">
-                  <StoreBadges size="lg" />
+                  <StoreBadges size="lg" className="-ml-2.5" />
                   {hasStores && (
-                    <p className="mt-3 pl-2.5 font-body text-base font-semibold text-calm-navy">
+                    <p className="mt-3 font-body text-base font-semibold text-calm-charcoal/80">
                       {t.intro.inviteNote}
                     </p>
                   )}
@@ -190,7 +190,7 @@ export default function ForPatients() {
               </div>
 
               <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[600px] sm:grid-cols-[1fr,auto] sm:grid-rows-[1fr,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
-                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:-mr-3 sm:self-end">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-6 sm:self-start">
                   <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[0].src, locale)}
@@ -209,7 +209,7 @@ export default function ForPatients() {
                     className="relative w-[190px] sm:w-[230px]"
                   />
                 </li>
-                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:-mr-3 sm:self-start">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-6 sm:self-end">
                   <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[1].src, locale)}
@@ -302,7 +302,7 @@ export default function ForPatients() {
               </p>
             </div>
 
-            <ol className="-mx-[max(1.5rem,5vw)] mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(1.5rem,5vw)] pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-10 sm:overflow-visible sm:px-0">
+            <ol className="-mx-[max(1.5rem,5vw)] mt-12 flex snap-x snap-mandatory scroll-px-[max(1.5rem,5vw)] gap-6 overflow-x-auto px-[max(1.5rem,5vw)] pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-10 sm:overflow-visible sm:px-0">
               {GALLERY.map((base, i) => (
                 <li
                   key={base}
@@ -351,8 +351,8 @@ export default function ForPatients() {
         </section>
 
         {/* Closing: the app first, the clinic route as one quiet line. */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
+        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="mx-auto max-w-3xl text-center">
             <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
