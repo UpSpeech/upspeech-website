@@ -431,7 +431,7 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter voz na escolha dos objetivos que lhe dizem respeito.",
+        body: "A terapia da fala tradicional costuma medir o sucesso pela fluência. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter voz na escolha dos objetivos que lhe dizem respeito.",
       },
       {
         heading: "Ser ouvido à tua maneira",
@@ -456,7 +456,7 @@ export const pt: Dictionary = {
         },
         {
           q: "A UpSpeech só serve para abordagens centradas na pessoa?",
-          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra ao paciente o que o terapeuta lhe atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
+          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra à pessoa o que o terapeuta lhe atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
         },
         {
           q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
@@ -471,7 +471,7 @@ export const pt: Dictionary = {
     closing: {
       headline: "Procura um terapeuta que perceba os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech chega aos pacientes pelo terapeuta da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech chega aos pacientes através do terapeuta da fala. Se tens uma clínica e queres usar a UpSpeech com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
