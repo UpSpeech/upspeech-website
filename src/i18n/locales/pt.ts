@@ -368,8 +368,7 @@ export const pt: Dictionary = {
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Depois responde",
-        replyAlt:
-          "Uma nota do terapeuta sobre uma gravação do paciente",
+        replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
       },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
@@ -553,7 +552,8 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Deixa a UpSpeech fazer o rascunho dos relatórios e concentra-te na sessão.",
+      headline:
+        "Deixa a UpSpeech fazer o rascunho dos relatórios e concentra-te na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que querem prática estruturada entre sessões e relatórios redigidos por IA. ",
       bodyLink: "Pede acesso aqui",

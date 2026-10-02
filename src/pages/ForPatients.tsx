@@ -31,6 +31,8 @@ const SCREENSHOT_SIZES = [
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
 
+const exchangeShotClass =
+  "h-auto w-full rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]";
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 // The device frame the app band already uses, and the screen rectangle inside
@@ -142,7 +144,7 @@ export default function ForPatients() {
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
                 than the front of a product. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1fr,1fr] lg:gap-12">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -159,13 +161,11 @@ export default function ForPatients() {
                 )}
                 <StoreBadges className="mt-4" />
               </div>
-              {/* The exchange this product exists for, in the product's own
-                  screens: the therapist sets today's practice, the patient
-                  practises, the therapist replies. The photograph is support. */}
+              {/* The photo sits between the two screens, overlapped by the reply. */}
               <div className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:ml-auto">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-8 bottom-[-12%] h-[460px] w-[460px] rounded-full"
+                  className="pointer-events-none absolute -right-8 -bottom-[12%] h-[460px] w-[460px] rounded-full"
                   style={{
                     background:
                       "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
@@ -183,10 +183,10 @@ export default function ForPatients() {
                     alt={t.intro.exchange.todayAlt}
                     width={1080}
                     height={392}
-                    className="h-auto w-full rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
+                    className={exchangeShotClass}
                   />
                 </figure>
-                <div className="relative z-0 -mt-4 flex items-end justify-end">
+                <div className="relative z-0 flex items-end justify-end">
                   <CutOut
                     name="patients-hero"
                     alt={t.intro.photoAlt}
@@ -196,7 +196,7 @@ export default function ForPatients() {
                   />
                 </div>
                 <figure className="relative z-10 -mt-24 ml-auto w-[94%] sm:-mt-28">
-                  <figcaption className="mb-2 font-body text-sm font-semibold text-calm-navy">
+                  <figcaption className="mb-2 w-fit rounded-full bg-white/90 px-2.5 py-0.5 font-body text-sm font-semibold text-calm-navy">
                     {t.intro.exchange.replyLabel}
                   </figcaption>
                   <img
@@ -207,7 +207,7 @@ export default function ForPatients() {
                     alt={t.intro.exchange.replyAlt}
                     width={1040}
                     height={290}
-                    className="h-auto w-full rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
+                    className={exchangeShotClass}
                   />
                 </figure>
               </div>

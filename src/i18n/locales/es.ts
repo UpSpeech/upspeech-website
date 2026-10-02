@@ -367,8 +367,7 @@ export const es: Dictionary = {
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Después responde",
-        replyAlt:
-          "Una nota del terapeuta sobre una grabación del paciente",
+        replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
       },
       inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
