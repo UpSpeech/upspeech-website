@@ -389,11 +389,11 @@ export const en = {
           a: "Yes. UpSpeech is used together with your speech therapist, who sets your plan and reviews your progress. It is not a replacement for therapy.",
         },
         {
-          q: "What will I practice?",
+          q: "What will I practise?",
           a: "Your therapist chooses exercises for you based on your goals and your stage of therapy.",
         },
         {
-          q: "How often should I practice?",
+          q: "How often should I practise?",
           a: "Your therapist guides how often to practise. The app makes it easy to keep a steady routine between sessions.",
         },
         {
