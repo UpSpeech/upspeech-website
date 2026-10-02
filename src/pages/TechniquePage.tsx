@@ -294,7 +294,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                     className="max-w-3xl scroll-mt-28 border-l-2 border-calm-lavender pl-6"
                   >
                     <h2 className={eyebrowClass}>{tt.objective}</h2>
-                    <p className="mt-3 font-heading t-statement font-semibold text-calm-navy">
+                    <p className="mt-3 font-heading t-lead font-semibold text-calm-navy">
                       {technique.objective}
                     </p>
                   </section>
@@ -364,6 +364,17 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                     />
                   </section>
                 ) : null}
+
+                <section className="max-w-3xl rounded-2xl bg-calm-light px-7 py-8 sm:px-9">
+                  <h2 className={headingClass}>{tt.closingTitle}</h2>
+                  <p className={proseClass}>{tt.closingBody}</p>
+                  <a
+                    href={localizedHref("/for-patients", locale)}
+                    className="mt-5 inline-flex min-h-[44px] items-center font-body font-semibold text-calm-navy hover:underline"
+                  >
+                    {tt.closingLink} &rarr;
+                  </a>
+                </section>
               </div>
 
               <aside className="hidden lg:block">
