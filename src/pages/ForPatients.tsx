@@ -190,12 +190,12 @@ export default function ForPatients() {
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
-                <StoreButtons className="mt-8" eager />
                 {(APP_STORE_URL || PLAY_STORE_URL) && (
-                  <p className="mt-3 font-body text-sm text-calm-charcoal/70">
+                  <p className="mt-8 font-body text-base font-semibold text-calm-navy">
                     {t.intro.inviteNote}
                   </p>
                 )}
+                <StoreButtons className="mt-4" eager />
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
                   discarding a fifth of a 0.80 portrait to make it fit a box
