@@ -587,11 +587,11 @@ const StepList = () => {
         <div className="relative mt-9 flex items-center gap-4">
           <span
             aria-hidden="true"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-calm-lavender/60 text-calm-navy"
+            className="flex h-9 w-9 shrink-0 items-center justify-center text-calm-navy"
           >
             <ArrowUturnUpIcon className="h-4 w-4" />
           </span>
-          <p className="font-body t-eyebrow text-calm-charcoal/70">
+          <p className="font-body t-small font-semibold text-calm-charcoal/80">
             {t.backToStart}
           </p>
         </div>
