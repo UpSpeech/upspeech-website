@@ -7,7 +7,6 @@ import { fetchTechniques, type Technique } from "@/lib/api";
 import { readSeed, writeSeed, techniquesKey } from "@/lib/prerender-data";
 import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 import { useLocale, useT, localizedHref } from "@/i18n";
-import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 const sectionClass = "py-[clamp(2.5rem,5vw,4rem)]";
 
@@ -272,11 +271,7 @@ export function TechniquesIndexPage() {
           </section>
         )}
 
-        <div className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="gutter">
-            <MedicalDisclaimer className="mx-0" />
-          </div>
-        </div>
+        <div className="pb-[clamp(3rem,6vw,5rem)]" />
       </main>
 
       <Footer />
