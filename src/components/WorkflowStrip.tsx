@@ -21,7 +21,7 @@ const STEPS: Step[] = [
   {
     phase: "After the session",
     role: "Platform + therapist",
-    copy: "A draft report is ready for you to review and sign off. You adjust the plan; the patient keeps practicing.",
+    copy: "A draft report is ready for you to review and sign off. You adjust the plan; the patient keeps practising.",
   },
 ];
 
