@@ -65,13 +65,12 @@ export default function HandoffScene({
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto w-full overflow-hidden rounded-3xl bg-white p-5 ring-1 ring-calm-navy/10 shadow-[0_30px_60px_-30px_rgba(41,53,135,0.45)] sm:p-7"
+      className="relative mx-auto w-full overflow-hidden rounded-3xl bg-white p-5 [@media(max-height:820px)]:p-3 ring-1 ring-calm-navy/10 shadow-[0_30px_60px_-30px_rgba(41,53,135,0.45)] sm:p-7"
       style={{
         maxWidth: "min(620px, 62vh * 1.4)",
-        minHeight: "min(35rem, 70vh)",
       }}
     >
-      <div className="mb-4 flex items-center justify-between gap-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:760px)]:mb-2.5 [@media(max-height:760px)]:pb-2">
+      <div className="mb-4 flex items-center justify-between gap-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:820px)]:mb-2.5 [@media(max-height:820px)]:pb-2">
         <p className="font-heading text-base font-bold text-calm-navy">
           {title}
         </p>
@@ -87,10 +86,29 @@ export default function HandoffScene({
         </div>
       </div>
 
-      <div className="space-y-4 [@media(max-height:760px)]:space-y-2.5">
+      <div className="space-y-1 [@media(max-height:820px)]:space-y-0">
         {SECTIONS.map((steps, s) => {
           const shown = steps.filter((n) => n <= activeIndex);
-          if (!shown.length) return null;
+          // The file always holds its final height: a section that has not
+          // started is a dashed ghost, and one still growing keeps the room.
+          const finalDoc = docs[steps[steps.length - 1]];
+          if (!shown.length) {
+            return (
+              <section
+                key={s}
+                className="rounded-lg border border-dashed border-calm-charcoal/20 p-2.5 [@media(max-height:820px)]:p-1.5"
+              >
+                <p className="mb-1.5 font-body text-[11px] font-bold uppercase tracking-[0.16em] text-calm-charcoal/40">
+                  {finalDoc.kind}
+                </p>
+                <ul className="invisible space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs">
+                  {finalDoc.lines.map((l) => (
+                    <li key={l.text}>{l.text}</li>
+                  ))}
+                </ul>
+              </section>
+            );
+          }
           const latest = shown[shown.length - 1];
           const doc = docs[latest];
           // A line the clinician left alone keeps the AI tint it was drafted with.
@@ -111,6 +129,7 @@ export default function HandoffScene({
           return (
             <section
               key={s}
+              className="rounded-lg border border-transparent p-2.5 [@media(max-height:820px)]:p-1.5"
               style={{ animation: `handoff-in 500ms ${EASE} both` }}
             >
               <p className="mb-1.5 flex items-center justify-between font-body text-[11px] font-bold uppercase tracking-[0.16em] text-calm-charcoal/70">
@@ -127,28 +146,38 @@ export default function HandoffScene({
                   {states[latest]}
                 </span>
               </p>
-              <ul className="space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:760px)]:space-y-0.5 [@media(max-height:760px)]:text-xs">
-                {doc.lines.map((line, i) => {
-                  const mark =
-                    s === ATTEMPTS
-                      ? "plain"
-                      : line.mark === "plain" && earlierAi.has(line.text)
-                        ? "ai"
-                        : line.mark;
-                  return (
-                    <li
-                      key={line.text}
-                      className={TINTS[mark]}
-                      style={{ animation: `handoff-in 500ms ${EASE} both` }}
-                    >
-                      <span>{line.text}</span>
-                      {isActive && i === lastIdx && (
-                        <Presence actor={actor} label={labels[actor]} />
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="grid">
+                <ul className="[grid-area:1/1] space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs">
+                  {doc.lines.map((line, i) => {
+                    const mark =
+                      s === ATTEMPTS
+                        ? "plain"
+                        : line.mark === "plain" && earlierAi.has(line.text)
+                          ? "ai"
+                          : line.mark;
+                    return (
+                      <li
+                        key={line.text}
+                        className={TINTS[mark]}
+                        style={{ animation: `handoff-in 500ms ${EASE} both` }}
+                      >
+                        <span>{line.text}</span>
+                        {isActive && i === lastIdx && (
+                          <Presence actor={actor} label={labels[actor]} />
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <ul
+                  aria-hidden="true"
+                  className="invisible [grid-area:1/1] space-y-1.5 font-body text-[13px] leading-snug [@media(max-height:820px)]:space-y-0.5 [@media(max-height:820px)]:text-xs"
+                >
+                  {finalDoc.lines.map((l) => (
+                    <li key={l.text}>{l.text}</li>
+                  ))}
+                </ul>
+              </div>
             </section>
           );
         })}

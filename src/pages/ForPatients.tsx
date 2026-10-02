@@ -189,8 +189,8 @@ export default function ForPatients() {
                 </div>
               </div>
 
-              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[600px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto] sm:content-center sm:items-center sm:gap-x-0 lg:ml-auto">
-                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-6">
+              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[600px] sm:grid-cols-[1fr,auto] sm:grid-rows-[1fr,auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-6">
                   <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[0].src, locale)}
@@ -201,7 +201,7 @@ export default function ForPatients() {
                     className={cardClass}
                   />
                 </li>
-                <li className="relative z-10 flex flex-col items-center sm:col-start-2 sm:row-span-2 sm:row-start-1">
+                <li className="relative z-10 flex flex-col items-center sm:col-start-2 sm:row-span-4 sm:row-start-1">
                   <BeatLabel n={2}>{t.intro.exchange.recordLabel}</BeatLabel>
                   <PhoneShot
                     src={localizedAsset(RECORD_SHOT, locale)}
@@ -209,7 +209,7 @@ export default function ForPatients() {
                     className="relative w-[190px] sm:w-[230px]"
                   />
                 </li>
-                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-6">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-3 sm:mr-6">
                   <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[1].src, locale)}
