@@ -1,10 +1,7 @@
 /**
- * Fails on American spellings in English copy. British English is the house
- * spelling (decisions/2026-09-18-the-products-english-is-british-and-sentence-case.md).
- * Only string literals that contain a space are read, so identifiers, CSS
- * classes and URLs such as /person-centered-therapy are never flagged.
- *
- *   npm run check:british
+ * Fails on American spellings in English copy under src/. Reads string
+ * literals and JSX text that contain a space. The verb "practise" is caught
+ * only after the words listed below, so it is a partial net.
  */
 
 import { readdir, readFile } from "node:fs/promises";
@@ -58,21 +55,21 @@ const WORDS = [
   "practicing",
   "practiced",
   "pediatric\\w*",
+  "(?:patient|child|he|she) practices",
   "(?:to|you|they|we|can|will|should|and|or|who|that|help|helps|if|when|patients|how to|I|do|does|must|may) practice",
 ];
 const AMERICAN = new RegExp(
-  `(?<![-\\w/])(${[...STEMS, ...WORDS].join("|")})\\b`,
+  `(?<![\\w/])(${[...STEMS, ...WORDS].join("|")})\\b`,
   "i",
 );
 
 // Clinical names and field names that stay as they are.
-const EXEMPT =
-  /anonymiz|pseudonymiz|desensitiz|Innocatalyst Health Program|\$\{/i;
+const EXEMPT = /anonymiz|pseudonymiz|Innocatalyst Health Program|\$\{/i;
 const STRING = /(["'`])((?:\\.|(?!\1).)+?)\1/g;
 const JSX_TEXT = />([^<>{}]*\s[^<>{}]*)</g;
 // Tailwind class lists and CSS values are code, not copy.
 const CODE =
-  /\b(?:flex|grid|absolute|relative|inline|block|hidden|prose|divide|text|bg|items|justify|right|left)\b[ -]/;
+  /\b(?:flex|grid|absolute|relative|inline|block|hidden|prose|divide|text|bg|items|justify|self|place|content|right|left)\b[ -]/;
 const NON_ENGLISH = /(^|[\\/.-])(pt|es)(\.ts|\/)/;
 
 async function walk(dir) {
@@ -89,17 +86,21 @@ const hits = [];
 for (const file of await walk(join(root, "src"))) {
   const rel = relative(root, file);
   if (NON_ENGLISH.test(rel) || /generated|\.d\.ts$/.test(rel)) continue;
-  const lines = (await readFile(file, "utf8")).split("\n");
-  lines.forEach((line, i) => {
+  const source = await readFile(file, "utf8");
+  const found = [];
+  source.split("\n").forEach((line, i) => {
     if (/^\s*(\/\/|\*|\/\*)/.test(line)) return;
-    const texts = [...line.matchAll(STRING)].map((m) => m[2]);
-    texts.push(...[...line.matchAll(JSX_TEXT)].map((m) => m[1]));
-    for (const t of texts) {
-      if (!t.includes(" ") || EXEMPT.test(t) || CODE.test(t)) continue;
-      const m = t.match(AMERICAN);
-      if (m) hits.push(`${rel}:${i + 1}: "${m[1]}" in ${t.slice(0, 80)}`);
-    }
+    for (const m of line.matchAll(STRING)) found.push([i + 1, m[2]]);
   });
+  for (const m of source.matchAll(JSX_TEXT)) {
+    const line = source.slice(0, m.index).split("\n").length;
+    found.push([line, m[1].replace(/\s+/g, " ")]);
+  }
+  for (const [line, t] of found) {
+    if (!t.includes(" ") || EXEMPT.test(t) || CODE.test(t)) continue;
+    const m = t.match(AMERICAN);
+    if (m) hits.push(`${rel}:${line}: "${m[1]}" in ${t.slice(0, 80)}`);
+  }
 }
 
 if (hits.length) {

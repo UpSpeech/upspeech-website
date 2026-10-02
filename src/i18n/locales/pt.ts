@@ -50,7 +50,7 @@ export const pt: Dictionary = {
     title: "Técnicas de terapia da fala",
     subtitle: "Para que serve cada uma, e como praticá-la",
     seoDescription:
-      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelagem da fluência, modificação da gaguez e abordagens cognitivas.",
+      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelação da fluência, modificação da gaguez e abordagens cognitivas.",
     featured: "Destaque",
     mainCategories: "Famílias de técnicas",
     standalone: "Técnicas que não pertencem a uma família",
@@ -69,6 +69,10 @@ export const pt: Dictionary = {
     objective: "Para que serve",
     howToPractice: "Como praticá-la",
     onThisPage: "Nesta página",
+    closingTitle: "Pratica isto entre sessões",
+    closingBody:
+      "O teu terapeuta da fala pode atribuir esta técnica na UpSpeech e ver como correu cada prática antes da próxima consulta.",
+    closingLink: "Como a UpSpeech ajuda os pacientes",
     relatedTechniques: "Praticadas com esta",
   },
   home: {
@@ -434,15 +438,15 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é ser a própria pessoa a decidir que objetivos são os seus.",
+        body: "A terapia da fala tradicional costuma medir o sucesso pela fluência. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter voz na escolha dos objetivos que lhe dizem respeito.",
       },
       {
         heading: "Ser ouvido à tua maneira",
-        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café que muda de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha isso a par do treino de técnicas.",
+        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café em que se troca de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha estas situações a par do treino de técnicas.",
       },
       {
-        heading: "Como a UpSpeech se encaixa",
-        body: "A UpSpeech apoia a abordagem que o terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for reduzir o evitamento, o terapeuta inclui isso no plano. Se for praticar gaguez voluntária, a app também serve para isso. Cabe ao terapeuta e à pessoa decidir se a fluência entra no plano.",
+        heading: "O papel da UpSpeech",
+        body: "A UpSpeech apoia a abordagem que o terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for reduzir o evitamento, o terapeuta inclui isso no plano. Se o plano incluir gaguez voluntária, a app também acompanha esse treino. Cabe ao terapeuta e à pessoa decidir se a fluência entra no plano.",
       },
       {
         heading: "Uma nota sobre linguagem",
@@ -459,11 +463,11 @@ export const pt: Dictionary = {
         },
         {
           q: "A UpSpeech só serve para abordagens centradas na pessoa?",
-          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra ao paciente o que o terapeuta lhe atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
+          a: "Não. A UpSpeech segue o plano que o terapeuta da fala cria. A app mostra à pessoa o que o terapeuta lhe atribui, seja modelação da fluência, técnicas de modificação da gaguez ou trabalho centrado na confiança.",
         },
         {
           q: "Que técnicas são usadas na terapia da gaguez centrada na pessoa?",
-          a: "A gaguez voluntária, a identificação e dessensibilização e as técnicas de pull-out (sair de forma controlada de um momento de gaguez) são comuns. Muitos terapeutas combinam-nas com trabalho de modelação da fluência, consoante os objetivos de cada pessoa.",
+          a: "A gaguez voluntária, a identificação e dessensibilização e as técnicas de saída controlada (pull-out, sair de um momento de gaguez com controlo) são comuns. Muitos terapeutas combinam-nas com trabalho de modelação da fluência, consoante os objetivos de cada pessoa.",
         },
         {
           q: "Onde posso aprender mais?",
@@ -472,9 +476,9 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Trabalha com um terapeuta que perceba os teus objetivos.",
+      headline: "Procura um terapeuta que perceba os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech usa-se com o acompanhamento de um terapeuta da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech chega aos pacientes através do terapeuta da fala. Se tens uma clínica e queres usar a UpSpeech com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -488,16 +492,16 @@ export const pt: Dictionary = {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "As notas começam",
       headlineLine2: "já escritas.",
-      body: "A documentação faz parte de uma boa prática clínica, mas não deve roubar tempo aos pacientes. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e onde entram os rascunhos estruturados.",
+      body: "A documentação faz parte de uma boa prática clínica, mas não deve roubar tempo aos pacientes. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e o papel dos rascunhos estruturados.",
     },
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se, e acaba por sair do tempo de preparação ou do fim do dia.",
+        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se e acaba por comer a preparação ou o fim do dia.",
       },
       {
         heading: "Rascunhos estruturados que revês e editas",
-        body: "Uma solução é um rascunho feito a partir dos dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso e assinas. O juízo clínico continua a ser teu, do princípio ao fim.",
+        body: "Ajuda partir de um rascunho feito com os dados da própria sessão, com o que o paciente praticou e a forma como evoluiu. Corriges o que for preciso e assinas. O juízo clínico continua a ser teu, do princípio ao fim.",
       },
       {
         heading: "O que deve ter uma boa nota de terapia da fala",
@@ -505,7 +509,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada entra no processo do paciente sem tu reveres e assinares.",
+        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada chega ao paciente sem tu o reveres e assinares.",
       },
     ],
     faq: {
@@ -513,7 +517,7 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes dos terapeutas.",
       items: [
         {
-          q: "Quanto tempo se pode poupar, na prática, na documentação?",
+          q: "Quanto tempo se poupa, de facto, a documentar?",
           a: "Depende da tua forma de trabalhar e do tempo que gastas em notas. O rascunho tira-te a página em branco, que costuma ser a parte mais lenta. Quanto poupas varia com a complexidade da sessão e com as edições de que o rascunho precisa.",
         },
         {
@@ -531,7 +535,7 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Deixa a UpSpeech rascunhar as notas e concentra-te na sessão.",
+      headline: "Deixa a UpSpeech fazer o rascunho das notas e concentra-te na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que querem prática estruturada entre sessões e notas redigidas por IA. ",
       bodyLink: "Pede acesso aqui",

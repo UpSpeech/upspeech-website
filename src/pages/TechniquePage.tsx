@@ -23,9 +23,9 @@ const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const FAQ_TITLES: Record<string, string> = {
-  en: "Frequently Asked Questions",
-  pt: "Perguntas Frequentes",
-  es: "Preguntas Frecuentes",
+  en: "Frequently asked questions",
+  pt: "Perguntas frequentes",
+  es: "Preguntas frecuentes",
 };
 const headingClass = "font-heading t-h3 font-bold text-calm-navy";
 const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
@@ -93,9 +93,15 @@ export function TechniquePage({ slug }: TechniquePageProps) {
   // navigation, so scroll to it once the sections exist.
   useEffect(() => {
     if (loading || error) return;
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    const raw = window.location.hash.slice(1);
+    let id = raw;
+    try {
+      id = decodeURIComponent(raw);
+    } catch {
+      // A pasted link with a broken escape still has to render.
+    }
     if (id) document.getElementById(id)?.scrollIntoView();
-  }, [loading, error]);
+  }, [loading, error, slug]);
 
   const staticSeo = TECHNIQUE_SEO[slug];
   const faqs = getTechniqueFAQs(slug, locale);
@@ -288,7 +294,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                     className="max-w-3xl scroll-mt-28 border-l-2 border-calm-lavender pl-6"
                   >
                     <h2 className={eyebrowClass}>{tt.objective}</h2>
-                    <p className="mt-3 font-heading t-statement font-semibold text-calm-navy">
+                    <p className="mt-3 font-heading t-lead font-semibold text-calm-navy">
                       {technique.objective}
                     </p>
                   </section>
@@ -358,6 +364,17 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                     />
                   </section>
                 ) : null}
+
+                <section className="max-w-3xl rounded-2xl bg-calm-lavender/10 px-7 py-8 sm:px-9">
+                  <h2 className={headingClass}>{tt.closingTitle}</h2>
+                  <p className={proseClass}>{tt.closingBody}</p>
+                  <a
+                    href={localizedHref("/for-patients", locale)}
+                    className="mt-5 inline-flex min-h-[44px] items-center font-body font-semibold text-calm-navy hover:underline"
+                  >
+                    {tt.closingLink} &rarr;
+                  </a>
+                </section>
               </div>
 
               <aside className="hidden lg:block">
