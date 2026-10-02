@@ -5,10 +5,11 @@ import Footer from "@/components/Footer";
 import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
 import StoreBadges from "@/components/StoreBadges";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
-// Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
-// Real app screens on demo data inside the device frame, 524x1088 each.
+// Real app screens on demo data inside the device frame, 524x1088 each. Alt
+// text comes from forPatients.app.screenshots.
 const GALLERY = [
   "/screenshots/mobile/patient-home-device.webp",
   "/screenshots/mobile/patient-journey-device.webp",
@@ -25,13 +26,11 @@ const GALLERY = [
 
 const EXCHANGE = [
   {
-    key: "today",
     src: "/screenshots/detail/exchange-today.webp",
     width: 1056,
     height: 395,
   },
   {
-    key: "reply",
     src: "/screenshots/detail/exchange-reply.webp",
     width: 984,
     height: 500,
@@ -114,6 +113,8 @@ const PhoneShot = ({
   </div>
 );
 
+const hasStores = Boolean(APP_STORE_URL || PLAY_STORE_URL);
+
 const BeatLabel = ({
   n,
   children,
@@ -180,14 +181,16 @@ export default function ForPatients() {
                 </p>
                 <div id="get-app" className="mt-8 scroll-mt-32">
                   <StoreBadges size="lg" />
-                  <p className="mt-3 pl-2.5 font-body text-base font-semibold text-calm-navy">
-                    {t.intro.inviteNote}
-                  </p>
+                  {hasStores && (
+                    <p className="mt-3 pl-2.5 font-body text-base font-semibold text-calm-navy">
+                      {t.intro.inviteNote}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[600px] sm:grid-cols-[1fr,auto] sm:grid-rows-[1fr,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
-                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:-mr-10 sm:self-end">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:-mr-3 sm:self-end">
                   <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[0].src, locale)}
@@ -198,7 +201,7 @@ export default function ForPatients() {
                     className={cardClass}
                   />
                 </li>
-                <li className="relative z-10 order-first flex flex-col items-center sm:order-none sm:col-start-2 sm:row-span-2 sm:row-start-1">
+                <li className="relative z-10 flex flex-col items-center sm:col-start-2 sm:row-span-2 sm:row-start-1">
                   <BeatLabel n={2}>{t.intro.exchange.recordLabel}</BeatLabel>
                   <PhoneShot
                     src={localizedAsset(RECORD_SHOT, locale)}
@@ -206,7 +209,7 @@ export default function ForPatients() {
                     className="relative w-[190px] sm:w-[230px]"
                   />
                 </li>
-                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:-mr-10 sm:self-start">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:-mr-3 sm:self-start">
                   <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
                   <img
                     src={localizedAsset(EXCHANGE[1].src, locale)}
@@ -353,10 +356,14 @@ export default function ForPatients() {
             <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl font-body text-base text-calm-charcoal/90 leading-relaxed">
-              {t.closing.body}
-            </p>
-            <StoreBadges size="lg" className="mt-5 justify-center" />
+            {hasStores && (
+              <>
+                <p className="mx-auto mt-4 max-w-xl font-body text-base text-calm-charcoal/90 leading-relaxed">
+                  {t.closing.body}
+                </p>
+                <StoreBadges size="lg" className="mt-5 justify-center" />
+              </>
+            )}
             <p className="mt-6 font-body t-small text-calm-charcoal/80">
               {t.closing.bodyPrefix}
               <a

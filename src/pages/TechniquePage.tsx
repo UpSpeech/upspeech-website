@@ -131,7 +131,11 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     if (!els.length) return;
     const obs = new IntersectionObserver(
       (entries) => {
-        const hit = entries.find((e) => e.isIntersecting);
+        const hit = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+          )[0];
         if (hit) setActiveId(hit.target.id);
       },
       { rootMargin: "-20% 0px -65% 0px" },

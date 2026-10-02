@@ -15,7 +15,8 @@ const Header = () => {
   // on the pt/es home pages, which sent the anchor nav and the logo through a
   // full page load instead of scrolling.
   const isHome = splitLocaleFromPath(pathname).path === "/";
-  const isPatients = splitLocaleFromPath(pathname).path === "/for-patients";
+  const isPatients =
+    splitLocaleFromPath(pathname).path.replace(/\/$/, "") === "/for-patients";
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 

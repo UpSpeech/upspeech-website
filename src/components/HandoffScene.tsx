@@ -18,7 +18,6 @@ const TINTS: Record<string, string> = {
   clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
 };
 
-/** The AI writes with a caret, the clinician points: neither is a person. */
 const Presence = ({ actor, label }: { actor: Actor; label: string }) => (
   <span
     aria-hidden="true"
@@ -46,15 +45,6 @@ const Presence = ({ actor, label }: { actor: Actor; label: string }) => (
   </span>
 );
 
-const ACTORS: Actor[] = [
-  "ai",
-  "clinician",
-  "ai",
-  "clinician",
-  "ai",
-  "clinician",
-];
-
 export default function HandoffScene({
   activeIndex,
   labels,
@@ -68,7 +58,7 @@ export default function HandoffScene({
   docs: readonly Doc[];
   title: string;
 }) {
-  const actor = ACTORS[activeIndex];
+  const actor: Actor = activeIndex % 2 === 0 ? "ai" : "clinician";
 
   return (
     <div
@@ -89,6 +79,7 @@ export default function HandoffScene({
           if (!shown.length) return null;
           const latest = shown[shown.length - 1];
           const doc = docs[latest];
+          // A line the clinician left alone keeps the AI tint it was drafted with.
           const earlierAi = new Set(
             shown
               .slice(0, -1)
@@ -97,6 +88,7 @@ export default function HandoffScene({
               ),
           );
           const isActive = steps.includes(activeIndex);
+          // The marker follows the last line the active actor wrote in this section.
           const lastIdx = doc.lines.reduce(
             (acc, l, i) =>
               actor === "clinician" ? (l.mark === "clin" ? i : acc) : i,
