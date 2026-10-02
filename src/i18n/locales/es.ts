@@ -361,12 +361,12 @@ export const es: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
-      body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y él ve cómo ha ido cada uno.",
+      body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
-        todayLabel: "Definida para ti",
+        todayLabel: "De tu terapeuta",
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
-        replyLabel: "Dr. Rivera responde",
+        replyLabel: "Sam Rivera responde",
         replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
       },
       inviteNote: "Tu logopeda te envía una invitación para empezar.",

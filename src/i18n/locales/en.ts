@@ -362,10 +362,10 @@ export const en = {
       headlineLine2: "between sessions.",
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
-        todayLabel: "Set for you",
+        todayLabel: "From your therapist",
         todayAlt:
           "The patient dashboard: today's practice, set by the therapist, with a button to start",
-        replyLabel: "Dr. Rivera replies",
+        replyLabel: "Sam Rivera replies",
         replyAlt: "A note from the therapist on a recording the patient made",
       },
       inviteNote: "Your therapist sends you an invite to start.",

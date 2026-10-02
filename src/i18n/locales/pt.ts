@@ -362,12 +362,12 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
-      body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e ele vê como correu cada um.",
+      body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
-        todayLabel: "Definida para ti",
+        todayLabel: "Do teu terapeuta",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
-        replyLabel: "Dr. Rivera responde",
+        replyLabel: "Sam Rivera responde",
         replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
       },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",

@@ -163,7 +163,7 @@ export default function ForPatients() {
                   {t.intro.headlineLine1} <br />
                   {t.intro.headlineLine2}
                 </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
                   {t.intro.body}
                 </p>
                 {(APP_STORE_URL || PLAY_STORE_URL) && (
@@ -179,16 +179,14 @@ export default function ForPatients() {
                     {i === 0 && (
                       <span
                         aria-hidden="true"
-                        className="absolute left-[13px] top-7 -bottom-6 w-0.5 bg-calm-lavender/60"
+                        className="absolute left-[13px] top-[1.1rem] -bottom-6 w-0.5 bg-calm-lavender/60"
                       />
                     )}
-                    <p className="relative mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
+                    <p className="mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
                       <span
                         aria-hidden="true"
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-calm-lavender font-heading text-sm font-extrabold tabular-nums"
-                      >
-                        {i + 1}
-                      </span>
+                        className="ml-2 h-3 w-3 shrink-0 rounded-full bg-calm-lavender"
+                      />
                       {t.intro.exchange[`${key}Label`]}
                     </p>
                     <img
