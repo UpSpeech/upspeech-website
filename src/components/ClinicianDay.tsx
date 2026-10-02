@@ -122,8 +122,8 @@ const ClinicianDay = () => {
                   locale,
                 )}
                 alt={t.assessment.detailAlt}
-                width={800}
-                height={200}
+                width={634}
+                height={264}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
@@ -262,8 +262,8 @@ const ClinicianDay = () => {
                   locale,
                 )}
                 alt={t.plan.detailAlt}
-                width={800}
-                height={315}
+                width={880}
+                height={136}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
