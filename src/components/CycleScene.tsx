@@ -103,6 +103,7 @@ const PinnedCycle = () => {
 
     let raf = 0;
     const update = () => {
+      if (!el.offsetParent) return;
       const rect = el.getBoundingClientRect();
       // Measure the panel rather than assuming it fills the viewport. The
       // pinned range runs from rect.top === STICKY_TOP down to the point where
@@ -159,12 +160,9 @@ const PinnedCycle = () => {
       className="relative hidden bg-white lg:block"
       style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
-      {/* min-height rather than height. On a phone the six-step copy and the
-          ring together run taller than the viewport, and a fixed height with
-          overflow hidden cuts the top and bottom off the thing the section
-          exists to show. Growing instead costs the runway the same pixels it
-          gains, and the progress math measures the panel rather than assuming
-          it, so the six steps still traverse either way. */}
+      {/* min-height, not height: a fixed height with overflow hidden would
+          cut the ring or the copy where the six steps run taller than the
+          viewport. */}
       <div
         ref={panelRef}
         className="sticky top-20 overflow-hidden"
@@ -405,14 +403,9 @@ const PinnedCycle = () => {
             </div>
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
-            {/* The copy is absolutely positioned so the six steps cross-fade in
-                place instead of the panel resizing under the reader, which
-                means this box has to be tall enough for the tallest step in the
-                longest language or the copy overflows it. Measured across the
-                six steps in all three locales: 214px at 390 (es) and 321px at
-                1440 (en), so these are those plus headroom. Every value tried
-                before this was short in every locale, which went unnoticed on a
-                desktop panel with slack and cut the progress pips on a phone. */}
+            {/* The copy is absolutely positioned so steps cross-fade in place, so
+                this box must fit the tallest step in the longest language:
+                321px at 1440 (en), plus headroom. */}
             <div className="relative min-h-[15rem] lg:min-h-[22rem]">
               <div
                 key={activeIndex}
@@ -553,6 +546,7 @@ const StepList = () => {
             return (
               <li key={i} className={`flex gap-4 ${i === 0 ? "" : "mt-9"}`}>
                 <span
+                  aria-hidden="true"
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
                     isClinician
                       ? "bg-calm-navy text-white"
