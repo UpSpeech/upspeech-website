@@ -11,7 +11,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "What is voluntary stuttering?",
       answer:
-        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviors associated with stuttering, and gains a greater sense of control over their speech.",
+        "Voluntary stuttering is a speech therapy technique where a person intentionally stutters in a controlled, easy manner. By choosing to stutter on purpose, the speaker reduces fear, shame, and avoidance behaviours associated with stuttering, and gains a greater sense of control over their speech.",
     },
     {
       question: "How does voluntary stuttering help reduce stuttering?",
@@ -21,12 +21,12 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Is voluntary stuttering the same as faking a stutter?",
       answer:
-        "No. Voluntary stuttering is a therapeutic technique practiced under the guidance of a speech-language pathologist. It involves producing easy, relaxed repetitions or prolongations, not imitating or mocking stuttering. The goal is to build openness, reduce tension, and improve overall communication.",
+        "No. Voluntary stuttering is a therapeutic technique practised under the guidance of a speech-language pathologist. It involves producing easy, relaxed repetitions or prolongations, not imitating or mocking stuttering. The goal is to build openness, reduce tension, and improve overall communication.",
     },
     {
       question: "When should I practice voluntary stuttering?",
       answer:
-        "Your speech-language pathologist will guide you on when and how to practice. Typically, you start in low-pressure situations, such as with a trusted friend or during a therapy session, and gradually progress to more challenging speaking contexts as your confidence grows.",
+        "Your speech-language pathologist will guide you on when and how to practise. Typically, you start in low-pressure situations, such as with a trusted friend or during a therapy session, and gradually progress to more challenging speaking contexts as your confidence grows.",
     },
   ],
   cancelation: [
@@ -36,7 +36,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "Cancellation is a stuttering modification technique where, after stuttering on a word, you pause, identify what went wrong, and then say the word again using easier, more relaxed speech. It helps you learn from each stuttering moment and gradually produce smoother speech.",
     },
     {
-      question: "How do you practice the cancellation technique?",
+      question: "How do you practise the cancellation technique?",
       answer:
         "After you stutter on a word, stop completely. Take a moment to feel what your mouth, jaw, and throat were doing during the stutter. Then, deliberately repeat the word using a slower, more relaxed approach, such as a gentle onset or light articulatory contact.",
     },
@@ -105,9 +105,9 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "Soft starts (also called easy onsets or gentle onsets) involve beginning voicing with relaxed vocal folds and a gradual buildup of airflow. Instead of a hard, abrupt start, you ease into the sound gently, reducing the likelihood of a block or repetition at the beginning of a word.",
     },
     {
-      question: "How do you practice soft starts?",
+      question: "How do you practise soft starts?",
       answer:
-        "Begin by exhaling gently, then gradually engage your voice with a breathy, relaxed quality. Start words gently, with no sudden or forceful onset. Practice first on isolated words, then phrases, and eventually in conversation.",
+        "Begin by exhaling gently, then gradually engage your voice with a breathy, relaxed quality. Start words gently, with no sudden or forceful onset. Practise first on isolated words, then phrases, and eventually in conversation.",
     },
     {
       question: "Are soft starts only for words that begin with vowels?",
@@ -163,7 +163,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "How do I manage my speech speed without sounding unnatural?",
       answer:
-        "Focus on natural phrasing, break your speech into shorter thought groups with brief pauses between them. This sounds conversational and is how many fluent speakers naturally talk. You are not slowing every word; you are organizing your speech into manageable chunks.",
+        "Focus on natural phrasing, break your speech into shorter thought groups with brief pauses between them. This sounds conversational and is how many fluent speakers naturally talk. You are not slowing every word; you are organising your speech into manageable chunks.",
     },
   ],
   pauses: [
@@ -175,12 +175,12 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
     {
       question: "Where should I place pauses in my speech?",
       answer:
-        "Place pauses at natural linguistic boundaries, between phrases, clauses, or sentences. Pause after a complete thought, before starting a new idea, or before a word you anticipate difficulty with. Natural pauses make your speech sound thoughtful and organized, not hesitant.",
+        "Place pauses at natural linguistic boundaries, between phrases, clauses, or sentences. Pause after a complete thought, before starting a new idea, or before a word you anticipate difficulty with. Natural pauses make your speech sound thoughtful and organised, not hesitant.",
     },
     {
       question: "Is pausing the same as avoiding words?",
       answer:
-        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behavior that reinforces fear.",
+        "No. Avoidance means substituting or skipping words you fear stuttering on. Strategic pausing means deliberately inserting brief breaks at natural points to manage your speaking rate and reduce pressure. Pausing is a positive technique; avoidance is a behaviour that reinforces fear.",
     },
   ],
   "identification-desensitization": [
@@ -188,12 +188,12 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
       question:
         "What is identification and desensitization in stuttering therapy?",
       answer:
-        "Identification involves learning to recognize your specific stuttering patterns, the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
+        "Identification involves learning to recognise your specific stuttering patterns, the sounds, words, situations, and physical tensions associated with your stuttering. Desensitization involves gradually reducing your emotional reactions (fear, shame, embarrassment) to stuttering through structured exposure.",
     },
     {
       question: "Why is desensitization important for people who stutter?",
       answer:
-        "Many of the difficulties associated with stuttering are driven by emotional reactions: fear of speaking, shame about stuttering, avoidance of social situations. In speech therapy, desensitization is used to help reduce these reactions. Your speech-language pathologist will guide how it is practiced.",
+        "Many of the difficulties associated with stuttering are driven by emotional reactions: fear of speaking, shame about stuttering, avoidance of social situations. In speech therapy, desensitization is used to help reduce these reactions. Your speech-language pathologist will guide how it is practised.",
     },
     {
       question: "How does identification help improve speech fluency?",
