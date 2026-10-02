@@ -517,7 +517,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme. Solo grabas con el consentimiento del paciente.",
       },
     ],
     faq: {
