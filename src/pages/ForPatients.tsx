@@ -9,7 +9,7 @@ import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
 // These three are crops of the shipped app on demo data, cut to the part each
-// caption is about and shown at 330px wide, so body text lands near 1:1 on the
+// caption is about and shown at 320px wide, so body text lands near 1:1 on the
 // page. The corners are baked into the image; there is no device frame.
 const SCREENSHOTS = [
   "/screenshots/mobile/patient-home-crop.webp",
@@ -17,13 +17,14 @@ const SCREENSHOTS = [
   "/screenshots/mobile/patient-practice-crop.webp",
 ];
 
-// The child-facing screen. A bare screen rather than a framed render, so it
-// goes through PhoneShot; alt text is forPatients.app.childScreenshots[1].
+// The child-facing screen, cropped to the character and the cue like the three
+// above. The photograph's phone below uses the full screen through PhoneShot.
+// Alt text is forPatients.app.childScreenshots[1].
 //
 // The caregiver screen is deliberately not here. It is a sparse screen whose
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
-const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice.webp";
+const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice-crop.webp";
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
@@ -304,15 +305,15 @@ export default function ForPatients() {
                   alt={t.app.screenshots[i]}
                   loading="lazy"
                   width={600}
-                  className={`h-auto w-[330px] max-w-none shrink-0 snap-start rounded-[30px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
-                    i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
-                  }`}
+                  className={`h-auto w-[320px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]`}
                 />
               ))}
-              <PhoneShot
+              <img
                 src={localizedAsset(CHILD_SCREENSHOT, locale)}
                 alt={t.app.childScreenshots[1]}
-                className="relative h-[400px] shrink-0 snap-start sm:-translate-y-4"
+                loading="lazy"
+                width={446}
+                className="h-auto w-[236px] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
               />
             </div>
           </div>
