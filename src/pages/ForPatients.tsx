@@ -31,6 +31,20 @@ const SCREENSHOT_SIZES = [
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
 
+const EXCHANGE = [
+  {
+    key: "today",
+    src: "/screenshots/detail/exchange-today.webp",
+    width: 1056,
+    height: 395,
+  },
+  {
+    key: "reply",
+    src: "/screenshots/detail/exchange-reply.webp",
+    width: 984,
+    height: 500,
+  },
+] as const;
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 // The device frame the app band already uses, and the screen rectangle inside
@@ -142,14 +156,14 @@ export default function ForPatients() {
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
                 than the front of a product. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
                   {t.intro.headlineLine2}
                 </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
                   {t.intro.body}
                 </p>
                 {(APP_STORE_URL || PLAY_STORE_URL) && (
@@ -159,26 +173,33 @@ export default function ForPatients() {
                 )}
                 <StoreBadges className="mt-4" />
               </div>
-              {/* Cut out rather than cropped square. The 1:1 crop was
-                  discarding a fifth of a 0.80 portrait to make it fit a box
-                  the box did not need. */}
-              <div className="relative flex justify-center lg:justify-end">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute bottom-[-14%] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full lg:left-auto lg:right-[-2%] lg:translate-x-0"
-                  style={{
-                    background:
-                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
-                  }}
-                />
-                <CutOut
-                  name="patients-hero"
-                  alt={t.intro.photoAlt}
-                  priority
-                  renderHeight={{ base: 300, sm: 360, lg: 400 }}
-                  className="relative h-[300px] sm:h-[360px] lg:h-[400px]"
-                />
-              </div>
+              <ol className="relative mx-auto w-full max-w-[460px] space-y-6 lg:mx-0 lg:ml-auto">
+                {EXCHANGE.map(({ key, src, width, height }, i) => (
+                  <li key={key} className="relative">
+                    {i === 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-[13px] top-[1.1rem] -bottom-6 w-0.5 bg-calm-lavender/60"
+                      />
+                    )}
+                    <p className="mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
+                      <span
+                        aria-hidden="true"
+                        className="ml-2 h-3 w-3 shrink-0 rounded-full bg-calm-lavender"
+                      />
+                      {t.intro.exchange[`${key}Label`]}
+                    </p>
+                    <img
+                      src={localizedAsset(src, locale)}
+                      alt={t.intro.exchange[`${key}Alt`]}
+                      width={width}
+                      height={height}
+                      fetchPriority={i === 0 ? "high" : undefined}
+                      className="pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
+                    />
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>

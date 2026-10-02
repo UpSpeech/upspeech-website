@@ -361,7 +361,14 @@ export const es: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
-      body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan y ve cómo va todo mientras tú practicas en la app.",
+      body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
+      exchange: {
+        todayLabel: "De tu terapeuta",
+        todayAlt:
+          "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
+        replyLabel: "Sam Rivera responde",
+        replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
+      },
       inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
         "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
