@@ -431,15 +431,15 @@ export const pt: Dictionary = {
     sections: [
       {
         heading: "A fluência não é o único objetivo",
-        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter uma palavra real a dizer sobre quais desses objetivos se aplicam.",
+        body: "A terapia da fala tradicional trata por vezes a fluência como a medida do sucesso. A abordagem centrada na pessoa alarga essa visão. Quando alguém quer uma fala mais fluida, o terapeuta recorre a técnicas de modelação da fluência, como a fala prolongada. Quando o mais importante é reduzir o evitamento, recorre à gaguez voluntária e à dessensibilização. O que a torna centrada na pessoa é a pessoa ter voz na escolha dos objetivos que lhe dizem respeito.",
       },
       {
         heading: "Ser ouvido à tua maneira",
-        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café que muda de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha isso a par do treino de técnicas.",
+        body: "As pessoas que gaguejam lidam muitas vezes com mais do que a disfluência. Há o telefonema que se adia e o pedido no café em que se troca de palavra porque a outra custa mais a sair. A terapia centrada na pessoa trabalha isso a par do treino de técnicas.",
       },
       {
-        heading: "Como a UpSpeech se encaixa",
-        body: "A UpSpeech apoia a abordagem que o terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for reduzir o evitamento, o terapeuta inclui isso no plano. Se for praticar gaguez voluntária, a app também serve para isso. Cabe ao terapeuta e à pessoa decidir se a fluência entra no plano.",
+        heading: "O papel da UpSpeech",
+        body: "A UpSpeech apoia a abordagem que o terapeuta da fala escolher. É o terapeuta que define o percurso de aprendizagem e os exercícios, e a app acompanha a prática entre sessões. Se o objetivo for reduzir o evitamento, o terapeuta inclui isso no plano. Se o plano incluir gaguez voluntária, a app também acompanha esse treino. Cabe ao terapeuta e à pessoa decidir se a fluência entra no plano.",
       },
       {
         heading: "Uma nota sobre linguagem",
@@ -469,9 +469,9 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Trabalha com um terapeuta que perceba os teus objetivos.",
+      headline: "Procura um terapeuta que perceba os teus objetivos.",
       bodyPrefix:
-        "A UpSpeech usa-se através de terapeutas da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
+        "A UpSpeech chega aos pacientes pelo terapeuta da fala. Se tens uma clínica e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
@@ -485,12 +485,12 @@ export const pt: Dictionary = {
       eyebrow: "Para terapeutas da fala",
       headlineLine1: "As notas começam",
       headlineLine2: "já escritas.",
-      body: "A documentação faz parte de uma boa prática clínica, mas não deve roubar tempo aos pacientes. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e onde entram os rascunhos estruturados.",
+      body: "A documentação faz parte de uma boa prática clínica, mas não deve roubar tempo aos pacientes. Esta página mostra formas práticas de gastar menos tempo nas notas de sessão, e o papel dos rascunhos estruturados.",
     },
     sections: [
       {
         heading: "O problema da página em branco",
-        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se, e acaba por sair do tempo de preparação ou do fim do dia.",
+        body: "Depois de uma sessão, sabes o que aconteceu. Escrever é que demora, porque começas numa página em branco com o raciocínio clínico já feito. Com a agenda cheia, o tempo acumula-se e sai da preparação ou do fim do dia.",
       },
       {
         heading: "Rascunhos estruturados que revês e editas",
@@ -502,7 +502,7 @@ export const pt: Dictionary = {
       },
       {
         heading: "O que a UpSpeech faz",
-        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada chega ao paciente sem tu reveres e assinares.",
+        body: "A UpSpeech guarda dados estruturados da prática entre sessões, incluindo os exercícios que o paciente fez e onde sentiu dificuldade. Esses dados alimentam o rascunho da nota de sessão. Nada chega ao paciente sem tu o reveres e assinares.",
       },
     ],
     faq: {
@@ -510,7 +510,7 @@ export const pt: Dictionary = {
       headline: "Perguntas frequentes dos terapeutas.",
       items: [
         {
-          q: "Quanto tempo se pode poupar, na prática, na documentação?",
+          q: "Quanto tempo se poupa, de facto, a documentar?",
           a: "Depende da tua forma de trabalhar e do tempo que gastas em notas. O rascunho tira-te a página em branco, que costuma ser a parte mais lenta. Quanto poupas varia com a complexidade da sessão e com as edições de que o rascunho precisa.",
         },
         {
@@ -528,7 +528,7 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Deixa a UpSpeech rascunhar as notas e concentra-te na sessão.",
+      headline: "Deixa a UpSpeech fazer o rascunho das notas e concentra-te na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que querem prática estruturada entre sessões e notas redigidas por IA. ",
       bodyLink: "Pede acesso aqui",
