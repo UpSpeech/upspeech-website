@@ -69,7 +69,7 @@ const labelAlignClass = (compassDeg: number): string => {
   return "text-right";
 };
 
-const CycleScene = () => {
+const PinnedCycle = () => {
   const t = useT().home.cycle;
   const nodes = t.nodes;
   const containerRef = useRef<HTMLElement | null>(null);
@@ -156,7 +156,7 @@ const CycleScene = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-white"
+      className="relative hidden bg-white lg:block"
       style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
       {/* min-height rather than height. On a phone the six-step copy and the
@@ -492,5 +492,104 @@ const CycleScene = () => {
     </section>
   );
 };
+
+// Below lg the section is a plain list. A pinned panel with a runway needs a
+// viewport taller than the ring plus the copy, which a phone does not have.
+const StepList = () => {
+  const t = useT().home.cycle;
+  return (
+    <section className="relative bg-white py-[clamp(3rem,8vw,5rem)] lg:hidden">
+      <div className="gutter">
+        <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
+          {t.headlinePrefix} {t.headlineEmphasis}
+        </h2>
+
+        <svg
+          viewBox="0 0 100 100"
+          className="mx-auto mt-8 w-[min(16rem,70vw)]"
+          aria-hidden="true"
+        >
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={RADIUS}
+            fill="none"
+            stroke="#958AF0"
+            strokeWidth="1.1"
+          />
+          {NODE_ACTORS.map((actor, i) => {
+            const pos = nodePoint(i);
+            const isClinician = actor === "clinician";
+            return (
+              <g key={i}>
+                <circle
+                  cx={pos.x}
+                  cy={pos.y}
+                  r={7}
+                  fill={isClinician ? "#293587" : "#958AF0"}
+                />
+                <text
+                  x={pos.x}
+                  y={pos.y + 1.8}
+                  textAnchor="middle"
+                  fill={isClinician ? "#FFFFFF" : "#293587"}
+                  style={{
+                    fontSize: "5px",
+                    fontWeight: 800,
+                    fontFamily: "Outfit, ui-sans-serif, system-ui, sans-serif",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+
+        <ol className="mt-10 space-y-9">
+          {t.nodes.map((node, i) => {
+            const isClinician = NODE_ACTORS[i] === "clinician";
+            const n = String(i + 1).padStart(2, "0");
+            return (
+              <li key={i} className="flex gap-4">
+                <span
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
+                    isClinician
+                      ? "bg-calm-navy text-white"
+                      : "bg-calm-lavender text-calm-navy"
+                  }`}
+                >
+                  {n}
+                </span>
+                <div>
+                  <p
+                    className={`font-body t-eyebrow ${
+                      isClinician ? "text-calm-navy" : "text-calm-lavender-ink"
+                    }`}
+                  >
+                    {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
+                  </p>
+                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
+                    {node.title}
+                  </h3>
+                  <p className="mt-2 font-body t-lead text-calm-charcoal/80 leading-relaxed">
+                    {node.body}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+  );
+};
+
+const CycleScene = () => (
+  <>
+    <StepList />
+    <PinnedCycle />
+  </>
+);
 
 export default CycleScene;
