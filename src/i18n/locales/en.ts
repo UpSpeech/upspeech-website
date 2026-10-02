@@ -417,10 +417,6 @@ export const en = {
       bodyLink: "request access here",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Download on the App Store",
-    storeAppStoreAriaLabel: "Download UpSpeech on the App Store",
-    storePlayAlt: "Get it on Google Play",
-    storePlayAriaLabel: "Get UpSpeech on Google Play",
   },
   personCentered: {
     seoTitle: "What Is Person-Centred Speech Therapy?",

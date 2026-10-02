@@ -419,10 +419,6 @@ export const pt: Dictionary = {
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Descarregar na App Store",
-    storeAppStoreAriaLabel: "Descarregar a UpSpeech na App Store",
-    storePlayAlt: "Disponível no Google Play",
-    storePlayAriaLabel: "Obter a UpSpeech no Google Play",
   },
   personCentered: {
     seoTitle: "O que é a terapia centrada na pessoa?",
