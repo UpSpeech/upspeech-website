@@ -419,10 +419,6 @@ export const es: Dictionary = {
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Descárgalo en la App Store",
-    storeAppStoreAriaLabel: "Descarga UpSpeech en la App Store",
-    storePlayAlt: "Disponible en Google Play",
-    storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
   personCentered: {
     seoTitle: "¿Qué es la logopedia centrada en la persona?",
