@@ -46,7 +46,7 @@ export default function ForSlps() {
           <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.3fr,0.7fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
