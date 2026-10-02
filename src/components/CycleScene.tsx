@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUturnUpIcon } from "@heroicons/react/24/outline";
 import { EASE, reveal } from "./motion";
+import HandoffScene from "./HandoffScene";
 import { useT } from "@/i18n";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
@@ -41,7 +42,6 @@ const NODE_ACTORS: Actor[] = [
 // SVG viewBox is 100×100; geometry expressed in those units and overlaid with HTML.
 const CENTER = 50;
 const RADIUS = 27;
-const LABEL_RADIUS = 38;
 
 // compassDeg: 0 at top, rotates clockwise
 const nodePoint = (i: number, r = RADIUS) => {
@@ -52,22 +52,6 @@ const nodePoint = (i: number, r = RADIUS) => {
     y: CENTER - r * Math.cos(rad),
     compassDeg,
   };
-};
-
-// Per-quadrant transform keeps label anchored OUTSIDE the ring
-// so long words never cross the circumference.
-const labelTransform = (compassDeg: number): string => {
-  if (compassDeg < 30 || compassDeg >= 330) return "translate(-50%, -115%)";
-  if (compassDeg >= 30 && compassDeg <= 150) return "translate(12%, -50%)";
-  if (compassDeg > 150 && compassDeg < 210) return "translate(-50%, 15%)";
-  return "translate(-112%, -50%)";
-};
-
-const labelAlignClass = (compassDeg: number): string => {
-  if (compassDeg < 30 || compassDeg >= 330) return "text-center";
-  if (compassDeg > 150 && compassDeg < 210) return "text-center";
-  if (compassDeg >= 30 && compassDeg <= 150) return "text-left";
-  return "text-right";
 };
 
 const PinnedCycle = () => {
@@ -134,7 +118,6 @@ const PinnedCycle = () => {
   // is visible from the start, the cycle reads as 'ready to go' at scroll 0
   // defaulting to step 01 (AI drafts). Scroll drives only the progression.
   const nodePhase = clamp01(progress / 0.9);
-  const finalGlow = clamp01((progress - 0.9) / 0.1);
 
   const nodeFloat = nodePhase * NODE_ACTORS.length;
   const activeIndex = Math.min(
@@ -143,17 +126,6 @@ const PinnedCycle = () => {
   );
   const activeActor = NODE_ACTORS[activeIndex];
   const active = nodes[activeIndex];
-  const activeIsAI = activeActor === "ai";
-
-  // Orbital satellite, rides the ring at the current nodeFloat position
-  const orbitDeg = (nodeFloat / NODE_ACTORS.length) * 360;
-  const orbitRad = (orbitDeg * Math.PI) / 180;
-  const orbitX = CENTER + RADIUS * Math.sin(orbitRad);
-  const orbitY = CENTER - RADIUS * Math.cos(orbitRad);
-
-  // Progress arc, continuous loop drawn from top clockwise
-  const circumference = 2 * Math.PI * RADIUS;
-  const arcDrawn = nodePhase * circumference;
 
   return (
     <section
@@ -186,222 +158,13 @@ const PinnedCycle = () => {
           </h2>
 
           <div
-            className="grid grid-cols-1 lg:grid-cols-[1.15fr,1fr] gap-6 lg:gap-16 items-center"
+            className="grid grid-cols-1 lg:grid-cols-[1.4fr,1fr] gap-6 lg:gap-16 items-center"
             style={reveal(revealed, 160)}
           >
-            {/* Cycle */}
-            <div
-              className="relative mx-auto aspect-square"
-              style={{ width: "min(520px, 52vh, 78vw)" }}
-            >
-              <svg
-                viewBox="0 0 100 100"
-                className="absolute inset-0 w-full h-full"
-                aria-hidden="true"
-                overflow="visible"
-              >
-                {/* Track ring */}
-                <circle
-                  cx={CENTER}
-                  cy={CENTER}
-                  r={RADIUS}
-                  fill="none"
-                  stroke="rgba(41,53,135,0.12)"
-                  strokeWidth="0.6"
-                />
-
-                {/* Progress arc, continuous loop, from top clockwise */}
-                <circle
-                  cx={CENTER}
-                  cy={CENTER}
-                  r={RADIUS}
-                  fill="none"
-                  stroke="#958AF0"
-                  strokeWidth="1.1"
-                  strokeLinecap="round"
-                  strokeDasharray={`${arcDrawn} ${circumference}`}
-                  transform={`rotate(-90 ${CENTER} ${CENTER})`}
-                  style={{ transition: `stroke-dasharray 450ms ${EASE}` }}
-                />
-
-                {/* Orbital satellite, subtle position indicator */}
-                {nodePhase > 0 && (
-                  <g style={{ transition: `transform 450ms ${EASE}` }}>
-                    <circle
-                      cx={orbitX}
-                      cy={orbitY}
-                      r={2.4}
-                      fill={activeIsAI ? "#958AF0" : "#293587"}
-                      opacity={0.12}
-                    />
-                    <circle
-                      cx={orbitX}
-                      cy={orbitY}
-                      r={1.1}
-                      fill={activeIsAI ? "#958AF0" : "#293587"}
-                    />
-                  </g>
-                )}
-
-                {/* Nodes */}
-                {NODE_ACTORS.map((actor, i) => {
-                  const pos = nodePoint(i);
-                  const isActive = i === activeIndex && nodePhase > 0;
-                  const isPast = i < activeIndex && nodePhase > 0;
-                  const lit = isActive || isPast || finalGlow > 0;
-                  const isClinician = actor === "clinician";
-                  const fill = lit
-                    ? isClinician
-                      ? "#293587"
-                      : "#958AF0"
-                    : "#FFFFFF";
-                  const stroke = isClinician ? "#293587" : "#958AF0";
-                  const r = isActive ? 5.4 : 4.3;
-
-                  return (
-                    <g key={i}>
-                      {isActive && (
-                        <circle
-                          cx={pos.x}
-                          cy={pos.y}
-                          r={8.5}
-                          fill={stroke}
-                          opacity={0.16}
-                          style={{ transition: `opacity 500ms ${EASE}` }}
-                        />
-                      )}
-                      <circle
-                        cx={pos.x}
-                        cy={pos.y}
-                        r={r}
-                        fill={fill}
-                        stroke={stroke}
-                        strokeWidth={isActive ? 1.1 : 0.85}
-                        style={{
-                          transition: `r 500ms ${EASE}, fill 500ms ${EASE}, stroke-width 500ms ${EASE}`,
-                        }}
-                      />
-                      <text
-                        x={pos.x}
-                        y={pos.y + 1.1}
-                        textAnchor="middle"
-                        style={{
-                          fontSize: "3.2px",
-                          fontWeight: 800,
-                          fontFamily:
-                            "Outfit, ui-sans-serif, system-ui, sans-serif",
-                          letterSpacing: "-0.02em",
-                        }}
-                        fill={
-                          lit
-                            ? isClinician
-                              ? "#FFFFFF"
-                              : "#293587"
-                            : "#293587"
-                        }
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </text>
-                    </g>
-                  );
-                })}
-              </svg>
-
-              {/* HTML labels outside the ring, positioned per quadrant */}
-              {NODE_ACTORS.map((actor, i) => {
-                const pos = nodePoint(i, LABEL_RADIUS);
-                const isActive = i === activeIndex && nodePhase > 0;
-                const isPast = i < activeIndex && nodePhase > 0;
-                const lit = isActive || isPast || finalGlow > 0;
-                const isClinician = actor === "clinician";
-
-                return (
-                  <div
-                    key={`lbl-${i}`}
-                    className="pointer-events-none hidden lg:block absolute"
-                    style={{
-                      left: `${pos.x}%`,
-                      top: `${pos.y}%`,
-                      transform: labelTransform(pos.compassDeg),
-                    }}
-                  >
-                    <div
-                      className={labelAlignClass(pos.compassDeg)}
-                      style={{ maxWidth: "10rem" }}
-                    >
-                      <div
-                        className={`font-body font-bold tracking-[0.22em] uppercase ${
-                          isClinician
-                            ? "text-calm-navy"
-                            : "text-calm-lavender-ink"
-                        }`}
-                        style={{
-                          fontSize: "clamp(9px, 0.82vw, 11px)",
-                          opacity: lit ? 1 : 0.55,
-                          transition: `opacity 500ms ${EASE}`,
-                        }}
-                      >
-                        {isClinician ? t.clinician : t.ai}
-                      </div>
-                      <div
-                        className="font-heading font-bold tracking-tight text-calm-charcoal"
-                        style={{
-                          fontSize: "clamp(13px, 1.15vw, 15.5px)",
-                          lineHeight: 1.1,
-                          marginTop: "3px",
-                          opacity: lit ? 1 : 0.4,
-                          transform: isActive ? "scale(1.04)" : "scale(1)",
-                          transformOrigin:
-                            pos.compassDeg >= 210 && pos.compassDeg < 330
-                              ? "right center"
-                              : pos.compassDeg >= 30 && pos.compassDeg <= 150
-                                ? "left center"
-                                : "center",
-                          transition: `opacity 500ms ${EASE}, transform 500ms ${EASE}`,
-                        }}
-                      >
-                        {nodes[i].verb}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Center scoreboard, live actor readout */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-                <div
-                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/80"
-                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
-                >
-                  {t.eyebrow}
-                </div>
-
-                {/* Actor readout, swaps and recolors with each step */}
-                <div
-                  key={`actor-${activeIndex}`}
-                  className="t-h3 font-heading font-bold mt-2 mb-2.5"
-                  style={{
-                    // #958AF0 is the brand fill and only reaches 2.93:1 on
-                    // white, under the 3:1 this size needs. Text-safe ink.
-                    color: activeIsAI ? "#6866C4" : "#293587",
-                    animation: `optD-actor-swap 600ms ${EASE} both`,
-                  }}
-                >
-                  {activeIsAI ? t.ai : t.clinician}
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-2 font-body font-bold tracking-[0.3em] uppercase tabular-nums text-calm-charcoal/80"
-                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
-                >
-                  <span className="block h-px w-5 bg-calm-charcoal/30" />
-                  {t.stepPrefix}
-                  {String(activeIndex + 1).padStart(2, "0")}
-                  {t.stepSuffix}
-                  <span className="block h-px w-5 bg-calm-charcoal/30" />
-                </div>
-              </div>
-            </div>
+            <HandoffScene
+              activeIndex={activeIndex}
+              labels={{ ai: t.ai, clinician: t.clinician }}
+            />
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
             {/* The copy is absolutely positioned so steps cross-fade in place, so
