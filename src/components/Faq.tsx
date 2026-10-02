@@ -35,7 +35,7 @@ export function Faq({
           className="border-b-0"
         >
           <AccordionTrigger className="min-h-[44px] py-4 text-left text-calm-charcoal hover:no-underline data-[state=open]:text-calm-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
-            <span className="font-body text-lg font-semibold">
+            <span className="font-body text-lg font-semibold text-balance">
               {item.question}
             </span>
           </AccordionTrigger>
