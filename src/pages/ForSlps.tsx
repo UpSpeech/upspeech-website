@@ -152,8 +152,8 @@ export default function ForSlps() {
                   locale,
                 )}
                 alt={t.documentation.screenshotAlt}
-                width={1588}
-                height={1580}
+                width={1800}
+                height={2065}
                 loading="lazy"
                 className="block h-auto w-full min-w-[680px] sm:min-w-0"
               />
