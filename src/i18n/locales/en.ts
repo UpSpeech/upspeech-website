@@ -102,7 +102,6 @@ export const en = {
       footerEmphasis: "without adding sessions to the clinician's week.",
     },
     week: {
-      eyebrow: "Between the sessions",
       headline: "Most of therapy happens when nobody is watching.",
       body: "One hour in the clinic, then six days on their own. The part that decides whether therapy works is the part the clinician never sees.",
       frames: [
@@ -364,24 +363,6 @@ export const en = {
       line: "Younger patients practice with a parent alongside them, working through the same plan their therapist set.",
       photoAlt:
         "A father and his daughter sitting together on a sofa, listening back to a recording on his phone",
-    },
-    howItWorks: {
-      eyebrow: "How it works for you",
-      headline: "Guided by your therapist, every step.",
-      steps: [
-        {
-          title: "Your therapist sets your plan",
-          copy: "Your speech-language pathologist chooses the exercises and goals that match where you are in your therapy.",
-        },
-        {
-          title: "You practice in the app",
-          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions.",
-        },
-        {
-          title: "Your therapist sees your progress",
-          copy: "They follow what you have practiced and adjust the plan as you go, so each session builds on the last.",
-        },
-      ],
     },
     app: {
       eyebrow: "The app",

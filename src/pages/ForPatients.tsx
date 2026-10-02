@@ -1,8 +1,3 @@
-import {
-  ClipboardDocumentCheckIcon,
-  DevicePhoneMobileIcon,
-  ArrowTrendingUpIcon,
-} from "@heroicons/react/24/outline";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,14 +6,6 @@ import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
-
-// Step icons stay in code; titles/copy come from the dictionary by index
-// (forPatients.howItWorks.steps).
-const STEP_ICONS = [
-  ClipboardDocumentCheckIcon,
-  DevicePhoneMobileIcon,
-  ArrowTrendingUpIcon,
-];
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
 // These three are captures of the shipped app, cropped from the store art, and
@@ -144,14 +131,6 @@ export default function ForPatients() {
       <main id="main">
         {/* Intro */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
@@ -159,11 +138,9 @@ export default function ForPatients() {
             <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
-                  <span className="text-calm-lavender-ink">
-                    {t.intro.headlineLine2}
-                  </span>
+                  {t.intro.headlineLine2}
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
@@ -193,50 +170,13 @@ export default function ForPatients() {
           </div>
         </section>
 
-        {/* How it works for you */}
-        <section className="py-[clamp(3rem,6vw,5rem)]">
-          <div className="gutter">
-            <p className={eyebrowClass}>{t.howItWorks.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
-              {t.howItWorks.headline}
-            </h2>
-
-            <div className="mt-[clamp(2.5rem,5vw,3.5rem)] grid gap-8 sm:gap-10 md:grid-cols-3">
-              {t.howItWorks.steps.map((step, i) => {
-                const Icon = STEP_ICONS[i];
-                return (
-                  <div key={step.title}>
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </span>
-                      {i < t.howItWorks.steps.length - 1 && (
-                        <div
-                          aria-hidden="true"
-                          className="hidden h-px flex-1 bg-calm-navy/10 md:block"
-                        />
-                      )}
-                    </div>
-                    <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                      {step.copy}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* Practicing with a parent.
             One sentence, deliberately. The product has no guardian seat: a
             patient is one login assigned to one therapist. What is true today
             is that a parent sits with a younger patient and works the plan the
             therapist set, so that is the whole of what this says. */}
         <section className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
+          <div className="gutter grid items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
             {/* Two phones and the two people holding them. The parent's screen
                 is behind on the left, the child's in front on the right, which
                 is the same sandwich this section already had.
@@ -274,9 +214,17 @@ export default function ForPatients() {
               />
             </div>
             <div>
-              <Companion species="lumo" size={104} className="mb-4" />
-              <p className={eyebrowClass}>{t.withAParent.eyebrow}</p>
-              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-charcoal">
+              {/* A face of its own, not the default one three other
+                  companions on this site already wear. */}
+              <Companion
+                species="lumo"
+                size={104}
+                className="mb-4"
+                eyes="dot"
+                bellyShape="round"
+              />
+
+              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>
@@ -285,18 +233,9 @@ export default function ForPatients() {
 
         {/* The app */}
         <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             <div className="max-w-2xl">
-              <p className={eyebrowClass}>{t.app.eyebrow}</p>
-              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.app.headline}
               </h2>
               <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -342,14 +281,14 @@ export default function ForPatients() {
                 Four phones do not fit the gutter at the height three did, so
                 the whole row steps down together and the first three keep
                 their relative sizing to each other. */}
-            <div className="mt-12 flex items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:justify-center lg:overflow-visible">
+            <div className="scroll-fade-x mt-12 flex snap-x snap-mandatory items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:snap-none lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((base, i) => (
                 <img
                   key={base}
                   src={localizedAsset(base, locale)}
                   alt={t.app.screenshots[i]}
                   loading="lazy"
-                  className={`h-auto w-auto max-h-[400px] shrink-0 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                  className={`h-auto w-auto max-h-[400px] shrink-0 snap-start drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
                     i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
                 />
@@ -357,7 +296,7 @@ export default function ForPatients() {
               <PhoneShot
                 src={localizedAsset(CHILD_SCREENSHOT, locale)}
                 alt={t.app.childScreenshots[1]}
-                className="relative h-[400px] shrink-0 sm:-translate-y-4"
+                className="relative h-[400px] shrink-0 snap-start sm:-translate-y-4"
               />
             </div>
           </div>
@@ -366,8 +305,7 @@ export default function ForPatients() {
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
           <div className="gutter max-w-3xl">
-            <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
 
@@ -391,7 +329,7 @@ export default function ForPatients() {
         {/* Closing CTA */}
         <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
           <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
+            <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">

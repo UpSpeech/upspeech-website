@@ -196,7 +196,7 @@ const Header = () => {
           role="dialog"
           aria-modal="true"
           aria-label={t.mobileMenuLabel}
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto"
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem-var(--consent-bar-h,0px))] overflow-y-auto"
         >
           <nav className="flex flex-col p-4 gap-1">
             <button

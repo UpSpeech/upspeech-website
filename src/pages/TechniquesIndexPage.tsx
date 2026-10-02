@@ -9,10 +9,7 @@ import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
 import { useLocale, useT, localizedHref } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
-// Shared with the redesigned pages (ForSlps, ForPatients, PersonCentered) so
-// the techniques section reads as the same site.
-const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
-const sectionClass = "px-[max(1.5rem,5vw)] py-[clamp(2.5rem,5vw,4rem)]";
+const sectionClass = "py-[clamp(2.5rem,5vw,4rem)]";
 
 // Page chrome for the loading and error states, so they are not a different
 // site from the loaded page.
@@ -83,6 +80,15 @@ export function TechniquesIndexPage() {
     };
   }, [locale]);
 
+  // The browser tries the #hash before the listing has loaded, so the
+  // category anchor from a technique page does not exist yet and the page
+  // stays at the top. Scroll once the cards are in.
+  useEffect(() => {
+    if (loading || error) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, [loading, error]);
+
   // Group techniques by type
   const mainCategories = techniques.filter(
     (t) => t.category_type === "main_category",
@@ -116,7 +122,7 @@ export function TechniquesIndexPage() {
         <Header />
         <Shell state="error">
           <div className="max-w-2xl rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 px-6 py-8">
-            <h2 className="font-heading font-bold text-calm-charcoal text-xl sm:text-2xl tracking-tight">
+            <h2 className="font-heading font-bold text-calm-navy text-xl sm:text-2xl tracking-tight">
               {t.error}
             </h2>
             <p className="mt-3 font-body text-calm-charcoal/80 leading-relaxed">
@@ -142,19 +148,10 @@ export function TechniquesIndexPage() {
 
       <main id="main" data-prerender-state="ready" className="flex-1">
         {/* Intro, matching the other pages: left aligned, eyebrow + headline */}
-        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
-          <div className="relative max-w-6xl mx-auto">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
+          <div className="gutter relative">
             <div className="max-w-3xl">
-              <p className={eyebrowClass}>{t.techniques}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display font-accent font-bold text-calm-navy tracking-tight">
                 {t.title}
               </h1>
               <p className="mt-6 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
@@ -164,35 +161,36 @@ export function TechniquesIndexPage() {
           </div>
         </section>
 
-        {/* Main categories. These have children, so the card holds the parent
-            and its sub-techniques nest inside it: the hierarchy is the
-            information, so the layout encodes it rather than flattening. */}
+        {/* Main categories. These have children, so the hierarchy is the
+            information, and the layout still encodes it: a rule and a heading
+            carry the parent, its sub-techniques are rows beneath it. No box
+            inside a box. */}
         {mainCategories.length > 0 && (
           <section className={sectionClass}>
-            <div className="max-w-6xl mx-auto">
-              <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
+            <div className="gutter">
+              <h2 className="font-heading t-h2-sm font-bold text-calm-navy">
                 {t.mainCategories}
               </h2>
-              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-                {/* The id on each card is the landing spot for the parent link
+              <div className="mt-8 grid grid-cols-1 items-start gap-x-14 gap-y-12 md:grid-cols-2">
+                {/* The id on each category is the landing spot for the parent link
                     on a sub-technique page. scroll-mt clears the fixed h-20
                     header, which would otherwise cover the heading. */}
                 {mainCategories.map((category) => (
                   <div
                     key={category.slug}
                     id={category.slug}
-                    className="scroll-mt-24 rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7"
+                    className="scroll-mt-24 border-t-2 border-calm-navy/80 pt-6"
                   >
-                    <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
+                    <h3 className="font-heading t-h3 font-bold text-calm-navy">
                       {category.name}
                     </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
+                    <p className="mt-2 max-w-xl font-body t-small text-calm-charcoal/80">
                       {category.description}
                     </p>
 
                     {category.sub_techniques &&
                       category.sub_techniques.length > 0 && (
-                        <ul className="mt-5 space-y-2">
+                        <ul className="mt-5 divide-y divide-calm-charcoal/10 border-y border-calm-charcoal/10">
                           {category.sub_techniques.map((subTech) => (
                             <li key={subTech.slug}>
                               {/* Whole row is the target, comfortably over
@@ -202,13 +200,13 @@ export function TechniquesIndexPage() {
                                   `/techniques/${subTech.slug}`,
                                   locale,
                                 )}
-                                className="group flex items-start gap-3 rounded-xl bg-white/70 p-4 transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                                className="group flex items-start gap-3 py-4 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                               >
                                 <span className="flex-1">
-                                  <span className="block font-body font-semibold text-calm-charcoal">
+                                  <span className="block font-body font-semibold text-calm-charcoal group-hover:underline">
                                     {subTech.name}
                                   </span>
-                                  <span className="mt-1 block font-body text-sm text-calm-charcoal/80 leading-relaxed">
+                                  <span className="mt-1 block font-body t-small text-calm-charcoal/80">
                                     {subTech.description}
                                   </span>
                                 </span>
@@ -226,7 +224,7 @@ export function TechniquesIndexPage() {
 
                     {(!category.sub_techniques ||
                       category.sub_techniques.length === 0) && (
-                      <p className="mt-4 font-body text-sm text-calm-charcoal/80">
+                      <p className="mt-4 font-body t-small text-calm-charcoal/80">
                         {category.mini_games_count || 0} {t.techniques}
                       </p>
                     )}
@@ -237,28 +235,28 @@ export function TechniquesIndexPage() {
           </section>
         )}
 
-        {/* Standalone techniques have no children, so the whole card is one
+        {/* Standalone techniques have no children, so each whole row is one
             link rather than a small "View Details" target. */}
         {standalone.length > 0 && (
           <section className={sectionClass}>
-            <div className="max-w-6xl mx-auto">
-              <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
+            <div className="gutter">
+              <h2 className="font-heading t-h2-sm font-bold text-calm-navy">
                 {t.standalone}
               </h2>
-              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="mt-8 grid grid-cols-1 gap-x-14 md:grid-cols-2">
                 {standalone.map((technique) => (
                   <Link
                     key={technique.slug}
                     to={localizedHref(`/techniques/${technique.slug}`, locale)}
-                    className="group flex flex-col rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-7 transition-colors duration-200 hover:bg-calm-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                    className="group flex flex-col border-t border-calm-charcoal/10 py-6 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                   >
-                    <h3 className="font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
+                    <h3 className="font-heading t-h3 font-bold text-calm-navy group-hover:underline">
                       {technique.name}
                     </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
+                    <p className="mt-2 max-w-xl font-body t-small text-calm-charcoal/80">
                       {technique.description}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 font-body text-sm font-semibold text-calm-navy">
+                    <span className="mt-4 inline-flex items-center gap-2 font-body t-small font-semibold text-calm-navy">
                       {t.viewDetails}
                       <span
                         aria-hidden="true"
@@ -274,9 +272,9 @@ export function TechniquesIndexPage() {
           </section>
         )}
 
-        <div className="px-[max(1.5rem,5vw)] pb-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-6xl mx-auto">
-            <MedicalDisclaimer />
+        <div className="pb-[clamp(3rem,6vw,5rem)]">
+          <div className="gutter">
+            <MedicalDisclaimer className="mx-0" />
           </div>
         </div>
       </main>
