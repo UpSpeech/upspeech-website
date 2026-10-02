@@ -1,8 +1,8 @@
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT } from "@/i18n";
 
-// Apple's badge is 40px tall with a quarter-height clear space. Google's PNG
-// carries its own clear space, so it is drawn at 60px to match 40px of badge.
+// Both badges are drawn 40px tall with a quarter-height clear space, which
+// each store's guidelines ask for. The Google PNGs are cropped to the badge edge.
 export default function StoreBadges({
   className = "",
 }: {
@@ -37,13 +37,14 @@ export default function StoreBadges({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t.playStoreAriaLabel}
+          className="p-2.5"
         >
           <img
             src={`/images/store/google-play-${locale}.png`}
             alt={t.playStoreAlt}
-            width={155}
-            height={60}
-            className="h-[60px] w-auto"
+            width={135}
+            height={40}
+            className="h-10 w-auto"
             loading="lazy"
           />
         </a>
