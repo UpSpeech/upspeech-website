@@ -214,6 +214,7 @@ export const en = {
       aiStepPrefix: "AI · step ",
       stepPrefix: "Step ",
       stepSuffix: " / 06",
+      backToStart: "Then back to step 01",
       nodes: [
         {
           verb: "drafts",
