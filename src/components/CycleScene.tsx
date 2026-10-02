@@ -37,19 +37,6 @@ const NODE_ACTORS: Actor[] = [
   "clinician",
 ];
 
-// The phone list's ring: viewBox 100×100, nodes clockwise from the top.
-const CENTER = 50;
-const RADIUS = 27;
-
-const nodePoint = (i: number, r = RADIUS) => {
-  const compassDeg = (i * 360) / NODE_ACTORS.length;
-  const rad = (compassDeg * Math.PI) / 180;
-  return {
-    x: CENTER + r * Math.sin(rad),
-    y: CENTER - r * Math.cos(rad),
-  };
-};
-
 const PinnedCycle = () => {
   const t = useT().home.cycle;
   const nodes = t.nodes;
@@ -155,6 +142,7 @@ const PinnedCycle = () => {
               labels={{ ai: t.ai, clinician: t.clinician }}
               states={t.states}
               docs={t.docs}
+              title={t.fileTitle}
             />
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
@@ -246,47 +234,15 @@ const StepList = () => {
           {t.headlinePrefix} {t.headlineEmphasis}
         </h2>
 
-        <svg
-          viewBox="0 0 100 100"
-          className="mx-auto mt-6 w-[min(12rem,56vw)]"
-          aria-hidden="true"
-        >
-          <circle
-            cx={CENTER}
-            cy={CENTER}
-            r={RADIUS}
-            fill="none"
-            stroke="#958AF0"
-            strokeWidth="1.1"
+        <div className="mt-6">
+          <HandoffScene
+            activeIndex={NODE_ACTORS.length - 1}
+            labels={{ ai: t.ai, clinician: t.clinician }}
+            states={t.states}
+            docs={t.docs}
+            title={t.fileTitle}
           />
-          {NODE_ACTORS.map((actor, i) => {
-            const pos = nodePoint(i);
-            const isClinician = actor === "clinician";
-            return (
-              <g key={i}>
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r={7}
-                  fill={isClinician ? "#293587" : "#958AF0"}
-                />
-                <text
-                  x={pos.x}
-                  y={pos.y + 1.8}
-                  textAnchor="middle"
-                  fill={isClinician ? "#FFFFFF" : "#293587"}
-                  style={{
-                    fontSize: "5px",
-                    fontWeight: 800,
-                    fontFamily: "Outfit, ui-sans-serif, system-ui, sans-serif",
-                  }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
+        </div>
 
         <ol className="mt-8">
           {t.nodes.map((node, i) => {

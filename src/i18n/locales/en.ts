@@ -9,6 +9,7 @@ export const en = {
     whyUs: "Why Us",
     forPatients: "For patients",
     requestAccess: "Request early access",
+    getTheApp: "Get the app",
     skipToContent: "Skip to content",
     logoScrollTop: "UpSpeech, scroll to top",
     logoGoHome: "UpSpeech, go to homepage",
@@ -214,6 +215,7 @@ export const en = {
       aiStepPrefix: "AI · step ",
       stepPrefix: "Step ",
       stepSuffix: " / 06",
+      fileTitle: "Patient file, week 14",
       backToStart: "Then back to step 01",
       docs: [
         {
@@ -426,6 +428,9 @@ export const en = {
           "The patient dashboard: today's practice, set by the therapist, with a button to start",
         replyLabel: "Sam Rivera replies",
         replyAlt: "A note from the therapist on a recording the patient made",
+        recordLabel: "You record it",
+        recordAlt:
+          "The patient's practice screen on a phone, ready to record the answer to today's exercise",
       },
       inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:
@@ -492,7 +497,8 @@ export const en = {
       ],
     },
     closing: {
-      headline: "Ask your speech therapist about UpSpeech.",
+      headline: "Ready when your therapist is.",
+      body: "Install the app now. When your therapist sends the invite, it connects to your plan.",
       bodyPrefix:
         "UpSpeech works through your clinic. If you run a practice and want to use it with your patients, you can ",
       bodyLink: "request access here",
@@ -565,7 +571,7 @@ export const en = {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "The notes start",
       headlineLine2: "already written.",
-      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy, including where structured drafts fit in.",
+      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy. UpSpeech calls them session reports, so that is the word used from here on.",
     },
     sections: [
       {
@@ -577,12 +583,12 @@ export const en = {
         body: "One fix is a draft built from the session's own data, covering what the patient practised and how they progressed. You edit what needs editing. The clinical judgement stays yours throughout.",
       },
       {
-        heading: "What belongs in a good speech therapy note",
-        body: "A useful session note typically covers the technique practised, the patient's performance against their goals, any observations about avoidance or confidence, and the next steps. Templates for these elements make drafting faster whether or not you use AI assistance.",
+        heading: "What belongs in a good speech therapy report",
+        body: "A useful session report typically covers the technique practised, the patient's performance against their goals, any observations about avoidance or confidence, and the next steps. Templates for these elements make drafting faster whether or not you use AI assistance.",
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist has reviewed it. You only record with the patient's consent.",
+        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session report. Nothing reaches a patient until the therapist has reviewed it. You only record with the patient's consent.",
       },
     ],
     faq: {
@@ -591,26 +597,26 @@ export const en = {
       items: [
         {
           q: "How much time can SLPs realistically save on documentation?",
-          a: "It depends on your current workflow and how much time you spend on notes. A draft takes away the blank page, which is usually the slowest part of writing one up. How much it saves varies with the complexity of the session and how much editing the draft needs.",
+          a: "It depends on your current workflow and how much time you spend on reports. A draft takes away the blank page, which is usually the slowest part of writing one up. How much it saves varies with the complexity of the session and how much editing the draft needs.",
         },
         {
-          q: "Does AI-assisted note drafting replace clinical observation?",
-          a: "No. A draft note is built from the session data. The judgements a therapist makes in the room are what the therapist adds.",
+          q: "Does AI-assisted report drafting replace clinical observation?",
+          a: "No. A draft report is built from the session data. The judgements a therapist makes in the room are what the therapist adds.",
         },
         {
-          q: "Is it clinically appropriate to use AI-drafted notes?",
-          a: "Drafted notes are appropriate when the therapist reviews every note before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
+          q: "Is it clinically appropriate to use AI-drafted reports?",
+          a: "Drafted reports are appropriate when the therapist reviews every report before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is finalised.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any report is finalised.",
         },
       ],
     },
     closing: {
-      headline: "Let UpSpeech draft the notes so you focus on the session.",
+      headline: "Let UpSpeech draft the reports so you focus on the session.",
       bodyPrefix:
-        "UpSpeech works with speech-language pathologists who want structured between-session practice and AI-drafted notes. ",
+        "UpSpeech works with speech-language pathologists who want structured between-session practice and AI-drafted reports. ",
       bodyLink: "Request access here",
       bodySuffix: " to see if it fits your practice.",
     },
@@ -629,7 +635,7 @@ export const en = {
     },
     documentation: {
       eyebrow: "Documentation",
-      headline: "Session notes, drafted for you to review.",
+      headline: "Session reports, drafted for you to review.",
       body: "After a session, UpSpeech drafts the report. You review and edit it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",

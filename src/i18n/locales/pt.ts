@@ -10,6 +10,7 @@ export const pt: Dictionary = {
     whyUs: "Porquê a UpSpeech",
     forPatients: "Para pacientes",
     requestAccess: "Pedir acesso antecipado",
+    getTheApp: "Obter a app",
     skipToContent: "Saltar para o conteúdo",
     logoScrollTop: "UpSpeech, subir ao topo",
     logoGoHome: "UpSpeech, ir para a página inicial",
@@ -217,6 +218,7 @@ export const pt: Dictionary = {
       aiStepPrefix: "IA · passo ",
       stepPrefix: "Passo ",
       stepSuffix: " / 06",
+      fileTitle: "Ficha do paciente, semana 14",
       backToStart: "E volta ao passo 01",
       docs: [
         {
@@ -438,6 +440,9 @@ export const pt: Dictionary = {
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Sam Rivera responde",
         replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
+        recordLabel: "Gravas tu",
+        recordAlt:
+          "O ecrã de prática do paciente num telemóvel, pronto para gravar a resposta ao exercício de hoje",
       },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
@@ -504,7 +509,8 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Pergunta ao teu terapeuta da fala sobre a UpSpeech.",
+      headline: "Pronta quando o teu terapeuta estiver.",
+      body: "Instala a app já. Quando o teu terapeuta enviar o convite, fica ligada ao teu plano.",
       bodyPrefix:
         "A UpSpeech funciona através da tua clínica. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",

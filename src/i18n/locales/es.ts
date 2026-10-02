@@ -10,6 +10,7 @@ export const es: Dictionary = {
     whyUs: "Por qué UpSpeech",
     forPatients: "Para pacientes",
     requestAccess: "Solicitar acceso anticipado",
+    getTheApp: "Obtener la app",
     skipToContent: "Saltar al contenido",
     logoScrollTop: "UpSpeech, subir al inicio",
     logoGoHome: "UpSpeech, ir a la página de inicio",
@@ -216,6 +217,7 @@ export const es: Dictionary = {
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
+      fileTitle: "Ficha del paciente, semana 14",
       backToStart: "Y vuelta al paso 01",
       docs: [
         {
@@ -437,6 +439,9 @@ export const es: Dictionary = {
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Sam Rivera responde",
         replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
+        recordLabel: "Tú grabas",
+        recordAlt:
+          "La pantalla de práctica del paciente en un teléfono, lista para grabar la respuesta al ejercicio de hoy",
       },
       inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
@@ -503,7 +508,8 @@ export const es: Dictionary = {
       ],
     },
     closing: {
-      headline: "Pregunta a tu logopeda sobre UpSpeech.",
+      headline: "Lista cuando tu logopeda lo esté.",
+      body: "Instala la app ahora. Cuando tu logopeda te envíe la invitación, se conecta con tu plan.",
       bodyPrefix:
         "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
