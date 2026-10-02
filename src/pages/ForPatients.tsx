@@ -31,8 +31,20 @@ const SCREENSHOT_SIZES = [
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
 
-const exchangeShotClass =
-  "h-auto w-full rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]";
+const EXCHANGE = [
+  {
+    key: "today",
+    src: "/screenshots/detail/exchange-today.webp",
+    width: 1056,
+    height: 395,
+  },
+  {
+    key: "reply",
+    src: "/screenshots/detail/exchange-reply.webp",
+    width: 984,
+    height: 545,
+  },
+] as const;
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 // The device frame the app band already uses, and the screen rectangle inside
@@ -144,7 +156,7 @@ export default function ForPatients() {
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
                 than the front of a product. */}
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -161,56 +173,43 @@ export default function ForPatients() {
                 )}
                 <StoreBadges className="mt-4" />
               </div>
-              {/* The photo sits between the two screens, overlapped by the reply. */}
-              <div className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:ml-auto">
+              <ol className="relative mx-auto w-full max-w-[460px] space-y-6 lg:mx-0 lg:ml-auto">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-8 -bottom-[12%] h-[460px] w-[460px] rounded-full"
+                  className="pointer-events-none absolute -right-10 top-1/2 h-[480px] w-[480px] -translate-y-1/2 rounded-full"
                   style={{
                     background:
                       "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
                   }}
                 />
-                <figure className="relative z-10 w-full">
-                  <figcaption className="mb-2 font-body text-sm font-semibold text-calm-navy">
-                    {t.intro.exchange.todayLabel}
-                  </figcaption>
-                  <img
-                    src={localizedAsset(
-                      "/screenshots/detail/exchange-today.webp",
-                      locale,
+                {EXCHANGE.map(({ key, src, width, height }, i) => (
+                  <li key={key} className="relative">
+                    {i === 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-[13px] top-7 -bottom-6 w-0.5 bg-calm-lavender/60"
+                      />
                     )}
-                    alt={t.intro.exchange.todayAlt}
-                    width={1080}
-                    height={392}
-                    className={exchangeShotClass}
-                  />
-                </figure>
-                <div className="relative z-0 flex items-end justify-end">
-                  <CutOut
-                    name="patients-hero"
-                    alt={t.intro.photoAlt}
-                    priority
-                    renderHeight={{ base: 220, sm: 260, lg: 280 }}
-                    className="h-[220px] sm:h-[260px] lg:h-[280px]"
-                  />
-                </div>
-                <figure className="relative z-10 -mt-24 ml-auto w-[94%] sm:-mt-28">
-                  <figcaption className="mb-2 w-fit rounded-full bg-white/90 px-2.5 py-0.5 font-body text-sm font-semibold text-calm-navy">
-                    {t.intro.exchange.replyLabel}
-                  </figcaption>
-                  <img
-                    src={localizedAsset(
-                      "/screenshots/detail/exchange-reply.webp",
-                      locale,
-                    )}
-                    alt={t.intro.exchange.replyAlt}
-                    width={1040}
-                    height={290}
-                    className={exchangeShotClass}
-                  />
-                </figure>
-              </div>
+                    <p className="relative mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
+                      <span
+                        aria-hidden="true"
+                        className="flex h-7 w-7 items-center justify-center rounded-full bg-calm-lavender font-heading text-sm font-extrabold tabular-nums"
+                      >
+                        {i + 1}
+                      </span>
+                      {t.intro.exchange[`${key}Label`]}
+                    </p>
+                    <img
+                      src={localizedAsset(src, locale)}
+                      alt={t.intro.exchange[`${key}Alt`]}
+                      width={width}
+                      height={height}
+                      fetchPriority={i === 0 ? "high" : undefined}
+                      className="pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
+                    />
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>
