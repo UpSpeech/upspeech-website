@@ -356,6 +356,7 @@ export const en = {
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
       body: "UpSpeech is how you keep practising the work you do with your speech therapist between appointments. Your therapist sets the plan and follows how it's going while you practise in the app.",
+      inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
     },
