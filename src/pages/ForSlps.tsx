@@ -145,7 +145,7 @@ export default function ForSlps() {
               </p>
             </div>
 
-            <div className="relative mt-12 max-w-3xl overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
+            <div className="relative mt-12 max-w-3xl overflow-x-auto rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
               <img
                 src={localizedAsset(
                   "/screenshots/app/therapist-report.png",
@@ -155,7 +155,7 @@ export default function ForSlps() {
                 width={1588}
                 height={1580}
                 loading="lazy"
-                className="block h-auto w-full"
+                className="block h-auto w-full min-w-[680px] sm:min-w-0"
               />
             </div>
           </div>
