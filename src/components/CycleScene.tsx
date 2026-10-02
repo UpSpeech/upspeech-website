@@ -506,7 +506,7 @@ const StepList = () => {
 
         <svg
           viewBox="0 0 100 100"
-          className="mx-auto mt-8 w-[min(16rem,70vw)]"
+          className="mx-auto mt-6 w-[min(12rem,56vw)]"
           aria-hidden="true"
         >
           <circle
@@ -546,12 +546,15 @@ const StepList = () => {
           })}
         </svg>
 
-        <ol className="mt-10 space-y-9">
+        <ol className="mt-8">
           {t.nodes.map((node, i) => {
             const isClinician = NODE_ACTORS[i] === "clinician";
             const n = String(i + 1).padStart(2, "0");
             return (
-              <li key={i} className="flex gap-4">
+              <li
+                key={i}
+                className={`flex gap-4 ${i === 0 ? "" : i % 2 === 0 ? "mt-12" : "mt-6"}`}
+              >
                 <span
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
                     isClinician
@@ -569,7 +572,7 @@ const StepList = () => {
                   >
                     {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
                   </p>
-                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
+                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight text-balance">
                     {node.title}
                   </h3>
                   <p className="mt-2 font-body t-lead text-calm-charcoal/80 leading-relaxed">
