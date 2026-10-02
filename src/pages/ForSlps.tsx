@@ -1,8 +1,8 @@
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
-import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
 import { trackButtonClick } from "@/lib/analytics";
 
@@ -193,18 +193,13 @@ export default function ForSlps() {
               {t.faq.headline}
             </h2>
 
-            <dl className="mt-8 divide-y divide-calm-charcoal/10">
-              {t.faq.items.map((item) => (
-                <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
-                    {item.q}
-                  </dt>
-                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                    {item.a}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <Faq
+              items={t.faq.items.map((item) => ({
+                question: item.q,
+                answer: item.a,
+              }))}
+              className="mt-8"
+            />
           </div>
         </section>
 
@@ -225,8 +220,6 @@ export default function ForSlps() {
               {t.closing.bodySuffix}
             </p>
           </div>
-
-          <MedicalDisclaimer className="mt-8" />
         </section>
       </main>
 

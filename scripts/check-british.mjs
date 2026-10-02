@@ -58,7 +58,7 @@ const WORDS = [
   "practicing",
   "practiced",
   "pediatric\\w*",
-  "(?:to|you|they|we|can|will|should|and|or|who|that|help|helps|if|when|patients|how to) practice",
+  "(?:to|you|they|we|can|will|should|and|or|who|that|help|helps|if|when|patients|how to|I|do|does|must|may) practice",
 ];
 const AMERICAN = new RegExp(
   `(?<![-\\w/])(${[...STEMS, ...WORDS].join("|")})\\b`,
