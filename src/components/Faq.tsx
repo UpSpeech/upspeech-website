@@ -34,13 +34,13 @@ export function Faq({
           value={`faq-${index}`}
           className="border-b-0"
         >
-          <AccordionTrigger className="min-h-[44px] py-4 text-left hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
-            <span className="font-body font-semibold text-calm-charcoal">
+          <AccordionTrigger className="min-h-[44px] py-4 text-left text-calm-charcoal hover:no-underline data-[state=open]:text-calm-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40">
+            <span className="font-body text-lg font-semibold">
               {item.question}
             </span>
           </AccordionTrigger>
           <AccordionContent forceMount className="pb-4">
-            <div className="font-body t-lead text-calm-charcoal/80">
+            <div className="font-body text-base leading-relaxed text-calm-charcoal/90">
               {item.answer}
             </div>
           </AccordionContent>
