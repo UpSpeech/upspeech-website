@@ -184,11 +184,7 @@ const PinnedCycle = () => {
                         : "text-calm-lavender-ink"
                     }`}
                   >
-                    {activeActor === "clinician"
-                      ? t.clinicianStepPrefix +
-                        (activeIndex + 1).toString().padStart(2, "0")
-                      : t.aiStepPrefix +
-                        (activeIndex + 1).toString().padStart(2, "0")}
+                    {activeActor === "clinician" ? t.clinician : t.ai}
                   </span>
                 </div>
                 <h3 className="t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight mb-5">
@@ -199,7 +195,7 @@ const PinnedCycle = () => {
                 </p>
 
                 {/* Progress pips */}
-                <div className="mt-9 flex items-center gap-1.5">
+                <div className="mt-auto flex items-center gap-1.5 pt-6">
                   {NODE_ACTORS.map((_, i) => (
                     <span
                       key={i}

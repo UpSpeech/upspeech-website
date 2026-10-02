@@ -57,8 +57,8 @@ const slide = `700ms ${EASE}`;
 const HELD = "translateX(0)";
 // Offsets are tuned to the hand's 22% width and the sheet's 52%.
 const SIDES: Record<Actor, { hand: string; sheet: string; tilt: number }> = {
-  ai: { hand: "translateX(-30%)", sheet: "20%", tilt: -3 },
-  clinician: { hand: "translateX(30%)", sheet: "29%", tilt: 3 },
+  ai: { hand: "translateX(-30%)", sheet: "20%", tilt: 0 },
+  clinician: { hand: "translateX(30%)", sheet: "29%", tilt: 0 },
 };
 
 export default function HandoffScene({

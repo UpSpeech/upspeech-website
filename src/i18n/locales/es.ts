@@ -260,18 +260,21 @@ export const es: Dictionary = {
           ],
         },
         {
-          kind: "Intentos de esta semana",
+          kind: "Intentos",
           lines: [
-            { text: "Lun, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
-            { text: "Mié, inicios suaves, esfuerzo 3 de 5", mark: "ai" },
+            { text: "Lun, inicios suaves, esfuerzo 3 de 5", mark: "ai" },
+            { text: "Mié, tartamudeo voluntario, esfuerzo 3 de 5", mark: "ai" },
             { text: "Vie, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
           ],
         },
         {
           kind: "Siguiente paso",
           lines: [
-            { text: "Tres intentos, el esfuerzo baja.", mark: "plain" },
-            { text: "Siguiente paso: salidas controladas.", mark: "clin" },
+            {
+              text: "El esfuerzo bajó de 3 a 2 a lo largo de la semana.",
+              mark: "plain",
+            },
+            { text: "Siguiente paso: practicar llamadas.", mark: "clin" },
           ],
         },
       ],
@@ -281,7 +284,7 @@ export const es: Dictionary = {
         "Propuesto",
         "Activo",
         "Registrado",
-        "Elegido",
+        "Asignado",
       ],
       nodes: [
         {

@@ -260,20 +260,20 @@ export const en = {
         {
           kind: "Attempts this week",
           lines: [
-            { text: "Mon, soft starts, effort 2 of 5", mark: "ai" },
-            { text: "Wed, soft starts, effort 3 of 5", mark: "ai" },
+            { text: "Mon, soft starts, effort 3 of 5", mark: "ai" },
+            { text: "Wed, voluntary stuttering, effort 3 of 5", mark: "ai" },
             { text: "Fri, soft starts, effort 2 of 5", mark: "ai" },
           ],
         },
         {
           kind: "Next step",
           lines: [
-            { text: "Three attempts, effort falling.", mark: "plain" },
-            { text: "Next step: pull-outs.", mark: "clin" },
+            { text: "Effort fell from 3 to 2 over the week.", mark: "plain" },
+            { text: "Next step: phone-call practice.", mark: "clin" },
           ],
         },
       ],
-      states: ["Draft", "Ready", "Proposed", "Active", "Logged", "Chosen"],
+      states: ["Draft", "Ready", "Proposed", "Active", "Logged", "Assigned"],
       nodes: [
         {
           verb: "drafts",
