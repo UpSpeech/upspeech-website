@@ -376,6 +376,20 @@ export const es: Dictionary = {
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
       ],
+      walkthrough: [
+        {
+          title: "Hoy",
+          line: "El plan que tu terapeuta preparó para el día te está esperando, con el ejercicio ya elegido.",
+        },
+        {
+          title: "Tu recorrido",
+          line: "Mira qué pasos has dado y cuáles vienen después.",
+        },
+        {
+          title: "Práctica",
+          line: "Elige un ejercicio y practica a tu ritmo.",
+        },
+      ],
       childScreenshots: [
         "Pantalla de la app móvil de UpSpeech que un padre o una madre usa para hacer la práctica del día con su hijo",
         "Pantalla de práctica de la app móvil de UpSpeech que ve un niño más pequeño, con el personaje acompañante y la indicación del ejercicio",

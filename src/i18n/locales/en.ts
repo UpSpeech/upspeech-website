@@ -375,6 +375,20 @@ export const en = {
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
       ],
+      walkthrough: [
+        {
+          title: "Today",
+          line: "The plan your therapist set for the day is waiting, with the exercise already chosen.",
+        },
+        {
+          title: "Your journey",
+          line: "See which steps are done and which come next.",
+        },
+        {
+          title: "Practice",
+          line: "Pick an exercise and practise at a pace that suits you.",
+        },
+      ],
       childScreenshots: [
         "UpSpeech mobile app screen a parent uses to run the day's practice with their child",
         "UpSpeech mobile app practice screen a younger child sees, with the companion character and the cue for the exercise",

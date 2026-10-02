@@ -23,7 +23,6 @@ const SCREENSHOTS = [
 // The caregiver screen is deliberately not here. It is a sparse screen whose
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
-const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice-crop.webp";
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
@@ -293,31 +292,38 @@ export default function ForPatients() {
             </div>
 
             <StoreButtons className="mt-8" />
-            {/* Three shipped screens, then the one a younger patient sees.
-                Four phones do not fit the gutter at the height three did, so
-                the whole row steps down together and the first three keep
-                their relative sizing to each other. */}
-            <div className="scroll-fade-x mt-12 flex snap-x snap-mandatory items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:snap-none lg:justify-center lg:overflow-visible">
+            <ol className="mt-14 space-y-14 sm:space-y-20">
               {SCREENSHOTS.map((base, i) => (
-                <img
+                <li
                   key={base}
-                  src={localizedAsset(base, locale)}
-                  alt={t.app.screenshots[i]}
-                  loading="lazy"
-                  width={600}
-                  height={542}
-                  className={`h-auto w-[min(320px,76vw)] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]`}
-                />
+                  className={`grid items-center gap-6 sm:grid-cols-2 sm:gap-14 ${
+                    i % 2 ? "sm:[&>div:first-child]:order-2" : ""
+                  }`}
+                >
+                  <div className="flex justify-center">
+                    <img
+                      src={localizedAsset(base, locale)}
+                      alt={t.app.screenshots[i]}
+                      loading="lazy"
+                      width={600}
+                      height={542}
+                      className="h-auto w-[min(380px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
+                    />
+                  </div>
+                  <div className="max-w-sm">
+                    <p className={eyebrowClass}>
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-2 t-h3 font-heading font-bold text-calm-navy tracking-tight">
+                      {t.app.walkthrough[i].title}
+                    </h3>
+                    <p className="mt-3 font-body t-lead text-calm-charcoal/80 leading-relaxed">
+                      {t.app.walkthrough[i].line}
+                    </p>
+                  </div>
+                </li>
               ))}
-              <img
-                src={localizedAsset(CHILD_SCREENSHOT, locale)}
-                alt={t.app.childScreenshots[1]}
-                loading="lazy"
-                width={446}
-                height={565}
-                className="h-auto w-[min(236px,58vw)] max-w-none shrink-0 snap-start rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
-              />
-            </div>
+            </ol>
           </div>
         </section>
 
