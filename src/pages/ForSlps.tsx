@@ -145,7 +145,7 @@ export default function ForSlps() {
               </p>
             </div>
 
-            <div className="relative mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
+            <div className="relative mt-12 max-w-3xl overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
               <img
                 src={localizedAsset(
                   "/screenshots/app/therapist-report.png",
