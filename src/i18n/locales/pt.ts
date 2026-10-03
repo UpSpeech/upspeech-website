@@ -214,6 +214,7 @@ export const pt: Dictionary = {
       headlineEmphasis: "revisto por um clínico.",
       clinician: "Clínico",
       ai: "IA",
+      patient: "Paciente",
       clinicianStepPrefix: "Clínico · passo ",
       aiStepPrefix: "IA · passo ",
       stepPrefix: "Passo ",

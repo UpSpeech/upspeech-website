@@ -48,7 +48,8 @@ function buildLines(
 const TINTS: Record<string, string> = {
   ai: "[&>span:first-child]:rounded [&>span:first-child]:bg-calm-lavender/25 [&>span:first-child]:px-1 [&>span:first-child]:[box-decoration-break:clone] text-calm-charcoal",
   plain: "text-calm-charcoal",
-  struck: "text-calm-charcoal/80 line-through decoration-calm-navy/60",
+  struck: "text-calm-charcoal line-through decoration-calm-navy",
+  patient: "border-l-2 border-celebrate-600 pl-2 text-calm-charcoal",
   clin: "border-l-2 border-calm-navy pl-2 font-semibold text-calm-navy",
 };
 
@@ -87,7 +88,7 @@ export default function HandoffScene({
   title,
 }: {
   activeIndex: number;
-  labels: Record<Actor, string>;
+  labels: Record<Actor | "patient", string>;
   states: readonly string[];
   docs: readonly Doc[];
   title: string;
@@ -102,7 +103,7 @@ export default function HandoffScene({
         maxWidth: "min(620px, 62vh * 1.4)",
       }}
     >
-      <div className="mb-4 flex items-center justify-between gap-4 border-b border-calm-charcoal/10 pb-3 [@media(max-height:820px)]:mb-2.5 [@media(max-height:820px)]:pb-2">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-calm-charcoal/10 pb-3 [@media(max-height:820px)]:mb-2.5 [@media(max-height:820px)]:pb-2">
         <p className="font-heading text-base font-bold text-calm-navy">
           {title}
         </p>
@@ -114,6 +115,10 @@ export default function HandoffScene({
           <span className="flex items-center gap-1.5">
             <span className="h-3 w-0.5 bg-calm-navy" />
             {labels.clinician}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-3 w-0.5 bg-celebrate-600" />
+            {labels.patient}
           </span>
         </div>
       </div>
@@ -185,7 +190,7 @@ export default function HandoffScene({
                   {lines.map((line, i) => {
                     const mark =
                       s === ATTEMPTS
-                        ? "plain"
+                        ? "patient"
                         : line.mark === "plain" &&
                             (earlierAi.has(line.text) || s === NEXT_STEP)
                           ? "ai"

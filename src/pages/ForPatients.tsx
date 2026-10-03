@@ -311,9 +311,11 @@ export default function ForPatients() {
                   <PhoneShot
                     src={localizedAsset(base, locale)}
                     alt={t.app.screenshots[i]}
-                    className="relative mx-auto w-full max-w-[260px]"
+                    className={`relative mx-auto w-full ${i === 0 ? "max-w-[300px]" : "max-w-[260px]"}`}
                   />
-                  <div className="mx-auto mt-5 max-w-[260px]">
+                  <div
+                    className={`mx-auto mt-5 ${i === 0 ? "max-w-[300px]" : "max-w-[260px]"}`}
+                  >
                     <p className="font-heading text-lg font-bold text-calm-navy">
                       <span className="mr-2 font-body text-sm tabular-nums text-calm-lavender-ink">
                         {String(i + 1).padStart(2, "0")}

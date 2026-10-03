@@ -211,6 +211,7 @@ export const en = {
       headlineEmphasis: "reviewed by a clinician.",
       clinician: "Clinician",
       ai: "AI",
+      patient: "Patient",
       clinicianStepPrefix: "Clinician · step ",
       aiStepPrefix: "AI · step ",
       stepPrefix: "Step ",

@@ -213,6 +213,7 @@ export const es: Dictionary = {
       headlineEmphasis: "revisado por un logopeda.",
       clinician: "Logopeda",
       ai: "IA",
+      patient: "Paciente",
       clinicianStepPrefix: "Logopeda · paso ",
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",

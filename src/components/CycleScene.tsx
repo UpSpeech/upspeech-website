@@ -139,7 +139,7 @@ const PinnedCycle = () => {
           >
             <HandoffScene
               activeIndex={activeIndex}
-              labels={{ ai: t.ai, clinician: t.clinician }}
+              labels={{ ai: t.ai, clinician: t.clinician, patient: t.patient }}
               states={t.states}
               docs={t.docs}
               title={t.fileTitle}
@@ -242,7 +242,7 @@ const StepList = () => {
         <div className="mt-6">
           <HandoffScene
             activeIndex={NODE_ACTORS.length - 1}
-            labels={{ ai: t.ai, clinician: t.clinician }}
+            labels={{ ai: t.ai, clinician: t.clinician, patient: t.patient }}
             states={t.states}
             docs={t.docs}
             title={t.fileTitle}
