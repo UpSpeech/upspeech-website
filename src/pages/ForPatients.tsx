@@ -8,19 +8,12 @@ import StoreBadges from "@/components/StoreBadges";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
-// Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
-// These three are crops of the shipped app on demo data, cut to the part each
-// caption is about and shown at 320px wide. The corners are baked into the image; there is no device frame.
-const SCREENSHOTS = [
-  "/screenshots/mobile/patient-home-crop.webp",
-  "/screenshots/mobile/patient-journey-crop.webp",
-  "/screenshots/mobile/patient-practice-crop.webp",
-];
-// Pixel size of each crop above, in the same order: 2x of the 460px column.
-const SCREENSHOT_SIZES = [
-  { width: 920, height: 825 },
-  { width: 920, height: 1280 },
-  { width: 920, height: 767 },
+// Real app screens on demo data, one patient and one story: 43 percent, 3 of 7 steps. Alt
+// text comes from forPatients.app.screenshots.
+const GALLERY = [
+  "/screenshots/mobile/patient-home-screen.webp",
+  "/screenshots/mobile/patient-journey-screen.webp",
+  "/screenshots/mobile/patient-practice-screen.webp",
 ];
 
 // The child-facing screen, cropped to the character and the cue like the three
@@ -33,18 +26,19 @@ const SCREENSHOT_SIZES = [
 
 const EXCHANGE = [
   {
-    key: "today",
     src: "/screenshots/detail/exchange-today.webp",
-    width: 1056,
-    height: 395,
+    width: 680,
+    height: 424,
   },
   {
-    key: "reply",
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 984,
-    height: 500,
+    width: 680,
+    height: 316,
   },
 ] as const;
+const RECORD_SHOT = "/screenshots/mobile/patient-record.webp";
+const cardClass =
+  "pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]";
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 // The device frame the app band already uses, and the screen rectangle inside
@@ -119,6 +113,26 @@ const PhoneShot = ({
   </div>
 );
 
+const hasStores = Boolean(APP_STORE_URL || PLAY_STORE_URL);
+
+const BeatLabel = ({
+  n,
+  children,
+}: {
+  n: number;
+  children: React.ReactNode;
+}) => (
+  <p className="mb-2.5 flex items-center gap-2.5 font-body text-sm font-semibold text-calm-navy">
+    <span
+      aria-hidden="true"
+      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-calm-lavender font-heading text-xs font-extrabold tabular-nums text-calm-navy"
+    >
+      {n}
+    </span>
+    {children}
+  </p>
+);
+
 export default function ForPatients() {
   const locale = useLocale();
   const t = useT().forPatients;
@@ -150,55 +164,61 @@ export default function ForPatients() {
       <Header />
 
       <main id="main">
-        {/* Intro */}
-        <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
+        {/* Intro: the page leads with getting the app, and the right half is
+            the exchange only UpSpeech has: the therapist assigns, the patient
+            records on the phone, the therapist replies. */}
+        <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,4rem)] sm:pt-36">
           <div className="gutter relative">
-            {/* Two columns from lg up. The right half of this fold used to be
-                empty, which is what made the page read as a document rather
-                than the front of a product. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:gap-12">
+            <div className="grid items-center gap-12 lg:grid-cols-[0.86fr,1.14fr] lg:gap-8">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} <br />
                   {t.intro.headlineLine2}
                 </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
+                <p className="mt-6 max-w-xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
                   {t.intro.body}
                 </p>
-                {(APP_STORE_URL || PLAY_STORE_URL) && (
-                  <p className="mt-8 font-body text-base font-semibold text-calm-navy">
-                    {t.intro.inviteNote}
-                  </p>
-                )}
-                <StoreBadges className="mt-4" />
-              </div>
-              <ol className="relative mx-auto w-full max-w-[460px] space-y-6 lg:mx-0 lg:ml-auto">
-                {EXCHANGE.map(({ key, src, width, height }, i) => (
-                  <li key={key} className="relative">
-                    {i === 0 && (
-                      <span
-                        aria-hidden="true"
-                        className="absolute left-[13px] top-[1.1rem] -bottom-6 w-0.5 bg-calm-lavender/60"
-                      />
-                    )}
-                    <p className="mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
-                      <span
-                        aria-hidden="true"
-                        className="ml-2 h-3 w-3 shrink-0 rounded-full bg-calm-lavender"
-                      />
-                      {t.intro.exchange[`${key}Label`]}
+                <div id="get-app" className="mt-8 scroll-mt-32">
+                  <StoreBadges size="lg" className="-ml-2.5" />
+                  {hasStores && (
+                    <p className="mt-3 font-body text-base font-semibold text-calm-charcoal/80">
+                      {t.intro.inviteNote}
                     </p>
-                    <img
-                      src={localizedAsset(src, locale)}
-                      alt={t.intro.exchange[`${key}Alt`]}
-                      width={width}
-                      height={height}
-                      fetchPriority={i === 0 ? "high" : undefined}
-                      className="pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
-                    />
-                  </li>
-                ))}
+                  )}
+                </div>
+              </div>
+
+              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[680px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
+                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-4 sm:self-start">
+                  <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
+                  <img
+                    src={localizedAsset(EXCHANGE[0].src, locale)}
+                    alt={t.intro.exchange.todayAlt}
+                    width={EXCHANGE[0].width}
+                    height={EXCHANGE[0].height}
+                    fetchPriority="high"
+                    className={cardClass}
+                  />
+                </li>
+                <li className="relative z-10 flex flex-col items-center sm:col-start-2 sm:row-span-3 sm:row-start-1">
+                  <BeatLabel n={2}>{t.intro.exchange.recordLabel}</BeatLabel>
+                  <PhoneShot
+                    src={localizedAsset(RECORD_SHOT, locale)}
+                    alt={t.intro.exchange.recordAlt}
+                    className="relative w-[190px] sm:w-[250px]"
+                  />
+                </li>
+                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-4 sm:self-start">
+                  <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
+                  <img
+                    src={localizedAsset(EXCHANGE[1].src, locale)}
+                    alt={t.intro.exchange.replyAlt}
+                    width={EXCHANGE[1].width}
+                    height={EXCHANGE[1].height}
+                    className={cardClass}
+                  />
+                </li>
               </ol>
             </div>
           </div>
@@ -263,7 +283,7 @@ export default function ForPatients() {
                 bellyShape="round"
               />
 
-              <p className="t-statement mt-4 max-w-xl font-heading font-medium text-calm-navy">
+              <p className="t-statement mt-4 max-w-xl text-balance font-heading font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>
@@ -282,38 +302,33 @@ export default function ForPatients() {
               </p>
             </div>
 
-            <StoreBadges className="mt-8" />
-            <ol className="mt-14 space-y-12 sm:space-y-14">
-              {SCREENSHOTS.map((base, i) => (
-                <li
-                  key={base}
-                  className={`grid items-center gap-6 sm:grid-cols-2 sm:gap-14 ${
-                    i % 2 ? "sm:[&>div:first-child]:order-2" : ""
-                  }`}
-                >
-                  <div className="flex justify-center">
-                    <img
+            <ol className="-mx-[max(1.5rem,5vw)] mt-12 flex snap-x snap-mandatory scroll-px-[max(1.5rem,5vw)] gap-6 overflow-x-auto px-[max(1.5rem,5vw)] pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-10 sm:overflow-visible sm:px-0">
+              {GALLERY.map((base, i) => {
+                const maxW = i === 0 ? "max-w-[300px]" : "max-w-[260px]";
+                return (
+                  <li
+                    key={base}
+                    className="w-[68%] shrink-0 snap-start sm:w-auto"
+                  >
+                    <PhoneShot
                       src={localizedAsset(base, locale)}
                       alt={t.app.screenshots[i]}
-                      loading="lazy"
-                      width={SCREENSHOT_SIZES[i].width}
-                      height={SCREENSHOT_SIZES[i].height}
-                      className="h-auto w-[min(460px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
+                      className={`relative mx-auto w-full ${maxW}`}
                     />
-                  </div>
-                  <div className="max-w-sm">
-                    <p className={`${eyebrowClass} !tracking-normal`}>
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-2 t-h3 font-heading font-bold text-calm-navy tracking-tight">
-                      {t.app.walkthrough[i].title}
-                    </h3>
-                    <p className="mt-3 font-body t-lead text-calm-charcoal/90 leading-relaxed">
-                      {t.app.walkthrough[i].line}
-                    </p>
-                  </div>
-                </li>
-              ))}
+                    <div className={`mx-auto mt-5 ${maxW}`}>
+                      <p className="font-heading text-lg font-bold text-calm-navy">
+                        <span className="mr-2 font-body text-sm tabular-nums text-calm-lavender-ink">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {t.app.walkthrough[i].title}
+                      </p>
+                      <p className="mt-1.5 font-body text-base text-calm-charcoal/90 leading-relaxed">
+                        {t.app.walkthrough[i].line}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </section>
@@ -335,13 +350,21 @@ export default function ForPatients() {
           </div>
         </section>
 
-        {/* Closing CTA */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
+        {/* Closing: the app first, the clinic route as one quiet line. */}
+        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="mx-auto max-w-3xl text-center">
             <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/90 leading-relaxed">
+            {hasStores && (
+              <>
+                <p className="mx-auto mt-4 max-w-xl text-balance font-body text-base text-calm-charcoal/90 leading-relaxed">
+                  {t.closing.body}
+                </p>
+                <StoreBadges size="lg" className="mt-5 justify-center" />
+              </>
+            )}
+            <p className="mx-auto mt-6 max-w-xl text-balance font-body t-small text-calm-charcoal/80">
               {t.closing.bodyPrefix}
               <a
                 href={`${localizedHref("/", locale)}#cta`}

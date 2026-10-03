@@ -10,6 +10,7 @@ export const pt: Dictionary = {
     whyUs: "Porquê a UpSpeech",
     forPatients: "Para pacientes",
     requestAccess: "Pedir acesso antecipado",
+    getTheApp: "Obter a app",
     skipToContent: "Saltar para o conteúdo",
     logoScrollTop: "UpSpeech, subir ao topo",
     logoGoHome: "UpSpeech, ir para a página inicial",
@@ -213,17 +214,19 @@ export const pt: Dictionary = {
       headlineEmphasis: "revisto por um clínico.",
       clinician: "Clínico",
       ai: "IA",
+      patient: "Paciente",
       clinicianStepPrefix: "Clínico · passo ",
       aiStepPrefix: "IA · passo ",
       stepPrefix: "Passo ",
       stepSuffix: " / 06",
+      fileTitle: "Ficha do paciente, semana 14",
       backToStart: "E volta ao passo 01",
       docs: [
         {
           kind: "Relatório da sessão",
           lines: [
             {
-              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              text: "O paciente praticou 3 vezes esta semana.",
               mark: "ai",
             },
             { text: "O evitamento de telefonemas mantém-se.", mark: "ai" },
@@ -233,7 +236,7 @@ export const pt: Dictionary = {
           kind: "Relatório da sessão",
           lines: [
             {
-              text: "O paciente praticou inícios suaves 4 vezes esta semana.",
+              text: "O paciente praticou 3 vezes esta semana.",
               mark: "plain",
             },
             { text: "O evitamento de telefonemas mantém-se.", mark: "struck" },
@@ -275,7 +278,7 @@ export const pt: Dictionary = {
               text: "O esforço desceu de 3 para 2 ao longo da semana.",
               mark: "plain",
             },
-            { text: "Passo seguinte: praticar telefonemas.", mark: "clin" },
+            { text: "Praticar telefonemas.", mark: "clin" },
           ],
         },
       ],
@@ -310,7 +313,7 @@ export const pt: Dictionary = {
         },
         {
           verb: "ouve",
-          title: "A IA ajuda entre sessões.",
+          title: "A UpSpeech regista cada tentativa.",
           body: "A UpSpeech guarda cada tentativa com a técnica, a data e a avaliação que o paciente fez do esforço.",
         },
         {
@@ -433,11 +436,14 @@ export const pt: Dictionary = {
       headlineLine2: "entre sessões.",
       body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
-        todayLabel: "Do teu terapeuta",
+        todayLabel: "Exercício de hoje, do Sam Rivera",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Sam Rivera responde",
         replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
+        recordLabel: "Gravas tu",
+        recordAlt:
+          "O ecrã de prática do paciente num telemóvel, pronto para gravar a resposta ao exercício de hoje",
       },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
@@ -504,7 +510,8 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Pergunta ao teu terapeuta da fala sobre a UpSpeech.",
+      headline: "Pronta quando o teu terapeuta estiver.",
+      body: "Instala a app já. Quando o teu terapeuta enviar o convite, fica ligada ao teu plano.",
       bodyPrefix:
         "A UpSpeech funciona através da tua clínica. Se geres um consultório e queres usá-la com os teus pacientes, podes ",
       bodyLink: "pedir acesso aqui",

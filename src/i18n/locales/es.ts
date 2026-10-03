@@ -10,6 +10,7 @@ export const es: Dictionary = {
     whyUs: "Por qué UpSpeech",
     forPatients: "Para pacientes",
     requestAccess: "Solicitar acceso anticipado",
+    getTheApp: "Obtener la app",
     skipToContent: "Saltar al contenido",
     logoScrollTop: "UpSpeech, subir al inicio",
     logoGoHome: "UpSpeech, ir a la página de inicio",
@@ -212,17 +213,19 @@ export const es: Dictionary = {
       headlineEmphasis: "revisado por un logopeda.",
       clinician: "Logopeda",
       ai: "IA",
+      patient: "Paciente",
       clinicianStepPrefix: "Logopeda · paso ",
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
+      fileTitle: "Ficha del paciente, semana 14",
       backToStart: "Y vuelta al paso 01",
       docs: [
         {
           kind: "Informe de la sesión",
           lines: [
             {
-              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              text: "El paciente practicó 3 veces esta semana.",
               mark: "ai",
             },
             { text: "La evitación de llamadas sigue igual.", mark: "ai" },
@@ -232,7 +235,7 @@ export const es: Dictionary = {
           kind: "Informe de la sesión",
           lines: [
             {
-              text: "El paciente practicó inicios suaves 4 veces esta semana.",
+              text: "El paciente practicó 3 veces esta semana.",
               mark: "plain",
             },
             { text: "La evitación de llamadas sigue igual.", mark: "struck" },
@@ -274,7 +277,7 @@ export const es: Dictionary = {
               text: "El esfuerzo bajó de 3 a 2 a lo largo de la semana.",
               mark: "plain",
             },
-            { text: "Siguiente paso: practicar llamadas.", mark: "clin" },
+            { text: "Practicar llamadas.", mark: "clin" },
           ],
         },
       ],
@@ -309,7 +312,7 @@ export const es: Dictionary = {
         },
         {
           verb: "escucha",
-          title: "La IA ayuda entre sesiones.",
+          title: "UpSpeech registra cada intento.",
           body: "UpSpeech guarda cada intento con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
         },
         {
@@ -432,11 +435,14 @@ export const es: Dictionary = {
       headlineLine2: "entre sesiones.",
       body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
-        todayLabel: "De tu terapeuta",
+        todayLabel: "Ejercicio de hoy, de Sam Rivera",
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Sam Rivera responde",
         replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
+        recordLabel: "Tú grabas",
+        recordAlt:
+          "La pantalla de práctica del paciente en un teléfono, lista para grabar la respuesta al ejercicio de hoy",
       },
       inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
@@ -503,7 +509,8 @@ export const es: Dictionary = {
       ],
     },
     closing: {
-      headline: "Pregunta a tu logopeda sobre UpSpeech.",
+      headline: "Lista cuando tu logopeda lo esté.",
+      body: "Instala la app ahora. Cuando tu logopeda te envíe la invitación, se conecta con tu plan.",
       bodyPrefix:
         "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",

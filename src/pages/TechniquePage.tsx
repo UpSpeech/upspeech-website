@@ -121,6 +121,29 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     },
   ].filter((link): link is { id: string; label: string } => Boolean(link));
 
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const railKey = railLinks.map((l) => l.id).join(",");
+  useEffect(() => {
+    const els = railKey
+      .split(",")
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (!els.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const hit = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+          )[0];
+        if (hit) setActiveId(hit.target.id);
+      },
+      { rootMargin: "-20% 0px -65% 0px" },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [railKey]);
+
   // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
     const lines = text.split(/\\n|\n/).filter((line) => line.trim());
@@ -386,7 +409,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                         <li key={link.id}>
                           <a
                             href={`#${link.id}`}
-                            className="inline-flex min-h-[44px] items-center font-body t-small font-semibold text-calm-charcoal hover:text-calm-navy hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                            aria-current={
+                              activeId === link.id ? "location" : undefined
+                            }
+                            className={`inline-flex min-h-[44px] items-center font-body t-small font-semibold hover:text-calm-navy hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40 ${
+                              activeId === link.id
+                                ? "relative text-calm-navy before:absolute before:-left-6 before:bottom-2 before:top-2 before:w-0.5 before:bg-calm-navy"
+                                : "text-calm-charcoal"
+                            }`}
                           >
                             {link.label}
                           </a>
