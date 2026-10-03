@@ -27,13 +27,13 @@ const GALLERY = [
 const EXCHANGE = [
   {
     src: "/screenshots/detail/exchange-today.webp",
-    width: 1080,
-    height: 400,
+    width: 680,
+    height: 424,
   },
   {
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 1008,
-    height: 292,
+    width: 680,
+    height: 316,
   },
 ] as const;
 const RECORD_SHOT = "/screenshots/mobile/patient-record.webp";
@@ -169,7 +169,7 @@ export default function ForPatients() {
             records on the phone, the therapist replies. */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,4rem)] sm:pt-36">
           <div className="gutter relative">
-            <div className="grid items-center gap-12 lg:grid-cols-[0.9fr,1.1fr] lg:gap-8">
+            <div className="grid items-center gap-12 lg:grid-cols-[0.86fr,1.14fr] lg:gap-8">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -189,7 +189,7 @@ export default function ForPatients() {
                 </div>
               </div>
 
-              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[640px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
+              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[680px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
                 <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-4 sm:self-start">
                   <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
                   <img
@@ -206,7 +206,7 @@ export default function ForPatients() {
                   <PhoneShot
                     src={localizedAsset(RECORD_SHOT, locale)}
                     alt={t.intro.exchange.recordAlt}
-                    className="relative w-[190px] sm:w-[225px]"
+                    className="relative w-[190px] sm:w-[250px]"
                   />
                 </li>
                 <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-4 sm:self-start">

@@ -434,7 +434,7 @@ export const es: Dictionary = {
       headlineLine2: "entre sesiones.",
       body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
-        todayLabel: "El ejercicio de hoy, definido por Sam Rivera",
+        todayLabel: "Ejercicio de hoy, de Sam Rivera",
         todayAlt:
           "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
         replyLabel: "Sam Rivera responde",

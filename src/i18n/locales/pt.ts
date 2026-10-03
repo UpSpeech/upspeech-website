@@ -435,7 +435,7 @@ export const pt: Dictionary = {
       headlineLine2: "entre sessões.",
       body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
-        todayLabel: "O exercício de hoje, definido pelo Sam Rivera",
+        todayLabel: "Exercício de hoje, do Sam Rivera",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
         replyLabel: "Sam Rivera responde",
