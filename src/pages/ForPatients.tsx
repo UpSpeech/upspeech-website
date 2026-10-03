@@ -303,31 +303,32 @@ export default function ForPatients() {
             </div>
 
             <ol className="-mx-[max(1.5rem,5vw)] mt-12 flex snap-x snap-mandatory scroll-px-[max(1.5rem,5vw)] gap-6 overflow-x-auto px-[max(1.5rem,5vw)] pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-10 sm:overflow-visible sm:px-0">
-              {GALLERY.map((base, i) => (
-                <li
-                  key={base}
-                  className="w-[68%] shrink-0 snap-start sm:w-auto"
-                >
-                  <PhoneShot
-                    src={localizedAsset(base, locale)}
-                    alt={t.app.screenshots[i]}
-                    className={`relative mx-auto w-full ${i === 0 ? "max-w-[300px]" : "max-w-[260px]"}`}
-                  />
-                  <div
-                    className={`mx-auto mt-5 ${i === 0 ? "max-w-[300px]" : "max-w-[260px]"}`}
+              {GALLERY.map((base, i) => {
+                const maxW = i === 0 ? "max-w-[300px]" : "max-w-[260px]";
+                return (
+                  <li
+                    key={base}
+                    className="w-[68%] shrink-0 snap-start sm:w-auto"
                   >
-                    <p className="font-heading text-lg font-bold text-calm-navy">
-                      <span className="mr-2 font-body text-sm tabular-nums text-calm-lavender-ink">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {t.app.walkthrough[i].title}
-                    </p>
-                    <p className="mt-1.5 font-body text-base text-calm-charcoal/90 leading-relaxed">
-                      {t.app.walkthrough[i].line}
-                    </p>
-                  </div>
-                </li>
-              ))}
+                    <PhoneShot
+                      src={localizedAsset(base, locale)}
+                      alt={t.app.screenshots[i]}
+                      className={`relative mx-auto w-full ${maxW}`}
+                    />
+                    <div className={`mx-auto mt-5 ${maxW}`}>
+                      <p className="font-heading text-lg font-bold text-calm-navy">
+                        <span className="mr-2 font-body text-sm tabular-nums text-calm-lavender-ink">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {t.app.walkthrough[i].title}
+                      </p>
+                      <p className="mt-1.5 font-body text-base text-calm-charcoal/90 leading-relaxed">
+                        {t.app.walkthrough[i].line}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </section>
