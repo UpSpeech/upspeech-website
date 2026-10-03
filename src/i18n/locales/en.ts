@@ -271,7 +271,7 @@ export const en = {
           kind: "Next step",
           lines: [
             { text: "Effort fell from 3 to 2 over the week.", mark: "plain" },
-            { text: "Next step: phone-call practice.", mark: "clin" },
+            { text: "Phone-call practice.", mark: "clin" },
           ],
         },
       ],

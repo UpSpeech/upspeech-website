@@ -276,7 +276,7 @@ export const es: Dictionary = {
               text: "El esfuerzo bajó de 3 a 2 a lo largo de la semana.",
               mark: "plain",
             },
-            { text: "Siguiente paso: practicar llamadas.", mark: "clin" },
+            { text: "Practicar llamadas.", mark: "clin" },
           ],
         },
       ],
