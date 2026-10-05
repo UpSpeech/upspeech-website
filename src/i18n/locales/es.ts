@@ -437,9 +437,10 @@ export const es: Dictionary = {
       exchange: {
         todayLabel: "Ejercicio de hoy, de Sam Rivera",
         todayAlt:
-          "El panel del paciente: la práctica de hoy, definida por el terapeuta, con un botón para empezar",
+          "La práctica de hoy en el panel del paciente: Inicios suaves, definida por el terapeuta, unos 5 minutos",
         replyLabel: "Tu terapeuta responde",
-        replyAlt: "Una nota del terapeuta sobre una grabación del paciente",
+        replyAlt:
+          "Una grabación de la práctica de Leo con barra de reproducción, y el feedback del terapeuta debajo",
         recordLabel: "Tú grabas",
         recordAlt:
           "La pantalla de práctica del paciente en un teléfono, lista para grabar la respuesta al ejercicio de hoy",

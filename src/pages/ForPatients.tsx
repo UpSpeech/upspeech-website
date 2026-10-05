@@ -19,13 +19,13 @@ const GALLERY = [
 const EXCHANGE = [
   {
     src: "/screenshots/detail/exchange-today.webp",
-    width: 680,
-    height: 424,
+    width: 1104,
+    height: 498,
   },
   {
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 680,
-    height: 316,
+    width: 1104,
+    height: 822,
   },
 ] as const;
 const RECORD_SHOT = "/screenshots/mobile/patient-record.webp";
