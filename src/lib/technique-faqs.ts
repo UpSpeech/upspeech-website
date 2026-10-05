@@ -24,7 +24,7 @@ export const TECHNIQUE_FAQS: Record<string, FAQ[]> = {
         "No. Voluntary stuttering is a therapeutic technique practised under the guidance of a speech-language pathologist. It involves producing easy, relaxed repetitions or prolongations, not imitating or mocking stuttering. The goal is to build openness, reduce tension, and improve overall communication.",
     },
     {
-      question: "When should I practice voluntary stuttering?",
+      question: "When should I practise voluntary stuttering?",
       answer:
         "Your speech-language pathologist will guide you on when and how to practise. Typically, you start in low-pressure situations, such as with a trusted friend or during a therapy session, and gradually progress to more challenging speaking contexts as your confidence grows.",
     },

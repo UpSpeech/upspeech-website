@@ -9,9 +9,9 @@ import {
   getTechniqueStructuredData,
   getTechniqueFAQStructuredData,
 } from "@/lib/seo-data";
-import { TechniqueFAQ } from "@/components/TechniqueFAQ";
+import { Faq } from "@/components/Faq";
+import { getTechniqueFAQs } from "@/lib/technique-faqs";
 import { useLocale, useT, localizedHref } from "@/i18n";
-import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 
 interface TechniquePageProps {
   slug: string;
@@ -22,6 +22,11 @@ const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 // The one block on the page that earns its own ground: a procedure the reader follows.
 const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
+const FAQ_TITLES: Record<string, string> = {
+  en: "Frequently Asked Questions",
+  pt: "Perguntas Frequentes",
+  es: "Preguntas Frecuentes",
+};
 const headingClass = "font-heading t-h3 font-bold text-calm-navy";
 const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
 
@@ -85,6 +90,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
   }, [slug, locale]);
 
   const staticSeo = TECHNIQUE_SEO[slug];
+  const faqs = getTechniqueFAQs(slug, locale);
 
   // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
@@ -303,9 +309,19 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   </section>
                 )}
 
-              <TechniqueFAQ slug={slug} locale={locale} />
-
-              <MedicalDisclaimer className="mx-0 mt-8 border-t-0 pt-0" />
+              {faqs?.length ? (
+                <section className="max-w-3xl border-t border-calm-charcoal/10 pt-8">
+                  <h2 className={`${headingClass} mb-5`}>
+                    {FAQ_TITLES[locale] || FAQ_TITLES.en}
+                  </h2>
+                  <Faq
+                    items={faqs.map((faq) => ({
+                      question: faq.question,
+                      answer: faq.answer,
+                    }))}
+                  />
+                </section>
+              ) : null}
             </div>
           </div>
         </main>

@@ -1,3 +1,4 @@
+import { Faq } from "@/components/Faq";
 import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import { useLocale, localizedHref, type Locale } from "@/i18n";
@@ -471,18 +472,14 @@ export default function Support() {
               <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.faqHeading}
               </h2>
-              <dl className="mt-4 divide-y divide-gray-100">
-                {c.faq.map((item, i) => (
-                  <div key={i} className="py-4">
-                    <dt className="font-medium text-calm-charcoal font-body">
-                      {item.q}
-                    </dt>
-                    <dd className="mt-1 text-calm-charcoal/80 font-body">
-                      {typeof item.a === "function" ? item.a(locale) : item.a}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <Faq
+                items={c.faq.map((item) => ({
+                  question: item.q,
+                  answer:
+                    typeof item.a === "function" ? item.a(locale) : item.a,
+                }))}
+                className="mt-4"
+              />
             </section>
 
             {/* More info */}
