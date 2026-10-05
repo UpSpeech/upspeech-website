@@ -424,7 +424,7 @@ export const en = {
         todayLabel: "From your therapist",
         todayAlt:
           "The patient dashboard: today's practice, set by the therapist, with a button to start",
-        replyLabel: "Sam Rivera replies",
+        replyLabel: "Your therapist replies",
         replyAlt: "A note from the therapist on a recording the patient made",
       },
       inviteNote: "Your therapist sends you an invite to start.",

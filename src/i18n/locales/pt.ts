@@ -436,7 +436,7 @@ export const pt: Dictionary = {
         todayLabel: "Do teu terapeuta",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
-        replyLabel: "Sam Rivera responde",
+        replyLabel: "O teu terapeuta responde",
         replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
       },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",
