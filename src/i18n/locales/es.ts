@@ -156,7 +156,7 @@ export const es: Dictionary = {
       assessment: {
         time: "09:15 · La evaluación",
         headline: "Sales con el informe escrito.",
-        body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo corriges y lo firmas. No empiezas desde una página en blanco.",
+        body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo revisas y lo corriges. No empiezas desde una página en blanco.",
         detailAlt:
           "Un informe de sesión generado, encabezado con el nombre del paciente, la fecha y el estado Listo",
       },
@@ -236,7 +236,7 @@ export const es: Dictionary = {
         {
           verb: "calibra",
           title: "El logopeda lo calibra.",
-          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise.",
         },
         {
           verb: "escucha",
@@ -495,7 +495,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Borradores estructurados que revisas y editas",
-        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
+        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta. El juicio clínico sigue siendo tuyo en todo momento.",
       },
       {
         heading: "Qué debe incluir una buena nota de logopedia",
@@ -503,7 +503,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme. Solo grabas con el consentimiento del paciente.",
+        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise. Solo grabas con el consentimiento del paciente.",
       },
     ],
     faq: {
@@ -520,11 +520,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se finalice ninguna nota.",
         },
       ],
     },
@@ -552,7 +552,7 @@ export const es: Dictionary = {
     documentation: {
       eyebrow: "Documentación",
       headline: "Notas de sesión, redactadas para que las revises.",
-      body: "Tras una sesión, UpSpeech redacta el informe. Lo editas y lo firmas, sin empezar desde una página vacía.",
+      body: "Tras una sesión, UpSpeech redacta el informe. Lo revisas y lo editas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",
     },
