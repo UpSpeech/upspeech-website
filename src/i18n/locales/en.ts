@@ -468,7 +468,7 @@ export const en = {
       ],
       childScreenshots: [
         "UpSpeech mobile app screen a parent uses to run the day's practice with their child",
-        "UpSpeech mobile app practice screen a younger child sees, with the companion character and the cue for the exercise",
+        "UpSpeech mobile app practice screen a younger child sees, with one word to say and a record button",
       ],
     },
     faq: {

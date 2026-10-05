@@ -480,7 +480,7 @@ export const pt: Dictionary = {
       ],
       childScreenshots: [
         "Ecrã da app móvel UpSpeech que um dos pais usa para fazer a prática do dia com o filho",
-        "Ecrã de prática da app móvel UpSpeech que uma criança mais nova vê, com a personagem companheira e a indicação do exercício",
+        "Ecrã de prática da app móvel UpSpeech que uma criança mais nova vê, com uma palavra para dizer e um botão de gravação",
       ],
     },
     faq: {

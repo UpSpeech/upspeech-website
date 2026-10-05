@@ -16,14 +16,6 @@ const GALLERY = [
   "/screenshots/mobile/patient-practice-screen.webp",
 ];
 
-// The child-facing screen, cropped to the character and the cue like the three
-// above. The photograph's phone below uses the full screen through PhoneShot.
-// Alt text is forPatients.app.childScreenshots[1].
-//
-// The caregiver screen is deliberately not here. It is a sparse screen whose
-// content stops two thirds down, which is invisible at the size it runs beside
-// the photograph and looks like a failed render at the size this row runs.
-
 const EXCHANGE = [
   {
     src: "/screenshots/detail/exchange-today.webp",
@@ -246,17 +238,12 @@ export default function ForPatients() {
                 width, so the only place a phone can overlap without landing on
                 someone is below y 0.5, where the laps and the bench are. */}
             <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
-              <img
+              <PhoneShot
                 src={localizedAsset(
-                  "/screenshots/mobile/caregiver-today-crop.webp",
+                  "/screenshots/mobile/caregiver-today.webp",
                   locale,
                 )}
-                alt=""
-                aria-hidden="true"
-                width={600}
-                height={560}
-                loading="lazy"
-                className="pointer-events-none absolute bottom-14 left-0 hidden w-[214px] -rotate-6 rounded-[20px] ring-1 ring-calm-navy/10 drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)] sm:block"
+                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
               />
               <CutOut
                 name="patients-listen"
