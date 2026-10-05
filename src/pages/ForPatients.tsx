@@ -287,7 +287,7 @@ export default function ForPatients() {
               <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.app.headline}
               </h2>
-              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/90 leading-relaxed">
                 {t.app.body}
               </p>
             </div>
@@ -320,7 +320,7 @@ export default function ForPatients() {
 
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="gutter max-w-3xl">
+          <div className="gutter grid gap-8 lg:grid-cols-[minmax(0,1fr),minmax(0,1.8fr)] lg:gap-16">
             <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
@@ -330,7 +330,7 @@ export default function ForPatients() {
                 question: item.q,
                 answer: item.a,
               }))}
-              className="mt-8"
+              className="lg:-mt-4"
             />
           </div>
         </section>
@@ -341,7 +341,7 @@ export default function ForPatients() {
             <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
+            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/90 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
                 href={`${localizedHref("/", locale)}#cta`}
