@@ -37,19 +37,6 @@ const NODE_ACTORS: Actor[] = [
   "clinician",
 ];
 
-// The phone list's ring: viewBox 100×100, nodes clockwise from the top.
-const CENTER = 50;
-const RADIUS = 27;
-
-const nodePoint = (i: number, r = RADIUS) => {
-  const compassDeg = (i * 360) / NODE_ACTORS.length;
-  const rad = (compassDeg * Math.PI) / 180;
-  return {
-    x: CENTER + r * Math.sin(rad),
-    y: CENTER - r * Math.cos(rad),
-  };
-};
-
 const PinnedCycle = () => {
   const t = useT().home.cycle;
   const nodes = t.nodes;
@@ -152,16 +139,17 @@ const PinnedCycle = () => {
           >
             <HandoffScene
               activeIndex={activeIndex}
-              labels={{ ai: t.ai, clinician: t.clinician }}
+              labels={{ ai: t.ai, clinician: t.clinician, patient: t.patient }}
               states={t.states}
               docs={t.docs}
+              title={t.fileTitle}
             />
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
             {/* The copy is absolutely positioned so steps cross-fade in place, so
                 this box must fit the tallest step in the longest language:
                 321px at 1440 (en), plus headroom. */}
-            <div className="relative min-h-[15rem] lg:min-h-[22rem]">
+            <div className="relative min-h-[15rem] lg:min-h-[19rem]">
               <div
                 key={activeIndex}
                 className="absolute inset-0 flex flex-col justify-start"
@@ -186,11 +174,16 @@ const PinnedCycle = () => {
                   >
                     {activeActor === "clinician" ? t.clinician : t.ai}
                   </span>
+                  <span className="font-body t-small tabular-nums text-calm-charcoal/70">
+                    {t.stepPrefix}
+                    {String(activeIndex + 1).padStart(2, "0")}
+                    {t.stepSuffix}
+                  </span>
                 </div>
                 <h3 className="t-h2-sm font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}
                 </h3>
-                <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">
+                <p className="t-lead font-body text-calm-charcoal/90 leading-relaxed max-w-md">
                   {active.body}
                 </p>
 
@@ -199,7 +192,7 @@ const PinnedCycle = () => {
                   {NODE_ACTORS.map((_, i) => (
                     <span
                       key={i}
-                      className="block h-1 rounded-full transition-all duration-500"
+                      className="block h-1.5 rounded-full transition-all duration-500"
                       style={{
                         width:
                           i === activeIndex
@@ -214,7 +207,7 @@ const PinnedCycle = () => {
                               : "#293587"
                             : i < activeIndex
                               ? "rgba(41,53,135,0.35)"
-                              : "rgba(41,53,135,0.15)",
+                              : "rgba(41,53,135,0.28)",
                       }}
                     />
                   ))}
@@ -246,47 +239,15 @@ const StepList = () => {
           {t.headlinePrefix} {t.headlineEmphasis}
         </h2>
 
-        <svg
-          viewBox="0 0 100 100"
-          className="mx-auto mt-6 w-[min(12rem,56vw)]"
-          aria-hidden="true"
-        >
-          <circle
-            cx={CENTER}
-            cy={CENTER}
-            r={RADIUS}
-            fill="none"
-            stroke="#958AF0"
-            strokeWidth="1.1"
+        <div className="mt-6">
+          <HandoffScene
+            activeIndex={NODE_ACTORS.length - 1}
+            labels={{ ai: t.ai, clinician: t.clinician, patient: t.patient }}
+            states={t.states}
+            docs={t.docs}
+            title={t.fileTitle}
           />
-          {NODE_ACTORS.map((actor, i) => {
-            const pos = nodePoint(i);
-            const isClinician = actor === "clinician";
-            return (
-              <g key={i}>
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r={7}
-                  fill={isClinician ? "#293587" : "#958AF0"}
-                />
-                <text
-                  x={pos.x}
-                  y={pos.y + 1.8}
-                  textAnchor="middle"
-                  fill={isClinician ? "#FFFFFF" : "#293587"}
-                  style={{
-                    fontSize: "5px",
-                    fontWeight: 800,
-                    fontFamily: "Outfit, ui-sans-serif, system-ui, sans-serif",
-                  }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
+        </div>
 
         <ol className="mt-8">
           {t.nodes.map((node, i) => {

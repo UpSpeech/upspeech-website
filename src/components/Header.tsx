@@ -15,6 +15,8 @@ const Header = () => {
   // on the pt/es home pages, which sent the anchor nav and the logo through a
   // full page load instead of scrolling.
   const isHome = splitLocaleFromPath(pathname).path === "/";
+  const isPatients =
+    splitLocaleFromPath(pathname).path.replace(/\/$/, "") === "/for-patients";
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -87,6 +89,20 @@ const Header = () => {
     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
   };
 
+  const onCta = () => {
+    if (isPatients) {
+      trackButtonClick("get_the_app", "header");
+      setMenuOpen(false);
+      document
+        .getElementById("get-app")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    trackButtonClick("join_waitlist", "header");
+    scrollToSection("cta");
+  };
+  const ctaLabel = isPatients ? t.getTheApp : t.requestAccess;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-calm-light shadow-sm">
       <a
@@ -121,35 +137,36 @@ const Header = () => {
           </button>
 
           <nav className="hidden md:flex items-center space-x-6">
-            <button
-              onClick={() => scrollToSection("how-it-works")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.howItWorks}
-            </button>
-            <button
-              onClick={() => scrollToSection("features")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.features}
-            </button>
-            <button
-              onClick={() => scrollToSection("differentiation")}
-              className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.whyUs}
-            </button>
+            {!isPatients && (
+              <>
+                <button
+                  onClick={() => scrollToSection("how-it-works")}
+                  className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.howItWorks}
+                </button>
+                <button
+                  onClick={() => scrollToSection("features")}
+                  className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.features}
+                </button>
+                <button
+                  onClick={() => scrollToSection("differentiation")}
+                  className="font-body text-calm-charcoal transition-all duration-200 hover:text-calm-lavender-ink px-3 py-2 rounded-md hover:bg-calm-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.whyUs}
+                </button>
+              </>
+            )}
             <LocaleSwitcher />
           </nav>
 
           <Button
-            onClick={() => {
-              trackButtonClick("join_waitlist", "header");
-              scrollToSection("cta");
-            }}
+            onClick={onCta}
             className="hidden md:inline-flex bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
-            {t.requestAccess}
+            {ctaLabel}
           </Button>
 
           <button
@@ -199,32 +216,33 @@ const Header = () => {
           className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem-var(--consent-bar-h,0px))] overflow-y-auto"
         >
           <nav className="flex flex-col p-4 gap-1">
-            <button
-              onClick={() => scrollToSection("how-it-works")}
-              className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.howItWorks}
-            </button>
-            <button
-              onClick={() => scrollToSection("features")}
-              className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.features}
-            </button>
-            <button
-              onClick={() => scrollToSection("differentiation")}
-              className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
-            >
-              {t.whyUs}
-            </button>
+            {!isPatients && (
+              <>
+                <button
+                  onClick={() => scrollToSection("how-it-works")}
+                  className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.howItWorks}
+                </button>
+                <button
+                  onClick={() => scrollToSection("features")}
+                  className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.features}
+                </button>
+                <button
+                  onClick={() => scrollToSection("differentiation")}
+                  className="font-body text-left text-calm-charcoal px-4 py-3 rounded-md hover:bg-calm-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink"
+                >
+                  {t.whyUs}
+                </button>
+              </>
+            )}
             <Button
-              onClick={() => {
-                trackButtonClick("join_waitlist", "header");
-                scrollToSection("cta");
-              }}
+              onClick={onCta}
               className="mt-2 bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-3 rounded-full shadow-button"
             >
-              {t.requestAccess}
+              {ctaLabel}
             </Button>
             <div className="mt-4 border-t border-calm-light pt-4">
               <LocaleSwitcher variant="inline" />

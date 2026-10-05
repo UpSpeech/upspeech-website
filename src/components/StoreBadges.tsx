@@ -5,8 +5,10 @@ import { useLocale, useT } from "@/i18n";
 // each store's guidelines ask for. The Google PNGs are cropped to the badge edge.
 export default function StoreBadges({
   className = "",
+  size = "md",
 }: {
   className?: string;
+  size?: "md" | "lg";
 }) {
   const locale = useLocale();
   const t = useT().footer;
@@ -24,9 +26,9 @@ export default function StoreBadges({
           <img
             src={`/images/store/app-store-${locale}.svg`}
             alt={t.appStoreAlt}
-            width={120}
-            height={40}
-            className="h-10 w-auto"
+            width={size === "lg" ? 144 : 120}
+            height={size === "lg" ? 48 : 40}
+            className={size === "lg" ? "h-12 w-auto" : "h-10 w-auto"}
             loading="lazy"
           />
         </a>
@@ -42,9 +44,9 @@ export default function StoreBadges({
           <img
             src={`/images/store/google-play-${locale}.png`}
             alt={t.playStoreAlt}
-            width={135}
-            height={40}
-            className="h-10 w-auto"
+            width={size === "lg" ? 162 : 135}
+            height={size === "lg" ? 48 : 40}
+            className={size === "lg" ? "h-12 w-auto" : "h-10 w-auto"}
             loading="lazy"
           />
         </a>
