@@ -4,12 +4,15 @@ import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
+import { trackButtonClick } from "@/lib/analytics";
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ForSlps() {
   const locale = useLocale();
-  const t = useT().forSlps;
+  const dict = useT();
+  const t = dict.forSlps;
+  const requestAccess = dict.nav.requestAccess;
 
   // Build the FAQPage schema from the current-locale FAQ so prerendered pt/es
   // pages emit in-language structured data.
@@ -43,15 +46,27 @@ export default function ForSlps() {
           <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.3fr,0.7fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-h2 mt-5 font-accent font-bold text-calm-navy tracking-tight">
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                   {t.intro.headlineLine1} {t.intro.headlineLine2}
                 </h1>
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
+                <a
+                  href={`${localizedHref("/", locale)}#cta`}
+                  onClick={() =>
+                    trackButtonClick("request_early_access_hero", "for_slps")
+                  }
+                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-lavender-ink hover:shadow-[0_24px_50px_-20px_rgba(41,53,135,0.6)]"
+                >
+                  {requestAccess}
+                  <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </a>
               </div>
               <div className="relative flex justify-center lg:justify-end">
                 <div
