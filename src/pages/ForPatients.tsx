@@ -150,7 +150,7 @@ export default function ForPatients() {
             {/* Two columns from lg up. The right half of this fold used to be
                 empty, which is what made the page read as a document rather
                 than the front of a product. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:gap-12">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.02fr,0.98fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -165,35 +165,56 @@ export default function ForPatients() {
                     {t.intro.inviteNote}
                   </p>
                 )}
-                <StoreBadges className="mt-4" />
+                <StoreBadges className="mt-4 -ml-2.5" />
               </div>
-              <ol className="relative mx-auto w-full max-w-[460px] space-y-6 lg:mx-0 lg:ml-auto">
-                {EXCHANGE.map(({ key, src, width, height }, i) => (
-                  <li key={key} className="relative">
-                    {i === 0 && (
-                      <span
-                        aria-hidden="true"
-                        className="absolute left-[13px] top-[1.1rem] -bottom-6 w-0.5 bg-calm-lavender/60"
+              {/* The person is the anchor and the exchange lands on her lap:
+                  the therapist's assignment overlaps the child's shirt, the
+                  reply sits lower right. Both start below y 0.6 of the
+                  cut-out, under the chins. */}
+              <div className="relative mx-auto w-full max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[540px]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-[-12%] top-[2%] h-[90%] rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
+                  }}
+                />
+                <div className="relative z-10">
+                  <CutOut
+                    name="patients-hero"
+                    alt={t.intro.photoAlt}
+                    priority
+                    sizing="width"
+                    renderHeight={{ base: 306, sm: 455, lg: 473 }}
+                    className="relative"
+                  />
+                </div>
+                <ol className="relative z-20 -mt-[12%] space-y-12">
+                  {EXCHANGE.map(({ key, src, width, height }, i) => (
+                    <li
+                      key={key}
+                      className={`relative ${
+                        i === 0
+                          ? "w-[84%] sm:w-[74%]"
+                          : "ml-auto w-[78%] sm:w-[68%]"
+                      }`}
+                    >
+                      <p className="absolute -top-7 left-3 z-10 flex items-center gap-2 rounded-full bg-white px-3 py-1 font-body text-xs font-semibold text-calm-navy shadow-sm ring-1 ring-calm-navy/10">
+                        {t.intro.exchange[`${key}Label`]}
+                      </p>
+                      <img
+                        src={localizedAsset(src, locale)}
+                        alt={t.intro.exchange[`${key}Alt`]}
+                        width={width}
+                        height={height}
+                        fetchPriority={i === 0 ? "high" : undefined}
+                        className="pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
                       />
-                    )}
-                    <p className="mb-3 flex items-center gap-3 font-body text-sm font-semibold text-calm-navy">
-                      <span
-                        aria-hidden="true"
-                        className="ml-2 h-3 w-3 shrink-0 rounded-full bg-calm-lavender"
-                      />
-                      {t.intro.exchange[`${key}Label`]}
-                    </p>
-                    <img
-                      src={localizedAsset(src, locale)}
-                      alt={t.intro.exchange[`${key}Alt`]}
-                      width={width}
-                      height={height}
-                      fetchPriority={i === 0 ? "high" : undefined}
-                      className="pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]"
-                    />
-                  </li>
-                ))}
-              </ol>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
           </div>
         </section>
