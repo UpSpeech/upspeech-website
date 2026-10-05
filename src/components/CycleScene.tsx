@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUturnUpIcon } from "@heroicons/react/24/outline";
 import { EASE, reveal } from "./motion";
 import { useT } from "@/i18n";
 
@@ -103,6 +104,7 @@ const PinnedCycle = () => {
 
     let raf = 0;
     const update = () => {
+      if (!el.offsetParent) return;
       const rect = el.getBoundingClientRect();
       // Measure the panel rather than assuming it fills the viewport. The
       // pinned range runs from rect.top === STICKY_TOP down to the point where
@@ -159,12 +161,9 @@ const PinnedCycle = () => {
       className="relative hidden bg-white lg:block"
       style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
-      {/* min-height rather than height. On a phone the six-step copy and the
-          ring together run taller than the viewport, and a fixed height with
-          overflow hidden cuts the top and bottom off the thing the section
-          exists to show. Growing instead costs the runway the same pixels it
-          gains, and the progress math measures the panel rather than assuming
-          it, so the six steps still traverse either way. */}
+      {/* min-height, not height: a fixed height with overflow hidden would
+          cut the ring or the copy where the six steps run taller than the
+          viewport. */}
       <div
         ref={panelRef}
         className="sticky top-20 overflow-hidden"
@@ -405,14 +404,9 @@ const PinnedCycle = () => {
             </div>
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
-            {/* The copy is absolutely positioned so the six steps cross-fade in
-                place instead of the panel resizing under the reader, which
-                means this box has to be tall enough for the tallest step in the
-                longest language or the copy overflows it. Measured across the
-                six steps in all three locales: 214px at 390 (es) and 321px at
-                1440 (en), so these are those plus headroom. Every value tried
-                before this was short in every locale, which went unnoticed on a
-                desktop panel with slack and cut the progress pips on a phone. */}
+            {/* The copy is absolutely positioned so steps cross-fade in place, so
+                this box must fit the tallest step in the longest language:
+                321px at 1440 (en), plus headroom. */}
             <div className="relative min-h-[15rem] lg:min-h-[22rem]">
               <div
                 key={activeIndex}
@@ -553,9 +547,16 @@ const StepList = () => {
             return (
               <li
                 key={i}
-                className={`flex gap-4 ${i === 0 ? "" : i % 2 === 0 ? "mt-12" : "mt-6"}`}
+                className={`relative flex gap-4 ${i === 0 ? "" : "mt-9"}`}
               >
                 <span
+                  aria-hidden="true"
+                  className={`absolute left-[17px] top-9 -bottom-9 w-0.5 ${
+                    isClinician ? "bg-calm-navy/25" : "bg-calm-lavender/60"
+                  }`}
+                />
+                <span
+                  aria-hidden="true"
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
                     isClinician
                       ? "bg-calm-navy text-white"
@@ -572,10 +573,10 @@ const StepList = () => {
                   >
                     {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
                   </p>
-                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight text-balance">
+                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
                     {node.title}
                   </h3>
-                  <p className="mt-2 font-body t-lead text-calm-charcoal/80 leading-relaxed">
+                  <p className="mt-2 max-w-[60ch] font-body t-lead text-calm-charcoal/80 leading-relaxed">
                     {node.body}
                   </p>
                 </div>
@@ -583,6 +584,17 @@ const StepList = () => {
             );
           })}
         </ol>
+        <div className="relative mt-9 flex items-center gap-4">
+          <span
+            aria-hidden="true"
+            className="flex h-9 w-9 shrink-0 items-center justify-center text-calm-navy"
+          >
+            <ArrowUturnUpIcon className="h-4 w-4" />
+          </span>
+          <p className="font-body t-small font-semibold text-calm-charcoal/80">
+            {t.backToStart}
+          </p>
+        </div>
       </div>
     </section>
   );
