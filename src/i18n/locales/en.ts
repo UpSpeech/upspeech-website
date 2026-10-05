@@ -360,7 +360,15 @@ export const en = {
       eyebrow: "For patients",
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
-      body: "UpSpeech is how you keep practising the work you do with your speech therapist between appointments. Your therapist sets the plan and follows how it's going while you practise in the app.",
+      body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
+      exchange: {
+        todayLabel: "From your therapist",
+        todayAlt:
+          "Today's practice on the patient dashboard: Easy starts, set by the therapist, about 5 minutes",
+        replyLabel: "Your therapist replies",
+        replyAlt:
+          "A recording of Leo's practice with a playback bar, and the therapist's feedback beneath it",
+      },
       inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",

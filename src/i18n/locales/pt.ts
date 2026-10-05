@@ -362,7 +362,15 @@ export const pt: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
-      body: "A UpSpeech é como continuas a praticar, entre consultas, o trabalho que fazes com o teu terapeuta da fala. O teu terapeuta define o plano e acompanha como está a correr enquanto praticas na app.",
+      body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
+      exchange: {
+        todayLabel: "Do teu terapeuta",
+        todayAlt:
+          "A prática de hoje no painel do paciente: Inícios suaves, definida pelo terapeuta, cerca de 5 minutos",
+        replyLabel: "O teu terapeuta responde",
+        replyAlt:
+          "Uma gravação da prática do Leo com barra de reprodução, e o feedback do terapeuta por baixo",
+      },
       inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
@@ -531,7 +539,8 @@ export const pt: Dictionary = {
       ],
     },
     closing: {
-      headline: "Deixa a UpSpeech fazer o rascunho dos relatórios e concentra-te na sessão.",
+      headline:
+        "Deixa a UpSpeech fazer o rascunho dos relatórios e concentra-te na sessão.",
       bodyPrefix:
         "A UpSpeech trabalha com terapeutas da fala que querem prática estruturada entre sessões e relatórios redigidos por IA. ",
       bodyLink: "Pede acesso aqui",
