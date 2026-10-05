@@ -423,9 +423,10 @@ export const en = {
       exchange: {
         todayLabel: "From your therapist",
         todayAlt:
-          "The patient dashboard: today's practice, set by the therapist, with a button to start",
+          "Today's practice on the patient dashboard: Easy starts, set by the therapist, about 5 minutes",
         replyLabel: "Your therapist replies",
-        replyAlt: "A note from the therapist on a recording the patient made",
+        replyAlt:
+          "A recording of Leo's practice with a playback bar, and the therapist's feedback beneath it",
       },
       inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:

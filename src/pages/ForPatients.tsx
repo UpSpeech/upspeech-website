@@ -29,14 +29,14 @@ const EXCHANGE = [
   {
     key: "today",
     src: "/screenshots/detail/exchange-today.webp",
-    width: 1056,
-    height: 395,
+    width: 1104,
+    height: 498,
   },
   {
     key: "reply",
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 984,
-    height: 500,
+    width: 1104,
+    height: 822,
   },
 ] as const;
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
