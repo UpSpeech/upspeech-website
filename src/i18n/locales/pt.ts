@@ -179,7 +179,7 @@ export const pt: Dictionary = {
         headline: "O plano vai com eles para casa.",
         body: "Atribuis os exercícios uma vez. Praticam entre consultas e cada tentativa volta para ti rever antes da consulta seguinte.",
         detailAlt:
-          "Um percurso de aprendizagem atribuído, a mostrar o progresso pelos passos, com o passo atual assinalado",
+          "Um percurso de aprendizagem atribuído, com o passo atual identificado",
       },
       close: {
         time: "17:30 · O fim do dia",
