@@ -23,9 +23,9 @@ const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 const procedureClass =
   "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
 const FAQ_TITLES: Record<string, string> = {
-  en: "Frequently Asked Questions",
-  pt: "Perguntas Frequentes",
-  es: "Preguntas Frecuentes",
+  en: "Frequently asked questions",
+  pt: "Perguntas frequentes",
+  es: "Preguntas frecuentes",
 };
 const headingClass = "font-heading t-h3 font-bold text-calm-navy";
 const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
@@ -89,8 +89,37 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     };
   }, [slug, locale]);
 
+  // The #hash is tried before the article has loaded on a cold client
+  // navigation, so scroll to it once the sections exist.
+  useEffect(() => {
+    if (loading || error) return;
+    const raw = window.location.hash.slice(1);
+    let id = raw;
+    try {
+      id = decodeURIComponent(raw);
+    } catch {
+      // A pasted link with a broken escape still has to render.
+    }
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, [loading, error, slug]);
+
   const staticSeo = TECHNIQUE_SEO[slug];
   const faqs = getTechniqueFAQs(slug, locale);
+  const railLinks = [
+    technique?.practical_description && {
+      id: "practical-description",
+      label: tt.practicalDescription,
+    },
+    technique?.objective && { id: "objective", label: tt.objective },
+    technique?.instructions && {
+      id: "how-to-practise",
+      label: tt.howToPractice,
+    },
+    faqs?.length && {
+      id: "faq",
+      label: FAQ_TITLES[locale] || FAQ_TITLES.en,
+    },
+  ].filter((link): link is { id: string; label: string } => Boolean(link));
 
   // Format instructions: detect numbered lines and render as ordered list
   const formatInstructions = (text: string) => {
@@ -245,83 +274,152 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           </section>
 
           <div className="pb-[clamp(3rem,6vw,5rem)]">
-            <div className="gutter space-y-[clamp(2.5rem,5vw,4rem)]">
-              {technique.practical_description && (
-                <section className="max-w-3xl">
-                  <h2 className={headingClass}>{tt.practicalDescription}</h2>
-                  <p className={proseClass}>
-                    {technique.practical_description}
-                  </p>
-                </section>
-              )}
+            <div className="gutter lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16">
+              <div className="space-y-[clamp(2.5rem,5vw,4rem)]">
+                {technique.practical_description && (
+                  <section
+                    id="practical-description"
+                    className="max-w-3xl scroll-mt-28"
+                  >
+                    <h2 className={headingClass}>{tt.practicalDescription}</h2>
+                    <p className={proseClass}>
+                      {technique.practical_description}
+                    </p>
+                  </section>
+                )}
 
-              {technique.objective && (
-                <section className="max-w-3xl border-l-2 border-calm-lavender pl-6">
-                  <h2 className={eyebrowClass}>{tt.objective}</h2>
-                  <p className="mt-3 font-heading t-statement font-semibold text-calm-navy">
-                    {technique.objective}
-                  </p>
-                </section>
-              )}
+                {technique.objective && (
+                  <section
+                    id="objective"
+                    className="max-w-3xl scroll-mt-28 border-l-2 border-calm-lavender pl-6"
+                  >
+                    <h2 className={eyebrowClass}>{tt.objective}</h2>
+                    <p className="mt-3 font-heading t-lead font-semibold text-calm-navy">
+                      {technique.objective}
+                    </p>
+                  </section>
+                )}
 
-              {technique.instructions && (
-                <section className={`max-w-3xl ${procedureClass}`}>
-                  <h2 className={headingClass}>{tt.howToPractice}</h2>
-                  {formatInstructions(technique.instructions)}
-                </section>
-              )}
+                {technique.instructions && (
+                  <section
+                    id="how-to-practise"
+                    className={`max-w-3xl scroll-mt-28 ${procedureClass}`}
+                  >
+                    <h2 className={headingClass}>{tt.howToPractice}</h2>
+                    {formatInstructions(technique.instructions)}
+                  </section>
+                )}
 
-              {technique.sub_techniques &&
-                technique.sub_techniques.length > 0 && (
-                  <section className="border-t border-calm-charcoal/10 pt-8">
-                    <h2 className={headingClass}>{tt.relatedTechniques}</h2>
-                    <ul className="mt-5 grid grid-cols-1 gap-x-12 md:grid-cols-2">
-                      {technique.sub_techniques.map((subTech) => (
-                        <li
-                          key={subTech.slug}
-                          className="border-b border-calm-charcoal/10"
-                        >
-                          <a
-                            href={localizedHref(
-                              `/techniques/${subTech.slug}`,
-                              locale,
-                            )}
-                            className="group flex h-full items-start gap-3 py-4 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                {technique.sub_techniques &&
+                  technique.sub_techniques.length > 0 && (
+                    <section className="border-t border-calm-charcoal/10 pt-8 lg:hidden">
+                      <h2 className={headingClass}>{tt.relatedTechniques}</h2>
+                      <ul className="mt-5 grid grid-cols-1 gap-x-12 md:grid-cols-2">
+                        {technique.sub_techniques.map((subTech) => (
+                          <li
+                            key={subTech.slug}
+                            className="border-b border-calm-charcoal/10"
                           >
-                            <span className="flex-1">
-                              <span className="block font-body font-semibold text-calm-charcoal group-hover:underline">
-                                {subTech.name}
-                              </span>
-                              <span className="mt-1 block font-body t-small text-calm-charcoal/80">
-                                {subTech.description}
-                              </span>
-                            </span>
-                            <span
-                              aria-hidden="true"
-                              className="mt-0.5 shrink-0 font-body text-calm-navy transition-transform duration-200 group-hover:translate-x-0.5"
+                            <a
+                              href={localizedHref(
+                                `/techniques/${subTech.slug}`,
+                                locale,
+                              )}
+                              className="group flex h-full items-start gap-3 py-4 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
                             >
-                              →
-                            </span>
+                              <span className="flex-1">
+                                <span className="block font-body font-semibold text-calm-charcoal group-hover:underline">
+                                  {subTech.name}
+                                </span>
+                                <span className="mt-1 block font-body t-small text-calm-charcoal/80">
+                                  {subTech.description}
+                                </span>
+                              </span>
+                              <span
+                                aria-hidden="true"
+                                className="mt-0.5 shrink-0 font-body text-calm-navy transition-transform duration-200 group-hover:translate-x-0.5"
+                              >
+                                →
+                              </span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
+                {faqs?.length ? (
+                  <section
+                    id="faq"
+                    className="max-w-3xl scroll-mt-28 border-t border-calm-charcoal/10 pt-8"
+                  >
+                    <h2 className={`${headingClass} mb-5`}>
+                      {FAQ_TITLES[locale] || FAQ_TITLES.en}
+                    </h2>
+                    <Faq
+                      items={faqs.map((faq) => ({
+                        question: faq.question,
+                        answer: faq.answer,
+                      }))}
+                    />
+                  </section>
+                ) : null}
+
+                <section className="max-w-3xl rounded-2xl bg-calm-lavender/10 px-7 py-8 sm:px-9">
+                  <h2 className={headingClass}>{tt.closingTitle}</h2>
+                  <p className={proseClass}>{tt.closingBody}</p>
+                  <a
+                    href={localizedHref("/for-patients", locale)}
+                    className="mt-5 inline-flex min-h-[44px] items-center font-body font-semibold text-calm-navy hover:underline"
+                  >
+                    {tt.closingLink} &rarr;
+                  </a>
+                </section>
+              </div>
+
+              <aside className="hidden lg:block">
+                <div className="sticky top-28 border-l border-calm-charcoal/10 pl-6">
+                  <nav aria-label={tt.onThisPage}>
+                    <p className={eyebrowClass}>{tt.onThisPage}</p>
+                    <ul className="mt-3 space-y-1">
+                      {railLinks.map((link) => (
+                        <li key={link.id}>
+                          <a
+                            href={`#${link.id}`}
+                            className="inline-flex min-h-[44px] items-center font-body t-small font-semibold text-calm-charcoal hover:text-calm-navy hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                          >
+                            {link.label}
                           </a>
                         </li>
                       ))}
                     </ul>
-                  </section>
-                )}
-
-              {faqs?.length ? (
-                <section className="max-w-3xl border-t border-calm-charcoal/10 pt-8">
-                  <h2 className={`${headingClass} mb-5`}>
-                    {FAQ_TITLES[locale] || FAQ_TITLES.en}
-                  </h2>
-                  <Faq
-                    items={faqs.map((faq) => ({
-                      question: faq.question,
-                      answer: faq.answer,
-                    }))}
-                  />
-                </section>
-              ) : null}
+                  </nav>
+                  {technique.sub_techniques &&
+                    technique.sub_techniques.length > 0 && (
+                      <nav
+                        aria-label={tt.relatedTechniques}
+                        className="mt-8 border-t border-calm-charcoal/10 pt-6"
+                      >
+                        <p className={eyebrowClass}>{tt.relatedTechniques}</p>
+                        <ul className="mt-3 space-y-1">
+                          {technique.sub_techniques.map((subTech) => (
+                            <li key={subTech.slug}>
+                              <a
+                                href={localizedHref(
+                                  `/techniques/${subTech.slug}`,
+                                  locale,
+                                )}
+                                className="inline-flex min-h-[44px] items-center font-body t-small font-semibold text-calm-charcoal hover:text-calm-navy hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                              >
+                                {subTech.name}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </nav>
+                    )}
+                </div>
+              </aside>
             </div>
           </div>
         </main>

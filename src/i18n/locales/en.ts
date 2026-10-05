@@ -67,6 +67,11 @@ export const en = {
     practicalDescription: "What it is",
     objective: "What it is for",
     howToPractice: "How to practise it",
+    onThisPage: "On this page",
+    closingTitle: "Practise this between sessions",
+    closingBody:
+      "Your speech therapist can assign this technique in UpSpeech and see how each practice went before your next appointment.",
+    closingLink: "How UpSpeech works for patients",
     relatedTechniques: "Practised with this one",
   },
   home: {

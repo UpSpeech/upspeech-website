@@ -68,6 +68,11 @@ export const pt: Dictionary = {
     practicalDescription: "O que é",
     objective: "Para que serve",
     howToPractice: "Como praticá-la",
+    onThisPage: "Nesta página",
+    closingTitle: "Pratica isto entre sessões",
+    closingBody:
+      "O teu terapeuta da fala pode atribuir esta técnica na UpSpeech e ver como correu cada prática antes da próxima consulta.",
+    closingLink: "Como a UpSpeech ajuda os pacientes",
     relatedTechniques: "Praticadas com esta",
   },
   home: {
