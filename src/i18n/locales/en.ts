@@ -176,8 +176,7 @@ export const en = {
         time: "14:00 · After the session",
         headline: "The plan goes home with them.",
         body: "Assign the exercises once. They practise between visits, and every attempt comes back for you to review before the next appointment.",
-        detailAlt:
-          "An assigned learning path showing progress through its steps, with the current step marked",
+        detailAlt: "An assigned learning path, with its current step named",
       },
       close: {
         time: "17:30 · The end of the day",

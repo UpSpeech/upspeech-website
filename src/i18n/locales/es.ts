@@ -178,7 +178,7 @@ export const es: Dictionary = {
         headline: "El plan se va a casa con ellos.",
         body: "Asignas los ejercicios una vez. Practican entre citas y cada intento vuelve para que lo revises antes de la siguiente.",
         detailAlt:
-          "Un itinerario de aprendizaje asignado, mostrando el progreso por sus pasos, con el paso actual marcado",
+          "Un itinerario de aprendizaje asignado, con su paso actual indicado",
       },
       close: {
         time: "17:30 · El final del día",
