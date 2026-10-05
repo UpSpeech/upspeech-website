@@ -68,6 +68,11 @@ export const es: Dictionary = {
     practicalDescription: "Qué es",
     objective: "Para qué sirve",
     howToPractice: "Cómo practicarla",
+    onThisPage: "En esta página",
+    closingTitle: "Practica esto entre sesiones",
+    closingBody:
+      "Tu logopeda puede asignar esta técnica en UpSpeech y ver cómo fue cada práctica antes de tu próxima cita.",
+    closingLink: "Cómo funciona UpSpeech para pacientes",
     relatedTechniques: "Se practican con esta",
   },
   home: {
