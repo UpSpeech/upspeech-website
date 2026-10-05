@@ -215,6 +215,65 @@ export const en = {
       stepPrefix: "Step ",
       stepSuffix: " / 06",
       backToStart: "Then back to step 01",
+      docs: [
+        {
+          kind: "Session report",
+          lines: [
+            {
+              text: "Patient practised soft starts 4 times this week.",
+              mark: "ai",
+            },
+            { text: "Avoidance of phone calls is unchanged.", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Session report",
+          lines: [
+            {
+              text: "Patient practised soft starts 4 times this week.",
+              mark: "plain",
+            },
+            { text: "Avoidance of phone calls is unchanged.", mark: "struck" },
+            {
+              text: "Avoidance of phone calls fell: two calls made this week.",
+              mark: "clin",
+            },
+          ],
+        },
+        {
+          kind: "Practice plan",
+          lines: [
+            { text: "Soft starts, 5 min a day", mark: "ai" },
+            { text: "Pull-outs, 5 min a day", mark: "ai" },
+            { text: "Difficulty: medium", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Practice plan",
+          lines: [
+            { text: "Soft starts, 5 min a day", mark: "plain" },
+            { text: "Pull-outs, 5 min a day", mark: "struck" },
+            { text: "Voluntary stuttering, 5 min a day", mark: "clin" },
+            { text: "Difficulty: easy", mark: "clin" },
+          ],
+        },
+        {
+          kind: "Attempts this week",
+          lines: [
+            { text: "Mon, soft starts, effort 3 of 5", mark: "ai" },
+            { text: "Wed, voluntary stuttering, effort 3 of 5", mark: "ai" },
+            { text: "Fri, soft starts, effort 2 of 5", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Next step",
+          lines: [
+            { text: "Effort fell from 3 to 2 over the week.", mark: "plain" },
+            { text: "Next step: phone-call practice.", mark: "clin" },
+          ],
+        },
+      ],
+      states: ["Draft", "Ready", "Proposed", "Active", "Logged", "Assigned"],
       nodes: [
         {
           verb: "drafts",
@@ -224,22 +283,22 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician edits and approves it.",
-          body: "Those corrections improve the next draft. Anything used to train our models needs the patient's opt-in first.",
+          body: "Each correction improves the next draft. Anything used to train our models needs the patient's opt-in first.",
         },
         {
           verb: "structures",
           title: "AI structures the practice plan.",
-          body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the therapist to approve.",
+          body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the clinician to approve.",
         },
         {
           verb: "calibrates",
           title: "The clinician calibrates it.",
-          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the therapist has reviewed it.",
+          body: "The clinician adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the clinician has reviewed it.",
         },
         {
           verb: "listens",
           title: "AI helps between sessions.",
-          body: "Attempts are stored with the technique, the date, and how the patient rated the effort.",
+          body: "UpSpeech stores each attempt with the technique, the date, and how the patient rated the effort.",
         },
         {
           verb: "decides",
