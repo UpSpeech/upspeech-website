@@ -107,20 +107,8 @@ const PhoneShot = ({
 
 const hasStores = Boolean(APP_STORE_URL || PLAY_STORE_URL);
 
-const BeatLabel = ({
-  n,
-  children,
-}: {
-  n: number;
-  children: React.ReactNode;
-}) => (
-  <p className="mb-2.5 flex items-center gap-2.5 font-body text-sm font-semibold text-calm-navy">
-    <span
-      aria-hidden="true"
-      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-calm-lavender font-heading text-xs font-extrabold tabular-nums text-calm-navy"
-    >
-      {n}
-    </span>
+const BeatLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="absolute -top-7 left-3 z-10 whitespace-nowrap rounded-full bg-white px-3 py-1 font-body text-xs font-semibold text-calm-navy shadow-sm ring-1 ring-calm-navy/10">
     {children}
   </p>
 );
@@ -161,7 +149,7 @@ export default function ForPatients() {
             records on the phone, the therapist replies. */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,4rem)] sm:pt-36">
           <div className="gutter relative">
-            <div className="grid items-center gap-12 lg:grid-cols-[0.86fr,1.14fr] lg:gap-8">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.02fr,0.98fr] lg:gap-12">
               <div>
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
                 <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
@@ -181,37 +169,60 @@ export default function ForPatients() {
                 </div>
               </div>
 
-              <ol className="mx-auto grid w-full max-w-[520px] gap-6 sm:max-w-[680px] sm:grid-cols-[1fr,auto] sm:grid-rows-[auto,auto,1fr] sm:items-center sm:gap-x-0 lg:ml-auto">
-                <li className="relative z-20 sm:col-start-1 sm:row-start-1 sm:mr-4 sm:self-start">
-                  <BeatLabel n={1}>{t.intro.exchange.todayLabel}</BeatLabel>
-                  <img
-                    src={localizedAsset(EXCHANGE[0].src, locale)}
-                    alt={t.intro.exchange.todayAlt}
-                    width={EXCHANGE[0].width}
-                    height={EXCHANGE[0].height}
-                    fetchPriority="high"
-                    className={cardClass}
+              {/* The person is the anchor and the exchange lands on her lap.
+                  Everything starts below y 0.6 of the cut-out, under the
+                  chins; the phone takes the right edge, where her arm is. */}
+              <div className="relative mx-auto w-full max-w-[520px] lg:mx-0 lg:ml-auto lg:max-w-[540px]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-[-12%] top-[2%] h-[90%] rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(224,216,250,0.75), rgba(238,234,253,0.34) 52%, rgba(241,238,253,0) 78%)",
+                  }}
+                />
+                <div className="relative z-10">
+                  <CutOut
+                    name="patients-hero"
+                    alt={t.intro.photoAlt}
+                    priority
+                    sizing="width"
+                    renderHeight={{ base: 306, sm: 455, lg: 473 }}
+                    className="relative"
                   />
-                </li>
-                <li className="relative z-10 flex flex-col items-center sm:col-start-2 sm:row-span-3 sm:row-start-1">
-                  <BeatLabel n={2}>{t.intro.exchange.recordLabel}</BeatLabel>
-                  <PhoneShot
-                    src={localizedAsset(RECORD_SHOT, locale)}
-                    alt={t.intro.exchange.recordAlt}
-                    className="relative w-[190px] sm:w-[250px]"
-                  />
-                </li>
-                <li className="relative z-20 sm:col-start-1 sm:row-start-2 sm:mr-4 sm:self-start">
-                  <BeatLabel n={3}>{t.intro.exchange.replyLabel}</BeatLabel>
-                  <img
-                    src={localizedAsset(EXCHANGE[1].src, locale)}
-                    alt={t.intro.exchange.replyAlt}
-                    width={EXCHANGE[1].width}
-                    height={EXCHANGE[1].height}
-                    className={cardClass}
-                  />
-                </li>
-              </ol>
+                </div>
+                <ol className="relative z-20 -mt-[12%] grid grid-cols-[1fr,auto] gap-x-3 gap-y-12">
+                  <li className="relative col-start-1 row-start-1">
+                    <BeatLabel>{t.intro.exchange.todayLabel}</BeatLabel>
+                    <img
+                      src={localizedAsset(EXCHANGE[0].src, locale)}
+                      alt={t.intro.exchange.todayAlt}
+                      width={EXCHANGE[0].width}
+                      height={EXCHANGE[0].height}
+                      fetchPriority="high"
+                      className={cardClass}
+                    />
+                  </li>
+                  <li className="relative col-start-2 row-span-2 row-start-1 -mt-[14%] self-start">
+                    <BeatLabel>{t.intro.exchange.recordLabel}</BeatLabel>
+                    <PhoneShot
+                      src={localizedAsset(RECORD_SHOT, locale)}
+                      alt={t.intro.exchange.recordAlt}
+                      className="relative w-[128px] sm:w-[170px]"
+                    />
+                  </li>
+                  <li className="relative col-start-1 row-start-2">
+                    <BeatLabel>{t.intro.exchange.replyLabel}</BeatLabel>
+                    <img
+                      src={localizedAsset(EXCHANGE[1].src, locale)}
+                      alt={t.intro.exchange.replyAlt}
+                      width={EXCHANGE[1].width}
+                      height={EXCHANGE[1].height}
+                      className={cardClass}
+                    />
+                  </li>
+                </ol>
+              </div>
             </div>
           </div>
         </section>

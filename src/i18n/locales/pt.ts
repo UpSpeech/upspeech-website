@@ -439,7 +439,7 @@ export const pt: Dictionary = {
         todayLabel: "Exercício de hoje, do Sam Rivera",
         todayAlt:
           "O painel do paciente: a prática de hoje, definida pelo terapeuta, com um botão para começar",
-        replyLabel: "Sam Rivera responde",
+        replyLabel: "O teu terapeuta responde",
         replyAlt: "Uma nota do terapeuta sobre uma gravação do paciente",
         recordLabel: "Gravas tu",
         recordAlt:
