@@ -356,6 +356,7 @@ export const es: Dictionary = {
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
       body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan y ve cómo va todo mientras tú practicas en la app.",
+      inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
         "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
     },
@@ -412,10 +413,6 @@ export const es: Dictionary = {
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Descárgalo en la App Store",
-    storeAppStoreAriaLabel: "Descarga UpSpeech en la App Store",
-    storePlayAlt: "Disponible en Google Play",
-    storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
   personCentered: {
     seoTitle: "¿Qué es la logopedia centrada en la persona?",

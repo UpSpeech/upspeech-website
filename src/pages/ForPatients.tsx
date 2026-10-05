@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
 import Companion from "@/components/Companion";
+import StoreBadges from "@/components/StoreBadges";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
@@ -145,6 +146,12 @@ export default function ForPatients() {
                 <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
                   {t.intro.body}
                 </p>
+                {(APP_STORE_URL || PLAY_STORE_URL) && (
+                  <p className="mt-8 font-body text-base font-semibold text-calm-navy">
+                    {t.intro.inviteNote}
+                  </p>
+                )}
+                <StoreBadges className="mt-4" />
               </div>
               {/* Cut out rather than cropped square. The 1:1 crop was
                   discarding a fifth of a 0.80 portrait to make it fit a box
@@ -224,7 +231,7 @@ export default function ForPatients() {
                 bellyShape="round"
               />
 
-              <p className="t-statement mt-4 max-w-xl font-accent font-medium text-calm-navy">
+              <p className="t-statement mt-4 max-w-xl font-heading font-medium text-calm-navy">
                 {t.withAParent.line}
               </p>
             </div>
@@ -243,40 +250,7 @@ export default function ForPatients() {
               </p>
             </div>
 
-            {(APP_STORE_URL || PLAY_STORE_URL) && (
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                {APP_STORE_URL && (
-                  <a
-                    href={APP_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.storeAppStoreAriaLabel}
-                  >
-                    <img
-                      src="/images/app-store.png"
-                      alt={t.storeAppStoreAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-                {PLAY_STORE_URL && (
-                  <a
-                    href={PLAY_STORE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t.storePlayAriaLabel}
-                  >
-                    <img
-                      src="/images/google-play.png"
-                      alt={t.storePlayAlt}
-                      className="h-11 w-auto"
-                      loading="lazy"
-                    />
-                  </a>
-                )}
-              </div>
-            )}
+            <StoreBadges className="mt-8" />
             {/* Three shipped screens, then the one a younger patient sees.
                 Four phones do not fit the gutter at the height three did, so
                 the whole row steps down together and the first three keep

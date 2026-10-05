@@ -357,6 +357,7 @@ export const pt: Dictionary = {
       headlineLine1: "A tua prática,",
       headlineLine2: "entre sessões.",
       body: "A UpSpeech é como continuas a praticar, entre consultas, o trabalho que fazes com o teu terapeuta da fala. O teu terapeuta define o plano e acompanha como está a correr enquanto praticas na app.",
+      inviteNote: "O teu terapeuta envia-te um convite para começares.",
       photoAlt:
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
     },
@@ -413,10 +414,6 @@ export const pt: Dictionary = {
       bodyLink: "pedir acesso aqui",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Descarregar na App Store",
-    storeAppStoreAriaLabel: "Descarregar a UpSpeech na App Store",
-    storePlayAlt: "Disponível no Google Play",
-    storePlayAriaLabel: "Obter a UpSpeech no Google Play",
   },
   personCentered: {
     seoTitle: "O que é a terapia centrada na pessoa?",
