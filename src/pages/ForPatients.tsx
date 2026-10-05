@@ -9,27 +9,21 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
 // Screenshot sources stay in code; alt text comes from forPatients.app.screenshots.
-// These three are crops of the shipped app on demo data, cut to the part each
-// caption is about and shown at 320px wide. The corners are baked into the image; there is no device frame.
+// These three are captures of the shipped app, cropped from the store art, and
+// arrive with the device frame already baked in.
 const SCREENSHOTS = [
-  "/screenshots/mobile/patient-home-crop.webp",
-  "/screenshots/mobile/patient-journey-crop.webp",
-  "/screenshots/mobile/patient-practice-crop.webp",
-];
-// Pixel size of each crop above, in the same order: 2x of the 460px column.
-const SCREENSHOT_SIZES = [
-  { width: 920, height: 825 },
-  { width: 920, height: 1280 },
-  { width: 920, height: 767 },
+  "/screenshots/mobile/patient-home-device.webp",
+  "/screenshots/mobile/patient-journey-device.webp",
+  "/screenshots/mobile/patient-practice-device.webp",
 ];
 
-// The child-facing screen, cropped to the character and the cue like the three
-// above. The photograph's phone below uses the full screen through PhoneShot.
-// Alt text is forPatients.app.childScreenshots[1].
+// The child-facing screen. A bare screen rather than a framed render, so it
+// goes through PhoneShot; alt text is forPatients.app.childScreenshots[1].
 //
 // The caregiver screen is deliberately not here. It is a sparse screen whose
 // content stops two thirds down, which is invisible at the size it runs beside
 // the photograph and looks like a failed render at the size this row runs.
+const CHILD_SCREENSHOT = "/screenshots/mobile/child-practice.webp";
 
 const EXCHANGE = [
   {
@@ -226,17 +220,12 @@ export default function ForPatients() {
                 width, so the only place a phone can overlap without landing on
                 someone is below y 0.5, where the laps and the bench are. */}
             <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
-              <img
+              <PhoneShot
                 src={localizedAsset(
-                  "/screenshots/mobile/caregiver-today-crop.webp",
+                  "/screenshots/mobile/caregiver-today.webp",
                   locale,
                 )}
-                alt=""
-                aria-hidden="true"
-                width={600}
-                height={560}
-                loading="lazy"
-                className="pointer-events-none absolute bottom-14 left-0 hidden w-[214px] -rotate-6 rounded-[20px] ring-1 ring-calm-navy/10 drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)] sm:block"
+                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
               />
               <CutOut
                 name="patients-listen"
@@ -283,38 +272,28 @@ export default function ForPatients() {
             </div>
 
             <StoreBadges className="mt-8" />
-            <ol className="mt-14 space-y-12 sm:space-y-14">
+            {/* Three shipped screens, then the one a younger patient sees.
+                Four phones do not fit the gutter at the height three did, so
+                the whole row steps down together and the first three keep
+                their relative sizing to each other. */}
+            <div className="scroll-fade-x mt-12 flex snap-x snap-mandatory items-end gap-6 overflow-x-auto pb-4 sm:gap-8 lg:snap-none lg:justify-center lg:overflow-visible">
               {SCREENSHOTS.map((base, i) => (
-                <li
+                <img
                   key={base}
-                  className={`grid items-center gap-6 sm:grid-cols-2 sm:gap-14 ${
-                    i % 2 ? "sm:[&>div:first-child]:order-2" : ""
+                  src={localizedAsset(base, locale)}
+                  alt={t.app.screenshots[i]}
+                  loading="lazy"
+                  className={`h-auto w-auto max-h-[400px] shrink-0 snap-start drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)] ${
+                    i === 1 ? "sm:-translate-y-4" : "sm:translate-y-4"
                   }`}
-                >
-                  <div className="flex justify-center">
-                    <img
-                      src={localizedAsset(base, locale)}
-                      alt={t.app.screenshots[i]}
-                      loading="lazy"
-                      width={SCREENSHOT_SIZES[i].width}
-                      height={SCREENSHOT_SIZES[i].height}
-                      className="h-auto w-[min(460px,100%)] rounded-[28px] ring-1 ring-calm-navy/10 drop-shadow-[0_30px_60px_-25px_rgba(41,53,135,0.4)]"
-                    />
-                  </div>
-                  <div className="max-w-sm">
-                    <p className={`${eyebrowClass} !tracking-normal`}>
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-2 t-h3 font-heading font-bold text-calm-navy tracking-tight">
-                      {t.app.walkthrough[i].title}
-                    </h3>
-                    <p className="mt-3 font-body t-lead text-calm-charcoal/80 leading-relaxed">
-                      {t.app.walkthrough[i].line}
-                    </p>
-                  </div>
-                </li>
+                />
               ))}
-            </ol>
+              <PhoneShot
+                src={localizedAsset(CHILD_SCREENSHOT, locale)}
+                alt={t.app.childScreenshots[1]}
+                className="relative h-[400px] shrink-0 snap-start sm:-translate-y-4"
+              />
+            </div>
           </div>
         </section>
 
