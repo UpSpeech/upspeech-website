@@ -217,12 +217,12 @@ export default function ForSlps() {
         </section>
 
         {/* Closing CTA */}
-        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(4rem,8vw,7rem)]">
+        <section className="bg-calm-lavender/15 px-[max(1.5rem,5vw)] py-[clamp(3.5rem,6vw,5.5rem)]">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight text-balance">
               {t.closing.headline}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-balance font-body text-base text-calm-charcoal/90 leading-relaxed sm:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-balance font-body text-base text-calm-charcoal leading-relaxed sm:text-lg">
               {t.closing.body}
             </p>
             <a
