@@ -103,19 +103,20 @@ export const ConsentBanner = () => {
       aria-labelledby="consent-banner-title"
       aria-describedby="consent-banner-description"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-[max(1.5rem,5vw)] py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-4">
-        <div className="flex-1 sm:flex sm:items-baseline sm:gap-2">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-[max(1rem,5vw)] py-2 sm:justify-between sm:gap-6 sm:px-[max(1.5rem,5vw)] sm:py-4">
+        <div className="min-w-0 flex-1 sm:flex sm:items-baseline sm:gap-2">
           <h2
             id="consent-banner-title"
-            className="text-sm font-semibold text-gray-900 sm:shrink-0"
+            className="text-[13px] font-semibold leading-tight text-gray-900 sm:shrink-0 sm:text-sm"
           >
             {t.title}
           </h2>
           <p
             id="consent-banner-description"
-            className="text-xs text-gray-600 sm:text-sm"
+            className="text-xs leading-snug text-gray-600 sm:text-sm"
           >
-            {t.description}{" "}
+            <span className="sm:hidden">{t.descriptionShort}</span>
+            <span className="hidden sm:inline">{t.description}</span>{" "}
             <a
               href="https://policies.google.com/technologies/cookies"
               target="_blank"
@@ -126,13 +127,13 @@ export const ConsentBanner = () => {
             </a>
           </p>
         </div>
-        <div className="flex gap-2 sm:shrink-0 sm:gap-3">
+        <div className="flex shrink-0 gap-2 sm:gap-3">
           <Button
             type="button"
-            variant="secondary"
+            variant="outline"
             size="sm"
             onClick={handleDecline}
-            className="flex-1 sm:order-1 sm:flex-none"
+            className="h-11 min-w-[5.5rem] border-primary px-3 text-primary sm:order-1 sm:h-9 sm:min-w-0"
           >
             {t.decline}
           </Button>
@@ -141,7 +142,7 @@ export const ConsentBanner = () => {
             variant="default"
             size="sm"
             onClick={handleAccept}
-            className="flex-1 sm:order-2 sm:flex-none"
+            className="h-11 min-w-[5.5rem] px-3 sm:order-2 sm:h-9 sm:min-w-0"
           >
             {t.accept}
           </Button>

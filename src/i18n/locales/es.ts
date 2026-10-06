@@ -708,6 +708,7 @@ export const es: Dictionary = {
     title: "Cookies en este sitio",
     description:
       "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Al aceptar, consientes el uso de cookies de análisis. Puedes rechazarlas si lo prefieres.",
+    descriptionShort: "Cookies de análisis, solo si aceptas.",
     learnMore: "Más información sobre las cookies",
     decline: "Rechazar",
     accept: "Aceptar",
