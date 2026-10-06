@@ -696,6 +696,7 @@ export const en = {
     title: "Cookies on this site",
     description:
       "We use cookies to improve your experience and analyse site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
+    descriptionShort: "Analytics cookies, only if you accept.",
     learnMore: "Learn more about cookies",
     decline: "Decline",
     accept: "Accept",
