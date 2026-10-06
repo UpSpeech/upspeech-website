@@ -701,9 +701,8 @@ export const pt: Dictionary = {
     },
     closing: {
       headline: "Traz a UpSpeech para a tua clínica.",
-      bodyPrefix: "A UpSpeech funciona através da tua clínica. ",
-      bodyLink: "Pede acesso aqui",
-      bodySuffix: ".",
+      body: "A UpSpeech funciona através da tua clínica. Conta-nos como é o teu consultório e entramos em contacto.",
+      cta: "Pedir acesso antecipado",
     },
   },
   consent: {

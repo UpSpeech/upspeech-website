@@ -687,9 +687,8 @@ export const en = {
     },
     closing: {
       headline: "Bring UpSpeech into your practice.",
-      bodyPrefix: "UpSpeech works through your clinic. ",
-      bodyLink: "Request access here",
-      bodySuffix: ".",
+      body: "It works through your clinic. Tell us about your practice and we will be in touch.",
+      cta: "Request early access",
     },
   },
   consent: {
