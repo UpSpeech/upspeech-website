@@ -217,21 +217,29 @@ export default function ForSlps() {
         </section>
 
         {/* Closing CTA */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight">
+        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(4rem,8vw,7rem)]">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight text-balance">
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/90 leading-relaxed">
-              {t.closing.bodyPrefix}
-              <a
-                href={`${localizedHref("/", locale)}#cta`}
-                className="font-semibold text-calm-navy hover:underline"
-              >
-                {t.closing.bodyLink}
-              </a>
-              {t.closing.bodySuffix}
+            <p className="mx-auto mt-4 max-w-xl text-balance font-body text-base text-calm-charcoal/90 leading-relaxed sm:text-lg">
+              {t.closing.body}
             </p>
+            <a
+              href={`${localizedHref("/", locale)}#cta`}
+              onClick={() =>
+                trackButtonClick("request_early_access_closing", "for_slps")
+              }
+              className="group mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)]"
+            >
+              {t.closing.cta}
+              <span
+                aria-hidden="true"
+                className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
           </div>
         </section>
       </main>

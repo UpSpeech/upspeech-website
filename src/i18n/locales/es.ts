@@ -699,9 +699,8 @@ export const es: Dictionary = {
     },
     closing: {
       headline: "Incorpora UpSpeech a tu consulta.",
-      bodyPrefix: "UpSpeech funciona a través de tu clínica. ",
-      bodyLink: "Solicita acceso aquí",
-      bodySuffix: ".",
+      body: "UpSpeech funciona a través de tu clínica. Cuéntanos cómo es tu consulta y nos pondremos en contacto.",
+      cta: "Solicitar acceso anticipado",
     },
   },
   consent: {
