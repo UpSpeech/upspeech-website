@@ -121,20 +121,14 @@ const MobileAppBand = () => {
         className="gutter grid items-center gap-10 lg:grid-cols-[5fr_6fr]"
       >
         <div className="max-w-xl">
-          <span
-            className="font-body t-eyebrow text-calm-lavender-ink"
-            style={reveal(revealed, 0)}
-          >
-            {t.eyebrow}
-          </span>
           <h2
-            className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+            className="t-h2 font-heading font-bold text-calm-navy tracking-tight"
             style={{ ...reveal(revealed, 80) }}
           >
             {t.headline}
           </h2>
           <p
-            className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
+            className="mt-5 max-w-md font-body t-lead text-calm-charcoal/80"
             style={reveal(revealed, 160)}
           >
             {t.body}
@@ -150,15 +144,34 @@ const MobileAppBand = () => {
               is the duplication this redesign set out to remove. */}
           {/* The three residents, in the section that shows the three tabs
               they own: tumbo on the journey, pip on practice, nima on the
-              coach. Accents are the ones the decision record assigns. */}
+              coach. Accents are the ones the decision record assigns.
+
+              Each wears a different face, because the app now offers eyes,
+              brows and a belly as things a person picks, and three characters
+              separated only by colour is the finding that started D50. Pip
+              keeps the defaults so one of the three is still the drawing the
+              rest of the site ships. */}
           <div className="mt-7 flex items-end gap-1.5">
-            <Companion species="tumbo" size={84} accent="#cca163" />
+            <Companion
+              species="tumbo"
+              size={84}
+              accent="#cca163"
+              eyes="wide"
+              brows="soft"
+              bellyShape="round"
+              bellySize="l"
+            />
             <Companion species="pip" size={84} accent="#958af0" />
-            <Companion species="nima" size={84} accent="#69b2e1" />
+            <Companion
+              species="nima"
+              size={84}
+              accent="#69b2e1"
+              eyes="narrow"
+              brows="flat"
+              bellyShape="shield"
+              bellySize="s"
+            />
           </div>
-          <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
-            {t.familyEyebrow}
-          </p>
           <CutOut
             name="home-family"
             alt={t.familyAlt}

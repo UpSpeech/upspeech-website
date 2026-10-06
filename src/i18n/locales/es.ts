@@ -10,6 +10,7 @@ export const es: Dictionary = {
     whyUs: "Por qué UpSpeech",
     forPatients: "Para pacientes",
     requestAccess: "Solicitar acceso anticipado",
+    getTheApp: "Obtener la app",
     skipToContent: "Saltar al contenido",
     logoScrollTop: "UpSpeech, subir al inicio",
     logoGoHome: "UpSpeech, ir a la página de inicio",
@@ -36,7 +37,7 @@ export const es: Dictionary = {
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
     personCentered: "Centrada en la persona",
-    reducingDocumentationTime: "Tiempo de documentación",
+    reducingDocumentationTime: "Menos papeleo",
   },
   localeSwitcher: {
     label: "Idioma",
@@ -68,6 +69,11 @@ export const es: Dictionary = {
     practicalDescription: "Qué es",
     objective: "Para qué sirve",
     howToPractice: "Cómo practicarla",
+    onThisPage: "En esta página",
+    closingTitle: "Practica esto entre sesiones",
+    closingBody:
+      "Tu logopeda puede asignar esta técnica en UpSpeech y ver cómo fue cada práctica antes de tu próxima cita.",
+    closingLink: "Cómo funciona UpSpeech para pacientes",
     relatedTechniques: "Se practican con esta",
   },
   home: {
@@ -104,7 +110,6 @@ export const es: Dictionary = {
       footerEmphasis: "sin añadir sesiones a la agenda del logopeda.",
     },
     week: {
-      eyebrow: "Entre las sesiones",
       headline: "La mayor parte de la terapia ocurre cuando nadie mira.",
       body: "Una hora en la clínica y luego seis días por tu cuenta. La parte que decide si la terapia funciona es la que el clínico nunca ve.",
       frames: [
@@ -152,7 +157,7 @@ export const es: Dictionary = {
       assessment: {
         time: "09:15 · La evaluación",
         headline: "Sales con el informe escrito.",
-        body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo corriges y lo firmas. No empiezas desde una página en blanco.",
+        body: "Graba la evaluación y el informe queda redactado en cuanto te levantas. Lo revisas y lo corriges. No empiezas desde una página en blanco.",
         detailAlt:
           "Un informe de sesión generado, encabezado con el nombre del paciente, la fecha y el estado Listo",
       },
@@ -179,7 +184,7 @@ export const es: Dictionary = {
         headline: "El plan se va a casa con ellos.",
         body: "Asignas los ejercicios una vez. Practican entre citas y cada intento vuelve para que lo revises antes de la siguiente.",
         detailAlt:
-          "Un itinerario de aprendizaje asignado, mostrando el progreso por sus pasos, con el paso actual marcado",
+          "Un itinerario de aprendizaje asignado, con su paso actual indicado",
       },
       close: {
         time: "17:30 · El final del día",
@@ -208,10 +213,82 @@ export const es: Dictionary = {
       headlineEmphasis: "revisado por un logopeda.",
       clinician: "Logopeda",
       ai: "IA",
+      patient: "Paciente",
       clinicianStepPrefix: "Logopeda · paso ",
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
+      fileTitle: "Ficha del paciente, semana 14",
+      backToStart: "Y vuelta al paso 01",
+      docs: [
+        {
+          kind: "Informe de la sesión",
+          lines: [
+            {
+              text: "El paciente practicó 3 veces esta semana.",
+              mark: "ai",
+            },
+            { text: "La evitación de llamadas sigue igual.", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Informe de la sesión",
+          lines: [
+            {
+              text: "El paciente practicó 3 veces esta semana.",
+              mark: "plain",
+            },
+            { text: "La evitación de llamadas sigue igual.", mark: "struck" },
+            {
+              text: "La evitación de llamadas bajó: hizo dos llamadas esta semana.",
+              mark: "clin",
+            },
+          ],
+        },
+        {
+          kind: "Plan de práctica",
+          lines: [
+            { text: "Inicios suaves, 5 min al día", mark: "ai" },
+            { text: "Salidas controladas, 5 min al día", mark: "ai" },
+            { text: "Dificultad: media", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Plan de práctica",
+          lines: [
+            { text: "Inicios suaves, 5 min al día", mark: "plain" },
+            { text: "Salidas controladas, 5 min al día", mark: "struck" },
+            { text: "Tartamudeo voluntario, 5 min al día", mark: "clin" },
+            { text: "Dificultad: fácil", mark: "clin" },
+          ],
+        },
+        {
+          kind: "Intentos",
+          lines: [
+            { text: "Lun, inicios suaves, esfuerzo 3 de 5", mark: "ai" },
+            { text: "Mié, tartamudeo voluntario, esfuerzo 3 de 5", mark: "ai" },
+            { text: "Vie, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
+          ],
+        },
+        {
+          kind: "Siguiente paso",
+          lines: [
+            {
+              text: "El esfuerzo bajó de 3 a 2 a lo largo de la semana.",
+              mark: "plain",
+            },
+            { text: "Practicar llamadas.", mark: "clin" },
+          ],
+        },
+      ],
+      states: [
+        "Borrador",
+        "Listo",
+        "Propuesto",
+        "Activo",
+        "Registrado",
+        "Asignado",
+      ],
       nodes: [
         {
           verb: "redacta",
@@ -221,22 +298,22 @@ export const es: Dictionary = {
         {
           verb: "aprueba",
           title: "El logopeda lo edita y lo aprueba.",
-          body: "Esas correcciones mejoran el siguiente borrador. Todo lo que se use para entrenar nuestros modelos necesita antes el consentimiento del paciente.",
+          body: "Cada corrección mejora el siguiente borrador. Todo lo que se use para entrenar nuestros modelos necesita antes el consentimiento del paciente.",
         },
         {
           verb: "estructura",
           title: "La IA estructura el plan de práctica.",
-          body: "A partir de los datos de la sesión y la fase del paciente, UpSpeech propone ejercicios diarios para que el terapeuta los apruebe.",
+          body: "A partir de los datos de la sesión y la fase del paciente, UpSpeech propone ejercicios diarios para que el logopeda los apruebe.",
         },
         {
           verb: "calibra",
           title: "El logopeda lo calibra.",
-          body: "El terapeuta ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+          body: "El logopeda ajusta la dificultad y cambia de técnica cuando hace falta. Nada llega al paciente sin que el logopeda lo revise.",
         },
         {
           verb: "escucha",
-          title: "La IA ayuda entre sesiones.",
-          body: "Los intentos se guardan con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
+          title: "UpSpeech registra cada intento.",
+          body: "UpSpeech guarda cada intento con la técnica, la fecha y la valoración que hizo el paciente del esfuerzo.",
         },
         {
           verb: "decide",
@@ -356,7 +433,19 @@ export const es: Dictionary = {
       eyebrow: "Para pacientes",
       headlineLine1: "Tu práctica,",
       headlineLine2: "entre sesiones.",
-      body: "UpSpeech es la forma de seguir practicando entre citas el trabajo que haces con tu logopeda. Tu terapeuta define el plan y ve cómo va todo mientras tú practicas en la app.",
+      body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
+      exchange: {
+        todayLabel: "Ejercicio de hoy, de Sam Rivera",
+        todayAlt:
+          "La práctica de hoy en el panel del paciente: Inicios suaves, definida por el terapeuta, unos 5 minutos",
+        replyLabel: "Tu terapeuta responde",
+        replyAlt:
+          "Una grabación de la práctica de Leo con barra de reproducción, y el feedback del terapeuta debajo",
+        recordLabel: "Tú grabas",
+        recordAlt:
+          "La pantalla de práctica del paciente en un teléfono, lista para grabar la respuesta al ejercicio de hoy",
+      },
+      inviteNote: "Tu logopeda te envía una invitación para empezar.",
       photoAlt:
         "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
     },
@@ -366,24 +455,6 @@ export const es: Dictionary = {
       photoAlt:
         "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
     },
-    howItWorks: {
-      eyebrow: "Cómo funciona para ti",
-      headline: "Guiado por tu terapeuta, en cada paso.",
-      steps: [
-        {
-          title: "Tu terapeuta define tu plan",
-          copy: "Tu logopeda elige los ejercicios y objetivos que se ajustan a la fase de terapia en la que estás.",
-        },
-        {
-          title: "Practicas en la app",
-          copy: "Realiza los ejercicios guiados desde el móvil, al ritmo que te vaya bien entre sesiones.",
-        },
-        {
-          title: "Tu terapeuta ve tu progreso",
-          copy: "Tu logopeda sigue lo que has practicado y ajusta el plan a medida que avanzas, para que cada sesión parta de la anterior.",
-        },
-      ],
-    },
     app: {
       eyebrow: "La app",
       headline: "Tu plan, en tu bolsillo.",
@@ -392,6 +463,20 @@ export const es: Dictionary = {
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
+      ],
+      walkthrough: [
+        {
+          title: "Hoy",
+          line: "Tu terapeuta elige el ejercicio. Tú pulsas empezar.",
+        },
+        {
+          title: "Tu recorrido",
+          line: "Mira qué pasos has dado y cuáles vienen después.",
+        },
+        {
+          title: "Práctica",
+          line: "Elige un ejercicio y practica a tu ritmo.",
+        },
       ],
       childScreenshots: [
         "Pantalla de la app móvil de UpSpeech que un padre o una madre usa para hacer la práctica del día con su hijo",
@@ -425,16 +510,13 @@ export const es: Dictionary = {
       ],
     },
     closing: {
-      headline: "Pregunta a tu logopeda sobre UpSpeech.",
+      headline: "Lista cuando tu logopeda lo esté.",
+      body: "Instala la app ahora. Cuando tu logopeda te envíe la invitación, se conecta con tu plan.",
       bodyPrefix:
         "UpSpeech funciona a través de tu clínica. Si gestionas una consulta y quieres usarlo con tus pacientes, puedes ",
       bodyLink: "solicitar acceso aquí",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Descárgalo en la App Store",
-    storeAppStoreAriaLabel: "Descarga UpSpeech en la App Store",
-    storePlayAlt: "Disponible en Google Play",
-    storePlayAriaLabel: "Consigue UpSpeech en Google Play",
   },
   personCentered: {
     seoTitle: "¿Qué es la logopedia centrada en la persona?",
@@ -511,7 +593,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Borradores estructurados que revisas y editas",
-        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta y lo firmas. El juicio clínico sigue siendo tuyo en todo momento.",
+        body: "Una forma de abordarlo es un borrador generado a partir de los propios datos de la sesión, que recoge qué practicó el paciente y cómo avanzó. Editas lo que haga falta. El juicio clínico sigue siendo tuyo en todo momento.",
       },
       {
         heading: "Qué debe incluir una buena nota de logopedia",
@@ -519,7 +601,7 @@ export const es: Dictionary = {
       },
       {
         heading: "Lo que hace UpSpeech",
-        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise y lo firme.",
+        body: "UpSpeech recoge datos estructurados de la práctica entre sesiones, incluyendo qué ejercicios completó el paciente y dónde tuvo dificultades. Esos datos alimentan un borrador de nota de sesión. Nada llega al paciente sin que el terapeuta lo revise. Solo grabas con el consentimiento del paciente.",
       },
     ],
     faq: {
@@ -536,11 +618,11 @@ export const es: Dictionary = {
         },
         {
           q: "¿Es clínicamente apropiado usar notas redactadas por IA?",
-          a: "Los borradores de notas son apropiados cuando el terapeuta revisa y firma cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
+          a: "Los borradores de notas son apropiados cuando el terapeuta revisa cada nota antes de que entre en la historia clínica del paciente. Consulta las orientaciones de tu colegio profesional sobre IA en la documentación clínica.",
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se firme ninguna nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. Cuando finalizas el informe, el archivo de audio se elimina. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se finalice ninguna nota.",
         },
       ],
     },
@@ -568,7 +650,7 @@ export const es: Dictionary = {
     documentation: {
       eyebrow: "Documentación",
       headline: "Notas de sesión, redactadas para que las revises.",
-      body: "Tras una sesión, UpSpeech redacta el informe. Lo editas y lo firmas, sin empezar desde una página vacía.",
+      body: "Tras una sesión, UpSpeech redacta el informe. Lo revisas y lo editas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",
     },
@@ -603,7 +685,7 @@ export const es: Dictionary = {
       items: [
         {
           q: "¿UpSpeech escribe mis informes por mí?",
-          a: "Redacta un borrador de informe estructurado a partir de la sesión para que lo revises y edites, y te ahorra el trabajo de la página en blanco.",
+          a: "No por sí sola. Redacta el borrador a partir de la grabación de la sesión y de los datos de práctica, y tú decides qué dice el informe.",
         },
         {
           q: "¿Qué hacen mis pacientes?",
@@ -617,15 +699,15 @@ export const es: Dictionary = {
     },
     closing: {
       headline: "Incorpora UpSpeech a tu consulta.",
-      bodyPrefix: "UpSpeech funciona a través de tu clínica. ",
-      bodyLink: "Solicita acceso aquí",
-      bodySuffix: ".",
+      body: "UpSpeech funciona a través de tu clínica. Cuéntanos cómo es tu consulta y nos pondremos en contacto.",
+      cta: "Solicitar acceso anticipado",
     },
   },
   consent: {
     title: "Cookies en este sitio",
     description:
       "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Al aceptar, consientes el uso de cookies de análisis. Puedes rechazarlas si lo prefieres.",
+    descriptionShort: "Cookies de análisis, solo si aceptas.",
     learnMore: "Más información sobre las cookies",
     decline: "Rechazar",
     accept: "Aceptar",

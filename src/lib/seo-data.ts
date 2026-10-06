@@ -29,57 +29,57 @@ export const TECHNIQUE_SEO: Record<
   "voluntary-stuttering": {
     title: "Voluntary Stuttering Technique",
     description:
-      "Stuttering on purpose, under your own control, so the fear of it has less to work with. What voluntary stuttering is for and how to practice it.",
+      "Stuttering on purpose, under your own control, so the fear of it has less to work with. What voluntary stuttering is for and how to practise it.",
   },
   cancelation: {
     title: "Cancellation Technique for Stuttering",
     description:
-      "Stop after the stuttered word, then say it again with easier speech. Cancellation is a stuttering modification technique, and this is how to practice it.",
+      "Stop after the stuttered word, then say it again with easier speech. Cancellation is a stuttering modification technique, and this is how to practise it.",
   },
   "pull-out": {
     title: "Pull-Out Technique for Stuttering",
     description:
-      "Changing a stutter while it is still happening, by easing out of it mid-word. What the pull-out is for and how to practice it.",
+      "Changing a stutter while it is still happening, by easing out of it mid-word. What the pull-out is for and how to practise it.",
   },
   "preparatory-set": {
     title: "Preparatory Set Technique",
     description:
-      "Setting up the movement before the word starts, instead of repairing it afterwards. What the preparatory set is for and how to practice it.",
+      "Setting up the movement before the word starts, instead of repairing it afterwards. What the preparatory set is for and how to practise it.",
   },
   holding: {
     title: "Holding Technique for Stuttering",
     description:
-      "Staying in the articulatory position through a block until the tension drains out of it. What the holding technique is for and how to practice it.",
+      "Staying in the articulatory position through a block until the tension drains out of it. What the holding technique is for and how to practise it.",
   },
   "soft-starts": {
     title: "Soft Starts Speech Technique",
     description:
-      "Beginning a word with the vocal folds relaxed, so there is no hard glottal attack to push through. What soft starts is for and how to practice it.",
+      "Beginning a word with the vocal folds relaxed, so there is no hard glottal attack to push through. What soft starts is for and how to practise it.",
   },
   "soft-articulation-contact": {
     title: "Soft Articulation Contact Technique",
     description:
-      "Light contact between the articulators, so less tension reaches the sound. What soft articulation contact is for and how to practice it.",
+      "Light contact between the articulators, so less tension reaches the sound. What soft articulation contact is for and how to practise it.",
   },
   "prolonged-speech": {
     title: "Prolonged Speech Technique",
     description:
-      "Vowels and continuant consonants held longer, which brings the rate down with them. What prolonged speech is for and how to practice it.",
+      "Vowels and continuant consonants held longer, which brings the rate down with them. What prolonged speech is for and how to practise it.",
   },
   "speech-speed-management": {
     title: "Speech Speed Management Technique",
     description:
-      "Picking a speaking rate and keeping it when the room asks you to hurry. What speech speed management is for and how to practice it.",
+      "Picking a speaking rate and keeping it when the room asks you to hurry. What speech speed management is for and how to practise it.",
   },
   pauses: {
     title: "Pauses Technique in Speech Therapy",
     description:
-      "Breaks put in on purpose, so the time pressure comes off the word after them. What the pauses technique is for and how to practice it.",
+      "Breaks put in on purpose, so the time pressure comes off the word after them. What the pauses technique is for and how to practise it.",
   },
   "identification-desensitization": {
     title: "Identification & Desensitization for Stuttering",
     description:
-      "Naming what your stutter actually does, until the reaction to it settles. A cognitive approach, with what it is for and how to practice it.",
+      "Naming what your stutter actually does, until the reaction to it settles. A cognitive approach, with what it is for and how to practise it.",
   },
 };
 
@@ -177,9 +177,9 @@ export function getPersonCenteredStructuredData(locale: string = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "What does person-centered mean?",
+    headline: "What does person-centred mean?",
     description:
-      "A plain-language guide to person-centered speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
     url: localeAbsUrl("/person-centered-therapy", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
@@ -214,7 +214,7 @@ export function getPersonCenteredStructuredData(locale: string = "en") {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Person-centered",
+          name: "Person-centred",
           item: localeAbsUrl("/person-centered-therapy", locale),
         },
       ],

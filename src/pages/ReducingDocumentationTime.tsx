@@ -1,7 +1,7 @@
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
-import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { useLocale, useT, localizedHref } from "@/i18n";
 import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
 
@@ -39,52 +39,44 @@ export default function ReducingDocumentationTime() {
 
       <main id="main">
         {/* Intro */}
-        <section className="relative overflow-hidden px-[max(1.5rem,5vw)] pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
-          <div className="relative max-w-6xl mx-auto">
+        <section className="relative overflow-hidden pt-28 pb-[clamp(0.5rem,2vw,1.5rem)] sm:pt-36">
+          <div className="gutter relative">
             <div className="max-w-3xl">
               <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-              <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
                 {t.intro.headlineLine1} <br />
-                <span className="text-calm-lavender-ink">
-                  {t.intro.headlineLine2}
-                </span>
+                {t.intro.headlineLine2}
               </h1>
-              <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-6 max-w-2xl font-body t-lead text-calm-charcoal/80">
                 {t.intro.body}
               </p>
             </div>
           </div>
         </section>
 
-        {/* Content sections */}
-        <section className="px-[max(1.5rem,5vw)] py-[clamp(3rem,6vw,5rem)]">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid gap-6 sm:gap-8">
+        {/* The four ideas read as one running list on the page's own ground.
+            Number and heading sit in the left column, the paragraph in the
+            right, so the eye has one edge to follow down the page. */}
+        <section className="py-[clamp(3rem,6vw,5rem)]">
+          <div className="gutter">
+            <div className="divide-y divide-calm-charcoal/10 border-y border-calm-charcoal/10">
               {t.sections.map((section, i) => (
                 <article
                   key={section.heading}
-                  className="rounded-2xl border border-calm-navy/10 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(41,53,135,0.35)] sm:p-8"
+                  className="grid gap-3 py-8 md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] md:gap-12 sm:py-10"
                 >
                   <div className="flex items-baseline gap-4">
                     <span
                       aria-hidden="true"
-                      className="font-heading text-2xl font-bold text-calm-lavender-ink sm:text-3xl"
+                      className="font-heading t-h3 font-bold text-calm-lavender-ink tabular-nums"
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h2 className="font-heading font-bold text-calm-charcoal tracking-tight text-xl sm:text-2xl">
+                    <h2 className="font-heading t-h3 font-bold text-calm-navy">
                       {section.heading}
                     </h2>
                   </div>
-                  <p className="mt-3 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed sm:pl-[3.25rem]">
+                  <p className="max-w-2xl font-body t-lead text-calm-charcoal/80">
                     {section.body}
                   </p>
                 </article>
@@ -94,46 +86,42 @@ export default function ReducingDocumentationTime() {
         </section>
 
         {/* FAQ */}
-        <section className="bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-3xl mx-auto">
-            <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
-              {t.faq.headline}
-            </h2>
+        <section className="bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
+          <div className="gutter">
+            <div className="max-w-3xl">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
+                {t.faq.headline}
+              </h2>
 
-            <dl className="mt-8 divide-y divide-calm-charcoal/10">
-              {t.faq.items.map((item) => (
-                <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
-                    {item.q}
-                  </dt>
-                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                    {item.a}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <MedicalDisclaimer className="mt-8" />
+              <Faq
+                items={t.faq.items.map((item) => ({
+                  question: item.q,
+                  answer: item.a,
+                }))}
+                className="mt-8"
+              />
+            </div>
           </div>
         </section>
 
-        {/* Closing CTA */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.5rem,7vw,6rem)]">
-          <div className="max-w-3xl mx-auto rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
-              {t.closing.headline}
-            </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-              {t.closing.bodyPrefix}
-              <a
-                href={`${localizedHref("/", locale)}#cta`}
-                className="font-semibold text-calm-navy hover:underline"
-              >
-                {t.closing.bodyLink}
-              </a>
-              {t.closing.bodySuffix}
-            </p>
+        {/* Closing CTA: a heading and a sentence, left on the page's edge. */}
+        <section className="pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.5rem,7vw,6rem)]">
+          <div className="gutter">
+            <div className="max-w-2xl">
+              <h2 className="t-h2-sm font-heading font-bold text-calm-navy">
+                {t.closing.headline}
+              </h2>
+              <p className="mt-4 font-body t-lead text-calm-charcoal/80">
+                {t.closing.bodyPrefix}
+                <a
+                  href={`${localizedHref("/", locale)}#cta`}
+                  className="font-semibold text-calm-navy hover:underline"
+                >
+                  {t.closing.bodyLink}
+                </a>
+                {t.closing.bodySuffix}
+              </p>
+            </div>
           </div>
         </section>
       </main>
