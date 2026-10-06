@@ -36,7 +36,7 @@ export const en = {
     playStoreAlt: "Get it on Google Play",
     playStoreAriaLabel: "Get UpSpeech on Google Play",
     personCentered: "Person-centred",
-    reducingDocumentationTime: "Documentation time",
+    reducingDocumentationTime: "Less paperwork",
   },
   localeSwitcher: {
     label: "Language",
