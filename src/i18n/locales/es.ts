@@ -37,7 +37,7 @@ export const es: Dictionary = {
     playStoreAlt: "Disponible en Google Play",
     playStoreAriaLabel: "Consigue UpSpeech en Google Play",
     personCentered: "Centrada en la persona",
-    reducingDocumentationTime: "Tiempo de documentación",
+    reducingDocumentationTime: "Menos papeleo",
   },
   localeSwitcher: {
     label: "Idioma",
