@@ -9,7 +9,12 @@ const Footer = () => {
   const locale = useLocale();
   const t = useT().footer;
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden">
+    <footer
+      className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden"
+      // The fixed consent bar covers the last stretch of the page. Reserving it
+      // here keeps that stretch navy, where body padding showed as white.
+      style={{ paddingBottom: "calc(3rem + var(--consent-bar-h, 0px))" }}
+    >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)] animate-fade-in-up">
           <div className="flex flex-col items-center md:items-start space-y-3">
