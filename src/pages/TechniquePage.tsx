@@ -153,12 +153,15 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       return (
         <ol className="mt-4 space-y-3 font-body t-lead text-calm-charcoal">
           {lines.map((line, index) => (
-            <li key={index} className="flex gap-3 leading-relaxed">
+            <li
+              key={index}
+              className="flex items-baseline gap-4 leading-relaxed"
+            >
               {/* Instructions are a real sequence, so the number carries
                   information here and is worth showing. */}
               <span
                 aria-hidden="true"
-                className="mt-0.5 font-heading t-small font-bold text-calm-navy"
+                className="w-6 shrink-0 font-heading t-small font-bold tabular-nums text-calm-navy"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
