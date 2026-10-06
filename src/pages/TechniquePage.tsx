@@ -21,7 +21,7 @@ interface TechniquePageProps {
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 // The one block on the page that earns its own ground: a procedure the reader follows.
 const procedureClass =
-  "rounded-2xl border border-calm-charcoal/10 bg-calm-light/60 p-6 sm:p-8";
+  "rounded-2xl border border-calm-navy/15 bg-white p-6 shadow-sm sm:p-8";
 const FAQ_TITLES: Record<string, string> = {
   en: "Frequently asked questions",
   pt: "Perguntas frequentes",
@@ -151,14 +151,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
 
     if (isNumberedList) {
       return (
-        <ol className="mt-4 space-y-3 font-body t-lead text-calm-charcoal/80">
+        <ol className="mt-4 space-y-3 font-body t-lead text-calm-charcoal">
           {lines.map((line, index) => (
             <li key={index} className="flex gap-3 leading-relaxed">
               {/* Instructions are a real sequence, so the number carries
                   information here and is worth showing. */}
               <span
                 aria-hidden="true"
-                className="mt-0.5 font-heading t-small font-bold text-calm-lavender-ink"
+                className="mt-0.5 font-heading t-small font-bold text-calm-navy"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
