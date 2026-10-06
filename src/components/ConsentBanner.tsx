@@ -133,7 +133,7 @@ export const ConsentBanner = () => {
             variant="outline"
             size="sm"
             onClick={handleDecline}
-            className="h-11 border-primary px-3 text-primary sm:order-1 sm:h-9"
+            className="h-11 min-w-[5.5rem] border-primary px-3 text-primary sm:order-1 sm:h-9 sm:min-w-0"
           >
             {t.decline}
           </Button>
@@ -142,7 +142,7 @@ export const ConsentBanner = () => {
             variant="default"
             size="sm"
             onClick={handleAccept}
-            className="h-11 px-3 sm:order-2 sm:h-9"
+            className="h-11 min-w-[5.5rem] px-3 sm:order-2 sm:h-9 sm:min-w-0"
           >
             {t.accept}
           </Button>
