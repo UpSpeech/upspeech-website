@@ -687,7 +687,7 @@ export const en = {
     },
     closing: {
       headline: "Bring UpSpeech into your practice.",
-      body: "UpSpeech works through your clinic. Tell us about your practice and we will be in touch.",
+      body: "It works through your clinic. Tell us about your practice and we will be in touch.",
       cta: "Request early access",
     },
   },
