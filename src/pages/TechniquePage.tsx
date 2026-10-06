@@ -161,7 +161,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                   information here and is worth showing. */}
               <span
                 aria-hidden="true"
-                className="w-6 shrink-0 font-heading t-small font-bold tabular-nums text-calm-navy"
+                className="w-8 shrink-0 font-heading text-lg font-bold tabular-nums text-calm-navy"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
