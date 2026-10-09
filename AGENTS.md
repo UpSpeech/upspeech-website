@@ -48,9 +48,7 @@ Five rules sit here because they bite before you would think to go and look.
   way. Link the preview, because it is the best evidence the site still builds and
   prerenders. Capture the pages you changed as well and publish them to the
   `pr-assets` branch, because a preview shows only the after and a reviewer
-  comparing copy or type needs the before beside it. Running the site locally is
-  also what makes `critique` possible here, since it reads a rendered page rather
-  than a diff.
+  comparing copy or type needs the before beside it.
 - **Work in a per-task worktree.** `git worktree add ../upspeech-website-<slug> -b <branch> origin/main`.
   Other sessions run against this checkout, and a `git switch` here reverts their
   uncommitted work.
