@@ -1,10 +1,10 @@
 # Política de Privacidad
 
-**Última Actualización:** 21 de julio de 2026
+**Última Actualización:** 10 de octubre de 2026
 
 ## Introducción
 
-Bienvenido a UpSpeech ("nosotros" o "nuestro/a"). Estamos comprometidos con la protección de su privacidad y el tratamiento de su información personal con cuidado y transparencia. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información cuando utiliza nuestra plataforma de logopedia.
+Bienvenido a UpSpeech ("nosotros" o "nuestro/a"). UpSpeech es operada por UPSPEECH, SOCIEDADE UNIPESSOAL, LDA., con sede en Portugal. Estamos comprometidos con la protección de su privacidad y el tratamiento de su información personal con cuidado y transparencia. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información cuando utiliza nuestra plataforma de logopedia.
 
 UpSpeech es una plataforma multi-tenant de software como servicio (SaaS) diseñada para logopedas y sus pacientes en todo el espectro de la logopedia, siendo la tartamudez la primera condición cubierta. Da soporte a la práctica estructurada entre sesiones, a la retroalimentación del logopeda y a la automatización de informes clínicos asistida por IA. UpSpeech está disponible como aplicación web y como aplicaciones móviles para iOS y Android.
 
@@ -161,10 +161,13 @@ Utilizamos servicios de terceros de confianza para operar nuestra plataforma:
 - **Google Cloud Platform** - Almacena ficheros de audio/vídeo y logotipos en Google Cloud Storage con cifrado. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Aloja nuestra infraestructura de aplicaciones. Consulte la política de privacidad de Railway en [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
 - **PostHog** - Proporciona análisis de producto para comprender cómo los usuarios interactúan con nuestra plataforma. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de PostHog en [https://posthog.com/privacy](https://posthog.com/privacy)
-- **Sentry** - Proporciona seguimiento de errores y monitorización de rendimiento para ayudarnos a identificar y corregir bugs. Recopila información técnica de errores (mensajes de error, stack traces, información del navegador/dispositivo) pero no datos personales. Consulte la política de privacidad de Sentry en [https://sentry.io/privacy/](https://sentry.io/privacy/)
+- **Sentry** - Proporciona seguimiento de errores y monitorización de rendimiento para ayudarnos a identificar y corregir bugs. Recopila información técnica de errores (mensajes de error, stack traces, información del navegador/dispositivo) Un informe de error puede incluir incidentalmente datos personales, como la dirección IP. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de Sentry en [https://sentry.io/privacy/](https://sentry.io/privacy/)
 - **Cloudflare** - Proporciona la retransmisión de medios en tiempo real (TURN/STUN) que transporta el audio en directo de las conversaciones de práctica interactivas cuando no es posible establecer una conexión directa. Consulte la política de privacidad de Cloudflare en [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
 - **Apple Push Notification service, Firebase Cloud Messaging (Google) y Expo** - Entregan notificaciones push a su dispositivo móvil. Enviamos un token push del dispositivo a estos servicios para encaminar recordatorios y actualizaciones. Consulte las políticas de privacidad de Apple ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), de Google ([https://policies.google.com/privacy](https://policies.google.com/privacy)) y de Expo ([https://expo.dev/privacy](https://expo.dev/privacy))
 - **Resend** - Entrega correos electrónicos transaccionales como invitaciones, recuperación de contraseñas y notificaciones. Consulte la política de privacidad de Resend en [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
+- **Groq** - Transcribe las grabaciones de audio de los escenarios de práctica. El audio se envía a Groq y se procesa en Estados Unidos. Consulte la política de privacidad de Groq en [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
+- **Langfuse** - Registra las solicitudes que enviamos a los modelos de IA y las respuestas que recibimos, incluidas transcripciones y mensajes de chat, para supervisar la calidad y corregir errores. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de Langfuse en [https://langfuse.com/privacy](https://langfuse.com/privacy)
+- **Netlify** - Aloja nuestro sitio web público y recibe los envíos del formulario de acceso anticipado (nombre, correo electrónico y función). Consulte la política de privacidad de Netlify en [https://www.netlify.com/privacy/](https://www.netlify.com/privacy/)
 
 Estos proveedores están contractualmente obligados a proteger su información y a utilizarla únicamente para los fines que especificamos.
 
@@ -340,7 +343,7 @@ Su uso continuado de UpSpeech tras la fecha de entrada en vigor de los cambios c
 
 Si tiene preguntas, inquietudes o solicitudes relativas a esta Política de Privacidad o a nuestras prácticas de datos, por favor contáctenos:
 
-**Correo electrónico:** hello@upspeech.app
+**Correo electrónico:** help@upspeech.app
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Plataforma:** Utilice el enlace "Soporte" en el pie de página de la plataforma para enviar una solicitud de soporte
 
