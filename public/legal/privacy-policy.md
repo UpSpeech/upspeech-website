@@ -1,10 +1,10 @@
 # Privacy Policy
 
-**Last Updated:** July 21, 2026
+**Last Updated:** October 10, 2026
 
 ## Introduction
 
-Welcome to UpSpeech ("we," "our," or "us"). We are committed to protecting your privacy and handling your personal information with care and transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our speech therapy platform.
+Welcome to UpSpeech ("we," "our," or "us"). UpSpeech is operated by UPSPEECH, SOCIEDADE UNIPESSOAL, LDA., based in Portugal. We are committed to protecting your privacy and handling your personal information with care and transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our speech therapy platform.
 
 UpSpeech is a multi-tenant software-as-a-service (SaaS) platform designed for speech-language pathologists (SLPs) and their patients across the speech-therapy spectrum, with stuttering as the first condition covered. It supports structured between-session practice, therapist feedback, and AI-assisted clinical report automation. UpSpeech is available as a web application and as mobile apps for iOS and Android.
 
@@ -161,10 +161,13 @@ We use trusted third-party services to operate our platform:
 - **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
 - **PostHog** - Provides product analytics to understand how users interact with our platform. Data is processed and stored in the European Union. See PostHog's privacy policy at [https://posthog.com/privacy](https://posthog.com/privacy)
-- **Sentry** - Provides error tracking and performance monitoring to help us identify and fix bugs. Collects technical error information (error messages, stack traces, browser/device info) but not personal data. See Sentry's privacy policy at [https://sentry.io/privacy/](https://sentry.io/privacy/)
+- **Sentry** - Provides error tracking and performance monitoring to help us identify and fix bugs. Collects technical error information (error messages, stack traces, browser/device info) An error report can incidentally include personal data, such as an IP address. Data is processed and stored in the European Union. See Sentry's privacy policy at [https://sentry.io/privacy/](https://sentry.io/privacy/)
 - **Cloudflare** - Provides real-time media relay (TURN/STUN) that carries the live audio for interactive practice conversations when a direct connection cannot be established. See Cloudflare's privacy policy at [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
 - **Apple Push Notification service, Firebase Cloud Messaging (Google), and Expo** - Deliver push notifications to your mobile device. We send a device push token to these services to route reminders and updates. See Apple's ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), Google's ([https://policies.google.com/privacy](https://policies.google.com/privacy)), and Expo's ([https://expo.dev/privacy](https://expo.dev/privacy)) privacy policies
 - **Resend** - Delivers transactional emails such as invitations, password resets, and notifications. See Resend's privacy policy at [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
+- **Groq** - Transcribes the audio recordings from practice scenarios. The audio is sent to Groq and processed in the United States. See Groq's privacy policy at [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
+- **Langfuse** - Records the requests we send to the AI models and the responses we receive, including transcripts and chat messages, so we can monitor quality and fix errors. Data is processed and stored in the European Union. See Langfuse's privacy policy at [https://langfuse.com/privacy](https://langfuse.com/privacy)
+- **Netlify** - Hosts our public website and receives early-access form submissions (name, email and role). See Netlify's privacy policy at [https://www.netlify.com/privacy/](https://www.netlify.com/privacy/)
 
 These providers are contractually obligated to protect your information and use it only for the purposes we specify.
 
@@ -340,7 +343,7 @@ Your continued use of UpSpeech after the effective date of changes constitutes y
 
 If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-**Email:** hello@upspeech.app
+**Email:** help@upspeech.app
 **LinkedIn:** [https://www.linkedin.com/company/upspeech/](https://www.linkedin.com/company/upspeech/)
 **Platform:** Use the "Support" link in the platform footer to submit a support request
 
