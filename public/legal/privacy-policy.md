@@ -156,7 +156,7 @@ We do not sell your personal information to third parties. We share your informa
 
 We use trusted third-party services to operate our platform:
 
-- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2) and real-time voice generation for interactive practice conversations. Audio recordings and live audio are sent to ElevenLabs for processing. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
+- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2) and real-time voice generation for interactive practice conversations. Audio recordings and live audio are sent to ElevenLabs and processed in the United States. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 - **Google AI (Gemini)** - Provides large language models for clinical report generation, AI-assisted features, and real-time practice conversations. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
@@ -166,7 +166,7 @@ We use trusted third-party services to operate our platform:
 - **Apple Push Notification service, Firebase Cloud Messaging (Google), and Expo** - Deliver push notifications to your mobile device. We send a device push token to these services to route reminders and updates. See Apple's ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), Google's ([https://policies.google.com/privacy](https://policies.google.com/privacy)), and Expo's ([https://expo.dev/privacy](https://expo.dev/privacy)) privacy policies
 - **Resend** - Delivers transactional emails such as invitations, password resets, and notifications. See Resend's privacy policy at [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
 - **Groq** - Transcribes the audio recordings from practice scenarios. The audio is sent to Groq and processed in the United States. See Groq's privacy policy at [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
-- **Langfuse** - Records the requests we send to the AI models and the responses we receive, including transcripts and chat messages, so we can monitor quality and fix errors. Data is processed and stored in the European Union. See Langfuse's privacy policy at [https://langfuse.com/privacy](https://langfuse.com/privacy)
+- **Langfuse** - Records the requests we send to the AI models and the responses we receive, including transcripts and chat messages, so we can monitor quality and fix errors. Data is processed and stored in the European Union and deleted after one month. See Langfuse's privacy policy at [https://langfuse.com/privacy](https://langfuse.com/privacy)
 - **Netlify** - Hosts our public website and receives early-access form submissions (name, email and role). See Netlify's privacy policy at [https://www.netlify.com/privacy/](https://www.netlify.com/privacy/)
 
 These providers are contractually obligated to protect your information and use it only for the purposes we specify.
