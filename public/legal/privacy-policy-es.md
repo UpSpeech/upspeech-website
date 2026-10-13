@@ -1,6 +1,6 @@
 # Política de Privacidad
 
-**Última Actualización:** 21 de julio de 2026
+**Última Actualización:** 13 de octubre de 2026
 
 ## Introducción
 
@@ -223,7 +223,10 @@ Implementamos prácticas de seguridad estándar de la industria:
 
 ### Retención de Datos
 
-- **Cuentas activas** - Retenemos sus datos mientras su cuenta esté activa
+- **Cuentas activas** - Retenemos sus datos mientras su cuenta esté activa, con excepción de las grabaciones indicadas a continuación
+- **Grabaciones de sesión y de evaluación** - Una grabación que el terapeuta sube para generar un informe se elimina cuando el terapeuta confirma el informe y, como máximo, 24 horas después de que se genere el informe. Si no se puede generar el informe, la grabación se elimina 30 días después de la subida. La transcripción y el informe se conservan como parte de la historia clínica
+- **Conversaciones de práctica grabadas** - El audio y el vídeo guardados de una conversación de práctica se eliminan 30 días después de que termine la sesión
+- **Grabaciones de práctica** - Las grabaciones que el paciente hace durante los ejercicios se conservan mientras la cuenta esté activa, para que el paciente y su terapeuta puedan seguir la evolución a lo largo del tiempo
 - **Cuentas inactivas** - Si su cuenta está inactiva durante 2 años, podemos eliminar sus datos previo aviso
 - **Retención legal** - Podemos retener determinados datos durante más tiempo si lo exige la ley o para fines comerciales legítimos (p. ej.: prevención de fraude, litigios)
 - **Solicitudes de eliminación** - Puede solicitar la eliminación de sus datos en cualquier momento (consulte la sección Sus Derechos)
