@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** July 21, 2026
+**Last Updated:** October 13, 2026
 
 ## Introduction
 
@@ -223,7 +223,10 @@ We implement industry-standard security practices:
 
 ### Data Retention
 
-- **Active accounts** - We retain your data for as long as your account is active
+- **Active accounts** - We retain your data for as long as your account is active, except for the recordings listed below
+- **Session and assessment recordings** - A recording a therapist uploads to generate a report is deleted when the therapist confirms the report, and no later than 24 hours after the report is generated. If the report could not be generated, the recording is deleted 30 days after upload. The transcript and the report are kept as part of the clinical record
+- **Recorded practice conversations** - Audio and video saved from a practice conversation are deleted 30 days after the session ends
+- **Practice recordings** - Recordings a patient makes while doing exercises are kept while the account is active, so the patient and their therapist can review progress over time
 - **Inactive accounts** - If your account is inactive for 2 years, we may delete your data after providing advance notice
 - **Legal retention** - We may retain certain data longer if required by law or for legitimate business purposes (e.g., fraud prevention, legal disputes)
 - **Deletion requests** - You may request deletion of your data at any time (see Your Rights section)

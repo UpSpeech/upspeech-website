@@ -542,7 +542,7 @@ export const pt: Dictionary = {
         },
         {
           q: "Como é que a UpSpeech recolhe os dados que alimentam o rascunho?",
-          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. Assim que finaliza o relatório, o ficheiro de áudio é eliminado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
+          a: "Há duas fontes. A prática entre sessões dá dados de conclusão e de desempenho a partir da app. A gravação da própria sessão é transcrita, e o rascunho do relatório é gerado a partir dessa transcrição. O ficheiro de áudio é eliminado quando confirma o relatório e, o mais tardar, 24 horas depois de o relatório ser gerado. A transcrição e o relatório são conservados como parte do registo. O terapeuta vê tudo antes de qualquer nota ser assinada.",
         },
       ],
     },
