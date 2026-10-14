@@ -1,4 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  bellyDrawing,
+  BROW_STROKE_WIDTH,
+  browPath,
+  COMPANION_EYE_SPEC,
+  EYE_CX,
+  EYE_CY,
+  type CompanionBellyShape,
+  type CompanionBellySize,
+  type CompanionBrows,
+  type CompanionEyes,
+} from "./companionFace";
 
 /**
  * The companions: lumo, pip, nima and tumbo.
@@ -100,6 +112,14 @@ type Props = {
    */
   belly?: string;
   /**
+   * The four face axes. The site never passes them: it has no picker, so it
+   * renders the defaults, which are the drawing it already shipped.
+   */
+  eyes?: CompanionEyes;
+  brows?: CompanionBrows;
+  bellyShape?: CompanionBellyShape;
+  bellySize?: CompanionBellySize;
+  /**
    * Accessible name. Omitted, it stays decorative, which is right when the copy
    * beside it already says what the section is.
    */
@@ -164,6 +184,10 @@ const Companion = ({
   size = 160,
   accent = "#958af0",
   belly: bellyProp,
+  eyes = "default",
+  brows = "none",
+  bellyShape = "lobe",
+  bellySize = "m",
   label,
   className = "",
 }: Props) => {
@@ -175,6 +199,8 @@ const Companion = ({
   // Defaulted through the cascade rather than through the resolved string, so
   // an override of --companion-accent carries the lobe with it.
   const belly = bellyProp ?? "var(--companion-accent)";
+  const eye = COMPANION_EYE_SPEC[eyes];
+  const bellyDraw = bellyDrawing(b, bellyShape, bellySize);
   const ref = useRef<SVGSVGElement | null>(null);
   const [onScreen, setOnScreen] = useState(false);
 
@@ -253,11 +279,19 @@ const Companion = ({
             and the speech dots read --companion-accent. Wiring a surface to
             neither is the defect that made the original canvas untestable, so
             a new coloured surface must join one of the two. */}
-        <path
-          d="M82 126 H108 A18 18 0 1 1 108 162 H82 A8 8 0 0 1 74 154 V134 A8 8 0 0 1 82 126 Z"
-          fill="var(--companion-belly)"
-          opacity="0.94"
-        />
+        {bellyDraw?.kind === "path" && (
+          <path d={bellyDraw.d} fill="var(--companion-belly)" opacity="0.94" />
+        )}
+        {bellyDraw?.kind === "ellipse" && (
+          <ellipse
+            cx={bellyDraw.cx}
+            cy={bellyDraw.cy}
+            rx={bellyDraw.rx}
+            ry={bellyDraw.ry}
+            fill="var(--companion-belly)"
+            opacity="0.94"
+          />
+        )}
         {/* Both cheeks on one line. The right one was authored at cy 128, level
             with the chest lobe rather than with its own pair, which read as a
             slipped dot on every body since the cheeks are shared geometry. */}
@@ -271,13 +305,74 @@ const Companion = ({
         />
 
         <g className="companion-eyes">
-          <ellipse cx="79" cy="92" rx="11" ry="12" fill={EYE} />
-          <ellipse cx="121" cy="92" rx="11" ry="12" fill={EYE} />
-          <circle cx="80" cy="95" r="5" fill={INK} />
-          <circle cx="122" cy="95" r="5" fill={INK} />
-          <circle cx="77.5" cy="91" r="1.8" fill={EYE} />
-          <circle cx="119.5" cy="91" r="1.8" fill={EYE} />
+          <ellipse
+            cx={EYE_CX.left}
+            cy={EYE_CY}
+            rx={eye.rx}
+            ry={eye.ry}
+            fill={EYE}
+          />
+          <ellipse
+            cx={EYE_CX.right}
+            cy={EYE_CY}
+            rx={eye.rx}
+            ry={eye.ry}
+            fill={EYE}
+          />
+          {eye.iris && (
+            <>
+              <circle
+                cx={EYE_CX.left + 1}
+                cy={EYE_CY + eye.iris.dy}
+                r={eye.iris.r}
+                fill={INK}
+              />
+              <circle
+                cx={EYE_CX.right + 1}
+                cy={EYE_CY + eye.iris.dy}
+                r={eye.iris.r}
+                fill={INK}
+              />
+              {eye.glint && (
+                <>
+                  <circle
+                    cx={EYE_CX.left + eye.glint.dx}
+                    cy={EYE_CY + eye.glint.dy}
+                    r={eye.glint.r}
+                    fill={EYE}
+                  />
+                  <circle
+                    cx={EYE_CX.right + eye.glint.dx}
+                    cy={EYE_CY + eye.glint.dy}
+                    r={eye.glint.r}
+                    fill={EYE}
+                  />
+                </>
+              )}
+            </>
+          )}
         </g>
+
+        {brows !== "none" && (
+          <g className="companion-brows">
+            <path
+              d={browPath(brows, EYE_CX.left, "left") ?? undefined}
+              fill="none"
+              stroke={EYE}
+              strokeWidth={BROW_STROKE_WIDTH}
+              strokeLinecap="round"
+              opacity="0.9"
+            />
+            <path
+              d={browPath(brows, EYE_CX.right, "right") ?? undefined}
+              fill="none"
+              stroke={EYE}
+              strokeWidth={BROW_STROKE_WIDTH}
+              strokeLinecap="round"
+              opacity="0.9"
+            />
+          </g>
+        )}
 
         {/* Two mouths on one timeline: closed while listening, open while
             speaking. No state machine, so they cannot fall out of sync. */}

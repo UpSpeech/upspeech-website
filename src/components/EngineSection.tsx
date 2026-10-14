@@ -78,7 +78,7 @@ const EngineSection = () => {
           {t.eyebrow}
         </p>
         <h2
-          className="t-display font-heading font-bold text-white tracking-tight max-w-4xl"
+          className="t-h2 font-heading font-bold text-white max-w-4xl"
           style={{ ...textStyle(80) }}
         >
           {t.headlineLine1} <br />
@@ -161,7 +161,7 @@ const EngineSection = () => {
                 return (
                   <span
                     key={tag}
-                    className="rounded-full border bg-white/5 px-2.5 py-1 font-body text-[11px] font-medium text-white/75"
+                    className="rounded-full border bg-white/5 px-2.5 py-1 font-body t-small font-medium text-white/75"
                     style={{
                       transition: `opacity 450ms ${EASE}, transform 450ms ${EASE}, border-color 450ms ${EASE}`,
                       opacity: lit,
