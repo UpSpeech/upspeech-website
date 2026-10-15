@@ -45,7 +45,7 @@ Quando um prestador trata dados fora do Espaço Económico Europeu, a transferê
 ### Langfuse
 
 - **O que faz:** Guarda um registo de cada pedido e resposta de IA, para verificar a qualidade e corrigir erros
-- **Dados:** Pedidos e respostas de IA, incluindo transcrições e mensagens de chat
+- **Dados:** Pedidos e respostas de IA, incluindo transcrições e mensagens de chat, eliminados ao fim de 14 dias salvo se o paciente aceitou guardá-los
 - **Onde:** União Europeia (Irlanda)
 
 ## Média em tempo real

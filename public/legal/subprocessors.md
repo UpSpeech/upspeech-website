@@ -45,7 +45,7 @@ Where a provider processes data outside the European Economic Area, the transfer
 ### Langfuse
 
 - **What it does:** Keeps a record of each AI request and response, to check quality and fix errors
-- **Data:** AI requests and responses, including transcripts and chat messages
+- **Data:** AI requests and responses, including transcripts and chat messages, deleted after 14 days unless the patient agreed to keep them
 - **Where:** European Union (Ireland)
 
 ## Real-time media
