@@ -162,7 +162,7 @@ La IA realiza cinco tareas en UpSpeech:
 
 **Qué enviamos.** Según la tarea: su grabación o el audio en directo, su transcripción, el contexto que su terapeuta escribe para un informe y sus mensajes de chat. En los escenarios de práctica y en la entrevista inicial también enviamos su nombre, para que la IA pueda dirigirse a usted.
 
-**Quién lo recibe.** Los proveedores de IA que figuran en nuestra [página de Subencargados](/es/subprocessors/). Un servicio de trazabilidad de IA guarda un registro de cada solicitud y respuesta para que podamos comprobar la calidad de lo que produce la IA. Si trasladamos alguno de estos tratamientos a otra empresa, actualizaremos esa página y le avisaremos antes de que el cambio surta efecto.
+**Quién lo recibe.** Los proveedores de IA que figuran en nuestra [página de Subencargados](/es/subprocessors/). Un servicio de trazabilidad de IA guarda un registro de cada solicitud y respuesta para que podamos comprobar la calidad de lo que produce la IA. Eliminamos ese registro a los 14 días, y cuando elimina su cuenta. Si elige en los ajustes de la cuenta dejar que guardemos sus conversaciones con la IA para mejorar los asistentes, guardamos las suyas más allá de los 14 días hasta que retire esa elección o elimine la cuenta. Si trasladamos alguno de estos tratamientos a otra empresa, actualizaremos esa página y le avisaremos antes de que el cambio surta efecto.
 
 ## Cómo Compartimos Su Información
 

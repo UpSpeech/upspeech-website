@@ -162,7 +162,7 @@ AI does five jobs in UpSpeech:
 
 **What we send.** Depending on the job: your recording or live audio, its transcript, the context your therapist writes for a report, and your chat messages. In practice scenarios and the intake interview we also send your name, so the AI can address you.
 
-**Who receives it.** The AI providers on our [Subprocessors page](/subprocessors/). An AI tracing service keeps a record of each request and response so we can check the quality of the AI's output. If we move any of this processing to a different company, we will update that page and tell you before the change takes effect.
+**Who receives it.** The AI providers on our [Subprocessors page](/subprocessors/). An AI tracing service keeps a record of each request and response so we can check the quality of the AI's output. We delete that record after 14 days, and when you delete your account. If you choose in Account settings to let us keep your AI conversations to improve the assistants, we keep yours past 14 days until you withdraw that choice or delete your account. If we move any of this processing to a different company, we will update that page and tell you before the change takes effect.
 
 ## How We Share Your Information
 
