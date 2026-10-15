@@ -162,6 +162,12 @@ export const ROUTES = [
     priority: "0.3",
   },
   {
+    path: "/subprocessors",
+    component: "src/pages/Subprocessors.tsx",
+    changefreq: "yearly",
+    priority: "0.3",
+  },
+  {
     path: "/delete-account",
     component: "src/pages/DeleteAccount.tsx",
     changefreq: "yearly",

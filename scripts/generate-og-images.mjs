@@ -152,6 +152,14 @@ const PAGES = [
     showScreenshot: false,
   },
   {
+    slug: "subprocessors",
+    title: "Subprocessors",
+    subtitle: null,
+    description: "The companies that process personal data for us.",
+    category: "Legal",
+    showScreenshot: false,
+  },
+  {
     slug: "for-patients",
     title: "For Patients",
     subtitle: null,
@@ -353,6 +361,11 @@ const TRANSLATIONS = {
       description: "Como usamos cookies para melhorar a sua experiência.",
       category: CATEGORY_PT["Legal"],
     },
+    subprocessors: {
+      title: "Subcontratantes",
+      description: "As empresas que tratam dados pessoais para a UpSpeech.",
+      category: CATEGORY_PT["Legal"],
+    },
     "for-patients": {
       title: "Para Pacientes",
       description:
@@ -477,6 +490,11 @@ const TRANSLATIONS = {
     cookies: {
       title: "Política de Cookies",
       description: "Cómo usamos cookies para mejorar tu experiencia.",
+      category: CATEGORY_ES["Legal"],
+    },
+    subprocessors: {
+      title: "Subencargados",
+      description: "Las empresas que tratan datos personales para UpSpeech.",
       category: CATEGORY_ES["Legal"],
     },
     "for-patients": {
