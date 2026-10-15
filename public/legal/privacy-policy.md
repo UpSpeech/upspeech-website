@@ -148,6 +148,22 @@ We use the information we collect for the following purposes:
 - **Performance optimization** - Monitor system performance and identify bottlenecks
 - **Quality assurance** - Test and improve AI transcription and report generation accuracy
 
+## How We Use AI
+
+AI does five jobs in UpSpeech:
+
+- **Transcription** - ElevenLabs turns your uploaded recordings into text. Groq transcribes the audio from practice scenarios.
+- **Report drafts** - Google Gemini writes a first draft of a clinical report from the transcript and the context your therapist adds.
+- **Practice conversations** - In realistic-mode scenarios, ElevenLabs turns your speech into text and the AI partner's reply into speech, and Gemini writes the reply.
+- **Chat assistants** - Gemini answers questions in the in-app chats for patients and therapists, and in the help assistant.
+- **Intake interview** - Gemini asks the questions in the intake interview and summarises the answers for your therapist.
+
+**Your therapist makes the clinical decisions.** A report written by AI stays a draft until your therapist reviews and confirms it. Disfluency counts and other automated analyses support your therapist's judgement and do not replace it. No decision about your therapy is made by AI alone.
+
+**What we send.** Depending on the job: your recording or live audio, its transcript, the context your therapist writes for a report, and your chat messages. In practice scenarios and the intake interview we also send your name, so the AI can address you.
+
+**Who receives it.** ElevenLabs, Groq and Google, as set out under "How We Share Your Information". Langfuse keeps a record of each request and response so we can check the quality of the AI's output. If we move any of this processing to a different company, we will update this policy and tell you before the change takes effect.
+
 ## How We Share Your Information
 
 We do not sell your personal information to third parties. We share your information only in the following limited circumstances:
@@ -226,11 +242,9 @@ We implement industry-standard security practices:
 
 ### Data Retention
 
-- **Active accounts** - We retain your data for as long as your account is active
-- **Inactive accounts** - If your account is inactive for 2 years, we may delete your data after providing advance notice
-- **Legal retention** - We may retain certain data longer if required by law or for legitimate business purposes (e.g., fraud prevention, legal disputes)
-- **Deletion requests** - You may request deletion of your data at any time (see Your Rights section)
-- **Backups** - Deleted data may persist in backups for up to 90 days before permanent removal
+We keep your data while your account is open. When you delete your account in the app, we remove your data from our live systems straight away and from backups within 90 days. If your account is inactive for 2 years, we may delete it after telling you first.
+
+Two things outlast a deletion: recordings you agreed to keep for model training, which are anonymised first (see "Optional model training" above), and records the law requires us to keep, such as accounting records.
 
 ## Your Rights
 

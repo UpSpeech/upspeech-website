@@ -148,6 +148,22 @@ Utilizamos la información que recopilamos para los siguientes fines:
 - **Optimización del rendimiento** - Monitorizar el rendimiento del sistema e identificar cuellos de botella
 - **Garantía de calidad** - Probar y mejorar la precisión de la transcripción por IA y la generación de informes
 
+## Cómo Utilizamos la IA
+
+La IA realiza cinco tareas en UpSpeech:
+
+- **Transcripción** - ElevenLabs convierte en texto las grabaciones que sube. Groq transcribe el audio de los escenarios de práctica.
+- **Borradores de informes** - Google Gemini redacta un primer borrador del informe clínico a partir de la transcripción y del contexto que añade su terapeuta.
+- **Conversaciones de práctica** - En los escenarios en modo realista, ElevenLabs convierte su voz en texto y la respuesta del compañero de IA en voz, y Gemini redacta la respuesta.
+- **Asistentes de chat** - Gemini responde preguntas en los chats de la aplicación para pacientes y terapeutas, y en el asistente de ayuda.
+- **Entrevista inicial** - Gemini hace las preguntas de la entrevista inicial y resume las respuestas para su terapeuta.
+
+**Las decisiones clínicas son de su terapeuta.** Un informe redactado por IA sigue siendo un borrador hasta que su terapeuta lo revisa y lo confirma. Los recuentos de disfluencias y otros análisis automáticos apoyan el criterio de su terapeuta y no lo sustituyen. Ninguna decisión sobre su terapia la toma solo la IA.
+
+**Qué enviamos.** Según la tarea: su grabación o el audio en directo, su transcripción, el contexto que su terapeuta escribe para un informe y sus mensajes de chat. En los escenarios de práctica y en la entrevista inicial también enviamos su nombre, para que la IA pueda dirigirse a usted.
+
+**Quién lo recibe.** ElevenLabs, Groq y Google, como se describe en "Cómo Compartimos Su Información". Langfuse guarda un registro de cada solicitud y respuesta para que podamos comprobar la calidad de lo que produce la IA. Si trasladamos alguno de estos tratamientos a otra empresa, actualizaremos esta política y le avisaremos antes de que el cambio surta efecto.
+
 ## Cómo Compartimos Su Información
 
 No vendemos su información personal a terceros. Compartimos su información únicamente en las siguientes circunstancias limitadas:
@@ -226,11 +242,9 @@ Implementamos prácticas de seguridad estándar de la industria:
 
 ### Retención de Datos
 
-- **Cuentas activas** - Retenemos sus datos mientras su cuenta esté activa
-- **Cuentas inactivas** - Si su cuenta está inactiva durante 2 años, podemos eliminar sus datos previo aviso
-- **Retención legal** - Podemos retener determinados datos durante más tiempo si lo exige la ley o para fines comerciales legítimos (p. ej.: prevención de fraude, litigios)
-- **Solicitudes de eliminación** - Puede solicitar la eliminación de sus datos en cualquier momento (consulte la sección Sus Derechos)
-- **Copias de seguridad** - Los datos eliminados pueden persistir en copias de seguridad hasta 90 días antes de su eliminación permanente
+Conservamos sus datos mientras su cuenta esté abierta. Cuando elimina su cuenta en la aplicación, eliminamos sus datos de nuestros sistemas activos de inmediato y de las copias de seguridad en un plazo de 90 días. Si su cuenta está inactiva durante 2 años, podemos eliminarla tras avisarle.
+
+Dos cosas se conservan tras la eliminación: las grabaciones que aceptó conservar para el entrenamiento de modelos, que se anonimizan antes (consulte "Entrenamiento opcional del modelo" más arriba), y los registros que la ley nos obliga a conservar, como los registros contables.
 
 ## Sus Derechos
 
