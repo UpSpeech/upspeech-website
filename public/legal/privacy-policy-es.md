@@ -158,7 +158,7 @@ La IA realiza cinco tareas en UpSpeech:
 - **Asistentes de chat** - Gemini responde preguntas en los chats de la aplicación para pacientes y terapeutas, y en el asistente de ayuda.
 - **Entrevista inicial** - Gemini hace las preguntas de la entrevista inicial y resume las respuestas para su terapeuta.
 
-**Las decisiones clínicas son de su terapeuta.** Un informe redactado por IA sigue siendo un borrador hasta que su terapeuta lo revisa y lo confirma. Los recuentos de disfluencias y otros análisis automáticos apoyan el criterio de su terapeuta y no lo sustituyen. Ninguna decisión sobre su terapia la toma solo la IA.
+**Las decisiones clínicas son de su terapeuta.** Un informe redactado por IA es un primer borrador para su terapeuta, que puede editarlo. Los recuentos de disfluencias y otros análisis automáticos apoyan el criterio de su terapeuta y no lo sustituyen. Ninguna decisión sobre su terapia la toma solo la IA.
 
 **Qué enviamos.** Según la tarea: su grabación o el audio en directo, su transcripción, el contexto que su terapeuta escribe para un informe y sus mensajes de chat. En los escenarios de práctica y en la entrevista inicial también enviamos su nombre, para que la IA pueda dirigirse a usted.
 

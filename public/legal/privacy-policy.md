@@ -158,7 +158,7 @@ AI does five jobs in UpSpeech:
 - **Chat assistants** - Gemini answers questions in the in-app chats for patients and therapists, and in the help assistant.
 - **Intake interview** - Gemini asks the questions in the intake interview and summarises the answers for your therapist.
 
-**Your therapist makes the clinical decisions.** A report written by AI stays a draft until your therapist reviews and confirms it. Disfluency counts and other automated analyses support your therapist's judgement and do not replace it. No decision about your therapy is made by AI alone.
+**Your therapist makes the clinical decisions.** A report written by AI is a first draft for your therapist, who can edit it. Disfluency counts and other automated analyses support your therapist's judgement and do not replace it. No decision about your therapy is made by AI alone.
 
 **What we send.** Depending on the job: your recording or live audio, its transcript, the context your therapist writes for a report, and your chat messages. In practice scenarios and the intake interview we also send your name, so the AI can address you.
 
