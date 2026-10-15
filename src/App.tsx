@@ -51,6 +51,7 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
+const Subprocessors = React.lazy(() => import("./pages/Subprocessors"));
 const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
 const Support = React.lazy(() => import("./pages/Support"));
 const ForPatients = React.lazy(() => import("./pages/ForPatients"));
@@ -128,6 +129,14 @@ const AppRoutes = () => (
       element={
         <Chrome>
           <CookiePolicy />
+        </Chrome>
+      }
+    />
+    <Route
+      path="subprocessors"
+      element={
+        <Chrome>
+          <Subprocessors />
         </Chrome>
       }
     />

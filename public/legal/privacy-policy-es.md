@@ -34,14 +34,14 @@ UpSpeech permite a los usuarios cargar grabaciones de habla para su análisis:
 - **Confirmación de consentimiento** - Confirmación de que ha obtenido el consentimiento necesario antes de cargar grabaciones
 - **Hash del fichero** - Un hash criptográfico utilizado para detectar cargas duplicadas dentro de su organización
 
-**Importante:** Las grabaciones de audio y vídeo pueden contener información sanitaria sensible. Almacenamos estos ficheros de forma segura en Google Cloud Storage con cifrado en reposo y en tránsito.
+**Importante:** Las grabaciones de audio y vídeo pueden contener información sanitaria sensible. Almacenamos estos ficheros en un servicio de almacenamiento en la nube en la Unión Europea, con cifrado en reposo y en tránsito.
 
 ### 3. Transcripciones y Contenido Generado por IA
 
 Utilizamos servicios de inteligencia artificial de terceros para procesar sus grabaciones de audio:
 
-- **Transcripciones** - Transcripciones de texto generadas a partir de sus grabaciones de audio mediante reconocimiento de habla por IA (ElevenLabs Scribe v2)
-- **Informes generados por IA** - Informes clínicos generados automáticamente mediante modelos de lenguaje de gran escala (Google Gemini)
+- **Transcripciones** - Transcripciones de texto generadas a partir de sus grabaciones de audio mediante reconocimiento de habla por IA
+- **Informes generados por IA** - Borradores de informes clínicos generados mediante modelos de lenguaje de gran escala
 - **Anotaciones de disfluencias** - Detección y clasificación automatizadas de disfluencias del habla (repeticiones, prolongaciones, bloqueos)
 - **Datos de análisis del habla** - Análisis estadístico de patrones del habla y gravedad de la tartamudez
 - **Conversaciones de práctica en tiempo real** - En escenarios de práctica interactivos ("modo realista"), el audio en directo de su micrófono se transmite en tiempo real a servicios de voz por IA para que pueda mantener una conversación hablada con un compañero de práctica de IA. El audio en directo se procesa de forma transitoria para generar las respuestas habladas de la IA; una transcripción y un resumen de la conversación pueden conservarse como parte de su historial de práctica
@@ -91,7 +91,7 @@ Recopilamos automáticamente determinada información técnica:
 - **Tokens de autenticación** - Tokens JWT almacenados en el localStorage de su navegador (web) o en el almacenamiento seguro del dispositivo (Keychain en iOS, Keystore en Android) en nuestras aplicaciones móviles, para mantener su sesión iniciada
 - **Información del navegador** - Tipo de navegador, versión y tipo de dispositivo (para compatibilidad y resolución de problemas)
 - **Información del dispositivo móvil** - Cuando utiliza nuestras aplicaciones iOS o Android, recopilamos la versión de la aplicación, el modelo del dispositivo y la versión del sistema operativo, para compatibilidad y resolución de problemas
-- **Tokens de notificaciones push** - Si activa las notificaciones en la aplicación móvil, almacenamos un token push del dispositivo para poder entregarle recordatorios y actualizaciones (consulte Apple Push Notification service y Firebase Cloud Messaging en "Cómo Compartimos Su Información")
+- **Tokens de notificaciones push** - Si activa las notificaciones en la aplicación móvil, almacenamos un token push del dispositivo para poder entregarle recordatorios y actualizaciones
 - **Dirección IP** - Para monitorización de seguridad y análisis geográfico
 - **Registros de acceso** - Marcas de tiempo y acciones realizadas dentro de la plataforma (para auditoría de seguridad)
 
@@ -118,9 +118,9 @@ Utilizamos la información que recopilamos para los siguientes fines:
 
 ### 2. Procesamiento por IA y Generación de Informes
 
-- **Transcripción** - Enviar sus grabaciones de audio a ElevenLabs para conversión de habla a texto
-- **Conversaciones de práctica en tiempo real** - Transmitir su audio en directo a servicios de voz por IA (ElevenLabs y Google Gemini) para posibilitar escenarios de práctica hablada interactivos
-- **Automatización de informes** - Generar informes clínicos mediante modelos de lenguaje Google Gemini basándose en la transcripción y su contexto clínico
+- **Transcripción** - Enviar sus grabaciones de audio a un proveedor de reconocimiento de habla para conversión de habla a texto
+- **Conversaciones de práctica en tiempo real** - Transmitir su audio en directo a servicios de voz y de lenguaje por IA para posibilitar escenarios de práctica hablada interactivos
+- **Automatización de informes** - Generar borradores de informes clínicos mediante modelos de lenguaje de gran escala, basándose en la transcripción y su contexto clínico
 - **Detección de disfluencias** - Identificar y clasificar automáticamente comportamientos de tartamudez en las grabaciones
 - **Información clínica** - Proporcionar análisis estadísticos y tendencias para apoyar la planificación del tratamiento
 - **Entrenamiento opcional del modelo (con consentimiento)** - Con su consentimiento explícito (opt-in), las grabaciones de voz anonimizadas pueden conservarse después de que elimine su cuenta y utilizarse para entrenar futuras versiones de los modelos de IA de logopedia de UpSpeech. Es opcional, requiere adhesión explícita, y puede cambiar de opinión en el momento de la eliminación seleccionando "Eliminar todo". Las grabaciones de voz son datos biométricos en virtud del artículo 9 del RGPD; este tratamiento solo se realiza con su consentimiento específico y explícito
@@ -152,17 +152,17 @@ Utilizamos la información que recopilamos para los siguientes fines:
 
 La IA realiza cinco tareas en UpSpeech:
 
-- **Transcripción** - ElevenLabs convierte en texto las grabaciones que sube. Groq transcribe el audio de los escenarios de práctica.
-- **Borradores de informes** - Google Gemini redacta un primer borrador del informe clínico a partir de la transcripción y del contexto que añade su terapeuta.
-- **Conversaciones de práctica** - En los escenarios en modo realista, ElevenLabs convierte su voz en texto y la respuesta del compañero de IA en voz, y Gemini redacta la respuesta.
-- **Asistentes de chat** - Gemini responde preguntas en los chats de la aplicación para pacientes y terapeutas, y en el asistente de ayuda.
-- **Entrevista inicial** - Gemini hace las preguntas de la entrevista inicial y resume las respuestas para su terapeuta.
+- **Transcripción** - Un proveedor de reconocimiento de habla convierte en texto las grabaciones que sube y el audio de los escenarios de práctica.
+- **Borradores de informes** - Un modelo de lenguaje redacta un primer borrador del informe clínico a partir de la transcripción y del contexto que añade su terapeuta.
+- **Conversaciones de práctica** - En los escenarios en modo realista, un proveedor de voz convierte su voz en texto y la respuesta del compañero de IA en voz, y un modelo de lenguaje redacta la respuesta.
+- **Asistentes de chat** - Un modelo de lenguaje responde preguntas en los chats de la aplicación para pacientes y terapeutas, y en el asistente de ayuda.
+- **Entrevista inicial** - Un modelo de lenguaje hace las preguntas de la entrevista inicial y resume las respuestas para su terapeuta.
 
 **Las decisiones clínicas son de su terapeuta.** Un informe redactado por IA es un primer borrador para su terapeuta, que puede editarlo. Los recuentos de disfluencias y otros análisis automáticos apoyan el criterio de su terapeuta y no lo sustituyen. Ninguna decisión sobre su terapia la toma solo la IA.
 
 **Qué enviamos.** Según la tarea: su grabación o el audio en directo, su transcripción, el contexto que su terapeuta escribe para un informe y sus mensajes de chat. En los escenarios de práctica y en la entrevista inicial también enviamos su nombre, para que la IA pueda dirigirse a usted.
 
-**Quién lo recibe.** ElevenLabs, Groq y Google, como se describe en "Cómo Compartimos Su Información". Langfuse guarda un registro de cada solicitud y respuesta para que podamos comprobar la calidad de lo que produce la IA. Si trasladamos alguno de estos tratamientos a otra empresa, actualizaremos esta política y le avisaremos antes de que el cambio surta efecto.
+**Quién lo recibe.** Los proveedores de IA que figuran en nuestra [página de Subencargados](/es/subprocessors/). Un servicio de trazabilidad de IA guarda un registro de cada solicitud y respuesta para que podamos comprobar la calidad de lo que produce la IA. Si trasladamos alguno de estos tratamientos a otra empresa, actualizaremos esa página y le avisaremos antes de que el cambio surta efecto.
 
 ## Cómo Compartimos Su Información
 
@@ -170,22 +170,17 @@ No vendemos su información personal a terceros. Compartimos su información ún
 
 ### 1. Proveedores de Servicios Externos
 
-Utilizamos servicios de terceros de confianza para operar nuestra plataforma:
+Recurrimos a otras empresas para operar partes de UpSpeech. Cada una trata los datos únicamente siguiendo nuestras instrucciones y en virtud de un contrato con nosotros. Se dividen en estos grupos:
 
-- **ElevenLabs** - Proporciona transcripción de habla a texto mediante IA (Scribe v2) y generación de voz en tiempo real para conversaciones de práctica interactivas. Las grabaciones de audio y el audio en directo se envían a ElevenLabs y se procesan en Estados Unidos. Consulte la política de privacidad de ElevenLabs en [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
-- **Google AI (Gemini)** - Proporciona modelos de lenguaje de gran escala para generación de informes clínicos, funcionalidades asistidas por IA y conversaciones de práctica en tiempo real. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
-- **Google Cloud Platform** - Almacena ficheros de audio/vídeo y logotipos en Google Cloud Storage con cifrado. Consulte la política de privacidad de Google en [https://policies.google.com/privacy](https://policies.google.com/privacy)
-- **Railway** - Aloja nuestra infraestructura de aplicaciones. Consulte la política de privacidad de Railway en [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
-- **PostHog** - Proporciona análisis de producto para comprender cómo los usuarios interactúan con nuestra plataforma. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de PostHog en [https://posthog.com/privacy](https://posthog.com/privacy)
-- **Sentry** - Proporciona seguimiento de errores y monitorización de rendimiento para ayudarnos a identificar y corregir bugs. Recopila información técnica de errores (mensajes de error, stack traces, información del navegador/dispositivo) Un informe de error puede incluir incidentalmente datos personales, como la dirección IP. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de Sentry en [https://sentry.io/privacy/](https://sentry.io/privacy/)
-- **Cloudflare** - Proporciona la retransmisión de medios en tiempo real (TURN/STUN) que transporta el audio en directo de las conversaciones de práctica interactivas cuando no es posible establecer una conexión directa. Consulte la política de privacidad de Cloudflare en [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
-- **Apple Push Notification service, Firebase Cloud Messaging (Google) y Expo** - Entregan notificaciones push a su dispositivo móvil. Enviamos un token push del dispositivo a estos servicios para encaminar recordatorios y actualizaciones. Consulte las políticas de privacidad de Apple ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), de Google ([https://policies.google.com/privacy](https://policies.google.com/privacy)) y de Expo ([https://expo.dev/privacy](https://expo.dev/privacy))
-- **Resend** - Entrega correos electrónicos transaccionales como invitaciones, recuperación de contraseñas y notificaciones. Consulte la política de privacidad de Resend en [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
-- **Groq** - Transcribe las grabaciones de audio de los escenarios de práctica. El audio se envía a Groq y se procesa en Estados Unidos. Consulte la política de privacidad de Groq en [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
-- **Langfuse** - Registra las solicitudes que enviamos a los modelos de IA y las respuestas que recibimos, incluidas transcripciones y mensajes de chat, para supervisar la calidad y corregir errores. Los datos se procesan y almacenan en la Unión Europea. Consulte la política de privacidad de Langfuse en [https://langfuse.com/privacy](https://langfuse.com/privacy)
-- **Netlify** - Aloja nuestro sitio web público y recibe los envíos del formulario de acceso anticipado (nombre, correo electrónico y función). Consulte la política de privacidad de Netlify en [https://www.netlify.com/privacy/](https://www.netlify.com/privacy/)
+- **Alojamiento y almacenamiento** - Nuestros servidores, base de datos y almacenamiento de ficheros, todos en la Unión Europea
+- **Proveedores de IA** - Reconocimiento de habla, generación de voz y modelos de lenguaje, que reciben grabaciones, transcripciones y mensajes de chat como se describe en "Cómo Utilizamos la IA"
+- **Trazabilidad de IA** - Un registro de cada solicitud y respuesta de IA, utilizado para comprobar la calidad y corregir errores
+- **Retransmisión de medios en tiempo real** - Transporta el audio en directo de las conversaciones de práctica cuando no es posible una conexión directa
+- **Correo electrónico y notificaciones push** - Entrega correos transaccionales y notificaciones en su dispositivo móvil
+- **Análisis de producto y seguimiento de errores** - Cómo se utiliza la plataforma, e informes de errores
+- **Alojamiento del sitio web** - Nuestro sitio web público y su formulario de acceso anticipado
 
-Estos proveedores están contractualmente obligados a proteger su información y a utilizarla únicamente para los fines que especificamos.
+La lista completa, con lo que recibe cada proveedor, dónde trata los datos y la salvaguarda de cualquier transferencia fuera de la UE, está en nuestra [página de Subencargados](/es/subprocessors/). Actualizamos esa página antes de añadir o sustituir un proveedor.
 
 ### 2. Dentro de Su Organización
 
@@ -221,9 +216,9 @@ Podemos compartir su información para otros fines con su consentimiento explíc
 
 ### Dónde Almacenamos Sus Datos
 
-- **Base de datos** - Base de datos PostgreSQL alojada en Railway (servidores de la Unión Europea)
-- **Almacenamiento de ficheros** - Google Cloud Storage (región de la Unión Europea)
-- **Servidores de aplicaciones** - Infraestructura Railway (servidores de la Unión Europea)
+- **Base de datos** - Base de datos PostgreSQL en nuestro proveedor de alojamiento, en servidores de la Unión Europea
+- **Almacenamiento de ficheros** - Almacenamiento en la nube en la Unión Europea
+- **Servidores de aplicaciones** - Nuestro proveedor de alojamiento, en servidores de la Unión Europea
 
 ### Medidas de Seguridad
 
@@ -266,7 +261,7 @@ En virtud del Reglamento General de Protección de Datos (RGPD), tiene los sigui
 
 - **Eliminación de la cuenta** - Elimine su cuenta y los datos asociados directamente desde la aplicación (Ajustes → Cuenta → Eliminar cuenta), o contactando con nosotros. La eliminación es permanente y no se puede deshacer desde la aplicación
 - **Retención opcional de grabaciones** - Si concedió consentimiento para el entrenamiento de IA (en el registro o contactando con nosotros), puede elegir en el momento de la eliminación conservar sus grabaciones de forma anonimizada (su ID de usuario, nombre, nombres de archivo, transcripciones y notas del logopeda se eliminan; el audio se conserva para el entrenamiento del modelo). Si no concedió este consentimiento, las grabaciones se eliminan junto con su cuenta
-- **Eliminación de grabaciones** - Eliminar grabaciones individuales de audio/vídeo (también las elimina de Google Cloud Storage)
+- **Eliminación de grabaciones** - Eliminar grabaciones individuales de audio/vídeo, lo que también elimina el fichero almacenado
 - **Eliminación de informes** - Eliminar informes específicos (solo logopedas)
 - **Limitación del tratamiento** - Solicitar que dejemos de tratar sus datos (con algunas excepciones por requisitos legales)
 - **Retirar consentimiento de entrenamiento** - Puede retirar su consentimiento en cualquier momento antes de la eliminación enviando un correo a **help@upspeech.app**, o en el momento de la eliminación seleccionando "Eliminar todo". Una vez anonimizadas para entrenamiento, las grabaciones ya no pueden vincularse a usted y, por tanto, no pueden eliminarse de forma individual. Para inquietudes más amplias, contáctenos en **help@upspeech.app**
@@ -296,11 +291,11 @@ Si tenemos conocimiento de que hemos recopilado información personal de un meno
 
 ## Transferencias Internacionales de Datos
 
-UpSpeech tiene su sede en Portugal, en la Unión Europea. Nuestros servidores e infraestructura principal están ubicados en la Unión Europea. Algunos proveedores de servicios externos que utilizamos pueden tratar datos fuera de la UE.
+UpSpeech tiene su sede en Portugal, en la Unión Europea, y nuestros servidores, base de datos y almacenamiento de ficheros están en la UE. Algunos proveedores tratan datos fuera de la UE, incluido en Estados Unidos. Nuestra [página de Subencargados](/es/subprocessors/) indica dónde trata los datos cada uno.
 
-Cuando los datos se transfieren fuera del Espacio Económico Europeo (EEE), garantizamos que existen salvaguardas adecuadas, tales como Cláusulas Contractuales Tipo o decisiones de adecuación aprobadas por la Comisión Europea.
+Cuando los datos se transfieren fuera del Espacio Económico Europeo (EEE), la transferencia se basa en una decisión de adecuación de la Comisión Europea, como el Marco de Privacidad de Datos UE-EE. UU. cuando el proveedor está certificado conforme a él, o en las Cláusulas Contractuales Tipo de la Comisión.
 
-Si accede a nuestra plataforma desde fuera de la UE, tenga en cuenta que su información se almacena y trata en la Unión Europea, que cuenta con normas estrictas de protección de datos en virtud del Reglamento General de Protección de Datos (RGPD).
+Si accede a nuestra plataforma desde fuera de la UE, tenga en cuenta que su información se almacena en la Unión Europea, que cuenta con normas estrictas de protección de datos en virtud del Reglamento General de Protección de Datos (RGPD).
 
 ## Base Legal para el Tratamiento (RGPD)
 

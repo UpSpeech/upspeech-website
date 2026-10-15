@@ -34,14 +34,14 @@ UpSpeech allows users to upload speech recordings for analysis:
 - **Consent acknowledgment** - Confirmation that you have obtained necessary consent before uploading recordings
 - **File hash** - A cryptographic hash used to detect duplicate uploads within your organization
 
-**Important:** Audio and video recordings may contain sensitive health information. We store these files securely in Google Cloud Storage with encryption at rest and in transit.
+**Important:** Audio and video recordings may contain sensitive health information. We store these files in cloud storage in the European Union, encrypted at rest and in transit.
 
 ### 3. Transcriptions and AI-Generated Content
 
 We use third-party artificial intelligence services to process your audio recordings:
 
-- **Transcriptions** - Text transcripts generated from your audio recordings using AI speech recognition (ElevenLabs Scribe v2)
-- **AI-generated reports** - Clinical reports automatically generated using large language models (Google Gemini)
+- **Transcriptions** - Text transcripts generated from your audio recordings using AI speech recognition
+- **AI-generated reports** - Clinical report drafts generated using large language models
 - **Disfluency annotations** - Automated detection and classification of speech disfluencies (repetitions, prolongations, blocks)
 - **Speech analysis data** - Statistical analysis of speech patterns and stuttering severity
 - **Real-time practice conversations** - In interactive practice scenarios ("realistic mode"), your live microphone audio is streamed in real time to AI voice services so you can hold a spoken conversation with an AI practice partner. The live audio is processed transiently to generate the AI's spoken responses; a transcript and summary of the conversation may be retained as part of your practice history
@@ -91,7 +91,7 @@ We automatically collect certain technical information:
 - **Authentication tokens** - JWT tokens stored in your browser's localStorage (web) or the device's secure storage (Keychain on iOS, Keystore on Android) on our mobile apps, to keep you signed in
 - **Browser information** - Browser type, version, and device type (for compatibility and troubleshooting)
 - **Mobile device information** - When you use our iOS or Android apps, we collect the app version, device model, and operating system version for compatibility and troubleshooting
-- **Push notification tokens** - If you enable notifications in the mobile app, we store a device push token so we can deliver reminders and updates (see Apple Push Notification service and Firebase Cloud Messaging under "How We Share Your Information")
+- **Push notification tokens** - If you enable notifications in the mobile app, we store a device push token so we can deliver reminders and updates
 - **IP address** - For security monitoring and geographic analytics
 - **Access logs** - Timestamps and actions performed within the platform (for security auditing)
 
@@ -118,9 +118,9 @@ We use the information we collect for the following purposes:
 
 ### 2. AI Processing and Report Generation
 
-- **Transcription** - Send your audio recordings to ElevenLabs for speech-to-text conversion
-- **Real-time practice conversations** - Stream your live audio to AI voice services (ElevenLabs and Google Gemini) to power interactive spoken practice scenarios
-- **Report automation** - Generate clinical reports using Google Gemini language models based on transcription and your clinical context
+- **Transcription** - Send your audio recordings to a speech-recognition provider for speech-to-text conversion
+- **Real-time practice conversations** - Stream your live audio to AI voice and language services to power interactive spoken practice scenarios
+- **Report automation** - Generate clinical report drafts using large language models, based on the transcription and your clinical context
 - **Disfluency detection** - Automatically identify and classify stuttering behaviors in recordings
 - **Clinical insights** - Provide statistical analysis and trends to support treatment planning
 - **Optional model training (consent-based)** - With your explicit opt-in consent, anonymized voice recordings may be retained after you delete your account and used to train future versions of UpSpeech's speech-therapy AI models. This is optional, opt-in only, and you can change your mind at deletion time by selecting "Delete everything." Voice recordings are biometric data under GDPR Article 9; this processing only occurs with your specific, explicit consent
@@ -152,17 +152,17 @@ We use the information we collect for the following purposes:
 
 AI does five jobs in UpSpeech:
 
-- **Transcription** - ElevenLabs turns your uploaded recordings into text. Groq transcribes the audio from practice scenarios.
-- **Report drafts** - Google Gemini writes a first draft of a clinical report from the transcript and the context your therapist adds.
-- **Practice conversations** - In realistic-mode scenarios, ElevenLabs turns your speech into text and the AI partner's reply into speech, and Gemini writes the reply.
-- **Chat assistants** - Gemini answers questions in the in-app chats for patients and therapists, and in the help assistant.
-- **Intake interview** - Gemini asks the questions in the intake interview and summarises the answers for your therapist.
+- **Transcription** - A speech-recognition provider turns your uploaded recordings, and the audio from practice scenarios, into text.
+- **Report drafts** - A language model writes a first draft of a clinical report from the transcript and the context your therapist adds.
+- **Practice conversations** - In realistic-mode scenarios, a voice provider turns your speech into text and the AI partner's reply into speech, and a language model writes the reply.
+- **Chat assistants** - A language model answers questions in the in-app chats for patients and therapists, and in the help assistant.
+- **Intake interview** - A language model asks the questions in the intake interview and summarises the answers for your therapist.
 
 **Your therapist makes the clinical decisions.** A report written by AI is a first draft for your therapist, who can edit it. Disfluency counts and other automated analyses support your therapist's judgement and do not replace it. No decision about your therapy is made by AI alone.
 
 **What we send.** Depending on the job: your recording or live audio, its transcript, the context your therapist writes for a report, and your chat messages. In practice scenarios and the intake interview we also send your name, so the AI can address you.
 
-**Who receives it.** ElevenLabs, Groq and Google, as set out under "How We Share Your Information". Langfuse keeps a record of each request and response so we can check the quality of the AI's output. If we move any of this processing to a different company, we will update this policy and tell you before the change takes effect.
+**Who receives it.** The AI providers on our [Subprocessors page](/subprocessors/). An AI tracing service keeps a record of each request and response so we can check the quality of the AI's output. If we move any of this processing to a different company, we will update that page and tell you before the change takes effect.
 
 ## How We Share Your Information
 
@@ -170,22 +170,17 @@ We do not sell your personal information to third parties. We share your informa
 
 ### 1. Third-Party Service Providers
 
-We use trusted third-party services to operate our platform:
+We use other companies to run parts of UpSpeech. Each one processes data only on our instructions and under a contract with us. They fall into these groups:
 
-- **ElevenLabs** - Provides AI speech-to-text transcription (Scribe v2) and real-time voice generation for interactive practice conversations. Audio recordings and live audio are sent to ElevenLabs and processed in the United States. See ElevenLabs' privacy policy at [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
-- **Google AI (Gemini)** - Provides large language models for clinical report generation, AI-assisted features, and real-time practice conversations. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
-- **Google Cloud Platform** - Stores audio/video files and logos in Google Cloud Storage with encryption. See Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy)
-- **Railway** - Hosts our application infrastructure. See Railway's privacy policy at [https://railway.app/legal/privacy](https://railway.app/legal/privacy)
-- **PostHog** - Provides product analytics to understand how users interact with our platform. Data is processed and stored in the European Union. See PostHog's privacy policy at [https://posthog.com/privacy](https://posthog.com/privacy)
-- **Sentry** - Provides error tracking and performance monitoring to help us identify and fix bugs. Collects technical error information (error messages, stack traces, browser/device info) An error report can incidentally include personal data, such as an IP address. Data is processed and stored in the European Union. See Sentry's privacy policy at [https://sentry.io/privacy/](https://sentry.io/privacy/)
-- **Cloudflare** - Provides real-time media relay (TURN/STUN) that carries the live audio for interactive practice conversations when a direct connection cannot be established. See Cloudflare's privacy policy at [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/)
-- **Apple Push Notification service, Firebase Cloud Messaging (Google), and Expo** - Deliver push notifications to your mobile device. We send a device push token to these services to route reminders and updates. See Apple's ([https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)), Google's ([https://policies.google.com/privacy](https://policies.google.com/privacy)), and Expo's ([https://expo.dev/privacy](https://expo.dev/privacy)) privacy policies
-- **Resend** - Delivers transactional emails such as invitations, password resets, and notifications. See Resend's privacy policy at [https://resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy)
-- **Groq** - Transcribes the audio recordings from practice scenarios. The audio is sent to Groq and processed in the United States. See Groq's privacy policy at [https://groq.com/privacy-policy/](https://groq.com/privacy-policy/)
-- **Langfuse** - Records the requests we send to the AI models and the responses we receive, including transcripts and chat messages, so we can monitor quality and fix errors. Data is processed and stored in the European Union. See Langfuse's privacy policy at [https://langfuse.com/privacy](https://langfuse.com/privacy)
-- **Netlify** - Hosts our public website and receives early-access form submissions (name, email and role). See Netlify's privacy policy at [https://www.netlify.com/privacy/](https://www.netlify.com/privacy/)
+- **Hosting and storage** - Our servers, database and file storage, all in the European Union
+- **AI providers** - Speech recognition, speech generation and language models, which receive recordings, transcripts and chat messages as described in "How We Use AI"
+- **AI tracing** - A record of each AI request and response, used to check quality and fix errors
+- **Real-time media relay** - Carries the live audio of practice conversations when a direct connection is not possible
+- **Email and push notifications** - Delivers transactional email, and notifications to your mobile device
+- **Product analytics and error tracking** - How the platform is used, and reports of errors
+- **Website hosting** - Our public website and its early-access form
 
-These providers are contractually obligated to protect your information and use it only for the purposes we specify.
+The full list, with what each provider receives, where it processes data and the safeguard for any transfer outside the EU, is on our [Subprocessors page](/subprocessors/). We update that page before we add or replace a provider.
 
 ### 2. Within Your Organization
 
@@ -221,9 +216,9 @@ We may share your information for other purposes with your explicit consent, suc
 
 ### Where We Store Your Data
 
-- **Database** - PostgreSQL database hosted on Railway (European Union servers)
-- **File storage** - Google Cloud Storage (European Union region)
-- **Application servers** - Railway infrastructure (European Union servers)
+- **Database** - PostgreSQL database with our hosting provider, on servers in the European Union
+- **File storage** - Cloud storage in the European Union
+- **Application servers** - Our hosting provider, on servers in the European Union
 
 ### Security Measures
 
@@ -266,7 +261,7 @@ Under the General Data Protection Regulation (GDPR), you have the following righ
 
 - **Account deletion** - Delete your account and associated data directly from the app (Settings → Account → Delete account), or by emailing us. Deletion is permanent and cannot be undone from inside the app
 - **Optional recording retention** - If you granted ML training consent (at signup or by contacting us), you may choose at deletion time to keep your recordings in an anonymized form (your user ID, name, filenames, transcripts, and reviewer notes are removed; the audio is retained for model training). If you did not grant this consent, recordings are deleted along with your account
-- **Recording deletion** - Delete individual audio/video recordings (also removes them from Google Cloud Storage)
+- **Recording deletion** - Delete individual audio/video recordings, which also deletes the stored file
 - **Report deletion** - Delete specific reports (therapists only)
 - **Processing restriction** - Request that we stop processing your data (with some exceptions for legal requirements)
 - **Withdraw training consent** - You can withdraw consent at any time before deletion by emailing **help@upspeech.app**, or at deletion time by selecting "Delete everything." Once recordings have been anonymized for training, they can no longer be identified back to you and therefore cannot be removed on an individual basis. For broader concerns, contact us at **help@upspeech.app**
@@ -296,11 +291,11 @@ If we become aware that we have collected personal information from a child unde
 
 ## International Data Transfers
 
-UpSpeech is based in Portugal, within the European Union. Our servers and primary infrastructure are located in the European Union. Some third-party service providers we use may process data outside the EU.
+UpSpeech is based in Portugal, within the European Union, and our servers, database and file storage are in the EU. Some providers process data outside the EU, including in the United States. Our [Subprocessors page](/subprocessors/) says where each one processes data.
 
-When data is transferred outside the European Economic Area (EEA), we ensure appropriate safeguards are in place, such as Standard Contractual Clauses or adequacy decisions approved by the European Commission.
+When data is transferred outside the European Economic Area (EEA), the transfer relies on an adequacy decision of the European Commission, such as the EU-US Data Privacy Framework where the provider is certified under it, or on the Commission's Standard Contractual Clauses.
 
-If you are accessing our platform from outside the EU, please be aware that your information is stored and processed in the European Union, which has strong data protection standards under the General Data Protection Regulation (GDPR).
+If you are accessing our platform from outside the EU, please be aware that your information is stored in the European Union, which has strong data protection standards under the General Data Protection Regulation (GDPR).
 
 ## Legal Basis for Processing (GDPR)
 
