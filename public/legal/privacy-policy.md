@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** October 10, 2026
+**Last Updated:** October 15, 2026
 
 ## Introduction
 
@@ -237,9 +237,11 @@ We implement industry-standard security practices:
 
 ### Data Retention
 
-We keep your data while your account is open. When you delete your account in the app, we remove your data from our live systems straight away and from backups within 90 days. If your account is inactive for 2 years, we may delete it after telling you first.
-
-Two things outlast a deletion: recordings you agreed to keep for model training, which are anonymised first (see "Optional model training" above), and records the law requires us to keep, such as accounting records.
+- **Active accounts** - We retain your data for as long as your account is active
+- **Inactive accounts** - If your account is inactive for 2 years, we may delete your data after providing advance notice
+- **Legal retention** - We may retain certain data longer if required by law or for legitimate business purposes (e.g., fraud prevention, legal disputes)
+- **Deletion requests** - You may request deletion of your data at any time (see Your Rights section)
+- **Backups** - Deleted data may persist in backups for up to 90 days before permanent removal
 
 ## Your Rights
 

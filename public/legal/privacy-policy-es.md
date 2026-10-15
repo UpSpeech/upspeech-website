@@ -1,6 +1,6 @@
 # Política de Privacidad
 
-**Última Actualización:** 10 de octubre de 2026
+**Última Actualización:** 15 de octubre de 2026
 
 ## Introducción
 
@@ -237,9 +237,11 @@ Implementamos prácticas de seguridad estándar de la industria:
 
 ### Retención de Datos
 
-Conservamos sus datos mientras su cuenta esté abierta. Cuando elimina su cuenta en la aplicación, eliminamos sus datos de nuestros sistemas activos de inmediato y de las copias de seguridad en un plazo de 90 días. Si su cuenta está inactiva durante 2 años, podemos eliminarla tras avisarle.
-
-Dos cosas se conservan tras la eliminación: las grabaciones que aceptó conservar para el entrenamiento de modelos, que se anonimizan antes (consulte "Entrenamiento opcional del modelo" más arriba), y los registros que la ley nos obliga a conservar, como los registros contables.
+- **Cuentas activas** - Retenemos sus datos mientras su cuenta esté activa
+- **Cuentas inactivas** - Si su cuenta está inactiva durante 2 años, podemos eliminar sus datos previo aviso
+- **Retención legal** - Podemos retener determinados datos durante más tiempo si lo exige la ley o para fines comerciales legítimos (p. ej.: prevención de fraude, litigios)
+- **Solicitudes de eliminación** - Puede solicitar la eliminación de sus datos en cualquier momento (consulte la sección Sus Derechos)
+- **Copias de seguridad** - Los datos eliminados pueden persistir en copias de seguridad hasta 90 días antes de su eliminación permanente
 
 ## Sus Derechos
 
