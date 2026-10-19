@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** October 15, 2026
+**Last Updated:** October 19, 2026
 
 ## Introduction
 
@@ -143,7 +143,8 @@ We use the information we collect for the following purposes:
 
 ### 5. Analytics and Improvement
 
-- **Usage analytics** - Understand how users interact with the platform to improve user experience
+- **Usage counts** - We count how many people use each feature, how often, and whether they come back, from the records the platform already keeps to provide the service. These counts stay on our servers and are not sent to an analytics provider. We rely on our legitimate interest in running and improving the service.
+- **Product analytics, only if you agree** - If you say yes, in the cookie banner on the web or on the consent screen when you set up the mobile app, we send a small set of events to PostHog, our analytics provider, which keeps them in the EU: when a practice starts and finishes, when you open a reminder, and when you tell your therapist how a practice went. Each event carries your account ID, role and clinic, the app version, your device type and a random ID for the device. We never send recordings, how you rated your speech, notes, answers you type, or your name or your therapist's. Saying no changes nothing in the app, and you can change your answer at any time in the mobile app's Settings, under Usage data, or in the cookie settings on the web.
 - **Feature development** - Identify which features are most valuable and where to focus development efforts
 - **Performance optimization** - Monitor system performance and identify bottlenecks
 - **Quality assurance** - Test and improve AI transcription and report generation accuracy
@@ -305,7 +306,7 @@ UpSpeech is based in Portugal and subject to the General Data Protection Regulat
 
 - **Contract** - Processing necessary to provide our services under our Terms of Service
 - **Legitimate interests** - For fraud prevention, security, analytics, and service improvement
-- **Consent** - For specific processing activities where we ask for your consent (e.g., uploading recordings)
+- **Consent** - For specific processing activities where we ask for your consent (e.g., uploading recordings, product analytics)
 - **Legal obligation** - To comply with applicable laws and regulations
 
 Your rights under the GDPR are described in the "Your Rights" section above.
@@ -332,7 +333,7 @@ On our mobile apps, the equivalent information (authentication token, cached pro
 
 ### Analytics Cookies
 
-We use analytics cookies (Google Analytics, Microsoft Clarity, PostHog) to understand how users interact with our platform. These cookies are only set with your explicit consent. We do not use cookies for advertising or tracking purposes, and we do not participate in behavioral advertising networks. For full details, see our [Cookie Policy](/cookies/).
+We use analytics cookies (Google Analytics, Microsoft Clarity, PostHog) to understand how users interact with our platform. These cookies are only set with your explicit consent. We do not use cookies for advertising or tracking purposes, and we do not participate in behavioral advertising networks. For full details, see our [Cookie Policy](/cookies/). On the mobile apps, the PostHog SDK only starts after you agree, and stores its random device ID in the app's own storage.
 
 ### Browser Settings
 
