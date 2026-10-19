@@ -1,6 +1,6 @@
 # Política de Privacidad
 
-**Última Actualización:** 15 de octubre de 2026
+**Última Actualización:** 19 de octubre de 2026
 
 ## Introducción
 
@@ -143,7 +143,8 @@ Utilizamos la información que recopilamos para los siguientes fines:
 
 ### 5. Análisis y Mejora
 
-- **Análisis de uso** - Comprender cómo los usuarios interactúan con la plataforma para mejorar la experiencia de uso
+- **Recuentos de uso** - Contamos cuántas personas usan cada función, con qué frecuencia y si vuelven a usarla, a partir de los registros que la plataforma ya guarda para prestar el servicio. Estos recuentos se quedan en nuestros servidores y no se envían a ningún proveedor de análisis. La base es nuestro interés legítimo en mantener y mejorar el servicio.
+- **Análisis de producto, solo si está de acuerdo** - Si dice que sí, en el aviso de cookies en la web o en la pantalla de consentimiento al configurar la aplicación móvil, enviamos un pequeño conjunto de eventos a PostHog, nuestro proveedor de análisis, que los guarda en la UE: cuando una práctica empieza y termina, cuando abre un recordatorio y cuando le cuenta a su logopeda cómo fue una práctica. Cada evento lleva el ID de su cuenta, su rol y su clínica, la versión de la aplicación, el tipo de dispositivo y un ID aleatorio del dispositivo. Nunca enviamos grabaciones, cómo valoró su habla, notas, respuestas que escribe, ni su nombre ni el de su logopeda. Decir que no no cambia nada en la aplicación, y puede cambiar su respuesta en cualquier momento en la Configuración de la aplicación móvil, en Datos de uso, o en la configuración de cookies en la web.
 - **Desarrollo de funcionalidades** - Identificar qué funcionalidades son más valiosas y dónde concentrar los esfuerzos de desarrollo
 - **Optimización del rendimiento** - Monitorizar el rendimiento del sistema e identificar cuellos de botella
 - **Garantía de calidad** - Probar y mejorar la precisión de la transcripción por IA y la generación de informes
@@ -305,7 +306,7 @@ UpSpeech tiene su sede en Portugal y está sujeta al Reglamento General de Prote
 
 - **Contrato** - Tratamiento necesario para prestar nuestros servicios en virtud de nuestros Términos de Servicio
 - **Intereses legítimos** - Para prevención de fraude, seguridad, análisis y mejora del servicio
-- **Consentimiento** - Para actividades de tratamiento específicas en las que solicitamos su consentimiento (p. ej.: carga de grabaciones)
+- **Consentimiento** - Para actividades de tratamiento específicas en las que solicitamos su consentimiento (p. ej.: carga de grabaciones, análisis de producto)
 - **Obligación legal** - Para cumplir leyes y normativas aplicables
 
 Sus derechos en virtud del RGPD se describen en la sección "Sus Derechos" anterior.
@@ -332,7 +333,7 @@ En nuestras aplicaciones móviles, la información equivalente (token de autenti
 
 ### Cookies de Análisis
 
-Utilizamos cookies de análisis (Google Analytics, Microsoft Clarity, PostHog) para comprender cómo los usuarios interactúan con nuestra plataforma. Estas cookies solo se establecen con su consentimiento explícito. No utilizamos cookies con fines publicitarios o de seguimiento, y no participamos en redes de publicidad comportamental. Para más detalles, consulte nuestra [Política de Cookies](/es/cookies/).
+Utilizamos cookies de análisis (Google Analytics, Microsoft Clarity, PostHog) para comprender cómo los usuarios interactúan con nuestra plataforma. Estas cookies solo se establecen con su consentimiento explícito. No utilizamos cookies con fines publicitarios o de seguimiento, y no participamos en redes de publicidad comportamental. Para más detalles, consulte nuestra [Política de Cookies](/es/cookies/). En las aplicaciones móviles, el SDK de PostHog solo se inicia después de que esté de acuerdo, y guarda su ID aleatorio del dispositivo en el almacenamiento de la propia aplicación.
 
 ### Ajustes del Navegador
 
