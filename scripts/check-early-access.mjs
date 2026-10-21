@@ -339,17 +339,28 @@ check(
   JSON.stringify(bodies.sheet),
 );
 
-// 13. Details from the confirmation page: one sheet row, nothing sent
+// 13. Details from the confirmation page: one sheet row, nothing sent, and
+// only with the token the sign-up returned.
+stub({});
+r = await handler(POST(WAITLIST));
+const token = JSON.parse(r.body).token;
+check(
+  "a sign-up returns a details token",
+  typeof token === "string" && token.length === 32,
+  r.body,
+);
+
+const DETAILS = {
+  kind: "details",
+  email: "maria@example.com",
+  token,
+  country: "PT",
+  interests: ["Stuttering", "Not sure yet"],
+};
+
 stub({});
 bodies = captureBodies();
-r = await handler(
-  POST({
-    kind: "details",
-    email: "maria@example.com",
-    country: "Portugal",
-    interests: ["Stuttering", "Not sure yet"],
-  }),
-);
+r = await handler(POST(DETAILS));
 check(
   "details -> 200, sheet only",
   r.statusCode === 200 && calls.join(",") === "sheet",
@@ -358,14 +369,219 @@ check(
 check(
   "details row carries country and interests",
   bodies.sheet?.request === "Details" &&
-    bodies.sheet?.country === "Portugal" &&
+    bodies.sheet?.country === "PT" &&
     bodies.sheet?.interests === "Stuttering, Not sure yet",
   JSON.stringify(bodies.sheet),
 );
 
 stub({});
-r = await handler(POST({ kind: "details", email: "nope" }));
+r = await handler(POST({ ...DETAILS, token: undefined }));
+check(
+  "details without a token -> 403, nothing written",
+  r.statusCode === 403 && calls.length === 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler(POST({ ...DETAILS, email: "someone@else.com" }));
+check(
+  "details token for another address -> 403",
+  r.statusCode === 403 && calls.length === 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler(POST({ kind: "details", email: "nope", token }));
 check("details with a bad email -> 422", r.statusCode === 422, r.statusCode);
+
+stub({ sheet: { ok: false } });
+r = await handler(POST(DETAILS));
+check("details with the sheet down -> 500", r.statusCode === 500, r.statusCode);
+
+stub({});
+bodies = captureBodies();
+await handler(
+  POST({
+    ...DETAILS,
+    country: "=1+1",
+    interests: ["a", "b", "c", "d", "e", "f", "g"],
+  }),
+);
+check(
+  "details escapes formulas and keeps five interests",
+  bodies.sheet?.country === "'=1+1" &&
+    bodies.sheet?.interests === "a, b, c, d, e",
+  JSON.stringify(bodies.sheet),
+);
+
+stub({});
+r = await handler(POST({ ...DETAILS, company: "spam corp" }));
+check(
+  "details honeypot -> 200 and zero calls",
+  r.statusCode === 200 && calls.length === 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+// 14. Every validation rule, one row each: [label, lead, expected status]
+const CASES = [
+  ["early access without consent", { ...LEAD, consent: false }, 422],
+  ["no profile", { ...LEAD, profile: undefined }, 422],
+  ["unknown request", { ...LEAD, request: "vip" }, 422],
+  [
+    "demo by call, no time",
+    { ...LEAD, request: "demo", demoWhen: "call" },
+    200,
+  ],
+  [
+    "demo at an unknown place",
+    { ...LEAD, request: "demo", demoWhen: "later" },
+    422,
+  ],
+  [
+    "demo at the stand, malformed time",
+    { ...LEAD, request: "demo", demoWhen: "stand", demoSlot: "9:30" },
+    422,
+  ],
+  ["pilot without consent", { ...LEAD, request: "pilot", consent: false }, 200],
+  [
+    "parent asking for early access",
+    { ...WAITLIST, profile: "caregiver", request: "early" },
+    422,
+  ],
+  ["email with a display name", { ...LEAD, email: "Evil<victim@x.com>" }, 422],
+  ["email with a query", { ...LEAD, email: "a@b.com?cc=c@d.com" }, 422],
+];
+for (const [label, lead, expected] of CASES) {
+  stub({});
+  r = await handler(POST(lead));
+  check(`${label} -> ${expected}`, r.statusCode === expected, r.statusCode);
+}
+
+stub({});
+r = await handler(POST({ ...LEAD, request: "pilot", consent: false }));
+check(
+  "pilot without consent adds no contact",
+  !calls.includes("audience"),
+  calls.join(","),
+);
+
+stub({ sheet: { ok: false }, "team-email": { ok: false } });
+r = await handler(
+  POST({ ...LEAD, request: "demo", demoWhen: "call", consent: false }),
+);
+check(
+  "no consent, sheet and team email down -> 500",
+  r.statusCode === 500,
+  r.statusCode,
+);
+
+// 15. What the team email and the applicant email say
+const captureEmails = () => {
+  const mail = {};
+  const stubbed = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    if (String(url).includes("/emails")) {
+      const b = JSON.parse(init.body);
+      if (b.to[0].includes("hello@")) mail.team = b;
+      else mail.applicant = b;
+    }
+    return stubbed(url, init);
+  };
+  return mail;
+};
+
+stub({});
+let mail = captureEmails();
+await handler(
+  POST({
+    ...LEAD,
+    request: "demo",
+    demoWhen: "stand",
+    demoSlot: "15:30",
+    consent: false,
+    clinic: "Clinica da Fala",
+  }),
+);
+check(
+  "team email names the stand demo and its time",
+  mail.team?.subject === "Demo at the stand, 15:30: Vasco Figueiredo" &&
+    mail.team?.text.includes("Request: Demo at the stand, 15:30") &&
+    mail.team?.text.includes("Clinic: Clinica da Fala"),
+  mail.team?.subject + " | " + mail.team?.text,
+);
+check(
+  "team email says the person skipped email updates",
+  mail.team?.text.includes("Email updates: No") &&
+    mail.team?.text.includes("Resend audience: no email updates"),
+  mail.team?.text,
+);
+check(
+  "team email has no share or referral lines when there are none",
+  !mail.team?.text.includes("Share code:") &&
+    !mail.team?.text.includes("Referred by:"),
+  mail.team?.text,
+);
+check(
+  "stand demo applicant gets the demo intro and the request row",
+  mail.applicant?.text.includes("Pedido: Demonstração no stand, 15:30"),
+  mail.applicant?.text,
+);
+
+stub({});
+mail = captureEmails();
+await handler(POST({ ...LEAD, request: "pilot", clinicSize: "small" }));
+check(
+  "pilot emails carry the team size",
+  mail.team?.text.includes("Team: 2-5 Therapists") &&
+    mail.applicant?.text.includes("Terapeutas envolvidos: 2-5 Terapeutas"),
+  mail.team?.text + " | " + mail.applicant?.text,
+);
+
+process.env.EARLY_ACCESS_SURVEY_URL = "https://upspeech.app/survey";
+stub({});
+mail = captureEmails();
+await handler(POST(WAITLIST));
+check(
+  "waiting-list applicant with no name gets the fallback greeting",
+  mail.applicant?.text.startsWith("Hi there,") &&
+    !mail.applicant?.text.includes("undefined"),
+  mail.applicant?.text,
+);
+check(
+  "waiting-list applicant gets the waiting-list copy and no survey",
+  mail.applicant?.subject === "You're on the UpSpeech waiting list" &&
+    !mail.applicant?.text.includes("survey"),
+  mail.applicant?.subject + " | " + mail.applicant?.text,
+);
+delete process.env.EARLY_ACCESS_SURVEY_URL;
+
+stub({});
+mail = captureEmails();
+bodies = captureBodies();
+await handler(
+  POST({
+    ...WAITLIST,
+    profile: "referrer",
+    shareCode: "abcd",
+    referredBy: "zz99zz",
+  }),
+);
+check(
+  "valid share and referral codes are kept and shown to the team",
+  bodies.sheet?.shareCode === "abcd" &&
+    bodies.sheet?.referredBy === "zz99zz" &&
+    mail.team?.text.includes("Referred by: zz99zz"),
+  JSON.stringify(bodies.sheet),
+);
+
+stub({});
+bodies = captureBodies();
+await handler(POST({ ...WAITLIST, shareCode: "abc", referredBy: "ABCDEF" }));
+check(
+  "a code too short or in capitals is dropped",
+  bodies.sheet?.shareCode === "" && bodies.sheet?.referredBy === "",
+  JSON.stringify(bodies.sheet),
+);
 
 console.error = realError;
 await rm(out, { force: true });

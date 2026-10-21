@@ -1,3 +1,5 @@
+import { SHARE_CODE } from "./join-contract";
+
 const STORAGE_KEY = "upspeech_campaign";
 const MAX_LENGTH = 100;
 // Letters in any script, digits and a few separators. Control characters, bidi
@@ -71,8 +73,6 @@ export const leadEventProperties = (
 });
 
 const REFERRAL_KEY = "upspeech_ref";
-/** The shape of a share code the join flow hands out. Anything else is dropped. */
-export const SHARE_CODE = /^[a-z0-9]{4,12}$/;
 
 /**
  * A friend's share link is /join?ref=<code>. Kept apart from the campaign so an

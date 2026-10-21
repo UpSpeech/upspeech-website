@@ -394,7 +394,7 @@ export const es: Dictionary = {
           {
             when: "A la mañana siguiente",
             title: "Ana lo ve",
-            body: "Tu logopeda escucha la grabación y deja una nota, para que la siguiente sesión empiece por lo que hiciste en casa.",
+            body: "Tu logopeda escucha la grabación y deja una nota antes de la siguiente sesión.",
           },
         ],
         perks: [
@@ -407,7 +407,7 @@ export const es: Dictionary = {
         short: "Madre, padre o cuidador",
         line: "Sigue la práctica de tu hijo en casa.",
         title: "Ayuda en casa, al ritmo de la logopeda.",
-        sub: "Mira lo que la logopeda de tu hijo puso para la semana, practicad unos minutos juntos, y sabe que la logopeda también lo ve. Ayudas sin tener que ser su logopeda.",
+        sub: "Mira lo que la logopeda de tu hijo puso para la semana, practica unos minutos con él y la logopeda también lo verá. Ayudas sin tener que ser su logopeda.",
         stepsTitle: "La semana de Leo",
         stepsLead: "Una semana de ejemplo de una familia, de lunes a domingo.",
         steps: [
@@ -424,7 +424,7 @@ export const es: Dictionary = {
           {
             when: "Viernes",
             title: "Una nota de Ana",
-            body: "La logopeda escuchó las grabaciones de la semana, así que la siguiente sesión empieza donde se quedó la práctica en casa.",
+            body: "La logopeda ha escuchado las grabaciones de la semana antes de la siguiente sesión.",
           },
         ],
         perks: ["Sigue cómo crece UpSpeech", "Recursos para familias"],
@@ -449,7 +449,7 @@ export const es: Dictionary = {
             when: "En casa",
             title:
               "Con UpSpeech, la práctica ocurre unos minutos casi todos los días.",
-            body: "Ejercicios cortos que pone su logopeda, con un compañero al lado. La logopeda los escucha, así que la siguiente sesión empieza donde se quedó la práctica en casa.",
+            body: "Ejercicios cortos que pone su logopeda, con un compañero al lado. La logopeda escucha cada uno.",
           },
           {
             when: "Tu parte",
@@ -498,7 +498,7 @@ export const es: Dictionary = {
       planTitle: "Cuentos para dormir, despacio",
       planMeta: "De Ana · esta semana",
       planNote:
-        "Leed un cuento corto juntos. Deja que Leo marque el ritmo, y haced una pausa en cada punto.",
+        "Lee un cuento corto con Leo. Deja que marque el ritmo y haz una pausa en cada punto.",
       leoDays: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
       legendPracticed: "Practicó",
       legendTogether: "Juntos",
@@ -507,9 +507,8 @@ export const es: Dictionary = {
       anaLeo: "Ana, logopeda de Leo",
       anaFriday: "Viernes, después de revisar la semana",
       anaLeoNote:
-        "Qué buena semana. Probad otra vez el cuento de dormir el domingo.",
+        "Qué buena semana. Prueba otra vez el cuento de dormir el domingo.",
       stripDays: ["L", "M", "X", "J", "V", "S", "L"],
-      legendSession2: "Sesión",
       legendAlone: "Por su cuenta",
       legendHome: "Práctica en casa",
       sentMessage:
@@ -570,8 +569,8 @@ export const es: Dictionary = {
       name: "Nombre",
       clinic: "Clínica",
       optional: "(opcional)",
-      consent: "Enviadme correos sobre UpSpeech",
-      consentOptional: "Enviadme también novedades de UpSpeech",
+      consent: "Quiero recibir correos sobre UpSpeech",
+      consentOptional: "Quiero recibir también novedades de UpSpeech",
       consentHint:
         "Un correo de bienvenida ahora mismo, otro una semana después, y luego una novedad al mes. Puedes darte de baja cuando quieras.",
       requestHint:
@@ -603,11 +602,11 @@ export const es: Dictionary = {
         "Puede que la red vaya lenta. Deja esta página abierta y terminará sola.",
       errorsOne: "Falta corregir una cosa. Está marcada abajo.",
       errorsMany: "Faltan corregir {count} cosas. Están marcadas abajo.",
-      errorEmailEmpty: "Añade tu correo para tenerte al tanto.",
+      errorEmailEmpty: "Añade tu correo.",
       errorEmailInvalid:
         "Ese correo parece incompleto. Revisa la parte después de la @.",
       errorConsent:
-        "Marca esta opción para mandarte el correo de bienvenida. Puedes darte de baja cuando quieras.",
+        "Marca esta opción para recibir el correo de bienvenida. Puedes darte de baja cuando quieras.",
       errorSlot: "Elige una hora para la demo.",
       errorSend:
         "No hemos podido guardarlo ahora. Revisa la conexión y vuelve a intentarlo.",

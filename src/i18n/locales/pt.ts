@@ -354,12 +354,12 @@ export const pt: Dictionary = {
         steps: [
           {
             when: "Depois da sessão",
-            title: "Define o passo",
+            title: "O passo seguinte",
             body: "Escolha o próximo exercício no Percurso de Aprendizagem. Fica à espera do paciente na aplicação, com a frequência de prática.",
           },
           {
             when: "Entre sessões",
-            title: "Vê a prática",
+            title: "A prática, à vista",
             body: "Hoje, a prática em casa só se conhece na sessão seguinte. Com o UpSpeech, cada gravação fica disponível para ouvir, e a parte administrativa ocupa menos da semana.",
           },
           {
@@ -395,7 +395,7 @@ export const pt: Dictionary = {
           {
             when: "Na manhã seguinte",
             title: "A Ana vê",
-            body: "O terapeuta ouve a gravação e deixa uma nota, para que a sessão seguinte comece pelo que fez em casa.",
+            body: "A Ana ouve a gravação e deixa uma nota antes da sessão seguinte.",
           },
         ],
         perks: [
@@ -426,7 +426,7 @@ export const pt: Dictionary = {
           {
             when: "Sexta-feira",
             title: "Uma nota da Ana",
-            body: "O terapeuta ouviu as gravações da semana, e a sessão seguinte começa onde a prática em casa ficou.",
+            body: "A Ana ouviu as gravações da semana antes da sessão seguinte.",
           },
         ],
         perks: [
@@ -454,11 +454,11 @@ export const pt: Dictionary = {
             when: "Em casa",
             title:
               "Com o UpSpeech, a prática acontece alguns minutos na maioria dos dias.",
-            body: "Exercícios curtos definidos pelo terapeuta, com um companheiro ao lado. O terapeuta ouve-os, e a sessão seguinte começa onde a prática em casa ficou.",
+            body: "Exercícios curtos definidos pelo terapeuta, com um companheiro ao lado. O terapeuta ouve cada um.",
           },
           {
             when: "A sua parte",
-            title: "Envia-lhe um link.",
+            title: "Envie-lhe um link.",
             body: "Toque abaixo para receber um link para partilhar em qualquer conversa. Sem inscrição. A outra pessoa decide se o abre, e nunca lhe pedimos o contacto dela.",
           },
         ],
@@ -514,7 +514,6 @@ export const pt: Dictionary = {
       anaLeoNote:
         "Que boa semana. Experimentem a história de dormir outra vez no domingo.",
       stripDays: ["S", "T", "Q", "Q", "S", "S", "S"],
-      legendSession2: "Sessão",
       legendAlone: "Sem apoio",
       legendHome: "Prática em casa",
       sentMessage:
@@ -607,11 +606,11 @@ export const pt: Dictionary = {
         "A rede pode estar lenta. Mantenha esta página aberta e o envio termina sozinho.",
       errorsOne: "Falta corrigir uma coisa. Está assinalada abaixo.",
       errorsMany: "Faltam corrigir {count} coisas. Estão assinaladas abaixo.",
-      errorEmailEmpty: "Indique o seu email para o mantermos a par.",
+      errorEmailEmpty: "Indique o seu email.",
       errorEmailInvalid:
         "Esse email parece incompleto. Verifique a parte depois do @.",
       errorConsent:
-        "Marque esta opção para lhe enviarmos o email de boas-vindas. Pode sair quando quiser.",
+        "Marque esta opção para receber o email de boas-vindas. Pode sair quando quiser.",
       errorSlot: "Escolha uma hora para a demonstração.",
       errorSend:
         "Não conseguimos guardar agora. Verifique a ligação e tente outra vez.",

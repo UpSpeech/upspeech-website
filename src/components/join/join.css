@@ -3,7 +3,7 @@
   --j-card: #ffffff;
   --j-ink: #161821;
   --j-head: #1b2257;
-  --j-navy: #293587;
+  --j-navy: var(--color-primary-500);
   --j-navy-hover: #232d74;
   --j-muted: #50526b;
   --j-body: #3b3f57;

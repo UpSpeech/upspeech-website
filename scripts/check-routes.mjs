@@ -84,6 +84,35 @@ function configProblems() {
     }
   }
 
+  // The /c/ short links are printed on QR codes, so a typo cannot be fixed by
+  // reprinting. Each must land on /join with an audience the page knows.
+  const companionsTs = readFileSync(
+    join(scriptsDir, "..", "src", "components", "join", "companions.ts"),
+    "utf8",
+  );
+  const audiences = [
+    .../AUDIENCES = \[([^\]]+)\]/.exec(companionsTs)?.[1].matchAll(/"(\w+)"/g),
+  ].map((m) => m[1]);
+  const shortLinks = toml
+    .split(/\[\[redirects\]\]/)
+    .slice(1)
+    .filter((b) => /^\s*from\s*=\s*"\/c\//m.test(b));
+  for (const block of shortLinks) {
+    const from = /^\s*from\s*=\s*"([^"]+)"/m.exec(block)[1];
+    const to = /^\s*to\s*=\s*"([^"]+)"/m.exec(block)?.[1] ?? "";
+    const query = new URLSearchParams(to.split("?")[1] ?? "");
+    const fail = (why) =>
+      problems.push(`netlify.toml short link ${from}: ${why}`);
+    if (!/^\s*status\s*=\s*302\b/m.test(block)) fail("must be a 302");
+    if (!/^\s*force\s*=\s*true\b/m.test(block)) fail("must set force = true");
+    if (!to.startsWith("/join/?")) fail(`must point at /join/?..., not ${to}`);
+    if (query.has("for") && !audiences.includes(query.get("for")))
+      fail(`for=${query.get("for")} is not one of ${audiences.join(", ")}`);
+    if (!query.get("utm_content")) fail("has no utm_content");
+    if ((query.get("from") === "figure") !== from.endsWith("-3d"))
+      fail("from=figure belongs on the -3d links and only there");
+  }
+
   // localizedPath has no trailing slash, so assigning it to location.href sends
   // a real click through a 301. See src/i18n/locale.ts.
   const header = readFileSync(headerPath, "utf8");

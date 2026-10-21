@@ -27,6 +27,7 @@ import {
 } from "./copy";
 import { escapeHtml, firstName } from "./text";
 import type { ApplicantCopy, EmailLocale } from "./copy";
+import type { Profile, Request } from "../../src/lib/join-contract";
 
 /* Palette, from src/index.css by way of tailwind.config.ts. */
 const NAVY = "#293587"; // primary-500
@@ -76,16 +77,6 @@ const LOGO_DARK = `${LOGO_HOST}logo-email-invert.png`;
  */
 const DISPLAY = `'Outfit','Avenir Next',Avenir,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`;
 const BODY = `'Plus Jakarta Sans','Avenir Next',Avenir,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`;
-
-export const PROFILES = [
-  "therapist",
-  "patient",
-  "caregiver",
-  "referrer",
-] as const;
-export type Profile = (typeof PROFILES)[number];
-export const REQUESTS = ["waitlist", "early", "demo", "pilot"] as const;
-export type Request = (typeof REQUESTS)[number];
 
 export interface Lead {
   /** Optional: the join flow asks for a name only on a demo or pilot request. */
@@ -477,10 +468,10 @@ export const teamEmail = (
   const inner = `
           <tr>
             <td class="pad" style="padding:42px 40px 0 40px;">
-${eyebrow(lead.request === "demo" || lead.request === "pilot" ? `New ${request.toLowerCase()} request` : "New sign-up")}
+${eyebrow(lead.request === "demo" ? "New demo request" : lead.request === "pilot" ? "New pilot request" : "New sign-up")}
 ${heading(who)}
               <p style="margin:12px 0 0 0;font-family:${BODY};font-size:15px;line-height:1.5;">
-                <a href="mailto:${escapeHtml(lead.email)}" class="ink-brand" style="color:${LAVENDER_INK};text-decoration:underline;">${escapeHtml(lead.email)}</a>
+                <a href="mailto:${escapeHtml(encodeURIComponent(lead.email))}" class="ink-brand" style="color:${LAVENDER_INK};text-decoration:underline;">${escapeHtml(lead.email)}</a>
               </p>
             </td>
           </tr>

@@ -9,6 +9,7 @@
  * The Resend key lives only in the Netlify env, never in the bundle.
  */
 
+import { createHmac, timingSafeEqual } from "node:crypto";
 import type { Handler } from "@netlify/functions";
 import { oneLine, isSafeHttpsUrl } from "../lib/text";
 import {
@@ -19,11 +20,17 @@ import {
 import {
   applicantEmail,
   teamEmail,
-  PROFILES,
-  REQUESTS,
   type Lead,
   type RenderedEmail,
 } from "../lib/email-template";
+import {
+  CLINIC_SIZES,
+  COMPANIONS,
+  EMAIL_PATTERN,
+  PROFILES,
+  REQUESTS,
+  SHARE_CODE,
+} from "../../src/lib/join-contract";
 import {
   appendLeadToSheet,
   appendDetailsToSheet,
@@ -34,12 +41,33 @@ const FROM = "UpSpeech <hello@upspeech.app>"; // must be a Resend-verified sende
 const TEAM_TO = "hello@upspeech.app";
 const SEND_TIMEOUT_MS = 6000;
 
-/* Rejects "a@b" and trailing junk, which the old includes("@") check let past. */
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const SLOT_PATTERN = /^\d{2}:\d{2}$/;
-const CODE_PATTERN = /^[a-z0-9]{4,12}$/;
-const CLINIC_SIZES = ["solo", "small", "medium", "large"];
-const COMPANIONS = ["lumo", "nima", "tumbo", "pip"];
+
+/*
+ * The confirmation page may add country and interests to a sign-up it just
+ * made. The token ties that post to the sign-up, so nobody can append rows
+ * under an address that never signed up. Keyed by the sheet secret, which
+ * only this function holds.
+ */
+const detailsToken = (email: string): string => {
+  const secret = process.env.SHEETS_WEBHOOK_SECRET;
+  return secret
+    ? createHmac("sha256", secret)
+        .update(`details:${email.toLowerCase()}`)
+        .digest("hex")
+        .slice(0, 32)
+    : "";
+};
+
+const tokenMatches = (email: string, token: unknown): boolean => {
+  const expected = detailsToken(email);
+  return (
+    typeof token === "string" &&
+    expected.length > 0 &&
+    token.length === expected.length &&
+    timingSafeEqual(Buffer.from(token), Buffer.from(expected))
+  );
+};
 
 const oneOf = <T extends string>(
   value: unknown,
@@ -133,6 +161,8 @@ export const handler: Handler = async (event) => {
       const email = oneLine(body.email, 320);
       if (!EMAIL_PATTERN.test(email))
         return json(422, { error: "Missing or invalid required fields" });
+      if (!tokenMatches(email, body.token))
+        return json(403, { error: "Forbidden" });
       const interests = Array.isArray(body.interests)
         ? body.interests
             .slice(0, 5)
@@ -162,10 +192,10 @@ export const handler: Handler = async (event) => {
       clinic: oneLine(body.clinic, 120),
       companion: oneOf(body.companion, COMPANIONS),
       consent: body.consent === true,
-      shareCode: CODE_PATTERN.test(oneLine(body.shareCode, 12))
+      shareCode: SHARE_CODE.test(oneLine(body.shareCode, 12))
         ? oneLine(body.shareCode, 12)
         : "",
-      referredBy: CODE_PATTERN.test(oneLine(body.referredBy, 12))
+      referredBy: SHARE_CODE.test(oneLine(body.referredBy, 12))
         ? oneLine(body.referredBy, 12)
         : "",
       locale: isEmailLocale(body.locale) ? body.locale : DEFAULT_EMAIL_LOCALE,
@@ -222,7 +252,7 @@ export const handler: Handler = async (event) => {
       console.error("applicant confirmation failed:", err);
     }
 
-    return json(200, { ok: true });
+    return json(200, { ok: true, token: detailsToken(lead.email) });
   } catch (err) {
     console.error("early-access function error:", err);
     return json(500, { error: "Send failed" });

@@ -344,15 +344,15 @@ export const en = {
         short: "Speech therapist or clinic",
         line: "Less paperwork. More time for patients.",
         title: "Less paperwork. More time for patients.",
-        sub: "UpSpeech connects you with your clients between sessions. You set the practice, you see what happened at home, and the AI drafts your session reports for you to review.",
+        sub: "UpSpeech connects you with your patients between sessions. You set the practice, you see what happened at home, and the AI drafts your session reports for you to review.",
         stepsTitle: "Your week with UpSpeech",
         stepsLead:
-          "Three moments from an example week, with an example client.",
+          "Three moments from an example week, with an example patient.",
         steps: [
           {
             when: "After the session",
             title: "You set the step",
-            body: "Pick the next exercise from the Learning Path. It waits for your client in the app, with how often to practice.",
+            body: "Pick the next exercise from the Learning Path. It waits for your patient in the app, with how often to practice.",
           },
           {
             when: "Between sessions",
@@ -392,7 +392,7 @@ export const en = {
           {
             when: "Next morning",
             title: "Ana sees it",
-            body: "Your therapist listens back and leaves a note, so the next session starts from what you did at home.",
+            body: "Your therapist listens back and leaves a note before your next session.",
           },
         ],
         perks: [
@@ -422,7 +422,7 @@ export const en = {
           {
             when: "Friday",
             title: "A note from Ana",
-            body: "The therapist heard the week's recordings, so the next session picks up where home left off.",
+            body: "The therapist has heard the week's recordings before the next session.",
           },
         ],
         perks: ["Follow UpSpeech as it grows", "Resources for families"],
@@ -445,7 +445,7 @@ export const en = {
           {
             when: "At home",
             title: "With UpSpeech, practice happens a few minutes most days.",
-            body: "Short exercises set by their therapist, with a companion along. The therapist hears them, so the next session starts where home left off.",
+            body: "Short exercises set by their therapist, with a companion along. The therapist hears each one.",
           },
           {
             when: "Your part",
@@ -503,7 +503,6 @@ export const en = {
       anaFriday: "Friday, after reviewing the week",
       anaLeoNote: "Lovely week. Try the bedtime story again on Sunday.",
       stripDays: ["M", "T", "W", "T", "F", "S", "M"],
-      legendSession2: "Session",
       legendAlone: "On their own",
       legendHome: "Practice at home",
       sentMessage:
@@ -596,11 +595,11 @@ export const en = {
         "The Wi-Fi may be busy. Keep this page open and it will finish on its own.",
       errorsOne: "One thing to fix. It is marked below.",
       errorsMany: "{count} things to fix. They are marked below.",
-      errorEmailEmpty: "Add your email so we can keep you posted.",
+      errorEmailEmpty: "Add your email.",
       errorEmailInvalid:
         "That email looks incomplete. Check the part after the @.",
       errorConsent:
-        "Tick this so we can send your welcome email. You can leave anytime.",
+        "Check this box to get the welcome email. You can leave anytime.",
       errorSlot: "Pick a time for your demo.",
       errorSend:
         "We couldn't save that just now. Check your connection and try again.",

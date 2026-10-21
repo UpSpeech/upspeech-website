@@ -18,7 +18,6 @@
  * New columns only ever go on the end, so rows written before they existed
  * stay aligned. A sheet that already has a header row needs each new header
  * cell typed in by hand, because ensureHeaderRow only writes an empty sheet.
- * The join flow added the eight after Content.
  *
  * "Who has access: Anyone" makes the URL world-postable, which is why every
  * request has to carry the shared secret.

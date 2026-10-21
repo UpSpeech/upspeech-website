@@ -12,11 +12,6 @@ import Companion from "@/components/Companion";
 import { useT } from "@/i18n";
 import { COMPANION_ACCENTS, COMPANION_TINTS } from "./companions";
 
-/*
- * Small, static drawings of real app screens, one per story step. They show
- * what the product does; nothing here is interactive except "Mark as done".
- */
-
 const NAVY = "#293587";
 const REST = "#4b5187";
 type Icon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -353,7 +348,7 @@ export const Strip = ({
       <div className="j-legend">
         <span>
           <i style={{ background: NAVY }} />
-          {m.legendSession2}
+          {m.legendSession}
         </span>
         {filled ? (
           <span>
