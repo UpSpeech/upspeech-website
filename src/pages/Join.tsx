@@ -208,7 +208,7 @@ export default function Join() {
       });
       if (!res.ok) throw new Error(`early-access ${res.status}`);
       const { token } = (await res.json()) as { token?: string };
-      trackFormSubmit("join_form", true, properties);
+      trackFormSubmit("waitlist_form", true, properties);
       setSent({
         token: token ?? "",
         request: kind,
@@ -224,7 +224,7 @@ export default function Join() {
       go({ step: "done" });
     } catch (err) {
       console.error("Join submission error:", err);
-      trackFormSubmit("join_form", false, properties);
+      trackFormSubmit("waitlist_form", false, properties);
       setSendError(true);
     } finally {
       window.clearTimeout(slowTimer);

@@ -18,25 +18,28 @@
   position: relative;
   min-height: 100vh;
   background: linear-gradient(#f5f6fc, #eceefb);
+}
+/* The site header and footer sit inside .join, so the resets stop at the page. */
+.j-main {
   color: var(--j-ink);
   font: 400 15px/1.5 var(--j-text);
 }
-.join h1,
-.join h2 {
+.j-main h1,
+.j-main h2 {
   font-family: var(--j-display);
   color: var(--j-head);
   text-wrap: balance;
   margin: 0;
 }
-.join p {
+.j-main p {
   margin: 0;
 }
-.join button {
+.j-main button {
   cursor: pointer;
   font: inherit;
   color: inherit;
 }
-.join :focus-visible {
+.j-main :focus-visible {
   outline: 3px solid var(--j-navy);
   outline-offset: 2px;
 }
@@ -1264,9 +1267,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .join *,
-  .join *::before,
-  .join *::after {
+  .join .j-scene *,
+  .j-main *,
+  .j-main *::before,
+  .j-main *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
