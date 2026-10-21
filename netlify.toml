@@ -188,6 +188,12 @@
   status = 302
   force = true
 
+[[redirects]]
+  from = "/c/leaflet"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=leaflet"
+  status = 302
+  force = true
+
 # Locale-specific 404s. The root dist/404.html is picked up automatically for
 # any path that resolves to no file, but a subdirectory copy is not: per-path
 # 404s need an explicit rule. Without these, a visitor mistyping a /pt/ URL gets
