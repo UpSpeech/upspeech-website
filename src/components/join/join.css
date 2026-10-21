@@ -1253,6 +1253,87 @@
   color: var(--j-muted);
 }
 
+/* Two columns on wide screens: the aside stays put while the content scrolls.
+   On a phone both wrappers dissolve and the order below keeps the reading order. */
+.j-aside,
+.j-col {
+  display: contents;
+}
+.j-aside > .j-foot {
+  order: 10;
+}
+.j-done .j-done-card {
+  order: 1;
+}
+.j-done .j-col > .j-card {
+  order: 2;
+}
+.j-done .j-next {
+  order: 3;
+}
+.j-done .j-upsell {
+  order: 4;
+}
+.j-done .j-restart {
+  order: 5;
+}
+@media (min-width: 1024px) {
+  .j-main {
+    max-width: 1120px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .j-wide {
+    display: grid;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 32px 64px;
+    align-items: start;
+  }
+  .j-wide > .j-aside,
+  .j-wide > .j-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+  }
+  .j-wide > .j-aside {
+    position: sticky;
+    top: 112px;
+  }
+  .j-wide .j-foot {
+    position: static;
+    margin: 0;
+    padding: 4px 0 0;
+    background: none;
+  }
+  .j-wide .j-hero h1 {
+    font-size: 30px;
+  }
+  .j-done.j-wide :is(.j-aside, .j-col) > * {
+    order: 0;
+  }
+  /* Start the content level with the hero, below the aside's Back link. */
+  .j-wide:has(> .j-aside > .j-back) > .j-col {
+    padding-top: 46px;
+  }
+  .j-landing {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    min-height: calc(100vh - 260px);
+  }
+  .j-landing > .j-aside {
+    position: static;
+  }
+  .j-landing .j-lead h1 {
+    font-size: 44px;
+    line-height: 1.08;
+  }
+  .j-landing .j-lead p {
+    font-size: 17px;
+    max-width: 44ch;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .join .j-scene *,
   .j-main *,

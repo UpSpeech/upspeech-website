@@ -65,48 +65,52 @@ export function SubmitButton({
 export function Landing({ onPick }: { onPick: (a: Audience) => void }) {
   const t = useT().join;
   return (
-    <div className="j-pad">
-      <div className="j-lead">
-        <h1>
-          {t.titleLead} <span>{t.titleAccent}</span>
-        </h1>
-        <p>{t.lead}</p>
+    <div className="j-pad j-wide j-landing">
+      <div className="j-aside">
+        <div className="j-lead">
+          <h1>
+            {t.titleLead} <span>{t.titleAccent}</span>
+          </h1>
+          <p>{t.lead}</p>
+        </div>
       </div>
-      <h2 className="j-list-h">{t.listTitle}</h2>
-      <div className="j-aud">
-        {AUDIENCES.map((a) => {
-          const c = AUDIENCE[a].companion;
-          return (
-            <button
-              key={a}
-              type="button"
-              className="j-aud-row"
-              onClick={() => onPick(a)}
-            >
-              <span
-                className="j-bust"
-                style={{ background: COMPANION_TINTS[c] }}
-                aria-hidden="true"
+      <div className="j-col">
+        <h2 className="j-list-h">{t.listTitle}</h2>
+        <div className="j-aud">
+          {AUDIENCES.map((a) => {
+            const c = AUDIENCE[a].companion;
+            return (
+              <button
+                key={a}
+                type="button"
+                className="j-aud-row"
+                onClick={() => onPick(a)}
               >
-                <Companion
-                  species={c}
-                  accent={COMPANION_ACCENTS[c]}
-                  size={76}
+                <span
+                  className="j-bust"
+                  style={{ background: COMPANION_TINTS[c] }}
+                  aria-hidden="true"
+                >
+                  <Companion
+                    species={c}
+                    accent={COMPANION_ACCENTS[c]}
+                    size={76}
+                  />
+                </span>
+                <span className="j-txt">
+                  <b>{t.audiences[a].label}</b>
+                  <small>{t.audiences[a].line}</small>
+                </span>
+                <ChevronRightIcon
+                  width={20}
+                  height={20}
+                  color="#50526b"
+                  aria-hidden="true"
                 />
-              </span>
-              <span className="j-txt">
-                <b>{t.audiences[a].label}</b>
-                <small>{t.audiences[a].line}</small>
-              </span>
-              <ChevronRightIcon
-                width={20}
-                height={20}
-                color="#50526b"
-                aria-hidden="true"
-              />
-            </button>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -158,59 +162,63 @@ export function Story({
   };
 
   return (
-    <div className="j-pad">
-      <button type="button" className="j-back" onClick={onBack}>
-        <ChevronLeftIcon width={20} height={20} aria-hidden="true" />
-        {t.back}
-      </button>
-      <div className="j-hero" style={{ background: tint }}>
-        {figure && (
-          <span className="j-found">{t.found.replace("{name}", c)}</span>
-        )}
-        <h1>{a.title}</h1>
-        <span className="j-hero-c" aria-hidden="true">
-          <Companion species={c} accent={accent} size={112} />
-        </span>
-      </div>
-      <p className="j-sub">{a.sub}</p>
-      {aud === "therapist" && (
-        <div className="j-stat">
-          <b>{t.stat.value}</b>
-          <p>{t.stat.text}</p>
+    <div className="j-pad j-wide">
+      <div className="j-aside">
+        <button type="button" className="j-back" onClick={onBack}>
+          <ChevronLeftIcon width={20} height={20} aria-hidden="true" />
+          {t.back}
+        </button>
+        <div className="j-hero" style={{ background: tint }}>
+          {figure && (
+            <span className="j-found">{t.found.replace("{name}", c)}</span>
+          )}
+          <h1>{a.title}</h1>
+          <span className="j-hero-c" aria-hidden="true">
+            <Companion species={c} accent={accent} size={112} />
+          </span>
         </div>
-      )}
-      <section
-        className="j-group"
-        style={{ gap: 14 }}
-        aria-labelledby="j-steps"
-      >
-        <div className="j-steps-h">
-          <h2 id="j-steps">{a.stepsTitle}</h2>
-          <p>{a.stepsLead}</p>
-        </div>
-        <ol className="j-steps">
-          {a.steps.map((step, i) => (
-            <li key={i} className="j-step">
-              <span className="j-num" style={{ background: tint }}>
-                {i + 1}
-              </span>
-              <div className="j-step-card">
-                <span className="j-when">{step.when}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-                {mocks[aud][i]}
-              </div>
-            </li>
-          ))}
-        </ol>
-        {aud === "family" && (
-          <div className="j-extra">
-            <b>{t.devTitle}</b>
-            <p>{t.devBody}</p>
+        <p className="j-sub">{a.sub}</p>
+        {aud === "therapist" && (
+          <div className="j-stat">
+            <b>{t.stat.value}</b>
+            <p>{t.stat.text}</p>
           </div>
         )}
-      </section>
-      <div className="j-foot">{footer}</div>
+        <div className="j-foot">{footer}</div>
+      </div>
+      <div className="j-col">
+        <section
+          className="j-group"
+          style={{ gap: 14 }}
+          aria-labelledby="j-steps"
+        >
+          <div className="j-steps-h">
+            <h2 id="j-steps">{a.stepsTitle}</h2>
+            <p>{a.stepsLead}</p>
+          </div>
+          <ol className="j-steps">
+            {a.steps.map((step, i) => (
+              <li key={i} className="j-step">
+                <span className="j-num" style={{ background: tint }}>
+                  {i + 1}
+                </span>
+                <div className="j-step-card">
+                  <span className="j-when">{step.when}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                  {mocks[aud][i]}
+                </div>
+              </li>
+            ))}
+          </ol>
+          {aud === "family" && (
+            <div className="j-extra">
+              <b>{t.devTitle}</b>
+              <p>{t.devBody}</p>
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 }
@@ -356,68 +364,76 @@ export function Done({
   }
 
   return (
-    <div className="j-pad">
-      <div className="j-done-card" style={{ background: COMPANION_TINTS[c] }}>
-        <span aria-hidden="true">
-          <Companion species={c} accent={COMPANION_ACCENTS[c]} size={88} />
-        </span>
-        <div className="j-txt">
-          <span className="j-badge">
-            <i>
-              <CheckIcon
-                width={10}
-                height={10}
-                strokeWidth={3.5}
-                aria-hidden="true"
-              />
-            </i>
-            {isRequest ? d.requestReceived : d.signedUp}
+    <div className="j-pad j-wide j-done">
+      <div className="j-aside">
+        <div className="j-done-card" style={{ background: COMPANION_TINTS[c] }}>
+          <span aria-hidden="true">
+            <Companion species={c} accent={COMPANION_ACCENTS[c]} size={88} />
           </span>
-          <h1>{title}</h1>
-          <p>{line}</p>
-        </div>
-      </div>
-      {share}
-      {aud === "therapist" && sent.request === "early" && (
-        <button type="button" className="j-upsell" onClick={onUpsell}>
-          <span className="j-txt">
-            <b>{d.upsellTitle}</b>
-            <small>{stand ? d.upsellBody : d.upsellBodyCall}</small>
-          </span>
-          <span className="go">{d.upsellCta}</span>
-        </button>
-      )}
-      <section className="j-card" aria-labelledby="j-tailor">
-        <div className="j-card-h">
-          <h2 id="j-tailor">{d.tailorTitle}</h2>
-          <span className="j-hint">{t.form.optionalTag}</span>
-        </div>
-        {tailor}
-      </section>
-      {next.length > 0 && (
-        <section className="j-next" aria-labelledby="j-next">
-          <h2 id="j-next">{d.nextTitle}</h2>
-          {next.map(([IconCmp, title, sub]) => (
-            <div key={title} className="j-next-row">
-              <span className="ic">
-                <IconCmp
-                  width={18}
-                  height={18}
-                  strokeWidth={1.5}
+          <div className="j-txt">
+            <span className="j-badge">
+              <i>
+                <CheckIcon
+                  width={10}
+                  height={10}
+                  strokeWidth={3.5}
                   aria-hidden="true"
                 />
-              </span>
-              <div>
-                <b>{title}</b>
-                <small>{sub}</small>
+              </i>
+              {isRequest ? d.requestReceived : d.signedUp}
+            </span>
+            <h1>{title}</h1>
+            <p>{line}</p>
+          </div>
+        </div>
+        {next.length > 0 && (
+          <section className="j-next" aria-labelledby="j-next">
+            <h2 id="j-next">{d.nextTitle}</h2>
+            {next.map(([IconCmp, title, sub]) => (
+              <div key={title} className="j-next-row">
+                <span className="ic">
+                  <IconCmp
+                    width={18}
+                    height={18}
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
+                </span>
+                <div>
+                  <b>{title}</b>
+                  <small>{sub}</small>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </section>
+        )}
+      </div>
+      <div className="j-col">
+        {share}
+        {aud === "therapist" && sent.request === "early" && (
+          <button type="button" className="j-upsell" onClick={onUpsell}>
+            <span className="j-txt">
+              <b>{d.upsellTitle}</b>
+              <small>{stand ? d.upsellBody : d.upsellBodyCall}</small>
+            </span>
+            <span className="go">{d.upsellCta}</span>
+          </button>
+        )}
+        <section className="j-card" aria-labelledby="j-tailor">
+          <div className="j-card-h">
+            <h2 id="j-tailor">{d.tailorTitle}</h2>
+            <span className="j-hint">{t.form.optionalTag}</span>
+          </div>
+          {tailor}
         </section>
-      )}
-      <button type="button" className="j-btn ghost" onClick={onRestart}>
-        {d.restart}
-      </button>
+        <button
+          type="button"
+          className="j-btn ghost j-restart"
+          onClick={onRestart}
+        >
+          {d.restart}
+        </button>
+      </div>
     </div>
   );
 }

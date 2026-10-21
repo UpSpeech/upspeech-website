@@ -344,346 +344,352 @@ export default function Join() {
           />
         )}
         {screen === "form" && aud && (
-          <div className="j-pad">
-            <button type="button" className="j-back" onClick={() => go({})}>
-              <ChevronLeftIcon width={20} height={20} aria-hidden="true" />
-              {t.back}
-            </button>
-            <FormHero aud={aud} request={kind} when={when} />
-            {isFriend && (
-              <ShareCard
-                link={link}
-                copied={copied}
-                onCopy={copyLink}
-                onShare={shareLink}
-              />
-            )}
-            <section
-              ref={formRef}
-              className={`j-card${submitting ? " j-busy" : ""}`}
-              aria-labelledby={isFriend ? "j-updates" : "j-form-title"}
-            >
-              {isFriend ? (
-                <div className="j-group" style={{ gap: 2 }}>
-                  <div className="j-card-h">
-                    <h2 id="j-updates">{t.form.updatesTitle}</h2>
-                    <span className="j-hint">{t.form.optionalTag}</span>
-                  </div>
-                  <p className="j-hint" style={{ fontSize: 13.5 }}>
-                    {t.form.updatesHint}
-                  </p>
-                </div>
-              ) : (
-                <div className="j-joining">
-                  <span>
-                    {t.joiningAs} <strong>{t.audiences[aud].short}</strong>
-                  </span>
-                  <button
-                    type="button"
-                    className="j-link"
-                    onClick={() => go({ for: null })}
-                  >
-                    {t.change}
-                  </button>
-                </div>
-              )}
-
-              {Object.keys(errors).length > 0 && (
-                <div className="j-alert" role="alert">
-                  <ExclamationCircleIcon
-                    width={20}
-                    height={20}
-                    aria-hidden="true"
-                    style={{ flex: "none" }}
-                  />
-                  {Object.keys(errors).length === 1
-                    ? t.form.errorsOne
-                    : fill(t.form.errorsMany, {
-                        count: String(Object.keys(errors).length),
-                      })}
-                </div>
-              )}
-
-              {isTherapist && (
-                <>
-                  <div className="j-group">
-                    <span className="j-lbl" id="j-req">
-                      {t.form.requestLabel}
-                    </span>
-                    <div
-                      className="j-seg"
-                      role="radiogroup"
-                      aria-labelledby="j-req"
-                    >
-                      {(["early", "demo", "pilot"] as Request[]).map((r) => (
-                        <button
-                          key={r}
-                          type="button"
-                          role="radio"
-                          aria-checked={request === r}
-                          onClick={() => {
-                            setRequest(r);
-                            setErrors({});
-                          }}
-                        >
-                          {t.form.requests[r]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  {request === "demo" && stand && (
-                    <div className="j-group">
-                      <span className="j-lbl">{t.form.whenLabel}</span>
-                      <div
-                        className="j-when-opts"
-                        role="radiogroup"
-                        aria-label={t.form.whenLabel}
-                      >
-                        {(
-                          [
-                            ["stand", t.form.whenStand, t.form.whenStandSub],
-                            ["call", t.form.whenCall, t.form.whenCallSub],
-                          ] as const
-                        ).map(([k, label, sub]) => (
-                          <button
-                            key={k}
-                            type="button"
-                            role="radio"
-                            aria-checked={demoWhen === k}
-                            onClick={() => setDemoWhen(k)}
-                          >
-                            <b>{label}</b>
-                            <small>{sub}</small>
-                          </button>
-                        ))}
-                      </div>
-                      {demoWhen === "stand" && (
-                        <>
-                          <div
-                            className="j-pills"
-                            role="group"
-                            aria-label={t.form.slotsLabel}
-                          >
-                            {SLOTS.map((s, i) => (
-                              <button
-                                key={s}
-                                type="button"
-                                className="j-pill"
-                                aria-pressed={slot === i}
-                                onClick={() => {
-                                  setSlot(i);
-                                  setErrors(({ slot: _, ...rest }) => rest);
-                                }}
-                              >
-                                {s}
-                              </button>
-                            ))}
-                          </div>
-                          {errors.slot ? (
-                            <span className="j-err-line">{errors.slot}</span>
-                          ) : (
-                            <span className="j-hint">{t.form.slotsHint}</span>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )}
-                  {request === "pilot" && (
-                    <div className="j-group">
-                      <span className="j-lbl">{t.form.teamLabel}</span>
-                      <div
-                        className="j-pills"
-                        role="group"
-                        aria-label={t.form.teamLabel}
-                      >
-                        {CLINIC_SIZES.map((size) => (
-                          <button
-                            key={size}
-                            type="button"
-                            className="j-pill"
-                            aria-pressed={team === size}
-                            onClick={() => setTeam(size)}
-                          >
-                            {t.form.teams[size]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-
-              <div className="j-field">
-                <label htmlFor="j-email">
-                  {asksRequest ? t.form.workEmail : t.form.email}
-                </label>
-                <input
-                  id="j-email"
-                  type="email"
-                  inputMode="email"
-                  autoComplete="email"
-                  autoCapitalize="off"
-                  spellCheck={false}
-                  placeholder={
-                    asksRequest
-                      ? t.form.workEmailPlaceholder
-                      : t.form.emailPlaceholder
-                  }
-                  value={email}
-                  aria-invalid={!!errors.email}
-                  aria-describedby={errors.email ? "j-email-error" : undefined}
-                  onKeyDown={(ev) => {
-                    if (ev.key === "Enter") {
-                      ev.preventDefault();
-                      submit();
-                    }
-                  }}
-                  onChange={(ev) => {
-                    setEmail(ev.target.value);
-                    if (
-                      errors.email &&
-                      EMAIL_PATTERN.test(ev.target.value.trim())
-                    )
-                      setErrors(({ email: _, ...rest }) => rest);
-                  }}
-                />
-                {errors.email && (
-                  <span className="j-err-line" id="j-email-error">
-                    {errors.email}
-                  </span>
-                )}
-              </div>
-
-              {asksRequest && (
-                <div className="j-two">
-                  <div className="j-field">
-                    <label htmlFor="j-name">{t.form.name}</label>
-                    <input
-                      id="j-name"
-                      type="text"
-                      autoComplete="name"
-                      value={name}
-                      onChange={(ev) => setName(ev.target.value)}
-                    />
-                  </div>
-                  <div className="j-field">
-                    <label htmlFor="j-clinic">
-                      {t.form.clinic} <small>{t.form.optional}</small>
-                    </label>
-                    <input
-                      id="j-clinic"
-                      type="text"
-                      autoComplete="organization"
-                      value={clinic}
-                      onChange={(ev) => setClinic(ev.target.value)}
-                    />
-                  </div>
-                </div>
-              )}
-
-              <div>
-                <button
-                  type="button"
-                  className="j-check"
-                  role="checkbox"
-                  aria-checked={consent}
-                  aria-invalid={!!errors.consent}
-                  aria-describedby={
-                    errors.consent ? "j-consent-error" : undefined
-                  }
-                  onClick={() => {
-                    setConsent((c) => !c);
-                    setErrors(({ consent: _, ...rest }) => rest);
-                  }}
-                >
-                  <span className="j-box">
-                    <CheckIcon
-                      width={15}
-                      height={15}
-                      strokeWidth={3}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="t">
-                    <b>
-                      {asksRequest ? t.form.consentOptional : t.form.consent}
-                    </b>
-                    <small>{t.form.consentHint}</small>
-                  </span>
-                </button>
-                {errors.consent && (
-                  <span
-                    className="j-err-line"
-                    id="j-consent-error"
-                    style={{ paddingLeft: 36 }}
-                  >
-                    {errors.consent}
-                  </span>
-                )}
-              </div>
-
-              {asksRequest && (
-                <p className="j-hint">
-                  {fill(t.form.requestHint, {
-                    request: t.form.requestNouns[request as "demo" | "pilot"],
-                  })}
-                </p>
-              )}
-              {sendError && (
-                <div className="j-alert" role="alert">
-                  {t.form.errorSend}
-                </div>
-              )}
+          <div className="j-pad j-wide">
+            <div className="j-aside">
+              <button type="button" className="j-back" onClick={() => go({})}>
+                <ChevronLeftIcon width={20} height={20} aria-hidden="true" />
+                {t.back}
+              </button>
+              <FormHero aud={aud} request={kind} when={when} />
+            </div>
+            <div className="j-col">
               {isFriend && (
-                <SubmitButton
-                  className="j-btn ghost"
-                  busy={submitting}
-                  label={submitting ? t.form.saving : t.form.submit.friend}
-                  onClick={submit}
+                <ShareCard
+                  link={link}
+                  copied={copied}
+                  onCopy={copyLink}
+                  onShare={shareLink}
                 />
               )}
-            </section>
-            {!isFriend && (
-              <div className="j-foot">
-                {slow && (
-                  <div className="j-status" role="status">
-                    <WifiIcon
+              <section
+                ref={formRef}
+                className={`j-card${submitting ? " j-busy" : ""}`}
+                aria-labelledby={isFriend ? "j-updates" : "j-form-title"}
+              >
+                {isFriend ? (
+                  <div className="j-group" style={{ gap: 2 }}>
+                    <div className="j-card-h">
+                      <h2 id="j-updates">{t.form.updatesTitle}</h2>
+                      <span className="j-hint">{t.form.optionalTag}</span>
+                    </div>
+                    <p className="j-hint" style={{ fontSize: 13.5 }}>
+                      {t.form.updatesHint}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="j-joining">
+                    <span>
+                      {t.joiningAs} <strong>{t.audiences[aud].short}</strong>
+                    </span>
+                    <button
+                      type="button"
+                      className="j-link"
+                      onClick={() => go({ for: null })}
+                    >
+                      {t.change}
+                    </button>
+                  </div>
+                )}
+
+                {Object.keys(errors).length > 0 && (
+                  <div className="j-alert" role="alert">
+                    <ExclamationCircleIcon
                       width={20}
                       height={20}
                       aria-hidden="true"
                       style={{ flex: "none" }}
                     />
-                    <span>
-                      <b>{t.form.slowTitle}</b> {t.form.slowBody}
-                    </span>
+                    {Object.keys(errors).length === 1
+                      ? t.form.errorsOne
+                      : fill(t.form.errorsMany, {
+                          count: String(Object.keys(errors).length),
+                        })}
                   </div>
                 )}
-                <SubmitButton
-                  className="j-btn"
-                  busy={submitting}
-                  label={
-                    submitting
-                      ? asksRequest
-                        ? t.form.sending
-                        : t.form.saving
-                      : !isTherapist
-                        ? t.form.submit.waitlist
-                        : request === "pilot"
-                          ? t.form.submit.pilot
-                          : request === "demo"
-                            ? when === "call"
-                              ? t.form.submit.demoCall
-                              : slot === null
-                                ? t.form.submit.demoStandNoTime
-                                : fill(t.form.submit.demoStand, {
-                                    time: SLOTS[slot],
-                                  })
-                            : t.form.submit.early
-                  }
-                  onClick={submit}
-                />
-              </div>
-            )}
+
+                {isTherapist && (
+                  <>
+                    <div className="j-group">
+                      <span className="j-lbl" id="j-req">
+                        {t.form.requestLabel}
+                      </span>
+                      <div
+                        className="j-seg"
+                        role="radiogroup"
+                        aria-labelledby="j-req"
+                      >
+                        {(["early", "demo", "pilot"] as Request[]).map((r) => (
+                          <button
+                            key={r}
+                            type="button"
+                            role="radio"
+                            aria-checked={request === r}
+                            onClick={() => {
+                              setRequest(r);
+                              setErrors({});
+                            }}
+                          >
+                            {t.form.requests[r]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    {request === "demo" && stand && (
+                      <div className="j-group">
+                        <span className="j-lbl">{t.form.whenLabel}</span>
+                        <div
+                          className="j-when-opts"
+                          role="radiogroup"
+                          aria-label={t.form.whenLabel}
+                        >
+                          {(
+                            [
+                              ["stand", t.form.whenStand, t.form.whenStandSub],
+                              ["call", t.form.whenCall, t.form.whenCallSub],
+                            ] as const
+                          ).map(([k, label, sub]) => (
+                            <button
+                              key={k}
+                              type="button"
+                              role="radio"
+                              aria-checked={demoWhen === k}
+                              onClick={() => setDemoWhen(k)}
+                            >
+                              <b>{label}</b>
+                              <small>{sub}</small>
+                            </button>
+                          ))}
+                        </div>
+                        {demoWhen === "stand" && (
+                          <>
+                            <div
+                              className="j-pills"
+                              role="group"
+                              aria-label={t.form.slotsLabel}
+                            >
+                              {SLOTS.map((s, i) => (
+                                <button
+                                  key={s}
+                                  type="button"
+                                  className="j-pill"
+                                  aria-pressed={slot === i}
+                                  onClick={() => {
+                                    setSlot(i);
+                                    setErrors(({ slot: _, ...rest }) => rest);
+                                  }}
+                                >
+                                  {s}
+                                </button>
+                              ))}
+                            </div>
+                            {errors.slot ? (
+                              <span className="j-err-line">{errors.slot}</span>
+                            ) : (
+                              <span className="j-hint">{t.form.slotsHint}</span>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    )}
+                    {request === "pilot" && (
+                      <div className="j-group">
+                        <span className="j-lbl">{t.form.teamLabel}</span>
+                        <div
+                          className="j-pills"
+                          role="group"
+                          aria-label={t.form.teamLabel}
+                        >
+                          {CLINIC_SIZES.map((size) => (
+                            <button
+                              key={size}
+                              type="button"
+                              className="j-pill"
+                              aria-pressed={team === size}
+                              onClick={() => setTeam(size)}
+                            >
+                              {t.form.teams[size]}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                <div className="j-field">
+                  <label htmlFor="j-email">
+                    {asksRequest ? t.form.workEmail : t.form.email}
+                  </label>
+                  <input
+                    id="j-email"
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    placeholder={
+                      asksRequest
+                        ? t.form.workEmailPlaceholder
+                        : t.form.emailPlaceholder
+                    }
+                    value={email}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={
+                      errors.email ? "j-email-error" : undefined
+                    }
+                    onKeyDown={(ev) => {
+                      if (ev.key === "Enter") {
+                        ev.preventDefault();
+                        submit();
+                      }
+                    }}
+                    onChange={(ev) => {
+                      setEmail(ev.target.value);
+                      if (
+                        errors.email &&
+                        EMAIL_PATTERN.test(ev.target.value.trim())
+                      )
+                        setErrors(({ email: _, ...rest }) => rest);
+                    }}
+                  />
+                  {errors.email && (
+                    <span className="j-err-line" id="j-email-error">
+                      {errors.email}
+                    </span>
+                  )}
+                </div>
+
+                {asksRequest && (
+                  <div className="j-two">
+                    <div className="j-field">
+                      <label htmlFor="j-name">{t.form.name}</label>
+                      <input
+                        id="j-name"
+                        type="text"
+                        autoComplete="name"
+                        value={name}
+                        onChange={(ev) => setName(ev.target.value)}
+                      />
+                    </div>
+                    <div className="j-field">
+                      <label htmlFor="j-clinic">
+                        {t.form.clinic} <small>{t.form.optional}</small>
+                      </label>
+                      <input
+                        id="j-clinic"
+                        type="text"
+                        autoComplete="organization"
+                        value={clinic}
+                        onChange={(ev) => setClinic(ev.target.value)}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <button
+                    type="button"
+                    className="j-check"
+                    role="checkbox"
+                    aria-checked={consent}
+                    aria-invalid={!!errors.consent}
+                    aria-describedby={
+                      errors.consent ? "j-consent-error" : undefined
+                    }
+                    onClick={() => {
+                      setConsent((c) => !c);
+                      setErrors(({ consent: _, ...rest }) => rest);
+                    }}
+                  >
+                    <span className="j-box">
+                      <CheckIcon
+                        width={15}
+                        height={15}
+                        strokeWidth={3}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="t">
+                      <b>
+                        {asksRequest ? t.form.consentOptional : t.form.consent}
+                      </b>
+                      <small>{t.form.consentHint}</small>
+                    </span>
+                  </button>
+                  {errors.consent && (
+                    <span
+                      className="j-err-line"
+                      id="j-consent-error"
+                      style={{ paddingLeft: 36 }}
+                    >
+                      {errors.consent}
+                    </span>
+                  )}
+                </div>
+
+                {asksRequest && (
+                  <p className="j-hint">
+                    {fill(t.form.requestHint, {
+                      request: t.form.requestNouns[request as "demo" | "pilot"],
+                    })}
+                  </p>
+                )}
+                {sendError && (
+                  <div className="j-alert" role="alert">
+                    {t.form.errorSend}
+                  </div>
+                )}
+                {isFriend && (
+                  <SubmitButton
+                    className="j-btn ghost"
+                    busy={submitting}
+                    label={submitting ? t.form.saving : t.form.submit.friend}
+                    onClick={submit}
+                  />
+                )}
+              </section>
+              {!isFriend && (
+                <div className="j-foot">
+                  {slow && (
+                    <div className="j-status" role="status">
+                      <WifiIcon
+                        width={20}
+                        height={20}
+                        aria-hidden="true"
+                        style={{ flex: "none" }}
+                      />
+                      <span>
+                        <b>{t.form.slowTitle}</b> {t.form.slowBody}
+                      </span>
+                    </div>
+                  )}
+                  <SubmitButton
+                    className="j-btn"
+                    busy={submitting}
+                    label={
+                      submitting
+                        ? asksRequest
+                          ? t.form.sending
+                          : t.form.saving
+                        : !isTherapist
+                          ? t.form.submit.waitlist
+                          : request === "pilot"
+                            ? t.form.submit.pilot
+                            : request === "demo"
+                              ? when === "call"
+                                ? t.form.submit.demoCall
+                                : slot === null
+                                  ? t.form.submit.demoStandNoTime
+                                  : fill(t.form.submit.demoStand, {
+                                      time: SLOTS[slot],
+                                    })
+                              : t.form.submit.early
+                    }
+                    onClick={submit}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         )}
         {screen === "done" && aud && sent && (
