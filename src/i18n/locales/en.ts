@@ -562,7 +562,9 @@ export const en = {
       name: "Name",
       clinic: "Clinic",
       optional: "(optional)",
-      consent: "Email me about UpSpeech",
+      consent: "Send me the waiting-list emails",
+      consentEarly: "Send me the early-access emails",
+      consentFriend: "Send me UpSpeech updates",
       consentOptional: "Also email me UpSpeech updates",
       consentHint:
         "A welcome email straight away, another a week later, then a monthly update. Leave anytime.",
@@ -598,8 +600,7 @@ export const en = {
       errorEmailEmpty: "Add your email.",
       errorEmailInvalid:
         "That email looks incomplete. Check the part after the @.",
-      errorConsent:
-        "Check this box to get the welcome email. You can leave anytime.",
+      errorConsent: "Check this to join. You can leave anytime.",
       errorSlot: "Pick a time for your demo.",
       errorSend:
         "We couldn't save that just now. Check your connection and try again.",
@@ -631,6 +632,7 @@ export const en = {
         dld: "Developmental language difficulties",
         unsure: "Not sure yet",
       },
+      interestsHint: "Pick any that apply.",
       save: "Save",
       saved: "Saved. Your updates will fit what you picked.",
       nextTitle: "What happens next",

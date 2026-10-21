@@ -146,6 +146,7 @@
 }
 @media (min-width: 640px) {
   .j-main {
+    max-width: 560px;
     padding-top: 128px;
   }
 }
@@ -432,7 +433,7 @@
 }
 .j-chip-dev {
   background: #ede9fe;
-  color: var(--j-lavender-ink);
+  color: #5552b3;
 }
 .j-chip-draft {
   background: #fbefd9;
@@ -810,6 +811,7 @@
   color: var(--j-body);
 }
 .j-card {
+  scroll-margin-top: 112px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -850,7 +852,7 @@
   font-weight: 600;
 }
 .j-link {
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 2px;
   border: 0;
   background: transparent;
@@ -867,28 +869,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-.j-seg {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 4px;
-  background: var(--j-line);
-  border-radius: 12px;
-  gap: 4px;
-}
-.j-seg button {
-  min-height: 44px;
-  border: 0;
-  border-radius: 9px;
-  background: transparent;
-  font: 600 14px/1.2 var(--j-text);
-  color: var(--j-muted);
-  padding: 4px 6px;
-}
-.j-seg button[aria-checked="true"] {
-  background: #fff;
-  color: var(--j-ink);
-  box-shadow: 0 1px 3px rgb(41 53 135 / 0.15);
 }
 .j-field {
   display: flex;
@@ -947,9 +927,42 @@
   background: var(--j-navy);
   color: #fff;
 }
+.j-pill.soft {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 8px 14px;
+  text-align: left;
+}
+.j-pill.soft .j-chip {
+  flex-basis: 100%;
+  width: max-content;
+  max-width: max-content;
+}
 .j-pill.soft[aria-pressed="true"] {
   background: var(--j-p50);
   color: var(--j-ink);
+}
+.j-seg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 4px;
+  background: var(--j-line);
+  border-radius: 12px;
+  gap: 4px;
+}
+.j-seg button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font: 600 14px/1.2 var(--j-text);
+  color: var(--j-muted);
+  padding: 4px 6px;
+}
+.j-seg button[aria-checked="true"] {
+  background: #fff;
+  color: var(--j-ink);
+  box-shadow: 0 1px 3px rgb(41 53 135 / 0.15);
 }
 .j-when-opts {
   display: grid;
@@ -1155,13 +1168,13 @@
 }
 .j-share button {
   flex: none;
-  min-height: 40px;
+  min-height: 44px;
   min-width: 44px;
   padding: 0 12px;
   border-radius: 6px;
-  border: 0;
-  background: var(--j-line);
-  color: var(--j-body);
+  border: 1px solid var(--j-navy);
+  background: #fff;
+  color: var(--j-navy);
   font: 600 13px/1 var(--j-text);
 }
 .j-upsell {

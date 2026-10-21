@@ -569,7 +569,9 @@ export const es: Dictionary = {
       name: "Nombre",
       clinic: "Clínica",
       optional: "(opcional)",
-      consent: "Quiero recibir correos sobre UpSpeech",
+      consent: "Quiero recibir los correos de la lista de espera",
+      consentEarly: "Quiero recibir los correos del acceso anticipado",
+      consentFriend: "Quiero recibir novedades de UpSpeech",
       consentOptional: "Quiero recibir también novedades de UpSpeech",
       consentHint:
         "Un correo de bienvenida ahora mismo, otro una semana después, y luego una novedad al mes. Puedes darte de baja cuando quieras.",
@@ -606,7 +608,7 @@ export const es: Dictionary = {
       errorEmailInvalid:
         "Ese correo parece incompleto. Revisa la parte después de la @.",
       errorConsent:
-        "Marca esta opción para recibir el correo de bienvenida. Puedes darte de baja cuando quieras.",
+        "Marca esta opción para apuntarte. Puedes darte de baja cuando quieras.",
       errorSlot: "Elige una hora para la demo.",
       errorSend:
         "No hemos podido guardarlo ahora. Revisa la conexión y vuelve a intentarlo.",
@@ -637,6 +639,7 @@ export const es: Dictionary = {
         dld: "Trastornos del desarrollo del lenguaje",
         unsure: "Aún no lo sé",
       },
+      interestsHint: "Elige las que quieras.",
       save: "Guardar",
       saved: "Guardado. Tus novedades se ajustarán a lo que elegiste.",
       nextTitle: "Lo que pasa ahora",

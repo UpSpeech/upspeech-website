@@ -531,6 +531,12 @@ export default function Join() {
                   value={email}
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "j-email-error" : undefined}
+                  onKeyDown={(ev) => {
+                    if (ev.key === "Enter") {
+                      ev.preventDefault();
+                      submit();
+                    }
+                  }}
                   onChange={(ev) => {
                     setEmail(ev.target.value);
                     if (
@@ -581,6 +587,9 @@ export default function Join() {
                   role="checkbox"
                   aria-checked={consent}
                   aria-invalid={!!errors.consent}
+                  aria-describedby={
+                    errors.consent ? "j-consent-error" : undefined
+                  }
                   onClick={() => {
                     setConsent((c) => !c);
                     setErrors(({ consent: _, ...rest }) => rest);
@@ -596,13 +605,23 @@ export default function Join() {
                   </span>
                   <span className="t">
                     <b>
-                      {asksRequest ? t.form.consentOptional : t.form.consent}
+                      {asksRequest
+                        ? t.form.consentOptional
+                        : isFriend
+                          ? t.form.consentFriend
+                          : isTherapist
+                            ? t.form.consentEarly
+                            : t.form.consent}
                     </b>
                     <small>{t.form.consentHint}</small>
                   </span>
                 </button>
                 {errors.consent && (
-                  <span className="j-err-line" style={{ paddingLeft: 36 }}>
+                  <span
+                    className="j-err-line"
+                    id="j-consent-error"
+                    style={{ paddingLeft: 36 }}
+                  >
                     {errors.consent}
                   </span>
                 )}
@@ -716,6 +735,7 @@ export default function Join() {
                       <option value="other">{t.done.countryOther}</option>
                     </select>
                   </div>
+                  <span className="j-hint">{t.done.interestsHint}</span>
                   <div className="j-pills">
                     {INTERESTS.map((k) => (
                       <button
@@ -731,6 +751,7 @@ export default function Join() {
                           )
                         }
                       >
+                        {interests.includes(k) && <Check size={16} />}
                         {t.done.interests[k]}
                         {k === "dld" && (
                           <span className="j-chip j-chip-dev">
