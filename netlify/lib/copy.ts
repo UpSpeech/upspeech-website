@@ -134,7 +134,7 @@ const en: ApplicantCopy = {
     preheader: "What happens next, and when you'll hear from us.",
     eyebrow: "Waiting list",
     intro:
-      "Thanks for joining. UpSpeech helps people practice between speech therapy sessions, with their therapist following along. We'll write when it opens, and send useful resources before then.",
+      "Thanks for joining. UpSpeech helps people practice between speech therapy sessions, with their therapist following along. We'll write when we launch new versions of our app, and send you useful resources before then.",
     cardTitle: "You joined",
     steps: [
       {

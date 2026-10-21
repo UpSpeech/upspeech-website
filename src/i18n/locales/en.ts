@@ -350,17 +350,17 @@ export const en = {
           {
             when: "After the session",
             title: "You set the step",
-            body: "Pick the next exercise from the Learning Path. It waits for your patient in the app, with how often to practice.",
+            body: "Pick the next exercise for the Learning Path. Your patient gains access to it and does it however many times you set.",
           },
           {
             when: "Between sessions",
             title: "You see the practice",
-            body: "Today, home practice is invisible until the next session. With UpSpeech, each recording is there to check, and admin takes less of the week.",
+            body: "Today, home practice is invisible until the next session, and even then we can't be sure. With UpSpeech, each recording is there to check.",
           },
           {
             when: "Before the next session",
             title: "The report starts as a draft",
-            body: "UpSpeech drafts the session report from the session and the week's practice. You change what's wrong and sign it. The judgment stays yours.",
+            body: "UpSpeech drafts the session report from the session and the week's practice. You can always edit any part of it. Nothing is saved without your word.",
           },
         ],
         perks: [
@@ -380,12 +380,12 @@ export const en = {
           {
             when: "6:30 pm",
             title: "A gentle reminder",
-            body: "At the time you picked. No streak to protect, just today's step.",
+            body: "At the time you picked. 1 exercise at a time.",
           },
           {
             when: "6:32 pm",
-            title: "Five calm minutes",
-            body: "The technique you worked on in session, at your own pace. Nothing scores how fluent you sounded. Try marking it done.",
+            title: "Five minutes, nothing more",
+            body: "The technique you worked on in session, at your own pace. Nothing scores how fluent you sounded.",
           },
           {
             when: "Next morning",
@@ -415,12 +415,12 @@ export const en = {
           {
             when: "Through the week",
             title: "A few minutes together",
-            body: "Short practice at home, a shared activity on some days, and a rest day that counts as part of the plan.",
+            body: "Short practice at home with a shared activity on some days, and a rest day that counts as part of the plan.",
           },
           {
             when: "Friday",
             title: "A note from Ana",
-            body: "The therapist has heard the week's recordings before the next session.",
+            body: "The therapist hears the week's recordings before the next session.",
           },
         ],
         perks: ["Follow UpSpeech as it grows", "Resources for families"],
@@ -428,7 +428,7 @@ export const en = {
       friend: {
         label: "A friend or supporter",
         short: "Friend or supporter",
-        line: "Pass UpSpeech on to someone who could use it.",
+        line: "Pass UpSpeech on to someone who needs us.",
         title: "Know someone who could use more support?",
         sub: "Speech therapy is often one hour a week. UpSpeech helps with the rest of the week. Get a link to pass on, with no sign-up. We never ask for their contact.",
         stepsTitle: "Why it matters",
@@ -438,12 +438,12 @@ export const en = {
           {
             when: "The gap",
             title: "A week between sessions is a long time to practice alone.",
-            body: "One session, then six days on their own until the next one.",
+            body: "One session, then six days on their own until the next one with no real guidance on how to practice what was learned.",
           },
           {
             when: "At home",
             title: "With UpSpeech, practice happens a few minutes most days.",
-            body: "Short exercises set by their therapist, with a companion along. The therapist hears each one.",
+            body: "Short exercises set by their therapist. They hears each one, review it, and work out where to go next for the patient's development.",
           },
           {
             when: "Your part",
@@ -458,12 +458,12 @@ export const en = {
       notifApp: "UpSpeech · now",
       notifTitle: "Time for today's practice",
       notifBody: "5 minutes with lumo. Ana set it for you.",
-      exerciseTitle: "Easy onset",
+      exerciseTitle: "For example",
       exerciseMeta: "5 min · from Ana",
       exerciseSteps: [
-        "Read the three steps",
-        "Practice at your own pace",
-        "Mark it done",
+        "Some light reading on the topic",
+        "Watch a video of it being used in practice",
+        "Do it yourself",
       ],
       markDone: "Mark as done",
       doneToday: "Done for today",
@@ -499,7 +499,7 @@ export const en = {
       legendRest: "Rest day",
       anaLeo: "Ana, Leo's therapist",
       anaFriday: "Friday, after reviewing the week",
-      anaLeoNote: "Lovely week. Try the bedtime story again on Sunday.",
+      anaLeoNote: "Lovely week! Let's try the bedtime story again on Sunday.",
       stripDays: ["M", "T", "W", "T", "F", "S", "M"],
       legendAlone: "On their own",
       legendHome: "Practice at home",
@@ -586,9 +586,9 @@ export const en = {
         waitlist: "Join the waiting list",
         friend: "Keep me posted",
       },
-      saving: "Saving your spot",
+      saving: "Saving your spot...",
       sending: "Sending",
-      slowTitle: "Still saving your spot.",
+      slowTitle: "Still saving your spot...",
       slowBody:
         "The connection seems slow. Keep this page open and it will finish on its own.",
       errorsOne: "One thing to fix. It is marked below.",
@@ -613,9 +613,9 @@ export const en = {
       lineRequest: "You're on the early access list too.",
       lineFriend: "You'll get our updates by email. Your link works as before.",
       upsellTitle: "See it with your own caseload",
-      upsellBody: "15 minutes with the team. Your email is already filled in.",
+      upsellBody: "15 minutes with the team.",
       upsellCta: "Request a demo",
-      tailorTitle: "Help us send you the right things",
+      tailorTitle: "Help us send you the right stuff",
       country: "Where are you based?",
       countryOther: "Another country",
       interests: {
