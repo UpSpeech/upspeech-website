@@ -315,7 +315,7 @@ export const es: Dictionary = {
     },
     cta: {
       headline: "Solicitar acceso anticipado.",
-      body: "Dinos quién eres y mira lo que hace UpSpeech entre sesiones por logopedas, personas en terapia, familias y amigos.",
+      body: "Para logopedas, personas en terapia, familias y amigos. Sé de los primeros en probar UpSpeech.",
     },
   },
   join: {

@@ -316,7 +316,7 @@ export const pt: Dictionary = {
     },
     cta: {
       headline: "Pedir acesso antecipado.",
-      body: "Diga-nos quem é e veja o que o UpSpeech faz entre sessões por terapeutas, pessoas em terapia, famílias e amigos.",
+      body: "Para terapeutas da fala, pessoas em terapia, famílias e amigos. Seja dos primeiros a experimentar o UpSpeech.",
     },
   },
   join: {

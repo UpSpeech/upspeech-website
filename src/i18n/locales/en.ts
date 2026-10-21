@@ -313,7 +313,7 @@ export const en = {
     },
     cta: {
       headline: "Request early access.",
-      body: "Tell us who you are, and see what UpSpeech does between sessions for therapists, people in therapy, families and friends.",
+      body: "For speech therapists, people in therapy, families and friends. Be first to try UpSpeech.",
     },
   },
   join: {
