@@ -510,8 +510,7 @@ export const es: Dictionary = {
       stripDays: ["L", "M", "X", "J", "V", "S", "L"],
       legendAlone: "Por su cuenta",
       legendHome: "Práctica en casa",
-      sentMessage:
-        "Me acordé de ti al ver esto. Puede ayudar entre sesiones.",
+      sentMessage: "Me acordé de ti al ver esto. Puede ayudar entre sesiones.",
       previewTitle: "Más apoyo entre sesiones de logopedia",
       sent: "Enviado",
     },
