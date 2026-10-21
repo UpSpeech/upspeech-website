@@ -138,6 +138,12 @@ export const ROUTES = [
     priority: "0.8",
   },
   {
+    path: "/join",
+    component: "src/pages/Join.tsx",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
     path: "/support",
     component: "src/pages/Support.tsx",
     changefreq: "monthly",

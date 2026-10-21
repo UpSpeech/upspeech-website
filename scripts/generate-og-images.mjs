@@ -196,6 +196,15 @@ const PAGES = [
     showScreenshot: true,
   },
   {
+    slug: "join",
+    title: "Find your companion",
+    subtitle: null,
+    description:
+      "See how UpSpeech helps between speech therapy sessions, and join the waiting list or request a demo.",
+    category: null,
+    showScreenshot: false,
+  },
+  {
     slug: "support",
     title: "Support",
     subtitle: null,

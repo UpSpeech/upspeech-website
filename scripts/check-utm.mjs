@@ -21,9 +21,13 @@ await build({
   platform: "node",
   logLevel: "warning",
 });
-const { captureCampaign, getCampaign, leadEventProperties } = await import(
-  pathToFileURL(out).href + `?t=${Date.now()}`
-);
+const {
+  captureCampaign,
+  getCampaign,
+  leadEventProperties,
+  captureReferral,
+  getReferral,
+} = await import(pathToFileURL(out).href + `?t=${Date.now()}`);
 
 let store = new Map();
 let blocked = false;
@@ -109,20 +113,31 @@ check(
       {
         name: "Ana Silva",
         email: "ana@example.com",
-        role: "speech-therapist",
-        clinicSize: "small",
-        company: "",
+        profile: "therapist",
+        request: "demo",
       },
       { source: "a", medium: "b", campaign: "c", content: "d" },
     ),
   ).sort(),
-  ["campaign", "clinic_size", "content", "medium", "role", "source"],
+  ["campaign", "content", "medium", "profile", "request", "source"],
 );
-check(
-  "an unanswered clinic size is left out",
-  leadEventProperties({ role: "other", clinicSize: "" }, {}).clinic_size,
-  undefined,
-);
+
+reset();
+captureReferral("?ref=K7Q2AB");
+check("captures a share code, lowercased", getReferral(), "k7q2ab");
+captureReferral("?utm_source=linkedin");
+check("a later visit without ref keeps it", getReferral(), "k7q2ab");
+captureCampaign("?ref=zz99zz");
+check("a ref does not touch the campaign", getCampaign(), {});
+
+reset();
+captureReferral("?ref=" + encodeURIComponent("<script>"));
+check("a ref that is not a share code is dropped", getReferral(), "");
+
+reset();
+blocked = true;
+captureReferral("?ref=k7q2ab");
+check("blocked storage reads as no referral", getReferral(), "");
 
 await rm(out, { force: true });
 if (failures) {

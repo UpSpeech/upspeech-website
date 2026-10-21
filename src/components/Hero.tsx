@@ -4,7 +4,7 @@ import { trackButtonClick } from "@/lib/analytics";
 import SpeechTrace from "./SpeechTrace";
 import CutOut from "./CutOut";
 import { cutOutWidthAt, sizesFor } from "@/lib/cutout-sizes";
-import { useT } from "@/i18n";
+import { localizedHref, useLocale, useT } from "@/i18n";
 
 /**
  * The line, and someone standing on it.
@@ -71,6 +71,7 @@ const Line = ({
 
 const Hero = () => {
   const t = useT().home.hero;
+  const locale = useLocale();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -177,7 +178,7 @@ const Hero = () => {
             }}
           >
             <a
-              href="#cta"
+              href={localizedHref("/join", locale)}
               onClick={() =>
                 trackButtonClick("request_early_access_hero", "hero")
               }

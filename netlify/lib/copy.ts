@@ -270,7 +270,7 @@ const es: ApplicantCopy = {
   notSpecified: "Sin especificar",
   profiles: {
     therapist: "Logopeda o clínica",
-    patient: "En terapia del habla",
+    patient: "En logopedia",
     caregiver: "Madre, padre o cuidador",
     referrer: "Amigo o simpatizante",
   },
@@ -323,7 +323,7 @@ const es: ApplicantCopy = {
     preheader: "Lo que pasa ahora y cuándo sabrás de nosotros.",
     eyebrow: "Lista de espera",
     intro:
-      "Gracias por apuntarte. UpSpeech ayuda a practicar entre sesiones de terapia del habla, con tu terapeuta al tanto. Te escribiremos cuando abra y, mientras tanto, te enviaremos recursos útiles.",
+      "Gracias por apuntarte. UpSpeech ayuda a practicar entre sesiones de logopedia, con tu logopeda al tanto. Te escribiremos cuando abra y, mientras tanto, te enviaremos recursos útiles.",
     cardTitle: "Tu inscripción",
     steps: [
       {

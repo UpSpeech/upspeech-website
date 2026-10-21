@@ -60,6 +60,7 @@ const ReducingDocumentationTime = React.lazy(
   () => import("./pages/ReducingDocumentationTime"),
 );
 const ForSlps = React.lazy(() => import("./pages/ForSlps"));
+const Join = React.lazy(() => import("./pages/Join"));
 const TechniquesIndexPage = React.lazy(() =>
   import("./pages/TechniquesIndexPage").then((m) => ({
     default: m.TechniquesIndexPage,
@@ -163,6 +164,7 @@ const AppRoutes = () => (
       element={<ReducingDocumentationTime />}
     />
     <Route path="for-slps" element={<ForSlps />} />
+    <Route path="join" element={<Join />} />
 
     {/* Technique Documentation Routes */}
     <Route path="techniques" element={<TechniquesIndexPage />} />

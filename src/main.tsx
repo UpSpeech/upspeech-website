@@ -1,9 +1,10 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { captureCampaign } from "./lib/utm";
+import { captureCampaign, captureReferral } from "./lib/utm";
 
 captureCampaign(window.location.search);
+captureReferral(window.location.search);
 
 const rootElement = document.getElementById("root")!;
 
