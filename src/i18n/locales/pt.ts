@@ -572,12 +572,10 @@ export const pt: Dictionary = {
       name: "Nome",
       clinic: "Clínica",
       optional: "(opcional)",
-      consent: "Enviem-me os emails da lista de espera",
-      consentEarly: "Enviem-me os emails do acesso antecipado",
-      consentFriend: "Enviem-me novidades do UpSpeech",
-      consentOptional: "Enviem-me também novidades do UpSpeech",
+      consent: "Quero receber novidades por email",
+      consentOptional: "Quero também receber novidades por email",
       consentHint:
-        "Um email de boas-vindas de imediato, outro uma semana depois, e depois uma novidade por mês. Pode sair quando quiser.",
+        "Novidades do UpSpeech e conteúdos úteis sobre terapia da fala. Pode cancelar quando quiser.",
       requestHint:
         "Só usamos estes dados para organizar a sua {request}. Também fica na lista de acesso antecipado.",
       requestNouns: { demo: "demonstração", pilot: "participação no piloto" },
@@ -604,7 +602,7 @@ export const pt: Dictionary = {
       sending: "A enviar",
       slowTitle: "Ainda a guardar o seu lugar.",
       slowBody:
-        "A rede pode estar lenta. Mantenha esta página aberta e o envio termina sozinho.",
+        "A ligação parece lenta. Mantenha esta página aberta e o envio termina sozinho.",
       errorsOne: "Falta corrigir uma coisa. Está assinalada abaixo.",
       errorsMany: "Faltam corrigir {count} coisas. Estão assinaladas abaixo.",
       errorEmailEmpty: "Indique o seu email.",
@@ -628,14 +626,15 @@ export const pt: Dictionary = {
       },
       lineWaitlist: "O email de boas-vindas está a caminho de {email}.",
       lineRequest: "Também fica na lista de acesso antecipado.",
-      lineFriend: "As novidades estão a caminho. O seu link continua igual.",
+      lineFriend:
+        "Vai receber as nossas novidades por email. O seu link continua a funcionar.",
       upsellTitle: "Veja-o com os seus próprios pacientes",
       upsellBody:
         "Reserve 15 minutos no stand. O seu email já está preenchido.",
       upsellBodyCall:
         "Uma videochamada de 15 minutos. O seu email já está preenchido.",
       upsellCta: "Pedir uma demonstração",
-      tailorTitle: "Ajuste as novidades a si",
+      tailorTitle: "Ajude-nos a enviar-lhe o que interessa",
       country: "Onde está?",
       countryOther: "Outro país",
       interests: {
@@ -645,7 +644,7 @@ export const pt: Dictionary = {
       },
       interestsHint: "Escolha as que se aplicam.",
       save: "Guardar",
-      saved: "Guardado. As novidades vão corresponder ao que escolheu.",
+      saved: "Guardado, obrigado.",
       nextTitle: "Próximos passos",
       nextStand: "Confirmamos a sua hora no stand",
       nextStandSub:
@@ -661,7 +660,7 @@ export const pt: Dictionary = {
         therapist: "Com o que inclui o acesso antecipado.",
         patient: "Com recursos úteis para praticar em casa.",
         family: "Com recursos para famílias.",
-        friend: "Com algumas formas de falar sobre o UpSpeech.",
+        friend: "Com mais sobre o que o UpSpeech faz.",
       },
       nextMonthly: "Depois, uma novidade por mês",
       nextMonthlySub:

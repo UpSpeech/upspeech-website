@@ -605,13 +605,7 @@ export default function Join() {
                   </span>
                   <span className="t">
                     <b>
-                      {asksRequest
-                        ? t.form.consentOptional
-                        : isFriend
-                          ? t.form.consentFriend
-                          : isTherapist
-                            ? t.form.consentEarly
-                            : t.form.consent}
+                      {asksRequest ? t.form.consentOptional : t.form.consent}
                     </b>
                     <small>{t.form.consentHint}</small>
                   </span>
