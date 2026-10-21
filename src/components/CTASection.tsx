@@ -6,11 +6,12 @@ import { COMPANION_ACCENTS } from "@/components/join/companions";
 const CAST: Species[] = ["nima", "lumo", "tumbo", "pip"];
 
 /**
- * The home page's closing section. It keeps id="cta" because links across the
- * site, including the redesign branch's hero buttons, still point at #cta.
+ * The home page's closing section. Links to #cta never land here: Index sends
+ * them on to /join.
  */
 const CTASection = () => {
   const t = useT().home.cta;
+  const nav = useT().nav;
   const locale = useLocale();
 
   return (
@@ -43,7 +44,7 @@ const CTASection = () => {
           onClick={() => trackButtonClick("join_flow_home", "cta")}
           className="inline-flex items-center gap-3 rounded-full bg-calm-navy px-8 py-4 font-body text-lg font-semibold text-white transition-colors hover:bg-calm-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink focus-visible:ring-offset-2"
         >
-          {t.button}
+          {nav.requestAccess}
           <span aria-hidden="true">→</span>
         </a>
       </div>

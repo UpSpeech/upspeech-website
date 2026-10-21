@@ -314,13 +314,12 @@ export const es: Dictionary = {
       readPrivacy: "Lee nuestra Política de Privacidad",
     },
     cta: {
-      headline: "Encuentra a tu compañero.",
+      headline: "Solicitar acceso anticipado.",
       body: "Dinos quién eres y mira lo que hace UpSpeech entre sesiones por logopedas, personas en terapia, familias y amigos.",
-      button: "Empezar",
     },
   },
   join: {
-    seoTitle: "Encuentra a tu compañero",
+    seoTitle: "Solicitar acceso anticipado",
     seoDescription:
       "Mira cómo ayuda UpSpeech entre sesiones de logopedia, tanto si eres logopeda como si estás en terapia, eres madre, padre o amigo. Apúntate a la lista de espera o pide una demo.",
     titleLead: "Más apoyo entre sesiones de",

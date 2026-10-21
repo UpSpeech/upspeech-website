@@ -312,13 +312,12 @@ export const en = {
       readPrivacy: "Read our Privacy Policy",
     },
     cta: {
-      headline: "Find your companion.",
+      headline: "Request early access.",
       body: "Tell us who you are, and see what UpSpeech does between sessions for therapists, people in therapy, families and friends.",
-      button: "Get started",
     },
   },
   join: {
-    seoTitle: "Find your companion",
+    seoTitle: "Request early access",
     seoDescription:
       "See how UpSpeech helps between speech therapy sessions, whether you are a therapist, in therapy, a parent or a friend. Join the waiting list or request a demo.",
     titleLead: "More support between speech therapy",

@@ -197,7 +197,7 @@ const PAGES = [
   },
   {
     slug: "join",
-    title: "Find your companion",
+    title: "Request early access",
     subtitle: null,
     description:
       "See how UpSpeech helps between speech therapy sessions, and join the waiting list or request a demo.",

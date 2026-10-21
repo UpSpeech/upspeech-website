@@ -315,13 +315,12 @@ export const pt: Dictionary = {
       readPrivacy: "Ler a nossa Política de Privacidade",
     },
     cta: {
-      headline: "Encontre o seu companheiro.",
+      headline: "Pedir acesso antecipado.",
       body: "Diga-nos quem é e veja o que o UpSpeech faz entre sessões por terapeutas, pessoas em terapia, famílias e amigos.",
-      button: "Começar",
     },
   },
   join: {
-    seoTitle: "Encontre o seu companheiro",
+    seoTitle: "Pedir acesso antecipado",
     seoDescription:
       "Veja como o UpSpeech ajuda entre sessões de terapia da fala, seja terapeuta, esteja em terapia, seja pai, mãe ou amigo. Inscreva-se na lista de espera ou peça uma demonstração.",
     titleLead: "Mais apoio entre sessões de terapia da",
