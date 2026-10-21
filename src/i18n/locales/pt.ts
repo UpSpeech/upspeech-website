@@ -338,8 +338,7 @@ export const pt: Dictionary = {
     },
     devTitle: "Jogos de linguagem para casa",
     devBody:
-      "Prática através do jogo para perturbações do desenvolvimento da linguagem. Estamos a construí-la com terapeutas.",
-    inDevelopment: "Em desenvolvimento",
+      "Prática através do jogo para perturbações do desenvolvimento da linguagem, definida pelo terapeuta como qualquer outro passo.",
     audiences: {
       therapist: {
         label: "Terapeuta da fala ou clínica",
@@ -515,8 +514,13 @@ export const pt: Dictionary = {
       stripDays: ["S", "T", "Q", "Q", "S", "S", "S"],
       legendAlone: "Sem apoio",
       legendHome: "Prática em casa",
-      sentMessage:
-        "Lembrei-me de ti quando vi isto. Pode ajudar entre sessões.",
+      sentMessages: {
+        websummit:
+          "Vi isto na Web Summit e lembrei-me de ti. Pode ajudar entre sessões.",
+        linkedin:
+          "Vi isto no LinkedIn e lembrei-me de ti. Pode ajudar entre sessões.",
+        fallback: "Lembrei-me de ti quando vi isto. Pode ajudar entre sessões.",
+      },
       previewTitle: "Mais apoio entre sessões de terapia da fala",
       sent: "Enviada",
     },
@@ -585,7 +589,6 @@ export const pt: Dictionary = {
       copy: "Copiar",
       copied: "Copiado",
       share: "Partilhar link",
-      shareText: "Mais apoio entre sessões de terapia da fala.",
       updatesTitle: "Quer receber novidades?",
       updatesHint: "O seu link funciona de qualquer forma.",
       optionalTag: "Opcional",

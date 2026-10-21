@@ -204,11 +204,8 @@ export function Story({
           ))}
         </ol>
         {aud === "family" && (
-          <div className="j-dev">
-            <div>
-              <b>{t.devTitle}</b>
-              <span className="j-chip j-chip-dev">{t.inDevelopment}</span>
-            </div>
+          <div className="j-extra">
+            <b>{t.devTitle}</b>
             <p>{t.devBody}</p>
           </div>
         )}

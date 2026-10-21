@@ -335,8 +335,7 @@ export const en = {
     },
     devTitle: "Language games for home",
     devBody:
-      "Play-based practice for developmental language difficulties. We're building it with therapists now.",
-    inDevelopment: "In development",
+      "Play-based practice for developmental language difficulties, set by the therapist like any other step.",
     audiences: {
       therapist: {
         label: "A speech therapist or clinic",
@@ -504,8 +503,14 @@ export const en = {
       stripDays: ["M", "T", "W", "T", "F", "S", "M"],
       legendAlone: "On their own",
       legendHome: "Practice at home",
-      sentMessage:
-        "Thought of you when I saw this. Might help between sessions.",
+      sentMessages: {
+        websummit:
+          "Saw this at Web Summit and thought of you. Might help between sessions.",
+        linkedin:
+          "Saw this on LinkedIn and thought of you. Might help between sessions.",
+        fallback:
+          "Thought of you when I saw this. Might help between sessions.",
+      },
       previewTitle: "More support between speech therapy sessions",
       sent: "Sent",
     },
@@ -574,7 +579,6 @@ export const en = {
       copy: "Copy",
       copied: "Copied",
       share: "Share link",
-      shareText: "More support between speech therapy sessions.",
       updatesTitle: "Want updates yourself?",
       updatesHint: "Your link works either way.",
       optionalTag: "Optional",

@@ -405,25 +405,21 @@
   flex-direction: column;
   gap: 10px;
 }
-.j-dev {
-  border: 1.5px dashed #c9cde6;
-  background: rgb(255 255 255 / 0.6);
+.j-extra {
+  background: var(--j-card);
   border-radius: 16px;
   padding: 12px 14px;
+  box-shadow:
+    0 2px 8px rgb(41 53 135 / 0.06),
+    0 0 0 1px var(--j-line);
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.j-dev div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.j-dev b {
+.j-extra b {
   font: 600 14.5px/1.3 var(--j-text);
 }
-.j-dev p {
+.j-extra p {
   font-size: 13.5px;
   color: var(--j-muted);
 }
@@ -433,10 +429,6 @@
   padding: 4px 9px;
   border-radius: 999px;
   font: 600 11.5px/1.2 var(--j-text);
-}
-.j-chip-dev {
-  background: #ede9fe;
-  color: #5552b3;
 }
 .j-chip-draft {
   background: #fbefd9;
@@ -935,11 +927,6 @@
   justify-content: flex-start;
   padding: 8px 14px;
   text-align: left;
-}
-.j-pill.soft .j-chip {
-  flex-basis: 100%;
-  width: max-content;
-  max-width: max-content;
 }
 .j-pill.soft[aria-pressed="true"] {
   background: var(--j-p50);

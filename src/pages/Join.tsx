@@ -26,6 +26,7 @@ import {
   type Sent,
 } from "@/components/join/Screens";
 import { fill } from "@/components/join/fill";
+import { shareMessage } from "@/components/join/shareMessage";
 import "@/components/join/join.css";
 import { trackFormSubmit } from "@/lib/analytics";
 import { getCampaign, getReferral, leadEventProperties } from "@/lib/utm";
@@ -267,7 +268,7 @@ export default function Join() {
       navigator
         .share({
           title: "UpSpeech",
-          text: t.form.shareText,
+          text: shareMessage(t.mocks.sentMessages),
           url: `https://${link}`,
         })
         .catch(() => {});
@@ -747,11 +748,6 @@ export default function Join() {
                       >
                         {interests.includes(k) && <Check size={16} />}
                         {t.done.interests[k]}
-                        {k === "dld" && (
-                          <span className="j-chip j-chip-dev">
-                            {t.inDevelopment}
-                          </span>
-                        )}
                       </button>
                     ))}
                   </div>

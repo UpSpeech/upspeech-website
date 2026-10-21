@@ -10,6 +10,7 @@ import {
 import type { ComponentType, SVGProps } from "react";
 import Companion from "@/components/Companion";
 import { useT } from "@/i18n";
+import { shareMessage } from "./shareMessage";
 import { COMPANION_ACCENTS, COMPANION_TINTS } from "./companions";
 
 const NAVY = "#293587";
@@ -371,7 +372,7 @@ export const SentLink = ({ link }: { link: string }) => {
   return (
     <div className="j-mock">
       <div className="j-sent">
-        <div className="j-sent-msg">{m.sentMessage}</div>
+        <div className="j-sent-msg">{shareMessage(m.sentMessages)}</div>
         <div className="j-preview">
           <span
             className="j-pv-img"

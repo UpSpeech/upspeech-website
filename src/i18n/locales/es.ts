@@ -337,8 +337,7 @@ export const es: Dictionary = {
     },
     devTitle: "Juegos de lenguaje para casa",
     devBody:
-      "Práctica a través del juego para trastornos del desarrollo del lenguaje. La estamos construyendo con logopedas.",
-    inDevelopment: "En desarrollo",
+      "Práctica a través del juego para trastornos del desarrollo del lenguaje, que la logopeda pone como cualquier otro paso.",
     audiences: {
       therapist: {
         label: "Logopeda o clínica",
@@ -510,7 +509,13 @@ export const es: Dictionary = {
       stripDays: ["L", "M", "X", "J", "V", "S", "L"],
       legendAlone: "Por su cuenta",
       legendHome: "Práctica en casa",
-      sentMessage: "Me acordé de ti al ver esto. Puede ayudar entre sesiones.",
+      sentMessages: {
+        websummit:
+          "Vi esto en Web Summit y me acordé de ti. Puede ayudar entre sesiones.",
+        linkedin:
+          "Vi esto en LinkedIn y me acordé de ti. Puede ayudar entre sesiones.",
+        fallback: "Me acordé de ti al ver esto. Puede ayudar entre sesiones.",
+      },
       previewTitle: "Más apoyo entre sesiones de logopedia",
       sent: "Enviado",
     },
@@ -580,7 +585,6 @@ export const es: Dictionary = {
       copy: "Copiar",
       copied: "Copiado",
       share: "Compartir enlace",
-      shareText: "Más apoyo entre sesiones de logopedia.",
       updatesTitle: "¿Quieres novedades tú también?",
       updatesHint: "Tu enlace funciona igual.",
       optionalTag: "Opcional",
