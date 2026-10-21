@@ -15,6 +15,8 @@ const Header = () => {
   // on the pt/es home pages, which sent the anchor nav and the logo through a
   // full page load instead of scrolling.
   const isHome = splitLocaleFromPath(pathname).path === "/";
+  const isPatients =
+    splitLocaleFromPath(pathname).path.replace(/\/$/, "") === "/for-patients";
   const toggleRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -87,6 +89,20 @@ const Header = () => {
     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
   };
 
+  const onCta = () => {
+    if (isPatients) {
+      trackButtonClick("get_the_app", "header");
+      setMenuOpen(false);
+      document
+        .getElementById("get-app")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    trackButtonClick("join_waitlist", "header");
+    scrollToSection("cta");
+  };
+  const ctaLabel = isPatients ? t.getTheApp : t.requestAccess;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-calm-light shadow-sm">
       <a
@@ -143,13 +159,10 @@ const Header = () => {
           </nav>
 
           <Button
-            onClick={() => {
-              trackButtonClick("join_waitlist", "header");
-              scrollToSection("cta");
-            }}
+            onClick={onCta}
             className="hidden md:inline-flex bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
-            {t.requestAccess}
+            {ctaLabel}
           </Button>
 
           <button
@@ -196,7 +209,7 @@ const Header = () => {
           role="dialog"
           aria-modal="true"
           aria-label={t.mobileMenuLabel}
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto"
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-calm-light shadow-lg max-h-[calc(100vh-5rem-var(--consent-bar-h,0px))] overflow-y-auto"
         >
           <nav className="flex flex-col p-4 gap-1">
             <button
@@ -218,13 +231,10 @@ const Header = () => {
               {t.whyUs}
             </button>
             <Button
-              onClick={() => {
-                trackButtonClick("join_waitlist", "header");
-                scrollToSection("cta");
-              }}
+              onClick={onCta}
               className="mt-2 bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-3 rounded-full shadow-button"
             >
-              {t.requestAccess}
+              {ctaLabel}
             </Button>
             <div className="mt-4 border-t border-calm-light pt-4">
               <LocaleSwitcher variant="inline" />

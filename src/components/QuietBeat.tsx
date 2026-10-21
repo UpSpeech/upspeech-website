@@ -48,7 +48,7 @@ const QuietBeat = () => {
     >
       <div className="mx-auto max-w-3xl px-[max(1.5rem,5vw)] text-center">
         <p
-          className="t-statement font-accent font-medium text-calm-charcoal"
+          className="t-statement font-heading font-medium text-calm-navy"
           style={revealFrom(revealed, "up", 0)}
         >
           {t.line}

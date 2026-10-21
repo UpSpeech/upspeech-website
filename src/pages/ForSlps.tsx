@@ -1,28 +1,18 @@
-import {
-  ClipboardDocumentListIcon,
-  DevicePhoneMobileIcon,
-  ChartBarIcon,
-} from "@heroicons/react/24/outline";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
-import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import CutOut from "@/components/CutOut";
-
-// Step icons stay in code; titles/copy come from the dictionary by index
-// (forSlps.betweenSessions.steps).
-const STEP_ICONS = [
-  ClipboardDocumentListIcon,
-  DevicePhoneMobileIcon,
-  ChartBarIcon,
-];
+import { trackButtonClick } from "@/lib/analytics";
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
 export default function ForSlps() {
   const locale = useLocale();
-  const t = useT().forSlps;
+  const dict = useT();
+  const t = dict.forSlps;
+  const requestAccess = dict.nav.requestAccess;
 
   // Build the FAQPage schema from the current-locale FAQ so prerendered pt/es
   // pages emit in-language structured data.
@@ -53,29 +43,30 @@ export default function ForSlps() {
       <main id="main">
         {/* Intro */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(3rem,7vw,6rem)] sm:pt-36">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(800px 600px at 12% 15%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
             {/* Two columns from lg up, matching /for-patients. Both pages had a
                 text block against an empty right half. */}
-            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:gap-16">
-              <div>
+            <div className="grid items-center gap-10 lg:grid-cols-[1.3fr,0.7fr] lg:gap-12">
+              <div className="relative z-10">
                 <p className={eyebrowClass}>{t.intro.eyebrow}</p>
-                <h1 className="t-display mt-5 font-heading font-bold text-calm-charcoal tracking-tight">
-                  {t.intro.headlineLine1} <br />
-                  <span className="text-calm-lavender-ink">
-                    {t.intro.headlineLine2}
-                  </span>
+                <h1 className="t-display mt-5 font-accent font-bold text-calm-navy tracking-tight">
+                  {t.intro.headlineLine1} {t.intro.headlineLine2}
                 </h1>
-                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-6 max-w-2xl font-body text-lg text-calm-charcoal/90 leading-relaxed">
                   {t.intro.body}
                 </p>
+                <a
+                  href={`${localizedHref("/", locale)}#cta`}
+                  onClick={() =>
+                    trackButtonClick("request_early_access_hero", "for_slps")
+                  }
+                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-lavender-ink hover:shadow-[0_24px_50px_-20px_rgba(41,53,135,0.6)]"
+                >
+                  {requestAccess}
+                  <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </a>
               </div>
               <div className="relative flex justify-center lg:justify-end">
                 <div
@@ -110,46 +101,35 @@ export default function ForSlps() {
 
         {/* Between sessions */}
         <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(900px 600px at 85% 10%, rgba(152,165,254,0.12), transparent 60%)",
-            }}
-          />
           <div className="gutter relative">
-            <p className={eyebrowClass}>{t.betweenSessions.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
               {t.betweenSessions.headline}
             </h2>
 
-            <div className="mt-[clamp(2.5rem,5vw,3.5rem)] grid gap-8 sm:gap-10 md:grid-cols-3">
-              {t.betweenSessions.steps.map((step, i) => {
-                const Icon = STEP_ICONS[i];
-                return (
-                  <div key={step.title}>
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-calm-lavender/15 text-calm-navy">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </span>
-                      {i < t.betweenSessions.steps.length - 1 && (
-                        <div
-                          aria-hidden="true"
-                          className="hidden h-px flex-1 bg-calm-navy/10 md:block"
-                        />
-                      )}
-                    </div>
-                    <h3 className="mt-4 font-heading font-bold text-calm-charcoal tracking-tight text-lg sm:text-xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                      {step.copy}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+            <ol
+              role="list"
+              className="mt-[clamp(2.5rem,5vw,3.5rem)] divide-y divide-calm-navy/10 border-y border-calm-navy/10"
+            >
+              {t.betweenSessions.steps.map((step, i) => (
+                <li
+                  key={step.title}
+                  className="grid gap-2 py-6 md:grid-cols-[3rem_minmax(0,18rem)_minmax(0,1fr)] md:items-baseline md:gap-8"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="font-heading t-h3 font-bold text-calm-lavender-ink tabular-nums"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-heading t-h3 font-bold text-calm-navy">
+                    {step.title}
+                  </h3>
+                  <p className="max-w-xl font-body t-lead text-calm-charcoal/90">
+                    {step.copy}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -157,24 +137,36 @@ export default function ForSlps() {
         <section className="py-[clamp(3rem,6vw,5rem)]">
           <div className="gutter">
             <div className="max-w-2xl">
-              <p className={eyebrowClass}>{t.documentation.eyebrow}</p>
-              <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+              <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
                 {t.documentation.headline}
               </h2>
-              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+              <p className="mt-5 max-w-xl t-lead font-body text-calm-charcoal/90 leading-relaxed">
                 {t.documentation.body}
               </p>
             </div>
 
-            <div className="relative mt-12 overflow-hidden rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]">
-              <img
-                src={localizedAsset(
-                  "/screenshots/app/therapist-report.png",
-                  locale,
-                )}
-                alt={t.documentation.screenshotAlt}
-                loading="lazy"
-                className="block h-auto w-full"
+            <div className="relative mt-12 max-w-5xl">
+              <div
+                role="group"
+                aria-label={t.documentation.screenshotAlt}
+                tabIndex={0}
+                className="overflow-x-auto rounded-2xl border border-calm-navy/10 bg-white shadow-[0_30px_70px_-30px_rgba(41,53,135,0.45)]"
+              >
+                <img
+                  src={localizedAsset(
+                    "/screenshots/app/therapist-report.png",
+                    locale,
+                  )}
+                  alt={t.documentation.screenshotAlt}
+                  width={1800}
+                  height={2065}
+                  loading="lazy"
+                  className="block h-auto w-full min-w-[680px] sm:min-w-0"
+                />
+              </div>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-0 w-10 rounded-r-2xl bg-gradient-to-l from-white sm:hidden"
               />
             </div>
           </div>
@@ -185,11 +177,10 @@ export default function ForSlps() {
           <div className="mx-auto max-w-6xl rounded-2xl border border-calm-lavender/20 bg-calm-lavender/5 px-7 py-10 sm:px-10 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,320px)] lg:gap-12">
               <div>
-                <p className={eyebrowClass}>{t.personCentered.eyebrow}</p>
-                <h2 className="t-h2-sm mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl">
+                <h2 className="t-h2-sm font-heading font-bold text-calm-navy tracking-tight max-w-2xl">
                   {t.personCentered.headline}
                 </h2>
-                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/80 leading-relaxed">
+                <p className="mt-4 max-w-2xl t-lead font-body text-calm-charcoal/90 leading-relaxed">
                   {t.personCentered.body}
                 </p>
               </div>
@@ -210,46 +201,46 @@ export default function ForSlps() {
 
         {/* FAQ */}
         <section className="py-[clamp(3.5rem,7vw,6rem)]">
-          <div className="gutter max-w-3xl">
-            <p className={eyebrowClass}>{t.faq.eyebrow}</p>
-            <h2 className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight">
+          <div className="gutter grid gap-8 lg:grid-cols-[minmax(0,1fr),minmax(0,1.8fr)] lg:gap-16">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
               {t.faq.headline}
             </h2>
 
-            <dl className="mt-8 divide-y divide-calm-charcoal/10">
-              {t.faq.items.map((item) => (
-                <div key={item.q} className="py-5">
-                  <dt className="font-heading font-bold text-calm-charcoal t-lead">
-                    {item.q}
-                  </dt>
-                  <dd className="mt-2 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-                    {item.a}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <Faq
+              items={t.faq.items.map((item) => ({
+                question: item.q,
+                answer: item.a,
+              }))}
+              className="lg:-mt-4"
+            />
           </div>
         </section>
 
         {/* Closing CTA */}
-        <section className="px-[max(1.5rem,5vw)] pb-[clamp(4rem,8vw,7rem)]">
-          <div className="mx-auto max-w-3xl rounded-2xl border border-calm-navy/10 bg-calm-light/60 px-7 py-10 sm:px-10 sm:py-12 text-center">
-            <h2 className="t-h2-sm font-heading font-bold text-calm-charcoal tracking-tight">
+        <section className="bg-calm-lavender/15 px-[max(1.5rem,5vw)] py-[clamp(3.5rem,6vw,5.5rem)]">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight text-balance">
               {t.closing.headline}
             </h2>
-            <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
-              {t.closing.bodyPrefix}
-              <a
-                href={`${localizedHref("/", locale)}#cta`}
-                className="font-semibold text-calm-navy hover:underline"
-              >
-                {t.closing.bodyLink}
-              </a>
-              {t.closing.bodySuffix}
+            <p className="mx-auto mt-4 max-w-xl text-balance font-body text-base text-calm-charcoal leading-relaxed sm:text-lg">
+              {t.closing.body}
             </p>
+            <a
+              href={`${localizedHref("/", locale)}#cta`}
+              onClick={() =>
+                trackButtonClick("request_early_access_closing", "for_slps")
+              }
+              className="group mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)]"
+            >
+              {t.closing.cta}
+              <span
+                aria-hidden="true"
+                className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
           </div>
-
-          <MedicalDisclaimer className="mt-8" />
         </section>
       </main>
 
