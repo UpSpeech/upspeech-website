@@ -35,9 +35,18 @@ const POST = (body) => ({ httpMethod: "POST", body: JSON.stringify(body) });
 const LEAD = {
   name: "Vasco Figueiredo",
   email: "vasco@clinicadafala.pt",
-  role: "speech-therapist",
-  clinicSize: "small",
+  profile: "therapist",
+  request: "early",
+  consent: true,
   locale: "pt",
+};
+const WAITLIST = {
+  email: "maria@example.com",
+  profile: "patient",
+  request: "waitlist",
+  companion: "lumo",
+  consent: true,
+  locale: "en",
 };
 
 let calls = [];
@@ -221,7 +230,7 @@ check(
 );
 check(
   "untagged lead is marked in the team email",
-  bodies.team?.includes("Campaign:    Untagged"),
+  bodies.team?.includes("Campaign: Untagged"),
   bodies.team,
 );
 
@@ -250,6 +259,113 @@ check(
   bodies.team?.includes("=1+1") && !bodies.team?.includes("'=1+1"),
   bodies.team,
 );
+
+// 12. The join flow's audiences and requests
+stub({});
+r = await handler(POST(WAITLIST));
+check(
+  "waiting list with no name -> 200, contact added",
+  r.statusCode === 200 && calls.includes("audience"),
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler(POST({ ...WAITLIST, consent: false }));
+check(
+  "waiting list without consent -> 422, nothing sent",
+  r.statusCode === 422 && calls.length === 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler(
+  POST({
+    ...LEAD,
+    request: "demo",
+    demoWhen: "stand",
+    demoSlot: "15:30",
+    consent: false,
+  }),
+);
+check(
+  "demo without consent -> 200, no contact, both emails",
+  r.statusCode === 200 &&
+    !calls.includes("audience") &&
+    calls.includes("team-email") &&
+    calls.includes("applicant-email"),
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler(POST({ ...LEAD, request: "demo", demoWhen: "stand" }));
+check(
+  "demo at the stand with no time -> 422",
+  r.statusCode === 422,
+  r.statusCode,
+);
+
+stub({});
+r = await handler(POST({ ...LEAD, request: "waitlist" }));
+check(
+  "therapist on the waiting list -> 422",
+  r.statusCode === 422,
+  r.statusCode,
+);
+
+stub({});
+r = await handler(POST({ ...WAITLIST, request: "pilot" }));
+check("patient asking for a pilot -> 422", r.statusCode === 422, r.statusCode);
+
+stub({});
+bodies = captureBodies();
+await handler(
+  POST({
+    ...WAITLIST,
+    profile: "referrer",
+    shareCode: "k7q2ab",
+    referredBy: "<script>",
+  }),
+);
+check(
+  "share code kept, junk referral dropped",
+  bodies.sheet?.shareCode === "k7q2ab" && bodies.sheet?.referredBy === "",
+  JSON.stringify(bodies.sheet),
+);
+check(
+  "sheet gets English labels for profile and request",
+  bodies.sheet?.role === "Friend or supporter" &&
+    bodies.sheet?.request === "Waiting list" &&
+    bodies.sheet?.updates === "Yes",
+  JSON.stringify(bodies.sheet),
+);
+
+// 13. Details from the confirmation page: one sheet row, nothing sent
+stub({});
+bodies = captureBodies();
+r = await handler(
+  POST({
+    kind: "details",
+    email: "maria@example.com",
+    country: "Portugal",
+    interests: ["Stuttering", "Not sure yet"],
+  }),
+);
+check(
+  "details -> 200, sheet only",
+  r.statusCode === 200 && calls.join(",") === "sheet",
+  `${r.statusCode} ${calls.join(",")}`,
+);
+check(
+  "details row carries country and interests",
+  bodies.sheet?.request === "Details" &&
+    bodies.sheet?.country === "Portugal" &&
+    bodies.sheet?.interests === "Stuttering, Not sure yet",
+  JSON.stringify(bodies.sheet),
+);
+
+stub({});
+r = await handler(POST({ kind: "details", email: "nope" }));
+check("details with a bad email -> 422", r.statusCode === 422, r.statusCode);
 
 console.error = realError;
 await rm(out, { force: true });

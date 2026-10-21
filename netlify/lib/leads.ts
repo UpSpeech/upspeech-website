@@ -11,7 +11,7 @@
  * failed submission even though nothing was actually wrong with their request.
  */
 
-import { clinicSizeLabel, roleLabel } from "./copy";
+import { clinicSizeLabel, profileLabel, requestLabel } from "./copy";
 import type { Lead } from "./email-template";
 import type { WriteStatus } from "./email-template";
 
@@ -32,16 +32,61 @@ const splitName = (name: string): { first: string; last: string } => {
   return { first: parts[0] ?? "", last: parts.slice(1).join(" ") };
 };
 
+/** What the confirmation page adds afterwards, keyed by the email. */
+export interface LeadDetails {
+  email: string;
+  country: string;
+  interests: string[];
+}
+
 /**
  * Append a row to the Google Sheet through the Apps Script web app deployed
  * from that sheet (see sheet-webhook.gs). The deployment URL is world-postable
  * by design, so the shared secret travels in the body and the script drops
  * anything that does not match.
  */
-export const appendLeadToSheet = async (lead: Lead): Promise<WriteStatus> => {
+export const appendLeadToSheet = (lead: Lead): Promise<WriteStatus> =>
+  postRow({
+    name: lead.name,
+    email: lead.email,
+    // English labels, not the posted slugs and not the visitor's language,
+    // so these columns stay filterable across all three locales.
+    role: profileLabel("en", lead.profile),
+    clinicSize: clinicSizeLabel("en", lead.clinicSize),
+    locale: lead.locale,
+    source: lead.source,
+    medium: lead.medium,
+    campaign: lead.campaign,
+    content: lead.content,
+    request: requestLabel("en", lead),
+    clinic: lead.clinic,
+    companion: lead.companion,
+    shareCode: lead.shareCode,
+    referredBy: lead.referredBy,
+    updates: lead.consent ? "Yes" : "No",
+  });
+
+/** A separate row, so the original sign-up row is never rewritten. */
+export const appendDetailsToSheet = (
+  details: LeadDetails,
+): Promise<WriteStatus> =>
+  postRow({
+    email: details.email,
+    request: "Details",
+    country: details.country,
+    interests: details.interests.join(", "),
+  });
+
+const postRow = async (
+  fields: Record<string, string>,
+): Promise<WriteStatus> => {
   const url = process.env.SHEETS_WEBHOOK_URL;
   const secret = process.env.SHEETS_WEBHOOK_SECRET;
   if (!url || !secret) return "not configured";
+
+  const cells = Object.fromEntries(
+    Object.entries(fields).map(([key, value]) => [key, asSheetText(value)]),
+  );
 
   try {
     const res = await fetch(url, {
@@ -51,17 +96,7 @@ export const appendLeadToSheet = async (lead: Lead): Promise<WriteStatus> => {
       body: JSON.stringify({
         secret,
         submittedAt: new Date().toISOString(),
-        name: asSheetText(lead.name),
-        email: asSheetText(lead.email),
-        // English labels, not the posted slugs and not the visitor's language,
-        // so the Role column stays filterable across all three locales.
-        role: asSheetText(roleLabel("en", lead.role)),
-        clinicSize: asSheetText(clinicSizeLabel("en", lead.clinicSize)),
-        locale: asSheetText(lead.locale),
-        source: asSheetText(lead.source),
-        medium: asSheetText(lead.medium),
-        campaign: asSheetText(lead.campaign),
-        content: asSheetText(lead.content),
+        ...cells,
       }),
     });
 
@@ -89,7 +124,8 @@ export const appendLeadToSheet = async (lead: Lead): Promise<WriteStatus> => {
 /**
  * Add the applicant to a Resend audience so the waitlist can be emailed later
  * without exporting and pasting addresses. Resend holds name and email only,
- * which is why the sheet carries role and clinic size.
+ * which is why the sheet carries the rest. The caller adds only people who
+ * ticked the email-updates box.
  */
 export const addResendContact = async (lead: Lead): Promise<WriteStatus> => {
   const audienceId = process.env.RESEND_AUDIENCE_ID;
