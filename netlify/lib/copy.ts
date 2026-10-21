@@ -41,11 +41,7 @@ export interface ApplicantCopy {
   notSpecified: string;
   profiles: Record<string, string>;
   clinicSizes: Record<string, string>;
-  /** demoStand carries a {time} placeholder for the slot the visitor picked. */
-  requests: Record<
-    "waitlist" | "early" | "demoStand" | "demoCall" | "pilot",
-    string
-  >;
+  requests: Record<"waitlist" | "early" | "demo" | "pilot", string>;
   introDemo: string;
   introPilot: string;
   stepsTitle: string;
@@ -99,12 +95,11 @@ const en: ApplicantCopy = {
   requests: {
     waitlist: "Waiting list",
     early: "Early access",
-    demoStand: "Demo at the stand, {time}",
-    demoCall: "Demo by video call",
+    demo: "Demo",
     pilot: "Clinical pilot",
   },
   introDemo:
-    "Thanks for asking for a demo. A person on the team reads every request, and we'll write to confirm the time.",
+    "Thanks for asking for a demo. A person on the team reads every request and gets in touch to find a time.",
   introPilot:
     "Thanks for asking about a pilot. A person on the team reads every request and gets in touch within a few working days.",
   stepsTitle: "What happens next",
@@ -143,13 +138,12 @@ const en: ApplicantCopy = {
     cardTitle: "You joined",
     steps: [
       {
-        title: "A week from now",
-        detail: "A short email about what we're building, with a video.",
+        title: "News as we build",
+        detail: "What we're working on, and when there's something new to try.",
       },
       {
-        title: "Once a month",
-        detail:
-          "UpSpeech Monthly: what we built, what we learned and what comes next.",
+        title: "Useful reading",
+        detail: "Practical pieces about speech therapy, now and then.",
       },
       {
         title: "When it opens",
@@ -191,12 +185,11 @@ const pt: ApplicantCopy = {
   requests: {
     waitlist: "Lista de espera",
     early: "Acesso antecipado",
-    demoStand: "Demonstração no stand, {time}",
-    demoCall: "Demonstração por videochamada",
+    demo: "Demonstração",
     pilot: "Piloto clínico",
   },
   introDemo:
-    "Obrigado por pedir uma demonstração. Há sempre alguém da equipa a ler cada pedido, e vamos escrever-lhe para confirmar a hora.",
+    "Obrigado por pedir uma demonstração. Há sempre alguém da equipa a ler cada pedido, e entramos em contacto para combinar uma hora.",
   introPilot:
     "Obrigado pelo interesse num piloto. Há sempre alguém da equipa a ler cada pedido, e entramos em contacto dentro de alguns dias úteis.",
   stepsTitle: "Próximos passos",
@@ -235,13 +228,13 @@ const pt: ApplicantCopy = {
     cardTitle: "A sua inscrição",
     steps: [
       {
-        title: "Daqui a uma semana",
-        detail: "Um email curto sobre o que estamos a construir, com um vídeo.",
+        title: "Novidades enquanto construímos",
+        detail:
+          "No que estamos a trabalhar, e quando houver algo novo para experimentar.",
       },
       {
-        title: "Uma vez por mês",
-        detail:
-          "UpSpeech Mensal: o que construímos, o que aprendemos e o que vem a seguir.",
+        title: "Leituras úteis",
+        detail: "Conteúdos práticos sobre terapia da fala, de vez em quando.",
       },
       {
         title: "Quando abrir",
@@ -283,12 +276,11 @@ const es: ApplicantCopy = {
   requests: {
     waitlist: "Lista de espera",
     early: "Acceso anticipado",
-    demoStand: "Demo en el stand, {time}",
-    demoCall: "Demo por videollamada",
+    demo: "Demo",
     pilot: "Piloto clínico",
   },
   introDemo:
-    "Gracias por pedir una demo. Alguien del equipo lee todas las solicitudes, y te escribiremos para confirmar la hora.",
+    "Gracias por pedir una demo. Alguien del equipo lee todas las solicitudes y te escribirá para buscar una hora.",
   introPilot:
     "Gracias por tu interés en un piloto. Alguien del equipo lee todas las solicitudes y te escribirá en unos pocos días laborables.",
   stepsTitle: "Siguientes pasos",
@@ -327,14 +319,13 @@ const es: ApplicantCopy = {
     cardTitle: "Tu inscripción",
     steps: [
       {
-        title: "Dentro de una semana",
+        title: "Novedades mientras construimos",
         detail:
-          "Un correo breve sobre lo que estamos construyendo, con un vídeo.",
+          "En qué estamos trabajando, y cuando haya algo nuevo que probar.",
       },
       {
-        title: "Una vez al mes",
-        detail:
-          "UpSpeech Mensual: lo que hemos construido, lo que hemos aprendido y lo que viene.",
+        title: "Lecturas útiles",
+        detail: "Contenidos prácticos sobre logopedia, de vez en cuando.",
       },
       {
         title: "Cuando abra",
@@ -361,17 +352,9 @@ export const applicantCopy = (locale: EmailLocale): ApplicantCopy =>
 export const profileLabel = (locale: EmailLocale, key: string): string =>
   COPY[locale].profiles[key] ?? key;
 
-/** "Demo at the stand, 15:30", or the plain request name. */
-export const requestLabel = (
-  locale: EmailLocale,
-  lead: { request: string; demoWhen: string; demoSlot: string },
-): string => {
+export const requestLabel = (locale: EmailLocale, request: string): string => {
   const r = COPY[locale].requests;
-  if (lead.request === "demo")
-    return lead.demoWhen === "stand"
-      ? r.demoStand.replace("{time}", lead.demoSlot)
-      : r.demoCall;
-  return lead.request in r ? r[lead.request as keyof typeof r] : lead.request;
+  return request in r ? r[request as keyof typeof r] : request;
 };
 
 export const clinicSizeLabel = (locale: EmailLocale, key: string): string =>

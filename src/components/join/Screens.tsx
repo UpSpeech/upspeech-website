@@ -2,13 +2,11 @@ import type { ReactNode } from "react";
 import {
   ArrowPathIcon,
   ArrowUpOnSquareIcon,
-  CalendarIcon,
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   EnvelopeIcon,
   LinkIcon,
-  MapPinIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import Companion from "@/components/Companion";
@@ -28,8 +26,6 @@ export type Sent = {
   /** Proves to the function that a later details post follows this sign-up. */
   token: string;
   request: Request | "waitlist";
-  demoWhen: "stand" | "call";
-  demoSlot: string;
   email: string;
   consent: boolean;
 };
@@ -226,11 +222,9 @@ export function Story({
 export function FormHero({
   aud,
   request,
-  when,
 }: {
   aud: Audience;
   request: Sent["request"];
-  when: "stand" | "call";
 }) {
   const t = useT().join;
   const c = AUDIENCE[aud].companion;
@@ -240,13 +234,7 @@ export function FormHero({
     : request === "waitlist"
       ? t.form.titles.waitlist
       : t.form.titles[request];
-  const lead = friend
-    ? t.form.leads.friend
-    : request === "demo"
-      ? when === "stand"
-        ? t.form.leads.demoStand
-        : t.form.leads.demoCall
-      : t.form.leads[request];
+  const lead = friend ? t.form.leads.friend : t.form.leads[request];
   return (
     <div className="j-form-hero" style={{ background: COMPANION_TINTS[c] }}>
       <div className="j-txt">
@@ -310,7 +298,6 @@ export function ShareCard({
 export function Done({
   aud,
   sent,
-  stand,
   share,
   onUpsell,
   tailor,
@@ -318,7 +305,6 @@ export function Done({
 }: {
   aud: Audience;
   sent: Sent;
-  stand: boolean;
   share: ReactNode;
   onUpsell: () => void;
   tailor: ReactNode;
@@ -332,9 +318,7 @@ export function Done({
     sent.request === "pilot"
       ? d.titles.pilot
       : sent.request === "demo"
-        ? sent.demoWhen === "stand"
-          ? d.titles.demoStand
-          : d.titles.demoCall
+        ? d.titles.demo
         : d.titles.waitlist;
   const line = isRequest
     ? d.lineRequest
@@ -343,14 +327,8 @@ export function Done({
       : fill(d.lineWaitlist, { email: sent.email });
 
   const next: [typeof EnvelopeIcon, string, string][] = [];
-  if (sent.request === "demo" && sent.demoWhen === "stand")
-    next.push([
-      MapPinIcon,
-      d.nextStand,
-      fill(d.nextStandSub, { time: sent.demoSlot }),
-    ]);
-  else if (sent.request === "demo")
-    next.push([UserGroupIcon, d.nextCall, d.nextContactSub]);
+  if (sent.request === "demo")
+    next.push([UserGroupIcon, d.nextDemo, d.nextContactSub]);
   else if (sent.request === "pilot")
     next.push([UserGroupIcon, d.nextPilot, d.nextContactSub]);
   if (sent.consent) {
@@ -359,8 +337,7 @@ export function Done({
       d.nextWelcome,
       fill(d.nextWelcomeSub, { email: sent.email }),
     ]);
-    next.push([CalendarIcon, d.nextWeek, d.nextWeekSub[aud]]);
-    next.push([ArrowPathIcon, d.nextMonthly, d.nextMonthlySub]);
+    next.push([ArrowPathIcon, d.nextUpdates, d.nextUpdatesSub]);
   }
 
   return (
@@ -414,7 +391,7 @@ export function Done({
           <button type="button" className="j-upsell" onClick={onUpsell}>
             <span className="j-txt">
               <b>{d.upsellTitle}</b>
-              <small>{stand ? d.upsellBody : d.upsellBodyCall}</small>
+              <small>{d.upsellBody}</small>
             </span>
             <span className="go">{d.upsellCta}</span>
           </button>

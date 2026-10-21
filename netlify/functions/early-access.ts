@@ -41,8 +41,6 @@ const FROM = "UpSpeech <hello@upspeech.app>"; // must be a Resend-verified sende
 const TEAM_TO = "hello@upspeech.app";
 const SEND_TIMEOUT_MS = 6000;
 
-const SLOT_PATTERN = /^\d{2}:\d{2}$/;
-
 /*
  * The confirmation page may add country and interests to a sign-up it just
  * made. The token ties that post to the sign-up, so nobody can append rows
@@ -87,11 +85,6 @@ const leadProblem = (lead: Lead): string | null => {
   if (!lead.profile || !lead.request) return "profile";
   const therapist = lead.profile === "therapist";
   if (therapist === (lead.request === "waitlist")) return "request";
-  if (lead.request === "demo") {
-    if (lead.demoWhen !== "stand" && lead.demoWhen !== "call") return "demo";
-    if (lead.demoWhen === "stand" && !SLOT_PATTERN.test(lead.demoSlot))
-      return "demo";
-  }
   if (
     (lead.request === "waitlist" || lead.request === "early") &&
     !lead.consent
@@ -185,8 +178,6 @@ export const handler: Handler = async (event) => {
       email: oneLine(body.email, 320),
       profile: oneOf(body.profile, PROFILES) || ("" as Lead["profile"]),
       request: request || ("" as Lead["request"]),
-      demoWhen: request === "demo" ? oneLine(body.demoWhen, 10) : "",
-      demoSlot: request === "demo" ? oneLine(body.demoSlot, 5) : "",
       clinicSize:
         request === "pilot" ? oneOf(body.clinicSize, CLINIC_SIZES) : "",
       clinic: oneLine(body.clinic, 120),

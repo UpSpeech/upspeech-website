@@ -84,10 +84,6 @@ export interface Lead {
   email: string;
   profile: Profile;
   request: Request;
-  /** "stand" or "call", set only for a demo request. */
-  demoWhen: string;
-  /** "15:30", set only for a demo at the stand. */
-  demoSlot: string;
   /** A clinicSizes slug, set only for a pilot request. */
   clinicSize: string;
   clinic: string;
@@ -301,7 +297,7 @@ export const applicantEmail = (
     [copy.labelRole, profileLabel(lead.locale, lead.profile)],
     ...(therapist
       ? [
-          [copy.labelRequest, requestLabel(lead.locale, lead)] as [
+          [copy.labelRequest, requestLabel(lead.locale, lead.request)] as [
             string,
             string,
           ],
@@ -417,7 +413,7 @@ export const teamEmail = (
   /* English labels here and in the spreadsheet, so a Portuguese and an
      English submission of the same role read as the same value. */
   const role = profileLabel("en", lead.profile);
-  const request = requestLabel("en", lead);
+  const request = requestLabel("en", lead.request);
   const campaign = campaignSummary(lead) || "Untagged";
   const who = lead.name || lead.email;
   const details: [string, string][] = [

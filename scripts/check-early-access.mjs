@@ -282,8 +282,6 @@ r = await handler(
   POST({
     ...LEAD,
     request: "demo",
-    demoWhen: "stand",
-    demoSlot: "15:30",
     consent: false,
   }),
 );
@@ -294,14 +292,6 @@ check(
     calls.includes("team-email") &&
     calls.includes("applicant-email"),
   `${r.statusCode} ${calls.join(",")}`,
-);
-
-stub({});
-r = await handler(POST({ ...LEAD, request: "demo", demoWhen: "stand" }));
-check(
-  "demo at the stand with no time -> 422",
-  r.statusCode === 422,
-  r.statusCode,
 );
 
 stub({});
@@ -427,21 +417,7 @@ const CASES = [
   ["early access without consent", { ...LEAD, consent: false }, 422],
   ["no profile", { ...LEAD, profile: undefined }, 422],
   ["unknown request", { ...LEAD, request: "vip" }, 422],
-  [
-    "demo by call, no time",
-    { ...LEAD, request: "demo", demoWhen: "call" },
-    200,
-  ],
-  [
-    "demo at an unknown place",
-    { ...LEAD, request: "demo", demoWhen: "later" },
-    422,
-  ],
-  [
-    "demo at the stand, malformed time",
-    { ...LEAD, request: "demo", demoWhen: "stand", demoSlot: "9:30" },
-    422,
-  ],
+  ["demo with only an email", { ...LEAD, request: "demo" }, 200],
   ["pilot without consent", { ...LEAD, request: "pilot", consent: false }, 200],
   [
     "parent asking for early access",
@@ -466,9 +442,7 @@ check(
 );
 
 stub({ sheet: { ok: false }, "team-email": { ok: false } });
-r = await handler(
-  POST({ ...LEAD, request: "demo", demoWhen: "call", consent: false }),
-);
+r = await handler(POST({ ...LEAD, request: "demo", consent: false }));
 check(
   "no consent, sheet and team email down -> 500",
   r.statusCode === 500,
@@ -496,16 +470,14 @@ await handler(
   POST({
     ...LEAD,
     request: "demo",
-    demoWhen: "stand",
-    demoSlot: "15:30",
     consent: false,
     clinic: "Clinica da Fala",
   }),
 );
 check(
-  "team email names the stand demo and its time",
-  mail.team?.subject === "Demo at the stand, 15:30: Vasco Figueiredo" &&
-    mail.team?.text.includes("Request: Demo at the stand, 15:30") &&
+  "team email names the demo request",
+  mail.team?.subject === "Demo: Vasco Figueiredo" &&
+    mail.team?.text.includes("Request: Demo") &&
     mail.team?.text.includes("Clinic: Clinica da Fala"),
   mail.team?.subject + " | " + mail.team?.text,
 );
@@ -522,8 +494,9 @@ check(
   mail.team?.text,
 );
 check(
-  "stand demo applicant gets the demo intro and the request row",
-  mail.applicant?.text.includes("Pedido: Demonstração no stand, 15:30"),
+  "demo applicant gets the demo intro and the request row",
+  mail.applicant?.text.includes("Pedido: Demonstração") &&
+    mail.applicant?.text.includes("combinar uma hora"),
   mail.applicant?.text,
 );
 
@@ -552,6 +525,11 @@ check(
   mail.applicant?.subject === "You're on the UpSpeech waiting list" &&
     !mail.applicant?.text.includes("survey"),
   mail.applicant?.subject + " | " + mail.applicant?.text,
+);
+check(
+  "the waiting-list email promises no fixed schedule",
+  !/week|month/i.test(mail.applicant?.text ?? "week"),
+  mail.applicant?.text,
 );
 delete process.env.EARLY_ACCESS_SURVEY_URL;
 

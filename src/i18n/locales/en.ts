@@ -536,9 +536,7 @@ export const en = {
       },
       leads: {
         early: "Start using UpSpeech before it opens to everyone.",
-        demoStand:
-          "15 minutes at the stand today, or a video call after the summit.",
-        demoCall: "A 15-minute video call, at a time that suits you.",
+        demo: "15 minutes with the team. We'll get in touch to find a time.",
         pilot: "Try UpSpeech with your team and a few patients.",
         waitlist:
           "Be first to know when UpSpeech opens, and get useful resources while you wait.",
@@ -551,13 +549,6 @@ export const en = {
         demo: "A demo",
         pilot: "A pilot",
       },
-      whenLabel: "When suits you?",
-      whenStand: "At the stand",
-      whenStandSub: "Today, 15 minutes",
-      whenCall: "A video call",
-      whenCallSub: "After the summit",
-      slotsLabel: "Time today",
-      slotsHint: "Pick a time that suits you, and we'll confirm it by email.",
       teamLabel: "How many therapists would take part?",
       teams: {
         solo: "Just me",
@@ -590,9 +581,7 @@ export const en = {
       optionalTag: "Optional",
       submit: {
         early: "Get early access",
-        demoStand: "Request {time} at the stand",
-        demoStandNoTime: "Request a time at the stand",
-        demoCall: "Request a call",
+        demo: "Request a demo",
         pilot: "Send pilot request",
         waitlist: "Join the waiting list",
         friend: "Keep me posted",
@@ -608,7 +597,6 @@ export const en = {
       errorEmailInvalid:
         "That email looks incomplete. Check the part after the @.",
       errorConsent: "Check this to join. You can leave anytime.",
-      errorSlot: "Pick a time for your demo.",
       errorSend:
         "We couldn't save that just now. Check your connection and try again.",
     },
@@ -618,18 +606,14 @@ export const en = {
       onTheList: "On the list",
       titles: {
         waitlist: "You're on the list",
-        demoStand: "Your demo request is in",
-        demoCall: "Demo request sent",
+        demo: "Demo request sent",
         pilot: "Pilot request sent",
       },
       lineWaitlist: "Welcome email on its way to {email}.",
       lineRequest: "You're on the early access list too.",
       lineFriend: "You'll get our updates by email. Your link works as before.",
       upsellTitle: "See it with your own caseload",
-      upsellBody:
-        "Book 15 minutes at the stand. Your email is already filled in.",
-      upsellBodyCall:
-        "A 15-minute video call. Your email is already filled in.",
+      upsellBody: "15 minutes with the team. Your email is already filled in.",
       upsellCta: "Request a demo",
       tailorTitle: "Help us send you the right things",
       country: "Where are you based?",
@@ -643,23 +627,14 @@ export const en = {
       save: "Save",
       saved: "Saved, thank you.",
       nextTitle: "What happens next",
-      nextStand: "We confirm your time at the stand",
-      nextStandSub: "You asked for {time} today. We'll email you to confirm.",
-      nextCall: "We get in touch to book your call",
       nextPilot: "We get in touch about a pilot",
+      nextDemo: "We get in touch to find a time",
       nextContactSub:
         "Someone from the team will email you within a few working days.",
       nextWelcome: "A welcome email, straight away",
       nextWelcomeSub: "Sent to {email}.",
-      nextWeek: "Another email a week later",
-      nextWeekSub: {
-        therapist: "With what early access looks like.",
-        patient: "With useful resources for practicing at home.",
-        family: "With resources for families.",
-        friend: "With more about what UpSpeech does.",
-      },
-      nextMonthly: "Then a monthly update",
-      nextMonthlySub: "Leave anytime, with one click in any email.",
+      nextUpdates: "News and useful reading, now and then",
+      nextUpdatesSub: "Unsubscribe anytime, with one click in any email.",
       restart: "Back to the start",
     },
   },

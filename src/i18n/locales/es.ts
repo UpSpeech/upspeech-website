@@ -541,9 +541,7 @@ export const es: Dictionary = {
       },
       leads: {
         early: "Empieza a usar UpSpeech antes de que abra para todos.",
-        demoStand:
-          "15 minutos en el stand hoy, o una videollamada después de la cumbre.",
-        demoCall: "Una videollamada de 15 minutos, cuando te venga bien.",
+        demo: "15 minutos con el equipo. Te escribiremos para buscar una hora.",
         pilot: "Prueba UpSpeech con tu equipo y algunos pacientes.",
         waitlist:
           "Entérate de los primeros cuando abra UpSpeech, y recibe recursos útiles mientras tanto.",
@@ -556,14 +554,6 @@ export const es: Dictionary = {
         demo: "Una demo",
         pilot: "Un piloto",
       },
-      whenLabel: "¿Cuándo te va bien?",
-      whenStand: "En el stand",
-      whenStandSub: "Hoy, 15 minutos",
-      whenCall: "Una videollamada",
-      whenCallSub: "Después de la cumbre",
-      slotsLabel: "Hora de hoy",
-      slotsHint:
-        "Elige una hora que te venga bien y te la confirmamos por correo.",
       teamLabel: "¿Cuántos logopedas participarían?",
       teams: {
         solo: "Solo yo",
@@ -596,9 +586,7 @@ export const es: Dictionary = {
       optionalTag: "Opcional",
       submit: {
         early: "Pedir acceso anticipado",
-        demoStand: "Pedir las {time} en el stand",
-        demoStandNoTime: "Pedir una hora en el stand",
-        demoCall: "Pedir una llamada",
+        demo: "Pedir una demo",
         pilot: "Enviar solicitud de piloto",
         waitlist: "Apuntarme a la lista de espera",
         friend: "Quiero novedades",
@@ -615,7 +603,6 @@ export const es: Dictionary = {
         "Ese correo parece incompleto. Revisa la parte después de la @.",
       errorConsent:
         "Marca esta opción para apuntarte. Puedes darte de baja cuando quieras.",
-      errorSlot: "Elige una hora para la demo.",
       errorSend:
         "No hemos podido guardarlo ahora. Revisa la conexión y vuelve a intentarlo.",
     },
@@ -625,8 +612,7 @@ export const es: Dictionary = {
       onTheList: "En la lista",
       titles: {
         waitlist: "Ya estás en la lista",
-        demoStand: "Tu solicitud de demo ha llegado",
-        demoCall: "Solicitud de demo enviada",
+        demo: "Solicitud de demo enviada",
         pilot: "Solicitud de piloto enviada",
       },
       lineWaitlist: "El correo de bienvenida va de camino a {email}.",
@@ -634,9 +620,7 @@ export const es: Dictionary = {
       lineFriend:
         "Recibirás nuestras novedades por correo. Tu enlace sigue funcionando.",
       upsellTitle: "Míralo con tus propios pacientes",
-      upsellBody: "Reserva 15 minutos en el stand. Tu correo ya está puesto.",
-      upsellBodyCall:
-        "Una videollamada de 15 minutos. Tu correo ya está puesto.",
+      upsellBody: "15 minutos con el equipo. Tu correo ya está puesto.",
       upsellCta: "Pedir una demo",
       tailorTitle: "Ayúdanos a enviarte lo que te interesa",
       country: "¿Dónde estás?",
@@ -650,24 +634,14 @@ export const es: Dictionary = {
       save: "Guardar",
       saved: "Guardado, gracias.",
       nextTitle: "Lo que pasa ahora",
-      nextStand: "Te confirmamos la hora en el stand",
-      nextStandSub:
-        "Pediste las {time} de hoy. Te escribimos para confirmarlo.",
-      nextCall: "Te escribimos para fijar la llamada",
       nextPilot: "Te escribimos sobre el piloto",
+      nextDemo: "Te escribimos para buscar una hora",
       nextContactSub:
         "Alguien del equipo te escribirá en unos pocos días laborables.",
       nextWelcome: "Un correo de bienvenida, ahora mismo",
       nextWelcomeSub: "Enviado a {email}.",
-      nextWeek: "Otro correo una semana después",
-      nextWeekSub: {
-        therapist: "Con lo que incluye el acceso anticipado.",
-        patient: "Con recursos útiles para practicar en casa.",
-        family: "Con recursos para familias.",
-        friend: "Con más sobre lo que hace UpSpeech.",
-      },
-      nextMonthly: "Luego, una novedad al mes",
-      nextMonthlySub:
+      nextUpdates: "Novedades y lecturas útiles, de vez en cuando",
+      nextUpdatesSub:
         "Date de baja cuando quieras, con un clic en cualquier correo.",
       restart: "Volver al inicio",
     },

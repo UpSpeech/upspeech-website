@@ -546,9 +546,7 @@ export const pt: Dictionary = {
       },
       leads: {
         early: "Comece a usar o UpSpeech antes de abrir a todos.",
-        demoStand:
-          "15 minutos no stand hoje, ou uma videochamada depois da cimeira.",
-        demoCall: "Uma videochamada de 15 minutos, à hora que lhe der jeito.",
+        demo: "15 minutos com a equipa. Entramos em contacto para combinar uma hora.",
         pilot: "Experimente o UpSpeech com a sua equipa e alguns pacientes.",
         waitlist:
           "Seja dos primeiros a saber quando o UpSpeech abrir, e receba recursos úteis até lá.",
@@ -561,13 +559,6 @@ export const pt: Dictionary = {
         demo: "Uma demonstração",
         pilot: "Um piloto",
       },
-      whenLabel: "Quando lhe dá jeito?",
-      whenStand: "No stand",
-      whenStandSub: "Hoje, 15 minutos",
-      whenCall: "Uma videochamada",
-      whenCallSub: "Depois da cimeira",
-      slotsLabel: "Hora hoje",
-      slotsHint: "Escolha uma hora que lhe dê jeito, e confirmamos por email.",
       teamLabel: "Quantos terapeutas participariam?",
       teams: {
         solo: "Só eu",
@@ -600,9 +591,7 @@ export const pt: Dictionary = {
       optionalTag: "Opcional",
       submit: {
         early: "Pedir acesso antecipado",
-        demoStand: "Pedir as {time} no stand",
-        demoStandNoTime: "Pedir uma hora no stand",
-        demoCall: "Pedir uma chamada",
+        demo: "Pedir uma demonstração",
         pilot: "Enviar pedido de piloto",
         waitlist: "Entrar na lista de espera",
         friend: "Quero receber novidades",
@@ -619,7 +608,6 @@ export const pt: Dictionary = {
         "Esse email parece incompleto. Verifique a parte depois do @.",
       errorConsent:
         "Marque esta opção para se inscrever. Pode sair quando quiser.",
-      errorSlot: "Escolha uma hora para a demonstração.",
       errorSend:
         "Não conseguimos guardar agora. Verifique a ligação e tente outra vez.",
     },
@@ -629,8 +617,7 @@ export const pt: Dictionary = {
       onTheList: "Na lista",
       titles: {
         waitlist: "Já está na lista",
-        demoStand: "O seu pedido de demonstração chegou",
-        demoCall: "Pedido de demonstração enviado",
+        demo: "Pedido de demonstração enviado",
         pilot: "Pedido de piloto enviado",
       },
       lineWaitlist: "O email de boas-vindas está a caminho de {email}.",
@@ -638,10 +625,7 @@ export const pt: Dictionary = {
       lineFriend:
         "Vai receber as nossas novidades por email. O seu link continua a funcionar.",
       upsellTitle: "Veja-o com os seus próprios pacientes",
-      upsellBody:
-        "Reserve 15 minutos no stand. O seu email já está preenchido.",
-      upsellBodyCall:
-        "Uma videochamada de 15 minutos. O seu email já está preenchido.",
+      upsellBody: "15 minutos com a equipa. O seu email já está preenchido.",
       upsellCta: "Pedir uma demonstração",
       tailorTitle: "Ajude-nos a enviar-lhe o que interessa",
       country: "Onde está?",
@@ -655,25 +639,15 @@ export const pt: Dictionary = {
       save: "Guardar",
       saved: "Guardado, obrigado.",
       nextTitle: "Próximos passos",
-      nextStand: "Confirmamos a sua hora no stand",
-      nextStandSub:
-        "Pediu as {time} de hoje. Enviamos um email para confirmar.",
-      nextCall: "Entramos em contacto para marcar a chamada",
       nextPilot: "Entramos em contacto sobre o piloto",
+      nextDemo: "Entramos em contacto para combinar uma hora",
       nextContactSub:
         "Alguém da equipa envia-lhe um email dentro de alguns dias úteis.",
       nextWelcome: "Um email de boas-vindas, de imediato",
       nextWelcomeSub: "Enviado para {email}.",
-      nextWeek: "Outro email uma semana depois",
-      nextWeekSub: {
-        therapist: "Com o que inclui o acesso antecipado.",
-        patient: "Com recursos úteis para praticar em casa.",
-        family: "Com recursos para famílias.",
-        friend: "Com mais sobre o que o UpSpeech faz.",
-      },
-      nextMonthly: "Depois, uma novidade por mês",
-      nextMonthlySub:
-        "Pode sair quando quiser, com um clique em qualquer email.",
+      nextUpdates: "Novidades e leituras úteis, de vez em quando",
+      nextUpdatesSub:
+        "Pode cancelar quando quiser, com um clique em qualquer email.",
       restart: "Voltar ao início",
     },
   },

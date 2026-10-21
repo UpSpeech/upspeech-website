@@ -58,7 +58,7 @@ export const appendLeadToSheet = (lead: Lead): Promise<WriteStatus> =>
     medium: lead.medium,
     campaign: lead.campaign,
     content: lead.content,
-    request: requestLabel("en", lead),
+    request: requestLabel("en", lead.request),
     clinic: lead.clinic,
     companion: lead.companion,
     shareCode: lead.shareCode,

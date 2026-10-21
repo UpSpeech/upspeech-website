@@ -38,7 +38,6 @@ import {
 } from "@/lib/join-contract";
 import { useLocale, useT } from "@/i18n";
 
-const SLOTS = ["11:30", "13:00", "15:30", "17:00"];
 const COUNTRIES = ["PT", "ES", "GB", "IE", "FR", "DE", "NL", "IT", "BR", "US"];
 const INTERESTS = ["stutter", "dld", "unsure"] as const;
 /* The sheet gets English labels whatever the visitor's language. */
@@ -50,21 +49,6 @@ const INTEREST_LABELS: Record<(typeof INTERESTS)[number], string> = {
 const SHARE_KEY = "upspeech_share";
 /* How far down the sky the sun sits on each screen, 0 to 1. */
 const SUN = { landing: 0, story: 0.33, form: 0.66, done: 1 };
-
-/*
- * The stand demo exists for three days, and only for someone who reached the
- * page from a booth link. Lisbon is on UTC in November.
- */
-const SUMMIT_START = Date.UTC(2026, 10, 10);
-const SUMMIT_END = Date.UTC(2026, 10, 13);
-const standAvailable = () => {
-  const now = Date.now();
-  return (
-    now >= SUMMIT_START &&
-    now < SUMMIT_END &&
-    getCampaign().source === "websummit"
-  );
-};
 
 const shareCode = (): string => {
   try {
@@ -101,11 +85,8 @@ export default function Join() {
 
   const [code] = useState(shareCode);
   const link = `upspeech.app/join?ref=${code}`;
-  const [stand] = useState(standAvailable);
 
   const [request, setRequest] = useState<Request>("early");
-  const [demoWhen, setDemoWhen] = useState<"stand" | "call">("stand");
-  const [slot, setSlot] = useState<number | null>(null);
   const [team, setTeam] = useState<ClinicSize>("small");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -122,8 +103,6 @@ export default function Join() {
   const [saved, setSaved] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
   const formRef = useRef<HTMLElement>(null);
-
-  const when = stand ? demoWhen : "call";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -147,10 +126,7 @@ export default function Join() {
   };
 
   const openForm = (r?: Request) => {
-    if (r) {
-      setRequest(r);
-      setSlot(null);
-    }
+    if (r) setRequest(r);
     go({ step: "form" });
   };
 
@@ -165,8 +141,6 @@ export default function Join() {
     else if (!EMAIL_PATTERN.test(email.trim()))
       e.email = t.form.errorEmailInvalid;
     if (!asksRequest && !consent) e.consent = t.form.errorConsent;
-    if (isTherapist && request === "demo" && when === "stand" && slot === null)
-      e.slot = t.form.errorSlot;
     return e;
   };
 
@@ -196,8 +170,6 @@ export default function Join() {
           clinic: asksRequest ? clinic.trim() : "",
           profile: AUDIENCE[aud].profile,
           request: kind,
-          demoWhen: kind === "demo" ? when : "",
-          demoSlot: kind === "demo" && when === "stand" ? SLOTS[slot ?? 0] : "",
           clinicSize: kind === "pilot" ? team : "",
           companion: AUDIENCE[aud].companion,
           consent,
@@ -213,11 +185,6 @@ export default function Join() {
       setSent({
         token: token ?? "",
         request: kind,
-        demoWhen: when,
-        demoSlot:
-          kind === "demo" && when === "stand" && slot !== null
-            ? SLOTS[slot]
-            : "",
         email: email.trim(),
         consent,
       });
@@ -350,7 +317,7 @@ export default function Join() {
                 <ChevronLeftIcon width={20} height={20} aria-hidden="true" />
                 {t.back}
               </button>
-              <FormHero aud={aud} request={kind} when={when} />
+              <FormHero aud={aud} request={kind} />
             </div>
             <div className="j-col">
               {isFriend && (
@@ -434,63 +401,6 @@ export default function Join() {
                         ))}
                       </div>
                     </div>
-                    {request === "demo" && stand && (
-                      <div className="j-group">
-                        <span className="j-lbl">{t.form.whenLabel}</span>
-                        <div
-                          className="j-when-opts"
-                          role="radiogroup"
-                          aria-label={t.form.whenLabel}
-                        >
-                          {(
-                            [
-                              ["stand", t.form.whenStand, t.form.whenStandSub],
-                              ["call", t.form.whenCall, t.form.whenCallSub],
-                            ] as const
-                          ).map(([k, label, sub]) => (
-                            <button
-                              key={k}
-                              type="button"
-                              role="radio"
-                              aria-checked={demoWhen === k}
-                              onClick={() => setDemoWhen(k)}
-                            >
-                              <b>{label}</b>
-                              <small>{sub}</small>
-                            </button>
-                          ))}
-                        </div>
-                        {demoWhen === "stand" && (
-                          <>
-                            <div
-                              className="j-pills"
-                              role="group"
-                              aria-label={t.form.slotsLabel}
-                            >
-                              {SLOTS.map((s, i) => (
-                                <button
-                                  key={s}
-                                  type="button"
-                                  className="j-pill"
-                                  aria-pressed={slot === i}
-                                  onClick={() => {
-                                    setSlot(i);
-                                    setErrors(({ slot: _, ...rest }) => rest);
-                                  }}
-                                >
-                                  {s}
-                                </button>
-                              ))}
-                            </div>
-                            {errors.slot ? (
-                              <span className="j-err-line">{errors.slot}</span>
-                            ) : (
-                              <span className="j-hint">{t.form.slotsHint}</span>
-                            )}
-                          </>
-                        )}
-                      </div>
-                    )}
                     {request === "pilot" && (
                       <div className="j-group">
                         <span className="j-lbl">{t.form.teamLabel}</span>
@@ -676,13 +586,7 @@ export default function Join() {
                           : request === "pilot"
                             ? t.form.submit.pilot
                             : request === "demo"
-                              ? when === "call"
-                                ? t.form.submit.demoCall
-                                : slot === null
-                                  ? t.form.submit.demoStandNoTime
-                                  : fill(t.form.submit.demoStand, {
-                                      time: SLOTS[slot],
-                                    })
+                              ? t.form.submit.demo
                               : t.form.submit.early
                     }
                     onClick={submit}
@@ -696,7 +600,6 @@ export default function Join() {
           <Done
             aud={aud}
             sent={sent}
-            stand={stand}
             share={
               isFriend ? (
                 <ShareCard
@@ -710,7 +613,6 @@ export default function Join() {
             onUpsell={() => {
               setSent(null);
               setRequest("demo");
-              setSlot(null);
               go({ step: "form" });
             }}
             tailor={
