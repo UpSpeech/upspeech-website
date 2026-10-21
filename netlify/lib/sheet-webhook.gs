@@ -44,6 +44,7 @@ var HEADERS = [
   "Updates",
   "Country",
   "Interests",
+  "Checked",
 ];
 
 function doPost(e) {
@@ -63,7 +64,7 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
     ensureHeaderRow(sheet);
 
-    // Status and Notes are left empty on purpose: they are yours to fill in.
+    // Notes and Checked are left empty on purpose: they are yours to fill in.
     sheet.appendRow([
       body.submittedAt || new Date().toISOString(),
       body.name || "",
@@ -85,6 +86,7 @@ function doPost(e) {
       body.updates || "",
       body.country || "",
       body.interests || "",
+      "",
     ]);
 
     return jsonResponse({ ok: true });
