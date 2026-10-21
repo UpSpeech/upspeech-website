@@ -15,9 +15,9 @@
  * Editing this script later needs Deploy > Manage deployments > Edit > Version:
  * New version. Saving alone does not change what the /exec URL runs.
  *
- * The four campaign columns sit after Notes so rows written before they existed
- * stay aligned. A sheet that already has a header row needs those four header
- * cells typed in by hand, because ensureHeaderRow only writes an empty sheet.
+ * New columns only ever go on the end, so rows written before they existed
+ * stay aligned. A sheet that already has a header row needs each new header
+ * cell typed in by hand, because ensureHeaderRow only writes an empty sheet.
  *
  * "Who has access: Anyone" makes the URL world-postable, which is why every
  * request has to carry the shared secret.
@@ -36,6 +36,15 @@ var HEADERS = [
   "Medium",
   "Campaign",
   "Content",
+  "Request",
+  "Clinic",
+  "Companion",
+  "Share code",
+  "Referred by",
+  "Updates",
+  "Country",
+  "Interests",
+  "Checked",
 ];
 
 function doPost(e) {
@@ -55,7 +64,7 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
     ensureHeaderRow(sheet);
 
-    // Status and Notes are left empty on purpose: they are yours to fill in.
+    // Notes and Checked are left empty on purpose: they are yours to fill in.
     sheet.appendRow([
       body.submittedAt || new Date().toISOString(),
       body.name || "",
@@ -69,6 +78,15 @@ function doPost(e) {
       body.medium || "",
       body.campaign || "",
       body.content || "",
+      body.request || "",
+      body.clinic || "",
+      body.companion || "",
+      body.shareCode || "",
+      body.referredBy || "",
+      body.updates || "",
+      body.country || "",
+      body.interests || "",
+      "",
     ]);
 
     return jsonResponse({ ok: true });

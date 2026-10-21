@@ -13,11 +13,26 @@ import FoundationsScene from "@/components/FoundationsScene";
 import SecuritySection from "@/components/SecuritySection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import { useLocale, useT } from "@/i18n";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { localizedHref, useLocale, useT } from "@/i18n";
 
 const Index = () => {
   const locale = useLocale();
   const t = useT();
+  const navigate = useNavigate();
+
+  // #cta used to be the sign-up form. Old links, shared URLs and any button
+  // still pointing there open the join flow instead.
+  useEffect(() => {
+    const toJoin = () => {
+      if (window.location.hash === "#cta")
+        navigate(localizedHref("/join", locale), { replace: true });
+    };
+    toJoin();
+    window.addEventListener("hashchange", toJoin);
+    return () => window.removeEventListener("hashchange", toJoin);
+  }, [navigate, locale]);
 
   // The handoff section describes an actual sequence, so it is published as
   // one. Google retired HowTo rich results in 2023, so this buys nothing in

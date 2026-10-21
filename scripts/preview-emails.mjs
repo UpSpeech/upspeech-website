@@ -22,8 +22,14 @@ const bundle = join(outDir, ".templates.mjs");
 const SAMPLE = {
   name: "Vasco Figueiredo",
   email: "vasco@clinicadafala.pt",
-  role: "speech-therapist",
-  clinicSize: "small",
+  profile: "therapist",
+  request: "demo",
+  clinicSize: "",
+  clinic: "Clinica da Fala",
+  companion: "nima",
+  consent: true,
+  shareCode: "",
+  referredBy: "",
   source: "linkedin",
   medium: "social",
   campaign: "autumn-slp",
@@ -68,6 +74,20 @@ for (const locale of EMAIL_LOCALES) {
   await write(
     `applicant-${locale}-survey`,
     applicantEmail(lead, copy, SURVEY).html,
+  );
+  await write(
+    `applicant-${locale}-waitlist`,
+    applicantEmail(
+      {
+        ...lead,
+        name: "",
+        profile: "caregiver",
+        request: "waitlist",
+        companion: "tumbo",
+        clinic: "",
+      },
+      copy,
+    ).html,
   );
 }
 

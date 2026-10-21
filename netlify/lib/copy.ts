@@ -32,12 +32,18 @@ export interface ApplicantCopy {
   greetingPrefix: string;
   intro: string;
   cardTitle: string;
+  /** Opens the greeting when nobody gave a name. */
+  greetingFallback: string;
   labelName: string;
   labelRole: string;
+  labelRequest: string;
   labelClinicSize: string;
   notSpecified: string;
-  roles: Record<string, string>;
+  profiles: Record<string, string>;
   clinicSizes: Record<string, string>;
+  requests: Record<"waitlist" | "early" | "demo" | "pilot", string>;
+  introDemo: string;
+  introPilot: string;
   stepsTitle: string;
   steps: [Step, Step, Step];
   surveyTitle: string;
@@ -47,6 +53,16 @@ export interface ApplicantCopy {
   signoff: string;
   tagline: string;
   footerNote: string;
+  /** The receipt for the waiting list: people in therapy, families, friends. */
+  waitlist: {
+    subject: string;
+    preheader: string;
+    eyebrow: string;
+    intro: string;
+    cardTitle: string;
+    steps: [Step, Step, Step];
+    footerNote: string;
+  };
 }
 
 const en: ApplicantCopy = {
@@ -58,15 +74,17 @@ const en: ApplicantCopy = {
   intro:
     "Thanks for asking about early access to UpSpeech. We work with a small cohort of clinics at a time, and a person reads every request that comes in.",
   cardTitle: "Your request",
+  greetingFallback: "Hi there",
   labelName: "Name",
-  labelRole: "Role",
-  labelClinicSize: "Clinic size",
+  labelRole: "Joining as",
+  labelRequest: "Request",
+  labelClinicSize: "Therapists taking part",
   notSpecified: "Not specified",
-  roles: {
-    "speech-therapist": "Speech Therapist",
-    "clinic-director": "Clinic Director",
-    "practice-owner": "Practice Owner",
-    other: "Other",
+  profiles: {
+    therapist: "Speech therapist or clinic",
+    patient: "In speech therapy",
+    caregiver: "Parent or caregiver",
+    referrer: "Friend or supporter",
   },
   clinicSizes: {
     solo: "Solo Practice",
@@ -74,6 +92,16 @@ const en: ApplicantCopy = {
     medium: "6-15 Therapists",
     large: "15+ Therapists",
   },
+  requests: {
+    waitlist: "Waiting list",
+    early: "Early access",
+    demo: "Demo",
+    pilot: "Clinical pilot",
+  },
+  introDemo:
+    "Thanks for asking for a demo. A person on the team reads every request and gets in touch to find a time.",
+  introPilot:
+    "Thanks for asking about a pilot. A person on the team reads every request and gets in touch within a few working days.",
   stepsTitle: "What happens next",
   steps: [
     {
@@ -101,6 +129,30 @@ const en: ApplicantCopy = {
   tagline: "Speech therapy practice, between sessions.",
   footerNote:
     "You are receiving this because you requested early access at upspeech.app.",
+  waitlist: {
+    subject: "You're on the UpSpeech waiting list",
+    preheader: "What happens next, and when you'll hear from us.",
+    eyebrow: "Waiting list",
+    intro:
+      "Thanks for joining. UpSpeech helps people practice between speech therapy sessions, with their therapist following along. We'll write when it opens, and send useful resources before then.",
+    cardTitle: "You joined",
+    steps: [
+      {
+        title: "News as we build",
+        detail: "What we're working on, and when there's something new to try.",
+      },
+      {
+        title: "Useful reading",
+        detail: "Practical pieces about speech therapy, now and then.",
+      },
+      {
+        title: "When it opens",
+        detail: "You hear first, with how to get started.",
+      },
+    ],
+    footerNote:
+      "You are receiving this because you joined the waiting list at upspeech.app.",
+  },
 };
 
 const pt: ApplicantCopy = {
@@ -112,15 +164,17 @@ const pt: ApplicantCopy = {
   intro:
     "Obrigado por pedir acesso antecipado ao UpSpeech. Trabalhamos com um pequeno conjunto de clínicas de cada vez e há sempre alguém da equipa a ler cada pedido.",
   cardTitle: "O seu pedido",
+  greetingFallback: "Olá",
   labelName: "Nome",
-  labelRole: "Função",
-  labelClinicSize: "Dimensão da clínica",
+  labelRole: "Inscrição como",
+  labelRequest: "Pedido",
+  labelClinicSize: "Terapeutas envolvidos",
   notSpecified: "Não indicado",
-  roles: {
-    "speech-therapist": "Terapeuta da fala",
-    "clinic-director": "Diretor de clínica",
-    "practice-owner": "Proprietário de consultório",
-    other: "Outro",
+  profiles: {
+    therapist: "Terapeuta da fala ou clínica",
+    patient: "Em terapia da fala",
+    caregiver: "Pai, mãe ou cuidador",
+    referrer: "Amigo ou apoiante",
   },
   clinicSizes: {
     solo: "Consultório individual",
@@ -128,6 +182,16 @@ const pt: ApplicantCopy = {
     medium: "6-15 Terapeutas",
     large: "15+ Terapeutas",
   },
+  requests: {
+    waitlist: "Lista de espera",
+    early: "Acesso antecipado",
+    demo: "Demonstração",
+    pilot: "Piloto clínico",
+  },
+  introDemo:
+    "Obrigado por pedir uma demonstração. Há sempre alguém da equipa a ler cada pedido, e entramos em contacto para combinar uma hora.",
+  introPilot:
+    "Obrigado pelo interesse num piloto. Há sempre alguém da equipa a ler cada pedido, e entramos em contacto dentro de alguns dias úteis.",
   stepsTitle: "Próximos passos",
   steps: [
     {
@@ -155,6 +219,31 @@ const pt: ApplicantCopy = {
   tagline: "Prática de terapia da fala, entre sessões.",
   footerNote:
     "Recebe este email porque pediu acesso antecipado em upspeech.app.",
+  waitlist: {
+    subject: "Já está na lista de espera do UpSpeech",
+    preheader: "O que acontece a seguir e quando terá notícias nossas.",
+    eyebrow: "Lista de espera",
+    intro:
+      "Obrigado por se inscrever. O UpSpeech ajuda as pessoas a praticar entre sessões de terapia da fala, com o terapeuta a acompanhar. Vamos escrever-lhe quando abrir e, até lá, enviar recursos úteis.",
+    cardTitle: "A sua inscrição",
+    steps: [
+      {
+        title: "Novidades enquanto construímos",
+        detail:
+          "No que estamos a trabalhar, e quando houver algo novo para experimentar.",
+      },
+      {
+        title: "Leituras úteis",
+        detail: "Conteúdos práticos sobre terapia da fala, de vez em quando.",
+      },
+      {
+        title: "Quando abrir",
+        detail: "É dos primeiros a saber, com indicações para começar.",
+      },
+    ],
+    footerNote:
+      "Recebe este email porque se inscreveu na lista de espera em upspeech.app.",
+  },
 };
 
 const es: ApplicantCopy = {
@@ -166,15 +255,17 @@ const es: ApplicantCopy = {
   intro:
     "Gracias por solicitar acceso anticipado a UpSpeech. Trabajamos con un grupo reducido de clínicas cada vez, y alguien del equipo lee todas las solicitudes.",
   cardTitle: "Tu solicitud",
+  greetingFallback: "Hola",
   labelName: "Nombre",
-  labelRole: "Función",
-  labelClinicSize: "Tamaño de la clínica",
+  labelRole: "Te apuntaste como",
+  labelRequest: "Solicitud",
+  labelClinicSize: "Terapeutas participantes",
   notSpecified: "Sin especificar",
-  roles: {
-    "speech-therapist": "Logopeda",
-    "clinic-director": "Director de clínica",
-    "practice-owner": "Propietario de consulta",
-    other: "Otro",
+  profiles: {
+    therapist: "Logopeda o clínica",
+    patient: "En logopedia",
+    caregiver: "Madre, padre o cuidador",
+    referrer: "Amigo o simpatizante",
   },
   clinicSizes: {
     solo: "Consulta individual",
@@ -182,6 +273,16 @@ const es: ApplicantCopy = {
     medium: "6-15 terapeutas",
     large: "15+ terapeutas",
   },
+  requests: {
+    waitlist: "Lista de espera",
+    early: "Acceso anticipado",
+    demo: "Demo",
+    pilot: "Piloto clínico",
+  },
+  introDemo:
+    "Gracias por pedir una demo. Alguien del equipo lee todas las solicitudes y te escribirá para buscar una hora.",
+  introPilot:
+    "Gracias por tu interés en un piloto. Alguien del equipo lee todas las solicitudes y te escribirá en unos pocos días laborables.",
   stepsTitle: "Siguientes pasos",
   steps: [
     {
@@ -209,6 +310,31 @@ const es: ApplicantCopy = {
   tagline: "Práctica de terapia del habla, entre sesiones.",
   footerNote:
     "Recibes este correo porque solicitaste acceso anticipado en upspeech.app.",
+  waitlist: {
+    subject: "Ya estás en la lista de espera de UpSpeech",
+    preheader: "Lo que pasa ahora y cuándo sabrás de nosotros.",
+    eyebrow: "Lista de espera",
+    intro:
+      "Gracias por apuntarte. UpSpeech ayuda a practicar entre sesiones de logopedia, con tu logopeda al tanto. Te escribiremos cuando abra y, mientras tanto, te enviaremos recursos útiles.",
+    cardTitle: "Tu inscripción",
+    steps: [
+      {
+        title: "Novedades mientras construimos",
+        detail:
+          "En qué estamos trabajando, y cuando haya algo nuevo que probar.",
+      },
+      {
+        title: "Lecturas útiles",
+        detail: "Contenidos prácticos sobre logopedia, de vez en cuando.",
+      },
+      {
+        title: "Cuando abra",
+        detail: "Serás de los primeros en saberlo, con cómo empezar.",
+      },
+    ],
+    footerNote:
+      "Recibes este correo porque te apuntaste a la lista de espera en upspeech.app.",
+  },
 };
 
 const COPY: Record<EmailLocale, ApplicantCopy> = { en, pt, es };
@@ -217,18 +343,23 @@ export const applicantCopy = (locale: EmailLocale): ApplicantCopy =>
   COPY[locale];
 
 /*
- * The form posts stable slugs ("speech-therapist", "small"), not the labels the
+ * The form posts stable slugs ("therapist", "small"), not the labels the
  * visitor saw, so both emails and the spreadsheet would otherwise show raw
  * slugs. An unrecognised value falls through to the submitted string rather
  * than being dropped, which keeps a hand-crafted post or a newly added option
  * visible instead of silently blank.
  */
-export const roleLabel = (locale: EmailLocale, key: string): string =>
-  COPY[locale].roles[key] ?? key;
+export const profileLabel = (locale: EmailLocale, key: string): string =>
+  COPY[locale].profiles[key] ?? key;
+
+export const requestLabel = (locale: EmailLocale, request: string): string => {
+  const r = COPY[locale].requests;
+  return request in r ? r[request as keyof typeof r] : request;
+};
 
 export const clinicSizeLabel = (locale: EmailLocale, key: string): string =>
   key ? (COPY[locale].clinicSizes[key] ?? key) : "";
 
 /** "Hi Vasco," as one string, for the plain-text part and the <title>. */
 export const greetingText = (copy: ApplicantCopy, name: string): string =>
-  `${copy.greetingPrefix} ${name},`;
+  name ? `${copy.greetingPrefix} ${name},` : `${copy.greetingFallback},`;

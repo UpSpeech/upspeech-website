@@ -1,3 +1,5 @@
+import { SHARE_CODE } from "./join-contract";
+
 const STORAGE_KEY = "upspeech_campaign";
 const MAX_LENGTH = 100;
 // Letters in any script, digits and a few separators. Control characters, bidi
@@ -62,10 +64,36 @@ export const getCampaign = (): Campaign => {
  * campaign, never the name or email the visitor typed.
  */
 export const leadEventProperties = (
-  form: { role: string; clinicSize: string },
+  form: { profile: string; request: string },
   campaign: Campaign,
 ) => ({
-  role: form.role,
-  clinic_size: form.clinicSize || undefined,
+  profile: form.profile,
+  request: form.request,
   ...campaign,
 });
+
+const REFERRAL_KEY = "upspeech_ref";
+
+/**
+ * A friend's share link is /join?ref=<code>. Kept apart from the campaign so an
+ * untagged visit with a ref never clears earlier UTM tags, and the other way
+ * round.
+ */
+export const captureReferral = (search: string): void => {
+  const ref = new URLSearchParams(search).get("ref")?.trim().toLowerCase();
+  if (!ref || !SHARE_CODE.test(ref)) return;
+  try {
+    sessionStorage.setItem(REFERRAL_KEY, ref);
+  } catch {
+    // Storage blocked: the visit simply is not attributed.
+  }
+};
+
+export const getReferral = (): string => {
+  try {
+    const ref = sessionStorage.getItem(REFERRAL_KEY) ?? "";
+    return SHARE_CODE.test(ref) ? ref : "";
+  } catch {
+    return "";
+  }
+};

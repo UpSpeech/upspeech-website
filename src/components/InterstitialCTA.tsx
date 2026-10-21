@@ -1,10 +1,11 @@
 import { useReveal } from "./useReveal";
 import { reveal } from "./motion";
 import { trackButtonClick } from "@/lib/analytics";
-import { useT } from "@/i18n";
+import { localizedHref, useLocale, useT } from "@/i18n";
 
 const InterstitialCTA = () => {
   const t = useT().home.interstitial;
+  const locale = useLocale();
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.4 });
 
   return (
@@ -28,7 +29,7 @@ const InterstitialCTA = () => {
         </div>
         <div className="shrink-0" style={reveal(revealed, 120)}>
           <a
-            href="#cta"
+            href={localizedHref("/join", locale)}
             onClick={() =>
               trackButtonClick(
                 "request_early_access_interstitial",

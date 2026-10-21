@@ -127,7 +127,7 @@ export default function ReducingDocumentationTime() {
             <p className="mt-4 font-body text-sm sm:text-base text-calm-charcoal/80 leading-relaxed">
               {t.closing.bodyPrefix}
               <a
-                href={`${localizedHref("/", locale)}#cta`}
+                href={localizedHref("/join", locale)}
                 className="font-semibold text-calm-navy hover:underline"
               >
                 {t.closing.bodyLink}

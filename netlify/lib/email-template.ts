@@ -19,9 +19,15 @@
  * means charcoal text on a charcoal card.
  */
 
-import { clinicSizeLabel, greetingText, roleLabel } from "./copy";
+import {
+  clinicSizeLabel,
+  greetingText,
+  profileLabel,
+  requestLabel,
+} from "./copy";
 import { escapeHtml, firstName } from "./text";
 import type { ApplicantCopy, EmailLocale } from "./copy";
+import type { Profile, Request } from "../../src/lib/join-contract";
 
 /* Palette, from src/index.css by way of tailwind.config.ts. */
 const NAVY = "#293587"; // primary-500
@@ -40,6 +46,7 @@ const STATUS = {
   ok: { colour: "#0B7A54", cls: "st-ok" },
   failed: { colour: "#C22B2B", cls: "st-bad" },
   "not configured": { colour: "#6F7285", cls: "st-none" },
+  "no email updates": { colour: "#6F7285", cls: "st-none" },
 } as const;
 
 /*
@@ -72,10 +79,21 @@ const DISPLAY = `'Outfit','Avenir Next',Avenir,'Segoe UI',Roboto,Helvetica,Arial
 const BODY = `'Plus Jakarta Sans','Avenir Next',Avenir,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`;
 
 export interface Lead {
+  /** Optional: the join flow asks for a name only on a demo or pilot request. */
   name: string;
   email: string;
-  role: string;
+  profile: Profile;
+  request: Request;
+  /** A clinicSizes slug, set only for a pilot request. */
   clinicSize: string;
+  clinic: string;
+  companion: string;
+  /** Opted in to the email updates. Gates the Resend audience contact. */
+  consent: boolean;
+  /** The code in this person's own share link (friends and supporters). */
+  shareCode: string;
+  /** The share code of the link this person arrived through. */
+  referredBy: string;
   locale: EmailLocale;
   /** UTM tags from the link that brought the visitor, empty when untagged. */
   source: string;
@@ -264,13 +282,41 @@ export const applicantEmail = (
   copy: ApplicantCopy,
   surveyUrl?: string,
 ): RenderedEmail => {
-  const role = roleLabel(lead.locale, lead.role);
-  const clinicSize =
-    clinicSizeLabel(lead.locale, lead.clinicSize) || copy.notSpecified;
-  const given = firstName(lead.name);
+  const therapist = lead.profile === "therapist";
+  const given = lead.name ? firstName(lead.name) : "";
+  const intro = !therapist
+    ? copy.waitlist.intro
+    : lead.request === "demo"
+      ? copy.introDemo
+      : lead.request === "pilot"
+        ? copy.introPilot
+        : copy.intro;
+  const steps = therapist ? copy.steps : copy.waitlist.steps;
+  const rows: [string, string][] = [
+    ...(lead.name ? [[copy.labelName, lead.name] as [string, string]] : []),
+    [copy.labelRole, profileLabel(lead.locale, lead.profile)],
+    ...(therapist
+      ? [
+          [copy.labelRequest, requestLabel(lead.locale, lead.request)] as [
+            string,
+            string,
+          ],
+        ]
+      : []),
+    ...(lead.request === "pilot"
+      ? [
+          [
+            copy.labelClinicSize,
+            clinicSizeLabel(lead.locale, lead.clinicSize) || copy.notSpecified,
+          ] as [string, string],
+        ]
+      : []),
+  ];
+  const subject = therapist ? copy.subject : copy.waitlist.subject;
 
-  const survey = surveyUrl
-    ? `
+  const survey =
+    therapist && surveyUrl
+      ? `
           <tr>
             <td class="pad" style="padding:8px 40px 36px 40px;">
               <div class="ink" style="font-family:${DISPLAY};font-size:18px;font-weight:700;letter-spacing:-0.015em;color:${CHARCOAL};line-height:1.4;">${escapeHtml(copy.surveyTitle)}</div>
@@ -278,27 +324,27 @@ export const applicantEmail = (
 ${button(surveyUrl, copy.surveyCta)}
             </td>
           </tr>`
-    : "";
+      : "";
 
   const inner = `
           <tr>
             <td class="pad" style="padding:44px 40px 0 40px;">
-${eyebrow(copy.eyebrow)}
-${heading(copy.greetingPrefix, `${accentSpan(given)}<span class="ink" style="color:${CHARCOAL};">,</span>`)}
-              <p class="ink-soft" style="margin:18px 0 0 0;font-family:${BODY};font-size:16px;line-height:1.7;color:${CHARCOAL_SOFT};">${escapeHtml(copy.intro)}</p>
+${eyebrow(therapist ? copy.eyebrow : copy.waitlist.eyebrow)}
+${given ? heading(copy.greetingPrefix, `${accentSpan(given)}<span class="ink" style="color:${CHARCOAL};">,</span>`) : heading(`${copy.greetingFallback},`)}
+              <p class="ink-soft" style="margin:18px 0 0 0;font-family:${BODY};font-size:16px;line-height:1.7;color:${CHARCOAL_SOFT};">${escapeHtml(intro)}</p>
             </td>
           </tr>
           <tr>
             <td class="pad" style="padding:30px 40px 0 40px;">
-${card(`${cardLabel(copy.cardTitle)}
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row(copy.labelName, lead.name, true)}${row(copy.labelRole, role)}${row(copy.labelClinicSize, clinicSize)}
+${card(`${cardLabel(therapist ? copy.cardTitle : copy.waitlist.cardTitle)}
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${rows.map(([label, value], i) => row(label, value, i === 0)).join("")}
                     </table>`)}
             </td>
           </tr>
           <tr>
             <td class="pad" style="padding:38px 40px 14px 40px;">
               <div class="ink" style="font-family:${DISPLAY};font-size:19px;font-weight:700;letter-spacing:-0.015em;color:${CHARCOAL};line-height:1.35;padding-bottom:22px;">${escapeHtml(copy.stepsTitle)}</div>
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${copy.steps.map((s, i) => step(i + 1, s.title, s.detail)).join("")}
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${steps.map((s, i) => step(i + 1, s.title, s.detail)).join("")}
               </table>
             </td>
           </tr>${survey}
@@ -317,29 +363,27 @@ ${card(`${cardLabel(copy.cardTitle)}
 
   const html = shell({
     lang: copy.lang,
-    title: copy.subject,
-    preheader: copy.preheader,
+    title: subject,
+    preheader: therapist ? copy.preheader : copy.waitlist.preheader,
     inner,
     footer: [
       escapeHtml(copy.tagline),
       `<a href="https://upspeech.app" class="foot" style="color:#767a90;text-decoration:underline;">upspeech.app</a>`,
-      escapeHtml(copy.footerNote),
+      escapeHtml(therapist ? copy.footerNote : copy.waitlist.footerNote),
     ],
   });
 
   const text = [
     greetingText(copy, given),
     "",
-    copy.intro,
+    intro,
     "",
-    `${copy.cardTitle}:`,
-    `  ${copy.labelName}: ${lead.name}`,
-    `  ${copy.labelRole}: ${role}`,
-    `  ${copy.labelClinicSize}: ${clinicSize}`,
+    `${therapist ? copy.cardTitle : copy.waitlist.cardTitle}:`,
+    ...rows.map(([label, value]) => `  ${label}: ${value}`),
     "",
     `${copy.stepsTitle}:`,
-    ...copy.steps.map((s, i) => `  ${i + 1}. ${s.title} - ${s.detail}`),
-    ...(surveyUrl
+    ...steps.map((s, i) => `  ${i + 1}. ${s.title} - ${s.detail}`),
+    ...(therapist && surveyUrl
       ? [
           "",
           copy.surveyTitle,
@@ -354,7 +398,7 @@ ${card(`${cardLabel(copy.cardTitle)}
     "upspeech.app",
   ].join("\n");
 
-  return { subject: copy.subject, html, text };
+  return { subject, html, text };
 };
 
 /**
@@ -368,9 +412,32 @@ export const teamEmail = (
 ): RenderedEmail => {
   /* English labels here and in the spreadsheet, so a Portuguese and an
      English submission of the same role read as the same value. */
-  const role = roleLabel("en", lead.role);
-  const clinicSize = clinicSizeLabel("en", lead.clinicSize) || "Not specified";
+  const role = profileLabel("en", lead.profile);
+  const request = requestLabel("en", lead.request);
   const campaign = campaignSummary(lead) || "Untagged";
+  const who = lead.name || lead.email;
+  const details: [string, string][] = [
+    ["Joining as", role],
+    ["Request", request],
+    ...(lead.request === "pilot"
+      ? [
+          [
+            "Team",
+            clinicSizeLabel("en", lead.clinicSize) || "Not specified",
+          ] as [string, string],
+        ]
+      : []),
+    ...(lead.clinic ? [["Clinic", lead.clinic] as [string, string]] : []),
+    ["Email updates", lead.consent ? "Yes" : "No"],
+    ...(lead.shareCode
+      ? [["Share code", lead.shareCode] as [string, string]]
+      : []),
+    ...(lead.referredBy
+      ? [["Referred by", lead.referredBy] as [string, string]]
+      : []),
+    ["Language", lead.locale],
+    ["Campaign", campaign],
+  ];
 
   const alert =
     persistence.sheet === "ok"
@@ -397,16 +464,16 @@ export const teamEmail = (
   const inner = `
           <tr>
             <td class="pad" style="padding:42px 40px 0 40px;">
-${eyebrow("New early-access request")}
-${heading(lead.name)}
+${eyebrow(lead.request === "demo" ? "New demo request" : lead.request === "pilot" ? "New pilot request" : "New sign-up")}
+${heading(who)}
               <p style="margin:12px 0 0 0;font-family:${BODY};font-size:15px;line-height:1.5;">
-                <a href="mailto:${escapeHtml(lead.email)}" class="ink-brand" style="color:${LAVENDER_INK};text-decoration:underline;">${escapeHtml(lead.email)}</a>
+                <a href="mailto:${escapeHtml(encodeURIComponent(lead.email))}" class="ink-brand" style="color:${LAVENDER_INK};text-decoration:underline;">${escapeHtml(lead.email)}</a>
               </p>
             </td>
           </tr>
           <tr>
             <td class="pad" style="padding:26px 40px 0 40px;">
-${card(`                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${row("Role", role, true)}${row("Clinic size", clinicSize)}${row("Language", lead.locale)}${row("Campaign", campaign)}
+${card(`                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">${details.map(([label, value], i) => row(label, value, i === 0)).join("")}
                     </table>`)}
             </td>
           </tr>${alert}
@@ -424,26 +491,23 @@ ${cardLabel("Where it was saved")}
             </td>
           </tr>`;
 
-  const subject = `Early-access request: ${lead.name}`;
+  const subject = `${request}: ${who}`;
 
   const html = shell({
     lang: "en",
     title: subject,
-    preheader: `${role}${clinicSize ? `, ${clinicSize}` : ""} - ${lead.email}`,
+    preheader: `${role}, ${request} - ${lead.email}`,
     inner,
     footer: [
-      `Reply to this email to answer ${escapeHtml(firstName(lead.name))} directly.`,
+      `Reply to this email to answer ${escapeHtml(lead.name ? firstName(lead.name) : lead.email)} directly.`,
     ],
   });
 
   const text = [
-    `New early-access request: ${lead.name}`,
+    `${request}: ${who}`,
     "",
-    `Email:       ${lead.email}`,
-    `Role:        ${role}`,
-    `Clinic size: ${clinicSize}`,
-    `Language:    ${lead.locale}`,
-    `Campaign:    ${campaign}`,
+    `Email: ${lead.email}`,
+    ...details.map(([label, value]) => `${label}: ${value}`),
     "",
     `Google Sheet:    ${persistence.sheet}`,
     `Resend audience: ${persistence.audience}`,

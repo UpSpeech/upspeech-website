@@ -118,6 +118,94 @@
   status = 301
   force = true
 
+# Short links printed as QR codes at the Web Summit 2026 booth. A 302, so a
+# link can point somewhere new after the event without reprinting anything.
+# utm_content names the printed item, so each sign-up says what brought it.
+
+[[redirects]]
+  from = "/c/lumo"
+  to = "/join/?for=patient&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=table-lumo"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/lumo-3d"
+  to = "/join/?for=patient&from=figure&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=figure-lumo"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/nima"
+  to = "/join/?for=therapist&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=table-nima"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/nima-3d"
+  to = "/join/?for=therapist&from=figure&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=figure-nima"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/tumbo"
+  to = "/join/?for=family&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=table-tumbo"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/tumbo-3d"
+  to = "/join/?for=family&from=figure&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=figure-tumbo"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/pip"
+  to = "/join/?for=friend&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=table-pip"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/pip-3d"
+  to = "/join/?for=friend&from=figure&utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=figure-pip"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/tote"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=tote"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/tee"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=tee"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/flyer"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=flyer"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/card"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=card"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/pocket"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=pocket"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/find"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=find"
+  status = 302
+  force = true
+
 # Locale-specific 404s. The root dist/404.html is picked up automatically for
 # any path that resolves to no file, but a subdirectory copy is not: per-path
 # 404s need an explicit rule. Without these, a visitor mistyping a /pt/ URL gets

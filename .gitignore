@@ -50,3 +50,5 @@ upspeech-website/*
 
 # Vite dependency cache
 .vite
+
+.ship/

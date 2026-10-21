@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { trackButtonClick } from "@/lib/analytics";
@@ -8,6 +8,7 @@ import { useLocale, useT, localizedHref, splitLocaleFromPath } from "@/i18n";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const locale = useLocale();
   const t = useT().nav;
   // Compare the locale-agnostic remainder rather than the raw pathname:
@@ -145,7 +146,7 @@ const Header = () => {
           <Button
             onClick={() => {
               trackButtonClick("join_waitlist", "header");
-              scrollToSection("cta");
+              navigate(localizedHref("/join", locale));
             }}
             className="hidden md:inline-flex bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-0.5 group shadow-button"
           >
@@ -220,7 +221,8 @@ const Header = () => {
             <Button
               onClick={() => {
                 trackButtonClick("join_waitlist", "header");
-                scrollToSection("cta");
+                setMenuOpen(false);
+                navigate(localizedHref("/join", locale));
               }}
               className="mt-2 bg-gradient-primary hover:bg-calm-navy text-white font-body font-bold px-6 py-3 rounded-full shadow-button"
             >
