@@ -511,7 +511,7 @@ export const es: Dictionary = {
       legendAlone: "Por su cuenta",
       legendHome: "Práctica en casa",
       sentMessage:
-        "Vi esto en Web Summit y me acordé de ti. Puede ayudar entre sesiones.",
+        "Me acordé de ti al ver esto. Puede ayudar entre sesiones.",
       previewTitle: "Más apoyo entre sesiones de logopedia",
       sent: "Enviado",
     },

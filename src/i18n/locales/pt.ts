@@ -516,7 +516,7 @@ export const pt: Dictionary = {
       legendAlone: "Sem apoio",
       legendHome: "Prática em casa",
       sentMessage:
-        "Vi isto na Web Summit e lembrei-me de ti. Pode ajudar entre sessões.",
+        "Lembrei-me de ti quando vi isto. Pode ajudar entre sessões.",
       previewTitle: "Mais apoio entre sessões de terapia da fala",
       sent: "Enviada",
     },

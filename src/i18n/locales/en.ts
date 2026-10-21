@@ -505,7 +505,7 @@ export const en = {
       legendAlone: "On their own",
       legendHome: "Practice at home",
       sentMessage:
-        "Saw this at Web Summit and thought of you. Might help between sessions.",
+        "Thought of you when I saw this. Might help between sessions.",
       previewTitle: "More support between speech therapy sessions",
       sent: "Sent",
     },
