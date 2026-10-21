@@ -504,10 +504,16 @@ export const en = {
       legendAlone: "On their own",
       legendHome: "Practice at home",
       sentMessages: {
+        // One line per utm_source; fallback covers everything else.
         websummit:
           "Saw this at Web Summit and thought of you. Might help between sessions.",
         linkedin:
           "Saw this on LinkedIn and thought of you. Might help between sessions.",
+        instagram:
+          "Saw this on Instagram and thought of you. Might help between sessions.",
+        facebook:
+          "Saw this on Facebook and thought of you. Might help between sessions.",
+        x: "Saw this on X and thought of you. Might help between sessions.",
         fallback:
           "Thought of you when I saw this. Might help between sessions.",
       },

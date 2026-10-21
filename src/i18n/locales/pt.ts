@@ -515,10 +515,16 @@ export const pt: Dictionary = {
       legendAlone: "Sem apoio",
       legendHome: "Prática em casa",
       sentMessages: {
+        // One line per utm_source; fallback covers everything else.
         websummit:
           "Vi isto na Web Summit e lembrei-me de ti. Pode ajudar entre sessões.",
         linkedin:
           "Vi isto no LinkedIn e lembrei-me de ti. Pode ajudar entre sessões.",
+        instagram:
+          "Vi isto no Instagram e lembrei-me de ti. Pode ajudar entre sessões.",
+        facebook:
+          "Vi isto no Facebook e lembrei-me de ti. Pode ajudar entre sessões.",
+        x: "Vi isto no X e lembrei-me de ti. Pode ajudar entre sessões.",
         fallback: "Lembrei-me de ti quando vi isto. Pode ajudar entre sessões.",
       },
       previewTitle: "Mais apoio entre sessões de terapia da fala",
