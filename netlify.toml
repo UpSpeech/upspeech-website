@@ -189,8 +189,20 @@
   force = true
 
 [[redirects]]
-  from = "/c/leaflet"
-  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=leaflet"
+  from = "/c/card"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=card"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/pocket"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=pocket"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/c/find"
+  to = "/join/?utm_source=websummit&utm_medium=qr&utm_campaign=find-your-companion&utm_content=find"
   status = 302
   force = true
 
