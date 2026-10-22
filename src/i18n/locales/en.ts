@@ -443,7 +443,7 @@ export const en = {
           {
             when: "At home",
             title: "With UpSpeech, practice happens a few minutes most days.",
-            body: "Short exercises set by their therapist. They hears each one, review it, and work out where to go next for the patient's development.",
+            body: "Short exercises set by their therapist. The therapist hears each one, reviews it, and works out where to go next for the patient's development.",
           },
           {
             when: "Your part",
