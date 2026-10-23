@@ -96,11 +96,6 @@ const Footer = () => {
           </nav>
         </div>
 
-        <MedicalDisclaimer
-          variant="compact"
-          className="mt-10 max-w-3xl text-white/70"
-        />
-
         {/* Supported By Section */}
         {/* <div
           className="border-t border-white/20 mt-8 pt-8 animate-fade-in"
@@ -128,12 +123,14 @@ const Footer = () => {
           </div>
         </div> */}
 
-        {/* Copyright */}
-        <div
-          className="mt-6 text-center animate-fade-in"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <p className="font-body t-small text-white/70">
+        {/* The disclaimer stays at a readable measure; the rule spans the full
+            width so the strip lines up with the columns above it. */}
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/15 pt-6 text-center md:flex-row md:items-end md:justify-between md:gap-10 md:text-left">
+          <MedicalDisclaimer
+            variant="compact"
+            className="max-w-3xl text-white/70"
+          />
+          <p className="shrink-0 font-body t-small text-white/70">
             © {new Date().getFullYear()} UpSpeech. {t.rights}
           </p>
         </div>
