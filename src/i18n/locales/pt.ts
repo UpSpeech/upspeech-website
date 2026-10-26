@@ -419,7 +419,7 @@ export const pt: Dictionary = {
           {
             when: "Ao longo da semana",
             title: "Alguns minutos juntos",
-            body: "Prática curta em casa com uma atividade partilhada em alguns dias, e um dia de descanso que também faz parte do plano.",
+            body: "Prática curta em casa com uma atividade partilhada em vários dias, e um dia de descanso que também faz parte do plano.",
           },
           {
             when: "Sexta-feira",
