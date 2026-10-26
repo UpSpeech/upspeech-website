@@ -352,17 +352,17 @@ export const es: Dictionary = {
           {
             when: "Después de la sesión",
             title: "Pones el siguiente paso",
-            body: "Elige el próximo ejercicio del Itinerario de Aprendizaje. Espera a tu paciente en la app, con cada cuánto practicar.",
+            body: "Elige el próximo ejercicio para el Itinerario de Aprendizaje. Tu paciente accede a él y lo hace tantas veces como indiques.",
           },
           {
             when: "Entre sesiones",
             title: "Ves la práctica",
-            body: "Hoy, la práctica en casa no se ve hasta la siguiente sesión. Con UpSpeech, cada grabación está ahí para revisarla, y el trabajo administrativo ocupa menos de la semana.",
+            body: "Hoy, la práctica en casa no se ve hasta la siguiente sesión, e incluso entonces no hay certeza. Con UpSpeech, cada grabación está ahí para revisarla.",
           },
           {
             when: "Antes de la siguiente sesión",
             title: "El informe empieza como borrador",
-            body: "UpSpeech prepara el informe a partir de la sesión y de la práctica de la semana. Corriges lo que esté mal y lo firmas. El criterio clínico sigue siendo tuyo.",
+            body: "UpSpeech prepara el informe a partir de la sesión y de la práctica de la semana. Siempre puedes editar cualquier parte. Nada se guarda sin tu visto bueno.",
           },
         ],
         perks: [
@@ -382,12 +382,12 @@ export const es: Dictionary = {
           {
             when: "18:30",
             title: "Un recordatorio suave",
-            body: "A la hora que elegiste. Sin rachas que mantener, solo el paso de hoy.",
+            body: "A la hora que elegiste. 1 ejercicio a la vez.",
           },
           {
             when: "18:32",
-            title: "Cinco minutos tranquilos",
-            body: "La técnica que trabajaste en sesión, a tu ritmo. Nada puntúa lo fluido que sonaste. Prueba a marcarlo como hecho.",
+            title: "Cinco minutos, nada más",
+            body: "La técnica que trabajaste en sesión, a tu ritmo. Nada puntúa lo fluido que sonaste.",
           },
           {
             when: "A la mañana siguiente",
@@ -417,12 +417,12 @@ export const es: Dictionary = {
           {
             when: "Durante la semana",
             title: "Unos minutos juntos",
-            body: "Práctica corta en casa, una actividad compartida algunos días, y un día de descanso que también forma parte del plan.",
+            body: "Práctica corta en casa con una actividad compartida algunos días, y un día de descanso que también forma parte del plan.",
           },
           {
             when: "Viernes",
             title: "Una nota de Ana",
-            body: "La logopeda ha escuchado las grabaciones de la semana antes de la siguiente sesión.",
+            body: "La logopeda escucha las grabaciones de la semana antes de la siguiente sesión.",
           },
         ],
         perks: ["Sigue cómo crece UpSpeech", "Recursos para familias"],
@@ -430,7 +430,7 @@ export const es: Dictionary = {
       friend: {
         label: "Amigo o simpatizante",
         short: "Amigo o simpatizante",
-        line: "Pásale UpSpeech a quien le pueda servir.",
+        line: "Pásale UpSpeech a quien nos necesite.",
         title: "¿Conoces a alguien que necesita más apoyo?",
         sub: "La logopedia suele ser una hora a la semana. UpSpeech ayuda con el resto de la semana. Consigue un enlace para compartir, sin registrarte. Nunca te pedimos su contacto.",
         stepsTitle: "Por qué importa",
@@ -441,13 +441,13 @@ export const es: Dictionary = {
             when: "El hueco",
             title:
               "Una semana entre sesiones es mucho tiempo para practicar solo.",
-            body: "Una sesión, y luego seis días por su cuenta hasta la siguiente.",
+            body: "Una sesión, y luego seis días por su cuenta hasta la siguiente, sin una guía real de cómo practicar lo aprendido.",
           },
           {
             when: "En casa",
             title:
               "Con UpSpeech, la práctica ocurre unos minutos casi todos los días.",
-            body: "Ejercicios cortos que pone su logopeda, con un compañero al lado. La logopeda escucha cada uno.",
+            body: "Ejercicios cortos que pone su logopeda. La logopeda escucha cada uno, lo revisa y decide cuál es el siguiente paso para su evolución.",
           },
           {
             when: "Tu parte",
@@ -462,12 +462,12 @@ export const es: Dictionary = {
       notifApp: "UpSpeech · ahora",
       notifTitle: "Hora de la práctica de hoy",
       notifBody: "5 minutos con lumo. Te la puso Ana.",
-      exerciseTitle: "Inicio suave",
+      exerciseTitle: "Por ejemplo",
       exerciseMeta: "5 min · de Ana",
       exerciseSteps: [
-        "Lee los tres pasos",
-        "Practica a tu ritmo",
-        "Márcalo como hecho",
+        "Una lectura breve sobre el tema",
+        "Un vídeo de la técnica aplicada en la práctica",
+        "Hazlo tú",
       ],
       markDone: "Marcar como hecho",
       doneToday: "Hecho por hoy",
@@ -505,7 +505,7 @@ export const es: Dictionary = {
       anaLeo: "Ana, logopeda de Leo",
       anaFriday: "Viernes, después de revisar la semana",
       anaLeoNote:
-        "Qué buena semana. Prueba otra vez el cuento de dormir el domingo.",
+        "¡Qué buena semana! Probemos otra vez el cuento de dormir el domingo.",
       stripDays: ["L", "M", "X", "J", "V", "S", "L"],
       legendAlone: "Por su cuenta",
       legendHome: "Práctica en casa",
@@ -591,9 +591,9 @@ export const es: Dictionary = {
         waitlist: "Apuntarme a la lista de espera",
         friend: "Quiero novedades",
       },
-      saving: "Guardando tu sitio",
+      saving: "Guardando tu sitio...",
       sending: "Enviando",
-      slowTitle: "Todavía guardando tu sitio.",
+      slowTitle: "Todavía guardando tu sitio...",
       slowBody:
         "La conexión parece lenta. Deja esta página abierta y terminará sola.",
       errorsOne: "Falta corregir una cosa. Está marcada abajo.",
@@ -620,7 +620,7 @@ export const es: Dictionary = {
       lineFriend:
         "Recibirás nuestras novedades por correo. Tu enlace sigue funcionando.",
       upsellTitle: "Míralo con tus propios pacientes",
-      upsellBody: "15 minutos con el equipo. Tu correo ya está puesto.",
+      upsellBody: "15 minutos con el equipo.",
       upsellCta: "Pedir una demo",
       tailorTitle: "Ayúdanos a enviarte lo que te interesa",
       country: "¿Dónde estás?",

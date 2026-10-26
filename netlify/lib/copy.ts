@@ -224,7 +224,7 @@ const pt: ApplicantCopy = {
     preheader: "O que acontece a seguir e quando terá notícias nossas.",
     eyebrow: "Lista de espera",
     intro:
-      "Obrigado por se inscrever. O UpSpeech ajuda as pessoas a praticar entre sessões de terapia da fala, com o terapeuta a acompanhar. Vamos escrever-lhe quando abrir e, até lá, enviar recursos úteis.",
+      "Obrigado por se inscrever. O UpSpeech ajuda as pessoas a praticar entre sessões de terapia da fala, com o terapeuta a acompanhar. Vamos escrever-lhe quando lançarmos novas versões da nossa aplicação e, até lá, enviar-lhe recursos úteis.",
     cardTitle: "A sua inscrição",
     steps: [
       {
@@ -315,7 +315,7 @@ const es: ApplicantCopy = {
     preheader: "Lo que pasa ahora y cuándo sabrás de nosotros.",
     eyebrow: "Lista de espera",
     intro:
-      "Gracias por apuntarte. UpSpeech ayuda a practicar entre sesiones de logopedia, con tu logopeda al tanto. Te escribiremos cuando abra y, mientras tanto, te enviaremos recursos útiles.",
+      "Gracias por apuntarte. UpSpeech ayuda a practicar entre sesiones de logopedia, con tu logopeda al tanto. Te escribiremos cuando lancemos nuevas versiones de nuestra app y, mientras tanto, te enviaremos recursos útiles.",
     cardTitle: "Tu inscripción",
     steps: [
       {

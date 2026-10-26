@@ -353,17 +353,17 @@ export const pt: Dictionary = {
           {
             when: "Depois da sessão",
             title: "O passo seguinte",
-            body: "Escolha o próximo exercício no Percurso de Aprendizagem. Fica à espera do paciente na aplicação, com a frequência de prática.",
+            body: "Escolha o próximo exercício para o Percurso de Aprendizagem. O paciente passa a ter acesso e faz o exercício as vezes que definir.",
           },
           {
             when: "Entre sessões",
             title: "A prática, à vista",
-            body: "Hoje, a prática em casa só se conhece na sessão seguinte. Com o UpSpeech, cada gravação fica disponível para ouvir, e a parte administrativa ocupa menos da semana.",
+            body: "Hoje, a prática em casa só se conhece na sessão seguinte, e mesmo assim sem certezas. Com o UpSpeech, cada gravação fica disponível para ouvir.",
           },
           {
             when: "Antes da sessão seguinte",
             title: "O relatório começa como rascunho",
-            body: "O UpSpeech prepara o relatório a partir da sessão e da prática da semana. Corrige o que estiver errado e assina. A decisão clínica continua a ser sua.",
+            body: "O UpSpeech prepara o relatório a partir da sessão e da prática da semana. Pode sempre editar qualquer parte. Nada é guardado sem a sua aprovação.",
           },
         ],
         perks: [
@@ -383,12 +383,12 @@ export const pt: Dictionary = {
           {
             when: "18:30",
             title: "Um lembrete suave",
-            body: "À hora que escolheu. Sem sequências a manter, só o passo de hoje.",
+            body: "À hora que escolheu. 1 exercício de cada vez.",
           },
           {
             when: "18:32",
-            title: "Cinco minutos tranquilos",
-            body: "A técnica que trabalhou na sessão, ao seu ritmo. Nada avalia a fluência com que falou. Experimente marcar como feito.",
+            title: "Cinco minutos, nada mais",
+            body: "A técnica que trabalhou na sessão, ao seu ritmo. Nada avalia a fluência com que falou.",
           },
           {
             when: "Na manhã seguinte",
@@ -419,12 +419,12 @@ export const pt: Dictionary = {
           {
             when: "Ao longo da semana",
             title: "Alguns minutos juntos",
-            body: "Prática curta em casa, uma atividade partilhada em alguns dias, e um dia de descanso que também faz parte do plano.",
+            body: "Prática curta em casa com uma atividade partilhada em alguns dias, e um dia de descanso que também faz parte do plano.",
           },
           {
             when: "Sexta-feira",
             title: "Uma nota da Ana",
-            body: "A Ana ouviu as gravações da semana antes da sessão seguinte.",
+            body: "A Ana ouve as gravações da semana antes da sessão seguinte.",
           },
         ],
         perks: [
@@ -435,7 +435,7 @@ export const pt: Dictionary = {
       friend: {
         label: "Amigo ou apoiante",
         short: "Amigo ou apoiante",
-        line: "Partilhe o UpSpeech com quem possa precisar.",
+        line: "Partilhe o UpSpeech com quem precisa de nós.",
         title: "Conhece alguém que precisa de mais apoio?",
         sub: "A terapia da fala é muitas vezes uma hora por semana. O UpSpeech ajuda no resto da semana. Receba um link para partilhar, sem inscrição. Nunca pedimos o contacto da outra pessoa.",
         stepsTitle: "Porque é importante",
@@ -446,13 +446,13 @@ export const pt: Dictionary = {
             when: "O intervalo",
             title:
               "Uma semana entre sessões é muito tempo para praticar sozinho.",
-            body: "Uma sessão, e depois seis dias sem apoio até à seguinte.",
+            body: "Uma sessão, e depois seis dias sem apoio até à seguinte, sem orientação real sobre como praticar o que aprendeu.",
           },
           {
             when: "Em casa",
             title:
               "Com o UpSpeech, a prática acontece alguns minutos na maioria dos dias.",
-            body: "Exercícios curtos definidos pelo terapeuta, com um companheiro ao lado. O terapeuta ouve cada um.",
+            body: "Exercícios curtos definidos pelo terapeuta. O terapeuta ouve cada um, revê-o e decide o passo seguinte para a evolução do paciente.",
           },
           {
             when: "A sua parte",
@@ -467,12 +467,12 @@ export const pt: Dictionary = {
       notifApp: "UpSpeech · agora",
       notifTitle: "Hora da prática de hoje",
       notifBody: "5 minutos com o lumo. A Ana definiu-a para si.",
-      exerciseTitle: "Início suave",
+      exerciseTitle: "Por exemplo",
       exerciseMeta: "5 min · da Ana",
       exerciseSteps: [
-        "Leia os três passos",
-        "Pratique ao seu ritmo",
-        "Marque como feito",
+        "Uma leitura breve sobre o tema",
+        "Um vídeo da técnica a ser usada na prática",
+        "Faça você mesmo",
       ],
       markDone: "Marcar como feito",
       doneToday: "Feito por hoje",
@@ -510,7 +510,7 @@ export const pt: Dictionary = {
       anaLeo: "Ana, terapeuta do Leo",
       anaFriday: "Sexta-feira, depois de rever a semana",
       anaLeoNote:
-        "Que boa semana. Experimentem a história de dormir outra vez no domingo.",
+        "Que boa semana! Vamos experimentar a história de dormir outra vez no domingo.",
       stripDays: ["S", "T", "Q", "Q", "S", "S", "S"],
       legendAlone: "Sem apoio",
       legendHome: "Prática em casa",
@@ -596,9 +596,9 @@ export const pt: Dictionary = {
         waitlist: "Entrar na lista de espera",
         friend: "Quero receber novidades",
       },
-      saving: "A guardar o seu lugar",
+      saving: "A guardar o seu lugar...",
       sending: "A enviar",
-      slowTitle: "Ainda a guardar o seu lugar.",
+      slowTitle: "Ainda a guardar o seu lugar...",
       slowBody:
         "A ligação parece lenta. Mantenha esta página aberta e o envio termina sozinho.",
       errorsOne: "Falta corrigir uma coisa. Está assinalada abaixo.",
@@ -625,7 +625,7 @@ export const pt: Dictionary = {
       lineFriend:
         "Vai receber as nossas novidades por email. O seu link continua a funcionar.",
       upsellTitle: "Veja-o com os seus próprios pacientes",
-      upsellBody: "15 minutos com a equipa. O seu email já está preenchido.",
+      upsellBody: "15 minutos com a equipa.",
       upsellCta: "Pedir uma demonstração",
       tailorTitle: "Ajude-nos a enviar-lhe o que interessa",
       country: "Onde está?",
