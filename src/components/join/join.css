@@ -405,24 +405,6 @@
   flex-direction: column;
   gap: 10px;
 }
-.j-extra {
-  background: var(--j-card);
-  border-radius: 16px;
-  padding: 12px 14px;
-  box-shadow:
-    0 2px 8px rgb(41 53 135 / 0.06),
-    0 0 0 1px var(--j-line);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.j-extra b {
-  font: 600 14.5px/1.3 var(--j-text);
-}
-.j-extra p {
-  font-size: 13.5px;
-  color: var(--j-muted);
-}
 .j-chip {
   flex: none;
   align-self: flex-start;

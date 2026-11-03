@@ -334,11 +334,8 @@ export const pt: Dictionary = {
     found: "Encontrou o {name}!",
     stat: {
       value: "86%",
-      text: "dos pacientes do nosso piloto disseram que praticam mais do que antes.",
+      text: "dos pacientes que usam o UpSpeech disseram que praticam mais do que antes.",
     },
-    devTitle: "Jogos de linguagem para casa",
-    devBody:
-      "Prática através do jogo para perturbações do desenvolvimento da linguagem, definida pelo terapeuta como qualquer outro passo.",
     audiences: {
       therapist: {
         label: "Terapeuta da fala ou clínica",
@@ -376,7 +373,7 @@ export const pt: Dictionary = {
         short: "Pessoa em terapia da fala",
         line: "Prática e apoio entre sessões.",
         title: "Prática que continua entre sessões.",
-        sub: "O seu terapeuta define exercícios curtos na aplicação. Pratica alguns minutos em casa com um companheiro, e o terapeuta ouve como correu antes da sessão seguinte. Começamos pela gaguez.",
+        sub: "O seu terapeuta define exercícios curtos na aplicação. Pratica alguns minutos em casa com um companheiro, e o terapeuta ouve como correu antes da sessão seguinte. Começamos pela gaguez e pelas perturbações do desenvolvimento da linguagem.",
         stepsTitle: "Uma noite entre sessões",
         stepsLead: "Como é uma noite de prática, e a manhã seguinte.",
         steps: [
@@ -387,8 +384,8 @@ export const pt: Dictionary = {
           },
           {
             when: "18:32",
-            title: "Cinco minutos, nada mais",
-            body: "A técnica que trabalhou na sessão, ao seu ritmo. Nada avalia a fluência com que falou.",
+            title: "O exercício que a Ana definiu",
+            body: "A técnica que trabalhou na sessão, ao seu ritmo.",
           },
           {
             when: "Na manhã seguinte",
@@ -419,7 +416,7 @@ export const pt: Dictionary = {
           {
             when: "Ao longo da semana",
             title: "Alguns minutos juntos",
-            body: "Prática curta em casa com uma atividade partilhada em vários dias, e um dia de descanso que também faz parte do plano.",
+            body: "Prática curta em casa com uma atividade partilhada em vários dias, e dias de descanso.",
           },
           {
             when: "Sexta-feira",

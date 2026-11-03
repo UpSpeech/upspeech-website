@@ -322,7 +322,7 @@ export const en = {
       "See how UpSpeech helps between speech therapy sessions, whether you are a therapist, in therapy, a parent or a friend. Join the waiting list or request a demo.",
     titleLead: "More support between speech therapy",
     titleAccent: "sessions.",
-    lead: "Starting with stuttering and developmental language difficulties, UpSpeech helps people practice at home and therapists follow their progress.",
+    lead: "Starting with stuttering and developmental language conditions, UpSpeech helps people practice at home and therapists follow their progress.",
     listTitle: "I'm here as",
     back: "Back",
     example: "Example",
@@ -331,11 +331,8 @@ export const en = {
     found: "You found {name}!",
     stat: {
       value: "86%",
-      text: "of patients in our pilot said they practice more than before.",
+      text: "of patients using UpSpeech said they practice more than before.",
     },
-    devTitle: "Language games for home",
-    devBody:
-      "Play-based practice for developmental language difficulties, set by the therapist like any other step.",
     audiences: {
       therapist: {
         label: "A speech therapist or clinic",
@@ -373,7 +370,7 @@ export const en = {
         short: "Someone in speech therapy",
         line: "Practice and support between sessions.",
         title: "Practice that keeps going between sessions.",
-        sub: "Your therapist sets short exercises in the app. You practice a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering.",
+        sub: "Your therapist sets short exercises in the app. You practice a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering and developmental language conditions.",
         stepsTitle: "An evening between sessions",
         stepsLead: "What a practice evening looks like, and the morning after.",
         steps: [
@@ -384,8 +381,8 @@ export const en = {
           },
           {
             when: "6:32 pm",
-            title: "Five minutes, nothing more",
-            body: "The technique you worked on in session, at your own pace. Nothing scores how fluent you sounded.",
+            title: "The exercise Ana set",
+            body: "The technique you worked on in session, at your own pace.",
           },
           {
             when: "Next morning",
@@ -415,7 +412,7 @@ export const en = {
           {
             when: "Through the week",
             title: "A few minutes together",
-            body: "Short practice at home with a shared activity on some days, and a rest day that counts as part of the plan.",
+            body: "Short practice at home with a shared activity on some days, and rest days.",
           },
           {
             when: "Friday",
@@ -620,7 +617,7 @@ export const en = {
       countryOther: "Another country",
       interests: {
         stutter: "Stuttering",
-        dld: "Developmental language difficulties",
+        dld: "Developmental language conditions",
         unsure: "Not sure yet",
       },
       interestsHint: "Pick any that apply.",
