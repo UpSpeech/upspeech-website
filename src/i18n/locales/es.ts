@@ -333,11 +333,8 @@ export const es: Dictionary = {
     found: "¡Has encontrado a {name}!",
     stat: {
       value: "86%",
-      text: "de los pacientes de nuestro piloto dijeron que practican más que antes.",
+      text: "de los pacientes que usan UpSpeech dijeron que practican más que antes.",
     },
-    devTitle: "Juegos de lenguaje para casa",
-    devBody:
-      "Práctica a través del juego para trastornos del desarrollo del lenguaje, que la logopeda pone como cualquier otro paso.",
     audiences: {
       therapist: {
         label: "Logopeda o clínica",
@@ -375,7 +372,7 @@ export const es: Dictionary = {
         short: "Persona en logopedia",
         line: "Práctica y apoyo entre sesiones.",
         title: "Una práctica que sigue entre sesiones.",
-        sub: "Tu logopeda pone ejercicios cortos en la app. Practicas unos minutos en casa con un compañero, y tu logopeda escucha cómo fue antes de la siguiente sesión. Empezamos por la tartamudez.",
+        sub: "Tu logopeda pone ejercicios cortos en la app. Practicas unos minutos en casa con un compañero, y tu logopeda escucha cómo fue antes de la siguiente sesión. Empezamos por la tartamudez y los trastornos del desarrollo del lenguaje.",
         stepsTitle: "Una tarde entre sesiones",
         stepsLead: "Cómo es una tarde de práctica, y la mañana siguiente.",
         steps: [
@@ -386,8 +383,8 @@ export const es: Dictionary = {
           },
           {
             when: "18:32",
-            title: "Cinco minutos, nada más",
-            body: "La técnica que trabajaste en sesión, a tu ritmo. Nada puntúa lo fluido que sonaste.",
+            title: "El ejercicio que puso Ana",
+            body: "La técnica que trabajaste en sesión, a tu ritmo.",
           },
           {
             when: "A la mañana siguiente",
@@ -417,7 +414,7 @@ export const es: Dictionary = {
           {
             when: "Durante la semana",
             title: "Unos minutos juntos",
-            body: "Práctica corta en casa con una actividad compartida algunos días, y un día de descanso que también forma parte del plan.",
+            body: "Práctica corta en casa con una actividad compartida algunos días, y días de descanso.",
           },
           {
             when: "Viernes",

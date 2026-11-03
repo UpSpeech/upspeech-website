@@ -43,7 +43,7 @@ const INTERESTS = ["stutter", "dld", "unsure"] as const;
 /* The sheet gets English labels whatever the visitor's language. */
 const INTEREST_LABELS: Record<(typeof INTERESTS)[number], string> = {
   stutter: "Stuttering",
-  dld: "Developmental language difficulties",
+  dld: "Developmental language conditions",
   unsure: "Not sure yet",
 };
 const SHARE_KEY = "upspeech_share";

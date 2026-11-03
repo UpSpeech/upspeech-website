@@ -207,12 +207,6 @@ export function Story({
               </li>
             ))}
           </ol>
-          {aud === "family" && (
-            <div className="j-extra">
-              <b>{t.devTitle}</b>
-              <p>{t.devBody}</p>
-            </div>
-          )}
         </section>
       </div>
     </div>
