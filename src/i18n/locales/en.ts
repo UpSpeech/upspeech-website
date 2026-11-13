@@ -78,6 +78,7 @@ export const en = {
       "Your speech therapist can assign this technique in UpSpeech and see how each practice went before your next appointment.",
     closingLink: "How UpSpeech works for patients",
     relatedTechniques: "Practised with this one",
+    furtherReading: "Further reading",
   },
   home: {
     seoDescription:

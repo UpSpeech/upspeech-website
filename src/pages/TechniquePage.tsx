@@ -12,6 +12,7 @@ import {
 } from "@/lib/seo-data";
 import { Faq } from "@/components/Faq";
 import { getTechniqueFAQs } from "@/lib/technique-faqs";
+import { TECHNIQUE_READING } from "@/lib/technique-reading";
 import { useLocale, useT, localizedHref } from "@/i18n";
 
 interface TechniquePageProps {
@@ -106,6 +107,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
   }, [loading, error, slug]);
 
   const faqs = getTechniqueFAQs(slug, locale);
+  const reading = TECHNIQUE_READING[slug];
   const railLinks = [
     technique?.practical_description && {
       id: "practical-description",
@@ -120,6 +122,7 @@ export function TechniquePage({ slug }: TechniquePageProps) {
       id: "faq",
       label: FAQ_TITLES[locale] || FAQ_TITLES.en,
     },
+    reading?.length && { id: "further-reading", label: tt.furtherReading },
   ].filter((link): link is { id: string; label: string } => Boolean(link));
 
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -395,6 +398,35 @@ export function TechniquePage({ slug }: TechniquePageProps) {
                         answer: faq.answer,
                       }))}
                     />
+                  </section>
+                ) : null}
+
+                {reading?.length ? (
+                  <section
+                    id="further-reading"
+                    className="max-w-3xl scroll-mt-28"
+                  >
+                    <h2 className={headingClass}>{tt.furtherReading}</h2>
+                    <ul className="mt-5 space-y-4">
+                      {reading.map((item) => (
+                        <li key={item.url}>
+                          <a
+                            href={item.url}
+                            hrefLang="en"
+                            lang="en"
+                            className="inline-flex min-h-[44px] items-center font-body font-semibold text-calm-navy hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-navy/40"
+                          >
+                            {item.title}
+                          </a>
+                          <span
+                            lang="en"
+                            className="block font-body t-small text-calm-charcoal/80"
+                          >
+                            {item.publisher}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </section>
                 ) : null}
 

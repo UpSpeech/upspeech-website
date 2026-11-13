@@ -79,6 +79,7 @@ export const pt: Dictionary = {
       "O teu terapeuta da fala pode atribuir esta técnica na UpSpeech e ver como correu cada prática antes da próxima consulta.",
     closingLink: "Como a UpSpeech ajuda os pacientes",
     relatedTechniques: "Praticadas com esta",
+    furtherReading: "Para saber mais",
   },
   home: {
     seoDescription:

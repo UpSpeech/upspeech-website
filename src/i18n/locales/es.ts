@@ -79,6 +79,7 @@ export const es: Dictionary = {
       "Tu logopeda puede asignar esta técnica en UpSpeech y ver cómo fue cada práctica antes de tu próxima cita.",
     closingLink: "Cómo funciona UpSpeech para pacientes",
     relatedTechniques: "Se practican con esta",
+    furtherReading: "Para saber más",
   },
   home: {
     seoDescription:
