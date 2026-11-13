@@ -19,6 +19,12 @@
 # which is the point.
 
 [[redirects]]
+  from = "https://upspeech.netlify.app/*"
+  to = "https://upspeech.app/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://upspeechapp.com/*"
   to = "https://upspeech.app/:splat"
   status = 301
@@ -217,6 +223,25 @@
 #
 # No force: shadowing then means these only fire for paths that match no file,
 # so every real prerendered page under /pt/ and /es/ still wins.
+# The slug has one l. The usual spelling has two, and people type it.
+[[redirects]]
+  from = "/techniques/cancellation"
+  to = "/techniques/cancelation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/techniques/cancellation"
+  to = "/pt/techniques/cancelation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/techniques/cancellation"
+  to = "/es/techniques/cancelation/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/pt/*"
   to = "/pt/404.html"

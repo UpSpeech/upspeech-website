@@ -84,7 +84,7 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Who is UpSpeech for?",
-        a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+        a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists review each attempt and edit AI-drafted reports.",
       },
       {
         q: "Is my data private?",
@@ -172,7 +172,7 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Para quem é a UpSpeech?",
-        a: "A UpSpeech apoia terapeutas da fala e os seus pacientes. Os pacientes praticam entre sessões com exercícios estruturados e feedback, enquanto os terapeutas obtêm relatórios assistidos por IA e acompanhamento do progresso.",
+        a: "A UpSpeech apoia terapeutas da fala e os seus pacientes. Os pacientes praticam entre sessões com exercícios estruturados e feedback, enquanto os terapeutas reveem cada tentativa e editam relatórios redigidos por IA.",
       },
       {
         q: "Os meus dados são privados?",
@@ -261,7 +261,7 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "¿Para quién es UpSpeech?",
-        a: "UpSpeech apoya a logopedas y a sus pacientes. Los pacientes practican entre sesiones con ejercicios estructurados y feedback, mientras que los terapeutas obtienen informes asistidos por IA y seguimiento del progreso.",
+        a: "UpSpeech apoya a logopedas y a sus pacientes. Los pacientes practican entre sesiones con ejercicios estructurados y feedback, mientras que los terapeutas revisan cada intento y editan informes redactados por IA.",
       },
       {
         q: "¿Mis datos son privados?",
@@ -337,7 +337,7 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "Who is UpSpeech for?",
-      a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+      a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists review each attempt and edit AI-drafted reports.",
     },
     {
       q: "Is my data private?",
@@ -363,7 +363,7 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "Para quem é a UpSpeech?",
-      a: "A UpSpeech apoia terapeutas da fala e os seus pacientes. Os pacientes praticam entre sessões com exercícios estruturados e feedback, enquanto os terapeutas obtêm relatórios assistidos por IA e acompanhamento do progresso.",
+      a: "A UpSpeech apoia terapeutas da fala e os seus pacientes. Os pacientes praticam entre sessões com exercícios estruturados e feedback, enquanto os terapeutas reveem cada tentativa e editam relatórios redigidos por IA.",
     },
     {
       q: "Os meus dados são privados?",
@@ -389,7 +389,7 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "¿Para quién es UpSpeech?",
-      a: "UpSpeech apoya a logopedas y a sus pacientes. Los pacientes practican entre sesiones con ejercicios estructurados y feedback, mientras que los terapeutas obtienen informes asistidos por IA y seguimiento del progreso.",
+      a: "UpSpeech apoya a logopedas y a sus pacientes. Los pacientes practican entre sesiones con ejercicios estructurados y feedback, mientras que los terapeutas revisan cada intento y editan informes redactados por IA.",
     },
     {
       q: "¿Mis datos son privados?",

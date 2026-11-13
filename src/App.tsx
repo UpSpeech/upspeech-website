@@ -101,7 +101,9 @@ const Chrome = ({ children }: { children: React.ReactNode }) => (
   <div className="flex min-h-screen flex-col bg-white font-body">
     <Header />
     {/* Header is fixed, so reserve its height the same way the other pages do */}
-    <div className="flex-1 pt-24 sm:pt-28">{children}</div>
+    <main id="main" className="flex-1 pt-24 sm:pt-28">
+      {children}
+    </main>
     <Footer />
   </div>
 );

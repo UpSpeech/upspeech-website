@@ -153,6 +153,7 @@ function collect() {
     parseError,
     internalLinks,
     h1Count: document.querySelectorAll("h1").length,
+    mainCount: document.querySelectorAll("main").length,
     title: document.title,
     description:
       document
@@ -231,6 +232,8 @@ function check(page, report) {
 
   if (report.h1Count !== 1)
     problems.push(`${report.h1Count} <h1> elements, expected exactly 1`);
+  if (report.mainCount !== 1)
+    problems.push(`${report.mainCount} <main> elements, expected exactly 1`);
   if (report.title.length > MAX_TITLE)
     problems.push(
       `<title> is ${report.title.length} characters, over ${MAX_TITLE}: "${report.title}"`,
