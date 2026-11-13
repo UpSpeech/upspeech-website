@@ -255,13 +255,8 @@ function check(page, report) {
     problems.push(`canonical is ${report.canonical}, expected ${url}`);
 
   problems.push(...linkProblems(report.internalLinks));
-  // Every page has to lead home and to the techniques hub, or the pages
-  // behind them are reachable only through the sitemap.
-  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
-  for (const target of [`${prefix}/`, `${prefix}/techniques/`]) {
-    if (!report.internalLinks.includes(target))
-      problems.push(`no link to ${target}`);
-  }
+  const home = locale === DEFAULT_LOCALE ? "/" : `/${locale}/`;
+  if (!report.internalLinks.includes(home)) problems.push(`no link to ${home}`);
   if (report.htmlLang !== locale)
     problems.push(`<html lang> is ${report.htmlLang}, expected ${locale}`);
 

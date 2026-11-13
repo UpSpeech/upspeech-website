@@ -8,7 +8,6 @@ const linkClass =
 const Footer = () => {
   const locale = useLocale();
   const t = useT().footer;
-  const crumbs = useT().breadcrumbs;
   return (
     <footer
       className="py-12 px-4 sm:px-6 lg:px-8 bg-calm-navy text-white relative overflow-hidden"
@@ -36,12 +35,6 @@ const Footer = () => {
             className="flex flex-col items-center md:items-start gap-1"
           >
             <h2 className="font-body t-eyebrow text-white/70">{t.product}</h2>
-            <a
-              href={localizedHref("/techniques", locale)}
-              className={linkClass}
-            >
-              {crumbs.techniques}
-            </a>
             <a
               href={localizedHref("/for-patients", locale)}
               className={linkClass}
