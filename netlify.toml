@@ -212,17 +212,6 @@
   status = 302
   force = true
 
-# Locale-specific 404s. The root dist/404.html is picked up automatically for
-# any path that resolves to no file, but a subdirectory copy is not: per-path
-# 404s need an explicit rule. Without these, a visitor mistyping a /pt/ URL gets
-# the English 404.
-#
-# Last on purpose. The engine takes the first matching rule top to bottom, so
-# putting "/pt/*" above the /pt/stutter-positive and /pt/person-centred-therapy
-# rules would 404 those instead of redirecting them.
-#
-# No force: shadowing then means these only fire for paths that match no file,
-# so every real prerendered page under /pt/ and /es/ still wins.
 # The slug has one l. The usual spelling has two, and people type it.
 [[redirects]]
   from = "/techniques/cancellation"
@@ -242,6 +231,17 @@
   status = 301
   force = true
 
+# Locale-specific 404s. The root dist/404.html is picked up automatically for
+# any path that resolves to no file, but a subdirectory copy is not: per-path
+# 404s need an explicit rule. Without these, a visitor mistyping a /pt/ URL gets
+# the English 404.
+#
+# Last on purpose. The engine takes the first matching rule top to bottom, so
+# putting "/pt/*" above the /pt/stutter-positive and /pt/person-centred-therapy
+# rules would 404 those instead of redirecting them.
+#
+# No force: shadowing then means these only fire for paths that match no file,
+# so every real prerendered page under /pt/ and /es/ still wins.
 [[redirects]]
   from = "/pt/*"
   to = "/pt/404.html"
