@@ -152,6 +152,11 @@ function collect() {
     parseError,
     internalLinks,
     h1Count: document.querySelectorAll("h1").length,
+    title: document.title,
+    description:
+      document
+        .querySelector('meta[name="description"]')
+        ?.getAttribute("content") ?? "",
     canonical:
       document.querySelector('link[rel="canonical"]')?.getAttribute("href") ??
       null,
@@ -186,6 +191,11 @@ function linkProblems(internalLinks) {
   return problems;
 }
 
+// Roughly what a search result shows before it cuts the text off.
+const MAX_TITLE = 60;
+const MIN_DESCRIPTION = 50;
+const MAX_DESCRIPTION = 160;
+
 const BREADCRUMB_TYPES = ["WebPage", "CollectionPage"];
 // Pages with one of these nodes sit below the home page, so they carry a trail.
 const CRUMBED_TYPES = ["Article", "CollectionPage"];
@@ -219,6 +229,18 @@ function check(page, report) {
 
   if (report.h1Count !== 1)
     problems.push(`${report.h1Count} <h1> elements, expected exactly 1`);
+  if (report.title.length > MAX_TITLE)
+    problems.push(
+      `<title> is ${report.title.length} characters, over ${MAX_TITLE}: "${report.title}"`,
+    );
+  const descriptionLength = report.description.length;
+  if (
+    descriptionLength < MIN_DESCRIPTION ||
+    descriptionLength > MAX_DESCRIPTION
+  )
+    problems.push(
+      `meta description is ${descriptionLength} characters, outside ${MIN_DESCRIPTION} to ${MAX_DESCRIPTION}`,
+    );
   if (report.canonical !== url)
     problems.push(`canonical is ${report.canonical}, expected ${url}`);
 

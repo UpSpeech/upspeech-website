@@ -54,7 +54,7 @@ export const en = {
     title: "Speech Therapy Techniques",
     subtitle: "What each one is for, and how to practise it",
     seoDescription:
-      "Speech therapy techniques for stuttering, each with what it is, what it is for, and how to practise it. Covers fluency shaping, stuttering modification and cognitive approaches.",
+      "Speech therapy techniques for stuttering: what each one is, what it is for and how to practise it. Covers fluency shaping and stuttering modification.",
     featured: "Featured",
     mainCategories: "Technique families",
     standalone: "Techniques that do not belong to a family",

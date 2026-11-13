@@ -102,6 +102,40 @@ export const TECHNIQUE_SEO: Record<
   },
 };
 
+// pt and es have no curated table, so the title is the record's own name plus
+// what kind of thing it is.
+export const TECHNIQUE_TITLE_SUFFIX: Record<string, string> = {
+  pt: "técnica para a gaguez",
+  es: "técnica para la tartamudez",
+};
+
+const BRAND_SUFFIX = " | UpSpeech";
+const MAX_TITLE_LENGTH = 60;
+
+/** The <title> and meta description for a technique page. */
+export function techniqueSeo(
+  slug: string,
+  locale: string,
+  technique: { name: string; description: string } | null,
+): { title?: string; description?: string } {
+  const curated = locale === "en" ? TECHNIQUE_SEO[slug] : undefined;
+  const suffix = TECHNIQUE_TITLE_SUFFIX[locale];
+  const suffixed =
+    technique && suffix ? `${technique.name}: ${suffix}` : undefined;
+  const fits =
+    suffixed !== undefined &&
+    suffixed.length + BRAND_SUFFIX.length <= MAX_TITLE_LENGTH;
+  return {
+    title: curated?.title ?? (fits ? suffixed : technique?.name),
+    description:
+      curated?.description ||
+      technique?.description ||
+      (technique
+        ? `Learn about ${technique.name}, a speech therapy technique for stuttering.`
+        : undefined),
+  };
+}
+
 export function getTechniqueStructuredData(
   slug: string,
   name: string,
@@ -156,13 +190,16 @@ export function getTechniqueFAQStructuredData(
   };
 }
 
-export function getPersonCenteredStructuredData(locale: string = "en") {
+export function getPersonCenteredStructuredData(
+  locale: string,
+  headline: string,
+  description: string,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "What does person-centred mean?",
-    description:
-      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+    headline,
+    description,
     url: localeAbsUrl("/person-centered-therapy", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",
@@ -175,14 +212,16 @@ export function getPersonCenteredStructuredData(locale: string = "en") {
   };
 }
 
-export function getDocumentationArticleStructuredData(locale: string = "en") {
+export function getDocumentationArticleStructuredData(
+  locale: string,
+  headline: string,
+  description: string,
+) {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline:
-      "How speech-language pathologists spend less time on session notes",
-    description:
-      "A practical guide for speech-language pathologists on reducing documentation time in speech therapy, with structured drafts that support clinical judgement.",
+    headline,
+    description,
     url: localeAbsUrl("/reducing-documentation-time", locale),
     inLanguage: locale,
     datePublished: "2026-06-25",

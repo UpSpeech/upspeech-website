@@ -14,7 +14,11 @@ export default function ReducingDocumentationTime() {
   const locale = useLocale();
   const t = useT().reducingDocumentationTime;
 
-  const articleSchema = getDocumentationArticleStructuredData(locale);
+  const articleSchema = getDocumentationArticleStructuredData(
+    locale,
+    t.seoTitle,
+    t.seoDescription,
+  );
   const dictionary = useT();
   const breadcrumbs = breadcrumbList(
     [
