@@ -1275,7 +1275,8 @@
     .companion-eyes,
     .companion-mouth-rest,
     .companion-mouth-open,
-    .companion-dot
+    .companion-dot,
+    .companion-crown
   ) {
   animation-play-state: paused;
 }
@@ -1285,7 +1286,8 @@
     .companion-eyes,
     .companion-mouth-rest,
     .companion-mouth-open,
-    .companion-dot
+    .companion-dot,
+    .companion-crown
   ) {
   animation-play-state: running;
 }
@@ -1414,6 +1416,190 @@
   }
 }
 
+/* Each species keeps the shared drawing and gets its own loop on its own
+   period, with its own start offset, so a row of them never moves in step.
+   Lumo keeps the base loop: it is the one that speaks. */
+.companion
+  :is(
+    .companion-body,
+    .companion-eyes,
+    .companion-mouth-rest,
+    .companion-mouth-open,
+    .companion-dot,
+    .companion-crown
+  ) {
+  animation-delay: var(--companion-offset, 0s);
+}
+.companion .companion-dot-2 {
+  animation-delay: calc(var(--companion-offset, 0s) + 0.24s);
+}
+.companion .companion-dot-3 {
+  animation-delay: calc(var(--companion-offset, 0s) + 0.48s);
+}
+
+/* Pip is the curious one: a small hop with the antenna swinging after it, and
+   a quick double blink. It does not speak. */
+.companion-pip {
+  --companion-offset: -1.5s;
+}
+.companion-pip .companion-body {
+  animation: companion-hop 5s ease-in-out var(--companion-offset, 0s) infinite;
+}
+.companion-pip .companion-crown {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: companion-sway 5s ease-in-out var(--companion-offset, 0s) infinite;
+}
+.companion-pip .companion-eyes {
+  animation: companion-double-blink 5s ease-in-out var(--companion-offset, 0s)
+    infinite;
+}
+
+/* Nima is the listener: it tilts its head and holds it there, with a slow
+   blink. It does not speak either. */
+.companion-nima {
+  --companion-offset: -3s;
+}
+.companion-nima .companion-body {
+  animation: companion-tilt 7.5s ease-in-out var(--companion-offset, 0s)
+    infinite;
+}
+.companion-nima .companion-eyes {
+  animation: companion-slow-blink 7.5s ease-in-out var(--companion-offset, 0s)
+    infinite;
+}
+
+.companion-pip :is(.companion-mouth-open, .companion-dot),
+.companion-nima :is(.companion-mouth-open, .companion-dot) {
+  animation: none;
+  opacity: 0;
+}
+.companion-pip .companion-mouth-rest,
+.companion-nima .companion-mouth-rest {
+  animation: none;
+  opacity: 1;
+}
+
+/* Tumbo is the slow one: a deep breath, a slow blink, and it speaks on a
+   longer clock than lumo. */
+.companion-tumbo {
+  --companion-offset: -4.5s;
+}
+.companion-tumbo .companion-body {
+  animation: companion-deep-breathe 9s ease-in-out var(--companion-offset, 0s)
+    infinite;
+}
+.companion-tumbo .companion-eyes {
+  animation: companion-slow-blink 9s ease-in-out var(--companion-offset, 0s)
+    infinite;
+}
+.companion-tumbo .companion-mouth-rest {
+  animation-duration: 9s;
+}
+.companion-tumbo .companion-mouth-open {
+  animation-duration: 9s;
+}
+.companion-tumbo .companion-dot {
+  animation-duration: 9s;
+}
+
+@keyframes companion-hop {
+  0%,
+  58%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  64% {
+    transform: translateY(0) scale(1.03, 0.96);
+  }
+  72% {
+    transform: translateY(-5%) scale(0.99, 1.02);
+  }
+  80% {
+    transform: translateY(0) scale(1.02, 0.97);
+  }
+  86% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+@keyframes companion-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(-7deg);
+  }
+  36% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  74% {
+    transform: rotate(9deg);
+  }
+  84% {
+    transform: rotate(-5deg);
+  }
+  92% {
+    transform: rotate(2deg);
+  }
+}
+@keyframes companion-double-blink {
+  0%,
+  30%,
+  34%,
+  38%,
+  42%,
+  100% {
+    transform: scaleY(1);
+  }
+  32%,
+  40% {
+    transform: scaleY(0.12);
+  }
+}
+@keyframes companion-tilt {
+  0%,
+  12%,
+  70%,
+  100% {
+    transform: rotate(0deg);
+  }
+  24%,
+  56% {
+    transform: rotate(-5deg) translateY(-1%);
+  }
+}
+@keyframes companion-slow-blink {
+  0%,
+  44%,
+  58%,
+  100% {
+    transform: scaleY(1);
+  }
+  49%,
+  53% {
+    transform: scaleY(0.12);
+  }
+}
+@keyframes companion-deep-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  42% {
+    transform: translateY(-2.2%) scale(1.03);
+  }
+  60% {
+    transform: translateY(-1.6%) scale(1.022);
+  }
+}
+
 /* Reduced motion keeps the character and drops the performance, resting on the
    speaking state: it is the one that says what the product is for. */
 @media (prefers-reduced-motion: reduce) {
@@ -1423,7 +1609,8 @@
       .companion-eyes,
       .companion-mouth-rest,
       .companion-mouth-open,
-      .companion-dot
+      .companion-dot,
+      .companion-crown
     ) {
     animation: none;
   }
