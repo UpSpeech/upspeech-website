@@ -192,7 +192,7 @@ export const pt: Dictionary = {
         headline: "Lembras-te de todos.",
         body: "Seis pacientes, um a seguir ao outro. Ao fim da tarde o detalhe desapareceu. O registo não, e é dele que parte a sessão seguinte.",
         screenshotAlt:
-          "O painel do terapeuta, com os pacientes atribuídos, a atividade recente e o que precisa de atenção",
+          "O painel do terapeuta, com os pacientes que precisam de atenção hoje e uma mensagem para o primeiro pronta a enviar",
       },
     },
     mobile: {

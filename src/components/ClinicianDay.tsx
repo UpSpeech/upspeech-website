@@ -122,8 +122,8 @@ const ClinicianDay = () => {
                   locale,
                 )}
                 alt={t.assessment.detailAlt}
-                width={634}
-                height={264}
+                width={836}
+                height={196}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
@@ -262,8 +262,8 @@ const ClinicianDay = () => {
                   locale,
                 )}
                 alt={t.plan.detailAlt}
-                width={880}
-                height={136}
+                width={1080}
+                height={250}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
@@ -295,12 +295,12 @@ const ClinicianDay = () => {
             >
               <img
                 src={localizedAsset(
-                  "/screenshots/app/therapist-dashboard.png",
+                  "/screenshots/app/therapist-dashboard.webp",
                   locale,
                 )}
                 alt={t.close.screenshotAlt}
                 width={2360}
-                height={1120}
+                height={930}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"

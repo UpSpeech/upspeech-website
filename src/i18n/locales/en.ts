@@ -189,7 +189,7 @@ export const en = {
         headline: "You remember all of them.",
         body: "Six patients, back to back. By the evening the detail has gone. The record has not, and it is what the next session starts from.",
         screenshotAlt:
-          "The therapist dashboard, showing assigned patients, recent activity and what needs attention",
+          "The therapist dashboard, listing the patients who need attention today, with a message to the first one ready to send",
       },
     },
     mobile: {

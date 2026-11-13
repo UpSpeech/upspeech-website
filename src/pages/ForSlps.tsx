@@ -154,12 +154,12 @@ export default function ForSlps() {
               >
                 <img
                   src={localizedAsset(
-                    "/screenshots/app/therapist-report.png",
+                    "/screenshots/app/therapist-report.webp",
                     locale,
                   )}
                   alt={t.documentation.screenshotAlt}
-                  width={1800}
-                  height={2065}
+                  width={1826}
+                  height={2312}
                   loading="lazy"
                   className="block h-auto w-full min-w-[680px] sm:min-w-0"
                 />
