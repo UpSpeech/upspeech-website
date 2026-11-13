@@ -53,6 +53,17 @@ export async function checkMobileShowcase(browser, baseUrl) {
             const shots = [...(section?.querySelectorAll("[role=img]") ?? [])];
             return {
               overflow: document.documentElement.scrollWidth > innerWidth + 1,
+              // overflow-hidden sections hide clipped copy from scrollWidth.
+              clippedText: [...document.querySelectorAll("h1, h2, h3, p, a")]
+                .filter((el) => {
+                  for (let a = el.parentElement; a; a = a.parentElement) {
+                    if (/auto|scroll/.test(getComputedStyle(a).overflowX))
+                      return false;
+                  }
+                  const r = el.getBoundingClientRect();
+                  return r.width > 0 && (r.left < -1 || r.right > innerWidth + 1);
+                })
+                .map((el) => el.textContent.trim().slice(0, 40)),
               familyHref: document
                 .querySelector(".family-practice-action")
                 ?.getAttribute("href"),
@@ -82,6 +93,11 @@ export async function checkMobileShowcase(browser, baseUrl) {
             report.overflow,
             false,
             `${path} overflows at ${width}px`,
+          );
+          assert.deepEqual(
+            report.clippedText,
+            [],
+            `${path} clips text at ${width}px`,
           );
           for (const src of report.screenshotSources) {
             assert.ok(

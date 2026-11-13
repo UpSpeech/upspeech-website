@@ -133,7 +133,7 @@ const MobileAppBand = () => {
         ref={ref}
         className="gutter grid items-center gap-10 lg:grid-cols-[5fr_6fr]"
       >
-        <div className="max-w-xl">
+        <div className="min-w-0 max-w-xl">
           <h2
             className="t-h2 font-heading font-bold text-calm-navy tracking-tight"
             style={{ ...reveal(revealed, 80) }}
