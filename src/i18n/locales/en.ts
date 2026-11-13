@@ -398,7 +398,7 @@ export const en = {
     found: "You found {name}!",
     stat: {
       value: "86%",
-      text: "of patients using UpSpeech said they practice more than before.",
+      text: "of patients using UpSpeech said they practise more than before.",
     },
     audiences: {
       therapist: {
@@ -437,7 +437,7 @@ export const en = {
         short: "Someone in speech therapy",
         line: "Practice and support between sessions.",
         title: "Practice that keeps going between sessions.",
-        sub: "Your therapist sets short exercises in the app. You practice a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering and developmental language conditions.",
+        sub: "Your therapist sets short exercises in the app. You practise a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering and developmental language conditions.",
         stepsTitle: "An evening between sessions",
         stepsLead: "What a practice evening looks like, and the morning after.",
         steps: [
@@ -459,7 +459,7 @@ export const en = {
         ],
         perks: [
           "Follow UpSpeech as it grows",
-          "Useful resources for practicing at home",
+          "Useful resources for practising at home",
         ],
       },
       family: {
@@ -501,8 +501,8 @@ export const en = {
         steps: [
           {
             when: "The gap",
-            title: "A week between sessions is a long time to practice alone.",
-            body: "One session, then six days on their own until the next one with no real guidance on how to practice what was learned.",
+            title: "A week between sessions is a long time to practise alone.",
+            body: "One session, then six days on their own until the next one with no real guidance on how to practise what was learned.",
           },
           {
             when: "At home",
@@ -549,7 +549,7 @@ export const en = {
       reportTitle: "Session report",
       draft: "Draft",
       reportBody:
-        "Practiced easy onset on 3 evenings. Recordings attached for review.",
+        "Practised easy onset on 3 evenings. Recordings attached for review.",
       edit: "Edit",
       sign: "Sign",
       planTitle: "Bedtime stories, slow and easy",
