@@ -215,82 +215,11 @@ export const pt: Dictionary = {
       headlineEmphasis: "revisto por um clínico.",
       clinician: "Clínico",
       ai: "IA",
-      patient: "Paciente",
       clinicianStepPrefix: "Clínico · passo ",
       aiStepPrefix: "IA · passo ",
       stepPrefix: "Passo ",
       stepSuffix: " / 06",
-      fileTitle: "Ficha do paciente, semana 14",
       backToStart: "E volta ao passo 01",
-      docs: [
-        {
-          kind: "Relatório da sessão",
-          lines: [
-            {
-              text: "O paciente praticou 3 vezes esta semana.",
-              mark: "ai",
-            },
-            { text: "O evitamento de telefonemas mantém-se.", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Relatório da sessão",
-          lines: [
-            {
-              text: "O paciente praticou 3 vezes esta semana.",
-              mark: "plain",
-            },
-            { text: "O evitamento de telefonemas mantém-se.", mark: "struck" },
-            {
-              text: "O evitamento de telefonemas diminuiu: fez dois telefonemas esta semana.",
-              mark: "clin",
-            },
-          ],
-        },
-        {
-          kind: "Plano de prática",
-          lines: [
-            { text: "Inícios suaves, 5 min por dia", mark: "ai" },
-            { text: "Saídas controladas, 5 min por dia", mark: "ai" },
-            { text: "Dificuldade: média", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Plano de prática",
-          lines: [
-            { text: "Inícios suaves, 5 min por dia", mark: "plain" },
-            { text: "Saídas controladas, 5 min por dia", mark: "struck" },
-            { text: "Gaguez voluntária, 5 min por dia", mark: "clin" },
-            { text: "Dificuldade: fácil", mark: "clin" },
-          ],
-        },
-        {
-          kind: "Tentativas",
-          lines: [
-            { text: "Seg, inícios suaves, esforço 3 de 5", mark: "ai" },
-            { text: "Qua, gaguez voluntária, esforço 3 de 5", mark: "ai" },
-            { text: "Sex, inícios suaves, esforço 2 de 5", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Passo seguinte",
-          lines: [
-            {
-              text: "O esforço desceu de 3 para 2 ao longo da semana.",
-              mark: "plain",
-            },
-            { text: "Praticar telefonemas.", mark: "clin" },
-          ],
-        },
-      ],
-      states: [
-        "Rascunho",
-        "Pronto",
-        "Proposto",
-        "Ativo",
-        "Registada",
-        "Atribuído",
-      ],
       nodes: [
         {
           verb: "redige",

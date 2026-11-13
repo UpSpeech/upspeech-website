@@ -212,72 +212,11 @@ export const en = {
       headlineEmphasis: "reviewed by a clinician.",
       clinician: "Clinician",
       ai: "AI",
-      patient: "Patient",
       clinicianStepPrefix: "Clinician · step ",
       aiStepPrefix: "AI · step ",
       stepPrefix: "Step ",
       stepSuffix: " / 06",
-      fileTitle: "Patient file, week 14",
       backToStart: "Then back to step 01",
-      docs: [
-        {
-          kind: "Session report",
-          lines: [
-            {
-              text: "Patient practised 3 times this week.",
-              mark: "ai",
-            },
-            { text: "Avoidance of phone calls is unchanged.", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Session report",
-          lines: [
-            {
-              text: "Patient practised 3 times this week.",
-              mark: "plain",
-            },
-            { text: "Avoidance of phone calls is unchanged.", mark: "struck" },
-            {
-              text: "Avoidance of phone calls fell: two calls made this week.",
-              mark: "clin",
-            },
-          ],
-        },
-        {
-          kind: "Practice plan",
-          lines: [
-            { text: "Soft starts, 5 min a day", mark: "ai" },
-            { text: "Pull-outs, 5 min a day", mark: "ai" },
-            { text: "Difficulty: medium", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Practice plan",
-          lines: [
-            { text: "Soft starts, 5 min a day", mark: "plain" },
-            { text: "Pull-outs, 5 min a day", mark: "struck" },
-            { text: "Voluntary stuttering, 5 min a day", mark: "clin" },
-            { text: "Difficulty: easy", mark: "clin" },
-          ],
-        },
-        {
-          kind: "Attempts this week",
-          lines: [
-            { text: "Mon, soft starts, effort 3 of 5", mark: "ai" },
-            { text: "Wed, voluntary stuttering, effort 3 of 5", mark: "ai" },
-            { text: "Fri, soft starts, effort 2 of 5", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Next step",
-          lines: [
-            { text: "Effort fell from 3 to 2 over the week.", mark: "plain" },
-            { text: "Phone-call practice.", mark: "clin" },
-          ],
-        },
-      ],
-      states: ["Draft", "Ready", "Proposed", "Active", "Logged", "Assigned"],
       nodes: [
         {
           verb: "drafts",
