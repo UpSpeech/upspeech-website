@@ -8,6 +8,7 @@ import {
   TECHNIQUE_SEO,
   getTechniqueStructuredData,
   getTechniqueFAQStructuredData,
+  breadcrumbList,
 } from "@/lib/seo-data";
 import { Faq } from "@/components/Faq";
 import { getTechniqueFAQs } from "@/lib/technique-faqs";
@@ -33,6 +34,7 @@ const proseClass = "mt-4 font-body t-lead text-calm-charcoal/80";
 export function TechniquePage({ slug }: TechniquePageProps) {
   const locale = useLocale();
   const tt = useT().techniquePage;
+  const crumbs = useT().breadcrumbs;
   // The prerenderer bakes this article into the HTML it generates, so on a cold
   // load the content is already on screen. Starting from the seed means the first
   // client render matches that markup and hydration adopts the paint instead of
@@ -195,6 +197,14 @@ export function TechniquePage({ slug }: TechniquePageProps) {
           locale,
         ),
         getTechniqueFAQStructuredData(slug, locale),
+        breadcrumbList(
+          [
+            { name: crumbs.home, path: "/" },
+            { name: crumbs.techniques, path: "/techniques" },
+            { name: technique.name, path: `/techniques/${slug}` },
+          ],
+          locale,
+        ),
       ].filter(Boolean)
     : undefined;
 

@@ -3,13 +3,27 @@ import Header from "@/components/Header";
 import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref } from "@/i18n";
-import { getPersonCenteredStructuredData } from "@/lib/seo-data";
+import {
+  getPersonCenteredStructuredData,
+  breadcrumbList,
+} from "@/lib/seo-data";
 
 export default function PersonCentered() {
   const locale = useLocale();
   const t = useT().personCentered;
 
   const articleSchema = getPersonCenteredStructuredData(locale);
+  const dictionary = useT();
+  const breadcrumbs = breadcrumbList(
+    [
+      { name: dictionary.breadcrumbs.home, path: "/" },
+      {
+        name: dictionary.footer.personCentered,
+        path: "/person-centered-therapy",
+      },
+    ],
+    locale,
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -31,7 +45,7 @@ export default function PersonCentered() {
         description={t.seoDescription}
         path="/person-centered-therapy"
         locale={locale}
-        structuredData={[articleSchema, faqSchema]}
+        structuredData={[articleSchema, faqSchema, breadcrumbs]}
       />
       <Header />
 

@@ -186,6 +186,19 @@ function linkProblems(internalLinks) {
   return problems;
 }
 
+const BREADCRUMB_TYPES = ["WebPage", "CollectionPage"];
+const OWN_IMAGE = /^https:\/\/upspeech\.app\/.+\.(png|jpe?g|webp|svg)$/i;
+
+/** Every image URL on our own origin, anywhere in the page's JSON-LD. */
+function ownImageUrls(value, found = new Set()) {
+  if (typeof value === "string") {
+    if (OWN_IMAGE.test(value)) found.add(value);
+  } else if (value && typeof value === "object") {
+    for (const child of Object.values(value)) ownImageUrls(child, found);
+  }
+  return found;
+}
+
 /** Every rule, applied to one page. Returns a list of human-readable failures. */
 function check(page, report) {
   const problems = [];
@@ -234,6 +247,20 @@ function check(page, report) {
       problems.push(
         `WebPage dateModified is ${wp.dateModified} but sitemap lastmod is ${page.lastmod}`,
       );
+    }
+  }
+
+  for (const node of report.jsonLd) {
+    if (node.breadcrumb && !BREADCRUMB_TYPES.includes(node["@type"])) {
+      problems.push(
+        `${node["@type"]} node carries "breadcrumb", which schema.org defines on WebPage only`,
+      );
+    }
+  }
+  for (const imageUrl of ownImageUrls(report.jsonLd)) {
+    const file = join(DIST, new URL(imageUrl).pathname);
+    if (!existsSync(file)) {
+      problems.push(`JSON-LD names ${imageUrl}, which is not in dist/`);
     }
   }
 

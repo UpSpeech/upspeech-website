@@ -18,6 +18,10 @@ export const es: Dictionary = {
     closeMenu: "Cerrar menú",
     mobileMenuLabel: "Navegación",
   },
+  breadcrumbs: {
+    home: "Inicio",
+    techniques: "Técnicas",
+  },
   footer: {
     tagline: "Apoyo a la logopedia, entre sesiones",
     product: "Producto",
