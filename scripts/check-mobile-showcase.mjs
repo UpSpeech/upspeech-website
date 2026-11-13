@@ -146,6 +146,42 @@ export async function checkMobileShowcase(browser, baseUrl) {
         }
       }
     }
+    await page.setViewport({ width: 1440, height: 900 });
+    await page.emulateMediaFeatures([
+      { name: "prefers-reduced-motion", value: "no-preference" },
+    ]);
+    await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => {
+      const video = document.querySelector("video[src*='app-screen']");
+      return video && !video.paused && video.currentTime > 0;
+    });
+    await page.waitForSelector(".site-intro", { hidden: true });
+    await page.click('button[aria-haspopup="menu"]');
+    await page.waitForSelector('[role="menuitem"]', { timeout: 5000 });
+    await page.$$eval('[role="menuitem"]', (items) => {
+      const portuguese = items.find(
+        (item) => item.textContent.trim() === "Português",
+      );
+      if (!portuguese) throw new Error("Portuguese language option missing");
+      portuguese.click();
+    });
+    await page.waitForFunction(
+      () => {
+        const video = document.querySelector("video[src*='app-screen']");
+        return (
+          video?.getAttribute("src") === "/videos/pt/app-screen.mp4" &&
+          !video.paused &&
+          video.currentTime > 0
+        );
+      },
+      { timeout: 5000 },
+    );
+    await page.emulateMediaFeatures([
+      { name: "prefers-reduced-motion", value: "reduce" },
+    ]);
+    await page.waitForFunction(
+      () => document.querySelector("video[src*='app-screen']").paused,
+    );
     console.log(
       "check:mobile-showcase OK: EN/PT/ES, 390px and 1440px, decoded images and localised videos.",
     );

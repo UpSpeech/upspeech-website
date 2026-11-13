@@ -125,7 +125,7 @@ const MobileAppBand = () => {
       motion.removeEventListener("change", update);
       video.pause();
     };
-  }, []);
+  }, [heroVideo]);
 
   return (
     <section className="bg-white py-12 sm:py-16 overflow-hidden">
