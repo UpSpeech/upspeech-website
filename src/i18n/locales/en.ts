@@ -861,7 +861,7 @@ export const en = {
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. The audio file is deleted once you finalise the report, and no later than 24 hours after the report is generated. The transcript and the report are kept as part of the record. The therapist sees all of it before any report is finalised.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. The audio file is deleted once you confirm the report, and no later than 24 hours after the report is generated. The transcript and the report are kept as part of the record. The therapist sees all of it before any report is confirmed.",
         },
       ],
     },

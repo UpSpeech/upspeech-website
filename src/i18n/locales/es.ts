@@ -871,7 +871,7 @@ export const es: Dictionary = {
         },
         {
           q: "¿Cómo recopila UpSpeech los datos con los que se construye el borrador?",
-          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. El archivo de audio se elimina cuando finalizas el informe y, como máximo, 24 horas después de que se genere el informe. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de que se finalice ninguna nota.",
+          a: "Se alimenta de dos fuentes. La práctica entre sesiones aporta datos de finalización y rendimiento desde la app. La grabación de la sesión se transcribe, y el borrador del informe se genera a partir de esa transcripción. El archivo de audio se elimina cuando confirmas el informe y, como máximo, 24 horas después de que se genere el informe. La transcripción y el informe se conservan como parte de la historia clínica. El terapeuta lo ve todo antes de confirmar el informe.",
         },
       ],
     },
