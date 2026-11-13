@@ -63,8 +63,10 @@ const AMERICAN = new RegExp(
   "i",
 );
 
-// Clinical names and field names that stay as they are.
-const EXEMPT = /anonymiz|pseudonymiz|Innocatalyst Health Program|\$\{/i;
+// Clinical names, field names and the titles of other people's work stay as
+// they are.
+const EXEMPT =
+  /anonymiz|pseudonymiz|Innocatalyst Health Program|Behavioral treatments for children|Behavior Management|\$\{/i;
 const STRING = /(["'`])((?:\\.|(?!\1).)+?)\1/g;
 const JSX_TEXT = />([^<>{}]*\s[^<>{}]*)</g;
 // Tailwind class lists and CSS values are code, not copy.
