@@ -118,11 +118,16 @@ const Header = () => {
           <a
             href={localizedHref("/", locale)}
             aria-label={isHome ? t.logoScrollTop : t.logoGoHome}
-            className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink rounded-lg"
+            className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink rounded-lg"
             onClick={(event) => {
               trackButtonClick("logo", "header");
               setMenuOpen(false);
-              if (!isHome) return;
+              const newTab =
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey;
+              if (!isHome || newTab) return;
               event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
