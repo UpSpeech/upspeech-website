@@ -41,10 +41,7 @@ export function breadcrumbList(
   };
 }
 
-export const TECHNIQUE_SEO: Record<
-  string,
-  { title: string; description: string }
-> = {
+const TECHNIQUE_SEO: Record<string, { title: string; description: string }> = {
   "voluntary-stuttering": {
     title: "Voluntary Stuttering Technique",
     description:
@@ -104,7 +101,7 @@ export const TECHNIQUE_SEO: Record<
 
 // pt and es have no curated table, so the title is the record's own name plus
 // what kind of thing it is.
-export const TECHNIQUE_TITLE_SUFFIX: Record<string, string> = {
+const TECHNIQUE_TITLE_SUFFIX: Record<string, string> = {
   pt: "técnica para a gaguez",
   es: "técnica para la tartamudez",
 };

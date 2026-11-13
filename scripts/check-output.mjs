@@ -30,6 +30,7 @@ import { checkMobileShowcase } from "./check-mobile-showcase.mjs";
 import {
   ROUTES,
   LOCALES,
+  DEFAULT_LOCALE,
   localeUrl,
   localePath,
   notFoundOutputPath,
@@ -157,6 +158,7 @@ function collect() {
       document
         .querySelector('meta[name="description"]')
         ?.getAttribute("content") ?? "",
+    h1Text: (document.querySelector("h1")?.textContent || "").trim(),
     canonical:
       document.querySelector('link[rel="canonical"]')?.getAttribute("href") ??
       null,
@@ -241,6 +243,14 @@ function check(page, report) {
     problems.push(
       `meta description is ${descriptionLength} characters, outside ${MIN_DESCRIPTION} to ${MAX_DESCRIPTION}`,
     );
+  // The h1 is the record's bare name. An English technique page whose title
+  // is only that has lost the title written for it.
+  if (
+    locale === DEFAULT_LOCALE &&
+    /\/techniques\/[^/]+\/$/.test(url) &&
+    report.title === `${report.h1Text} | UpSpeech`
+  )
+    problems.push(`<title> is the bare technique name: "${report.title}"`);
   if (report.canonical !== url)
     problems.push(`canonical is ${report.canonical}, expected ${url}`);
 
