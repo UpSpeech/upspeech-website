@@ -195,12 +195,13 @@ export const en = {
     mobile: {
       eyebrow: "In the patient's pocket",
       headline: "The practice happens in the app, between sessions.",
-      body: "Patients work through the plan their therapist set from their phone, between sessions, and the therapist can see how it is going.",
+      body: "Follow your therapist’s plan on your phone. Practise on your own, or support your child through their exercises.",
       screenshots: [
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
       ],
+      familyLink: "See how practice works with your child",
       familyEyebrow: "Younger patients",
       familyAlt:
         "A father and his daughter at a dining table, the girl speaking toward a phone propped on a stand while he sits beside her, watching her rather than the screen",
@@ -713,11 +714,10 @@ export const en = {
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
         todayLabel: "Today's exercise, set by Sam Rivera",
-        todayAlt:
-          "Today's practice on the patient dashboard: Easy starts, set by the therapist, about 5 minutes",
+        todayAlt: "Today’s holding exercise on the patient’s home screen",
         replyLabel: "Your therapist replies",
         replyAlt:
-          "A recording of Leo's practice with a playback bar, and the therapist's feedback beneath it",
+          "Alex’s message about practising and Sam’s reply about their next session",
         recordLabel: "You record it",
         recordAlt:
           "The patient's practice screen on a phone, ready to record the answer to today's exercise",
@@ -727,10 +727,31 @@ export const en = {
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
     },
     withAParent: {
-      eyebrow: "Practising with a parent",
-      line: "Younger patients practise with a parent alongside them, working through the same plan their therapist set.",
-      photoAlt:
-        "A father and his daughter sitting together on a sofa, listening back to a recording on his phone",
+      headline: "Practise with your child.",
+      line: "As a parent or caregiver, you have your own view of your child's plan. Open the therapist's instructions, practise together, then tell them how it went.",
+      companion: "Your child’s chosen companion joins them for practice.",
+      steps: [
+        {
+          title: "Today’s practice",
+          line: "See what your therapist has planned for today.",
+          alt: "The caregiver home screen showing the child’s practice for today",
+        },
+        {
+          title: "Read the guide",
+          line: "Follow the instructions your therapist has left for you.",
+          alt: "The caregiver step guide with the therapist’s instructions",
+        },
+        {
+          title: "Practise together",
+          line: "Open the activity and work through it with your child.",
+          alt: "A child’s practice activity in the UpSpeech app",
+        },
+        {
+          title: "Stay in touch",
+          line: "Send your therapist a message about practice.",
+          alt: "The caregiver’s conversation with their child’s therapist",
+        },
+      ],
     },
     app: {
       eyebrow: "The app",
@@ -747,12 +768,12 @@ export const en = {
           line: "Your therapist picks the exercise. You press start.",
         },
         {
-          title: "Your journey",
+          title: "Your plan",
           line: "See which steps are done and which come next.",
         },
         {
           title: "Practice",
-          line: "Pick an exercise and practise at a pace that suits you.",
+          line: "Record the exercise your therapist has set.",
         },
       ],
       childScreenshots: [

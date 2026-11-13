@@ -26,6 +26,7 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
+import { checkMobileShowcase } from "./check-mobile-showcase.mjs";
 import {
   ROUTES,
   LOCALES,
@@ -390,6 +391,13 @@ async function worker() {
 }
 
 await Promise.all(Array.from({ length: POOL_SIZE }, worker));
+try {
+  await checkMobileShowcase(browser, `http://localhost:${PORT}`);
+} catch (error) {
+  await browser.close();
+  server.close();
+  throw error;
+}
 await browser.close();
 server.close();
 
