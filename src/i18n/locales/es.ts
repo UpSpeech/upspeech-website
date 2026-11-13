@@ -191,7 +191,7 @@ export const es: Dictionary = {
         headline: "Te acuerdas de todos.",
         body: "Seis pacientes, uno detrás de otro. Por la tarde el detalle ya se ha ido. El registro no, y es de ahí que arranca la siguiente sesión.",
         screenshotAlt:
-          "El panel del terapeuta, con los pacientes asignados, la actividad reciente y lo que necesita atención",
+          "El panel del terapeuta, con los pacientes que necesitan atención hoy y un mensaje para el primero listo para enviar",
       },
     },
     mobile: {
