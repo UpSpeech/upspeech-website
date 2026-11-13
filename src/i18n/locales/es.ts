@@ -214,82 +214,11 @@ export const es: Dictionary = {
       headlineEmphasis: "revisado por un logopeda.",
       clinician: "Logopeda",
       ai: "IA",
-      patient: "Paciente",
       clinicianStepPrefix: "Logopeda · paso ",
       aiStepPrefix: "IA · paso ",
       stepPrefix: "Paso ",
       stepSuffix: " / 06",
-      fileTitle: "Ficha del paciente, semana 14",
       backToStart: "Y vuelta al paso 01",
-      docs: [
-        {
-          kind: "Informe de la sesión",
-          lines: [
-            {
-              text: "El paciente practicó 3 veces esta semana.",
-              mark: "ai",
-            },
-            { text: "La evitación de llamadas sigue igual.", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Informe de la sesión",
-          lines: [
-            {
-              text: "El paciente practicó 3 veces esta semana.",
-              mark: "plain",
-            },
-            { text: "La evitación de llamadas sigue igual.", mark: "struck" },
-            {
-              text: "La evitación de llamadas bajó: hizo dos llamadas esta semana.",
-              mark: "clin",
-            },
-          ],
-        },
-        {
-          kind: "Plan de práctica",
-          lines: [
-            { text: "Inicios suaves, 5 min al día", mark: "ai" },
-            { text: "Salidas controladas, 5 min al día", mark: "ai" },
-            { text: "Dificultad: media", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Plan de práctica",
-          lines: [
-            { text: "Inicios suaves, 5 min al día", mark: "plain" },
-            { text: "Salidas controladas, 5 min al día", mark: "struck" },
-            { text: "Tartamudeo voluntario, 5 min al día", mark: "clin" },
-            { text: "Dificultad: fácil", mark: "clin" },
-          ],
-        },
-        {
-          kind: "Intentos",
-          lines: [
-            { text: "Lun, inicios suaves, esfuerzo 3 de 5", mark: "ai" },
-            { text: "Mié, tartamudeo voluntario, esfuerzo 3 de 5", mark: "ai" },
-            { text: "Vie, inicios suaves, esfuerzo 2 de 5", mark: "ai" },
-          ],
-        },
-        {
-          kind: "Siguiente paso",
-          lines: [
-            {
-              text: "El esfuerzo bajó de 3 a 2 a lo largo de la semana.",
-              mark: "plain",
-            },
-            { text: "Practicar llamadas.", mark: "clin" },
-          ],
-        },
-      ],
-      states: [
-        "Borrador",
-        "Listo",
-        "Propuesto",
-        "Activo",
-        "Registrado",
-        "Asignado",
-      ],
       nodes: [
         {
           verb: "redacta",
