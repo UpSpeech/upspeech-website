@@ -18,6 +18,10 @@ export const pt: Dictionary = {
     closeMenu: "Fechar menu",
     mobileMenuLabel: "Navegação",
   },
+  breadcrumbs: {
+    home: "Início",
+    techniques: "Técnicas",
+  },
   footer: {
     tagline: "Apoio à terapia da fala, entre sessões",
     product: "Produto",

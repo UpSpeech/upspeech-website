@@ -22,6 +22,25 @@ function localeAbsUrl(path: string, locale: string): string {
   return `${BASE_URL}${prefix}${pathWithSlash}`;
 }
 
+const ORGANIZATION = { "@id": `${BASE_URL}/#organization` };
+
+// schema.org defines `breadcrumb` on WebPage only, so this is its own node.
+export function breadcrumbList(
+  items: { name: string; path: string }[],
+  locale: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: localeAbsUrl(item.path, locale),
+    })),
+  };
+}
+
 export const TECHNIQUE_SEO: Record<
   string,
   { title: string; description: string }
@@ -102,52 +121,16 @@ export function getTechniqueStructuredData(
     // this page claimed 2026-03-03 here, 2026-04-23 in the sitemap and
     // 2026-03-06 in the database.
     ...articleDates(`/techniques/${slug}`),
-    author: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://upspeech.app/icons/apple-touch-icon.png",
-      },
-    },
+    author: ORGANIZATION,
+    publisher: ORGANIZATION,
     image: `${BASE_URL}/og${locale === "en" ? "" : `/${locale}`}/techniques/${slug}.png`,
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": localeAbsUrl(`/techniques/${slug}`, locale),
+      "@id": `${localeAbsUrl(`/techniques/${slug}`, locale)}#webpage`,
     },
     about: {
       "@type": "Thing",
       name: name,
       description: description,
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: localeAbsUrl("/", locale),
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Techniques",
-          item: localeAbsUrl("/techniques", locale),
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: name,
-          item: localeAbsUrl(`/techniques/${slug}`, locale),
-        },
-      ],
     },
   };
 }
@@ -184,40 +167,10 @@ export function getPersonCenteredStructuredData(locale: string = "en") {
     inLanguage: locale,
     datePublished: "2026-06-25",
     ...articleDates("/person-centered-therapy"),
-    author: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://upspeech.app/icons/apple-touch-icon.png",
-      },
-    },
+    author: ORGANIZATION,
+    publisher: ORGANIZATION,
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": localeAbsUrl("/person-centered-therapy", locale),
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: localeAbsUrl("/", locale),
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Person-centred",
-          item: localeAbsUrl("/person-centered-therapy", locale),
-        },
-      ],
+      "@id": `${localeAbsUrl("/person-centered-therapy", locale)}#webpage`,
     },
   };
 }
@@ -234,40 +187,10 @@ export function getDocumentationArticleStructuredData(locale: string = "en") {
     inLanguage: locale,
     datePublished: "2026-06-25",
     ...articleDates("/reducing-documentation-time"),
-    author: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "UpSpeech",
-      url: "https://upspeech.app",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://upspeech.app/icons/apple-touch-icon.png",
-      },
-    },
+    author: ORGANIZATION,
+    publisher: ORGANIZATION,
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": localeAbsUrl("/reducing-documentation-time", locale),
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: localeAbsUrl("/", locale),
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Reducing documentation time",
-          item: localeAbsUrl("/reducing-documentation-time", locale),
-        },
-      ],
+      "@id": `${localeAbsUrl("/reducing-documentation-time", locale)}#webpage`,
     },
   };
   return articleSchema;
@@ -295,23 +218,6 @@ export function getTechniquesIndexStructuredData(locale: string = "en") {
           url: localeAbsUrl(`/techniques/${slug}`, locale),
         }),
       ),
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: localeAbsUrl("/", locale),
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Techniques",
-          item: localeAbsUrl("/techniques", locale),
-        },
-      ],
     },
   };
 }

@@ -17,6 +17,10 @@ export const en = {
     closeMenu: "Close menu",
     mobileMenuLabel: "Navigation",
   },
+  breadcrumbs: {
+    home: "Home",
+    techniques: "Techniques",
+  },
   footer: {
     tagline: "Support for speech and language therapy, between sessions",
     product: "Product",

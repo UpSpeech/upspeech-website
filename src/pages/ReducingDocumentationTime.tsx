@@ -3,7 +3,10 @@ import Header from "@/components/Header";
 import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import { useLocale, useT, localizedHref } from "@/i18n";
-import { getDocumentationArticleStructuredData } from "@/lib/seo-data";
+import {
+  getDocumentationArticleStructuredData,
+  breadcrumbList,
+} from "@/lib/seo-data";
 
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
 
@@ -12,6 +15,17 @@ export default function ReducingDocumentationTime() {
   const t = useT().reducingDocumentationTime;
 
   const articleSchema = getDocumentationArticleStructuredData(locale);
+  const dictionary = useT();
+  const breadcrumbs = breadcrumbList(
+    [
+      { name: dictionary.breadcrumbs.home, path: "/" },
+      {
+        name: dictionary.footer.reducingDocumentationTime,
+        path: "/reducing-documentation-time",
+      },
+    ],
+    locale,
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -33,7 +47,7 @@ export default function ReducingDocumentationTime() {
         description={t.seoDescription}
         path="/reducing-documentation-time"
         locale={locale}
-        structuredData={[articleSchema, faqSchema]}
+        structuredData={[articleSchema, faqSchema, breadcrumbs]}
       />
       <Header />
 

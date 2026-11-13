@@ -10,10 +10,6 @@
     <meta name="theme-color" content="#958AF0" />
     <meta name="color-scheme" content="light" />
     <meta name="author" content="UpSpeech" />
-    <meta
-      name="keywords"
-      content="speech therapy, AI speech therapy, stuttering therapy, stuttering treatment, speech language pathology, SLP tools, fluency shaping, stuttering modification, speech therapy app, speech therapy between sessions, telepractice speech therapy, speech therapy software"
-    />
     <meta name="format-detection" content="telephone=no" />
 
     <!-- Security -->
@@ -99,15 +95,7 @@
             "@id": "https://upspeech.app/#website",
             "url": "https://upspeech.app/",
             "name": "UpSpeech",
-            "description": "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports.",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://upspeech.app/?q={search_term_string}"
-              },
-              "query-input": "required name=search_term_string"
-            }
+            "description": "Continuous support for speech therapy. Structured between-session practice, AI-drafted session reports."
           },
           {
             "@type": "Organization",
@@ -120,13 +108,18 @@
               "width": 180,
               "height": 180
             },
-            "description": "UpSpeech is the platform for speech therapy support. Structured between-session practice for patients, with AI-drafted session reports and continuous signal for the therapists treating them.",
+            "description": "UpSpeech makes software for speech therapy practices. Patients practise between sessions on a plan their therapist set, and the therapist reviews every attempt and edits the AI-drafted session reports.",
+            "sameAs": [
+              "https://www.linkedin.com/company/upspeech/",
+              "https://apps.apple.com/app/id6778041515",
+              "https://play.google.com/store/apps/details?id=app.upspeech.mobile"
+            ],
             "knowsAbout": [
               "Speech therapy",
-              "Stuttering treatment",
+              "Stuttering therapy",
               "Fluency shaping",
               "Speech language pathology",
-              "AI-powered therapy tools"
+              "Speech therapy software"
             ]
           },
           {
@@ -134,14 +127,9 @@
             "name": "UpSpeech",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web, iOS, Android",
-            "description": "Software for speech therapy practices that helps patients practice with structure between sessions and gives therapists continuous signal to act on.",
+            "description": "Software for speech therapy practices. Patients practise between sessions on a plan their therapist set, and each attempt goes back to the therapist for review.",
             "url": "https://upspeech.app/",
-            "screenshot": "https://upspeech.app/screenshots/app/client-dashboard.png",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            },
+            "screenshot": "https://upspeech.app/screenshots/app/therapist-dashboard.webp",
             "audience": {
               "@type": "PeopleAudience",
               "audienceType": "Speech Therapists and Patients"
@@ -149,7 +137,7 @@
             "featureList": [
               "AI-drafted session reports",
               "Therapist-reviewed practice plans",
-              "Progress tracking",
+              "Practice history the therapist reviews",
               "Between-session practice support",
               "Structured practice exercises"
             ]

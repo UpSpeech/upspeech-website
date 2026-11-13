@@ -186,6 +186,21 @@ function linkProblems(internalLinks) {
   return problems;
 }
 
+const BREADCRUMB_TYPES = ["WebPage", "CollectionPage"];
+// Pages with one of these nodes sit below the home page, so they carry a trail.
+const CRUMBED_TYPES = ["Article", "CollectionPage"];
+const OWN_IMAGE = /^https:\/\/upspeech\.app\/.+\.(png|jpe?g|webp|svg)$/i;
+
+/** Every image URL on our own origin, anywhere in the page's JSON-LD. */
+function ownImageUrls(value, found = new Set()) {
+  if (typeof value === "string") {
+    if (OWN_IMAGE.test(value)) found.add(value);
+  } else if (value && typeof value === "object") {
+    for (const child of Object.values(value)) ownImageUrls(child, found);
+  }
+  return found;
+}
+
 /** Every rule, applied to one page. Returns a list of human-readable failures. */
 function check(page, report) {
   const problems = [];
@@ -237,7 +252,42 @@ function check(page, report) {
     }
   }
 
+  for (const node of report.jsonLd) {
+    const types = [].concat(node["@type"]);
+    if (node.breadcrumb && !types.some((t) => BREADCRUMB_TYPES.includes(t))) {
+      problems.push(
+        `${node["@type"]} node carries "breadcrumb", which schema.org defines on WebPage only`,
+      );
+    }
+  }
+  for (const imageUrl of ownImageUrls(report.jsonLd)) {
+    const file = join(DIST, new URL(imageUrl).pathname);
+    if (!existsSync(file)) {
+      problems.push(`JSON-LD names ${imageUrl}, which is not in dist/`);
+    }
+  }
+
+  const crumbLists = report.jsonLd.filter(
+    (n) => n["@type"] === "BreadcrumbList",
+  );
+  if (report.jsonLd.some((n) => CRUMBED_TYPES.includes(n["@type"]))) {
+    const last = crumbLists[0]?.itemListElement?.at(-1)?.item;
+    if (crumbLists.length !== 1) {
+      problems.push(
+        `${crumbLists.length} BreadcrumbList nodes, expected exactly 1`,
+      );
+    } else if (last !== url) {
+      problems.push(`BreadcrumbList ends at ${last}, expected ${url}`);
+    }
+  }
+
   for (const article of report.jsonLd.filter((n) => n["@type"] === "Article")) {
+    const pageId = article.mainEntityOfPage?.["@id"];
+    if (pageId !== `${url}#webpage`) {
+      problems.push(
+        `Article mainEntityOfPage is ${pageId}, expected ${url}#webpage`,
+      );
+    }
     if (page.lastmod && article.dateModified !== page.lastmod) {
       problems.push(
         `Article dateModified is ${article.dateModified} but sitemap lastmod is ${page.lastmod}`,

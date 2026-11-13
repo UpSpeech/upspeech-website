@@ -5,7 +5,10 @@ import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { fetchTechniques, type Technique } from "@/lib/api";
 import { readSeed, writeSeed, techniquesKey } from "@/lib/prerender-data";
-import { getTechniquesIndexStructuredData } from "@/lib/seo-data";
+import {
+  getTechniquesIndexStructuredData,
+  breadcrumbList,
+} from "@/lib/seo-data";
 import { useLocale, useT, localizedHref } from "@/i18n";
 
 const sectionClass = "py-[clamp(2.5rem,5vw,4rem)]";
@@ -95,6 +98,7 @@ export function TechniquesIndexPage() {
   const standalone = techniques.filter((t) => t.category_type === "standalone");
 
   const t = useT().techniquesIndex;
+  const crumbs = useT().breadcrumbs;
 
   // Loading state
   if (loading) {
@@ -141,7 +145,16 @@ export function TechniquesIndexPage() {
         description={t.seoDescription}
         path="/techniques"
         locale={locale}
-        structuredData={getTechniquesIndexStructuredData(locale)}
+        structuredData={[
+          getTechniquesIndexStructuredData(locale),
+          breadcrumbList(
+            [
+              { name: crumbs.home, path: "/" },
+              { name: crumbs.techniques, path: "/techniques" },
+            ],
+            locale,
+          ),
+        ]}
       />
       <Header />
 
