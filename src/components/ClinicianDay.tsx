@@ -300,7 +300,7 @@ const ClinicianDay = () => {
                 )}
                 alt={t.close.screenshotAlt}
                 width={2360}
-                height={880}
+                height={930}
                 loading="lazy"
                 decoding="async"
                 className="block h-auto w-full"
