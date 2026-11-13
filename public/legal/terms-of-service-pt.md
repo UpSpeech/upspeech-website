@@ -228,7 +228,7 @@ A UpSpeech integra-se com serviços de terceiros para fornecer funcionalidades:
 
 Utilizamos a ElevenLabs para transcrição de áudio (Scribe v2 fala para texto) e para geração de voz em tempo real nas conversas de prática interativas. As suas gravações de áudio e o áudio em direto são enviados para a ElevenLabs para processamento. Consulte os termos e política de privacidade da ElevenLabs:
 
-- [https://elevenlabs.io/terms-of-service](https://elevenlabs.io/terms-of-service)
+- [https://elevenlabs.io/terms-of-use](https://elevenlabs.io/terms-of-use)
 - [https://elevenlabs.io/privacy](https://elevenlabs.io/privacy)
 
 ### 9.2 Google AI — Gemini (Geração de Relatórios)

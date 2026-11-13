@@ -153,6 +153,7 @@ function collect() {
     parseError,
     internalLinks,
     h1Count: document.querySelectorAll("h1").length,
+    mainCount: document.querySelectorAll("main").length,
     title: document.title,
     description:
       document
@@ -231,6 +232,8 @@ function check(page, report) {
 
   if (report.h1Count !== 1)
     problems.push(`${report.h1Count} <h1> elements, expected exactly 1`);
+  if (report.mainCount !== 1)
+    problems.push(`${report.mainCount} <main> elements, expected exactly 1`);
   if (report.title.length > MAX_TITLE)
     problems.push(
       `<title> is ${report.title.length} characters, over ${MAX_TITLE}: "${report.title}"`,
@@ -386,6 +389,32 @@ function notFoundProblems(locale) {
   return problems;
 }
 
+/** Files that are not pages: every link they hold has to lead to one. */
+function staticFileProblems() {
+  const problems = [];
+  const exists = (path) =>
+    existsSync(join(DIST, path, "index.html")) || existsSync(join(DIST, path));
+
+  const llms = readFileSync(join(DIST, "llms.txt"), "utf8");
+  for (const [, path] of llms.matchAll(
+    /\]\(https:\/\/upspeech\.app(\/[^)]*)\)/g,
+  )) {
+    if (!path.endsWith("/"))
+      problems.push(`llms.txt links ${path} without its trailing slash`);
+    else if (!exists(path))
+      problems.push(`llms.txt links ${path}, which is not a page`);
+  }
+
+  const toml = readFileSync(join(ROOT, "netlify.toml"), "utf8");
+  for (const block of toml.split("[[redirects]]").slice(1)) {
+    const to = /^\s*to = "(\/[^":]*)"/m.exec(block)?.[1];
+    const status = /^\s*status = (\d+)/m.exec(block)?.[1];
+    if (to && status === "301" && !exists(to))
+      problems.push(`netlify.toml redirects to ${to}, which is not a page`);
+  }
+  return problems;
+}
+
 const notFoundFailures = LOCALES.map((locale) => ({
   locale,
   problems: notFoundProblems(locale),
@@ -400,6 +429,15 @@ if (notFoundFailures.length) {
     );
     for (const problem of problems) console.error("      %s", problem);
   }
+  console.error("");
+  process.exit(1);
+}
+
+const staticFailures = staticFileProblems();
+if (staticFailures.length) {
+  console.error("");
+  console.error("check:output FAILED on files that are not pages.");
+  for (const problem of staticFailures) console.error("      %s", problem);
   console.error("");
   process.exit(1);
 }
