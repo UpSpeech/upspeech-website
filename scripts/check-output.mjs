@@ -255,6 +255,8 @@ function check(page, report) {
     problems.push(`canonical is ${report.canonical}, expected ${url}`);
 
   problems.push(...linkProblems(report.internalLinks));
+  const home = locale === DEFAULT_LOCALE ? "/" : `/${locale}/`;
+  if (!report.internalLinks.includes(home)) problems.push(`no link to ${home}`);
   if (report.htmlLang !== locale)
     problems.push(`<html lang> is ${report.htmlLang}, expected ${locale}`);
 

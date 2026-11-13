@@ -115,17 +115,20 @@ const Header = () => {
       </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <button
-            type="button"
+          <a
+            href={localizedHref("/", locale)}
             aria-label={isHome ? t.logoScrollTop : t.logoGoHome}
-            className="flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink rounded-lg"
-            onClick={() => {
+            className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink rounded-lg"
+            onClick={(event) => {
               trackButtonClick("logo", "header");
               setMenuOpen(false);
-              if (!isHome) {
-                window.location.href = localizedHref("/", locale);
-                return;
-              }
+              const newTab =
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey;
+              if (!isHome || newTab) return;
+              event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
@@ -136,7 +139,7 @@ const Header = () => {
               width="192"
               height="56"
             />
-          </button>
+          </a>
 
           <nav className="hidden md:flex items-center space-x-6">
             <button
