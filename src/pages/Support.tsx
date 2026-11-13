@@ -1,3 +1,4 @@
+import { Faq } from "@/components/Faq";
 import { useEffect } from "react";
 import { SEO } from "@/components/SEO";
 import { useLocale, localizedHref, type Locale } from "@/i18n";
@@ -83,13 +84,13 @@ const CONTENT: Record<Locale, SupportContent> = {
       },
       {
         q: "Who is UpSpeech for?",
-        a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+        a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
       },
       {
         q: "Is my data private?",
         a: (locale: Locale) => (
           <>
-            Yes. Clinical data is encrypted and isolated per organization. See
+            Yes. Clinical data is encrypted and isolated per organisation. See
             our{" "}
             <a
               href={localizedHref("/privacy", locale)}
@@ -336,11 +337,11 @@ const FAQ_SCHEMA_TEXT: Record<Locale, { q: string; a: string }[]> = {
     },
     {
       q: "Who is UpSpeech for?",
-      a: "UpSpeech supports speech-language pathologists and their patients. Patients practice between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
+      a: "UpSpeech supports speech-language pathologists and their patients. Patients practise between sessions with structured exercises and feedback, while therapists get AI-assisted reports and progress tracking.",
     },
     {
       q: "Is my data private?",
-      a: "Yes. Clinical data is encrypted and isolated per organization. See our Privacy Policy for details.",
+      a: "Yes. Clinical data is encrypted and isolated per organisation. See our Privacy Policy for details.",
     },
     {
       q: "How do I delete my account or data?",
@@ -439,17 +440,17 @@ export default function Support() {
         locale={locale}
         structuredData={buildSupportFaqSchema(locale)}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="rounded-2xl border border-calm-charcoal/10 bg-white overflow-hidden">
-          <div className="px-6 py-8 sm:px-10 sm:py-12">
-            <h1 className="text-3xl font-bold text-calm-charcoal font-heading">
+      <div className="gutter py-12">
+        <div className="max-w-3xl">
+          <div className="py-8 sm:py-12">
+            <h1 className="t-display font-accent font-bold text-calm-navy">
               {c.heading}
             </h1>
             <p className="mt-4 text-calm-charcoal/80 font-body">{c.intro}</p>
 
             {/* Contact */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.contactHeading}
               </h2>
               <p className="mt-2 text-calm-charcoal/80 font-body">
@@ -457,7 +458,7 @@ export default function Support() {
               </p>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
-                className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 transition-colors"
+                className="mt-4 inline-flex items-center rounded-full bg-calm-navy px-6 py-3 font-bold text-white transition-opacity hover:opacity-90"
               >
                 {c.emailLabel}: {SUPPORT_EMAIL}
               </a>
@@ -468,26 +469,22 @@ export default function Support() {
 
             {/* FAQ */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.faqHeading}
               </h2>
-              <dl className="mt-4 divide-y divide-gray-100">
-                {c.faq.map((item, i) => (
-                  <div key={i} className="py-4">
-                    <dt className="font-medium text-calm-charcoal font-body">
-                      {item.q}
-                    </dt>
-                    <dd className="mt-1 text-calm-charcoal/80 font-body">
-                      {typeof item.a === "function" ? item.a(locale) : item.a}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <Faq
+                items={c.faq.map((item) => ({
+                  question: item.q,
+                  answer:
+                    typeof item.a === "function" ? item.a(locale) : item.a,
+                }))}
+                className="mt-4"
+              />
             </section>
 
             {/* More info */}
             <section className="mt-10">
-              <h2 className="text-xl font-semibold text-calm-charcoal font-heading">
+              <h2 className="text-xl font-semibold text-calm-navy font-heading">
                 {c.moreHeading}
               </h2>
               <ul className="mt-3 space-y-2 font-body">

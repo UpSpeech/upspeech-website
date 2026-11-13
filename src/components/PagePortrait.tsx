@@ -2,7 +2,7 @@
  * A framed photograph for the light secondary pages.
  *
  * The homepage carries all the human imagery and every other page was Header,
- * text, MedicalDisclaimer, Footer. Going Home to For patients dropped a visitor
+ * text, the disclaimer, Footer. Going Home to For patients dropped a visitor
  * off a cliff, and /for-patients in particular opened with the right half of the
  * fold empty. This is the piece that closes that gap.
  *

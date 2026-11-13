@@ -3,7 +3,7 @@ import BrandLockup from "./BrandLockup";
 import SpeechRing from "./SpeechRing";
 
 const SESSION_KEY = "upspeech_intro_seen";
-const TOTAL_MS = 2680;
+const TOTAL_MS = 1200;
 
 /**
  * The one-off opening: a speech envelope writing itself into a ring, clockwise,

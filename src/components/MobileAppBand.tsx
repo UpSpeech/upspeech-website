@@ -3,28 +3,24 @@ import { useReveal } from "./useReveal";
 import { reveal, EASE } from "./motion";
 import Companion from "./Companion";
 import CutOut from "./CutOut";
-import { useT, useLocale, localizedAsset } from "@/i18n";
+import PhoneShot from "./PhoneShot";
+import { useT, useLocale, localizedAsset, localizedHref } from "@/i18n";
 
-// Bare device renders (phone only, transparent background) so they float on the
-// section with no baked panel or caption. Cropped from the app-mobile store art.
-// Alt text comes from the dictionary by index (home.mobile.screenshots).
 const SCREENSHOTS = [
-  { src: "/screenshots/mobile/patient-journey-device.webp" },
-  { src: "/screenshots/mobile/patient-practice-device.webp" },
-  { src: "/screenshots/mobile/patient-home-device.webp" },
+  { src: "/screenshots/mobile/patient-journey-screen.webp" },
+  { src: "/screenshots/mobile/patient-practice-screen.webp" },
+  { src: "/screenshots/mobile/patient-home-screen.webp" },
 ];
 
-// The hero (center) phone: a bare screen-recording played BEHIND the official
-// open-source frameit device frame (transparent screen, real Natural Titanium
-// bezel + island). The frame's real edges mask the video, so the screen shape is
-// always perfect. Frame from fastlane/frameit-frames (same one the store shots use).
 const HERO_VIDEO = { mp4: "/videos/app-screen.mp4" };
 const PHONE_FRAME = "/screenshots/mobile/iphone-frame.webp";
-
-// Screen rectangle straight from frameit's offsets.json for this frame
-// (offset +75+66, screen width 1320 in the 1470x3000 frame), as % of the phone
-// box. Exact, no measuring. TWEAK only if you want a touch of overshoot.
-const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
+const PHONE_SCREEN = {
+  insetBlockStart: "2.2%",
+  insetInlineStart: "5.1%",
+  inlineSize: "89.8%",
+  blockSize: "95.6%",
+  borderRadius: "12% / 5.4%",
+};
 
 // translateX(%) / translateY(px) / translateZ(px) / rotateY(deg) / scale per
 // phone in the desktop fan. Side phones drop down and back so they fan out from
@@ -112,7 +108,24 @@ const MobileAppBand = () => {
   const heroVideo = localizedAsset(HERO_VIDEO.mp4, locale);
   const { ref, revealed } = useReveal<HTMLDivElement>();
   const stageRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   useStageTilt(stageRef);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      if (motion.matches) video.pause();
+      else void video.play().catch(() => video.pause());
+    };
+    update();
+    motion.addEventListener("change", update);
+    return () => {
+      motion.removeEventListener("change", update);
+      video.pause();
+    };
+  }, [heroVideo]);
 
   return (
     <section className="bg-white py-12 sm:py-16 overflow-hidden">
@@ -120,45 +133,37 @@ const MobileAppBand = () => {
         ref={ref}
         className="gutter grid items-center gap-10 lg:grid-cols-[5fr_6fr]"
       >
-        <div className="max-w-xl">
-          <span
-            className="font-body t-eyebrow text-calm-lavender-ink"
-            style={reveal(revealed, 0)}
-          >
-            {t.eyebrow}
-          </span>
+        <div className="min-w-0 max-w-xl">
           <h2
-            className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight"
+            className="t-h2 font-heading font-bold text-calm-navy tracking-tight"
             style={{ ...reveal(revealed, 80) }}
           >
             {t.headline}
           </h2>
           <p
-            className="mt-5 max-w-md font-body text-lg text-calm-charcoal/80 leading-relaxed"
+            className="mt-5 max-w-md font-body t-lead text-calm-charcoal/80"
             style={reveal(revealed, 160)}
           >
             {t.body}
           </p>
 
-          {/* The patients using this are not all adults, and until now the
-              homepage only showed adults. This column is otherwise empty on a
-              wide screen next to a 600px phone fan, so the family sits here
-              rather than costing the page a section of its own.
-
-              Its own frame, deliberately: /for-patients already carries two
-              guardian photographs, and repeating one of them across two pages
-              is the duplication this redesign set out to remove. */}
-          {/* The three residents, in the section that shows the three tabs
-              they own: tumbo on the journey, pip on practice, nima on the
-              coach. Accents are the ones the decision record assigns. */}
-          <div className="mt-7 flex items-end gap-1.5">
-            <Companion species="tumbo" size={84} accent="#cca163" />
-            <Companion species="pip" size={84} accent="#958af0" />
-            <Companion species="nima" size={84} accent="#69b2e1" />
+          <div className="family-practice-link">
+            <Companion
+              species="tumbo"
+              size={120}
+              accent="#cca163"
+              eyes="wide"
+              brows="soft"
+              bellyShape="round"
+              bellySize="l"
+            />
+            <a
+              href={`${localizedHref("/for-patients", locale)}#with-your-child`}
+              className="family-practice-action font-body font-semibold text-calm-navy underline underline-offset-4"
+            >
+              {t.familyLink}
+            </a>
           </div>
-          <p className="mt-12 font-body t-eyebrow text-calm-lavender-ink">
-            {t.familyEyebrow}
-          </p>
           <CutOut
             name="home-family"
             alt={t.familyAlt}
@@ -169,12 +174,11 @@ const MobileAppBand = () => {
           {/* Mobile + tablet: a simple, accessible scroll row of the devices. */}
           <div className="mt-10 flex gap-6 overflow-x-auto pb-4 sm:gap-8 lg:hidden">
             {screenshots.map((shot, i) => (
-              <img
+              <PhoneShot
                 key={shot.src}
                 src={shot.src}
                 alt={t.screenshots[i]}
-                loading="lazy"
-                className={`h-auto w-auto max-h-[460px] shrink-0 drop-shadow-[0_24px_50px_-20px_rgba(41,53,135,0.35)] ${
+                className={`w-[225px] shrink-0 ${
                   i === 1 ? "translate-y-4" : ""
                 }`}
               />
@@ -218,15 +222,11 @@ const MobileAppBand = () => {
                       style={{ height: "560px", aspectRatio: "1470 / 3000" }}
                     >
                       <video
+                        ref={videoRef}
                         className="absolute object-cover"
-                        style={{
-                          top: SCREEN.top,
-                          left: SCREEN.left,
-                          width: SCREEN.width,
-                          height: SCREEN.height,
-                        }}
+                        style={PHONE_SCREEN}
                         src={heroVideo}
-                        autoPlay
+                        poster={screenshots[1].src}
                         muted
                         loop
                         playsInline
@@ -238,12 +238,7 @@ const MobileAppBand = () => {
                       />
                     </div>
                   ) : (
-                    <img
-                      src={shot.src}
-                      alt=""
-                      loading="lazy"
-                      className="h-[560px] w-auto drop-shadow-[0_30px_60px_-30px_rgba(41,53,135,0.4)]"
-                    />
+                    <PhoneShot src={shot.src} alt="" className="w-[274px]" />
                   )}
                 </div>
               );

@@ -1,6 +1,7 @@
 // English is the source dictionary. Its shape defines the `Dictionary` type, so
-// pt.ts and es.ts fail typechecking if they miss a key. American spelling in copy
-// (practice, organized, behavior, analyze).
+// pt.ts and es.ts fail typechecking if they miss a key. British spelling in copy
+// (practise as the verb, organised, behaviour, analyse); see
+// decisions/2026-09-18-the-products-english-is-british-and-sentence-case.md.
 export const en = {
   nav: {
     howItWorks: "How it works",
@@ -8,6 +9,7 @@ export const en = {
     whyUs: "Why Us",
     forPatients: "For patients",
     requestAccess: "Request early access",
+    getTheApp: "Get the app",
     skipToContent: "Skip to content",
     logoScrollTop: "UpSpeech, scroll to top",
     logoGoHome: "UpSpeech, go to homepage",
@@ -33,8 +35,8 @@ export const en = {
     appStoreAriaLabel: "Download UpSpeech on the App Store",
     playStoreAlt: "Get it on Google Play",
     playStoreAriaLabel: "Get UpSpeech on Google Play",
-    personCentered: "Person-centered",
-    reducingDocumentationTime: "Documentation time",
+    personCentered: "Person-centred",
+    reducingDocumentationTime: "Less paperwork",
   },
   localeSwitcher: {
     label: "Language",
@@ -46,9 +48,9 @@ export const en = {
     "UpSpeech is a practice and clinical-productivity tool for use by and with qualified speech-language pathologists. It is not a medical device and does not diagnose, treat, or cure any condition. Educational content on this site is not a substitute for professional clinical advice.",
   techniquesIndex: {
     title: "Speech Therapy Techniques",
-    subtitle: "What each one is for, and how to practice it",
+    subtitle: "What each one is for, and how to practise it",
     seoDescription:
-      "Speech therapy techniques for stuttering, each with what it is, what it is for, and how to practice it. Covers fluency shaping, stuttering modification and cognitive approaches.",
+      "Speech therapy techniques for stuttering, each with what it is, what it is for, and how to practise it. Covers fluency shaping, stuttering modification and cognitive approaches.",
     featured: "Featured",
     mainCategories: "Technique families",
     standalone: "Techniques that do not belong to a family",
@@ -65,12 +67,17 @@ export const en = {
     backToAll: "Back to all techniques",
     practicalDescription: "What it is",
     objective: "What it is for",
-    howToPractice: "How to practice it",
-    relatedTechniques: "Practiced with this one",
+    howToPractice: "How to practise it",
+    onThisPage: "On this page",
+    closingTitle: "Practise this between sessions",
+    closingBody:
+      "Your speech therapist can assign this technique in UpSpeech and see how each practice went before your next appointment.",
+    closingLink: "How UpSpeech works for patients",
+    relatedTechniques: "Practised with this one",
   },
   home: {
     seoDescription:
-      "Continuous support for speech and language therapy. Patients practice between sessions on a plan their therapist set, and every attempt comes back for review.",
+      "Continuous support for speech and language therapy. Patients practise between sessions on a plan their therapist set, and every attempt comes back for review.",
     hero: {
       photoAlt:
         "A woman at her kitchen table holding a phone up in front of her, speaking a practice exercise aloud in late afternoon light",
@@ -78,7 +85,7 @@ export const en = {
       headlineLine1: "Your therapy",
       headlineLine2: "keeps going",
       headlineLine3: "between sessions.",
-      body: "Patients practice between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
+      body: "Patients practise between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       traceLabel: "A recording of someone speaking, with the pauses left in",
       requestAccess: "Request early access",
       seeHowItWorks: "See a patient's week",
@@ -102,7 +109,6 @@ export const en = {
       footerEmphasis: "without adding sessions to the clinician's week.",
     },
     week: {
-      eyebrow: "Between the sessions",
       headline: "Most of therapy happens when nobody is watching.",
       body: "One hour in the clinic, then six days on their own. The part that decides whether therapy works is the part the clinician never sees.",
       frames: [
@@ -149,7 +155,7 @@ export const en = {
       assessment: {
         time: "09:15 · The assessment",
         headline: "You walk out with it written.",
-        body: "Record the assessment and the report is drafted by the time you stand up. You correct it and you sign it. You do not start from an empty page.",
+        body: "Record the assessment and the report is drafted by the time you stand up. You review it and correct it. You do not start from an empty page.",
         detailAlt:
           "A generated session report headed with the patient name, the report date and a Ready status",
       },
@@ -175,27 +181,27 @@ export const en = {
       plan: {
         time: "14:00 · After the session",
         headline: "The plan goes home with them.",
-        body: "Assign the exercises once. They practice between visits, and every attempt comes back for you to review before the next appointment.",
-        detailAlt:
-          "An assigned learning path showing progress through its steps, with the current step marked",
+        body: "Assign the exercises once. They practise between visits, and every attempt comes back for you to review before the next appointment.",
+        detailAlt: "An assigned learning path, with its current step named",
       },
       close: {
         time: "17:30 · The end of the day",
         headline: "You remember all of them.",
         body: "Six patients, back to back. By the evening the detail has gone. The record has not, and it is what the next session starts from.",
         screenshotAlt:
-          "The therapist dashboard, showing assigned patients, recent activity and what needs attention",
+          "The therapist dashboard, listing the patients who need attention today, with a message to the first one ready to send",
       },
     },
     mobile: {
       eyebrow: "In the patient's pocket",
       headline: "The practice happens in the app, between sessions.",
-      body: "Patients work through the plan their therapist set from their phone, between sessions, and the therapist can see how it is going.",
+      body: "Follow your therapist’s plan on your phone. Practise on your own, or support your child through their exercises.",
       screenshots: [
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
       ],
+      familyLink: "See how practice works with your child",
       familyEyebrow: "Younger patients",
       familyAlt:
         "A father and his daughter at a dining table, the girl speaking toward a phone propped on a stand while he sits beside her, watching her rather than the screen",
@@ -210,6 +216,7 @@ export const en = {
       aiStepPrefix: "AI · step ",
       stepPrefix: "Step ",
       stepSuffix: " / 06",
+      backToStart: "Then back to step 01",
       nodes: [
         {
           verb: "drafts",
@@ -219,22 +226,22 @@ export const en = {
         {
           verb: "approves",
           title: "The clinician edits and approves it.",
-          body: "Those corrections improve the next draft. Anything used to train our models needs the patient's opt-in first.",
+          body: "Each correction improves the next draft. Anything used to train our models needs the patient's opt-in first.",
         },
         {
           verb: "structures",
           title: "AI structures the practice plan.",
-          body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the therapist to approve.",
+          body: "Based on session data and the patient's stage, UpSpeech proposes daily exercises for the clinician to approve.",
         },
         {
           verb: "calibrates",
           title: "The clinician calibrates it.",
-          body: "The therapist adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the therapist reviews and signs it.",
+          body: "The clinician adjusts the difficulty and swaps techniques where needed. Nothing reaches a patient until the clinician has reviewed it.",
         },
         {
           verb: "listens",
-          title: "AI helps between sessions.",
-          body: "Attempts are stored with the technique, the date, and how the patient rated the effort.",
+          title: "UpSpeech logs each attempt.",
+          body: "UpSpeech stores each attempt with the technique, the date, and how the patient rated the effort.",
         },
         {
           verb: "decides",
@@ -252,7 +259,7 @@ export const en = {
       eyebrow: "UpSpeech Labs",
       headlineLine1: "Trained on",
       headlineLine2: "clinician-annotated data.",
-      body: "We built our own annotation tool, and practicing speech-language pathologists use it to tag disfluencies frame by frame.",
+      body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
       tags: [
@@ -274,13 +281,13 @@ export const en = {
         speechcare: "Co-development partner",
         elevenlabs: "AI infrastructure grant",
       },
-      partnersLabel: "Programs · Backers · Recognition",
+      partnersLabel: "Programmes · Backers · Recognition",
       partnersTagline: "Who we work with",
       partnerContext: {
-        lispolis: "Acceleration program",
+        lispolis: "Acceleration programme",
         unicorn: "Most Promising Startup · Portugal",
-        innocatalyst: "Health innovation program",
-        healthqup: "Health acceleration program",
+        innocatalyst: "Health innovation programme",
+        healthqup: "Health acceleration programme",
       },
     },
     security: {
@@ -289,8 +296,8 @@ export const en = {
       body: "Clinics trust us with sensitive recordings. We treat that data the way a clinic would, and a therapist always has the final say on what the AI produces.",
       points: [
         {
-          title: "Per-organization isolation",
-          copy: "Every clinic's data is kept separate by organization. One organization can never see another's patients or recordings.",
+          title: "Per-organisation isolation",
+          copy: "Every clinic's data is kept separate by organisation. One organisation can never see another's patients or recordings.",
         },
         {
           title: "Encrypted in transit and at rest",
@@ -331,7 +338,7 @@ export const en = {
     found: "You found {name}!",
     stat: {
       value: "86%",
-      text: "of patients using UpSpeech said they practice more than before.",
+      text: "of patients using UpSpeech said they practise more than before.",
     },
     audiences: {
       therapist: {
@@ -370,7 +377,7 @@ export const en = {
         short: "Someone in speech therapy",
         line: "Practice and support between sessions.",
         title: "Practice that keeps going between sessions.",
-        sub: "Your therapist sets short exercises in the app. You practice a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering and developmental language conditions.",
+        sub: "Your therapist sets short exercises in the app. You practise a few minutes at home with a companion, and your therapist hears how it went before your next session. We're starting with stuttering and developmental language conditions.",
         stepsTitle: "An evening between sessions",
         stepsLead: "What a practice evening looks like, and the morning after.",
         steps: [
@@ -392,7 +399,7 @@ export const en = {
         ],
         perks: [
           "Follow UpSpeech as it grows",
-          "Useful resources for practicing at home",
+          "Useful resources for practising at home",
         ],
       },
       family: {
@@ -434,8 +441,8 @@ export const en = {
         steps: [
           {
             when: "The gap",
-            title: "A week between sessions is a long time to practice alone.",
-            body: "One session, then six days on their own until the next one with no real guidance on how to practice what was learned.",
+            title: "A week between sessions is a long time to practise alone.",
+            body: "One session, then six days on their own until the next one with no real guidance on how to practise what was learned.",
           },
           {
             when: "At home",
@@ -482,7 +489,7 @@ export const en = {
       reportTitle: "Session report",
       draft: "Draft",
       reportBody:
-        "Practiced easy onset on 3 evenings. Recordings attached for review.",
+        "Practised easy onset on 3 evenings. Recordings attached for review.",
       edit: "Edit",
       sign: "Sign",
       planTitle: "Bedtime stories, slow and easy",
@@ -638,36 +645,52 @@ export const en = {
   forPatients: {
     seoTitle: "For Patients",
     seoDescription:
-      "How patients practice speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
+      "How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
     intro: {
       eyebrow: "For patients",
       headlineLine1: "Your practice,",
       headlineLine2: "between sessions.",
-      body: "UpSpeech is how you keep practicing the work you do with your speech therapist between appointments. Your therapist sets the plan and follows how it's going while you practice in the app.",
+      body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
+      exchange: {
+        todayLabel: "Today's exercise, set by Sam Rivera",
+        todayAlt: "Today’s holding exercise on the patient’s home screen",
+        replyLabel: "Your therapist replies",
+        replyAlt:
+          "Alex’s message about practising and Sam’s reply about their next session",
+        recordLabel: "You record it",
+        recordAlt:
+          "The patient's practice screen on a phone, ready to record the answer to today's exercise",
+      },
+      inviteNote: "Your therapist sends you an invite to start.",
       photoAlt:
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
     },
     withAParent: {
-      eyebrow: "Practicing with a parent",
-      line: "Younger patients practice with a parent alongside them, working through the same plan their therapist set.",
       photoAlt:
         "A father and his daughter sitting together on a sofa, listening back to a recording on his phone",
-    },
-    howItWorks: {
-      eyebrow: "How it works for you",
-      headline: "Guided by your therapist, every step.",
+      headline: "Practise with your child.",
+      line: "As a parent or caregiver, you have your own view of your child's plan. Open the therapist's instructions, practise together, then tell them how it went.",
+      companion: "Your child’s chosen companion joins them for practice.",
       steps: [
         {
-          title: "Your therapist sets your plan",
-          copy: "Your speech-language pathologist chooses the exercises and goals that match where you are in your therapy.",
+          title: "Today’s practice",
+          line: "See what your therapist has planned for today.",
+          alt: "The caregiver home screen showing the child’s practice for today",
         },
         {
-          title: "You practice in the app",
-          copy: "Work through the guided exercises on your phone, at whatever pace suits you between sessions.",
+          title: "Read the guide",
+          line: "Follow the instructions your therapist has left for you.",
+          alt: "The caregiver step guide with the therapist’s instructions",
         },
         {
-          title: "Your therapist sees your progress",
-          copy: "They follow what you have practiced and adjust the plan as you go, so each session builds on the last.",
+          title: "Practise together",
+          line: "Open the activity and work through it with your child.",
+          alt: "A child’s practice activity in the UpSpeech app",
+        },
+        {
+          title: "Stay in touch",
+          line: "Send your therapist a message about practice.",
+          alt: "The caregiver’s conversation with their child’s therapist",
         },
       ],
     },
@@ -679,6 +702,20 @@ export const en = {
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
         "UpSpeech mobile app learning path showing the steps the therapist set",
         "UpSpeech mobile app practice screen with guided practice exercises",
+      ],
+      walkthrough: [
+        {
+          title: "Today",
+          line: "Your therapist picks the exercise. You press start.",
+        },
+        {
+          title: "Your plan",
+          line: "See which steps are done and which come next.",
+        },
+        {
+          title: "Practice",
+          line: "Record the exercise your therapist has set.",
+        },
       ],
       childScreenshots: [
         "UpSpeech mobile app screen a parent uses to run the day's practice with their child",
@@ -694,12 +731,12 @@ export const en = {
           a: "Yes. UpSpeech is used together with your speech therapist, who sets your plan and reviews your progress. It is not a replacement for therapy.",
         },
         {
-          q: "What will I practice?",
+          q: "What will I practise?",
           a: "Your therapist chooses exercises for you based on your goals and your stage of therapy.",
         },
         {
-          q: "How often should I practice?",
-          a: "Your therapist guides how often to practice. The app makes it easy to keep a steady routine between sessions.",
+          q: "How often should I practise?",
+          a: "Your therapist guides how often to practise. The app makes it easy to keep a steady routine between sessions.",
         },
         {
           q: "Is my information private?",
@@ -712,35 +749,32 @@ export const en = {
       ],
     },
     closing: {
-      headline: "Ask your speech therapist about UpSpeech.",
+      headline: "Ready when your therapist is.",
+      body: "Install the app now. When your therapist sends the invite, it connects to your plan.",
       bodyPrefix:
         "UpSpeech works through your clinic. If you run a practice and want to use it with your patients, you can ",
       bodyLink: "request access here",
       bodySuffix: ".",
     },
-    storeAppStoreAlt: "Download on the App Store",
-    storeAppStoreAriaLabel: "Download UpSpeech on the App Store",
-    storePlayAlt: "Get it on Google Play",
-    storePlayAriaLabel: "Get UpSpeech on Google Play",
   },
   personCentered: {
-    seoTitle: "What Is Person-Centered Speech Therapy?",
+    seoTitle: "What Is Person-Centred Speech Therapy?",
     seoDescription:
-      "A plain-language guide to person-centered speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
+      "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
     intro: {
       eyebrow: "Philosophy",
       headlineLine1: "What does",
-      headlineLine2: "person-centered mean?",
-      body: "Person-centered therapy puts confidence and communication first, and the person helps set the goals. In stuttering therapy this is sometimes called a stutter-positive approach.",
+      headlineLine2: "person-centred mean?",
+      body: "Person-centred therapy puts confidence and communication first, and the person helps set the goals. In stuttering therapy this is sometimes called a stutter-positive approach.",
     },
     sections: [
       {
         heading: "Fluency is not the only goal",
-        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Person-centered therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitization. What makes it person-centered is that the person has a real say in which of those goals apply.",
+        body: "Traditional speech therapy sometimes treats fluency as the definition of success. Person-centred therapy broadens that picture. Where someone does want smoother speech, clinicians use fluency-shaping techniques such as prolonged speech. Where reducing avoidance matters more, they turn to voluntary stuttering and desensitization. What makes it person-centred is that the person has a real say in which of those goals apply.",
       },
       {
         heading: "Being heard on your own terms",
-        body: "People who stutter often deal with more than disfluency. There is the phone call you put off and the coffee order you change because it is easier than the word you meant to say. Person-centered therapy takes that on alongside any technique practice.",
+        body: "People who stutter often deal with more than disfluency. There is the phone call you put off and the coffee order you change because it is easier than the word you meant to say. Person-centred therapy takes that on alongside any technique practice.",
       },
       {
         heading: "How UpSpeech reflects this",
@@ -756,20 +790,20 @@ export const en = {
       headline: "Common questions.",
       items: [
         {
-          q: "Is person-centered therapy the same as not helping someone improve?",
-          a: "No. Person-centered therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person and the clinician agree what progress looks like, and fluency is not the automatic answer.",
+          q: "Is person-centred therapy the same as not helping someone improve?",
+          a: "No. Person-centred therapy still teaches techniques and works on avoidance. What changes is who sets the target: the person and the clinician agree what progress looks like, and fluency is not the automatic answer.",
         },
         {
-          q: "Does UpSpeech only work for person-centered approaches?",
+          q: "Does UpSpeech only work for person-centred approaches?",
           a: "No. UpSpeech supports the plan a speech-language pathologist creates. The app delivers what the clinician assigns, which can include traditional fluency-shaping, modification techniques, or confidence-focused work.",
         },
         {
-          q: "What techniques are used in person-centered stuttering therapy?",
+          q: "What techniques are used in person-centred stuttering therapy?",
           a: "Voluntary stuttering, identification and desensitization, and pull-out techniques (easing out of a moment of stuttering) are common. Many clinicians blend these with fluency-shaping work depending on the individual's goals.",
         },
         {
           q: "Where can I learn more?",
-          a: "STAMMA (the British Stammering Association), the Stuttering Foundation, and the American Institute for Stuttering publish accessible guides on person-centered and stutter-positive approaches to stuttering therapy.",
+          a: "STAMMA (the British Stammering Association), the Stuttering Foundation, and the American Institute for Stuttering publish accessible guides on person-centred and stutter-positive approaches to stuttering therapy.",
         },
       ],
     },
@@ -789,7 +823,7 @@ export const en = {
       eyebrow: "For speech-language pathologists",
       headlineLine1: "The notes start",
       headlineLine2: "already written.",
-      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy, including where structured drafts fit in.",
+      body: "Documentation is part of good clinical practice, but it should not crowd out the time spent on the work itself. This page covers practical ways speech-language pathologists reduce the time spent on session notes in speech therapy. UpSpeech calls them session reports, so that is the word used from here on.",
     },
     sections: [
       {
@@ -798,15 +832,15 @@ export const en = {
       },
       {
         heading: "Structured drafts you review and edit",
-        body: "One fix is a draft built from the session's own data, covering what the patient practiced and how they progressed. You edit what needs editing and sign it off. The clinical judgement stays yours throughout.",
+        body: "One fix is a draft built from the session's own data, covering what the patient practised and how they progressed. You edit what needs editing. The clinical judgement stays yours throughout.",
       },
       {
-        heading: "What belongs in a good speech therapy note",
-        body: "A useful session note typically covers the technique practiced, the patient's performance against their goals, any observations about avoidance or confidence, and the next steps. Templates for these elements make drafting faster whether or not you use AI assistance.",
+        heading: "What belongs in a good speech therapy report",
+        body: "A useful session report typically covers the technique practised, the patient's performance against their goals, any observations about avoidance or confidence, and the next steps. Templates for these elements make drafting faster whether or not you use AI assistance.",
       },
       {
         heading: "What UpSpeech does",
-        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session note. Nothing reaches a patient until the therapist reviews and signs it.",
+        body: "UpSpeech captures structured data from practice between sessions, including which exercises the patient completed and where they had difficulty. That data feeds a draft session report. Nothing reaches a patient until the therapist has reviewed it. You only record with the patient's consent.",
       },
     ],
     faq: {
@@ -815,26 +849,26 @@ export const en = {
       items: [
         {
           q: "How much time can SLPs realistically save on documentation?",
-          a: "It depends on your current workflow and how much time you spend on notes. A draft takes away the blank page, which is usually the slowest part of writing one up. How much it saves varies with the complexity of the session and how much editing the draft needs.",
+          a: "It depends on your current workflow and how much time you spend on reports. A draft takes away the blank page, which is usually the slowest part of writing one up. How much it saves varies with the complexity of the session and how much editing the draft needs.",
         },
         {
-          q: "Does AI-assisted note drafting replace clinical observation?",
-          a: "No. A draft note is built from the session data. The judgements a therapist makes in the room are what the therapist adds.",
+          q: "Does AI-assisted report drafting replace clinical observation?",
+          a: "No. A draft report is built from the session data. The judgements a therapist makes in the room are what the therapist adds.",
         },
         {
-          q: "Is it clinically appropriate to use AI-drafted notes?",
-          a: "Drafted notes are appropriate when the therapist reviews and signs off on every note before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
+          q: "Is it clinically appropriate to use AI-drafted reports?",
+          a: "Drafted reports are appropriate when the therapist reviews every report before it enters the patient's record. Check your local professional body's guidance on AI in clinical documentation.",
         },
         {
           q: "How does UpSpeech collect the data that goes into the draft?",
-          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalize the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any note is signed.",
+          a: "Two things feed it. Practice between sessions gives completion and performance data from the app. The session recording itself is transcribed, and the draft report is generated from that transcript. Once you finalise the report, the audio file is deleted. The transcript and the report are kept as part of the record. The therapist sees all of it before any report is finalised.",
         },
       ],
     },
     closing: {
-      headline: "Let UpSpeech draft the notes so you focus on the session.",
+      headline: "Let UpSpeech draft the reports so you focus on the session.",
       bodyPrefix:
-        "UpSpeech works with speech-language pathologists who want structured between-session practice and AI-drafted notes. ",
+        "UpSpeech works with speech-language pathologists who want structured between-session practice and AI-drafted reports. ",
       bodyLink: "Request access here",
       bodySuffix: " to see if it fits your practice.",
     },
@@ -853,8 +887,8 @@ export const en = {
     },
     documentation: {
       eyebrow: "Documentation",
-      headline: "Session notes, drafted for you to review.",
-      body: "After a session, UpSpeech drafts the report. You edit it and sign it off, without starting from an empty page.",
+      headline: "Session reports, drafted for you to review.",
+      body: "After a session, UpSpeech drafts the report. You review and edit it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },
@@ -867,7 +901,7 @@ export const en = {
           copy: "Choose the techniques and exercises each patient works on, built around your therapy goals.",
         },
         {
-          title: "They practice in the app",
+          title: "They practise in the app",
           copy: "A few calm minutes a day of guided practice, on the technique you set.",
         },
         {
@@ -889,11 +923,11 @@ export const en = {
       items: [
         {
           q: "Does UpSpeech write my reports for me?",
-          a: "It drafts a structured report from the session for you to review and edit, and takes the blank-page work off your plate.",
+          a: "Not on its own. It drafts from the session recording and the practice data, and you decide what the report says.",
         },
         {
           q: "What do my patients actually do?",
-          a: "They practice the techniques you assign, in short daily sessions, and their progress comes back to you between appointments.",
+          a: "They practise the techniques you assign, in short daily sessions, and their progress comes back to you between appointments.",
         },
         {
           q: "Is it a replacement for therapy?",
@@ -903,15 +937,15 @@ export const en = {
     },
     closing: {
       headline: "Bring UpSpeech into your practice.",
-      bodyPrefix: "UpSpeech works through your clinic. ",
-      bodyLink: "Request access here",
-      bodySuffix: ".",
+      body: "It works through your clinic. Tell us about your practice and we will be in touch.",
+      cta: "Request early access",
     },
   },
   consent: {
     title: "Cookies on this site",
     description:
-      "We use cookies to improve your experience and analyze site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
+      "We use cookies to improve your experience and analyse site usage. By accepting, you agree to our use of analytics cookies. You can decline if you prefer.",
+    descriptionShort: "Analytics cookies, only if you accept.",
     learnMore: "Learn more about cookies",
     decline: "Decline",
     accept: "Accept",

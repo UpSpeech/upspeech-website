@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUturnUpIcon } from "@heroicons/react/24/outline";
 import { EASE, reveal } from "./motion";
 import { useT } from "@/i18n";
 
@@ -69,7 +70,7 @@ const labelAlignClass = (compassDeg: number): string => {
   return "text-right";
 };
 
-const CycleScene = () => {
+const PinnedCycle = () => {
   const t = useT().home.cycle;
   const nodes = t.nodes;
   const containerRef = useRef<HTMLElement | null>(null);
@@ -103,6 +104,7 @@ const CycleScene = () => {
 
     let raf = 0;
     const update = () => {
+      if (!el.offsetParent) return;
       const rect = el.getBoundingClientRect();
       // Measure the panel rather than assuming it fills the viewport. The
       // pinned range runs from rect.top === STICKY_TOP down to the point where
@@ -156,15 +158,12 @@ const CycleScene = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-white"
+      className="relative hidden bg-white lg:block"
       style={{ height: `calc(${PANEL_H} + ${RUNWAY})` }}
     >
-      {/* min-height rather than height. On a phone the six-step copy and the
-          ring together run taller than the viewport, and a fixed height with
-          overflow hidden cuts the top and bottom off the thing the section
-          exists to show. Growing instead costs the runway the same pixels it
-          gains, and the progress math measures the panel rather than assuming
-          it, so the six steps still traverse either way. */}
+      {/* min-height, not height: a fixed height with overflow hidden would
+          cut the ring or the copy where the six steps run taller than the
+          viewport. */}
       <div
         ref={panelRef}
         className="sticky top-20 overflow-hidden"
@@ -179,19 +178,11 @@ const CycleScene = () => {
         />
 
         <div className="gutter relative flex min-h-full w-full flex-col justify-center py-[clamp(2rem,6vh,4rem)]">
-          <p
-            className="font-body t-eyebrow text-calm-lavender-ink mb-5 sm:mb-6"
-            style={reveal(revealed, 0)}
-          >
-            {t.eyebrow}
-          </p>
-
           <h2
-            className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
+            className="t-h2 font-heading font-bold text-calm-navy tracking-tight max-w-5xl mb-[clamp(1.25rem,3vh,2rem)]"
             style={{ ...reveal(revealed, 80) }}
           >
-            {t.headlinePrefix}{" "}
-            <span className="text-calm-lavender-ink">{t.headlineEmphasis}</span>
+            {t.headlinePrefix} {t.headlineEmphasis}
           </h2>
 
           <div
@@ -413,14 +404,9 @@ const CycleScene = () => {
             </div>
 
             {/* Description panel, shows step 01 by default, swaps with scroll */}
-            {/* The copy is absolutely positioned so the six steps cross-fade in
-                place instead of the panel resizing under the reader, which
-                means this box has to be tall enough for the tallest step in the
-                longest language or the copy overflows it. Measured across the
-                six steps in all three locales: 214px at 390 (es) and 321px at
-                1440 (en), so these are those plus headroom. Every value tried
-                before this was short in every locale, which went unnoticed on a
-                desktop panel with slack and cut the progress pips on a phone. */}
+            {/* The copy is absolutely positioned so steps cross-fade in place, so
+                this box must fit the tallest step in the longest language:
+                321px at 1440 (en), plus headroom. */}
             <div className="relative min-h-[15rem] lg:min-h-[22rem]">
               <div
                 key={activeIndex}
@@ -451,7 +437,7 @@ const CycleScene = () => {
                         (activeIndex + 1).toString().padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="t-h2 font-heading font-extrabold text-calm-charcoal tracking-tight mb-5">
+                <h3 className="t-h2 font-heading font-extrabold text-calm-navy tracking-tight mb-5">
                   {active.title}
                 </h3>
                 <p className="t-lead font-body text-calm-charcoal/80 leading-relaxed max-w-md">
@@ -500,5 +486,125 @@ const CycleScene = () => {
     </section>
   );
 };
+
+// Below lg the section is a plain list. A pinned panel with a runway needs a
+// viewport taller than the ring plus the copy, which a phone does not have.
+const StepList = () => {
+  const t = useT().home.cycle;
+  return (
+    <section className="relative bg-white py-[clamp(3rem,8vw,5rem)] lg:hidden">
+      <div className="gutter">
+        <h2 className="t-h2 font-heading font-bold text-calm-navy tracking-tight">
+          {t.headlinePrefix} {t.headlineEmphasis}
+        </h2>
+
+        <svg
+          viewBox="0 0 100 100"
+          className="mx-auto mt-6 w-[min(12rem,56vw)]"
+          aria-hidden="true"
+        >
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={RADIUS}
+            fill="none"
+            stroke="#958AF0"
+            strokeWidth="1.1"
+          />
+          {NODE_ACTORS.map((actor, i) => {
+            const pos = nodePoint(i);
+            const isClinician = actor === "clinician";
+            return (
+              <g key={i}>
+                <circle
+                  cx={pos.x}
+                  cy={pos.y}
+                  r={7}
+                  fill={isClinician ? "#293587" : "#958AF0"}
+                />
+                <text
+                  x={pos.x}
+                  y={pos.y + 1.8}
+                  textAnchor="middle"
+                  fill={isClinician ? "#FFFFFF" : "#293587"}
+                  style={{
+                    fontSize: "5px",
+                    fontWeight: 800,
+                    fontFamily: "Outfit, ui-sans-serif, system-ui, sans-serif",
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+
+        <ol className="mt-8">
+          {t.nodes.map((node, i) => {
+            const isClinician = NODE_ACTORS[i] === "clinician";
+            const n = String(i + 1).padStart(2, "0");
+            return (
+              <li
+                key={i}
+                className={`relative flex gap-4 ${i === 0 ? "" : "mt-9"}`}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-[17px] top-9 -bottom-9 w-0.5 ${
+                    isClinician ? "bg-calm-navy/25" : "bg-calm-lavender/60"
+                  }`}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-heading text-sm font-extrabold tabular-nums ${
+                    isClinician
+                      ? "bg-calm-navy text-white"
+                      : "bg-calm-lavender text-calm-navy"
+                  }`}
+                >
+                  {n}
+                </span>
+                <div>
+                  <p
+                    className={`font-body t-eyebrow ${
+                      isClinician ? "text-calm-navy" : "text-calm-lavender-ink"
+                    }`}
+                  >
+                    {(isClinician ? t.clinicianStepPrefix : t.aiStepPrefix) + n}
+                  </p>
+                  <h3 className="mt-2 t-h3 font-heading font-extrabold text-calm-navy tracking-tight">
+                    {node.title}
+                  </h3>
+                  <p className="mt-2 max-w-[60ch] font-body t-lead text-calm-charcoal/80 leading-relaxed">
+                    {node.body}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+        <div className="relative mt-9 flex items-center gap-4">
+          <span
+            aria-hidden="true"
+            className="flex h-9 w-9 shrink-0 items-center justify-center text-calm-navy"
+          >
+            <ArrowUturnUpIcon className="h-4 w-4" />
+          </span>
+          <p className="font-body t-small font-semibold text-calm-charcoal/80">
+            {t.backToStart}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CycleScene = () => (
+  <>
+    <StepList />
+    <PinnedCycle />
+  </>
+);
 
 export default CycleScene;
