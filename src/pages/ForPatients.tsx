@@ -3,13 +3,12 @@ import Header from "@/components/Header";
 import { Faq } from "@/components/Faq";
 import Footer from "@/components/Footer";
 import CutOut from "@/components/CutOut";
-import Companion from "@/components/Companion";
+import CaregiverWalkthrough from "@/components/CaregiverWalkthrough";
+import PhoneShot from "@/components/PhoneShot";
 import StoreBadges from "@/components/StoreBadges";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/storeLinks";
 import { useLocale, useT, localizedHref, localizedAsset } from "@/i18n";
 
-// Real app screens on demo data, one patient and one story: 43 percent, 3 of 7 steps. Alt
-// text comes from forPatients.app.screenshots.
 const GALLERY = [
   "/screenshots/mobile/patient-home-screen.webp",
   "/screenshots/mobile/patient-journey-screen.webp",
@@ -19,91 +18,19 @@ const GALLERY = [
 const EXCHANGE = [
   {
     src: "/screenshots/detail/exchange-today.webp",
-    width: 1104,
-    height: 498,
+    width: 780,
+    height: 460,
   },
   {
     src: "/screenshots/detail/exchange-reply.webp",
-    width: 1104,
-    height: 822,
+    width: 780,
+    height: 520,
   },
 ] as const;
-const RECORD_SHOT = "/screenshots/mobile/patient-record.webp";
+const RECORD_SHOT = GALLERY[2];
 const cardClass =
   "pointer-events-none relative h-auto w-full select-none rounded-2xl bg-white ring-1 ring-calm-navy/10 shadow-[0_24px_44px_-24px_rgba(41,53,135,0.4)]";
 const eyebrowClass = "font-body t-eyebrow text-calm-lavender-ink";
-
-// The device frame the app band already uses, and the screen rectangle inside
-// it, straight from frameit's offsets.json for this frame (offset +75+66,
-// screen width 1320 in a 1470x3000 frame) as a percentage of the phone box.
-// Measured once, in MobileAppBand; repeated here rather than exported, because
-// a two-line constant shared across two files is not an abstraction.
-const PHONE_FRAME = "/screenshots/mobile/iphone-frame.webp";
-const SCREEN = { top: "2.2%", left: "5.1%", width: "89.8%", height: "95.6%" };
-
-/**
- * A screen behind the real device frame. The frame's own transparent screen
- * cutout masks the shot, so the corners and the island are always right and no
- * radius has to be guessed.
- *
- * The caller sizes and places the box; aspectRatio derives the other dimension
- * from whichever one is given, so a width works in the photograph composition
- * and a height works in the row of app screenshots.
- *
- * The caller also owns the position utility and has to pass one, because the
- * two images inside are absolute. A default here does not work: a caller's
- * `absolute` cannot override a base `relative`, since Tailwind emits the
- * position utilities in a fixed order and class order in the attribute counts
- * for nothing. Carrying one broke the composition into a flex row.
- *
- * With no alt it stays decorative, which is right beside the photograph where
- * the sentence already says what the screens are. In the screenshot row it
- * takes one, because there the images are the content.
- */
-const PhoneShot = ({
-  src,
-  alt,
-  className = "",
-}: {
-  src: string;
-  alt?: string;
-  className?: string;
-}) => (
-  <div
-    aria-hidden={alt ? undefined : true}
-    role={alt ? "img" : undefined}
-    aria-label={alt}
-    className={`pointer-events-none ${className}`}
-    style={{ aspectRatio: "1470 / 3000" }}
-  >
-    <img
-      src={src}
-      alt=""
-      width={780}
-      height={1688}
-      loading="lazy"
-      decoding="async"
-      className="absolute object-cover"
-      style={{
-        top: SCREEN.top,
-        left: SCREEN.left,
-        width: SCREEN.width,
-        height: SCREEN.height,
-        // The screen rectangle is square-cornered and the bezel around it is
-        // not, so on a dark screen the four corners poke out past the frame as
-        // coloured nicks. Relative units so one radius serves both phone sizes.
-        borderRadius: "12% / 5.4%",
-      }}
-    />
-    <img
-      src={PHONE_FRAME}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="absolute inset-0 h-full w-full drop-shadow-[0_24px_44px_-24px_rgba(41,53,135,0.45)]"
-    />
-  </div>
-);
 
 const hasStores = Boolean(APP_STORE_URL || PLAY_STORE_URL);
 
@@ -227,66 +154,7 @@ export default function ForPatients() {
           </div>
         </section>
 
-        {/* Practicing with a parent.
-            One sentence, deliberately. The product has no guardian seat: a
-            patient is one login assigned to one therapist. What is true today
-            is that a parent sits with a younger patient and works the plan the
-            therapist set, so that is the whole of what this says. */}
-        <section className="pb-[clamp(3rem,6vw,5rem)]">
-          <div className="gutter grid items-center gap-8 sm:grid-cols-[minmax(0,420px),1fr] sm:gap-14">
-            {/* Two phones and the two people holding them. The parent's screen
-                is behind on the left, the child's in front on the right, which
-                is the same sandwich this section already had.
-
-                What changed is what is in the sandwich. It used to be the plan
-                and the finished report, and both of those belong to the
-                therapist: the section is about a parent and a child at the
-                kitchen table, and neither of them ever opens a report. These
-                are the two surfaces they actually touch. */}
-            {/* Taller than the photograph so the child's phone can sit below
-                its baseline. Measured against the cut-out: both faces live in
-                the top third, y 0.02 to 0.33, and they span almost the full
-                width, so the only place a phone can overlap without landing on
-                someone is below y 0.5, where the laps and the bench are. */}
-            <div className="relative flex h-[330px] items-end justify-center sm:h-[420px]">
-              <PhoneShot
-                src={localizedAsset(
-                  "/screenshots/mobile/caregiver-today.webp",
-                  locale,
-                )}
-                className="absolute bottom-14 left-0 hidden w-[124px] -rotate-6 sm:block"
-              />
-              <CutOut
-                name="patients-listen"
-                alt={t.withAParent.photoAlt}
-                renderHeight={{ base: 300, sm: 340 }}
-                className="relative z-10 h-[300px] sm:h-[340px]"
-              />
-              <PhoneShot
-                src={localizedAsset(
-                  "/screenshots/mobile/child-practice.webp",
-                  locale,
-                )}
-                className="absolute -bottom-7 right-4 z-20 w-[104px] rotate-3 sm:-bottom-10 sm:-right-2 sm:w-[122px]"
-              />
-            </div>
-            <div>
-              {/* A face of its own, not the default one three other
-                  companions on this site already wear. */}
-              <Companion
-                species="lumo"
-                size={104}
-                className="mb-4"
-                eyes="dot"
-                bellyShape="round"
-              />
-
-              <p className="t-statement mt-4 max-w-xl text-balance font-heading font-medium text-calm-navy">
-                {t.withAParent.line}
-              </p>
-            </div>
-          </div>
-        </section>
+        <CaregiverWalkthrough />
 
         {/* The app */}
         <section className="relative overflow-hidden bg-calm-light py-[clamp(3.5rem,7vw,6rem)]">
@@ -317,7 +185,7 @@ export default function ForPatients() {
                       <p className="font-heading text-lg font-bold text-calm-navy">
                         <span className="mr-2 font-body text-sm tabular-nums text-calm-lavender-ink">
                           {String(i + 1).padStart(2, "0")}
-                        </span>
+                        </span>{" "}
                         {t.app.walkthrough[i].title}
                       </p>
                       <p className="mt-1.5 font-body text-base text-calm-charcoal/90 leading-relaxed">

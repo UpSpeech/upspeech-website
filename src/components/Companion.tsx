@@ -237,7 +237,7 @@ const Companion = ({
         ["--companion-accent" as string]: accent,
         ["--companion-belly" as string]: belly,
       }}
-      className={`companion ${onScreen ? "companion-live" : ""} ${className}`}
+      className={`companion companion-${species} ${onScreen ? "companion-live" : ""} ${className}`}
       {...a11y}
     >
       <ellipse
@@ -271,7 +271,9 @@ const Companion = ({
         />
 
         {/* Crown behind the body so the body covers where it joins. */}
-        <Crown kind={crown} body={b} />
+        <g className="companion-crown">
+          <Crown kind={crown} body={b} />
+        </g>
         <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={b.r} fill={INK} />
 
         {/* Two colour axes, and every coloured surface belongs to exactly one.

@@ -197,12 +197,13 @@ export const es: Dictionary = {
     mobile: {
       eyebrow: "En el bolsillo del paciente",
       headline: "La práctica ocurre en la app, entre sesiones.",
-      body: "Los pacientes siguen desde el móvil, entre sesiones, el plan que les ha pautado su logopeda, y el terapeuta puede ver cómo va.",
+      body: "Sigue el plan de tu logopeda en el móvil. Practica por tu cuenta o acompaña a tu hijo en sus ejercicios.",
       screenshots: [
         "App móvil de UpSpeech mostrando la ruta de aprendizaje con los pasos que ha pautado el terapeuta",
         "Pantalla de práctica de la app móvil de UpSpeech con ejercicios guiados de práctica",
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
+      familyLink: "Mira cómo practicar con tu hijo",
       familyEyebrow: "Pacientes más jóvenes",
       familyAlt:
         "Un padre y su hija en la mesa del comedor, la niña hablando hacia un teléfono apoyado en un soporte mientras él está sentado a su lado, mirándola a ella y no a la pantalla",
@@ -732,10 +733,10 @@ export const es: Dictionary = {
       exchange: {
         todayLabel: "Ejercicio de hoy, de Sam Rivera",
         todayAlt:
-          "La práctica de hoy en el panel del paciente: Inicios suaves, definida por el terapeuta, unos 5 minutos",
+          "El ejercicio de mantenimiento de hoy en la pantalla de inicio del paciente",
         replyLabel: "Tu terapeuta responde",
         replyAlt:
-          "Una grabación de la práctica de Leo con barra de reproducción, y el feedback del terapeuta debajo",
+          "El mensaje de Alex sobre la práctica y la respuesta de Sam sobre su próxima sesión",
         recordLabel: "Tú grabas",
         recordAlt:
           "La pantalla de práctica del paciente en un teléfono, lista para grabar la respuesta al ejercicio de hoy",
@@ -745,10 +746,34 @@ export const es: Dictionary = {
         "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
     },
     withAParent: {
-      eyebrow: "Practicar con un padre o una madre",
-      line: "Los pacientes más jóvenes practican con un padre o una madre a su lado, siguiendo el mismo plan que ha definido su logopeda.",
       photoAlt:
         "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
+      headline: "Practica con tu hijo.",
+      line: "Como padre, madre o cuidador, tienes tu propia vista del plan de tu hijo. Consulta las instrucciones del logopeda, practicad juntos y cuéntale cómo ha ido.",
+      companion:
+        "El compañero que elige tu hijo lo acompaña durante la práctica.",
+      steps: [
+        {
+          title: "La práctica de hoy",
+          line: "Mira qué ha preparado el logopeda para hoy.",
+          alt: "La pantalla de inicio del cuidador con la práctica del niño para hoy",
+        },
+        {
+          title: "Consulta la guía",
+          line: "Sigue las instrucciones que te ha dejado el logopeda.",
+          alt: "La guía del paso para el cuidador con las instrucciones del logopeda",
+        },
+        {
+          title: "Practicad juntos",
+          line: "Abre la actividad y haz el ejercicio con tu hijo.",
+          alt: "Una actividad de práctica del niño en la app UpSpeech",
+        },
+        {
+          title: "Habla con el logopeda",
+          line: "Envía un mensaje al logopeda sobre la práctica.",
+          alt: "La conversación del cuidador con el logopeda del niño",
+        },
+      ],
     },
     app: {
       eyebrow: "La app",
@@ -765,12 +790,12 @@ export const es: Dictionary = {
           line: "Tu terapeuta elige el ejercicio. Tú pulsas empezar.",
         },
         {
-          title: "Tu recorrido",
+          title: "Tu plan",
           line: "Mira qué pasos has dado y cuáles vienen después.",
         },
         {
           title: "Práctica",
-          line: "Elige un ejercicio y practica a tu ritmo.",
+          line: "Graba el ejercicio que te ha indicado tu logopeda.",
         },
       ],
       childScreenshots: [

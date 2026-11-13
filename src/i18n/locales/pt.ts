@@ -198,12 +198,13 @@ export const pt: Dictionary = {
     mobile: {
       eyebrow: "No bolso do paciente",
       headline: "A prática acontece na app, entre sessões.",
-      body: "Os pacientes seguem no telemóvel o plano definido pelo terapeuta, entre sessões, e o terapeuta consegue ver como está a correr.",
+      body: "Segue o plano do teu terapeuta no telemóvel. Pratica por ti ou acompanha a tua criança nos exercícios.",
       screenshots: [
         "App móvel UpSpeech a mostrar o percurso de aprendizagem com os passos definidos pelo terapeuta",
         "Ecrã de prática da app móvel UpSpeech com exercícios guiados de prática",
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
       ],
+      familyLink: "Vê como praticar com a tua criança",
       familyEyebrow: "Pacientes mais novos",
       familyAlt:
         "Um pai e a filha à mesa da sala, a rapariga a falar para um telemóvel apoiado num suporte enquanto ele está sentado ao lado, a olhar para ela e não para o ecrã",
@@ -737,10 +738,10 @@ export const pt: Dictionary = {
       exchange: {
         todayLabel: "Exercício de hoje, do Sam Rivera",
         todayAlt:
-          "A prática de hoje no painel do paciente: Inícios suaves, definida pelo terapeuta, cerca de 5 minutos",
+          "O exercício de manutenção de hoje no ecrã inicial do paciente",
         replyLabel: "O teu terapeuta responde",
         replyAlt:
-          "Uma gravação da prática do Leo com barra de reprodução, e o feedback do terapeuta por baixo",
+          "A mensagem do Alex sobre a prática e a resposta do Sam sobre a próxima sessão",
         recordLabel: "Gravas tu",
         recordAlt:
           "O ecrã de prática do paciente num telemóvel, pronto para gravar a resposta ao exercício de hoje",
@@ -750,10 +751,34 @@ export const pt: Dictionary = {
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
     },
     withAParent: {
-      eyebrow: "Praticar com um dos pais",
-      line: "Os pacientes mais novos praticam com um dos pais ao lado, seguindo o mesmo plano definido pelo terapeuta.",
       photoAlt:
         "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
+      headline: "Pratica com a tua criança.",
+      line: "Como pai, mãe ou cuidador, tens uma vista própria do plano da tua criança. Consulta as instruções do terapeuta, pratiquem juntos e conta-lhe como correu.",
+      companion:
+        "O companheiro que a tua criança escolheu acompanha-a na prática.",
+      steps: [
+        {
+          title: "A prática de hoje",
+          line: "Vê o que o terapeuta planeou para hoje.",
+          alt: "O ecrã inicial do cuidador com a prática da criança para hoje",
+        },
+        {
+          title: "Consulta o guia",
+          line: "Segue as instruções que o terapeuta deixou para ti.",
+          alt: "O guia do passo para o cuidador com as instruções do terapeuta",
+        },
+        {
+          title: "Pratiquem juntos",
+          line: "Abre a atividade e faz o exercício com a tua criança.",
+          alt: "Uma atividade de prática da criança na app UpSpeech",
+        },
+        {
+          title: "Fala com o terapeuta",
+          line: "Envia uma mensagem ao terapeuta sobre a prática.",
+          alt: "A conversa do cuidador com o terapeuta da criança",
+        },
+      ],
     },
     app: {
       eyebrow: "A app",
@@ -770,12 +795,12 @@ export const pt: Dictionary = {
           line: "O teu terapeuta escolhe o exercício. Tu carregas em começar.",
         },
         {
-          title: "A tua jornada",
+          title: "O teu plano",
           line: "Vê que passos já deste e quais vêm a seguir.",
         },
         {
           title: "Prática",
-          line: "Escolhe um exercício e pratica ao teu ritmo.",
+          line: "Grava o exercício que o terapeuta te indicou.",
         },
       ],
       childScreenshots: [

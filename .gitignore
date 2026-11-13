@@ -48,6 +48,9 @@ upspeech-website/*
 # Scratch PR screenshots (captured locally, attached via pr-assets branch)
 .pr-assets
 
+# Local shipping state
+.ship/
+
 # Vite dependency cache
 .vite
 
