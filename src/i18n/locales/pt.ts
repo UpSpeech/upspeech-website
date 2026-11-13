@@ -55,7 +55,7 @@ export const pt: Dictionary = {
     title: "Técnicas de terapia da fala",
     subtitle: "Para que serve cada uma, e como praticá-la",
     seoDescription:
-      "Técnicas de terapia da fala para a gaguez, cada uma com o que é, para que serve e como praticá-la. Inclui modelação da fluência, modificação da gaguez e abordagens cognitivas.",
+      "Técnicas de terapia da fala para a gaguez: o que é cada uma, para que serve e como praticá-la. Inclui modelação da fluência e modificação da gaguez.",
     featured: "Destaque",
     mainCategories: "Famílias de técnicas",
     standalone: "Técnicas que não pertencem a uma família",
@@ -333,7 +333,7 @@ export const pt: Dictionary = {
   join: {
     seoTitle: "Pedir acesso antecipado",
     seoDescription:
-      "Veja como o UpSpeech ajuda entre sessões de terapia da fala, seja terapeuta, esteja em terapia, seja pai, mãe ou amigo. Inscreva-se na lista de espera ou peça uma demonstração.",
+      "Veja como o UpSpeech ajuda entre sessões, seja terapeuta, esteja em terapia, seja pai, mãe ou amigo. Inscreva-se na lista de espera ou peça uma demonstração.",
     titleLead: "Mais apoio entre sessões de terapia da",
     titleAccent: "fala.",
     lead: "Começando pela gaguez e pelas perturbações do desenvolvimento da linguagem, o UpSpeech ajuda as pessoas a praticar em casa e os terapeutas a acompanhar o progresso.",
@@ -779,7 +779,7 @@ export const pt: Dictionary = {
   personCentered: {
     seoTitle: "O que é a terapia centrada na pessoa?",
     seoDescription:
-      "Um guia em linguagem simples sobre a terapia da fala centrada na pessoa: o que é, porque é que a fluência não é o único objetivo e como a UpSpeech se encaixa nesta abordagem.",
+      "Um guia simples sobre a terapia da fala centrada na pessoa: o que é, porque a fluência não é o único objetivo e como a UpSpeech se encaixa nesta abordagem.",
     intro: {
       eyebrow: "Filosofia",
       headlineLine1: "O que é a terapia",
@@ -835,8 +835,7 @@ export const pt: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle:
-      "Como os terapeutas da fala gastam menos tempo em relatórios de sessão",
+    seoTitle: "Menos tempo em relatórios para terapeutas da fala",
     seoDescription:
       "Um guia prático para terapeutas da fala sobre como gastar menos tempo em documentação, com rascunhos estruturados que respeitam o juízo clínico.",
     intro: {

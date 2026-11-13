@@ -5,7 +5,7 @@ import { SEO } from "@/components/SEO";
 import { fetchTechnique, type Technique } from "@/lib/api";
 import { readSeed, writeSeed, techniqueKey } from "@/lib/prerender-data";
 import {
-  TECHNIQUE_SEO,
+  techniqueSeo,
   getTechniqueStructuredData,
   getTechniqueFAQStructuredData,
   breadcrumbList,
@@ -105,7 +105,6 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     if (id) document.getElementById(id)?.scrollIntoView();
   }, [loading, error, slug]);
 
-  const staticSeo = TECHNIQUE_SEO[slug];
   const faqs = getTechniqueFAQs(slug, locale);
   const railLinks = [
     technique?.practical_description && {
@@ -181,13 +180,11 @@ export function TechniquePage({ slug }: TechniquePageProps) {
     ));
   };
 
-  const seoTitle = technique?.name ?? staticSeo?.title;
-  const seoDescription =
-    technique?.description ||
-    staticSeo?.description ||
-    (technique
-      ? `Learn about ${technique.name}, a speech therapy technique for stuttering.`
-      : undefined);
+  const { title: seoTitle, description: seoDescription } = techniqueSeo(
+    slug,
+    locale,
+    technique,
+  );
   const structuredData = technique
     ? [
         getTechniqueStructuredData(

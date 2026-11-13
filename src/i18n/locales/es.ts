@@ -55,7 +55,7 @@ export const es: Dictionary = {
     title: "Técnicas de logopedia",
     subtitle: "Para qué sirve cada una, y cómo practicarla",
     seoDescription:
-      "Técnicas de logopedia para la tartamudez, cada una con qué es, para qué sirve y cómo practicarla. Incluye moldeamiento de la fluidez, modificación de la tartamudez y enfoques cognitivos.",
+      "Técnicas de logopedia para la tartamudez: qué es cada una, para qué sirve y cómo practicarla. Con moldeamiento de la fluidez y modificación de la tartamudez.",
     featured: "Destacado",
     mainCategories: "Familias de técnicas",
     standalone: "Técnicas que no pertenecen a una familia",
@@ -332,7 +332,7 @@ export const es: Dictionary = {
   join: {
     seoTitle: "Solicitar acceso anticipado",
     seoDescription:
-      "Mira cómo ayuda UpSpeech entre sesiones de logopedia, tanto si eres logopeda como si estás en terapia, eres madre, padre o amigo. Apúntate a la lista de espera o pide una demo.",
+      "Mira cómo ayuda UpSpeech entre sesiones, seas logopeda, estés en terapia o seas madre, padre o amigo. Apúntate a la lista de espera o pide una demo.",
     titleLead: "Más apoyo entre sesiones de",
     titleAccent: "logopedia.",
     lead: "Empezando por la tartamudez y los trastornos del desarrollo del lenguaje, UpSpeech ayuda a practicar en casa y a que los logopedas sigan el progreso.",
@@ -774,7 +774,7 @@ export const es: Dictionary = {
   personCentered: {
     seoTitle: "¿Qué es la logopedia centrada en la persona?",
     seoDescription:
-      "Una guía en lenguaje sencillo sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo, y cómo UpSpeech refleja este enfoque.",
+      "Una guía sencilla sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo y cómo UpSpeech refleja este enfoque.",
     intro: {
       eyebrow: "Filosofía",
       headlineLine1: "¿Qué es la terapia",
@@ -830,7 +830,7 @@ export const es: Dictionary = {
     },
   },
   reducingDocumentationTime: {
-    seoTitle: "Cómo los logopedas reducen el tiempo en notas de sesión",
+    seoTitle: "Menos tiempo en notas de sesión para logopedas",
     seoDescription:
       "Una guía práctica para logopedas sobre cómo reducir el tiempo de documentación en logopedia, con borradores estructurados que apoyan el juicio clínico.",
     intro: {

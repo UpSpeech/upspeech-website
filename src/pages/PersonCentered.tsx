@@ -12,7 +12,11 @@ export default function PersonCentered() {
   const locale = useLocale();
   const t = useT().personCentered;
 
-  const articleSchema = getPersonCenteredStructuredData(locale);
+  const articleSchema = getPersonCenteredStructuredData(
+    locale,
+    t.seoTitle,
+    t.seoDescription,
+  );
   const dictionary = useT();
   const breadcrumbs = breadcrumbList(
     [
