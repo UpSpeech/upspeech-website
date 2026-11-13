@@ -727,6 +727,8 @@ export const en = {
         "A boy speaking toward a phone propped up on a kitchen table, his mother sitting beside him and watching him rather than the screen",
     },
     withAParent: {
+      photoAlt:
+        "A father and his daughter sitting together on a sofa, listening back to a recording on his phone",
       headline: "Practise with your child.",
       line: "As a parent or caregiver, you have your own view of your child's plan. Open the therapist's instructions, practise together, then tell them how it went.",
       companion: "Your child’s chosen companion joins them for practice.",

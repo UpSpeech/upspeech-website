@@ -746,6 +746,8 @@ export const es: Dictionary = {
         "Un niño hablando hacia un teléfono apoyado en la mesa de la cocina, con su madre sentada a su lado mirándolo a él y no a la pantalla",
     },
     withAParent: {
+      photoAlt:
+        "Un padre y su hija sentados juntos en el sofá, escuchando una grabación en el teléfono de él",
       headline: "Practica con tu hijo.",
       line: "Como padre, madre o cuidador, tienes tu propia vista del plan de tu hijo. Consulta las instrucciones del logopeda, practicad juntos y cuéntale cómo ha ido.",
       companion:

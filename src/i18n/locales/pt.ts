@@ -751,6 +751,8 @@ export const pt: Dictionary = {
         "Um rapaz a falar para um telemóvel apoiado na mesa da cozinha, com a mãe sentada ao lado a olhar para ele e não para o ecrã",
     },
     withAParent: {
+      photoAlt:
+        "Um pai e a filha sentados juntos no sofá, a ouvir uma gravação no telemóvel dele",
       headline: "Pratica com a tua criança.",
       line: "Como pai, mãe ou cuidador, tens uma vista própria do plano da tua criança. Consulta as instruções do terapeuta, pratiquem juntos e conta-lhe como correu.",
       companion:
