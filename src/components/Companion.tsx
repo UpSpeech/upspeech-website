@@ -294,10 +294,9 @@ const Companion = ({
             opacity="0.94"
           />
         )}
-        {/* Both cheeks on one line. The right one was authored at cy 128, level
-            with the chest lobe rather than with its own pair, which read as a
-            slipped dot on every body since the cheeks are shared geometry. */}
-        <circle cx="131" cy="110" r="5.5" fill="var(--companion-accent)" />
+        {/* A pair: one line, mirrored about the canvas centre at x 100. The
+            cheeks are shared geometry, so a slip here shows on every body. */}
+        <circle cx="139" cy="110" r="5.5" fill="var(--companion-accent)" />
         <circle
           cx="61"
           cy="110"
