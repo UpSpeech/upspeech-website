@@ -297,13 +297,7 @@ const Companion = ({
         {/* A pair: one line, mirrored about the canvas centre at x 100. The
             cheeks are shared geometry, so a slip here shows on every body. */}
         <circle cx="139" cy="110" r="5.5" fill="var(--companion-accent)" />
-        <circle
-          cx="61"
-          cy="110"
-          r="5.5"
-          fill="var(--companion-accent)"
-          opacity="0.85"
-        />
+        <circle cx="61" cy="110" r="5.5" fill="var(--companion-accent)" />
 
         <g className="companion-eyes">
           <ellipse
