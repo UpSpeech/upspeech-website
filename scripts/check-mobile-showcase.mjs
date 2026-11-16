@@ -39,14 +39,6 @@ export async function checkMobileShowcase(browser, baseUrl) {
               }),
             );
           });
-          if (route === "/") {
-            await page.waitForFunction(
-              () =>
-                document.querySelector("video[src*='app-screen']")
-                  ?.readyState >= 1,
-              { timeout: 15000 },
-            );
-          }
           const report = await page.evaluate(() => {
             const section = document.querySelector("#with-your-child");
             const row = section?.querySelector("ol");
@@ -72,6 +64,12 @@ export async function checkMobileShowcase(browser, baseUrl) {
                 ?.getAttribute("src"),
               videoPaused: document.querySelector("video[src*='app-screen']")
                 ?.paused,
+              videoPreload: document
+                .querySelector("video[src*='app-screen']")
+                ?.getAttribute("preload"),
+              engineVideo: !!document.querySelector(
+                "source[src*='annotation-tool']",
+              ),
               screenshotSources: [...document.images]
                 .map((img) => img.getAttribute("src"))
                 .filter(
@@ -115,6 +113,12 @@ export async function checkMobileShowcase(browser, baseUrl) {
               report.videoPaused,
               true,
               "video must pause under reduced motion",
+            );
+            assert.equal(report.videoPreload, "none", "video must not preload");
+            assert.equal(
+              report.engineVideo,
+              false,
+              "the engine section shows its poster under reduced motion",
             );
             const video = await fetch(`${baseUrl}${report.video}`);
             assert.equal(video.status, 200, `missing ${report.video}`);
@@ -167,11 +171,24 @@ export async function checkMobileShowcase(browser, baseUrl) {
       { name: "prefers-reduced-motion", value: "no-preference" },
     ]);
     await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("video[src*='app-screen']");
+    const offscreenPlays = await page.$eval(
+      "video[src*='app-screen']",
+      (video) =>
+        video.getBoundingClientRect().top > innerHeight && !video.paused,
+    );
+    assert.equal(offscreenPlays, false, "video must wait until it is in view");
+    // The intro holds the page still, so scrolling before it leaves does nothing.
+    await page.waitForSelector(".site-intro", { hidden: true });
+    const scrollToVideo = () =>
+      page.$eval("video[src*='app-screen']", (video) =>
+        video.scrollIntoView({ block: "center" }),
+      );
+    await scrollToVideo();
     await page.waitForFunction(() => {
       const video = document.querySelector("video[src*='app-screen']");
       return video && !video.paused && video.currentTime > 0;
     });
-    await page.waitForSelector(".site-intro", { hidden: true });
     await page.click('button[aria-haspopup="menu"]');
     await page.waitForSelector('[role="menuitem"]', { timeout: 5000 });
     await page.$$eval('[role="menuitem"]', (items) => {
@@ -181,6 +198,8 @@ export async function checkMobileShowcase(browser, baseUrl) {
       if (!portuguese) throw new Error("Portuguese language option missing");
       portuguese.click();
     });
+    await page.waitForSelector("video[src='/videos/pt/app-screen.mp4']");
+    await scrollToVideo();
     await page.waitForFunction(
       () => {
         const video = document.querySelector("video[src*='app-screen']");

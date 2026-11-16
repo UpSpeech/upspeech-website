@@ -115,13 +115,19 @@ const MobileAppBand = () => {
     const video = videoRef.current;
     if (!video) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let inView = false;
     const update = () => {
-      if (motion.matches) video.pause();
+      if (motion.matches || !inView) video.pause();
       else void video.play().catch(() => video.pause());
     };
-    update();
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      update();
+    });
+    observer.observe(video);
     motion.addEventListener("change", update);
     return () => {
+      observer.disconnect();
       motion.removeEventListener("change", update);
       video.pause();
     };
@@ -227,6 +233,7 @@ const MobileAppBand = () => {
                         style={PHONE_SCREEN}
                         src={heroVideo}
                         poster={screenshots[1].src}
+                        preload="none"
                         muted
                         loop
                         playsInline
