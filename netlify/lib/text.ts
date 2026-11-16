@@ -39,10 +39,6 @@ export const isSafeHttpsUrl = (value: string): boolean => {
   }
 };
 
-/**
- * The first word of a submitted name, for the greeting. "Hi Vasco," reads like
- * a person wrote it; "Hi Vasco Figueiredo," reads like a mail merge. The card
- * below the greeting still shows the full name as submitted.
- */
+/** The first word of a submitted name: "answer Ana directly", not "Ana Example". */
 export const firstName = (name: string): string =>
   name.split(/\s+/).filter(Boolean)[0] ?? name;

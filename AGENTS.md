@@ -23,8 +23,16 @@ exactly this reason.
 
 ```bash
 npm run lint
+npm run typecheck
+npm run check:early-access
+npm run check:consent
+npm run check:utm
+npm run check:british
 npm run build
 ```
+
+`.github/workflows/checks.yml` runs every gate but the build on each pull
+request. The build, prerender included, runs on the Netlify deploy preview.
 
 Prerendering runs out of memory locally at the default pool size and exits 137.
 Drop `POOL_SIZE` to 2.
@@ -62,14 +70,3 @@ Five rules sit here because they bite before you would think to go and look.
 **Comments are rare and short.** Write one where the code cannot say it itself: a
 non-obvious constraint, a workaround and what forces it, a unit or an invariant.
 Default to none.
-
-## CI cannot enforce anything right now
-
-Every GitHub Actions workflow in the organisation is failing to start:
-
-> The job was not started because recent account payments have failed or your
-> spending limit needs to be increased.
-
-Jobs go red in a couple of seconds with zero steps executed. That is the billing
-signature, not a test failure. Run the gates above locally and say in the PR that
-you did. Delete this section when Actions runs again.

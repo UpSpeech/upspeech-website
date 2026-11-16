@@ -20,12 +20,12 @@ const bundle = join(outDir, ".templates.mjs");
 
 // The slugs the form actually posts, not the labels the visitor saw.
 const SAMPLE = {
-  name: "Vasco Figueiredo",
-  email: "vasco@clinicadafala.pt",
+  name: "Ana Example",
+  email: "ana@example.com",
   profile: "therapist",
   request: "demo",
   clinicSize: "",
-  clinic: "Clinica da Fala",
+  clinic: "Example Clinic",
   companion: "nima",
   consent: true,
   shareCode: "",

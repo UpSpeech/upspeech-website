@@ -5,10 +5,9 @@
 # This has to run after the deploy, not inside the build: indexnow.mjs reads the
 # LIVE sitemap, which during a build is still the previous deploy's copy.
 #
-# Actions minutes on this account are capped, so the job installs nothing.
-# scripts/indexnow.mjs imports only node: builtins and uses global fetch, so a
-# checkout and a node runtime are the whole dependency list. A run is seconds
-# plus however long the readiness poll waits.
+# The job installs nothing. scripts/indexnow.mjs imports only node: builtins
+# and uses global fetch, so a checkout and a node runtime are the whole
+# dependency list. A run is seconds plus however long the readiness poll waits.
 name: IndexNow
 
 on:
@@ -23,6 +22,9 @@ on:
       - "netlify.toml"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # A newer push supersedes an in-flight run rather than racing it.
 concurrency:
   group: indexnow
@@ -34,9 +36,9 @@ jobs:
     # Hard ceiling so a stuck deploy cannot sit there burning minutes.
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: .nvmrc
 
