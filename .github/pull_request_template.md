@@ -9,6 +9,7 @@
 ## Screenshots
 
 Netlify builds a preview per PR. Link it.
+
 ## Testing
 
-<!-- Actions is billing-blocked, so CI will not run. Say which gates you ran locally. -->
+<!-- The Checks workflow runs the fast gates. Say what else you ran, such as a local build. -->

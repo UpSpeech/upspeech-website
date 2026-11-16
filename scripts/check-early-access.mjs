@@ -45,8 +45,8 @@ const handler = async ({ httpMethod, body, origin = SITE }) => {
 
 const POST = (body) => ({ httpMethod: "POST", body: JSON.stringify(body) });
 const LEAD = {
-  name: "Vasco Figueiredo",
-  email: "vasco@clinicadafala.pt",
+  name: "Ana Example",
+  email: "ana@example.com",
   profile: "therapist",
   request: "early",
   consent: true,
@@ -511,14 +511,14 @@ await handler(
     ...LEAD,
     request: "demo",
     consent: false,
-    clinic: "Clinica da Fala",
+    clinic: "Example Clinic",
   }),
 );
 check(
   "team email names the demo request",
-  mail.team?.subject === "Demo: Vasco Figueiredo" &&
+  mail.team?.subject === "Demo: Ana Example" &&
     mail.team?.text.includes("Request: Demo") &&
-    mail.team?.text.includes("Clinic: Clinica da Fala"),
+    mail.team?.text.includes("Clinic: Example Clinic"),
   mail.team?.subject + " | " + mail.team?.text,
 );
 check(
