@@ -977,4 +977,8 @@ export const pt: Dictionary = {
     body: "A página que procuras foi movida ou nunca existiu. Vamos ajudar a voltar ao caminho certo.",
     backHome: "Voltar ao início",
   },
+  crash: {
+    title: "Esta página não carregou.",
+    reload: "Recarregar",
+  },
 };

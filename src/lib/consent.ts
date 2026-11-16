@@ -26,12 +26,31 @@ export type ConsentState = {
   timestamp: number;
 };
 
+// Storage can throw: Safari with site data blocked, some embedded webviews.
+// A throw here would take the whole page down, so treat it as "no choice yet".
+const readStored = (): string | null => {
+  try {
+    return localStorage.getItem(CONSENT_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const store = (analytics: boolean, advertising: boolean): void => {
+  const state: ConsentState = { analytics, advertising, timestamp: Date.now() };
+  try {
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(state));
+  } catch {
+    // The choice still applies for this page view.
+  }
+};
+
 /**
  * Check if user has already made a consent choice
  */
 export const hasConsent = (): boolean => {
   if (typeof window === "undefined") return false;
-  return localStorage.getItem(CONSENT_KEY) !== null;
+  return readStored() !== null;
 };
 
 /**
@@ -40,7 +59,7 @@ export const hasConsent = (): boolean => {
 export const getConsentState = (): ConsentState | null => {
   if (typeof window === "undefined") return null;
 
-  const stored = localStorage.getItem(CONSENT_KEY);
+  const stored = readStored();
   if (!stored) return null;
 
   try {
@@ -50,65 +69,46 @@ export const getConsentState = (): ConsentState | null => {
   }
 };
 
+/** Push one state to all trackers (GA4 Consent Mode, Clarity, PostHog). */
+const pushSignals = (analytics: boolean, advertising: boolean): void => {
+  const ga = (on: boolean) => (on ? "granted" : "denied");
+  if (window.gtag) {
+    window.gtag("consent", "update", {
+      ad_storage: ga(advertising),
+      ad_user_data: ga(advertising),
+      ad_personalization: ga(advertising),
+      analytics_storage: ga(analytics),
+    });
+  }
+
+  if (window.clarity) {
+    window.clarity("consentv2", {
+      ad_Storage: ga(advertising),
+      analytics_Storage: ga(analytics),
+    });
+  }
+
+  if (analytics) posthog.opt_in_capturing();
+  else posthog.opt_out_capturing();
+};
+
+/**
+ * Re-apply a stored choice on load. It neither widens the choice (an
+ * analytics-only visitor stays analytics-only) nor rewrites its timestamp.
+ */
+export const applyConsent = (state: ConsentState): void => {
+  if (typeof window === "undefined") return;
+  pushSignals(state.analytics === true, state.advertising === true);
+};
+
 /**
  * Grant all consent (analytics + advertising)
  * Updates Google Consent Mode, Microsoft Clarity, and stores preference
  */
 export const grantConsent = (): void => {
   if (typeof window === "undefined") return;
-
-  // Update Google Consent Mode
-  if (window.gtag) {
-    window.gtag("consent", "update", {
-      ad_storage: "granted",
-      ad_user_data: "granted",
-      ad_personalization: "granted",
-      analytics_storage: "granted",
-    });
-  }
-
-  // Update Microsoft Clarity Consent (v2 API)
-  if (window.clarity) {
-    window.clarity("consentv2", {
-      ad_Storage: "granted",
-      analytics_Storage: "granted",
-    });
-  }
-
-  // Enable PostHog tracking
-  posthog.opt_in_capturing();
-
-  // Store consent preference
-  const consentState: ConsentState = {
-    analytics: true,
-    advertising: true,
-    timestamp: Date.now(),
-  };
-  localStorage.setItem(CONSENT_KEY, JSON.stringify(consentState));
-};
-
-/**
- * Push a denied state to all trackers (GA4 Consent Mode, Clarity, PostHog).
- * Shared by explicit decline and the GPC deny path.
- */
-const pushDeniedSignals = (): void => {
-  if (window.gtag) {
-    window.gtag("consent", "update", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "denied",
-    });
-  }
-
-  if (window.clarity) {
-    window.clarity("consentv2", {
-      ad_Storage: "denied",
-      analytics_Storage: "denied",
-    });
-  }
-
-  posthog.opt_out_capturing();
+  pushSignals(true, true);
+  store(true, true);
 };
 
 /**
@@ -117,16 +117,8 @@ const pushDeniedSignals = (): void => {
  */
 export const denyConsent = (): void => {
   if (typeof window === "undefined") return;
-
-  pushDeniedSignals();
-
-  // Store consent preference
-  const consentState: ConsentState = {
-    analytics: false,
-    advertising: false,
-    timestamp: Date.now(),
-  };
-  localStorage.setItem(CONSENT_KEY, JSON.stringify(consentState));
+  pushSignals(false, false);
+  store(false, false);
 };
 
 /**
@@ -148,7 +140,7 @@ export const isGpcEnabled = (): boolean => {
  */
 export const applyGpcDenial = (): void => {
   if (typeof window === "undefined") return;
-  pushDeniedSignals();
+  pushSignals(false, false);
 };
 
 /**
@@ -157,35 +149,8 @@ export const applyGpcDenial = (): void => {
  */
 export const grantAnalyticsOnly = (): void => {
   if (typeof window === "undefined") return;
-
-  // Update Google Consent Mode
-  if (window.gtag) {
-    window.gtag("consent", "update", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "granted",
-    });
-  }
-
-  // Update Microsoft Clarity Consent (v2 API)
-  if (window.clarity) {
-    window.clarity("consentv2", {
-      ad_Storage: "denied",
-      analytics_Storage: "granted",
-    });
-  }
-
-  // Enable PostHog tracking (analytics only)
-  posthog.opt_in_capturing();
-
-  // Store consent preference
-  const consentState: ConsentState = {
-    analytics: true,
-    advertising: false,
-    timestamp: Date.now(),
-  };
-  localStorage.setItem(CONSENT_KEY, JSON.stringify(consentState));
+  pushSignals(true, false);
+  store(true, false);
 };
 
 /**
@@ -193,5 +158,9 @@ export const grantAnalyticsOnly = (): void => {
  */
 export const clearConsent = (): void => {
   if (typeof window === "undefined") return;
-  localStorage.removeItem(CONSENT_KEY);
+  try {
+    localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    // Nothing stored that could be read back either.
+  }
 };

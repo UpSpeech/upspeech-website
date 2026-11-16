@@ -354,7 +354,7 @@ export function Done({
               {isRequest ? d.requestReceived : d.signedUp}
             </span>
             <h1>{title}</h1>
-            <p>{line}</p>
+            <p className="ph-no-capture">{line}</p>
           </div>
         </div>
         {next.length > 0 && (
@@ -372,7 +372,7 @@ export function Done({
                 </span>
                 <div>
                   <b>{title}</b>
-                  <small>{sub}</small>
+                  <small className="ph-no-capture">{sub}</small>
                 </div>
               </div>
             ))}

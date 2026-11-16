@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./index.css";
 import { captureCampaign, captureReferral } from "./lib/utm";
 
@@ -32,4 +33,8 @@ const rootElement = document.getElementById("root")!;
 // and only adds a failed hydration pass first. Closing that 2.5s means
 // prerendering through renderToString, which is a real piece of work: the app
 // has to become server-renderable before any of it helps.
-createRoot(rootElement).render(<App />);
+createRoot(rootElement).render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>,
+);

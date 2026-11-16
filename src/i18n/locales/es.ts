@@ -972,4 +972,8 @@ export const es: Dictionary = {
     body: "La página que buscas se movió o nunca existió. Vamos a ayudarte a retomar el camino.",
     backHome: "Volver al inicio",
   },
+  crash: {
+    title: "Esta página no se cargó.",
+    reload: "Recargar",
+  },
 };
