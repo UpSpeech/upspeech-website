@@ -16,7 +16,7 @@ import { build } from "esbuild";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pathToFileURL } from "node:url";
-import { rm } from "node:fs/promises";
+import { readFile, rm } from "node:fs/promises";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -146,11 +146,37 @@ check(
 
 // 5. Honeypot
 stub({});
-r = await handler(POST({ ...LEAD, company: "spam corp" }));
+const warnings = [];
+const realWarn = console.warn;
+console.warn = (...args) => warnings.push(args.join(" "));
+r = await handler(POST({ ...LEAD, hp_ref: "spam corp" }));
+console.warn = realWarn;
 check(
   "honeypot -> 200 and zero calls",
   r.statusCode === 200 && calls.length === 0,
   calls.join(","),
+);
+check(
+  "a honeypot hit is logged without the posted fields",
+  warnings.length === 1 &&
+    !warnings[0].includes(LEAD.email) &&
+    !warnings[0].includes("spam corp"),
+  JSON.stringify(warnings),
+);
+
+// Autofill fills a field called "company" for real visitors.
+stub({});
+r = await handler(POST({ ...LEAD, company: "Clinic Lda" }));
+check(
+  "a filled company field is not the honeypot",
+  r.statusCode === 200 && calls.length > 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+const joinSource = await readFile(join(root, "src/pages/Join.tsx"), "utf8");
+check(
+  "the form's hidden field is the one the function reads",
+  joinSource.includes('name="hp_ref"') && joinSource.includes("hp_ref: hpRef"),
 );
 
 // 6. Invalid email
@@ -417,7 +443,9 @@ check(
 );
 
 stub({});
-r = await handler(POST({ ...DETAILS, company: "spam corp" }));
+console.warn = () => {};
+r = await handler(POST({ ...DETAILS, hp_ref: "spam corp" }));
+console.warn = realWarn;
 check(
   "details honeypot -> 200 and zero calls",
   r.statusCode === 200 && calls.length === 0,
@@ -575,9 +603,10 @@ check(
 
 // 16. Abuse controls
 check(
-  "the function owns /api/early-access with a rate limit",
+  "the function owns /api/early-access with a rate limit a shared NAT can live with",
   mod.config?.path === "/api/early-access" &&
-    mod.config?.rateLimit?.windowLimit > 0,
+    mod.config?.rateLimit?.windowLimit === 30 &&
+    mod.config?.rateLimit?.windowSize === 60,
   JSON.stringify(mod.config),
 );
 

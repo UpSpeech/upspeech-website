@@ -139,7 +139,7 @@ export const config: Config = {
   path: "/api/early-access",
   method: "POST",
   rateLimit: {
-    windowLimit: 10,
+    windowLimit: 30,
     windowSize: 60,
     aggregateBy: ["ip", "domain"],
   },
@@ -166,9 +166,13 @@ export default async (req: Request): Promise<Response> => {
   }
 
   try {
-    // Honeypot: a real user never fills the hidden "company" field. Pretend
-    // success so bots get no signal, but record and send nothing.
-    if (oneLine(body.company)) return json(200, { ok: true });
+    // Honeypot: a real user never fills the hidden field, and its name maps to
+    // nothing autofill knows. Pretend success so bots get no signal, record and
+    // send nothing, but log the drop so a lost lead shows up in function logs.
+    if (oneLine(body.hp_ref)) {
+      console.warn("early-access: honeypot filled, request dropped");
+      return json(200, { ok: true });
+    }
 
     // The confirmation page's optional country and interests: one sheet row,
     // nothing sent.

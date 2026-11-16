@@ -91,7 +91,7 @@ export default function Join() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [clinic, setClinic] = useState("");
-  const [company, setCompany] = useState("");
+  const [hpRef, setHpRef] = useState("");
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sendError, setSendError] = useState(false);
@@ -167,7 +167,7 @@ export default function Join() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          company,
+          hp_ref: hpRef,
           email: email.trim(),
           name: asksRequest ? name.trim() : "",
           clinic: asksRequest ? clinic.trim() : "",
@@ -477,12 +477,12 @@ export default function Join() {
                 </div>
                 <input
                   type="text"
-                  name="company"
+                  name="hp_ref"
                   tabIndex={-1}
                   autoComplete="off"
                   aria-hidden="true"
-                  value={company}
-                  onChange={(ev) => setCompany(ev.target.value)}
+                  value={hpRef}
+                  onChange={(ev) => setHpRef(ev.target.value)}
                   style={{ position: "absolute", left: -9999, opacity: 0 }}
                 />
 
