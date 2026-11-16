@@ -1,7 +1,7 @@
 {
-  "name": "UpSpeech - AI Speech Therapy",
+  "name": "UpSpeech",
   "short_name": "UpSpeech",
-  "description": "AI-powered speech therapy platform for personalized practice and real-time feedback",
+  "description": "Software for speech therapy practices. Patients practise between sessions on a plan their therapist set, and each attempt goes back to the therapist for review.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
@@ -21,14 +21,6 @@
       "src": "/icons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop.jpg",
-      "sizes": "1920x1080",
-      "type": "image/jpg",
-      "form_factor": "wide"
     }
   ],
   "categories": ["health", "medical", "education"],
