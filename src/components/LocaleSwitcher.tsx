@@ -37,7 +37,7 @@ export function LocaleSwitcher({
   const locale = useLocale();
   const t = useT();
   const navigate = useNavigate();
-  const { pathname, hash } = useLocation();
+  const { pathname, search, hash } = useLocation();
   const { path } = splitLocaleFromPath(pathname);
 
   const [open, setOpen] = useState(false);
@@ -112,7 +112,8 @@ export function LocaleSwitcher({
 
   const choose = (l: Locale) => {
     setOpen(false);
-    if (l !== locale) navigate({ pathname: localizedPath(path, l), hash });
+    if (l !== locale)
+      navigate({ pathname: localizedPath(path, l), search, hash });
   };
 
   if (variant === "inline") {

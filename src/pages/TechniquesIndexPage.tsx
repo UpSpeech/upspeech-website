@@ -87,7 +87,13 @@ export function TechniquesIndexPage() {
   // stays at the top. Scroll once the cards are in.
   useEffect(() => {
     if (loading || error) return;
-    const id = decodeURIComponent(window.location.hash.slice(1));
+    const raw = window.location.hash.slice(1);
+    let id = raw;
+    try {
+      id = decodeURIComponent(raw);
+    } catch {
+      // A malformed escape such as #%E0 throws; look it up as typed.
+    }
     if (id) document.getElementById(id)?.scrollIntoView();
   }, [loading, error]);
 
