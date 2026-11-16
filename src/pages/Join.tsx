@@ -91,6 +91,7 @@ export default function Join() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [clinic, setClinic] = useState("");
+  const [company, setCompany] = useState("");
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sendError, setSendError] = useState(false);
@@ -101,6 +102,7 @@ export default function Join() {
   const [country, setCountry] = useState("");
   const [interests, setInterests] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
+  const [savingDetails, setSavingDetails] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
   const formRef = useRef<HTMLElement>(null);
 
@@ -161,10 +163,11 @@ export default function Join() {
     setSubmitting(true);
     const slowTimer = window.setTimeout(() => setSlow(true), 2500);
     try {
-      const res = await fetch("/.netlify/functions/early-access", {
+      const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          company,
           email: email.trim(),
           name: asksRequest ? name.trim() : "",
           clinic: asksRequest ? clinic.trim() : "",
@@ -202,9 +205,11 @@ export default function Join() {
   };
 
   const saveDetails = async () => {
+    if (savingDetails) return;
+    setSavingDetails(true);
     setDetailsError(false);
     try {
-      const res = await fetch("/.netlify/functions/early-access", {
+      const res = await fetch("/api/early-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -222,6 +227,8 @@ export default function Join() {
     } catch (err) {
       console.error("Join details error:", err);
       setDetailsError(true);
+    } finally {
+      setSavingDetails(false);
     }
   };
 
@@ -468,6 +475,16 @@ export default function Join() {
                     </span>
                   )}
                 </div>
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={company}
+                  onChange={(ev) => setCompany(ev.target.value)}
+                  style={{ position: "absolute", left: -9999, opacity: 0 }}
+                />
 
                 {asksRequest && (
                   <div className="j-two">
@@ -668,6 +685,8 @@ export default function Join() {
                     type="button"
                     className="j-btn ghost"
                     style={{ minHeight: 48 }}
+                    disabled={savingDetails}
+                    aria-busy={savingDetails}
                     onClick={saveDetails}
                   >
                     {t.done.save}
