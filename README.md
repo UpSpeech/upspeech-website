@@ -128,7 +128,9 @@ It needs `dist/` to exist, so run a build first. About two seconds for all 66 pa
 
 ## The early-access form
 
-`src/components/CTASection.tsx` is the only form on the site. It posts same-origin to `netlify/functions/early-access.ts`, which works in a fixed order.
+`src/pages/Join.tsx` is the only form on the site. It posts same-origin to `/api/early-access`, served by `netlify/functions/early-access.ts`, which works in a fixed order.
+
+The function answers 403 to a post whose `Origin` is not the site's own host, and Netlify rate-limits it per IP through the `rateLimit` block in its `config`. Netlify cannot set a function rate limit from `netlify.toml`, so the rule lives in the function file.
 
 It writes the lead down first: a row appended to a Google Sheet through an Apps Script web app, and a contact added to a Resend audience. Then it sends the team notification, which repeats the result of those two writes. The applicant confirmation goes last.
 
@@ -157,7 +159,7 @@ The Role and Clinic size columns hold English labels rather than the slugs the f
 
 ### The emails
 
-The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Both follow the site rather than inventing a second look: pale chrome carrying the logo, charcoal headings with the name in lavender, pill buttons on `--gradient-primary`, and one tinted card. Every value is named at the top of `netlify/lib/email-template.ts` with the token it came from.
+The applicant confirmation is sent in the visitor's language, from `netlify/lib/copy.ts`. The team notification is always English. Both follow the site rather than inventing a second look: pale chrome carrying the logo, charcoal headings, pill buttons on `--gradient-primary`, and one tinted card. Every value is named at the top of `netlify/lib/email-template.ts` with the token it came from.
 
 The logo is loaded from `https://upspeech.app/images/`, in two files. The dark wordmark shows by default and the inverted one replaces it in clients that honour `prefers-color-scheme`. Its `alt` is styled, so a recipient with images blocked reads "UpSpeech" rather than seeing a broken box. No webfont is fetched: `src/fonts.css` self-hosts the brand faces to keep requests away from `fonts.googleapis.com`, and an email pulling them from Google would hand over the recipient's IP on open.
 
@@ -165,7 +167,7 @@ Dark mode works by class, because inline styles beat a stylesheet. A coloured el
 
 ```bash
 npm run preview:emails        # every locale and state rendered to .pr-assets/emails/
-npm run check:early-access    # 13 checks against a stubbed network, no credentials needed
+npm run check:early-access    # checks against a stubbed network, no credentials needed
 node scripts/generate-email-logos.mjs   # after the logo changes
 ```
 

@@ -10,7 +10,7 @@
  */
 
 import { createHmac, timingSafeEqual } from "node:crypto";
-import type { Handler } from "@netlify/functions";
+import type { Config } from "@netlify/functions";
 import { oneLine, isSafeHttpsUrl } from "../lib/text";
 import {
   applicantCopy,
@@ -58,13 +58,21 @@ const detailsToken = (email: string): string => {
 };
 
 const tokenMatches = (email: string, token: unknown): boolean => {
-  const expected = detailsToken(email);
+  if (typeof token !== "string") return false;
+  const expected = Buffer.from(detailsToken(email));
+  const given = Buffer.from(token);
   return (
-    typeof token === "string" &&
     expected.length > 0 &&
-    token.length === expected.length &&
-    timingSafeEqual(Buffer.from(token), Buffer.from(expected))
+    given.length === expected.length &&
+    timingSafeEqual(given, expected)
   );
+};
+
+// A browser posting from another site sends its own Origin. Deploy previews
+// and `netlify dev` post to their own host, so match the host, not a list.
+const sameOrigin = (req: Request): boolean => {
+  const origin = req.headers.get("origin");
+  return origin !== null && origin === new URL(req.url).origin;
 };
 
 const oneOf = <T extends string>(
@@ -93,11 +101,11 @@ const leadProblem = (lead: Lead): string | null => {
   return null;
 };
 
-const json = (statusCode: number, body: unknown) => ({
-  statusCode,
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(body),
-});
+const json = (status: number, body: unknown) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
 
 async function sendEmail(
   email: RenderedEmail,
@@ -127,26 +135,44 @@ async function sendEmail(
   }
 }
 
-export const handler: Handler = async (event) => {
-  if (event.httpMethod !== "POST")
-    return { statusCode: 405, body: "Method Not Allowed" };
+export const config: Config = {
+  path: "/api/early-access",
+  method: "POST",
+  rateLimit: {
+    windowLimit: 30,
+    windowSize: 60,
+    aggregateBy: ["ip", "domain"],
+  },
+};
+
+export default async (req: Request): Promise<Response> => {
+  if (req.method !== "POST")
+    return new Response("Method Not Allowed", { status: 405 });
+  if (!sameOrigin(req)) return json(403, { error: "Forbidden" });
 
   // Fail cleanly until the key is wired up in the Netlify dashboard, rather
   // than sending "Bearer undefined" to Resend on every request.
   if (!process.env.RESEND_API_KEY)
-    return { statusCode: 503, body: "Service unavailable" };
+    return new Response("Service unavailable", { status: 503 });
 
   let body: Record<string, unknown>;
   try {
-    body = JSON.parse(event.body || "{}");
+    const parsed: unknown = JSON.parse((await req.text()) || "{}");
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed))
+      return json(400, { error: "Expected a JSON object" });
+    body = parsed as Record<string, unknown>;
   } catch {
     return json(400, { error: "Invalid JSON" });
   }
 
   try {
-    // Honeypot: a real user never fills the hidden "company" field. Pretend
-    // success so bots get no signal, but record and send nothing.
-    if (oneLine(body.company)) return json(200, { ok: true });
+    // Honeypot: a real user never fills the hidden field, and its name maps to
+    // nothing autofill knows. Pretend success so bots get no signal, record and
+    // send nothing, but log the drop so a lost lead shows up in function logs.
+    if (oneLine(body.hp_ref)) {
+      console.warn("early-access: honeypot filled, request dropped");
+      return json(200, { ok: true });
+    }
 
     // The confirmation page's optional country and interests: one sheet row,
     // nothing sent.

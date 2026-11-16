@@ -16,7 +16,7 @@ import { build } from "esbuild";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pathToFileURL } from "node:url";
-import { rm } from "node:fs/promises";
+import { readFile, rm } from "node:fs/promises";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -29,7 +29,19 @@ await build({
   platform: "node",
   logLevel: "warning",
 });
-const { handler } = await import(pathToFileURL(out).href + `?t=${Date.now()}`);
+const mod = await import(pathToFileURL(out).href + `?t=${Date.now()}`);
+
+const SITE = "https://upspeech.app";
+const handler = async ({ httpMethod, body, origin = SITE }) => {
+  const res = await mod.default(
+    new Request(`${SITE}/api/early-access`, {
+      method: httpMethod,
+      headers: origin ? { Origin: origin } : {},
+      body: httpMethod === "GET" ? undefined : body,
+    }),
+  );
+  return { statusCode: res.status, body: await res.text() };
+};
 
 const POST = (body) => ({ httpMethod: "POST", body: JSON.stringify(body) });
 const LEAD = {
@@ -134,11 +146,37 @@ check(
 
 // 5. Honeypot
 stub({});
-r = await handler(POST({ ...LEAD, company: "spam corp" }));
+const warnings = [];
+const realWarn = console.warn;
+console.warn = (...args) => warnings.push(args.join(" "));
+r = await handler(POST({ ...LEAD, hp_ref: "spam corp" }));
+console.warn = realWarn;
 check(
   "honeypot -> 200 and zero calls",
   r.statusCode === 200 && calls.length === 0,
   calls.join(","),
+);
+check(
+  "a honeypot hit is logged without the posted fields",
+  warnings.length === 1 &&
+    !warnings[0].includes(LEAD.email) &&
+    !warnings[0].includes("spam corp"),
+  JSON.stringify(warnings),
+);
+
+// Autofill fills a field called "company" for real visitors.
+stub({});
+r = await handler(POST({ ...LEAD, company: "Clinic Lda" }));
+check(
+  "a filled company field is not the honeypot",
+  r.statusCode === 200 && calls.length > 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+const joinSource = await readFile(join(root, "src/pages/Join.tsx"), "utf8");
+check(
+  "the form's hidden field is the one the function reads",
+  joinSource.includes('name="hp_ref"') && joinSource.includes("hp_ref: hpRef"),
 );
 
 // 6. Invalid email
@@ -405,7 +443,9 @@ check(
 );
 
 stub({});
-r = await handler(POST({ ...DETAILS, company: "spam corp" }));
+console.warn = () => {};
+r = await handler(POST({ ...DETAILS, hp_ref: "spam corp" }));
+console.warn = realWarn;
 check(
   "details honeypot -> 200 and zero calls",
   r.statusCode === 200 && calls.length === 0,
@@ -559,6 +599,55 @@ check(
   "a code too short or in capitals is dropped",
   bodies.sheet?.shareCode === "" && bodies.sheet?.referredBy === "",
   JSON.stringify(bodies.sheet),
+);
+
+// 16. Abuse controls
+check(
+  "the function owns /api/early-access with a rate limit a shared NAT can live with",
+  mod.config?.path === "/api/early-access" &&
+    mod.config?.rateLimit?.windowLimit === 30 &&
+    mod.config?.rateLimit?.windowSize === 60,
+  JSON.stringify(mod.config),
+);
+
+stub({});
+r = await handler({ ...POST(LEAD), origin: "https://evil.example" });
+check(
+  "a post from another site -> 403, nothing sent",
+  r.statusCode === 403 && calls.length === 0,
+  `${r.statusCode} ${calls.join(",")}`,
+);
+
+stub({});
+r = await handler({ ...POST(LEAD), origin: null });
+check("a post with no Origin -> 403", r.statusCode === 403, r.statusCode);
+
+for (const raw of ["[]", "null", "42", '"text"']) {
+  stub({});
+  r = await handler({ httpMethod: "POST", body: raw });
+  check(
+    `body ${raw} -> 400, nothing sent`,
+    r.statusCode === 400 && calls.length === 0,
+    `${r.statusCode} ${calls.join(",")}`,
+  );
+}
+
+stub({});
+r = await handler(POST({ ...DETAILS, token: "é".repeat(32) }));
+check(
+  "a token of the right length in multibyte characters -> 403, not 500",
+  r.statusCode === 403,
+  r.statusCode,
+);
+
+stub({});
+mail = captureEmails();
+await handler(POST({ ...LEAD, name: "Win a prize at evil.example" }));
+check(
+  "the applicant greeting never carries the posted name",
+  mail.applicant?.text.startsWith("Olá,") &&
+    !/<h1[^>]*>[^<]*evil/.test(mail.applicant?.html ?? ""),
+  mail.applicant?.text.slice(0, 40),
 );
 
 console.error = realError;

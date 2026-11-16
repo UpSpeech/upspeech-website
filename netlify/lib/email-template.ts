@@ -19,12 +19,7 @@
  * means charcoal text on a charcoal card.
  */
 
-import {
-  clinicSizeLabel,
-  greetingText,
-  profileLabel,
-  requestLabel,
-} from "./copy";
+import { clinicSizeLabel, profileLabel, requestLabel } from "./copy";
 import { escapeHtml, firstName } from "./text";
 import type { ApplicantCopy, EmailLocale } from "./copy";
 import type { Profile, Request } from "../../src/lib/join-contract";
@@ -185,11 +180,8 @@ const eyebrow = (text: string): string =>
  * Charcoal heading with one phrase in lavender, the way the site sets its
  * headlines. `accent` is already escaped by the caller.
  */
-const heading = (plain: string, accent = ""): string =>
-  `<h1 class="h1 ink" style="margin:12px 0 0 0;font-family:${DISPLAY};font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.025em;color:${CHARCOAL};">${escapeHtml(plain)}${accent}</h1>`;
-
-const accentSpan = (text: string): string =>
-  ` <span class="ink-brand" style="color:${LAVENDER_INK};">${escapeHtml(text)}</span>`;
+const heading = (plain: string): string =>
+  `<h1 class="h1 ink" style="margin:12px 0 0 0;font-family:${DISPLAY};font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.025em;color:${CHARCOAL};">${escapeHtml(plain)}</h1>`;
 
 const cardLabel = (text: string): string =>
   `<div class="ink-soft" style="font-family:${DISPLAY};font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:${CHARCOAL_SOFT};padding-bottom:16px;">${escapeHtml(text)}</div>`;
@@ -283,7 +275,6 @@ export const applicantEmail = (
   surveyUrl?: string,
 ): RenderedEmail => {
   const therapist = lead.profile === "therapist";
-  const given = lead.name ? firstName(lead.name) : "";
   const intro = !therapist
     ? copy.waitlist.intro
     : lead.request === "demo"
@@ -330,7 +321,7 @@ ${button(surveyUrl, copy.surveyCta)}
           <tr>
             <td class="pad" style="padding:44px 40px 0 40px;">
 ${eyebrow(therapist ? copy.eyebrow : copy.waitlist.eyebrow)}
-${given ? heading(copy.greetingPrefix, `${accentSpan(given)}<span class="ink" style="color:${CHARCOAL};">,</span>`) : heading(`${copy.greetingFallback},`)}
+${heading(`${copy.greeting},`)}
               <p class="ink-soft" style="margin:18px 0 0 0;font-family:${BODY};font-size:16px;line-height:1.7;color:${CHARCOAL_SOFT};">${escapeHtml(intro)}</p>
             </td>
           </tr>
@@ -374,7 +365,7 @@ ${card(`${cardLabel(therapist ? copy.cardTitle : copy.waitlist.cardTitle)}
   });
 
   const text = [
-    greetingText(copy, given),
+    `${copy.greeting},`,
     "",
     intro,
     "",
