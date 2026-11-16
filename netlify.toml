@@ -280,10 +280,10 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    # Mirrors the <meta> CSP in index.html, promoted to a real response header
-    # so frame-ancestors and form-action are enforced (a <meta> CSP cannot set
-    # them). frame-ancestors 'none' matches X-Frame-Options: DENY above.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.clarity.ms; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://upspeech.app https://c.bing.com https://*.clarity.ms; connect-src 'self' http://localhost:3050 https://app-backend-production-f30a.up.railway.app https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu.i.posthog.com https://eu-assets.i.posthog.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://eu-assets.i.posthog.com; frame-ancestors 'none'; form-action 'self'"
+    # The only copy of the CSP. A <meta> copy cannot set frame-ancestors or
+    # form-action, and two copies drift. frame-ancestors 'none' matches
+    # X-Frame-Options: DENY above. Fonts are self-hosted (src/fonts.css).
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://*.clarity.ms; font-src 'self'; img-src 'self' data: https://c.bing.com https://*.clarity.ms; connect-src 'self' https://app-backend-production-f30a.up.railway.app https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://c.bing.com https://eu.i.posthog.com https://eu-assets.i.posthog.com; script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://eu-assets.i.posthog.com; frame-ancestors 'none'; form-action 'self'"
 
 # Universal Links / Android App Links manifests.
 # AASA has no file extension; force application/json so iOS accepts it.

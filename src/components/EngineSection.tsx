@@ -14,6 +14,9 @@ const EngineSection = () => {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.25 });
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0);
+  const [stillOnly] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   // The tags are the labels clinicians place on a recording, so scroll drives a
   // playhead across them rather than fading all six in on a timer.
@@ -105,7 +108,7 @@ const EngineSection = () => {
         >
           <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 sm:p-6 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
             <div className="relative aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-white/5 bg-calm-charcoal">
-              {revealed ? (
+              {revealed && !stillOnly ? (
                 <video
                   className="absolute inset-0 h-full w-full object-cover"
                   poster={poster}
