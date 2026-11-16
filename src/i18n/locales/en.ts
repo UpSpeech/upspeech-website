@@ -961,6 +961,10 @@ export const en = {
     body: "The page you are looking for moved or never existed. Let's get you back on track.",
     backHome: "Back to home",
   },
+  crash: {
+    title: "This page failed to load.",
+    reload: "Reload",
+  },
 };
 
 export type Dictionary = typeof en;

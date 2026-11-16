@@ -32,7 +32,11 @@ if (
     capture_pageview: false,
     capture_pageleave: true,
     persistence: "localStorage+cookie",
-    opt_out_capturing_by_default: true, // Respect cookie consent, enabled via consent.ts
+    // Nothing is captured or stored before consent; consent.ts opts in.
+    opt_out_capturing_by_default: true,
+    opt_out_persistence_by_default: true,
+    // Overrides the project setting, so a dashboard toggle cannot start recording.
+    disable_session_recording: true,
   });
 }
 

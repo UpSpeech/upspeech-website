@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
+  applyConsent,
   hasConsent,
   grantConsent,
   denyConsent,
@@ -25,9 +26,7 @@ export const ConsentBanner = () => {
     // preference rather than showing the banner again.
     if (hasConsent()) {
       const consentState = getConsentState();
-      if (consentState?.analytics) {
-        grantConsent();
-      }
+      if (consentState) applyConsent(consentState);
       return;
     }
 
