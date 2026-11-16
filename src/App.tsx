@@ -1,8 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   BrowserRouter,
   Routes,
@@ -201,44 +199,41 @@ const AppRoutes = () => (
 
 const App = () => (
   <HelmetProvider>
-    <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
-        <ConsentBanner />
-        <PageViewTracker />
-        <LegacyLangRedirect />
-        <Suspense fallback={null}>
-          <Routes>
-            {/* Portuguese and Spanish live under a locale prefix; English stays
+    <BrowserRouter>
+      <ConsentBanner />
+      <PageViewTracker />
+      <LegacyLangRedirect />
+      <Suspense fallback={null}>
+        <Routes>
+          {/* Portuguese and Spanish live under a locale prefix; English stays
                 at the root so every existing URL is unchanged. */}
-            <Route
-              path="/pt/*"
-              element={
-                <LocaleProvider locale="pt">
-                  <AppRoutes />
-                </LocaleProvider>
-              }
-            />
-            <Route
-              path="/es/*"
-              element={
-                <LocaleProvider locale="es">
-                  <AppRoutes />
-                </LocaleProvider>
-              }
-            />
-            <Route
-              path="/*"
-              element={
-                <LocaleProvider locale="en">
-                  <AppRoutes />
-                </LocaleProvider>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
+          <Route
+            path="/pt/*"
+            element={
+              <LocaleProvider locale="pt">
+                <AppRoutes />
+              </LocaleProvider>
+            }
+          />
+          <Route
+            path="/es/*"
+            element={
+              <LocaleProvider locale="es">
+                <AppRoutes />
+              </LocaleProvider>
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <LocaleProvider locale="en">
+                <AppRoutes />
+              </LocaleProvider>
+            }
+          />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   </HelmetProvider>
 );
 

@@ -42,12 +42,7 @@ export default tseslint.config(
   },
   {
     // Allow non-component exports in UI components (shadcn pattern)
-    // and in Remotion files (bundled by Remotion's webpack, no Vite fast refresh)
-    files: [
-      "src/components/ui/**/*.{ts,tsx}",
-      "src/hooks/**/*.{ts,tsx}",
-      "remotion/**/*.{ts,tsx}",
-    ],
+    files: ["src/components/ui/**/*.{ts,tsx}"],
     rules: {
       "react-refresh/only-export-components": "off",
     },
