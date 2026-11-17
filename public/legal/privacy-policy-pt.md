@@ -240,7 +240,7 @@ Implementamos práticas de segurança padrão da indústria:
 
 - **Contas ativas** - Retemos os seus dados enquanto a sua conta estiver ativa, com exceção das gravações indicadas abaixo
 - **Gravações de sessão e de avaliação** - Uma gravação que o terapeuta carrega para gerar um relatório é eliminada quando o terapeuta confirma o relatório e, o mais tardar, 24 horas depois de o relatório ser gerado. Se não for possível gerar o relatório, a gravação é eliminada 30 dias após o carregamento. A transcrição e o relatório são conservados como parte do registo clínico
-- **Conversas de prática gravadas** - O áudio e o vídeo guardados de uma conversa de prática são eliminados 30 dias após o fim da sessão
+- **Conversas de prática gravadas** - O áudio e o vídeo guardados de uma conversa de prática são conservados enquanto a conta estiver ativa, para que o paciente e o seu terapeuta os possam voltar a ouvir
 - **Gravações de prática** - As gravações que o paciente faz durante os exercícios são conservadas enquanto a conta estiver ativa, para que o paciente e o seu terapeuta possam acompanhar a evolução ao longo do tempo
 - **Contas inativas** - Se a sua conta estiver inativa durante 2 anos, podemos eliminar os seus dados após aviso prévio
 - **Retenção legal** - Podemos reter determinados dados por mais tempo se exigido por lei ou para fins comerciais legítimos (ex.: prevenção de fraude, litígios)
