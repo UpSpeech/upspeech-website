@@ -171,7 +171,7 @@ const Hero = () => {
               onClick={() => trackButtonClick("see_how_it_works", "hero")}
               className="font-body font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors duration-300 hover:decoration-calm-navy"
             >
-              {t.seeHowItWorks}
+              {t.seePatientsWeek}
             </a>
           </div>
         </div>

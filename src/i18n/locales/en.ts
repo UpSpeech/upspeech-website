@@ -92,7 +92,7 @@ export const en = {
       body: "Patients practise between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       traceLabel: "A recording of someone speaking, with the pauses left in",
       requestAccess: "Request early access",
-      seeHowItWorks: "See a patient's week",
+      seePatientsWeek: "See a patient's week",
     },
     gap: {
       days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],

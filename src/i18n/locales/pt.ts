@@ -93,7 +93,7 @@ export const pt: Dictionary = {
       body: "Os pacientes praticam entre sessões segundo um plano definido pelo terapeuta. Cada tentativa volta ao terapeuta, que decide o passo seguinte.",
       traceLabel: "Uma gravação de alguém a falar, com as pausas incluídas",
       requestAccess: "Pedir acesso antecipado",
-      seeHowItWorks: "Ver a semana de um paciente",
+      seePatientsWeek: "Ver a semana de um paciente",
     },
     gap: {
       days: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
