@@ -96,7 +96,6 @@ export const pt: Dictionary = {
       seeHowItWorks: "Ver a semana de um paciente",
     },
     gap: {
-      eyebrow: "A semana do paciente",
       days: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
       headlineToday: "A semana de um paciente, tal como é hoje.",
       headlineWithPrefix: "A semana de um paciente,",
@@ -148,7 +147,6 @@ export const pt: Dictionary = {
     day: {
       howToName:
         "Como uma sessão de terapia da fala se torna um registo escrito",
-      eyebrow: "Uma terça-feira",
       headline: "A maior parte do trabalho não é a sessão.",
       body: "Dezenas de terapeutas disseram-nos o mesmo: horas a preparar, horas a escrever relatórios e, dentro da sessão, tempo perdido a tirar notas. Este é esse dia com a UpSpeech.",
       before: {
@@ -200,7 +198,6 @@ export const pt: Dictionary = {
       },
     },
     mobile: {
-      eyebrow: "No bolso do paciente",
       headline: "A prática acontece na app, entre sessões.",
       body: "Segue o plano do teu terapeuta no telemóvel. Pratica por ti ou acompanha a tua criança nos exercícios.",
       screenshots: [
@@ -209,12 +206,10 @@ export const pt: Dictionary = {
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
       ],
       familyLink: "Vê como praticar com a tua criança",
-      familyEyebrow: "Pacientes mais novos",
       familyAlt:
         "Um pai e a filha à mesa da sala, a rapariga a falar para um telemóvel apoiado num suporte enquanto ele está sentado ao lado, a olhar para ela e não para o ecrã",
     },
     cycle: {
-      eyebrow: "O ciclo",
       headlinePrefix: "Cada passo",
       headlineEmphasis: "revisto por um clínico.",
       clinician: "Clínico",
@@ -263,7 +258,6 @@ export const pt: Dictionary = {
       requestAccess: "Pedir acesso antecipado",
     },
     engine: {
-      eyebrow: "UpSpeech Labs",
       headlineLine1: "Treinada com",
       headlineLine2: "dados anotados por clínicos.",
       body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências.",
@@ -279,7 +273,6 @@ export const pt: Dictionary = {
       ],
     },
     foundations: {
-      eyebrow: "Fundamentos",
       headlineLine1: "Prática clínica e engenharia de IA,",
       headlineLine2: "na mesma equipa.",
       body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala que usam a plataforma com pacientes.",
@@ -288,7 +281,7 @@ export const pt: Dictionary = {
         speechcare: "Parceiro de desenvolvimento conjunto",
         elevenlabs: "Subvenção de infraestrutura de IA",
       },
-      partnersLabel: "Programas · Apoiantes · Reconhecimento",
+      partnersLabel: "Programas, apoiantes e reconhecimento",
       partnersTagline: "Com quem trabalhamos",
       partnerContext: {
         lispolis: "Programa de aceleração",
@@ -298,7 +291,6 @@ export const pt: Dictionary = {
       },
     },
     security: {
-      eyebrow: "Segurança e dados",
       headline: "Como tratamos os dados dos pacientes.",
       body: "As clínicas confiam-nos gravações sensíveis. Tratamos esses dados como uma clínica o faria, e o terapeuta tem sempre a palavra final sobre o que a IA produz.",
       points: [
@@ -351,8 +343,8 @@ export const pt: Dictionary = {
       therapist: {
         label: "Terapeuta da fala ou clínica",
         short: "Terapeuta da fala ou clínica",
-        line: "Menos papelada. Mais tempo para os pacientes.",
-        title: "Menos papelada. Mais tempo para os pacientes.",
+        line: "Passe menos tempo na papelada e mais com os pacientes.",
+        title: "Os relatórios de sessão chegam já redigidos, e fica com mais tempo para os pacientes.",
         sub: "O UpSpeech liga-o aos seus pacientes entre sessões. Define a prática, vê o que aconteceu em casa, e a IA prepara um rascunho dos relatórios de sessão para rever.",
         stepsTitle: "A sua semana com o UpSpeech",
         stepsLead:
@@ -714,7 +706,6 @@ export const pt: Dictionary = {
       ],
     },
     app: {
-      eyebrow: "A app",
       headline: "O teu plano, no teu bolso.",
       body: "Abre a app e o exercício do dia está lá à tua espera.",
       screenshots: [
@@ -742,7 +733,6 @@ export const pt: Dictionary = {
       ],
     },
     faq: {
-      eyebrow: "Perguntas",
       headline: "Perguntas frequentes dos pacientes.",
       items: [
         {
@@ -781,7 +771,6 @@ export const pt: Dictionary = {
     seoDescription:
       "Um guia simples sobre a terapia da fala centrada na pessoa: o que é, porque a fluência não é o único objetivo e como a UpSpeech se encaixa nesta abordagem.",
     intro: {
-      eyebrow: "Filosofia",
       headlineLine1: "O que é a terapia",
       headlineLine2: "centrada na pessoa?",
       body: "Se gaguejas, ou se tens um filho que gagueja, esta é a ideia por trás da terapia centrada na pessoa: a confiança e a comunicação vêm primeiro, e és tu quem ajuda a definir os objetivos. Na gaguez, esta abordagem chama-se por vezes gaguez positiva.",
@@ -805,7 +794,6 @@ export const pt: Dictionary = {
       },
     ],
     faq: {
-      eyebrow: "Perguntas",
       headline: "Perguntas frequentes.",
       items: [
         {
@@ -863,7 +851,6 @@ export const pt: Dictionary = {
       },
     ],
     faq: {
-      eyebrow: "Perguntas",
       headline: "Perguntas frequentes dos terapeutas.",
       items: [
         {
@@ -899,22 +886,20 @@ export const pt: Dictionary = {
       "A UpSpeech dá aos pacientes prática estruturada entre sessões. Define o que trabalham e vê como correu antes da consulta seguinte.",
     intro: {
       eyebrow: "Para terapeutas da fala",
-      headlineLine1: "Mais terapia entre sessões.",
-      headlineLine2: "Tudo orientado por ti.",
+      headlineLine1: "Os teus pacientes praticam entre sessões,",
+      headlineLine2: "com o plano que definires.",
       body: "A UpSpeech dá aos teus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolheres. Saberás como correu a semana antes de o paciente se sentar.",
       photoAlt:
         "Uma terapeuta da fala de pé numa sala de consulta, a segurar um tablet e a olhar para o lado",
     },
     documentation: {
-      eyebrow: "Documentação",
       headline: "Notas de sessão, redigidas e prontas para rever.",
       body: "Após uma sessão, a UpSpeech redige o relatório. Revê-o e edita-o, sem partir de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",
     },
     betweenSessions: {
-      eyebrow: "Entre sessões",
-      headline: "Atribui prática. Vê o que aconteceu.",
+      headline: "Atribuis a prática e vês como correu.",
       steps: [
         {
           title: "Define o plano",
@@ -931,14 +916,12 @@ export const pt: Dictionary = {
       ],
     },
     personCentered: {
-      eyebrow: "A nossa abordagem",
       headline: "Cada tentativa recebe a tua resposta.",
       body: "O paciente grava em casa e tu ouves a gravação. O comentário que ele lê foi escrito por ti.",
       photoAlt:
         "Uma terapeuta da fala a conversar com um rapaz numa sala de consulta, com a mãe sentada logo atrás dele",
     },
     faq: {
-      eyebrow: "Perguntas de clínicos",
       headline: "Perguntas frequentes de terapeutas da fala.",
       items: [
         {

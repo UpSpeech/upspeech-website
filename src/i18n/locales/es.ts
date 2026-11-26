@@ -96,7 +96,6 @@ export const es: Dictionary = {
       seeHowItWorks: "Ver la semana de un paciente",
     },
     gap: {
-      eyebrow: "La semana del paciente",
       days: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
       headlineToday: "La semana de un paciente, tal como es hoy.",
       headlineWithPrefix: "La semana de un paciente,",
@@ -148,7 +147,6 @@ export const es: Dictionary = {
     day: {
       howToName:
         "Cómo una sesión de logopedia se convierte en un registro escrito",
-      eyebrow: "Un martes",
       headline: "La mayor parte del trabajo no es la sesión.",
       body: "Decenas de terapeutas nos dijeron lo mismo: horas preparando, horas redactando informes y, dentro de la sesión, tiempo perdido tomando notas. Este es ese día con UpSpeech.",
       before: {
@@ -199,7 +197,6 @@ export const es: Dictionary = {
       },
     },
     mobile: {
-      eyebrow: "En el bolsillo del paciente",
       headline: "La práctica ocurre en la app, entre sesiones.",
       body: "Sigue el plan de tu logopeda en el móvil. Practica por tu cuenta o acompaña a tu hijo en sus ejercicios.",
       screenshots: [
@@ -208,12 +205,10 @@ export const es: Dictionary = {
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
       ],
       familyLink: "Mira cómo practicar con tu hijo",
-      familyEyebrow: "Pacientes más jóvenes",
       familyAlt:
         "Un padre y su hija en la mesa del comedor, la niña hablando hacia un teléfono apoyado en un soporte mientras él está sentado a su lado, mirándola a ella y no a la pantalla",
     },
     cycle: {
-      eyebrow: "El ciclo",
       headlinePrefix: "Cada paso",
       headlineEmphasis: "revisado por un logopeda.",
       clinician: "Logopeda",
@@ -262,7 +257,6 @@ export const es: Dictionary = {
       requestAccess: "Solicitar acceso anticipado",
     },
     engine: {
-      eyebrow: "UpSpeech Labs",
       headlineLine1: "Entrenada con",
       headlineLine2: "datos anotados por logopedas.",
       body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias.",
@@ -278,7 +272,6 @@ export const es: Dictionary = {
       ],
     },
     foundations: {
-      eyebrow: "Fundamentos",
       headlineLine1: "Práctica clínica e ingeniería de IA,",
       headlineLine2: "en el mismo equipo.",
       body: "Logopedas e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
@@ -287,7 +280,7 @@ export const es: Dictionary = {
         speechcare: "Socio de codesarrollo",
         elevenlabs: "Subvención de infraestructura de IA",
       },
-      partnersLabel: "Programas · Apoyos · Reconocimiento",
+      partnersLabel: "Programas, apoyos y reconocimiento",
       partnersTagline: "Con quién trabajamos",
       partnerContext: {
         lispolis: "Programa de aceleración",
@@ -297,7 +290,6 @@ export const es: Dictionary = {
       },
     },
     security: {
-      eyebrow: "Seguridad y datos",
       headline: "Cómo se tratan los datos de los pacientes.",
       body: "Las clínicas nos confían grabaciones sensibles. Tratamos esos datos como lo haría una clínica, y un terapeuta siempre tiene la última palabra sobre lo que produce la IA.",
       points: [
@@ -350,8 +342,8 @@ export const es: Dictionary = {
       therapist: {
         label: "Logopeda o clínica",
         short: "Logopeda o clínica",
-        line: "Menos papeleo. Más tiempo para tus pacientes.",
-        title: "Menos papeleo. Más tiempo para tus pacientes.",
+        line: "Dedica menos tiempo al papeleo y más a tus pacientes.",
+        title: "Los informes de sesión llegan ya redactados, y te queda más tiempo para tus pacientes.",
         sub: "UpSpeech te conecta con tus pacientes entre sesiones. Tú pones la práctica, ves lo que pasó en casa, y la IA prepara un borrador de los informes de sesión para que lo revises.",
         stepsTitle: "Tu semana con UpSpeech",
         stepsLead:
@@ -709,7 +701,6 @@ export const es: Dictionary = {
       ],
     },
     app: {
-      eyebrow: "La app",
       headline: "Tu plan, en tu bolsillo.",
       body: "Abres la app y ahí está el ejercicio del día.",
       screenshots: [
@@ -737,7 +728,6 @@ export const es: Dictionary = {
       ],
     },
     faq: {
-      eyebrow: "Preguntas",
       headline: "Preguntas frecuentes de los pacientes.",
       items: [
         {
@@ -776,7 +766,6 @@ export const es: Dictionary = {
     seoDescription:
       "Una guía sencilla sobre la logopedia centrada en la persona: qué significa, por qué la fluidez no es el único objetivo y cómo UpSpeech refleja este enfoque.",
     intro: {
-      eyebrow: "Filosofía",
       headlineLine1: "¿Qué es la terapia",
       headlineLine2: "centrada en la persona?",
       body: "La terapia centrada en la persona prioriza la confianza y la comunicación, y es la propia persona quien ayuda a definir los objetivos. En la terapia de la tartamudez, este enfoque se llama a veces tartamudez positiva.",
@@ -800,7 +789,6 @@ export const es: Dictionary = {
       },
     ],
     faq: {
-      eyebrow: "Preguntas",
       headline: "Preguntas frecuentes.",
       items: [
         {
@@ -858,7 +846,6 @@ export const es: Dictionary = {
       },
     ],
     faq: {
-      eyebrow: "Preguntas",
       headline: "Preguntas frecuentes de logopedas.",
       items: [
         {
@@ -894,22 +881,20 @@ export const es: Dictionary = {
       "UpSpeech da a los pacientes práctica estructurada entre sesiones. Tú defines en qué trabajan y ves cómo ha ido antes de la siguiente cita.",
     intro: {
       eyebrow: "Para logopedas",
-      headlineLine1: "Más terapia entre sesiones.",
-      headlineLine2: "Y todo lo diriges tú.",
+      headlineLine1: "Tus pacientes practican entre sesiones,",
+      headlineLine2: "con el plan que tú pautes.",
       body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
       photoAlt:
         "Una logopeda de pie en una sala de consulta, sosteniendo una tableta y mirando hacia un lado",
     },
     documentation: {
-      eyebrow: "Documentación",
       headline: "Notas de sesión, redactadas para que las revises.",
       body: "Tras una sesión, UpSpeech redacta el informe. Lo revisas y lo editas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",
     },
     betweenSessions: {
-      eyebrow: "Entre sesiones",
-      headline: "Asigna práctica. Ve lo que pasó.",
+      headline: "Tú asignas la práctica y ves cómo ha ido.",
       steps: [
         {
           title: "Defines el plan",
@@ -926,14 +911,12 @@ export const es: Dictionary = {
       ],
     },
     personCentered: {
-      eyebrow: "Nuestro enfoque",
       headline: "Cada intento recibe tu respuesta.",
       body: "El paciente graba en casa y tú escuchas la grabación. El comentario que lee lo escribiste tú.",
       photoAlt:
         "Una logopeda hablando con un niño en una sala de consulta, con su madre sentada justo detrás de él",
     },
     faq: {
-      eyebrow: "Preguntas de profesionales",
       headline: "Preguntas frecuentes de logopedas.",
       items: [
         {
