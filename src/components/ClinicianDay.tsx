@@ -80,7 +80,7 @@ const ClinicianDay = () => {
 
           {/* 08:40, with the photograph. */}
           <div className="mt-[clamp(2.5rem,5vw,4rem)] grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,420px)] lg:gap-14">
-            <div style={revealFrom(revealed, "up", 240)}>
+            <div style={revealFrom(revealed, "up", 160)}>
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.before.time}
               </span>
@@ -105,7 +105,7 @@ const ClinicianDay = () => {
           <div className="mt-[clamp(2.5rem,5vw,4rem)] grid items-center gap-8 lg:grid-cols-[minmax(0,460px),1fr] lg:gap-14">
             <div
               className="order-2 overflow-hidden rounded-xl border border-calm-charcoal/10 bg-white shadow-[0_24px_50px_-30px_rgba(41,53,135,0.45)] lg:order-1"
-              style={revealFrom(revealed, "left", 340)}
+              style={revealFrom(revealed, "left", 260)}
             >
               <img
                 src={localizedAsset(
@@ -122,7 +122,7 @@ const ClinicianDay = () => {
             </div>
             <div
               className="order-1 lg:order-2"
-              style={revealFrom(revealed, "up", 300)}
+              style={revealFrom(revealed, "up", 220)}
             >
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.assessment.time}

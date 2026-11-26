@@ -93,7 +93,7 @@ const EngineSection = () => {
           className="mt-[clamp(3rem,6vw,5rem)] max-w-5xl"
           style={{
             transition: `opacity 1200ms ${EASE}, transform 1200ms ${EASE}`,
-            transitionDelay: "280ms",
+            transitionDelay: "200ms",
             opacity: revealed ? 1 : 0,
             transform: revealed
               ? "translateY(0) scale(1)"

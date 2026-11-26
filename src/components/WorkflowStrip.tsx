@@ -43,7 +43,7 @@ const WorkflowStrip = () => {
             <li
               key={step.phase}
               className="relative"
-              style={reveal(revealed, 160 + i * 80)}
+              style={reveal(revealed, 80 + i * 80)}
             >
               <div className="flex items-center gap-4">
                 <div className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums">

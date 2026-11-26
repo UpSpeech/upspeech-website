@@ -1201,8 +1201,8 @@
     line-height: 1.5;
   }
 
-  /* The page's one category label, for the section whose heading cannot name
-     it. Colour stays a separate class. */
+  /* Small uppercase label: hero and page-intro category lines, footer column
+     headings, clock stamps and step labels. Colour stays a separate class. */
   .t-eyebrow {
     font-size: 0.6875rem;
     font-weight: 600;
