@@ -210,8 +210,8 @@ export const pt: Dictionary = {
         "Um pai e a filha à mesa da sala, a rapariga a falar para um telemóvel apoiado num suporte enquanto ele está sentado ao lado, a olhar para ela e não para o ecrã",
     },
     cycle: {
-      headlinePrefix: "Cada passo",
-      headlineEmphasis: "revisto por um clínico.",
+      headlinePrefix: "Um clínico",
+      headlineEmphasis: "revê cada passo.",
       clinician: "Clínico",
       ai: "IA",
       clinicianStepPrefix: "Clínico · passo ",
@@ -258,8 +258,8 @@ export const pt: Dictionary = {
       requestAccess: "Pedir acesso antecipado",
     },
     engine: {
-      headlineLine1: "Treinada com",
-      headlineLine2: "dados anotados por clínicos.",
+      headlineLine1: "Os clínicos anotam os dados",
+      headlineLine2: "com que o nosso modelo aprende.",
       body: "Construímos a nossa própria ferramenta de anotação, usada por terapeutas da fala com prática clínica para anotar disfluências.",
       videoAriaLabel:
         "Ferramenta de anotação UpSpeech usada por clínicos para anotar disfluências",
@@ -273,8 +273,8 @@ export const pt: Dictionary = {
       ],
     },
     foundations: {
-      headlineLine1: "Prática clínica e engenharia de IA,",
-      headlineLine2: "na mesma equipa.",
+      headlineLine1: "A nossa equipa junta clínicos no ativo",
+      headlineLine2: "e engenheiros de IA.",
       body: "Clínicos e engenheiros trabalham lado a lado. As decisões de produto são revistas pelos terapeutas da fala que usam a plataforma com pacientes.",
       logoPartnersLabel: "Parceiros",
       logoPartnerContext: {
@@ -344,7 +344,7 @@ export const pt: Dictionary = {
         label: "Terapeuta da fala ou clínica",
         short: "Terapeuta da fala ou clínica",
         line: "Passe menos tempo na papelada e mais com os pacientes.",
-        title: "Os relatórios de sessão chegam já redigidos, e fica com mais tempo para os pacientes.",
+        title: "Passe menos tempo na papelada e mais com os pacientes.",
         sub: "O UpSpeech liga-o aos seus pacientes entre sessões. Define a prática, vê o que aconteceu em casa, e a IA prepara um rascunho dos relatórios de sessão para rever.",
         stepsTitle: "A sua semana com o UpSpeech",
         stepsLead:
@@ -657,7 +657,7 @@ export const pt: Dictionary = {
       "Como os pacientes praticam terapia da fala entre sessões com a UpSpeech, orientados pelo seu terapeuta da fala.",
     intro: {
       eyebrow: "Para pacientes",
-      headlineLine1: "A tua prática,",
+      headlineLine1: "Continuas a praticar",
       headlineLine2: "entre sessões.",
       body: "O teu terapeuta escolhe os exercícios. Tu fazes-os em casa, no telemóvel, e o terapeuta vê como correu cada um.",
       exchange: {
@@ -706,7 +706,7 @@ export const pt: Dictionary = {
       ],
     },
     app: {
-      headline: "O teu plano, no teu bolso.",
+      headline: "O teu plano vai para onde vai o teu telemóvel.",
       body: "Abre a app e o exercício do dia está lá à tua espera.",
       screenshots: [
         "Ecrã inicial da app móvel UpSpeech a mostrar o exercício do dia do paciente",
@@ -886,14 +886,14 @@ export const pt: Dictionary = {
       "A UpSpeech dá aos pacientes prática estruturada entre sessões. Define o que trabalham e vê como correu antes da consulta seguinte.",
     intro: {
       eyebrow: "Para terapeutas da fala",
-      headlineLine1: "Os teus pacientes praticam entre sessões,",
-      headlineLine2: "com o plano que definires.",
+      headlineLine1: "Os teus pacientes praticam entre sessões",
+      headlineLine2: "seguindo o plano que definires.",
       body: "A UpSpeech dá aos teus pacientes prática guiada que fazem de facto entre consultas, nas técnicas que escolheres. Saberás como correu a semana antes de o paciente se sentar.",
       photoAlt:
         "Uma terapeuta da fala de pé numa sala de consulta, a segurar um tablet e a olhar para o lado",
     },
     documentation: {
-      headline: "Notas de sessão, redigidas e prontas para rever.",
+      headline: "Cada relatório de sessão começa como um rascunho para reveres.",
       body: "Após uma sessão, a UpSpeech redige o relatório. Revê-o e edita-o, sem partir de uma página em branco.",
       screenshotAlt:
         "Vista do terapeuta na UpSpeech a mostrar um relatório de sessão redigido por IA, pronto para revisão.",

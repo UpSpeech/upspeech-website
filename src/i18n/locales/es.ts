@@ -209,8 +209,8 @@ export const es: Dictionary = {
         "Un padre y su hija en la mesa del comedor, la niña hablando hacia un teléfono apoyado en un soporte mientras él está sentado a su lado, mirándola a ella y no a la pantalla",
     },
     cycle: {
-      headlinePrefix: "Cada paso",
-      headlineEmphasis: "revisado por un logopeda.",
+      headlinePrefix: "Un logopeda",
+      headlineEmphasis: "revisa cada paso.",
       clinician: "Logopeda",
       ai: "IA",
       clinicianStepPrefix: "Logopeda · paso ",
@@ -257,8 +257,8 @@ export const es: Dictionary = {
       requestAccess: "Solicitar acceso anticipado",
     },
     engine: {
-      headlineLine1: "Entrenada con",
-      headlineLine2: "datos anotados por logopedas.",
+      headlineLine1: "Los logopedas anotan los datos",
+      headlineLine2: "con los que aprende nuestro modelo.",
       body: "Construimos nuestra propia herramienta de anotación, usada por logopedas en activo para anotar disfluencias.",
       videoAriaLabel:
         "Herramienta de anotación de UpSpeech usada por logopedas para anotar disfluencias",
@@ -272,8 +272,8 @@ export const es: Dictionary = {
       ],
     },
     foundations: {
-      headlineLine1: "Práctica clínica e ingeniería de IA,",
-      headlineLine2: "en el mismo equipo.",
+      headlineLine1: "Nuestro equipo reúne a logopedas en activo",
+      headlineLine2: "e ingenieros de IA.",
       body: "Logopedas e ingenieros trabajan codo con codo. Las decisiones de producto las revisan los logopedas que usan la plataforma con pacientes.",
       logoPartnersLabel: "Socios",
       logoPartnerContext: {
@@ -343,7 +343,7 @@ export const es: Dictionary = {
         label: "Logopeda o clínica",
         short: "Logopeda o clínica",
         line: "Dedica menos tiempo al papeleo y más a tus pacientes.",
-        title: "Los informes de sesión llegan ya redactados, y te queda más tiempo para tus pacientes.",
+        title: "Dedica menos tiempo al papeleo y más a tus pacientes.",
         sub: "UpSpeech te conecta con tus pacientes entre sesiones. Tú pones la práctica, ves lo que pasó en casa, y la IA prepara un borrador de los informes de sesión para que lo revises.",
         stepsTitle: "Tu semana con UpSpeech",
         stepsLead:
@@ -652,7 +652,7 @@ export const es: Dictionary = {
       "Cómo los pacientes practican la terapia del habla entre sesiones con UpSpeech, guiados por su logopeda.",
     intro: {
       eyebrow: "Para pacientes",
-      headlineLine1: "Tu práctica,",
+      headlineLine1: "Sigues practicando",
       headlineLine2: "entre sesiones.",
       body: "Tu logopeda elige los ejercicios. Tú los haces en casa, desde el móvil, y tu logopeda ve cómo ha ido cada uno.",
       exchange: {
@@ -701,7 +701,7 @@ export const es: Dictionary = {
       ],
     },
     app: {
-      headline: "Tu plan, en tu bolsillo.",
+      headline: "Tu plan va donde va tu móvil.",
       body: "Abres la app y ahí está el ejercicio del día.",
       screenshots: [
         "Pantalla de inicio de la app móvil de UpSpeech mostrando el ejercicio del día del paciente",
@@ -881,14 +881,14 @@ export const es: Dictionary = {
       "UpSpeech da a los pacientes práctica estructurada entre sesiones. Tú defines en qué trabajan y ves cómo ha ido antes de la siguiente cita.",
     intro: {
       eyebrow: "Para logopedas",
-      headlineLine1: "Tus pacientes practican entre sesiones,",
-      headlineLine2: "con el plan que tú pautes.",
+      headlineLine1: "Tus pacientes practican entre sesiones",
+      headlineLine2: "siguiendo el plan que tú pautes.",
       body: "UpSpeech da a tus pacientes práctica guiada que realmente hacen entre consultas, con las técnicas que tú elijas. Sabrás cómo ha ido la semana del paciente antes de que entre por la puerta.",
       photoAlt:
         "Una logopeda de pie en una sala de consulta, sosteniendo una tableta y mirando hacia un lado",
     },
     documentation: {
-      headline: "Notas de sesión, redactadas para que las revises.",
+      headline: "Cada informe de sesión empieza como un borrador para que lo revises.",
       body: "Tras una sesión, UpSpeech redacta el informe. Lo revisas y lo editas, sin empezar desde una página vacía.",
       screenshotAlt:
         "Vista del terapeuta en UpSpeech mostrando un informe de sesión redactado por IA, listo para revisar.",

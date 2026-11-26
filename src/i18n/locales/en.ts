@@ -207,8 +207,8 @@ export const en = {
         "A father and his daughter at a dining table, the girl speaking toward a phone propped on a stand while he sits beside her, watching her rather than the screen",
     },
     cycle: {
-      headlinePrefix: "Every step",
-      headlineEmphasis: "reviewed by a clinician.",
+      headlinePrefix: "A clinician",
+      headlineEmphasis: "reviews every step.",
       clinician: "Clinician",
       ai: "AI",
       clinicianStepPrefix: "Clinician · step ",
@@ -255,8 +255,8 @@ export const en = {
       requestAccess: "Request early access",
     },
     engine: {
-      headlineLine1: "Trained on",
-      headlineLine2: "clinician-annotated data.",
+      headlineLine1: "Clinicians annotate the data",
+      headlineLine2: "our model learns from.",
       body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
@@ -270,8 +270,8 @@ export const en = {
       ],
     },
     foundations: {
-      headlineLine1: "Clinical practice and AI engineering,",
-      headlineLine2: "in the same team.",
+      headlineLine1: "Our team includes practising clinicians",
+      headlineLine2: "and AI engineers.",
       body: "Clinicians and engineers work side by side. The speech-language pathologists who use the platform with patients review the product decisions we make.",
       logoPartnersLabel: "Partners",
       logoPartnerContext: {
@@ -341,7 +341,7 @@ export const en = {
         label: "A speech therapist or clinic",
         short: "Speech therapist or clinic",
         line: "Spend less time on paperwork and more with patients.",
-        title: "Your session reports arrive drafted, so you have more time for patients.",
+        title: "Spend less time on paperwork and more with patients.",
         sub: "UpSpeech connects you with your patients between sessions. You set the practice, you see what happened at home, and the AI drafts your session reports for you to review.",
         stepsTitle: "Your week with UpSpeech",
         stepsLead:
@@ -644,7 +644,7 @@ export const en = {
       "How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
     intro: {
       eyebrow: "For patients",
-      headlineLine1: "Your practice,",
+      headlineLine1: "You keep practising",
       headlineLine2: "between sessions.",
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
@@ -691,7 +691,7 @@ export const en = {
       ],
     },
     app: {
-      headline: "Your plan, in your pocket.",
+      headline: "Your plan goes wherever your phone goes.",
       body: "Open the app and the day's exercise is there waiting.",
       screenshots: [
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
@@ -870,14 +870,14 @@ export const en = {
       "UpSpeech gives patients structured practice between sessions. You set what they work on, and you see how it went before the next appointment.",
     intro: {
       eyebrow: "For speech-language pathologists",
-      headlineLine1: "Your patients practise between sessions,",
+      headlineLine1: "Your patients practise between sessions",
       headlineLine2: "on the plan you set.",
       body: "UpSpeech gives your patients guided practice they actually do between appointments, on the techniques you choose. You will know how their week went before they sit down.",
       photoAlt:
         "A speech-language pathologist standing in a clinic room, holding a tablet and looking off to one side",
     },
     documentation: {
-      headline: "Session reports, drafted for you to review.",
+      headline: "Each session report starts as a draft for you to review.",
       body: "After a session, UpSpeech drafts the report. You review and edit it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
