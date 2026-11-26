@@ -36,7 +36,7 @@ const InterstitialCTA = () => {
                 "interstitial",
               )
             }
-            className="inline-flex items-center rounded-sm bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-charcoal"
+            className="inline-flex items-center rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-charcoal"
           >
             {t.requestAccess}
           </a>

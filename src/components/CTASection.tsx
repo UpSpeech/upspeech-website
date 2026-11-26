@@ -42,7 +42,7 @@ const CTASection = () => {
         <a
           href={localizedHref("/join", locale)}
           onClick={() => trackButtonClick("join_flow_home", "cta")}
-          className="inline-flex items-center rounded-sm bg-calm-navy px-8 py-4 font-body text-lg font-semibold text-white transition-colors hover:bg-calm-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink focus-visible:ring-offset-2"
+          className="inline-flex items-center rounded-full bg-calm-navy px-8 py-4 font-body text-lg font-semibold text-white transition-colors hover:bg-calm-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-calm-lavender-ink focus-visible:ring-offset-2"
         >
           {nav.requestAccess}
         </a>

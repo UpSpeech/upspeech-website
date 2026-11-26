@@ -162,7 +162,7 @@ const Hero = () => {
               onClick={() =>
                 trackButtonClick("request_early_access_hero", "hero")
               }
-              className="inline-flex items-center rounded-sm bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
+              className="inline-flex items-center rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
             >
               {t.requestAccess}
             </a>

@@ -60,7 +60,7 @@ export default function ForSlps() {
                   onClick={() =>
                     trackButtonClick("request_early_access_hero", "for_slps")
                   }
-                  className="mt-9 inline-flex items-center rounded-sm bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
+                  className="mt-9 inline-flex items-center rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
                 >
                   {requestAccess}
                 </a>
@@ -227,7 +227,7 @@ export default function ForSlps() {
               onClick={() =>
                 trackButtonClick("request_early_access_closing", "for_slps")
               }
-              className="mt-8 inline-flex min-h-12 items-center rounded-sm bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-charcoal"
+              className="mt-8 inline-flex min-h-12 items-center rounded-full bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-charcoal"
             >
               {t.closing.cta}
             </a>
