@@ -48,40 +48,31 @@ const ClinicianDay = () => {
     threshold: 0.05,
   });
 
-  // The clock stamp is an eyebrow that happens to carry numbers, so it takes
-  // the same class and adds tabular figures for the times.
+  // The clock stamp takes the small label class, with tabular figures for the
+  // times.
   const stamp = "t-eyebrow font-body tabular-nums";
 
   return (
     <>
       {/* Opening, and the two beats before the session.
 
-          The header runs across the measure instead of stacking top-left. Every
-          other light section on the page opens eyebrow-headline-lead in a column
-          at the same width, and this one used to sit directly under the week's
-          identical opening, so the page read as one template repeating. Here the
-          eyebrow and headline hold the left, the lead sits opposite them, and the
-          rule closes the band: a chapter heading rather than another stack. */}
+          The header runs across the measure instead of stacking top-left. The
+          headline holds the left, the lead sits opposite it, and the rule
+          closes the band. */}
       <section ref={ref} className="bg-white py-[clamp(4rem,9vw,7rem)]">
         <div className="mx-auto max-w-6xl px-[max(1.5rem,5vw)]">
           <div className="grid gap-x-12 gap-y-5 border-b border-calm-charcoal/10 pb-[clamp(2rem,4vw,3rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end">
             <div>
-              <p
-                className="t-eyebrow font-body text-calm-lavender-ink"
-                style={revealFrom(revealed, "up", 0)}
-              >
-                {t.eyebrow}
-              </p>
               <h2
-                className="t-h2 mt-4 max-w-[16ch] font-heading font-bold text-calm-navy"
-                style={{ ...revealFrom(revealed, "up", 80) }}
+                className="t-h2 max-w-[16ch] font-heading font-bold text-calm-navy"
+                style={revealFrom(revealed, "up", 0)}
               >
                 {t.headline}
               </h2>
             </div>
             <p
               className="t-lead font-body text-calm-charcoal/80 lg:pb-1"
-              style={revealFrom(revealed, "up", 160)}
+              style={revealFrom(revealed, "up", 80)}
             >
               {t.body}
             </p>
@@ -89,7 +80,7 @@ const ClinicianDay = () => {
 
           {/* 08:40, with the photograph. */}
           <div className="mt-[clamp(2.5rem,5vw,4rem)] grid items-center gap-8 lg:grid-cols-[1fr,minmax(0,420px)] lg:gap-14">
-            <div style={revealFrom(revealed, "up", 240)}>
+            <div style={revealFrom(revealed, "up", 160)}>
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.before.time}
               </span>
@@ -114,7 +105,7 @@ const ClinicianDay = () => {
           <div className="mt-[clamp(2.5rem,5vw,4rem)] grid items-center gap-8 lg:grid-cols-[minmax(0,460px),1fr] lg:gap-14">
             <div
               className="order-2 overflow-hidden rounded-xl border border-calm-charcoal/10 bg-white shadow-[0_24px_50px_-30px_rgba(41,53,135,0.45)] lg:order-1"
-              style={revealFrom(revealed, "left", 340)}
+              style={revealFrom(revealed, "left", 260)}
             >
               <img
                 src={localizedAsset(
@@ -131,7 +122,7 @@ const ClinicianDay = () => {
             </div>
             <div
               className="order-1 lg:order-2"
-              style={revealFrom(revealed, "up", 300)}
+              style={revealFrom(revealed, "up", 220)}
             >
               <span className={`${stamp} text-calm-lavender-ink`}>
                 {t.assessment.time}

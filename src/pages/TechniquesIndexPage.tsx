@@ -165,7 +165,7 @@ export function TechniquesIndexPage() {
       <Header />
 
       <main id="main" data-prerender-state="ready" className="flex-1">
-        {/* Intro, matching the other pages: left aligned, eyebrow + headline */}
+        {/* Intro, matching the other pages: left aligned, headline then lead */}
         <section className="relative overflow-hidden pt-28 pb-[clamp(2rem,5vw,3.5rem)] sm:pt-36">
           <div className="gutter relative">
             <div className="max-w-3xl">

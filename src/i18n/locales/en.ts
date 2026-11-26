@@ -92,10 +92,9 @@ export const en = {
       body: "Patients practise between sessions, following a plan their therapist set. Every attempt goes back to the therapist, who decides what happens next.",
       traceLabel: "A recording of someone speaking, with the pauses left in",
       requestAccess: "Request early access",
-      seeHowItWorks: "See a patient's week",
+      seePatientsWeek: "See a patient's week",
     },
     gap: {
-      eyebrow: "The patient's week",
       days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       headlineToday: "A patient's week, as it is today.",
       headlineWithPrefix: "A patient's week,",
@@ -146,7 +145,6 @@ export const en = {
     },
     day: {
       howToName: "How a speech therapy session becomes a written record",
-      eyebrow: "A Tuesday",
       headline: "Most of the work is not the session.",
       body: "Dozens of therapists told us the same thing: hours spent preparing, hours spent writing up, and time inside the session lost to taking notes. This is that day with UpSpeech in it.",
       before: {
@@ -197,7 +195,6 @@ export const en = {
       },
     },
     mobile: {
-      eyebrow: "In the patient's pocket",
       headline: "The practice happens in the app, between sessions.",
       body: "Follow your therapist’s plan on your phone. Practise on your own, or support your child through their exercises.",
       screenshots: [
@@ -206,14 +203,12 @@ export const en = {
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
       ],
       familyLink: "See how practice works with your child",
-      familyEyebrow: "Younger patients",
       familyAlt:
         "A father and his daughter at a dining table, the girl speaking toward a phone propped on a stand while he sits beside her, watching her rather than the screen",
     },
     cycle: {
-      eyebrow: "The loop",
-      headlinePrefix: "Every step",
-      headlineEmphasis: "reviewed by a clinician.",
+      headlinePrefix: "A clinician",
+      headlineEmphasis: "reviews every step.",
       clinician: "Clinician",
       ai: "AI",
       clinicianStepPrefix: "Clinician · step ",
@@ -260,9 +255,8 @@ export const en = {
       requestAccess: "Request early access",
     },
     engine: {
-      eyebrow: "UpSpeech Labs",
-      headlineLine1: "Trained on",
-      headlineLine2: "clinician-annotated data.",
+      headlineLine1: "Clinicians annotate the data",
+      headlineLine2: "our model learns from.",
       body: "We built our own annotation tool, and practising speech-language pathologists use it to tag disfluencies frame by frame.",
       videoAriaLabel:
         "UpSpeech annotation tool used by clinicians to tag disfluencies frame by frame",
@@ -276,16 +270,15 @@ export const en = {
       ],
     },
     foundations: {
-      eyebrow: "Foundations",
-      headlineLine1: "Clinical practice and AI engineering,",
-      headlineLine2: "in the same team.",
+      headlineLine1: "Our team includes practising clinicians",
+      headlineLine2: "and AI engineers.",
       body: "Clinicians and engineers work side by side. The speech-language pathologists who use the platform with patients review the product decisions we make.",
       logoPartnersLabel: "Partners",
       logoPartnerContext: {
         speechcare: "Co-development partner",
         elevenlabs: "AI infrastructure grant",
       },
-      partnersLabel: "Programmes · Backers · Recognition",
+      partnersLabel: "Programmes, backers and recognition",
       partnersTagline: "Who we work with",
       partnerContext: {
         lispolis: "Acceleration programme",
@@ -295,7 +288,6 @@ export const en = {
       },
     },
     security: {
-      eyebrow: "Security and data",
       headline: "How patient data is handled.",
       body: "Clinics trust us with sensitive recordings. We treat that data the way a clinic would, and a therapist always has the final say on what the AI produces.",
       points: [
@@ -348,8 +340,8 @@ export const en = {
       therapist: {
         label: "A speech therapist or clinic",
         short: "Speech therapist or clinic",
-        line: "Less paperwork. More time for patients.",
-        title: "Less paperwork. More time for patients.",
+        line: "Spend less time on paperwork and more with patients.",
+        title: "Spend less time on paperwork and more with patients.",
         sub: "UpSpeech connects you with your patients between sessions. You set the practice, you see what happened at home, and the AI drafts your session reports for you to review.",
         stepsTitle: "Your week with UpSpeech",
         stepsLead:
@@ -652,7 +644,7 @@ export const en = {
       "How patients practise speech therapy between sessions with UpSpeech, guided by their speech-language pathologist.",
     intro: {
       eyebrow: "For patients",
-      headlineLine1: "Your practice,",
+      headlineLine1: "You keep practising",
       headlineLine2: "between sessions.",
       body: "Your therapist picks the exercises. You do them at home on your phone, and they see how each one went.",
       exchange: {
@@ -699,8 +691,7 @@ export const en = {
       ],
     },
     app: {
-      eyebrow: "The app",
-      headline: "Your plan, in your pocket.",
+      headline: "Your plan goes wherever your phone goes.",
       body: "Open the app and the day's exercise is there waiting.",
       screenshots: [
         "UpSpeech mobile app home screen showing the patient's exercise for the day",
@@ -727,7 +718,6 @@ export const en = {
       ],
     },
     faq: {
-      eyebrow: "Questions",
       headline: "Common questions from patients.",
       items: [
         {
@@ -766,7 +756,6 @@ export const en = {
     seoDescription:
       "A plain-language guide to person-centred speech therapy: what it means, why fluency is not the only goal, and how UpSpeech reflects this approach.",
     intro: {
-      eyebrow: "Philosophy",
       headlineLine1: "What does",
       headlineLine2: "person-centred mean?",
       body: "Person-centred therapy puts confidence and communication first, and the person helps set the goals. In stuttering therapy this is sometimes called a stutter-positive approach.",
@@ -790,7 +779,6 @@ export const en = {
       },
     ],
     faq: {
-      eyebrow: "Questions",
       headline: "Common questions.",
       items: [
         {
@@ -848,7 +836,6 @@ export const en = {
       },
     ],
     faq: {
-      eyebrow: "Questions",
       headline: "Common questions from clinicians.",
       items: [
         {
@@ -883,22 +870,20 @@ export const en = {
       "UpSpeech gives patients structured practice between sessions. You set what they work on, and you see how it went before the next appointment.",
     intro: {
       eyebrow: "For speech-language pathologists",
-      headlineLine1: "More therapy between sessions.",
-      headlineLine2: "All of it directed by you.",
+      headlineLine1: "Your patients practise between sessions",
+      headlineLine2: "on the plan you set.",
       body: "UpSpeech gives your patients guided practice they actually do between appointments, on the techniques you choose. You will know how their week went before they sit down.",
       photoAlt:
         "A speech-language pathologist standing in a clinic room, holding a tablet and looking off to one side",
     },
     documentation: {
-      eyebrow: "Documentation",
-      headline: "Session reports, drafted for you to review.",
+      headline: "Each session report starts as a draft for you to review.",
       body: "After a session, UpSpeech drafts the report. You review and edit it, without starting from an empty page.",
       screenshotAlt:
         "UpSpeech therapist view showing an AI-drafted session report ready for review.",
     },
     betweenSessions: {
-      eyebrow: "Between sessions",
-      headline: "Assign practice. See what happened.",
+      headline: "You assign the practice and see how it went.",
       steps: [
         {
           title: "You set the plan",
@@ -915,14 +900,12 @@ export const en = {
       ],
     },
     personCentered: {
-      eyebrow: "Our approach",
       headline: "Every attempt comes back with your reply.",
       body: "A patient records at home and you listen to it. The feedback they read is what you wrote.",
       photoAlt:
         "A speech-language pathologist talking with a young boy in a clinic room, his mother sitting just behind him",
     },
     faq: {
-      eyebrow: "Questions from clinicians",
       headline: "Common questions from SLPs.",
       items: [
         {

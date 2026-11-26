@@ -31,15 +31,9 @@ const WorkflowStrip = () => {
   return (
     <section className="relative bg-calm-light px-[max(1.5rem,5vw)] py-[clamp(3.5rem,7vw,6rem)]">
       <div ref={ref} className="relative max-w-6xl mx-auto">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-ink"
-          style={reveal(revealed, 0)}
-        >
-          How it fits your week
-        </p>
         <h2
-          className="t-h2 mt-4 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
-          style={{ ...reveal(revealed, 80) }}
+          className="t-h2 font-heading font-bold text-calm-charcoal tracking-tight max-w-2xl"
+          style={reveal(revealed, 0)}
         >
           Before, during, and after each session.
         </h2>
@@ -49,7 +43,7 @@ const WorkflowStrip = () => {
             <li
               key={step.phase}
               className="relative"
-              style={reveal(revealed, 160 + i * 80)}
+              style={reveal(revealed, 80 + i * 80)}
             >
               <div className="flex items-center gap-4">
                 <div className="t-h2 font-heading font-bold text-calm-navy/25 tabular-nums">

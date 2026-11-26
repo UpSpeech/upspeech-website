@@ -60,12 +60,9 @@ export default function ForSlps() {
                   onClick={() =>
                     trackButtonClick("request_early_access_hero", "for_slps")
                   }
-                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-lavender-ink hover:shadow-[0_24px_50px_-20px_rgba(41,53,135,0.6)]"
+                  className="mt-9 inline-flex items-center rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
                 >
                   {requestAccess}
-                  <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
-                    &rarr;
-                  </span>
                 </a>
               </div>
               <div className="relative flex justify-center lg:justify-end">
@@ -230,15 +227,9 @@ export default function ForSlps() {
               onClick={() =>
                 trackButtonClick("request_early_access_closing", "for_slps")
               }
-              className="group mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-charcoal hover:shadow-[0_24px_50px_-16px_rgba(41,53,135,0.55)]"
+              className="mt-8 inline-flex min-h-12 items-center rounded-full bg-calm-navy px-8 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-charcoal"
             >
               {t.closing.cta}
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
-              >
-                →
-              </span>
             </a>
           </div>
         </section>

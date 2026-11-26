@@ -95,29 +95,6 @@ const Hero = () => {
         />
       </Helmet>
 
-      {/* Two blooms. The scrim the old hero used was doing something real
-          besides making the type legible: it carried the warm late-afternoon
-          light of the kitchen the photograph was taken in. On a white ground
-          that atmosphere is gone and the page turns clinical, which is the
-          wrong register for this product. The lavender bloom is the brand; the
-          warm one low behind her is the light. Both sit well under any text. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-10%] top-[-18%] h-[820px] w-[820px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(149,138,240,0.22), rgba(149,138,240,0.06) 58%, rgba(149,138,240,0) 72%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-4%] right-[2%] h-[620px] w-[900px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(233,190,138,0.26), rgba(233,190,138,0.09) 52%, rgba(233,190,138,0) 74%)",
-        }}
-      />
-
       <div className="gutter relative grid w-full grid-cols-1 items-end gap-8 pb-0 pt-28 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:gap-10 lg:pt-24">
         <div className="pb-10 lg:self-center lg:pb-0">
           <div
@@ -172,7 +149,7 @@ const Hero = () => {
           </p>
 
           <div
-            className="mt-9 flex flex-wrap items-center gap-4"
+            className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4"
             style={{
               transition: `opacity 700ms ${EASE}, transform 700ms ${EASE}`,
               transitionDelay: "610ms",
@@ -185,19 +162,16 @@ const Hero = () => {
               onClick={() =>
                 trackButtonClick("request_early_access_hero", "hero")
               }
-              className="group inline-flex items-center gap-3 rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-calm-lavender-ink hover:shadow-[0_24px_50px_-20px_rgba(41,53,135,0.6)]"
+              className="inline-flex items-center rounded-full bg-calm-navy px-7 py-3.5 font-body font-semibold text-white transition-colors duration-300 hover:bg-calm-lavender-ink"
             >
               {t.requestAccess}
-              <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
-                &rarr;
-              </span>
             </a>
             <a
               href="#how-it-works"
               onClick={() => trackButtonClick("see_how_it_works", "hero")}
-              className="inline-flex items-center gap-2 rounded-full border border-calm-navy/25 px-7 py-3.5 font-body font-semibold text-calm-navy transition-colors duration-500 hover:border-calm-navy/60 hover:bg-calm-navy/5"
+              className="font-body font-semibold text-calm-navy underline decoration-calm-navy/30 underline-offset-4 transition-colors duration-300 hover:decoration-calm-navy"
             >
-              {t.seeHowItWorks}
+              {t.seePatientsWeek}
             </a>
           </div>
         </div>
@@ -223,8 +197,7 @@ const Hero = () => {
           with a description, and what it describes is the product's subject
           matter rather than ornament: a recording with its silences left in.
           Hiding it would throw away the one part of the hero that explains
-          what this company measures. The blooms above are the decoration and
-          they are the things that stay hidden. */}
+          what this company measures. */}
       <div
         className="relative w-full shrink-0 overflow-hidden"
         style={{

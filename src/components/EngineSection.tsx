@@ -74,15 +74,9 @@ const EngineSection = () => {
       />
 
       <div ref={ref} className="gutter relative">
-        <p
-          className="font-body t-eyebrow text-calm-lavender-bright mb-6 sm:mb-8"
-          style={textStyle(0)}
-        >
-          {t.eyebrow}
-        </p>
         <h2
           className="t-h2 font-heading font-bold text-white max-w-4xl"
-          style={{ ...textStyle(80) }}
+          style={textStyle(0)}
         >
           {t.headlineLine1} <br />
           <span className="text-calm-lavender-bright">{t.headlineLine2}</span>
@@ -90,7 +84,7 @@ const EngineSection = () => {
 
         <p
           className="mt-8 max-w-2xl t-lead font-body text-white/70 leading-relaxed"
-          style={textStyle(160)}
+          style={textStyle(80)}
         >
           {t.body}
         </p>
@@ -99,7 +93,7 @@ const EngineSection = () => {
           className="mt-[clamp(3rem,6vw,5rem)] max-w-5xl"
           style={{
             transition: `opacity 1200ms ${EASE}, transform 1200ms ${EASE}`,
-            transitionDelay: "280ms",
+            transitionDelay: "200ms",
             opacity: revealed ? 1 : 0,
             transform: revealed
               ? "translateY(0) scale(1)"

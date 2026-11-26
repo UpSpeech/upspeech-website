@@ -130,7 +130,7 @@ const PinnedCycle = () => {
     };
   }, []);
 
-  // Structural chrome (eyebrow, headline, labels, center, description, footer)
+  // Structural chrome (headline, labels, center, description, footer)
   // is visible from the start, the cycle reads as 'ready to go' at scroll 0
   // defaulting to step 01 (AI drafts). Scroll drives only the progression.
   const nodePhase = clamp01(progress / 0.9);
@@ -369,17 +369,10 @@ const PinnedCycle = () => {
 
               {/* Center scoreboard, live actor readout */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-                <div
-                  className="font-body font-bold tracking-[0.35em] uppercase text-calm-charcoal/80"
-                  style={{ fontSize: "clamp(10px, 0.85vw, 12px)" }}
-                >
-                  {t.eyebrow}
-                </div>
-
                 {/* Actor readout, swaps and recolors with each step */}
                 <div
                   key={`actor-${activeIndex}`}
-                  className="t-h3 font-heading font-bold mt-2 mb-2.5"
+                  className="t-h3 font-heading font-bold mb-2.5"
                   style={{
                     // #958AF0 is the brand fill and only reaches 2.93:1 on
                     // white, under the 3:1 this size needs. Text-safe ink.

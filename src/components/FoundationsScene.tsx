@@ -105,7 +105,7 @@ const FoundationsScene = () => {
         {/* The two we build with, as marks */}
         <div className="mt-[clamp(3rem,6vw,4.5rem)]">
           <span
-            className="font-body t-eyebrow text-calm-charcoal/80"
+            className="font-body t-small font-semibold text-calm-charcoal/80"
             style={style(240)}
           >
             {t.logoPartnersLabel}
@@ -137,7 +137,7 @@ const FoundationsScene = () => {
             className="mb-8 sm:mb-10 flex items-baseline justify-between flex-wrap gap-4"
             style={style(320)}
           >
-            <span className="font-body t-eyebrow text-calm-charcoal/80">
+            <span className="font-body t-small font-semibold text-calm-charcoal/80">
               {t.partnersLabel}
             </span>
             <span className="font-body t-small text-calm-charcoal/80">
@@ -169,7 +169,7 @@ const FoundationsScene = () => {
                 <div>
                   {/* Two lines reserved: one name wraps and the rest do not,
                       which dropped that card's context line below the others. */}
-                  <div className="flex min-h-[2.4em] items-start font-body t-eyebrow text-calm-lavender-ink">
+                  <div className="flex min-h-[2.75em] items-start font-heading font-semibold leading-snug text-calm-navy">
                     {p.name}
                   </div>
                   <div className="mt-1.5 font-body t-small text-calm-charcoal/80 leading-snug">
