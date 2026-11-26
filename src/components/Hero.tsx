@@ -95,29 +95,6 @@ const Hero = () => {
         />
       </Helmet>
 
-      {/* Two blooms. The scrim the old hero used was doing something real
-          besides making the type legible: it carried the warm late-afternoon
-          light of the kitchen the photograph was taken in. On a white ground
-          that atmosphere is gone and the page turns clinical, which is the
-          wrong register for this product. The lavender bloom is the brand; the
-          warm one low behind her is the light. Both sit well under any text. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-10%] top-[-18%] h-[820px] w-[820px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(149,138,240,0.22), rgba(149,138,240,0.06) 58%, rgba(149,138,240,0) 72%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-4%] right-[2%] h-[620px] w-[900px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(233,190,138,0.26), rgba(233,190,138,0.09) 52%, rgba(233,190,138,0) 74%)",
-        }}
-      />
-
       <div className="gutter relative grid w-full grid-cols-1 items-end gap-8 pb-0 pt-28 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,38%)] lg:gap-10 lg:pt-24">
         <div className="pb-10 lg:self-center lg:pb-0">
           <div
@@ -220,8 +197,7 @@ const Hero = () => {
           with a description, and what it describes is the product's subject
           matter rather than ornament: a recording with its silences left in.
           Hiding it would throw away the one part of the hero that explains
-          what this company measures. The blooms above are the decoration and
-          they are the things that stay hidden. */}
+          what this company measures. */}
       <div
         className="relative w-full shrink-0 overflow-hidden"
         style={{
