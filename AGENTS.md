@@ -20,7 +20,8 @@ exactly this reason.
   though it were.
 - **The page follows `../docs/guides/Premium Standard.md` and the words follow
   `../marketing/standards/CONTENT_DIRECTIVES.md`.** A section opens with its
-  heading; a headline is one sentence with a verb.
+  heading; a headline is one sentence with a verb. Spelling is British English
+  here (`check:british`), which overrides the directives' US rule.
 
 ## Gates
 
