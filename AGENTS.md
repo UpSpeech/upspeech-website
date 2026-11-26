@@ -18,6 +18,9 @@ exactly this reason.
 - On the dark charcoal band, lavender ink is `lavender-bright` `#BEB8F6`.
 - A full-bleed hero image is never the LCP element here, so do not optimise it as
   though it were.
+- **The page follows `../docs/guides/Premium Standard.md` and the words follow
+  `../marketing/standards/CONTENT_DIRECTIVES.md`.** A section opens with its
+  heading; a headline is one sentence with a verb.
 
 ## Gates
 
