@@ -1,6 +1,6 @@
 # Términos de Servicio
 
-**Última Actualización:** 21 de julio de 2026
+**Última Actualización:** 28 de noviembre de 2026
 
 ## 1. Aceptación de los Términos
 
@@ -118,7 +118,7 @@ Los pacientes son individuos que reciben logopedia y que:
 
 - Cargan grabaciones de su práctica del habla
 - Completan ejercicios asignados por su logopeda
-- Visualizan sus propios informes y progreso
+- Visualizan su propio progreso
 - Solo pueden acceder a sus propios datos (no pueden ver información de otros pacientes)
 
 **Consentimiento del paciente:** Al cargar grabaciones, confirma que usted (o su progenitor/tutor legal, si es menor de 18 años) consiente el tratamiento de sus datos de habla.
@@ -518,4 +518,4 @@ Estos Términos están redactados en inglés. Cualquier traducción se proporcio
 
 **Al utilizar UpSpeech, reconoce que ha leído, comprendido y acepta quedar vinculado por estos Términos de Servicio.**
 
-**Última Actualización:** 21 de julio de 2026
+**Última Actualización:** 28 de noviembre de 2026

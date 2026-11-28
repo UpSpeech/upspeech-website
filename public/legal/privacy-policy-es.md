@@ -1,6 +1,6 @@
 # Política de Privacidad
 
-**Última Actualización:** 19 de octubre de 2026
+**Última Actualización:** 28 de noviembre de 2026
 
 ## Introducción
 
@@ -189,7 +189,7 @@ En nuestro sistema multi-tenant:
 
 - **Los logopedas** de su organización pueden ver todos los informes y datos de pacientes dentro de la organización (sujetos a los permisos de su rol)
 - **Los administradores** de su organización pueden gestionar usuarios, ver análisis y acceder a datos de toda la organización
-- **Los pacientes** solo pueden ver sus propios datos e informes
+- **Los pacientes** solo pueden ver sus propios datos de práctica y su progreso. Los informes de sesión son visibles para los terapeutas, no para los pacientes
 - **Los propietarios de la plataforma** (administradores de UpSpeech) tienen acceso entre tenants únicamente para fines de administración del sistema y soporte
 
 ### 3. Requisitos Legales

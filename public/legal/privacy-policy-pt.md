@@ -1,6 +1,6 @@
 # Política de Privacidade
 
-**Última Atualização:** 19 de outubro de 2026
+**Última Atualização:** 28 de novembro de 2026
 
 ## Introdução
 
@@ -189,7 +189,7 @@ No nosso sistema multi-tenant:
 
 - **Terapeutas** na sua organização podem ver todos os relatórios e dados de pacientes dentro da organização (sujeitos às permissões da sua função)
 - **Administradores** na sua organização podem gerir utilizadores, ver análises e aceder a dados de toda a organização
-- **Pacientes** só podem ver os seus próprios dados e relatórios
+- **Pacientes** só podem ver os seus próprios dados de prática e progresso. Os relatórios de sessão são visíveis para os terapeutas, não para os pacientes
 - **Proprietários da plataforma** (administradores da UpSpeech) têm acesso entre tenants apenas para fins de administração do sistema e suporte
 
 ### 3. Requisitos Legais

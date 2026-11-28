@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last Updated:** July 21, 2026
+**Last Updated:** November 28, 2026
 
 ## 1. Agreement to Terms
 
@@ -118,7 +118,7 @@ Patients are individuals receiving speech therapy who:
 
 - Upload recordings of their speech practice
 - Complete exercises assigned by their therapist
-- View their own reports and progress
+- View their own progress
 - Can only access their own data (cannot view other patients' information)
 
 **Patient consent:** By uploading recordings, you confirm that you (or your parent/legal guardian, if you are under 18) consent to the processing of your speech data.
@@ -518,4 +518,4 @@ These Terms are written in English. Any translations are provided for convenienc
 
 **By using UpSpeech, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**
 
-**Last Updated:** July 21, 2026
+**Last Updated:** November 28, 2026
