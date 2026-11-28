@@ -1,6 +1,6 @@
 # Termos de Serviço
 
-**Última Atualização:** 21 de julho de 2026
+**Última Atualização:** 28 de novembro de 2026
 
 ## 1. Aceitação dos Termos
 
@@ -118,7 +118,7 @@ Os pacientes são indivíduos que recebem terapia da fala e que:
 
 - Carregam gravações da sua prática de fala
 - Concluem exercícios atribuídos pelo seu terapeuta
-- Visualizam os seus próprios relatórios e progresso
+- Visualizam o seu próprio progresso
 - Só podem aceder aos seus próprios dados (não podem ver informações de outros pacientes)
 
 **Consentimento do paciente:** Ao carregar gravações, confirma que (ou o seu progenitor/tutor legal, se tiver menos de 18 anos) consente o processamento dos seus dados de fala.
@@ -518,4 +518,4 @@ Estes Termos são redigidos em inglês. Quaisquer traduções são fornecidas ap
 
 **Ao utilizar a UpSpeech, reconhece que leu, compreendeu e concorda em ficar vinculado a estes Termos de Serviço.**
 
-**Última Atualização:** 21 de julho de 2026
+**Última Atualização:** 28 de novembro de 2026

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated:** October 19, 2026
+**Last Updated:** November 28, 2026
 
 ## Introduction
 
@@ -189,7 +189,7 @@ In our multi-tenant system:
 
 - **Therapists** in your organization can view all reports and patient data within the organization (subject to their role permissions)
 - **Admins** in your organization can manage users, view analytics, and access organization-wide data
-- **Patients** can only view their own data and reports
+- **Patients** can only view their own practice data and progress. Session reports are visible to therapists, not to patients
 - **Platform owners** (UpSpeech administrators) have cross-tenant access for system administration and support purposes only
 
 ### 3. Legal Requirements
